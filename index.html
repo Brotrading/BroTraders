@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bro Traders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "DM Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+    <!-- ================= TOP TICKER BAR ================= -->
+    <div class="bt-topbar">
+      <!-- SCROLLING SECTION -->
+      <div class="bt-ticker-wrapper">
+        <div class="bt-arrow">&#10094;</div>
+
+        <div class="bt-ticker">
+          <div class="bt-ticker-track">
+            <a href="https://lucidtrading.com/ref/pw/" target="_blank">
+              Lucid Trading is 50% Off All Accounts! Use Code: PW
+            </a>
+
+            <a
+              href="https://takeprofittrader.com/?referralCode=ONLYPROPFIRMS"
+              target="_blank"
+            >
+              ✅ TPT is 40% Off & No Fee! Use Code: PW
+            </a>
+
+            <a href="https://warbuxbtc.com/" target="_blank">
+              💀 20% Off At WarBux!
+            </a>
+
+            <a href="#">
+              🫴 40% Off 150K Select Plan! 30% Off All Other Tradeify Accounts!
+              Use Code: PW
+            </a>
+
+            <a href="https://apextraderfunding.com/?c=PW" target="_blank">
+              🚨 90% Off Apex! 1 Day To Pass Use Code: PW
+            </a>
+
+            <!-- duplicate for smooth loop -->
+            <a href="https://lucidtrading.com/ref/pw/" target="_blank">
+              Lucid Trading is 50% Off All Accounts! Use Code: PW
+            </a>
+          </div>
+        </div>
+
+        <div class="bt-arrow">&#10095;</div>
+      </div>
+
+      <!-- RIGHT SIDE BUTTONS -->
+      <div class="bt-right-links">
+        <a href="https://www.youtube.com/c/PatrickWieland" target="_blank"
+          >#1 Day Trader on YouTube</a
+        >
+        <a href="https://bigdickhouse.com/" target="_blank">OPF Shop</a>
+        <a href="https://onlypropfirms.com/register/" target="_blank"
+          >Sign Up</a
+        >
+        <a href="https://onlypropfirms.com/login/" target="_blank">Login</a>
+      </div>
+    </div>
+
+    <style>
+      /* ================= TOP BAR ================= */
+
+      .bt-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #000;
+        height: 42px;
+        font-size: 14px;
+        overflow: hidden;
+        position: relative;
+        z-index: 99999;
+      }
+
+      /* ================= TICKER ================= */
+
+      .bt-ticker-wrapper {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        background: #c6ff00; /* neon green */
+        overflow: hidden;
+      }
+
+      .bt-arrow {
+        padding: 0 12px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+      }
+
+      .bt-ticker {
+        overflow: hidden;
+        white-space: nowrap;
+        flex: 1;
+      }
+
+      .bt-ticker-track {
+        display: inline-block;
+        animation: scrollTicker 30s linear infinite;
+      }
+
+      .bt-ticker-track a {
+        display: inline-block;
+        margin-right: 60px;
+        color: #000;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .bt-ticker-track a:hover {
+        text-decoration: underline;
+      }
+
+      /* Smooth infinite scroll */
+      @keyframes scrollTicker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ================= RIGHT SIDE ================= */
+
+      .bt-right-links {
+        display: flex;
+        align-items: center;
+        background: #f3f3f3;
+      }
+
+      .bt-right-links a {
+        padding: 0 16px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        color: #000;
+        text-decoration: none;
+        border-left: 1px solid #ddd;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .bt-right-links a:hover {
+        background: #e5e5e5;
+      }
+
+      /* ================= RESPONSIVE ================= */
+
+      @media (max-width: 1000px) {
+        .bt-right-links {
+          display: none;
+        }
+      }
+    </style>
+    <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
+    <!-- ================= BRO TRADING HEADER ================= -->
+    <header class="bt-header">
+      <div class="bt-container">
+        <!-- Logo -->
+        <div class="bt-logo">
+          <img src="Bro_Traders_logo-removebg-preview.png" alt="Bro Trading" />
+        </div>
+
+        <!-- Navigation -->
+        <nav class="bt-nav">
+          <!-- Funding Plans -->
+          <div class="bt-dropdown">
+            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
+              Funding Plans ▾
+            </button>
+
+            <div class="bt-drop-menu" id="funding">
+              <div class="bt-drop-grid">
+                <div>
+                  <a href="#">Firm Lists</a>
+                  <a href="#">Prop Firm Comparison</a>
+                  <a href="#">True Cost to Funding</a>
+                  <a href="#">Prop Firm Starting Costs</a>
+                  <a href="#">Largest Drawdown</a>
+                  <a href="#">Quickest Funding</a>
+                  <a href="#">Best Deals</a>
+                </div>
+
+                <div>
+                  <a href="#">Top Firms</a>
+                  <a href="#">Apex Trader Funding</a>
+                  <a href="#">Lucid Trading</a>
+                  <a href="#">WarBux</a>
+                  <a href="#">Take Profit Trader</a>
+                  <a href="#">Tradeify</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learn -->
+          <div class="bt-dropdown">
+            <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+              Learn ▾
+            </button>
+
+            <div class="bt-drop-menu small" id="learn">
+              <a href="#">Lessons</a>
+              <a href="#">Articles</a>
+              <a href="#">The 2-Hour Trading Day</a>
+            </div>
+          </div>
+
+          <!-- Resources -->
+          <div class="bt-dropdown">
+            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
+              Resources ▾
+            </button>
+
+            <div class="bt-drop-menu small" id="resources">
+              <a href="#">Market Analysis</a>
+              <a href="#">Trading Tools</a>
+            </div>
+          </div>
+
+          <a href="#" class="bt-link">About</a>
+          <a href="#" class="bt-link">Contact</a>
+        </nav>
+
+        <a href="#" class="bt-cta">Get Funded</a>
+      </div>
+    </header>
+
+    <!-- Blur Overlay -->
+    <div class="bt-overlay" onclick="closeAll()"></div>
+
+    <style>
+      /* ================= HEADER ================= */
+
+      .bt-header {
+        /* position: fixed; */
+        width: 100%;
+        top: 35px;
+        background: black;
+        /* padding: 8px 0; */
+        z-index: 1000;
+      }
+
+      .bt-container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .bt-logo img {
+        height: 100px;
+        width: 150px;
+      }
+
+      .bt-nav {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .bt-link,
+      .bt-drop-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .bt-link:hover,
+      .bt-drop-btn:hover {
+        color: #00c2ff;
+      }
+
+      /* ================= DROPDOWN ================= */
+
+      .bt-dropdown {
+        position: relative;
+      }
+
+      /* Glass Neon Dropdown */
+      .bt-drop-menu {
+        position: absolute;
+        top: 182%;
+        left: -7px;
+        min-width: 700px;
+        padding: 30px;
+        border-radius: 14px;
+
+        background: rgba(15, 20, 45, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(0, 194, 255, 0.6);
+
+        /* box-shadow:
+          0 0 20px rgba(0, 194, 255, 0.4),
+          0 0 40px rgba(0, 194, 255, 0.2); */
+
+        opacity: 0;
+        transform: translateY(10px);
+        transition: 0.25s ease;
+
+        display: none;
+        z-index: 1001;
+      }
+
+      .bt-drop-menu.small {
+        min-width: 260px;
+        padding: 20px;
+      }
+
+      .bt-drop-menu.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Grid */
+      .bt-drop-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .bt-drop-menu a {
+        display: block;
+        color: #cbd5e1;
+        text-decoration: none;
+        margin-bottom: 12px;
+        transition: 0.3s;
+      }
+
+      .bt-drop-menu a:hover {
+        color: #00c2ff;
+        padding-left: 5px;
+      }
+
+      /* CTA */
+      .bt-cta {
+        background: linear-gradient(90deg, #00c2ff, #1e90ff);
+        padding: 10px 24px;
+        border-radius: 6px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .bt-cta:hover {
+        transform: translateY(-3px);
+        background: white;
+        color: #0b0f2a;
+        border: 3px solid #00c2ff;
+      }
+
+      /* ================= OVERLAY ================= */
+
+      .bt-overlay {
+        position: fixed;
+        inset: 0;
+        backdrop-filter: blur(1px);
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 900;
+      }
+
+      .bt-overlay.active {
+        display: block;
+      }
+    </style>
+
+    <script>
+      function toggleDropdown(id) {
+        const menu = document.getElementById(id);
+        const overlay = document.querySelector(".bt-overlay");
+
+        const isActive = menu.classList.contains("active");
+
+        closeAll();
+
+        if (!isActive) {
+          menu.classList.add("active");
+          overlay.classList.add("active");
+        }
+      }
+
+      function closeAll() {
+        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+        document.querySelector(".bt-overlay").classList.remove("active");
+      }
+    </script>
+    <!-- =================== HEADER END =================  -->
+    <!-- =================Hero section ================== -->
+    <!-- <section class="bro-hero">
+      <div class="bro-container">
+        <div class="bro-left">
+          <img
+            src="Bro Traders logo.jpeg"
+            class="bro-logo"
+            alt="Bro Trading Logo"
+          />
+
+          <h1>Trade With Confidence.<br />Scale With Power.</h1>
+
+          <p>
+            Join Bro Trading and access funded trading opportunities,
+            professional mentorship, and real market strategies.
+          </p>
+
+          <div class="bro-buttons">
+            <a href="#" class="bro-btn primary">Get Started</a>
+            <a href="#" class="bro-btn outline">View Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .bro-hero {
+        background: radial-gradient(circle at center, #10183a 0%, #0b0f2a 60%);
+        padding: 120px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bro-hero::after {
+        content: "";
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 194, 255, 0.15),
+          transparent 70%
+        );
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .bro-container {
+        max-width: 1100px;
+        margin: auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .bro-logo {
+        width: 150px;
+        margin-bottom: 30px;
+      }
+
+      .bro-hero h1 {
+        color: #fff;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .bro-hero p {
+        color: #cbd5e1;
+        max-width: 600px;
+        margin: 20px auto 40px;
+        font-size: 18px;
+      }
+
+      .bro-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .bro-btn {
+        padding: 14px 32px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s ease;
+      }
+
+      .bro-btn.primary {
+        background: linear-gradient(90deg, #00c2ff, #1e90ff);
+        color: #fff;
+      }
+
+      .bro-btn.primary:hover {
+        box-shadow: 0 0 20px rgba(0, 194, 255, 0.6);
+      }
+
+      .bro-btn.outline {
+        border: 2px solid #00c2ff;
+        color: #00c2ff;
+      }
+
+      .bro-btn.outline:hover {
+        background: #00c2ff;
+        color: #fff;
+      }
+
+      @media (max-width: 768px) {
+        .bro-hero h1 {
+          font-size: 32px;
+        }
+      }
+    </style> -->
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <section class="bt-hero">
+      <div class="swiper btSwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="bt-hero-inner">
+              <h1>Trade Crypto With WarBux!</h1>
+              <a href="#" class="bt-btn">Go To War!</a>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="bt-hero-inner">
+              <h1>Your Futures Trading Resource</h1>
+              <a href="#" class="bt-btn">Firm Finder Quiz</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="bt-prev"></div>
+        <div class="bt-next"></div>
+      </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+      /* ===== HERO SECTION ===== */
+
+      .bt-hero {
+        min-height: 75vh;
+        background: radial-gradient(circle at center, #10183a 0%, #0b0f2a 60%);
+        display: flex;
+      }
+
+      .btSwiper {
+        width: 100%;
+      }
+
+      .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .bt-hero-inner {
+        max-width: 1000px;
+      }
+
+      .bt-hero-inner h1 {
+        font-size: 64px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 40px;
+        font-family: "DM Mono", monospace;
+      }
+
+      /* BUTTON */
+
+      .bt-btn {
+        display: inline-block;
+        padding: 16px 42px;
+        border-radius: 50px;
+        background: linear-gradient(90deg, #00c2ff, #1e90ff);
+        color: #ffffff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      /* .bt-btn:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(90deg, #1e90ff, #00c2ff);
+        border: 1px solid #00c2ff;
+      } */
+      .bt-btn:hover {
+        transform: translateY(-3px);
+        background: white;
+        color: #0b0f2a;
+        border: 5px solid #00c2ff;
+      }
+
+      /* CUSTOM ARROWS */
+
+      .bt-prev,
+      .bt-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .bt-prev {
+        left: 30px;
+      }
+
+      .bt-next {
+        right: 30px;
+      }
+
+      .bt-prev::after,
+      .bt-next::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .bt-prev::after {
+        transform: translate(-50%, -50%) rotate(-135deg);
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 992px) {
+        .bt-hero-inner h1 {
+          font-size: 42px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .bt-hero-inner h1 {
+          font-size: 32px;
+        }
+      }
+    </style>
+    <script>
+      new Swiper(".btSwiper", {
+        loop: true,
+        speed: 900,
+        navigation: {
+          nextEl: ".bt-next",
+          prevEl: ".bt-prev",
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      });
+    </script>
+
+    <!-- ===================hero section end===================  -->
+    <!-- ==================== Best Prop Firms Table ====================  -->
+    <section class="zx-orbit-zone">
+      <style>
+        .zx-orbit-zone {
+          background: radial-gradient(
+            circle at center,
+            #10183a 0%,
+            #0b0f2a 60%
+          );
+          padding: 62px 7%;
+          font-family: Inter, system-ui, Arial;
+          color: white;
+        }
+
+        .zx-orbit-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 50px;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+
+        .zx-orbit-head h2 {
+          font-size: 42px;
+          margin: 0;
+          color: white;
+        }
+
+        .zx-orbit-view {
+          padding: 14px 32px;
+          border-radius: 40px;
+          background: linear-gradient(90deg, #00c2ff, #1e90ff);
+          color: white;
+          text-decoration: none;
+          font-weight: 600;
+          transition: 0.3s;
+        }
+
+        .zx-orbit-view:hover {
+          transform: translateY(-3px);
+          background: white;
+          color: #0b0f2a;
+          border: 3px solid #00c2ff;
+        }
+
+        .zx-orbit-table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          color: white;
+        }
+
+        .zx-orbit-table th {
+          padding: 18px 10px;
+          font-size: 16px;
+          opacity: 0.8;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          text-align: center;
+        }
+
+        .zx-orbit-table td {
+          padding: 25px 10px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          vertical-align: middle;
+          word-wrap: break-word;
+          white-space: normal;
+        }
+
+        .zx-col-center {
+          text-align: center;
+        }
+
+        .zx-orbit-firm {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .zx-orbit-logo {
+          width: 42px;
+          height: 42px;
+          object-fit: contain;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.05);
+          padding: 5px;
+        }
+
+        .zx-orbit-stars {
+          color: #ffd700;
+          font-size: 25px;
+          text-align: center;
+        }
+
+        .zx-orbit-discount {
+          text-align: center;
+          font-weight: 600;
+        }
+
+        .zx-orbit-code {
+          padding: 10px 20px;
+          border-radius: 30px;
+          background: rgb(124, 127, 131) !important;
+          color: white;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+          transition: 0.3s;
+          border: none;
+        }
+
+        .zx-orbit-code:hover {
+          transform: translateY(-3px);
+          background: #706e6e;
+          color: white;
+          /* border: 3px solid #00c2ff; */
+        }
+
+        .zx-orbit-link {
+          font-weight: 600;
+          padding: 10px 29px;
+          border-radius: 21px;
+          background: linear-gradient(90deg, #00c2ff, #1e90ff);
+          color: white;
+          text-decoration: none;
+          transition: 0.3s;
+          display: inline-block;
+          font-size: 18px;
+        }
+
+        .zx-orbit-link:hover {
+          transform: translateY(-3px);
+          background: white;
+          color: #0b0f2a;
+          border: 3px solid #00c2ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+          .zx-orbit-table thead {
+            display: none;
+          }
+          .zx-orbit-table,
+          .zx-orbit-table tbody,
+          .zx-orbit-table tr,
+          .zx-orbit-table td {
+            display: block;
+            width: 100%;
+          }
+          .zx-orbit-table tr {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+          }
+          .zx-orbit-table td {
+            border: none;
+            padding: 10px 0;
+            text-align: left !important;
+          }
+        }
+      </style>
+
+      <div class="zx-orbit-head">
+        <h2>The Best Firms In The Industry</h2>
+        <a href="#" class="zx-orbit-view">View All Firms</a>
+      </div>
+
+      <table class="zx-orbit-table">
+        <thead>
+          <tr>
+            <th>Firm Name</th>
+            <th>Rating</th>
+            <th>Max Accounts</th>
+            <th>Trading Platforms</th>
+            <th>Discount</th>
+            <th>Discount Code</th>
+            <th>Website Link</th>
+          </tr>
+        </thead>
+        <tbody id="zx-table-body"></tbody>
+      </table>
+
+      <script>
+        const firmData = [
+          [
+            "Apex Trader Funding",
+            "https://onlypropfirms.com/wp-content/uploads/2025/05/Layer_1.png",
+            20,
+            "Tradovate, Rithmic, Wealthcharts",
+            "90% Off",
+            "PW",
+            "https://onlypropfirms.com/go/apex-trader-funding/",
+            "★★★★★",
+          ],
+          [
+            "Lucid Trading",
+            "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            12,
+            "Tradovate",
+            "50% Off",
+            "PW",
+            "https://onlypropfirms.com/go/lucid-trading/",
+            "★★★★★",
+          ],
+          [
+            "WarBux",
+            "https://onlypropfirms.com/wp-content/uploads/2025/11/Rectangle.png",
+            1,
+            "DXTrade",
+            "20% Off",
+            "PW",
+            "https://onlypropfirms.com/go/warbux/",
+            "★★★★★",
+          ],
+          [
+            "Take Profit Trader",
+            "https://onlypropfirms.com/wp-content/uploads/2025/07/take-profit-trader-logo.svg",
+            5,
+            "Tradovate, TradingView, NinjaTrader",
+            "40% Off",
+            "PW",
+            "https://onlypropfirms.com/go/take-profit-trader/",
+            "★★★★★",
+          ],
+          [
+            "Tradeify",
+            "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            5,
+            "Tradovate, NinjaTrader, Quantower",
+            "30% Off",
+            "PW",
+            "https://onlypropfirms.com/go/tradeify/",
+            "★★★★★",
+          ],
+          [
+            "Legends Trading",
+            "https://onlypropfirms.com/wp-content/uploads/2025/07/legends-sa_fnl.svg",
+            10,
+            "Tradovate, NinjaTrader, Rithmic",
+            "25% Off",
+            "PW",
+            "https://onlypropfirms.com/go/legends-trading/",
+            "★★★★☆",
+          ],
+          [
+            "Funded Futures",
+            "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            5,
+            "Quantower, EdgeProX, MotiveWave, NinjaTrader",
+            "50% Off",
+            "PW",
+            "https://onlypropfirms.com/go/funded-futures-network/",
+            "★★★★★",
+          ],
+          [
+            "DayTraders.com",
+            "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            5,
+            "Rithmic, Project X",
+            "90% Off",
+            "PW",
+            "https://onlypropfirms.com/go/daytraders/",
+            "★★★★★",
+          ],
+          [
+            "TheTradeMakers",
+            "https://onlypropfirms.com/wp-content/uploads/2025/10/logo_on_dark_bg.png",
+            5,
+            "Black Arrow",
+            "50% Off",
+            "PW",
+            "https://onlypropfirms.com/go/the-trade-makers/",
+            "★★★★★",
+          ],
+          [
+            "BluSky Trading",
+            "https://onlypropfirms.com/wp-content/uploads/2025/08/blusky.svg",
+            5,
+            "Tradovate, NinjaTrader, Volumetrica",
+            "30% Off",
+            "PW",
+            "https://onlypropfirms.com/go/blusky-trading/",
+            "★★★★☆",
+          ],
+          [
+            "Bulenox",
+            "https://onlypropfirms.com/wp-content/uploads/2025/08/bulenox-logo.svg",
+            11,
+            "Rithmic, NinjaTrader, Project X",
+            "30% Off",
+            "PW",
+            "https://onlypropfirms.com/go/bulenox/",
+            "★★★★☆",
+          ],
+          [
+            "TradeDay",
+            "https://onlypropfirms.com/wp-content/uploads/2025/08/trade_day_new_logo.svg",
+            6,
+            "Tradovate, NinjaTrader, TradingView, Quantower, Project X",
+            "40% Off",
+            "PW",
+            "https://onlypropfirms.com/go/tradeday/",
+            "★★★★★",
+          ],
+          [
+            "Earn2Trade",
+            "https://onlypropfirms.com/wp-content/uploads/2025/08/estlogonew.svg",
+            3,
+            "NinjaTrader",
+            "60% Off",
+            "PW",
+            "https://onlypropfirms.com/go/earn2trade/",
+            "★★★★☆",
+          ],
+          [
+            "UProfit",
+            "https://onlypropfirms.com/wp-content/uploads/2025/08/uprofit-logo.svg",
+            20,
+            "TradingView, Tradoverse",
+            "50% Off",
+            "PW",
+            "https://onlypropfirms.com/go/uprofit-trader/",
+            "★★★★☆",
+          ],
+        ];
+
+        const tbody = document.getElementById("zx-table-body");
+
+        firmData.forEach((f) => {
+          tbody.innerHTML += `
+  <tr>
+    <td>
+      <div class="zx-orbit-firm">
+        <img src="${f[1]}" class="zx-orbit-logo">
+        ${f[0]}
+      </div>
+    </td>
+    <td class="zx-orbit-stars zx-col-center">${f[7]}</td>
+    <td class="zx-col-center">${f[2]}</td>
+    <td>${f[3]}</td>
+    <td class="zx-orbit-discount">${f[4]}</td>
+    <td class="zx-col-center">
+      <button class="zx-orbit-code" onclick="copyCode(this,'${f[5]}')">
+        Copy: ${f[5]}
+      </button>
+    </td>
+    <td class="zx-col-center">
+      <a href="${f[6]}" class="zx-orbit-link" target="_blank">Visit</a>
+    </td>
+  </tr>`;
+        });
+
+        function copyCode(btn, code) {
+          navigator.clipboard.writeText(code);
+          btn.innerText = "Copied!";
+          btn.style.background = "#22c55e";
+          setTimeout(() => {
+            btn.innerText = "Copy: " + code;
+            btn.style.background = "linear-gradient(90deg,#00c2ff,#1e90ff)";
+          }, 1500);
+        }
+      </script>
+    </section>
+    <!-- ==================== Best Prop Firms Table END ====================  -->
+    <!-- =======================FinaL CTA==================  -->
+    <section class="qx-signal-zone">
+      <style>
+        .qx-signal-zone {
+          background: radial-gradient(
+            circle at center,
+            #10183a 0%,
+            #0b0f2a 60%
+          );
+          padding: 60px 5%;
+          text-align: center;
+          font-family: Inter, system-ui, Arial;
+          color: white;
+        }
+
+        .qx-signal-title {
+          font-size: 44px;
+          line-height: 1.3;
+          font-weight: 400;
+          max-width: 900px;
+          margin: 0 auto 20px;
+          font-family: transducer, sans-serif;
+        }
+
+        .qx-signal-sub {
+          font-size: 22px;
+          margin-bottom: 50px;
+          font-weight: 600;
+          opacity: 0.9;
+        }
+
+        .qx-signal-card {
+          max-width: 420px;
+          margin: 0 auto;
+          background: linear-gradient(180deg, #141c3f, #0b0f2a);
+          border-radius: 18px;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+          border: 1px solid #031026;
+        }
+
+        .qx-signal-top {
+          padding: 25px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          text-align: left;
+        }
+
+        .qx-signal-avatar {
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+          background: radial-gradient(circle at 30% 30%, #1e90ff, #000000);
+          box-shadow: 0 0 15px rgba(30, 144, 255, 0.7);
+        }
+
+        .qx-signal-name {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        .qx-signal-stats {
+          font-size: 14px;
+          opacity: 0.8;
+          margin-top: 5px;
+        }
+
+        .qx-signal-dot {
+          color: #1e90ff;
+          margin-right: 6px;
+        }
+
+        .qx-signal-bottom {
+          padding: 30px;
+          background: rgb(8 38 113 / 54%);
+        }
+
+        .qx-signal-btn {
+          width: 100%;
+          padding: 16px;
+          border-radius: 12px;
+          background: linear-gradient(90deg, #00c2ff, #1e90ff);
+          color: white;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          font-size: 16px;
+          transition: 0.3s;
+        }
+
+        .qx-signal-btn:hover {
+          transform: translateY(-3px);
+          background: white;
+          color: #0b0f2a;
+          border: 3px solid #00c2ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .qx-signal-title {
+            font-size: 30px;
+          }
+        }
+      </style>
+
+      <h2 class="qx-signal-title">
+        Most prop firms keep you in simulated accounts forever.<br />
+        We move you to real capital.
+      </h2>
+
+      <div class="qx-signal-sub">Join our community today.</div>
+
+      <div class="qx-signal-card">
+        <div class="qx-signal-top">
+          <div class="qx-signal-avatar"></div>
+          <div>
+            <div class="qx-signal-name">Bro Trading</div>
+            <div class="qx-signal-stats">
+              <span class="qx-signal-dot">●</span>6,672 Online • 50,505 Members
+            </div>
+          </div>
+        </div>
+
+        <div class="qx-signal-bottom">
+          <button class="qx-signal-btn">Join Our Discord</button>
+        </div>
+      </div>
+    </section>
+    <!-- =======================FinaL CTA END==================  -->
+
+    <!-- ================= BRO TRADING FOOTER ================= -->
+    <footer class="bt-footer">
+      <div class="bt-footer-container">
+        <!-- Column 1 (Logo + Brand) -->
+        <div class="bt-footer-col logo-col">
+          <img
+            src="Bro_Traders_logo-removebg-preview.png"
+            alt="Bro Trading"
+            class="bt-footer-logo"
+          />
+          <p class="bt-footer-text">
+            Bro Trading is a premium trading resource platform helping traders
+            compare Bro Tradings, improve skills, and scale profitably.
+          </p>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="bt-footer-col">
+          <h4>Bro Trading Finder</h4>
+          <a href="#">Bro Trading Comparison</a>
+          <a href="#">True Cost to Funding</a>
+          <a href="#">Bro Trading Starting Costs</a>
+          <a href="#">Largest Drawdown</a>
+
+          <h4 class="mt">Bro Tradings</h4>
+          <a href="#">Apex Trader Funding</a>
+          <a href="#">Take Profit Trader</a>
+          <a href="#">Lucid Trading</a>
+          <a href="#">Legends Trading</a>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="bt-footer-col">
+          <h4>Learn</h4>
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+
+          <h4 class="mt">Resources</h4>
+          <a href="#">Market Analysis</a>
+          <a href="#">Trading Tools</a>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="bt-footer-col">
+          <h4>Follow Us</h4>
+          <a href="#">YouTube</a>
+          <a href="#">X</a>
+          <a href="#">Instagram</a>
+
+          <h4 class="mt">More</h4>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy / Terms</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+
+      <div class="bt-footer-bottom">
+        © 2026 Bro Trading. All rights reserved.
+      </div>
+    </footer>
+
+    <style>
+      /* ================= FOOTER ================= */
+
+      .bt-footer {
+        background: #000;
+        color: #fff;
+        padding: 90px 20px 30px;
+      }
+
+      .bt-footer-container {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 60px;
+      }
+
+      .bt-footer-logo {
+        height: 136px;
+        width: 185px;
+        border-radius: 10px;
+        /* margin-bottom: 15px; */
+      }
+
+      .bt-footer-text {
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 280px;
+        margin-top: -15px;
+        margin-left: -48px;
+        text-align: center;
+      }
+
+      .bt-footer-col h4 {
+        font-size: 16px;
+        margin-bottom: 18px;
+        font-weight: 600;
+      }
+
+      .bt-footer-col a {
+        display: block;
+        color: #aaa;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .bt-footer-col a:hover {
+        color: #fff;
+      }
+
+      .mt {
+        margin-top: 30px;
+      }
+
+      .bt-footer-bottom {
+        text-align: center;
+        margin-top: 70px;
+        padding-top: 20px;
+        border-top: 1px solid #111;
+        color: #777;
+        font-size: 13px;
+      }
+
+      /* ================= RESPONSIVE ================= */
+
+      @media (max-width: 1024px) {
+        .bt-footer-container {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .bt-footer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .bt-footer-text {
+          max-width: 100%;
+        }
+      }
+    </style>
+    <!-- ================== FOOTER END =================  -->
+  </body>
+</html>
