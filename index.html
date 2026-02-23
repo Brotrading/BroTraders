@@ -21,7 +21,6 @@
   </head>
   <body>
     <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-    <!-- ================= TOP TICKER BAR ================= -->
     <div class="bt-topbar">
       <!-- SCROLLING SECTION -->
       <div class="bt-ticker-wrapper">
@@ -168,9 +167,68 @@
 
       /* ================= RESPONSIVE ================= */
 
-      @media (max-width: 1000px) {
+      /* ====== Tablet ====== */
+      @media (max-width: 1024px) {
+        .bt-topbar {
+          height: 40px;
+          font-size: 13px;
+        }
+
+        .bt-ticker-track {
+          animation: scrollTicker 25s linear infinite;
+        }
+
+        .bt-right-links a {
+          padding: 0 12px;
+          font-size: 13px;
+        }
+      }
+
+      /* ====== Small Tablet ====== */
+      @media (max-width: 900px) {
         .bt-right-links {
-          display: none;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+
+        .bt-right-links a {
+          flex: 0 0 auto;
+        }
+      }
+
+      /* ====== Mobile ====== */
+      @media (max-width: 600px) {
+        .bt-topbar {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .bt-ticker-wrapper {
+          width: 100%;
+        }
+
+        .bt-right-links {
+          width: 100%;
+          justify-content: center;
+          background: #111;
+        }
+
+        .bt-right-links a {
+          border-left: none;
+          border-right: 1px solid #222;
+          color: #fff;
+          font-size: 12px;
+          padding: 6px 10px;
+          height: auto;
+        }
+
+        .bt-arrow {
+          font-size: 16px;
+          padding: 0 8px;
+        }
+
+        .bt-ticker-track {
+          animation: scrollTicker 20s linear infinite;
         }
       }
     </style>
@@ -185,6 +243,9 @@
 
         <!-- Navigation -->
         <nav class="bt-nav">
+          <!-- Mobile Close Button -->
+          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
@@ -202,7 +263,6 @@
                   <a href="#">Quickest Funding</a>
                   <a href="#">Best Deals</a>
                 </div>
-
                 <div>
                   <a href="#">Top Firms</a>
                   <a href="#">Apex Trader Funding</a>
@@ -220,7 +280,6 @@
             <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
               Learn ▾
             </button>
-
             <div class="bt-drop-menu small" id="learn">
               <a href="#">Lessons</a>
               <a href="#">Articles</a>
@@ -233,7 +292,6 @@
             <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
               Resources ▾
             </button>
-
             <div class="bt-drop-menu small" id="resources">
               <a href="#">Market Analysis</a>
               <a href="#">Trading Tools</a>
@@ -244,22 +302,27 @@
           <a href="#" class="bt-link">Contact</a>
         </nav>
 
+        <!-- CTA -->
         <a href="#" class="bt-cta">Get Funded</a>
+
+        <!-- Hamburger -->
+        <div class="bt-hamburger" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </header>
 
-    <!-- Blur Overlay -->
-    <div class="bt-overlay" onclick="closeAll()"></div>
+    <!-- Overlay -->
+    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
 
     <style>
       /* ================= HEADER ================= */
 
       .bt-header {
-        /* position: fixed; */
         width: 100%;
-        top: 35px;
-        background: black;
-        /* padding: 8px 0; */
+        background: #000;
         z-index: 1000;
       }
 
@@ -273,9 +336,11 @@
       }
 
       .bt-logo img {
-        height: 100px;
-        width: 150px;
+        height: 90px;
+        width: 140px;
       }
+
+      /* ================= NAV ================= */
 
       .bt-nav {
         display: flex;
@@ -305,29 +370,16 @@
         position: relative;
       }
 
-      /* Glass Neon Dropdown */
       .bt-drop-menu {
         position: absolute;
-        top: 182%;
-        left: -7px;
-        min-width: 700px;
+        top: 170%;
+        left: 0;
+        min-width: 650px;
         padding: 30px;
         border-radius: 14px;
-
-        background: rgba(15, 20, 45, 0.75);
+        background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-
         border: 1px solid rgba(0, 194, 255, 0.6);
-
-        /* box-shadow:
-          0 0 20px rgba(0, 194, 255, 0.4),
-          0 0 40px rgba(0, 194, 255, 0.2); */
-
-        opacity: 0;
-        transform: translateY(10px);
-        transition: 0.25s ease;
-
         display: none;
         z-index: 1001;
       }
@@ -339,11 +391,8 @@
 
       .bt-drop-menu.active {
         display: block;
-        opacity: 1;
-        transform: translateY(0);
       }
 
-      /* Grid */
       .bt-drop-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -363,7 +412,8 @@
         padding-left: 5px;
       }
 
-      /* CTA */
+      /* ================= CTA ================= */
+
       .bt-cta {
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         padding: 10px 24px;
@@ -371,20 +421,46 @@
         color: #fff;
         text-decoration: none;
         font-weight: 600;
-      }
-      .bt-cta:hover {
-        transform: translateY(-3px);
-        background: white;
-        color: #0b0f2a;
-        border: 3px solid #00c2ff;
+        transition: 0.3s;
       }
 
-      /* ================= OVERLAY ================= */
+      .bt-cta:hover {
+        transform: translateY(-3px);
+        background: #fff;
+        color: #0b0f2a;
+      }
+
+      /* ================= HAMBURGER ================= */
+
+      .bt-hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .bt-hamburger span {
+        width: 26px;
+        height: 3px;
+        background: #fff;
+      }
+
+      /* ================= MOBILE MENU ================= */
+
+      .bt-mobile-close {
+        display: none;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        font-size: 26px;
+        color: #fff;
+        cursor: pointer;
+      }
 
       .bt-overlay {
         position: fixed;
         inset: 0;
-        backdrop-filter: blur(1px);
+        backdrop-filter: blur(2px);
         background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 900;
@@ -393,31 +469,102 @@
       .bt-overlay.active {
         display: block;
       }
+
+      @media (max-width: 1024px) {
+        .bt-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 85%; /* Wider for better layout */
+          max-width: 420px;
+          height: 100vh;
+          background: #0b0f2a;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 100px 25px 40px;
+          gap: 20px;
+          transition: 0.4s ease;
+          z-index: 1002;
+          overflow-y: auto;
+        }
+
+        .bt-nav.active {
+          right: 0;
+          top: 15px;
+        }
+
+        .bt-hamburger {
+          display: flex;
+        }
+
+        .bt-cta {
+          display: none;
+        }
+
+        .bt-mobile-close {
+          display: block;
+        }
+
+        /* Dropdown styling */
+        .bt-drop-menu {
+          position: static;
+          min-width: 100%;
+          padding: 15px 0;
+          margin-top: 10px;
+          background: transparent;
+          border: none;
+        }
+
+        /* 2 Column grid */
+        .bt-drop-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px 25px;
+        }
+
+        .bt-drop-menu a {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+      }
+
+      /* Extra small mobile → 1 column */
+      @media (max-width: 480px) {
+        .bt-drop-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
     </style>
 
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-        const overlay = document.querySelector(".bt-overlay");
-
         const isActive = menu.classList.contains("active");
 
-        closeAll();
+        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+          m.classList.remove("active");
+        });
 
         if (!isActive) {
           menu.classList.add("active");
-          overlay.classList.add("active");
         }
       }
 
-      function closeAll() {
-        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
-          menu.classList.remove("active");
-        });
+      function toggleMobileMenu() {
+        document.querySelector(".bt-nav").classList.add("active");
+        document.querySelector(".bt-overlay").classList.add("active");
+      }
+
+      function closeMobileMenu() {
+        document.querySelector(".bt-nav").classList.remove("active");
         document.querySelector(".bt-overlay").classList.remove("active");
+
+        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+          m.classList.remove("active");
+        });
       }
     </script>
-    <!-- =================== HEADER END =================  -->
+    <!-- ================= HEADER END ================= -->
 
     <!-- Swiper CSS -->
     <link
@@ -656,81 +803,102 @@
         text-align: center;
         font-size: 34px;
         margin-bottom: 70px;
-        font-family: "DM Mono", monospace;
       }
 
-      /* ===== Carousel ===== */
       .carousel {
         position: relative;
-        max-width: 1300px;
+        max-width: 1400px;
         margin: auto;
         overflow: hidden;
       }
 
       .carousel-track {
         display: flex;
-        align-items: center;
+        align-items: stretch;
         transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
       }
 
-      /* ===== Card ===== */
+      /* ===== CARD ===== */
       .card {
-        min-width: 32%;
-        margin: 0 25px;
-        padding: 40px 40px;
-        border-radius: 30px;
-        background: #0000005c;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        min-width: 48%;
+        margin: 0 20px;
+        border-radius: 28px;
+        background: rgba(0, 0, 0, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(25px);
-        text-align: center;
-        transition: all 0.6s ease;
+        display: flex;
+        transition: 0.6s ease;
         opacity: 0.5;
-        transform: scale(0.85);
+        transform: scale(0.9);
       }
 
       .card.active {
         opacity: 1;
         transform: scale(1);
-        box-shadow: 0 0 80px rgba(0, 194, 255, 0.25);
+        box-shadow: 0 0 70px rgba(0, 194, 255, 0.25);
       }
 
-      /* Logo */
+      /* LEFT SIDE */
+      .card-left {
+        flex: 1.1;
+        padding: 50px 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
       .card-logo {
-        height: 60px;
-        margin-bottom: 5px;
+        height: 80px;
         object-fit: contain;
+        margin-bottom: 18px;
       }
+
       .lucid-logo {
-        height: 130px !important;
-        transform: scale(1.1);
+        height: 120px !important;
       }
 
-      /* Name */
-      .card h3 {
+      .card-left h3 {
         font-size: 22px;
-        margin-bottom: 15px;
-        font-family: "DM Mono", monospace;
       }
 
-      /* Discount */
+      /* DIVIDER */
+      .card-divider {
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          #00c2ff,
+          transparent
+        );
+        opacity: 0.6;
+      }
+
+      /* RIGHT SIDE */
+      .card-right {
+        flex: 1.9;
+        padding: 50px 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
       .discount {
         font-size: 30px;
         color: #00c2ff;
-        margin-bottom: 20px;
-        font-family: "Bpmf Huninn", sans-serif;
+        margin-bottom: 18px;
+        font-weight: bold;
       }
 
-      /* Details */
       .details {
         opacity: 0.85;
-        line-height: 1.6;
+        line-height: 1.7;
         margin-bottom: 25px;
       }
 
-      /* Copy Code */
       .code {
         margin-bottom: 25px;
-        font-family: "DM Mono", monospace;
+        font-size: 15px;
       }
 
       .copy-text {
@@ -744,7 +912,6 @@
         color: #ffffff;
       }
 
-      /* Button */
       .btn {
         padding: 14px 40px;
         border-radius: 50px;
@@ -753,17 +920,17 @@
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: #fff;
         font-weight: 600;
-        transition: all 0.3s ease;
+        transition: 0.3s;
+        width: fit-content;
       }
 
       .btn:hover {
         transform: translateY(-3px);
         background: white;
         color: #0b0f2a;
-        border: 5px solid #00c2ff;
       }
 
-      /* Arrows */
+      /* ARROWS */
       .nav {
         position: absolute;
         top: 50%;
@@ -774,12 +941,6 @@
         color: #00c2ff;
         cursor: pointer;
         z-index: 10;
-        transition: 0.3s;
-      }
-
-      .nav:hover {
-        color: white;
-        transform: translateY(-50%) scale(1.2);
       }
 
       .prev {
@@ -789,9 +950,32 @@
         right: 0;
       }
 
+      /* MOBILE */
       @media (max-width: 900px) {
         .card {
-          min-width: 80%;
+          min-width: 90%;
+          flex-direction: column;
+        }
+
+        .card-divider {
+          height: 1px;
+          width: 100%;
+          background: linear-gradient(
+            to right,
+            transparent,
+            #00c2ff,
+            transparent
+          );
+        }
+
+        .card-left,
+        .card-right {
+          text-align: center;
+          padding: 35px 25px;
+        }
+
+        .btn {
+          margin: auto;
         }
       }
     </style>
@@ -803,15 +987,14 @@
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/05/Layer_1.png",
           discount: "90% Off",
           details:
-            "All Evals! One Day To Pass.<br>No Consistency Rule in Evaluation!<br> Resets $50.",
+            "All Evals! One Day To Pass.<br>No Consistency Rule in Evaluation!<br>Resets $50.",
           code: "PW",
         },
         {
           name: "Lucid Trading",
-          logo: "	https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+          logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
           discount: "40% - 50% Off",
-          details:
-            "40% Off New Lucid Black Plans <br> 50% Off on New Accounts.",
+          details: "40% Off New Lucid Black Plans.<br>50% Off on New Accounts.",
           code: "PW",
         },
         {
@@ -826,7 +1009,7 @@
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
           discount: "40% Off",
           details:
-            "40% Off The 150K Select Plan.<br> Choose Day-1 or 5-Day Payouts!",
+            "40% Off The 150K Select Plan.<br>Choose Day-1 or 5-Day Payouts!",
           code: "PW",
         },
         {
@@ -840,8 +1023,7 @@
           name: "TradeDay",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
           discount: "40% Off",
-          details:
-            "All Accounts! No Activation Fees!<br> Choose Drawdown Type!",
+          details: "All Accounts! No Activation Fees!<br>Choose Drawdown Type!",
           code: "PW",
         },
         {
@@ -849,14 +1031,14 @@
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/legends-sa_fnl.svg",
           discount: "25% Off",
           details:
-            "New Apprentice Evaluation Accounts Rules!<br> 1 Day To Pass!",
+            "New Apprentice Evaluation Accounts Rules!<br>1 Day To Pass!",
           code: "PW",
         },
         {
           name: "WarBux",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/11/Rectangle.png",
           discount: "20% Off",
-          details: "All Accounts! No Activation Fees!<br> No Profit Targets!",
+          details: "All Accounts! No Activation Fees!<br>No Profit Targets!",
           code: "WAR",
         },
       ];
@@ -867,17 +1049,25 @@
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
-  <img src="${deal.logo}" 
-       class="card-logo ${deal.name === "Lucid Trading" ? "lucid-logo" : ""}" 
-       alt="${deal.name}">
-    <h3>${deal.name}</h3>
-    <div class="discount">${deal.discount}</div>
-    <div class="details">${deal.details}</div>
-    <div class="code">Copy Code: 
-      <span class="copy-text" data-code="${deal.code}">${deal.code}</span>
-    </div>
-    <button class="btn">Get Deal</button>
-  `;
+      <div class="card-left">
+        <img src="${deal.logo}" 
+             class="card-logo ${deal.name === "Lucid Trading" ? "lucid-logo" : ""}" 
+             alt="${deal.name}">
+        <h3>${deal.name}</h3>
+      </div>
+
+      <div class="card-divider"></div>
+
+      <div class="card-right">
+        <div class="discount">${deal.discount}</div>
+        <div class="details">${deal.details}</div>
+        <div class="code">
+          Copy Code:
+          <span class="copy-text" data-code="${deal.code}">${deal.code}</span>
+        </div>
+        <button class="btn">Get Deal</button>
+      </div>
+    `;
         track.appendChild(card);
       });
 
@@ -885,7 +1075,7 @@
       const cards = document.querySelectorAll(".card");
 
       function updateCarousel() {
-        const cardWidth = cards[0].offsetWidth + 50;
+        const cardWidth = cards[0].offsetWidth + 40;
         track.style.transform = `translateX(calc(50% - ${cardWidth / 2}px - ${index * cardWidth}px))`;
 
         cards.forEach((card) => card.classList.remove("active"));
@@ -905,7 +1095,6 @@
       window.addEventListener("load", updateCarousel);
       window.addEventListener("resize", updateCarousel);
 
-      /* Copy Code */
       document.addEventListener("click", function (e) {
         if (e.target.classList.contains("copy-text")) {
           const code = e.target.getAttribute("data-code");
