@@ -1155,6 +1155,7 @@
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
           transform: none !important;
+          scroll-behavior: smooth;
         }
 
         .card {
@@ -1162,7 +1163,14 @@
           flex-direction: column;
           scroll-snap-align: center;
           border-radius: 24px;
-          margin: 7px -2px;
+          /* margin: 7px -2px; */
+          transition:
+            transform 0.4s ease,
+            opacity 0.4s ease;
+        }
+        .card.active {
+          transform: scale(1) !important;
+          opacity: 1 !important;
         }
 
         .card-divider {
@@ -1347,26 +1355,31 @@
         updateCarousel();
       };
 
-      // ✅ Mobile Scroll Detection
-      track.addEventListener("scroll", () => {
+      // ===== MOBILE ACTIVE CARD FIX (REAL WORKING VERSION) =====
+
+      function setActiveCard(index) {
+        cards.forEach((card) => card.classList.remove("active"));
+        cards[index].classList.add("active");
+      }
+
+      function handleMobileScroll() {
         if (window.innerWidth > 900) return;
 
-        let closestIndex = 0;
-        let closestDistance = Infinity;
+        const cardWidth = cards[0].offsetWidth + 40; // include margin
+        const scrollLeft = track.scrollLeft;
 
-        cards.forEach((card, i) => {
-          const rect = card.getBoundingClientRect();
-          const distance = Math.abs(
-            rect.left + rect.width / 2 - window.innerWidth / 2,
-          );
+        const activeIndex = Math.round(scrollLeft / cardWidth);
 
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = i;
-          }
-        });
+        setActiveCard(activeIndex);
+      }
 
-        setActiveCard(closestIndex);
+      track.addEventListener("scroll", handleMobileScroll);
+
+      // Set first active on load for mobile
+      window.addEventListener("load", () => {
+        if (window.innerWidth <= 900) {
+          setActiveCard(0);
+        }
       });
 
       // Clipboard copy
