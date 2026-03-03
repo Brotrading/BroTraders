@@ -449,3 +449,32 @@
     </script>
 
     <!-- ===============comparison firm End===================  -->
+
+    .zx-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #6c5ce7 #111827;
+  }
+
+  /* Chrome, Edge, Safari */
+  .zx-table-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .zx-table-wrapper::-webkit-scrollbar-track {
+    background: #111827;
+    border-radius: 10px;
+  }
+
+  .zx-table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6c5ce7, #00d4ff);
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .zx-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00d4ff, #6c5ce7);
+  }
