@@ -18,7 +18,8 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "DM Sans", sans-serif;
+        font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
       }
     </style>
   </head>
@@ -252,7 +253,7 @@
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
-
+          <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
@@ -268,7 +269,7 @@
                   <a href="StartCost.html">Prop Firm Starting Costs</a>
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="bestDeals.html">Best Deals</a>
+                  <a href="BestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
@@ -283,16 +284,16 @@
           </div>
 
           <!-- Learn -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-              Learn ▾
-            </button>
-            <div class="bt-drop-menu small" id="learn">
-              <a href="#">Lessons</a>
-              <a href="#">Articles</a>
-              <a href="#">The 2-Hour Trading Day</a>
-            </div>
-          </div>
+          <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
 
           <!-- Resources -->
           <div class="bt-dropdown">
@@ -306,7 +307,7 @@
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -436,6 +437,12 @@
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
+      }
+      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          display: block;
+        }
       }
 
       /* ================= CTA ================= */
@@ -571,15 +578,16 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-        const isActive = menu.classList.contains("active");
 
+        // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+          if (m.id !== id) {
+            m.classList.remove("active");
+          }
         });
 
-        if (!isActive) {
-          menu.classList.add("active");
-        }
+        // Toggle clicked one
+        menu.classList.toggle("active");
       }
 
       function toggleMobileMenu() {
@@ -600,6 +608,17 @@
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
+      // Close other dropdowns on hover (desktop only)
+      if (window.innerWidth > 1024) {
+        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            const activeMenu = document.querySelector(".bt-drop-menu.active");
+            if (activeMenu && !this.contains(activeMenu)) {
+              activeMenu.classList.remove("active");
+            }
+          });
+        });
+      }
     </script>
     <!-- ================= HEADER END ================= -->
 
@@ -750,14 +769,14 @@
       }
     </style>
     <!-- ========== STARTING COST HERO SECTION END ========== -->
-    <!-- ==================== Best Prop Firms Table ====================  -->
+    <!-- ==================== Best Prop Firms Table ==================== -->
     <section class="zx-orbit-zone">
       <style>
         .zx-orbit-zone {
           background:
             radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
             linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-          padding: 62px 7%;
+          padding: 90px 7%;
           font-family: Inter, system-ui, Arial;
           color: white;
         }
@@ -776,14 +795,33 @@
           margin: 0;
         }
 
+        .zx-filters {
+          display: flex;
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+
         .zx-filters select {
-          padding: 10px 18px;
-          border-radius: 30px;
-          border: none;
-          background: rgba(255, 255, 255, 0.1);
+          padding: 12px 20px;
+          border-radius: 40px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.08);
           color: white;
           font-weight: 600;
           cursor: pointer;
+          appearance: none;
+          backdrop-filter: blur(10px);
+          padding-right: 45px;
+
+          background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+          background-repeat: no-repeat;
+          background-position: right 15px center;
+          background-size: 16px;
+        }
+
+        .zx-filters select option {
+          background: #0e2e6d;
+          color: white;
         }
 
         .zx-table-wrapper {
@@ -805,6 +843,7 @@
           opacity: 0.85;
           border-bottom: 1px solid rgba(255, 255, 255, 0.2);
           text-align: center;
+          cursor: pointer;
         }
 
         .zx-orbit-table td {
@@ -863,48 +902,11 @@
           color: #0b0f2a;
           border: 2px solid #00c2ff;
         }
-        /* FILTER WRAPPER */
-        .zx-filters {
-          display: flex;
-          gap: 15px;
-          flex-wrap: wrap;
-        }
 
-        /* SELECT STYLE */
-        .zx-filters select {
-          padding: 12px 20px;
-          border-radius: 40px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          background: rgba(255, 255, 255, 0.08);
-          color: white;
-          font-weight: 600;
-          cursor: pointer;
-          appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          backdrop-filter: blur(10px);
-          padding-right: 45px;
-        }
-
-        /* DROPDOWN OPTIONS */
-        .zx-filters select option {
-          background: #0e2e6d;
-          color: white;
-        }
-
-        /* FOCUS GLOW */
-        .zx-filters select:focus {
-          outline: none;
-          border: 1px solid #00c2ff;
-          box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
-        }
-
-        /* CUSTOM ARROW */
-        .zx-filters select {
-          background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-          background-repeat: no-repeat;
-          background-position: right 15px center;
-          background-size: 16px;
+        .sort-icon {
+          margin-left: 6px;
+          font-size: 12px;
+          opacity: 0.7;
         }
       </style>
 
@@ -912,131 +914,212 @@
         <h2>Easily track and Compare payout of Top firms :</h2>
 
         <div class="zx-filters">
-          <select id="ratingFilter">
-            <option value="all">Filter by Rating</option>
-            <option value="5">★★★★★ Only</option>
+          <select id="discountFilter">
+            <option value="all">Filter by Discount</option>
+            <option value="90">90% Off</option>
+            <option value="50">50% Off</option>
+            <option value="30">30% Off</option>
           </select>
 
           <select id="costFilter">
             <option value="all">Filter by Cost</option>
-            <option value="15000">Below ₹15,000</option>
-            <option value="20000">Below ₹20,000</option>
+            <option value="260">Below $260</option>
+            <option value="280">Below $280</option>
+            <option value="300">Below $300</option>
           </select>
         </div>
       </div>
 
       <div class="zx-table-wrapper">
-        <table class="zx-orbit-table">
+        <table class="zx-orbit-table" id="zx-table">
           <thead>
             <tr>
               <th>Logo</th>
               <th>Name</th>
-              <th>Rating</th>
-              <th>Cost</th>
+
+              <th data-key="rating">Rating</th>
+              <th data-key="cost">Cost</th>
+
               <th>Trading Platforms</th>
-              <th>Discount</th>
+
+              <th data-key="discount">Discount</th>
+
               <th>Discount Code</th>
               <th>Website Link</th>
             </tr>
           </thead>
+
           <tbody id="zx-table-body"></tbody>
         </table>
       </div>
 
       <script>
         const firmData = [
-          [
-            "Apex Trader Funding",
-            "https://apextraderfunding.com/member/aff/go/buurtie",
-            "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            20000,
-            "Tradovate, Rithmic, Wealthcharts",
-            "90% Off",
-            "BRO",
-            "★★★★★",
-          ],
-          [
-            "Tradeify",
-            "https://tradeify.co/?ref=BFYQ2HKM",
-            "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            20000,
-            "Tradovate, NinjaTrader, Quantower",
-            "30% Off",
-            "BRO",
-            "★★★★★",
-          ],
-          [
-            "MyFundedFutures",
-            "https://myfundedfutures.com/challenge?ref=5117",
-            "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            15000,
-            "Quantower, NinjaTrader",
-            "50% Off",
-            "BRO",
-            "★★★★★",
-          ],
-          [
-            "LUCID",
-            "https://lucidtrading.com/ref/brotrading/",
-            "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-            10000,
-            "Tradovate",
-            "50% Off",
-            "BROTRADING",
-            "★★★★★",
-          ],
-          [
-            "DayTraders",
-            "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            20000,
-            "Rithmic, Project X",
-            "90% Off",
-            "BROTRADING",
-            "★★★★★",
-          ],
+          {
+            name: "Apex Trader Funding",
+            link: "https://apextraderfunding.com/member/aff/go/buurtie",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            cost: 252,
+            platforms: "Tradovate, Rithmic, Wealthcharts",
+            discount: 90,
+            code: "BRO",
+            rating: 5,
+          },
+
+          {
+            name: "Tradeify",
+            link: "https://tradeify.co/?ref=BFYQ2HKM",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            cost: 289,
+            platforms: "Tradovate, NinjaTrader, Quantower",
+            discount: 30,
+            code: "BRO",
+            rating: 5,
+          },
+
+          {
+            name: "MyFundedFutures",
+            link: "https://myfundedfutures.com/challenge?ref=5117",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            cost: 273,
+            platforms: "Quantower, NinjaTrader",
+            discount: 50,
+            code: "BRO",
+            rating: 5,
+          },
+
+          {
+            name: "LUCID",
+            link: "https://lucidtrading.com/ref/brotrading/",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            cost: 255,
+            platforms: "Tradovate",
+            discount: 50,
+            code: "BROTRADING",
+            rating: 5,
+          },
+
+          {
+            name: "DayTraders",
+            link: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            cost: 294,
+            platforms: "Rithmic, Project X",
+            discount: 90,
+            code: "BROTRADING",
+            rating: 5,
+          },
         ];
 
-        const tbody = document.getElementById("zx-table-body");
-        const ratingFilter = document.getElementById("ratingFilter");
-        const costFilter = document.getElementById("costFilter");
+        let filteredData = [...firmData];
+        let sortState = { key: null, direction: -1 };
 
-        function render() {
+        const tbody = document.getElementById("zx-table-body");
+
+        function render(data) {
           tbody.innerHTML = "";
 
-          firmData.forEach((f) => {
-            if (ratingFilter.value !== "all") {
-              if (f[7] !== "★★★★★") return;
-            }
-
-            if (costFilter.value !== "all") {
-              if (f[3] > parseInt(costFilter.value)) return;
-            }
-
+          data.forEach((f) => {
             tbody.innerHTML += `
-      <tr>
-        <td><img src="${f[2]}" class="zx-orbit-logo"></td>
-        <td>${f[0]}</td>
-        <td class="zx-orbit-stars">${f[7]}</td>
-        <td>₹${f[3].toLocaleString()}</td>
-        <td>${f[4]}</td>
-        <td>${f[5]}</td>
-        <td>
-          <button class="zx-orbit-code" onclick="copyCode(this,'${f[6]}')">
-            ${f[6]}
-          </button>
-        </td>
-        <td>
-          <a href="${f[1]}" target="_blank" class="zx-orbit-link">
-            Visit
-          </a>
-        </td>
-      </tr>`;
+
+<tr>
+
+<td><img src="${f.logo}" class="zx-orbit-logo"></td>
+
+<td>${f.name}</td>
+
+<td class="zx-orbit-stars">★★★★★</td>
+
+<td>$${f.cost}</td>
+
+<td>${f.platforms}</td>
+
+<td>${f.discount}% Off</td>
+
+<td>
+<button class="zx-orbit-code" onclick="copyCode(this,'${f.code}')">
+${f.code}
+</button>
+</td>
+
+<td>
+<a href="${f.link}" target="_blank" class="zx-orbit-link">
+Visit
+</a>
+</td>
+
+</tr>
+
+`;
           });
         }
 
+        render(filteredData);
+
+        /* SORT */
+
+        document.querySelectorAll("#zx-table th[data-key]").forEach((th) => {
+          const key = th.dataset.key;
+
+          const icon = document.createElement("span");
+          icon.className = "sort-icon";
+          icon.textContent = "▼";
+          th.appendChild(icon);
+
+          th.addEventListener("click", () => {
+            if (sortState.key === key) {
+              sortState.direction *= -1;
+            } else {
+              sortState.key = key;
+              sortState.direction = -1;
+            }
+
+            filteredData.sort(
+              (a, b) => (a[key] > b[key] ? 1 : -1) * sortState.direction,
+            );
+
+            document
+              .querySelectorAll(".sort-icon")
+              .forEach((i) => (i.textContent = "▼"));
+
+            icon.textContent = sortState.direction === -1 ? "▼" : "▲";
+
+            render(filteredData);
+          });
+        });
+
+        /* FILTERS */
+
+        const discountFilter = document.getElementById("discountFilter");
+        const costFilter = document.getElementById("costFilter");
+
+        function applyFilters() {
+          filteredData = firmData.filter((f) => {
+            let discountCheck = true;
+            let costCheck = true;
+
+            if (discountFilter.value !== "all") {
+              discountCheck = f.discount == discountFilter.value;
+            }
+
+            if (costFilter.value !== "all") {
+              costCheck = f.cost <= parseInt(costFilter.value);
+            }
+
+            return discountCheck && costCheck;
+          });
+
+          render(filteredData);
+        }
+
+        discountFilter.addEventListener("change", applyFilters);
+        costFilter.addEventListener("change", applyFilters);
+
+        /* COPY CODE */
+
         function copyCode(btn, code) {
           navigator.clipboard.writeText(code);
+
           btn.innerText = "Copied!";
           btn.style.background = "#22c55e";
 
@@ -1045,11 +1128,6 @@
             btn.style.background = "rgb(124,127,131)";
           }, 1500);
         }
-
-        ratingFilter.addEventListener("change", render);
-        costFilter.addEventListener("change", render);
-
-        render();
       </script>
     </section>
     <!-- ==================== Best Prop Firms Table END ==================== -->

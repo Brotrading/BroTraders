@@ -14,7 +14,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "DM Sans", sans-serif;
+        font-family: "Roboto", sans-serif;
       }
     </style>
   </head>
@@ -248,7 +248,7 @@
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
-
+          <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
@@ -274,7 +274,7 @@
                   <a href="../CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
+                  <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
@@ -289,16 +289,16 @@
           </div>
 
           <!-- Learn -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-              Learn ▾
-            </button>
-            <div class="bt-drop-menu small" id="learn">
-              <a href="#">Lessons</a>
-              <a href="#">Articles</a>
-              <a href="#">The 2-Hour Trading Day</a>
-            </div>
-          </div>
+          <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
 
           <!-- Resources -->
           <div class="bt-dropdown">
@@ -312,7 +312,7 @@
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -442,6 +442,12 @@
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
+      }
+      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          display: block;
+        }
       }
 
       /* ================= CTA ================= */
@@ -577,15 +583,16 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-        const isActive = menu.classList.contains("active");
 
+        // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+          if (m.id !== id) {
+            m.classList.remove("active");
+          }
         });
 
-        if (!isActive) {
-          menu.classList.add("active");
-        }
+        // Toggle clicked one
+        menu.classList.toggle("active");
       }
 
       function toggleMobileMenu() {
@@ -606,10 +613,21 @@
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
+      // Close other dropdowns on hover (desktop only)
+      if (window.innerWidth > 1024) {
+        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            const activeMenu = document.querySelector(".bt-drop-menu.active");
+            if (activeMenu && !this.contains(activeMenu)) {
+              activeMenu.classList.remove("active");
+            }
+          });
+        });
+      }
     </script>
     <!-- ================= HEADER END ================= -->
 
-    <!-- =========About apex=======  -->
+    <!-- =========About DAYTRAder=======  -->
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -752,7 +770,7 @@
       }
 
       .firm-details h1 {
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 36px;
         margin-bottom: 8px;
       }
@@ -806,7 +824,7 @@
 
       .rating-score h2 {
         font-size: 60px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         margin: 0;
       }
 
@@ -862,12 +880,12 @@
         background: linear-gradient(135deg, #44d2ef, #001fd0);
         padding: 40px 50px;
         border-radius: 20px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 28px;
       }
 
       .discount-middle h3 {
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         margin-bottom: 8px;
       }
 
@@ -879,7 +897,7 @@
       .firm-btn {
         padding: 14px 30px;
         border-radius: 40px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: white;
         border: 3px solid transparent;
@@ -1050,7 +1068,7 @@
       }
 
       .fps-summary-header h2 {
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 28px;
       }
 
@@ -1059,7 +1077,7 @@
         padding: 6px 14px;
         border-radius: 30px;
         font-size: 12px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
       }
 
       .fps-summary-text {
@@ -1088,7 +1106,7 @@
         background: none;
         border: none;
         color: #fff;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 16px;
         display: flex;
         justify-content: space-between;
@@ -1119,7 +1137,7 @@
       }
 
       .fps-grid strong {
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
       }
 
       .fps-contract-grid {
@@ -1182,7 +1200,7 @@
         <div class="yt-content">
           <h2>
             Trade Live With <br />
-            BroTradingz
+            BroTrading
           </h2>
 
           <p>Live Futures Trading Sessions</p>
@@ -1222,13 +1240,11 @@
     </section>
 
     <style>
-      /* ================= YOUTUBE HERO SECTION ================= */
-
       .yt-hero {
-        min-height: 75vh;
+        min-height: 70vh;
         display: flex;
         align-items: center;
-        padding: 60px 6%;
+        padding: 70px 6%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -1237,7 +1253,7 @@
 
       .yt-container {
         max-width: 1400px;
-        width: 100%;
+        width: 93%;
         margin: auto;
         display: flex;
         align-items: center;
@@ -1257,7 +1273,7 @@
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 25px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
       }
 
       .yt-content p {
@@ -1271,7 +1287,7 @@
 
       .yt-btn {
         display: inline-block;
-        padding: 16px 42px;
+        padding: 14px 36px;
         border-radius: 50px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: #ffffff;
@@ -1279,14 +1295,12 @@
         text-decoration: none;
         margin-top: 20px;
         transition: all 0.3s ease;
-        /* box-shadow: 0 10px 25px rgba(0, 194, 255, 0.4); */
       }
 
       .yt-btn:hover {
-        /* transform: translateY(-4px); */
         background: #ffffff;
         color: #0b0f2a;
-        border: 3px solid #00c2ff;
+        border: 2px solid #00c2ff;
       }
 
       /* RIGHT SIDE (VIDEO) */
@@ -1301,8 +1315,8 @@
         position: relative;
         width: 100%;
         max-width: 650px;
-        padding-top: 56.25%; /* 16:9 Ratio */
-        border-radius: 22px;
+        padding-top: 56.25%;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       }
@@ -1319,26 +1333,55 @@
       /* ================= RESPONSIVE ================= */
 
       @media (max-width: 992px) {
+        .yt-hero {
+          min-height: auto;
+          padding: 60px 20px;
+        }
+
         .yt-container {
           flex-direction: column;
           text-align: center;
+          gap: 35px;
         }
 
         .yt-media {
           order: -1;
-          margin-bottom: 30px;
+        }
+
+        .yt-video-wrapper {
+          max-width: 100%;
+          border-radius: 16px;
         }
 
         .yt-content h2 {
-          font-size: 34px;
+          font-size: 30px;
+          line-height: 1.25;
         }
 
         .yt-content p {
-          font-size: 16px;
+          font-size: 15px;
+        }
+
+        .yt-btn {
+          padding: 12px 28px;
+          font-size: 14px;
+        }
+      }
+
+      /* SMALL PHONES */
+
+      @media (max-width: 480px) {
+        .yt-content h2 {
+          font-size: 24px;
+        }
+
+        .yt-content p {
+          font-size: 14px;
         }
       }
     </style>
     <!-- ============ Youtube section END=======  -->
+
     <!-- ================== CTF Compare Top Firm Section ================== -->
     <section class="ctf-compare-vault">
       <div class="ctf-compare-header">
@@ -1447,7 +1490,7 @@
 
       .ctf-compare-header h2 {
         font-size: 42px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
       }
 
       .ctf-compare-nav {
@@ -1648,7 +1691,7 @@
       }
 
       .apex-content h2 {
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 42px;
         margin-bottom: 12px;
       }
@@ -1674,7 +1717,7 @@
       .apex-btn {
         padding: 14px 28px;
         border-radius: 40px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
         font-size: 15px;
         text-decoration: none;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
@@ -1710,8 +1753,8 @@
     <!-- ================= BRO TRADING FOOTER ================= -->
     <footer class="bt-footer">
       <div class="bt-footer-container">
-        <!-- Column 1 : Brand -->
-        <div class="bt-footer-col bt-footer-brand">
+        <!-- Brand -->
+        <div class="bt-footer-brand">
           <img
             src="../Bro_Traders_logo-removebg-preview.png"
             alt="Bro Trading"
@@ -1721,66 +1764,47 @@
             Bro Trading is a premium trading resource platform helping traders
             compare Bro Tradings, improve skills, and scale profitably.
           </p>
-        </div>
 
-        <!-- Column Group 2 & 3 -->
-        <div class="bt-footer-stack">
-          <div class="bt-footer-col">
-            <h4>Bro Trading Finder</h4>
-            <a href="../CompareTopFrims/comparison.html"
-              >Bro Trading Comparison</a
-            >
-            <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a>
-            <a href="../CompareTopFrims/StartCost.html"
-              >Bro Trading Starting Costs</a
-            >
-            <a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a>
-            <a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a>
-            <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
-          </div>
-
-          <div class="bt-footer-col bt-mt">
-            <h4>Learn</h4>
-            <a href="#">Lessons</a>
-            <a href="#">Articles</a>
-            <a href="#">The 2-Hour Trading Day</a>
+          <!-- Social Icons -->
+          <div class="bt-social-icons">
+            <a href="https://m.youtube.com/@Brotradingz" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
-        <!-- Column Group 4 & 5 -->
-        <div class="bt-footer-stack">
-          <div class="bt-footer-col">
-            <h4>Bro Tradings</h4>
-            <a href="ApexFunding.html">Apex Trader Funding</a>
-            <a href="TradeifyTrader.html">Tradeify</a>
-            <a href="Lucid Trading.html">Lucid Trading</a>
-            <a href="MyFundedFuture.html">My Funded Futures</a>
-            <a href="DayTrader.html">Day Trader</a>
-          </div>
-
-          <div class="bt-footer-col bt-mt">
-            <h4>Resources</h4>
-            <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
-            <a href="../Resourses/TradingTools.html">Trading Tools</a>
-          </div>
+        <!-- Column 1 -->
+        <div class="bt-footer-col">
+          <h4>Bro Trading Finder</h4>
+          <a href="../CompareTopFrims/comparison.html">Top Frims Comparison</a>
+          <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a>
+          <a href="../CompareTopFrims/StartCost.html">Starting Costs</a>
+          <a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a>
+          <a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a>
+          <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
         </div>
 
-        <!-- Column Group 6 & 7 -->
-        <div class="bt-footer-stack">
-          <div class="bt-footer-col">
-            <h4>Follow Us</h4>
-            <a href="https://m.youtube.com/@Brotradingz">YouTube</a>
-            <a href="#">X</a>
-            <a href="#">Instagram</a>
-          </div>
+        <!-- Column 2 -->
+        <div class="bt-footer-col">
+          <h4>Resources</h4>
+          <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
+          <a href="../Resourses/TradingTools.html">Trading Tools</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Privacy / Terms</a>
+          <a href="#">Refund Policy</a>
+        </div>
 
-          <div class="bt-footer-col bt-mt">
-            <h4>More</h4>
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Privacy / Terms</a>
-            <a href="#">Refund Policy</a>
-          </div>
+        <!-- Column 3 -->
+        <div class="bt-footer-col bt-resources">
+          <h4>Bro Tradings Frims</h4>
+          <a href="ApexFunding.html">Apex Trader Funding</a>
+          <a href="TradeifyTrader.html">Tradeify</a>
+          <a href="Lucid Trading.html">Lucid Trading</a>
+          <a href="MyFundedFuture.html">My Funded Futures</a>
+          <a href="DayTraders.html">Day Trader</a>
         </div>
       </div>
 
@@ -1789,56 +1813,76 @@
       </div>
     </footer>
 
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <style>
       .bt-footer {
         background: #000;
         color: #fff;
-        padding: 100px 20px 40px;
+        padding: 52px 20px 40px;
       }
 
       .bt-footer-container {
         max-width: 1250px;
         margin: auto;
         display: grid;
-        grid-template-columns: 1.6fr 1fr 1fr 1fr;
-        gap: 70px;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 80px;
       }
 
-      /* Brand Column */
-      .bt-footer-brand {
-        max-width: 320px;
-      }
-
+      /* Brand */
       .bt-footer-logo {
-        width: 160px;
-        margin-bottom: 20px;
+        width: 170px;
+        margin-bottom: 25px;
       }
 
       .bt-footer-text {
         color: #9ca3af;
         font-size: 14px;
-        line-height: 1.7;
+        line-height: 1.8;
+        margin-bottom: 25px;
       }
 
-      /* Stack Groups */
-      .bt-footer-stack {
+      /* Social Icons */
+      .bt-social-icons {
         display: flex;
-        flex-direction: column;
+        gap: 18px;
       }
 
-      .bt-mt {
-        margin-top: 45px;
+      .bt-social-icons a {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #111;
+        border-radius: 50%;
+        color: #fff;
+        transition: all 0.3s ease;
+        font-size: 16px;
       }
 
-      /* Headings */
+      .bt-social-icons a:hover {
+        background: linear-gradient(90deg, #00c2ff, #1e90ff);
+        transform: translateY(-4px);
+      }
+
+      /* Columns */
       .bt-footer-col h4 {
         font-size: 16px;
         margin-bottom: 22px;
         font-weight: 600;
-        color: #fff;
+      }
+      .bt-footer-col {
+        margin-top: 37px;
+        padding: 0;
+        margin-left: -1px;
       }
 
-      /* Links */
       .bt-footer-col a {
         display: block;
         color: #9ca3af;
@@ -1864,7 +1908,6 @@
       }
 
       /* ================= TABLET ================= */
-
       @media (max-width: 1024px) {
         .bt-footer-container {
           grid-template-columns: repeat(2, 1fr);
@@ -1874,12 +1917,15 @@
         .bt-footer-brand {
           grid-column: span 2;
           text-align: center;
-          max-width: 100%;
         }
 
-        .bt-footer-text {
-          margin: auto;
-          max-width: 500px;
+        .bt-social-icons {
+          justify-content: center;
+        }
+        .bt-resources {
+          grid-column: span 2;
+          text-align: center;
+          margin-top: -15px;
         }
       }
 
@@ -1891,47 +1937,31 @@
 
         .bt-footer-container {
           grid-template-columns: repeat(2, 1fr);
-          gap: 31px 0px;
+          gap: 35px;
           text-align: center;
-          margin-bottom: -65px;
         }
 
-        /* Brand full width */
         .bt-footer-brand {
           grid-column: span 2;
-          text-align: center;
         }
 
         .bt-footer-logo {
-          width: 140px;
           margin: 0 auto 20px;
           display: block;
         }
 
         .bt-footer-text {
-          margin: 0 auto;
+          margin: auto;
           max-width: 320px;
         }
 
-        /* Remove stacking wrapper */
-        .bt-footer-stack {
-          display: contents;
+        .bt-social-icons {
+          justify-content: center;
         }
-
-        .bt-mt {
-          margin-top: 0;
-        }
-
-        /* Center headings */
-        .bt-footer-col h4 {
-          font-size: 15px;
-          margin-bottom: 18px;
-        }
-
-        /* Center links */
-        .bt-footer-col a {
-          font-size: 13px;
-          margin-bottom: 10px;
+        .bt-resources {
+          grid-column: span 2;
+          text-align: center;
+          margin-top: -15px;
         }
       }
     </style>

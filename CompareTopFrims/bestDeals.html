@@ -18,7 +18,8 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "DM Sans", sans-serif;
+        font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
       }
     </style>
   </head>
@@ -252,7 +253,7 @@
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
-
+          <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
@@ -268,13 +269,13 @@
                   <a href="StartCost.html">Prop Firm Starting Costs</a>
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="bestDeals.html">Best Deals</a>
+                  <a href="BestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
+                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -283,16 +284,16 @@
           </div>
 
           <!-- Learn -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-              Learn ▾
-            </button>
-            <div class="bt-drop-menu small" id="learn">
-              <a href="#">Lessons</a>
-              <a href="#">Articles</a>
-              <a href="#">The 2-Hour Trading Day</a>
-            </div>
-          </div>
+          <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
 
           <!-- Resources -->
           <div class="bt-dropdown">
@@ -306,7 +307,7 @@
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -436,6 +437,12 @@
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
+      }
+      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          display: block;
+        }
       }
 
       /* ================= CTA ================= */
@@ -571,15 +578,16 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-        const isActive = menu.classList.contains("active");
 
+        // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+          if (m.id !== id) {
+            m.classList.remove("active");
+          }
         });
 
-        if (!isActive) {
-          menu.classList.add("active");
-        }
+        // Toggle clicked one
+        menu.classList.toggle("active");
       }
 
       function toggleMobileMenu() {
@@ -600,6 +608,17 @@
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
+      // Close other dropdowns on hover (desktop only)
+      if (window.innerWidth > 1024) {
+        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            const activeMenu = document.querySelector(".bt-drop-menu.active");
+            if (activeMenu && !this.contains(activeMenu)) {
+              activeMenu.classList.remove("active");
+            }
+          });
+        });
+      }
     </script>
     <!-- ================= HEADER END ================= -->
 
@@ -797,15 +816,16 @@
 
         <div class="deal-grid">
           <!-- APEX -->
-          <div class="deal-card" data-discount="90" data-ddt="Trailing">
+          <div class="deal-card">
             <div class="deal-badge">90% OFF</div>
-
             <h3 class="deal-firm">Apex Trader Funding</h3>
-
             <p class="deal-desc">
-              90% Off Evaluations • One Day To Pass • Resets $50
+              <!-- <span>✔</span> Industry Leading <br /> -->
+              <span>✔</span> Lowest Evaluation pricing<br />
+              <span>✔</span> One of the Fastest Pass Models<br />
+              <span>✔</span> Flexible Reset Options<br />
+              <span>✔</span> Popular among Futures Scalpers
             </p>
-
             <div class="deal-actions">
               <button class="btn-copy" onclick="copyCode(this, 'BRO')">
                 BRO
@@ -820,18 +840,18 @@
           </div>
 
           <!-- TRADEIFY -->
-          <div class="deal-card" data-discount="40" data-ddt="Static">
-            <div class="deal-badge">40% OFF</div>
-
+          <div class="deal-card">
+            <div class="deal-badge">30% OFF</div>
             <h3 class="deal-firm">Tradeify</h3>
-
             <p class="deal-desc">
-              40% Off Select Plans • Day-1 or 5-Day Payout
+              <span>✔</span> Static Drawdown Structure<br />
+              <span>✔</span> Early Payout Eligibility<br />
+              <span>✔</span> Simple Scaling System<br />
+              <span>✔</span> Transparent Trading Rules
             </p>
-
             <div class="deal-actions">
-              <button class="btn-copy" onclick="copyCode(this, 'BFYQ2HKM')">
-                BFYQ2HKM
+              <button class="btn-copy" onclick="copyCode(this, 'BRO')">
+                BRO
               </button>
               <a
                 href="https://tradeify.co/?ref=BFYQ2HKM"
@@ -843,16 +863,18 @@
           </div>
 
           <!-- MYFUNDEDFUTURES -->
-          <div class="deal-card" data-discount="50" data-ddt="Trailing">
-            <div class="deal-badge">50% OFF</div>
-
+          <div class="deal-card">
+            <div class="deal-badge">Upto 50% OFF</div>
             <h3 class="deal-firm">MyFundedFutures</h3>
-
-            <p class="deal-desc">50% Off Challenges • Fast Scaling Accounts</p>
-
+            <p class="deal-desc">
+              <span>✔</span> Fast Scaling Account Growth<br />
+              <span>✔</span> No Activation fees <br />
+              <span>✔</span> Trailing Drawdown Model<br />
+              <span>✔</span> Strong Trader Community
+            </p>
             <div class="deal-actions">
-              <button class="btn-copy" onclick="copyCode(this, '5117')">
-                5117
+              <button class="btn-copy" onclick="copyCode(this, 'BRO')">
+                BRO
               </button>
               <a
                 href="https://myfundedfutures.com/challenge?ref=5117"
@@ -864,13 +886,15 @@
           </div>
 
           <!-- LUCID -->
-          <div class="deal-card" data-discount="50" data-ddt="Static">
-            <div class="deal-badge">50% OFF</div>
-
+          <div class="deal-card">
+            <div class="deal-badge">35-50% OFF</div>
             <h3 class="deal-firm">LUCID TRADERS</h3>
-
-            <p class="deal-desc">50% Off All Accounts • No Activation Fees</p>
-
+            <p class="deal-desc">
+              <span>✔</span> Quick Evaluation Process<br />
+              <span>✔</span> Clean Rule Structure<br />
+              <span>✔</span> Competitive profit splits<br />
+              <span>✔</span> Budget-friendly Account options
+            </p>
             <div class="deal-actions">
               <button class="btn-copy" onclick="copyCode(this, 'BROTRADING')">
                 BROTRADING
@@ -885,16 +909,19 @@
           </div>
 
           <!-- DAYTRADERS -->
-          <div class="deal-card" data-discount="50" data-ddt="Trailing">
-            <div class="deal-badge">50% OFF</div>
-
+          <div class="deal-card">
+            <div class="deal-badge">90% OFF</div>
             <h3 class="deal-firm">DayTraders</h3>
-
-            <p class="deal-desc">50% Off Evaluations • Trusted Futures Firm</p>
-
+            <p class="deal-desc">
+              <span>✔</span> Limited Period Offer<br />
+              <!-- <span>✔</span> High Profit split Potential<br /> -->
+              <span>✔</span> Futures-focused Trading model<br />
+              <span>✔</span> Established Firm Reputation<br />
+              <span>✔</span> Consistent payout Structure
+            </p>
             <div class="deal-actions">
-              <button class="btn-copy" onclick="copyCode(this, 'TWCEMMNK')">
-                TWCEMMNK
+              <button class="btn-copy" onclick="copyCode(this, 'BROTRADING')">
+                BROTRADING
               </button>
               <a
                 href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
@@ -907,7 +934,7 @@
         </div>
       </div>
     </section>
-    <!-- ======= End Section ========= -->
+
     <style>
       .best-offers-section {
         padding: 90px 8%;
@@ -924,12 +951,6 @@
         text-align: center;
       }
 
-      .highlight {
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
       /* GRID */
       .deal-grid {
         display: grid;
@@ -939,40 +960,24 @@
         margin: 0 auto;
       }
 
-      /* Center 4th and 5th cards */
-      .deal-card:nth-child(4) {
-        grid-column: 1 / span 1;
-        justify-self: end;
-      }
-
-      .deal-card:nth-child(5) {
-        grid-column: 3 / span 1;
-        justify-self: start;
-      }
-
-      /* Center second row */
-      .deal-card:nth-child(4),
-      .deal-card:nth-child(5) {
-        justify-self: center;
-      }
-
       /* CARD */
       .deal-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: linear-gradient(145deg, #0f172a, #1e293b);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 18px;
         padding: 30px;
         backdrop-filter: blur(10px);
-        transition: 0.3s ease;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
         text-align: center;
       }
 
       .deal-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-4px);
         box-shadow: 0 20px 40px rgba(0, 194, 255, 0.25);
       }
 
-      /* BADGE */
       .deal-badge {
         font-size: 32px;
         font-weight: 700;
@@ -980,26 +985,36 @@
         color: #00c2ff;
       }
 
-      /* FIRM */
       .deal-firm {
-        font-size: 20px;
+        font-size: 22px;
         margin-bottom: 12px;
         font-weight: 600;
       }
 
-      /* DESC */
       .deal-desc {
         font-size: 15px;
         opacity: 0.85;
         margin-bottom: 25px;
+        text-align: left;
+        padding: 5px 32px;
+        font-family: "Roboto", sans-serif;
+        line-height: 1.7;
+      }
+      .deal-desc span {
+        color: #00c2ff;
+        margin-right: 5px;
       }
 
       /* BUTTONS */
       .deal-actions {
         display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 15px;
-        margin: 3px 54px;
+        margin-top: 20px;
       }
+
+      /* BUTTONS */
 
       .btn-deal {
         padding: 10px 22px;
@@ -1009,28 +1024,48 @@
         text-decoration: none;
         font-weight: 600;
         font-size: 14px;
+        transition: 0.3s;
+        border: 3px solid transparent; /* prevents layout shift */
       }
 
       .btn-deal:hover {
         background: white;
         color: #0b1d3a;
+        border-color: #00c2ff;
       }
 
       .btn-copy {
         padding: 10px 18px;
         border-radius: 50px;
-        background: #1e293b;
+        background: #121924;
         color: #00c2ff;
-        border: none;
+        border: 3px solid transparent; /* prevents layout shift */
         cursor: pointer;
         font-size: 14px;
+        transition: 0.3s;
+        font-weight: 600;
       }
 
       .btn-copy:hover {
-        background: #00c2ff;
+        background: white;
         color: #0b1d3a;
+        border-color: #00c2ff;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 992px) {
+        .deal-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .deal-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
+
     <script>
       function copyCode(btn, code) {
         navigator.clipboard.writeText(code);
@@ -1038,7 +1073,7 @@
         setTimeout(() => (btn.innerText = code), 1200);
       }
     </script>
-    <!-- ============= todays best deals section end========  -->
+    <!-- ======= Today's Best Deals  End Section ========= -->
 
     <!-- ===== Market Ticker Section ===== -->
     <script

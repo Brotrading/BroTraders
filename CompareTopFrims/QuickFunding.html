@@ -14,7 +14,8 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "DM Sans", sans-serif;
+        font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
       }
     </style>
   </head>
@@ -248,7 +249,7 @@
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
-
+          <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
@@ -264,13 +265,13 @@
                   <a href="StartCost.html">Prop Firm Starting Costs</a>
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="bestDeals.html">Best Deals</a>
+                  <a href="BestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
+                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -279,16 +280,16 @@
           </div>
 
           <!-- Learn -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-              Learn ▾
-            </button>
-            <div class="bt-drop-menu small" id="learn">
-              <a href="#">Lessons</a>
-              <a href="#">Articles</a>
-              <a href="#">The 2-Hour Trading Day</a>
-            </div>
-          </div>
+          <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
 
           <!-- Resources -->
           <div class="bt-dropdown">
@@ -302,7 +303,7 @@
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -432,6 +433,12 @@
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
+      }
+      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          display: block;
+        }
       }
 
       /* ================= CTA ================= */
@@ -567,15 +574,16 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-        const isActive = menu.classList.contains("active");
 
+        // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+          if (m.id !== id) {
+            m.classList.remove("active");
+          }
         });
 
-        if (!isActive) {
-          menu.classList.add("active");
-        }
+        // Toggle clicked one
+        menu.classList.toggle("active");
       }
 
       function toggleMobileMenu() {
@@ -596,6 +604,17 @@
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
+      // Close other dropdowns on hover (desktop only)
+      if (window.innerWidth > 1024) {
+        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            const activeMenu = document.querySelector(".bt-drop-menu.active");
+            if (activeMenu && !this.contains(activeMenu)) {
+              activeMenu.classList.remove("active");
+            }
+          });
+        });
+      }
     </script>
     <!-- ================= HEADER END ================= -->
 
@@ -747,265 +766,297 @@
       }
     </style>
     <!-- ========== QUICKEST FUNDING HERO SECTION END ========== -->
-    <!-- ======== Drawdown Cards Section ======== -->
+
+    <!-- ======== Quickest Funding Section ======== -->
+
     <section class="ddc-section">
       <div class="ddc-container">
-        <!-- 1️⃣ Apex -->
+        <!-- Apex -->
         <div class="ddc-card">
           <div class="ddc-top">
             <img
               src="https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131"
               class="ddc-logo"
             />
+
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>Apex Trader Funding</h3>
-              <p>Funding: <span>1 day</span></p>
+              <p class="funding">Funding: <span>7 days</span></p>
             </div>
           </div>
+
+          <div class="reason-list">
+            <p>✔ No minimum trading days</p>
+            <p>✔ Fast challenge completion</p>
+            <p>✔ Flexible reset options</p>
+          </div>
+
           <a
             href="https://apextraderfunding.com/member/aff/go/buurtie"
             target="_blank"
             class="ddc-btn"
-            >Get Evaluation</a
           >
+            Get Evaluation
+          </a>
         </div>
 
-        <!-- 2️⃣ Tradeify -->
+        <!-- Tradeify -->
         <div class="ddc-card">
           <div class="ddc-top">
             <img
               src="https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png"
               class="ddc-logo"
             />
+
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>Tradeify</h3>
-              <p>Funding: <span>3 day</span></p>
+              <p class="funding">Funding: <span>3 days</span></p>
             </div>
           </div>
+
+          <div class="reason-list">
+            <p>✔ Static drawdown structure</p>
+            <p>✔ Simple evaluation rules</p>
+            <p>✔ Early payout eligibility</p>
+          </div>
+
           <a
             href="https://tradeify.co/?ref=BFYQ2HKM"
             target="_blank"
             class="ddc-btn"
-            >Get Evaluation</a
           >
+            Get Evaluation
+          </a>
         </div>
 
-        <!-- 3️⃣ MyFundedFutures -->
+        <!-- MyFundedFutures -->
         <div class="ddc-card">
           <div class="ddc-top">
             <img
               src="https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png"
               class="ddc-logo"
             />
+
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>MyFundedFutures</h3>
-              <p>Funding: <span>7 day</span></p>
+              <p class="funding">Funding: <span>Max 2 days</span></p>
             </div>
           </div>
+
+          <div class="reason-list">
+            <p>✔ Fast scaling evaluation</p>
+            <p>✔ Consistent payout structure</p>
+            <p>✔ Trader-friendly rules</p>
+          </div>
+
           <a
             href="https://myfundedfutures.com/challenge?ref=5117"
             target="_blank"
             class="ddc-btn"
-            >Get Evaluation</a
           >
+            Get Evaluation
+          </a>
         </div>
 
-        <!-- 4️⃣ Lucid -->
+        <!-- Lucid -->
         <div class="ddc-card">
           <div class="ddc-top">
             <img
               src="https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png"
               class="ddc-logo"
             />
+
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>LUCID</h3>
-              <p>Funding: <span>1 day</span></p>
+              <p class="funding">Funding: <span>Max 5 days</span></p>
             </div>
           </div>
+
+          <div class="reason-list">
+            <p>✔ Quick evaluation structure</p>
+            <p>✔ Simple risk limits</p>
+            <p>✔ Budget-friendly accounts</p>
+          </div>
+
           <a
             href="https://lucidtrading.com/ref/brotrading/"
             target="_blank"
             class="ddc-btn"
-            >Get Evaluation</a
           >
+            Get Evaluation
+          </a>
         </div>
 
-        <!-- 5️⃣ DayTraders -->
+        <!-- DayTraders -->
         <div class="ddc-card">
           <div class="ddc-top">
             <img
               src="https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg"
               class="ddc-logo"
             />
+
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>DayTraders</h3>
-              <p>Funding: <span>1 day</span></p>
+              <p class="funding">Funding: <span>8 days</span></p>
             </div>
           </div>
+
+          <div class="reason-list">
+            <p>✔ Futures-focused evaluation</p>
+            <p>✔ Straightforward trading rules</p>
+            <p>✔ Fast account activation</p>
+          </div>
+
           <a
             href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
             target="_blank"
             class="ddc-btn"
-            >Get Evaluation</a
           >
+            Get Evaluation
+          </a>
         </div>
       </div>
     </section>
-    <!-- ======== Drawdown Cards Section END ======== -->
+
     <style>
-      /* ============================= */
-      /* Drawdown Cards Section */
-      /* ============================= */
+      /* SECTION */
 
       .ddc-section {
         padding: 110px 6%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #ffffff;
+        color: #fff;
+        font-family: "Roboto", sans-serif;
       }
+
+      /* GRID */
 
       .ddc-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         max-width: 1200px;
-        margin: 0 auto;
-        gap: 50px 40px;
-      }
-      .ddc-container::after {
-        content: "";
+        margin: auto;
+        gap: 40px;
       }
 
       /* CARD */
+
       .ddc-card {
         background: linear-gradient(145deg, #0f172a, #1e293b);
         border-radius: 26px;
-        padding: 28px;
+        padding: 30px;
         border: 1px solid rgba(255, 255, 255, 0.08);
-        transition: 0.3s ease;
+        transition: all 0.25s ease;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        padding: 32px;
-        min-height: 240px;
+        align-items: center;
       }
 
       .ddc-card:hover {
-        transform: translateY(-6px);
+        transform: translateY(-5px);
         border: 1px solid rgba(0, 194, 255, 0.6);
       }
 
-      /* Force proper layout structure */
-      .ddc-card:nth-child(4) {
-        /* grid-column: 2 / 3; */
-      }
+      /* TOP SECTION */
 
-      .ddc-card:nth-child(5) {
-        grid-column: 3 / 4;
-      }
-
-      /* TOP AREA */
       .ddc-top {
         display: flex;
         align-items: center;
         gap: 18px;
+        width: 100%;
         margin-bottom: 10px;
       }
 
       .ddc-logo {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         object-fit: contain;
         background: #000;
-        border-radius: 20px;
-        padding: 12px;
+        border-radius: 16px;
+        padding: 10px;
       }
 
-      /* TEXT */
+      /* INFO */
+
+      .ddc-info {
+        display: flex;
+        flex-direction: column;
+      }
+
       .ddc-stars {
         color: #ffbd00;
-        font-size: 18px;
-        margin-bottom: 6px;
+        font-size: 19px;
+        /* margin-bottom: 6px; */
       }
 
       .ddc-info h3 {
-        margin: 0;
-        font-size: 19px;
+        margin: 13px 0;
+        font-size: 20px;
         font-weight: 600;
-        font-family: "DM Mono", monospace;
       }
 
-      .ddc-info h3:hover {
-        color: #00c2ff;
-      }
-
-      .ddc-info p {
-        margin: 20px 0 0;
+      .funding {
         font-size: 18px;
         color: #cbd5e1;
-        font-family: "DM Mono", monospace;
+        margin-top: 5px;
       }
 
-      .ddc-info span {
-        font-size: 18px;
-        font-weight: 700;
+      .funding span {
         color: #00c2ff;
+        font-weight: 700;
+      }
+
+      /* REASONS */
+
+      .reason-list {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #94a3b8;
+        text-align: center;
+        line-height: 1.9;
       }
 
       /* BUTTON */
+
       .ddc-btn {
-        margin-top: 30px;
-        display: block;
-        text-align: center;
+        margin-top: 20px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: white;
-        padding: 16px;
+        padding: 14px 60px;
         border-radius: 40px;
-        font-weight: 600;
         text-decoration: none;
+        font-weight: 600;
         transition: 0.3s;
-        margin-top: auto;
       }
 
       .ddc-btn:hover {
         background: white;
         color: #0b0f2a;
         border: 3px solid #00c2ff;
-        transform: translateY(-3px);
       }
 
-      /* ============================= */
-      /* Responsive */
-      /* ============================= */
+      /* RESPONSIVE */
 
-      @media (max-width: 1200px) {
+      @media (max-width: 1100px) {
         .ddc-container {
           grid-template-columns: repeat(2, 1fr);
-        }
-
-        .ddc-card:nth-child(4),
-        .ddc-card:nth-child(5) {
-          grid-column: auto;
         }
       }
 
       @media (max-width: 768px) {
         .ddc-container {
           grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .ddc-section {
-          padding: 70px 5%;
         }
       }
     </style>
-    <!-- ======== Drawdown Cards Section ======== -->
+
+    <!-- ======== Quickest Funding Section END ======== -->
 
     <!-- =========== Youtube Section ========= -->
     <section class="yt-hero">
