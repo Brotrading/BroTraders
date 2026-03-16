@@ -275,23 +275,21 @@
                   <a href="CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <a href="CompareTopFrims/TrueCost.html"
-                    >True Cost to Funding</a
-                  >
-                  <a href="CompareTopFrims/StartCost.html"
-                    >Prop Firm Starting Costs</a
-                  >
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="CompareTopFrims/Drawdown.html">Largest Drawdown</a>
                   <a href="CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="CompareTopFrims/BestDeals.html">Best Deals</a>
+                  <a href="CompareTopFrims/bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -317,8 +315,8 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
               <a href="Resourses/TradingTools.html">Trading Tools</a>
+              <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
@@ -348,9 +346,11 @@
         position: fixed;
         top: 40px; /* same as ticker height */
         left: 0;
-        width: 100%;
+        margin: 10px 15px;
+        border-radius: 40px;
+        width: 97%;
+        background: #0000004a;
         z-index: 1000;
-        background: #000;
         transition: all 0.35s ease;
       }
 
@@ -411,6 +411,8 @@
 
       /* ================= DROPDOWN ================= */
 
+      /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -425,17 +427,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -455,6 +458,21 @@
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
+      }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
       }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
@@ -653,26 +671,32 @@
 
         <div class="pfirms-stats">
           <div class="pfirms-stat">
-            <svg viewBox="0 0 24 24">
+            <!-- <svg viewBox="0 0 24 24">
               <path
                 d="M12 2L15 8H22L16.5 12.5L18.5 20L12 16L5.5 20L7.5 12.5L2 8H9L12 2Z"
               />
-            </svg>
-            <span>The 5 best propfirms</span>
+            </svg> -->
+            <img
+              src="https://img.icons8.com/?size=96&id=98A4yZTt9abw&format=png"
+              alt="Stats"
+            />
+            <span><strong>5</strong> Top-Rated Prop Firms</span>
           </div>
 
           <div class="pfirms-stat">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 13H7V21H3V13ZM10 3H14V21H10V3ZM17 9H21V21H17V9Z" />
-            </svg>
-            <span>50+ Challenges</span>
+            <img
+              src="https://img.icons8.com/?size=96&id=fMgiawjCzfuj&format=png"
+              alt="Stats"
+            />
+            <span><strong>50+</strong> Challenges</span>
           </div>
 
           <div class="pfirms-stat">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 1L15 7H22L17 11L19 18L12 14L5 18L7 11L2 7H9L12 1Z" />
-            </svg>
-            <span>Biggest chance on Giveaways</span>
+            <img
+              src="https://img.icons8.com/?size=160&id=CaMxgXUAlbAW&format=png"
+              alt="Stats"
+            />
+            <span>Biggest chance on <strong>Giveaways</strong> </span>
           </div>
         </div>
       </div>
@@ -693,7 +717,9 @@
 
       <div class="pfirms-bottom">
         <div class="pfirms-cta">
-          <a href="#compare" class="pfirms-btn-primary"> Compare Firms </a>
+          <a href="#FavoriteFrimsSection" class="pfirms-btn-primary">
+            Compare Firms
+          </a>
 
           <a
             href="https://discord.gg/brotrading"
@@ -758,15 +784,22 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 10px 18px;
+        padding: 8px 18px;
         background: #111827;
         border-radius: 30px;
         font-size: 14px;
+        font-weight: 400;
+        font-family: "DM Mono", monospace;
+      }
+      .pfirms-stats strong {
+        font-size: 17px;
+        font-weight: 800;
+        /* padding-right: 5px; */
       }
 
-      .pfirms-stat svg {
-        width: 16px;
-        fill: #00c2ff;
+      .pfirms-stat img {
+        width: 20px;
+        /* fill: #00c2ff; */
       }
 
       /* SLIDER */
@@ -954,69 +987,69 @@
         {
           firm: "Apex Traders",
           logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          discount: "40%",
+          discount: "90%",
           website: "https://apextraderfunding.com/member/aff/go/buurtie",
         },
 
         {
           firm: "Tradeify",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          discount: "20%",
+          discount: "30%",
           website: "https://tradeify.co/?ref=BFYQ2HKM",
         },
 
         {
           firm: "MyFunded <br/>Futures",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          discount: "10%",
+          discount: "50%",
           website: "https://myfundedfutures.com/challenge?ref=5117",
         },
 
         {
           firm: "Lucid Trading",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-          discount: "15%",
+          discount: "50%",
           website: "https://lucidtrading.com/ref/brotrading/",
         },
 
         {
           firm: "DayTraders",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-          discount: "50%",
+          discount: "90%",
           website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
         },
         {
           firm: "Apex Traders",
           logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          discount: "40%",
+          discount: "90%",
           website: "https://apextraderfunding.com/member/aff/go/buurtie",
         },
 
         {
           firm: "Tradeify",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          discount: "20%",
+          discount: "30%",
           website: "https://tradeify.co/?ref=BFYQ2HKM",
         },
 
         {
           firm: "MyFunded <br/>Futures",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          discount: "10%",
+          discount: "50%",
           website: "https://myfundedfutures.com/challenge?ref=5117",
         },
 
         {
           firm: "Lucid Trading",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-          discount: "15%",
+          discount: "50%",
           website: "https://lucidtrading.com/ref/brotrading/",
         },
 
         {
           firm: "DayTraders",
           logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-          discount: "50%",
+          discount: "90%",
           website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
         },
       ];
@@ -1637,63 +1670,98 @@ Copy Code:
     </script>
     <!-- ================= BRO DEALS SECTION END ================= -->
 
-    <!-- FAVORITE FIRMS TABLE  -->
+    <!-- ===== FAVORITE FIRMS SECTION ===== -->
 
-    <section class="zx-section">
-      <h2 class="zx-title">Favorite Firms</h2>
-      <p class="zx-sub">
-        Compare prop firms and filter platforms to find the best option.
+    <section class="zx-comparison-section" id="FavoriteFrimsSection">
+      <h2 class="ff-title">Only the Best Firms for you Bro</h2>
+      <p class="ff-subtitle">
+        Select your Favorite Firm. On this page, you can pick and show support
+        for your favorite firm.
       </p>
 
-      <div class="zx-table-wrap">
+      <!-- FILTER BAR -->
+
+      <div class="zx-filter-panel">
+        <div class="zx-filter">
+          <label>Firm</label>
+          <select id="firm-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="zx-filter">
+          <label>Platform</label>
+          <select id="platform-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="zx-filter">
+          <label>Discount</label>
+          <select id="discount-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="zx-filter">
+          <label>Max Accounts</label>
+          <select id="max-filter">
+            <option value="all">All</option>
+          </select>
+        </div>
+
+        <div class="zx-filter">
+          <label>Goal ≤</label>
+          <input
+            type="range"
+            id="goal-range"
+            min="0"
+            max="20000"
+            step="500"
+            value="20000"
+          />
+          <span id="goal-value">≤ 20000</span>
+        </div>
+
+        <div class="zx-filter">
+          <label>True Cost ≤</label>
+          <input
+            type="range"
+            id="cost-range"
+            min="0"
+            max="500"
+            step="10"
+            value="500"
+          />
+          <span id="cost-value">≤ 500</span>
+        </div>
+      </div>
+
+      <div class="zx-table-wrapper">
         <table id="zx-table">
           <thead>
             <tr>
-              <th class="sticky-logo">Logo</th>
+              <th class="sticky-col logo-col">Logo</th>
+              <th class="sticky-col firm-col">Firm</th>
 
-              <th class="sticky-firm">Firm</th>
+              <th data-key="account" draggable="true">Account</th>
+              <th data-key="platform" draggable="true">Platform</th>
+              <th data-key="country" draggable="true">Country</th>
+              <th data-key="maxaccounts" draggable="true">Max Accounts</th>
 
-              <th data-key="account" draggable="true">
-                Account<br /><select class="filter" data-key="account"></select>
-              </th>
-
-              <th data-key="goal" draggable="true">Goal</th>
-
-              <th data-key="ddt" draggable="true">
-                DDT<br /><select class="filter" data-key="ddt"></select>
-              </th>
-
-              <th data-key="dd" draggable="true">Max DD</th>
-
-              <th data-key="mindays" draggable="true">Min Days</th>
-
-              <th data-key="eval" draggable="true">Evaluation</th>
-
+              <th data-key="eval" draggable="true">Eval</th>
               <th data-key="activation" draggable="true">Activation</th>
-
               <th data-key="truecost" draggable="true">True Cost</th>
 
               <th data-key="discount" draggable="true">Discount</th>
+              <th data-key="goal" draggable="true">Goal</th>
+              <th data-key="ddt" draggable="true">DDT</th>
+              <th data-key="dd" draggable="true">DD</th>
+              <th data-key="mindays" draggable="true">Min Days</th>
 
-              <th draggable="true">Code</th>
-
-              <th data-key="platform" draggable="true">
-                Platforms<br /><select
-                  class="filter"
-                  data-key="platform"
-                  multiple
-                ></select>
-              </th>
-
-              <th data-key="country" draggable="true">
-                Country<br /><select class="filter" data-key="country"></select>
-              </th>
-
-              <th data-key="maxaccounts" draggable="true">Max Accounts</th>
-
-              <th draggable="true">Firm Page</th>
-
-              <th draggable="true">Website</th>
+              <th>Code</th>
+              <th>Firm Page</th>
+              <th>Website</th>
             </tr>
           </thead>
 
@@ -1703,89 +1771,220 @@ Copy Code:
     </section>
 
     <style>
-      .zx-section {
+      .zx-comparison-section {
         padding: 70px 120px;
-        background: linear-gradient(#0b1d3a, #020617);
+        background:
+          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
+          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
         color: white;
-        font-family: DM Sans;
+        font-family: "DM Sans", sans-serif;
       }
 
-      .zx-title {
-        text-align: center;
+      .ff-title {
         font-size: 46px;
+        text-align: center;
         margin-bottom: 10px;
       }
 
-      .zx-sub {
+      .ff-subtitle {
         text-align: center;
+        opacity: 0.8;
+        max-width: 750px;
+        margin: 0 auto 40px;
+      }
+
+      /* FILTER BAR */
+
+      .zx-controls {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        margin-bottom: 30px;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .filter-group label {
+        font-size: 13px;
         opacity: 0.7;
+      }
+
+      .filter-group select {
+        background: #0f172a;
+        border: 1px solid #1e293b;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        min-width: 160px;
+        height: 38px;
+      }
+
+      .range-filter input {
+        width: 180px;
+      }
+
+      .range-filter span {
+        font-size: 13px;
+        opacity: 0.8;
+      }
+
+      .zx-controls select {
+        background: #0f172a;
+        border: 1px solid #1e293b;
+        padding: 8px 12px;
+        color: white;
+        border-radius: 6px;
+        min-width: 150px;
+        height: 38px;
+      }
+      .zx-filter-panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 25px;
         margin-bottom: 40px;
       }
 
-      .zx-table-wrap {
-        overflow: auto;
-        max-height: 650px;
+      .zx-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
       }
+
+      .zx-filter label {
+        font-size: 13px;
+        opacity: 0.7;
+      }
+
+      .zx-filter select {
+        background: #0f172a;
+        border: 1px solid #1e293b;
+        color: white;
+        padding: 8px 10px;
+        border-radius: 6px;
+        height: 40px;
+      }
+
+      .zx-filter input[type="range"] {
+        width: 180px;
+      }
+
+      .zx-filter span {
+        font-size: 13px;
+        opacity: 0.8;
+      }
+
+      /* TABLE WRAPPER */
+
+      .zx-table-wrapper {
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 700px;
+        border-radius: 10px;
+      }
+
+      /* SCROLLBAR */
+
+      .zx-table-wrapper::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+
+      .zx-table-wrapper::-webkit-scrollbar-thumb {
+        background: #1e90ff;
+        border-radius: 10px;
+      }
+
+      .zx-table-wrapper::-webkit-scrollbar-track {
+        background: #071327;
+      }
+
+      /* TABLE */
 
       #zx-table {
         width: 100%;
         min-width: 1700px;
-        border-collapse: collapse;
-        background: black;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #071327;
         color: white;
       }
 
       #zx-table th {
         background: #0f172a;
-        padding: 12px;
-        font-size: 14px;
+        padding: 16px 17px;
+        text-align: center;
         position: sticky;
         top: 0;
-        z-index: 5;
-        text-align: center;
-        cursor: pointer;
+        z-index: 4;
+        white-space: nowrap;
       }
 
       #zx-table td {
-        padding: 14px;
+        padding: 16px;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        white-space: nowrap;
+        color: white;
+      }
+      /* PLATFORM COLUMN FIX */
+
+      #zx-table th[data-key="platform"],
+      #zx-table td:nth-child(4) {
+        max-width: 160px;
+        width: 160px;
+        white-space: normal;
+        line-height: 1.3;
+      }
+
+      #zx-table td:nth-child(9) {
+        color: #22c55e;
+      }
+
+      /* ROW COLORS */
+
+      #zx-table tbody tr {
+        background: #071327;
+      }
+
+      #zx-table tbody tr:nth-child(even) {
+        background: #0b1d3a;
       }
 
       #zx-table tr:hover {
-        background: rgba(0, 194, 255, 0.06);
+        background: rgba(0, 194, 255, 0.08);
       }
 
-      .filter {
-        width: 100%;
-        margin-top: 5px;
-        background: #0f172a;
-        color: white;
-        border: 1px solid #1e293b;
-        font-size: 12px;
-      }
+      /* sticky columns */
 
-      /* STICKY COLUMNS */
-
-      .sticky-logo {
+      .logo-col {
         position: sticky;
         left: 0;
         background: #071327;
-        z-index: 6;
+        z-index: 3;
+        width: 70px;
       }
 
-      .sticky-firm {
+      .firm-col {
         position: sticky;
         left: 70px;
         background: #071327;
-        z-index: 6;
+        z-index: 3;
+        min-width: 160px;
       }
 
+      /* LOGO */
+
       .zx-logo {
-        width: 38px;
-        height: 38px;
-        object-fit: contain;
+        width: 40px;
+        height: auto;
       }
+
+      /* BUTTONS */
 
       .zx-code {
         background: #1e293b;
@@ -1794,543 +1993,704 @@ Copy Code:
         border-radius: 6px;
         color: #00c2ff;
         cursor: pointer;
+        font-weight: 600;
       }
 
-      .zx-btn {
-        padding: 6px 12px;
+      .zx-code:hover {
+        background: #00c2ff;
+        color: #071327;
+      }
+
+      .zx-visit-btn {
+        padding: 6px 14px;
         background: #1e90ff;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .zx-visit-btn:hover {
+        background: white;
+        color: #0b1d3a;
+      }
+
+      .zx-firm-btn {
+        background: #16a34a;
+        padding: 6px 12px;
         border-radius: 6px;
         color: white;
         text-decoration: none;
-        font-size: 13px;
-      }
-      /* STICKY HEADER */
-      #zx-table thead th {
-        position: sticky;
-        top: 0;
-        background: #0f172a;
-        z-index: 5;
+        font-weight: 600;
       }
 
-      /* LOGO COLUMN */
-      #zx-table th.sticky-logo,
-      #zx-table td.sticky-logo {
-        position: sticky;
-        left: 0;
-        z-index: 6;
-        background: #071327;
-        width: 70px;
+      .zx-firm-btn:hover {
+        background: #22c55e;
+      }
+      .zx-filter select {
+        height: 40px;
+        overflow-y: auto;
       }
 
-      /* FIRM COLUMN */
-      #zx-table th.sticky-firm,
-      #zx-table td.sticky-firm {
-        position: sticky;
-        left: 70px;
-        z-index: 6;
-        background: #071327;
-        min-width: 200px;
-      }
-
-      /* prevent overlap glitch */
-      #zx-table {
-        border-collapse: separate;
-        border-spacing: 0;
+      #max-filter {
+        height: 40px !important;
       }
     </style>
 
     <script>
-      /* DATA */
+      window.addEventListener("load", function () {
+        const firms = [
+          /* APEX */
 
-      const firms = [
-        {
-          firm: "Apex Trader Funding",
-          account: 25000,
-          goal: 1500,
-          ddt: "Intraday",
-          dd: 1500,
-          mindays: 1,
-          eval: 147,
-          activation: 80,
-          truecost: 109,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 25000,
+            goal: 1500,
+            ddt: "Intraday",
+            dd: 1500,
+            mindays: 1,
+            eval: 147,
+            activation: 80,
+            truecost: 109,
+            discount: "90%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 50000,
-          goal: 3000,
-          ddt: "Intraday",
-          dd: 2500,
-          mindays: 1,
-          eval: 167,
-          activation: 130,
-          truecost: 163,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2500,
+            mindays: 1,
+            eval: 167,
+            activation: 130,
+            truecost: 163,
+            discount: "90%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 100000,
-          goal: 6000,
-          ddt: "Intraday",
-          dd: 3000,
-          mindays: 1,
-          eval: 207,
-          activation: 150,
-          truecost: 191,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 1,
+            eval: 207,
+            activation: 150,
+            truecost: 191,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 150000,
-          goal: 9000,
-          ddt: "Intraday",
-          dd: 5000,
-          mindays: 1,
-          eval: 297,
-          activation: 220,
-          truecost: 279,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 150000,
+            goal: 9000,
+            ddt: "Intraday",
+            dd: 5000,
+            mindays: 1,
+            eval: 297,
+            activation: 220,
+            truecost: 279,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 250000,
-          goal: 15000,
-          ddt: "Intraday",
-          dd: 6500,
-          mindays: 1,
-          eval: 517,
-          activation: 240,
-          truecost: 343,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 250000,
+            goal: 15000,
+            ddt: "Intraday",
+            dd: 6500,
+            mindays: 1,
+            eval: 517,
+            activation: 240,
+            truecost: 343,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 300000,
-          goal: 20000,
-          ddt: "Intraday",
-          dd: 7500,
-          mindays: 1,
-          eval: 657,
-          activation: 260,
-          truecost: 391,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 300000,
+            goal: 20000,
+            ddt: "Intraday",
+            dd: 7500,
+            mindays: 1,
+            eval: 657,
+            activation: 260,
+            truecost: 391,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Apex Trader Funding",
-          account: 100000,
-          goal: 3000,
-          ddt: "Static",
-          dd: 625,
-          mindays: 1,
-          eval: 137,
-          activation: 150,
-          truecost: 177,
-          discount: "80%",
-          code: "BRO",
-          platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-          country: "USA",
-          maxaccounts: 20,
-          logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-          firmpage: "#",
-          website: "https://apextraderfunding.com/member/aff/go/buurtie",
-        },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 100000,
+            goal: 3000,
+            ddt: "Static",
+            dd: 625,
+            mindays: 1,
+            eval: 137,
+            activation: 150,
+            truecost: 177,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
 
-        {
-          firm: "Tradeify",
-          account: 50000,
-          goal: 3000,
-          ddt: "EOD",
-          dd: 2000,
-          mindays: 1,
-          eval: 160,
-          activation: 0,
-          truecost: 112,
-          discount: "30%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView",
-          country: "USA",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          firmpage: "#",
-          website: "https://tradeify.co/?ref=BFYQ2HKM",
-        },
+          /* TRADEIFY */
 
-        {
-          firm: "Tradeify",
-          account: 100000,
-          goal: 6000,
-          ddt: "EOD",
-          dd: 3000,
-          mindays: 1,
-          eval: 320,
-          activation: 0,
-          truecost: 224,
-          discount: "30%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView",
-          country: "USA",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          firmpage: "#",
-          website: "https://tradeify.co/?ref=BFYQ2HKM",
-        },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 1,
+            eval: 160,
+            activation: 0,
+            truecost: 112,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
 
-        {
-          firm: "Tradeify",
-          account: 150000,
-          goal: 9000,
-          ddt: "EOD",
-          dd: 5000,
-          mindays: 1,
-          eval: 440,
-          activation: 0,
-          truecost: 308,
-          discount: "30%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView",
-          country: "USA",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          firmpage: "#",
-          website: "https://tradeify.co/?ref=BFYQ2HKM",
-        },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 1,
+            eval: 320,
+            activation: 0,
+            truecost: 224,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
 
-        {
-          firm: "Tradeify",
-          account: 50000,
-          goal: 2500,
-          ddt: "EOD",
-          dd: 2000,
-          mindays: 3,
-          eval: 160,
-          activation: 0,
-          truecost: 112,
-          discount: "30%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView",
-          country: "USA",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          firmpage: "#",
-          website: "https://tradeify.co/?ref=BFYQ2HKM",
-        },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 150000,
+            goal: 9000,
+            ddt: "EOD",
+            dd: 5000,
+            mindays: 1,
+            eval: 440,
+            activation: 0,
+            truecost: 308,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
 
-        {
-          firm: "Tradeify",
-          account: 100000,
-          goal: 6000,
-          ddt: "EOD",
-          dd: 3000,
-          mindays: 3,
-          eval: 320,
-          activation: 0,
-          truecost: 224,
-          discount: "30%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView",
-          country: "USA",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-          firmpage: "#",
-          website: "https://tradeify.co/?ref=BFYQ2HKM",
-        },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 50000,
+            goal: 2500,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 3,
+            eval: 160,
+            activation: 0,
+            truecost: 112,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
 
-        {
-          firm: "MyFundedFutures",
-          account: 50000,
-          goal: 3000,
-          ddt: "EOD",
-          dd: 2000,
-          mindays: 2,
-          eval: 150,
-          activation: 100,
-          truecost: 175,
-          discount: "50%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-          country: "USA",
-          maxaccounts: 3,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          firmpage: "#",
-          website: "https://myfundedfutures.com/challenge?ref=5117",
-        },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 3,
+            eval: 320,
+            activation: 0,
+            truecost: 224,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
 
-        {
-          firm: "MyFundedFutures",
-          account: 100000,
-          goal: 6000,
-          ddt: "EOD",
-          dd: 3000,
-          mindays: 2,
-          eval: 300,
-          activation: 150,
-          truecost: 300,
-          discount: "50%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-          country: "USA",
-          maxaccounts: 3,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          firmpage: "#",
-          website: "https://myfundedfutures.com/challenge?ref=5117",
-        },
+          /* MYFUNDEDFUTURES */
 
-        {
-          firm: "MyFundedFutures",
-          account: 50000,
-          goal: 3000,
-          ddt: "Intraday",
-          dd: 2000,
-          mindays: 2,
-          eval: 165,
-          activation: 0,
-          truecost: 82,
-          discount: "50%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-          country: "USA",
-          maxaccounts: 3,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          firmpage: "#",
-          website: "https://myfundedfutures.com/challenge?ref=5117",
-        },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 2,
+            eval: 150,
+            activation: 100,
+            truecost: 175,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
 
-        {
-          firm: "MyFundedFutures",
-          account: 100000,
-          goal: 6000,
-          ddt: "Intraday",
-          dd: 3000,
-          mindays: 2,
-          eval: 330,
-          activation: 0,
-          truecost: 165,
-          discount: "50%",
-          code: "BRO",
-          platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-          country: "USA",
-          maxaccounts: 3,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-          firmpage: "#",
-          website: "https://myfundedfutures.com/challenge?ref=5117",
-        },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 2,
+            eval: 300,
+            activation: 150,
+            truecost: 300,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
 
-        {
-          firm: "Lucid Trading",
-          account: 50000,
-          goal: 3000,
-          ddt: "EOD",
-          dd: 2000,
-          mindays: 5,
-          eval: 170,
-          activation: 0,
-          truecost: 85,
-          discount: "50%",
-          code: "BROTRADING",
-          platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
-          country: "UK",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-          firmpage: "#",
-          website: "https://lucidtrading.com/ref/brotrading/",
-        },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2000,
+            mindays: 2,
+            eval: 165,
+            activation: 0,
+            truecost: 82,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
 
-        {
-          firm: "Lucid Trading",
-          account: 100000,
-          goal: 6000,
-          ddt: "EOD",
-          dd: 3000,
-          mindays: 5,
-          eval: 285,
-          activation: 0,
-          truecost: 142,
-          discount: "50%",
-          code: "BROTRADING",
-          platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
-          country: "UK",
-          maxaccounts: 5,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-          firmpage: "#",
-          website: "https://lucidtrading.com/ref/brotrading/",
-        },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 2,
+            eval: 330,
+            activation: 0,
+            truecost: 165,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
 
-        {
-          firm: "Day Traders",
-          account: 50000,
-          goal: 3000,
-          ddt: "Intraday",
-          dd: 2500,
-          mindays: 1,
-          eval: 165,
-          activation: 130,
-          truecost: 229,
-          discount: "40%",
-          code: "BROTRADING",
-          platform: "ProjectX, Rithmic, NinjaTrader",
-          country: "USA",
-          maxaccounts: 15,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-          firmpage: "#",
-          website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-        },
+          /* LUCID */
 
-        {
-          firm: "Day Traders",
-          account: 100000,
-          goal: 6000,
-          ddt: "Intraday",
-          dd: 3000,
-          mindays: 1,
-          eval: 315,
-          activation: 130,
-          truecost: 319,
-          discount: "40%",
-          code: "BROTRADING",
-          platform: "ProjectX, Rithmic, NinjaTrader",
-          country: "USA",
-          maxaccounts: 15,
-          logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-          firmpage: "#",
-          website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-        },
-      ];
+          {
+            firm: "Lucid Trading",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 5,
+            eval: 170,
+            activation: 0,
+            truecost: 85,
+            discount: "50%",
+            code: "BROTRADING",
+            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+            country: "UK",
+            maxaccounts: 5,
+            firmpage: "Frims/Lucid Trading.html",
+            website: "https://lucidtrading.com/ref/brotrading/",
+          },
 
-      /* RENDER */
+          {
+            firm: "Lucid Trading",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 5,
+            eval: 285,
+            activation: 0,
+            truecost: 142,
+            discount: "50%",
+            code: "BROTRADING",
+            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+            country: "UK",
+            maxaccounts: 5,
+            firmpage: "Frims/Lucid Trading.html",
+            website: "https://lucidtrading.com/ref/brotrading/",
+          },
 
-      const tbody = document.querySelector("#zx-table tbody");
+          /* DAYTRADERS */
 
-      function k(n) {
-        return n / 1000 + "K";
-      }
+          {
+            firm: "Day Traders",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2500,
+            mindays: 1,
+            eval: 165,
+            activation: 130,
+            truecost: 229,
+            discount: "40%",
+            code: "BROTRADING",
+            platform: "ProjectX, Rithmic, NinjaTrader",
+            country: "USA",
+            maxaccounts: 15,
+            firmpage: "Frims/DayTraders.html",
+            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+          },
 
-      function flag(c) {
-        if (c === "USA") return "🇺🇸";
-        if (c === "UK") return "🇬🇧";
-        return "";
-      }
+          {
+            firm: "Day Traders",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 1,
+            eval: 315,
+            activation: 130,
+            truecost: 319,
+            discount: "40%",
+            code: "BROTRADING",
+            platform: "ProjectX, Rithmic, NinjaTrader",
+            country: "USA",
+            maxaccounts: 15,
+            firmpage: "Frims/DayTraders.html",
+            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+          },
+        ];
 
-      function render(data) {
-        tbody.innerHTML = "";
+        const tbody = document.querySelector("#zx-table tbody");
 
-        data.sort((a, b) => a.truecost - b.truecost);
+        /* ---------- SORT ---------- */
 
-        data.forEach((f) => {
-          tbody.innerHTML += `
+        firms.sort((a, b) => b.truecost - a.truecost);
 
-<tr>
+        let filtered = [...firms];
 
-<td class="sticky-logo">
+        /* ---------- TABLE RENDER ---------- */
+
+        function render(data) {
+          tbody.innerHTML = "";
+
+          data.forEach((f) => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+
+<td class="sticky-col logo-col">
 <img src="${f.logo}" class="zx-logo">
 </td>
 
-<td class="sticky-firm">
-${f.firm}
-</td>
+<td class="sticky-col firm-col">${f.firm}</td>
 
-<td>${k(f.account)}</td>
-
-<td>$${f.goal}</td>
-
-<td>${f.ddt}</td>
-
-<td>$${f.dd}</td>
-
-<td>${f.mindays}</td>
+<td>$${f.account.toLocaleString()}</td>
+<td>${f.platform}</td>
+<td>${f.country}</td>
+<td>${f.maxaccounts}</td>
 
 <td>$${f.eval}</td>
-
 <td>$${f.activation}</td>
-
 <td>$${f.truecost}</td>
 
 <td>${f.discount}</td>
+<td>$${f.goal}</td>
+<td>${f.ddt}</td>
+<td>$${f.dd}</td>
+<td>${f.mindays}</td>
 
-<td><button class="zx-code" onclick="copyCode(this,'${f.code}')">${f.code}</button></td>
+<td><button class="zx-code">${f.code}</button></td>
 
-<td>${f.platform}</td>
+<td><a href="${f.firmpage}" class="zx-firm-btn">Open</a></td>
 
-<td>${flag(f.country)} ${f.country}</td>
-
-<td>${f.maxaccounts}</td>
-
-<td><a href="${f.firmpage}" class="zx-btn">Firm Page</a></td>
-
-<td><a href="${f.website}" target="_blank" class="zx-btn">Visit</a></td>
-
-</tr>
+<td><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit</a></td>
 
 `;
+
+            tbody.appendChild(row);
+          });
+        }
+
+        render(filtered);
+
+        /* ---------- FILTER ---------- */
+
+        function applyFilters() {
+          const firm = document.getElementById("firm-filter").value;
+          const platform = document.getElementById("platform-filter").value;
+          const discount = document.getElementById("discount-filter").value;
+          const max = document.getElementById("max-filter").value;
+
+          const goalLimit = parseInt(
+            document.getElementById("goal-range").value,
+          );
+          const costLimit = parseInt(
+            document.getElementById("cost-range").value,
+          );
+
+          filtered = firms.filter((f) => {
+            if (firm != "all" && f.firm != firm) return false;
+
+            if (platform != "all") {
+              const pList = f.platform.split(",").map((p) => p.trim());
+
+              if (!pList.includes(platform)) return false;
+            }
+
+            if (discount != "all" && f.discount != discount) return false;
+
+            if (max != "all" && f.maxaccounts > parseInt(max)) return false;
+
+            if (f.goal > goalLimit) return false;
+
+            if (f.truecost > costLimit) return false;
+
+            return true;
+          });
+
+          render(filtered);
+        }
+
+        /* ---------- EVENTS ---------- */
+
+        document
+          .querySelectorAll(".zx-filter-panel select")
+          .forEach((el) => el.addEventListener("change", applyFilters));
+
+        /* ---------- RANGE ---------- */
+
+        const goalRange = document.getElementById("goal-range");
+        const costRange = document.getElementById("cost-range");
+
+        const goalValue = document.getElementById("goal-value");
+        const costValue = document.getElementById("cost-value");
+
+        goalRange.addEventListener("input", function () {
+          goalValue.innerText = "≤ " + this.value;
+          applyFilters();
         });
-      }
 
-      render(firms);
+        costRange.addEventListener("input", function () {
+          costValue.innerText = "≤ " + this.value;
+          applyFilters();
+        });
 
-      function copyCode(btn, code) {
-        navigator.clipboard.writeText(code);
+        /* ---------- POPULATE FILTERS ---------- */
 
-        btn.innerText = "Copied";
+        function populateFirm() {
+          const select = document.getElementById("firm-filter");
 
-        setTimeout(() => (btn.innerText = code), 1200);
-      }
+          const values = [...new Set(firms.map((f) => f.firm))];
+
+          values.forEach((v) => {
+            const opt = document.createElement("option");
+
+            opt.value = v;
+            opt.textContent = v;
+
+            select.appendChild(opt);
+          });
+        }
+
+        function populatePlatform() {
+          const select = document.getElementById("platform-filter");
+
+          const arr = [];
+
+          firms.forEach((f) => {
+            f.platform.split(",").forEach((p) => arr.push(p.trim()));
+          });
+
+          const values = [...new Set(arr)];
+
+          values.forEach((v) => {
+            const opt = document.createElement("option");
+
+            opt.value = v;
+            opt.textContent = v;
+
+            select.appendChild(opt);
+          });
+        }
+
+        function populateDiscount() {
+          const select = document.getElementById("discount-filter");
+
+          const values = [...new Set(firms.map((f) => f.discount))];
+
+          values.forEach((v) => {
+            const opt = document.createElement("option");
+
+            opt.value = v;
+            opt.textContent = v;
+
+            select.appendChild(opt);
+          });
+        }
+
+        function populateMax() {
+          const select = document.getElementById("max-filter");
+
+          const values = [...new Set(firms.map((f) => f.maxaccounts))].sort(
+            (a, b) => a - b,
+          );
+
+          values.forEach((v) => {
+            const opt = document.createElement("option");
+
+            opt.value = v;
+            opt.textContent = "≤ " + v;
+
+            select.appendChild(opt);
+          });
+        }
+
+        populateFirm();
+        populatePlatform();
+        populateDiscount();
+        populateMax();
+
+        /* ---------- COPY BUTTON ---------- */
+
+        document.addEventListener("click", function (e) {
+          if (e.target.classList.contains("zx-code")) {
+            const original = e.target.innerText;
+
+            navigator.clipboard.writeText(original);
+
+            e.target.innerText = "Copied!";
+
+            setTimeout(() => {
+              e.target.innerText = original;
+            }, 1000);
+          }
+        });
+
+        /* ---------- COLUMN DRAG ---------- */
+
+        let dragIndex;
+
+        document
+          .querySelectorAll("#zx-table th[draggable=true]")
+          .forEach((th) => {
+            th.addEventListener("dragstart", () => {
+              dragIndex = th.cellIndex;
+            });
+
+            th.addEventListener("dragover", (e) => e.preventDefault());
+
+            th.addEventListener("drop", function () {
+              const dropIndex = this.cellIndex;
+
+              document.querySelectorAll("#zx-table tr").forEach((row) => {
+                const cells = row.children;
+
+                row.insertBefore(cells[dragIndex], cells[dropIndex]);
+              });
+            });
+          });
+      });
     </script>
-    <!-- FAVORITE FIRMS TABLE END  -->
+
+    <!-- ===== FAVORITE FIRMS END ===== -->
 
     <!-- ===================== Marketing Section ===================== -->
     <section class="market-section">
-      <h1>Prepare to Enter the Market</h1>
+      <h1>Prepare for the Markets</h1>
       <p class="subtitle">
-        Preparation is everything. Start your trading day informed with our
-        economic calendar, breaking news, market sentiment updates, and
-        real-time charts to guide every decision confidently.
+        Start your trading day prepared with our economic calendar, breaking
+        news, market sentiment, and real-time charts.
       </p>
 
       <div class="market-dashboard">
@@ -2722,9 +3082,7 @@ ${f.firm}
           <!-- Card 1 -->
           <a href="CompareTopFrims/comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Firm Comparison</h3>
             <p>
@@ -2737,7 +3095,7 @@ ${f.firm}
           <a href="CompareTopFrims/bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>
@@ -2759,7 +3117,7 @@ ${f.firm}
           <a href="CompareTopFrims/TrueCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
+                src="https://img.icons8.com/?size=96&id=MabKibi4OdYM&format=png"
               />
             </div>
             <h3>True Cost</h3>
