@@ -267,25 +267,23 @@
                   <a href="../CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <a href="../CompareTopFrims/TrueCost.html"
-                    >True Cost to Funding</a
-                  >
-                  <a href="../CompareTopFrims/StartCost.html"
-                    >Prop Firm Starting Costs</a
-                  >
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="../CompareTopFrims/Drawdown.html"
                     >Largest Drawdown</a
                   >
                   <a href="../CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
+                  <a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -311,8 +309,8 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="MarketAnalysis.html">Market Analysis</a>
               <a href="TradingTools.html">Trading Tools</a>
+              <a href="MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
@@ -340,11 +338,14 @@
 
       .bt-header {
         position: fixed;
-        top: 40px; /* same as ticker height */
+        top: 40px;
         left: 0;
-        width: 100%;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000;
         transition: all 0.35s ease;
       }
 
@@ -354,6 +355,8 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -371,12 +374,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -419,17 +422,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -450,6 +454,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -461,7 +480,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -1411,10 +1430,11 @@
               "autosize": true,
               "width": "100%",
               "height": 550,
+
               "symbols": [
-                ["Apple","NASDAQ:AAPL|1D"],
-                ["Google","NASDAQ:GOOGL|1D"],
-                ["Microsoft","NASDAQ:MSFT|1D"]
+                ["Gold","OANDA:XAUUSD|1D"],
+                ["Bitcoin","BITSTAMP:BTCUSD|1D"],
+                ["Crude Oil","TVC:USOIL|1D"]
               ]
             }
           </script>

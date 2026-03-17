@@ -270,23 +270,21 @@
                   <a href="CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <a href="CompareTopFrims/TrueCost.html"
-                    >True Cost to Funding</a
-                  >
-                  <a href="CompareTopFrims/StartCost.html"
-                    >Prop Firm Starting Costs</a
-                  >
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="CompareTopFrims/Drawdown.html">Largest Drawdown</a>
                   <a href="CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="CompareTopFrims/BestDeals.html">Best Deals</a>
+                  <a href="CompareTopFrims/bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -312,8 +310,8 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
               <a href="Resourses/TradingTools.html">Trading Tools</a>
+              <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
@@ -341,11 +339,14 @@
 
       .bt-header {
         position: fixed;
-        top: 40px; /* same as ticker height */
+        top: 40px;
         left: 0;
-        width: 100%;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000;
         transition: all 0.35s ease;
       }
 
@@ -355,6 +356,8 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -372,12 +375,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -406,6 +409,8 @@
 
       /* ================= DROPDOWN ================= */
 
+      /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -420,17 +425,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -451,6 +457,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -462,7 +483,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -641,18 +662,22 @@
         <!-- LEFT SIDE -->
         <div class="comparison-left">
           <h1 class="main-heading">
-            <span class="line1"><span class="highlight">Why </span> </span>
-            <span class="line2">We’re Doing This..!!</span>
+            <span class="line1"><span class="highlight">GIVEAWAY</span> </span>
+            <!-- <span class="line2">We’re Doing This..!!</span> -->
           </h1>
 
           <p class="subtext">
-            Bro Trading was built to help traders level up. <br />
-            This giveaway is our way of giving back to the community. <br />
-            We believe skill deserves opportunity. <br />
+            Every Friday is Giveaway Friday! <br />This is your chance to win
+            awesome Trading Prizes. <br />
+            We regularly Giveaway funded Accounts, and who knows—maybe in the
+            future even cash prizes and other exclusive BroTrading goodies.
+            <br />
+            Stay tuned and don’t miss out on our Trading Giveaways. <br />
+            It’s simple: Enter, Win, and Enjoy the BroTrading vibes. Who
+            knows—the next winner could be YOU!<br />
           </p>
           <p class="TAG">
-            Free to Enter || No Purchase required || Winner announced live ||
-            Open Worldwide
+            Free to Enter || No Purchase required || Win & Enjoy || Open to All
           </p>
         </div>
 
@@ -860,7 +885,7 @@
               <span class="info-icon">📜</span>
               <span
                 >Terms & Conditions apply •
-                <a href="More/Term&Conditions.html">View Terms</a></span
+                <a href="More/Privacy-Terms.html">View Terms</a></span
               >
             </div>
 
@@ -903,7 +928,8 @@
 
             <label class="checkbox">
               <input type="checkbox" required />
-              I agree to the <a href="#">Terms & Conditions</a>
+              I agree to the
+              <a href="More/Privacy-Terms.html">Terms & Conditions</a>
             </label>
 
             <button type="submit">Secure My Entry →</button>
@@ -1402,6 +1428,7 @@
       let spinAngleStart;
       let spinTime = 0;
       let spinTimeTotal = 0;
+      let spinning = false;
 
       const canvas = document.getElementById("wheelCanvas");
       const ctx = canvas.getContext("2d");
@@ -1468,8 +1495,12 @@
       }
 
       /* SPIN BUTTON */
-
       document.getElementById("spinBtn").onclick = function () {
+        /* cancel previous spin if still running */
+        if (spinTimeout) {
+          clearTimeout(spinTimeout);
+        }
+
         spinAngleStart = Math.random() * 10 + 10;
 
         spinTime = 0;
@@ -1512,6 +1543,8 @@
         const index = Math.floor((360 - (degrees % 360)) / arcd);
 
         alert("🎉 Winner: " + names[index]);
+
+        spinning = false; // allow next spin
       }
 
       /* EASING */
@@ -1558,9 +1591,7 @@
           <!-- Card 1 -->
           <a href="CompareTopFrims/comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Firm Comparison</h3>
             <p>
@@ -1573,7 +1604,7 @@
           <a href="CompareTopFrims/bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>

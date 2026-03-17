@@ -267,25 +267,23 @@
                   <a href="../CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <a href="../CompareTopFrims/TrueCost.html"
-                    >True Cost to Funding</a
-                  >
-                  <a href="../CompareTopFrims/StartCost.html"
-                    >Prop Firm Starting Costs</a
-                  >
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="../CompareTopFrims/Drawdown.html"
                     >Largest Drawdown</a
                   >
                   <a href="../CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
+                  <a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -311,8 +309,8 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="MarketAnalysis.html">Market Analysis</a>
               <a href="TradingTools.html">Trading Tools</a>
+              <a href="MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
@@ -340,11 +338,14 @@
 
       .bt-header {
         position: fixed;
-        top: 40px; /* same as ticker height */
+        top: 40px;
         left: 0;
-        width: 100%;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000;
         transition: all 0.35s ease;
       }
 
@@ -354,6 +355,8 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -371,12 +374,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -419,17 +422,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -450,6 +454,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -461,7 +480,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -637,13 +656,11 @@
     <!-- ========== best Deal hero section=========  -->
     <section class="best-deals-hero">
       <div class="best-deals-content">
-        <h1>Trading Tools</h1>
+        <h1>Bro Tools</h1>
         <p>
-          Tools and Indicators are a great way to gain an edge in the markets.
-          OnlyPropFirms is proud to only feature indicators and tools that we
-          actually use. They are tested and approved by our internal team to
-          ensure they help our traders analyze market data and make informed
-          decisions.
+          These are the tools the Bro’s use in their daily trading. Every
+          indicator and tool is tested by our team to help traders read the
+          markets and gain an edge.
         </p>
       </div>
     </section>
@@ -706,108 +723,329 @@
     <!-- ======== Drawdown Cards Section ======== -->
     <section class="ddc-section">
       <div class="ddc-container">
-        <!-- CARD -->
+        <!-- ================= USED BY BRO ================= -->
+        <h2 style="grid-column: 1/-1; margin-bottom: 10px">
+          The Bro Selections
+        </h2>
+
+        <!-- DeepCharts -->
         <div class="ddc-card">
-          <!-- Header Row -->
           <div class="ddc-header">
             <div class="ddc-header-left">
               <img
-                src="https://onlypropfirms.com/wp-content/uploads/2025/09/image-119.png"
+                src="https://img.logo.dev/deepcharts.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&retina=true"
                 class="ddc-logo"
               />
-              <h3>Tradovate Prop</h3>
+              <h3>DeepCharts</h3>
             </div>
-            <div class="ddc-stars">★★★★★</div>
+            <div class="ddc-stars">★★★★☆</div>
           </div>
 
-          <!-- Divider -->
           <div class="ddc-divider"></div>
 
-          <!-- Body -->
           <div class="ddc-body">
             <p class="ddc-description">
-              TRADE ON A MODERN FUTURES TRADING PLATFORM The Tradovate platform
-              was built from the ground up for speed and integrated multi-device
-              trading using technology designed for active futures traders.
+              DeepCharts is a powerful order flow platform built for traders who
+              want to understand what’s really happening behind the candles.
+              With advanced footprint charts, liquidity insights, and volume
+              analysis, it helps traders read the market with more precision.
+              Used by many futures traders in the BroTrading community to
+              analyze order flow and spot high-probability setups.
             </p>
 
-            <p class="ddc-price">Price: Free</p>
+            <p class="ddc-price">Price: From $74/month</p>
 
             <div class="ddc-actions">
-              <a href="#" target="_blank" class="ddc-btn">Shop Now</a>
-              <a href="#" target="_blank" class="ddc-btn-secondary"
+              <a href="https://deepcharts.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://deepcharts.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
                 >Learn More</a
               >
             </div>
           </div>
         </div>
 
+        <!-- TradeZella -->
         <div class="ddc-card">
-          <!-- Header Row -->
           <div class="ddc-header">
             <div class="ddc-header-left">
               <img
-                src="	https://onlypropfirms.com/wp-content/uploads/2025/09/of2.svg"
+                src="https://img.logo.dev/tradezella.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&format=png&retina=true"
                 class="ddc-logo"
               />
-              <h3>Optimus Features</h3>
+              <h3>TradeZella</h3>
             </div>
-            <div class="ddc-stars">★★★★★</div>
+            <div class="ddc-stars">★★★★☆</div>
           </div>
 
-          <!-- Divider -->
           <div class="ddc-divider"></div>
 
-          <!-- Body -->
           <div class="ddc-body">
             <p class="ddc-description">
-              Endorsed by OnlyPropFirms, as our choice and recommendation for
-              live brokerage accounts. With the industry’s most competitive
-              margins, Optimus Futures earns accolades for its exceptional
-              reviews and unwavering customer support.
+              TradeZella is a professional trading journal designed to help
+              traders improve their performance. Track trades, analyze
+              statistics, and identify patterns so you can refine your strategy.
+              Many Bro’s use TradeZella to review trades and stay accountable to
+              their trading plan.
             </p>
 
-            <p class="ddc-price">Price: Free</p>
+            <p class="ddc-price">
+              Price: $29/month (Basic)<br />
+              $49/month (Premium)
+            </p>
 
             <div class="ddc-actions">
-              <a href="#" target="_blank" class="ddc-btn">Shop Now</a>
-              <a href="#" target="_blank" class="ddc-btn-secondary"
+              <a href="https://tradezella.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://tradezella.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
                 >Learn More</a
               >
             </div>
           </div>
         </div>
 
+        <!-- Bookmap -->
         <div class="ddc-card">
-          <!-- Header Row -->
           <div class="ddc-header">
             <div class="ddc-header-left">
               <img
-                src="https://onlypropfirms.com/wp-content/uploads/2025/09/la_logo.svg"
+                src="https://img.logo.dev/bookmap.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&format=png&retina=true"
+                class="ddc-logo"
+              />
+              <h3>Bookmap</h3>
+            </div>
+            <div class="ddc-stars">★★★★★</div>
+          </div>
+
+          <div class="ddc-divider"></div>
+
+          <div class="ddc-body">
+            <p class="ddc-description">
+              Bookmap is one of the most advanced order flow visualization tools
+              available. Its heatmap technology allows traders to see liquidity,
+              large orders, and market activity in real time. This helps traders
+              understand supply and demand dynamics that traditional charts
+              cannot show.
+            </p>
+
+            <p class="ddc-price">Price: Free – $79/month+</p>
+
+            <div class="ddc-actions">
+              <a href="https://bookmap.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://bookmap.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= USED BY BRO COMMUNITY ================= -->
+        <h2 style="grid-column: 1/-1; margin-top: 40px; margin-bottom: 10px">
+          Used by Bro Community
+        </h2>
+
+        <!-- ATAS -->
+        <div class="ddc-card">
+          <div class="ddc-header">
+            <div class="ddc-header-left">
+              <img
+                src="https://img.logo.dev/atas.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
+                class="ddc-logo"
+              />
+              <h3>ATAS</h3>
+            </div>
+            <div class="ddc-stars">★★★★☆</div>
+          </div>
+
+          <div class="ddc-divider"></div>
+
+          <div class="ddc-body">
+            <p class="ddc-description">
+              ATAS is a professional order flow and volume analysis platform
+              designed for futures traders. It offers footprint charts, delta
+              analysis, volume clusters, and advanced tools to help traders
+              understand market activity at a deeper level.
+            </p>
+
+            <p class="ddc-price">Price: €19 – €89/month</p>
+
+            <div class="ddc-actions">
+              <a href="https://atas.net/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://atas.net/"
+                target="_blank"
+                class="ddc-btn-secondary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- IBKR -->
+        <div class="ddc-card">
+          <div class="ddc-header">
+            <div class="ddc-header-left">
+              <img
+                src="https://img.logo.dev/ibkr.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
+                class="ddc-logo"
+              />
+              <h3>Interactive Brokers</h3>
+            </div>
+            <div class="ddc-stars">★★★★☆</div>
+          </div>
+
+          <div class="ddc-divider"></div>
+
+          <div class="ddc-body">
+            <p class="ddc-description">
+              Interactive Brokers is one of the largest and most trusted global
+              brokers offering access to stocks, futures, options, forex and
+              more. Known for its competitive fees and professional trading
+              tools.
+            </p>
+
+            <p class="ddc-price">Price: No platform fee (low commissions)</p>
+
+            <div class="ddc-actions">
+              <a
+                href="https://www.interactivebrokers.com/"
+                target="_blank"
+                class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://www.interactivebrokers.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- AMP Futures -->
+        <div class="ddc-card">
+          <div class="ddc-header">
+            <div class="ddc-header-left">
+              <img
+                src="https://img.logo.dev/ampfutures.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=124&retina=true"
+                class="ddc-logo"
+              />
+              <h3>AMP Futures</h3>
+            </div>
+            <div class="ddc-stars">★★★★☆</div>
+          </div>
+
+          <div class="ddc-divider"></div>
+
+          <div class="ddc-body">
+            <p class="ddc-description">
+              AMP Futures is a popular futures broker known for its ultra-low
+              commissions and wide range of professional trading platforms
+              including Quantower, Sierra Chart, ATAS and TradingView.
+            </p>
+
+            <p class="ddc-price">Price: ~$0.46 – $0.49 per contract</p>
+
+            <div class="ddc-actions">
+              <a href="https://ampfutures.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://ampfutures.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- TradingView -->
+        <div class="ddc-card">
+          <div class="ddc-header">
+            <div class="ddc-header-left">
+              <img
+                src="https://img.logo.dev/tradingview.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
+                class="ddc-logo"
+              />
+              <h3>TradingView</h3>
+            </div>
+            <div class="ddc-stars">★★★★★</div>
+          </div>
+
+          <div class="ddc-divider"></div>
+
+          <div class="ddc-body">
+            <p class="ddc-description">
+              TradingView is one of the most popular charting platforms used by
+              traders worldwide. It offers powerful charts, hundreds of
+              indicators, and a huge community sharing trading ideas.
+            </p>
+
+            <p class="ddc-price">Price: Free – $59.95/month</p>
+
+            <div class="ddc-actions">
+              <a href="https://tradingview.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://tradingview.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- LuxAlgo -->
+        <div class="ddc-card">
+          <div class="ddc-header">
+            <div class="ddc-header-left">
+              <img
+                src="https://img.logo.dev/luxalgo.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
                 class="ddc-logo"
               />
               <h3>LuxAlgo</h3>
             </div>
-            <div class="ddc-stars">★★★★★</div>
+            <div class="ddc-stars">★★★★☆</div>
           </div>
 
-          <!-- Divider -->
           <div class="ddc-divider"></div>
 
-          <!-- Body -->
           <div class="ddc-body">
             <p class="ddc-description">
-              Enhance your trading experience. LuxAlgo creates next-gen trading
-              indicators to help the world see markets smarter. They are the #1
-              provider of trading indicators worldwide. Trusted by over 50,000+
-              traders.
+              LuxAlgo provides advanced TradingView indicators designed to help
+              traders identify trends, market structure, and entry and exit
+              points faster.
             </p>
 
-            <p class="ddc-price">Price: Free</p>
+            <p class="ddc-price">Price: Free – $59/month</p>
 
             <div class="ddc-actions">
-              <a href="#" target="_blank" class="ddc-btn">Shop Now</a>
-              <a href="#" target="_blank" class="ddc-btn-secondary"
+              <a href="https://luxalgo.com/" target="_blank" class="ddc-btn"
+                >Unlock Insights</a
+              >
+              <a
+                href="https://luxalgo.com/"
+                target="_blank"
+                class="ddc-btn-secondary"
                 >Learn More</a
               >
             </div>
@@ -817,7 +1055,7 @@
     </section>
     <style>
       .ddc-section {
-        padding: 100px 6%;
+        padding: 65px 6%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -843,6 +1081,12 @@
         justify-content: space-between;
       }
 
+      .ddc-container h2 {
+        font-weight: 700;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 42px;
+      }
       /* TOP AREA */
       .ddc-top {
         display: flex;
@@ -896,7 +1140,7 @@
         text-align: center;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: white;
-        padding: 16px 28px;
+        padding: 12px 34px;
         border-radius: 40px;
         font-weight: 600;
         text-decoration: none;
@@ -992,7 +1236,7 @@
 
       .ddc-btn-secondary:hover {
         color: rgb(11, 11, 11);
-        background: rgba(255, 255, 255, 0.532);
+        background: rgb(255 255 255);
         /* border: 3px solid black; */
       }
     </style>
@@ -1205,9 +1449,7 @@
           <!-- Card 1 -->
           <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -1220,7 +1462,7 @@
           <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>

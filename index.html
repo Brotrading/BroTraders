@@ -344,12 +344,13 @@
 
       .bt-header {
         position: fixed;
-        top: 40px; /* same as ticker height */
+        top: 40px;
         left: 0;
         margin: 10px 15px;
-        border-radius: 40px;
-        width: 97%;
-        background: #0000004a;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
         transition: all 0.35s ease;
       }
@@ -360,6 +361,8 @@
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -377,12 +380,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -485,7 +488,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -1133,6 +1136,7 @@ View Firm
     <style>
       .market-ticker-section {
         width: 100%;
+        height: 66px;
         background: linear-gradient(90deg, #000814, #06142b);
         padding: 8px 0;
         border-top: 1px solid rgba(37, 99, 235, 0.25);
@@ -2731,10 +2735,10 @@ Copy Code:
               </div>
             </div>
 
-            <!-- CHARTS -->
             <div class="tab-content" id="charts">
               <div class="tradingview-widget-container">
                 <div class="tradingview-widget-container__widget"></div>
+
                 <script
                   type="text/javascript"
                   src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
@@ -2749,10 +2753,11 @@ Copy Code:
                     "autosize": true,
                     "width": "100%",
                     "height": 550,
+
                     "symbols": [
-                      ["Apple","NASDAQ:AAPL|1D"],
-                      ["Google","NASDAQ:GOOGL|1D"],
-                      ["Microsoft","NASDAQ:MSFT|1D"]
+                      ["Gold","OANDA:XAUUSD|1D"],
+                      ["Bitcoin","BITSTAMP:BTCUSD|1D"],
+                      ["Crude Oil","TVC:USOIL|1D"]
                     ]
                   }
                 </script>
@@ -2893,6 +2898,15 @@ Copy Code:
         font-size: 16px;
         transition: 0.3s;
         /* font-family: "DM Mono", monospace; */
+      }
+      .tradingview-widget-container {
+        width: 100%;
+        min-height: 550px !important;
+      }
+
+      .tradingview-widget-container__widget {
+        width: 100%;
+        height: 100%;
       }
 
       .market-sidebar .tab-btn.active {
@@ -3836,5 +3850,303 @@ Copy Code:
       }
     </style>
     <!-- ================= BRO TRADING FOOTER END ================= -->
+    <!-- ================= Giveaway Popup ================= -->
+
+    <div id="giveawayPopup" class="bt-popup-overlay">
+      <div class="bt-popup">
+        <button class="bt-close" onclick="closeGiveaway()">✕</button>
+
+        <!-- LOGO -->
+        <img
+          class="bt-popup-logo"
+          src="https://devya46.github.io/BroTraders/Bro_Traders_logo-removebg-preview.png"
+          alt="Bro Traders"
+        />
+
+        <!-- Animated Badge -->
+        <!-- <div class="bt-badge">
+      <span>$100K</span>
+    </div> -->
+
+        <h2>Win a FREE <span>$100K</span> Prop Firm Challenge</h2>
+
+        <p class="bt-desc">
+          Join the <b>BroTrading newsletter</b> for updates on the best Propfirm
+          deals. <br /><br />
+          Last giveaway had only <b>173 participants</b> — your odds are
+          surprisingly high to win.
+        </p>
+
+        <form id="giveawayForm">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Username" required />
+
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+
+          <label class="bt-check">
+            <input type="checkbox" name="newsletter" checked />
+            I would like to receive newsletter & offers on mail
+          </label>
+
+          <button type="submit" class="bt-btn">Enter the Giveaway</button>
+        </form>
+      </div>
+    </div>
+
+    <style>
+      /* ================= POPUP OVERLAY ================= */
+
+      .bt-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(3, 7, 18, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        backdrop-filter: blur(6px);
+        animation: fadeIn 0.4s ease;
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* ================= POPUP BOX ================= */
+
+      .bt-popup {
+        width: 420px;
+        background:
+          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
+          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+        border-radius: 16px;
+        padding: 35px;
+        color: white;
+        text-align: center;
+        /* box-shadow:
+          0 0 40px rgba(59, 130, 246, 0.35),
+          0 25px 70px rgba(0, 0, 0, 0.7); */
+        animation: scaleUp 0.4s ease;
+        position: relative;
+      }
+
+      /* CLOSE */
+
+      .bt-close {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        background: none;
+        border: none;
+        color: #9ca3af;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      /* LOGO */
+
+      .bt-popup-logo {
+        width: 140px;
+        margin-bottom: 10px;
+      }
+
+      /* BADGE */
+
+      .bt-badge {
+        width: 110px;
+        height: 110px;
+        margin: 10px auto 20px;
+
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 24px;
+        font-weight: 700;
+
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+
+        box-shadow:
+          0 0 30px rgba(124, 58, 237, 0.6),
+          inset 0 0 20px rgba(255, 255, 255, 0.15);
+
+        animation: pulseGlow 2.5s infinite;
+      }
+
+      /* TITLE */
+
+      .bt-popup h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+
+      .bt-popup span {
+        color: #60a5fa;
+      }
+
+      /* DESCRIPTION */
+
+      .bt-desc {
+        font-size: 14px;
+        opacity: 0.85;
+        margin-bottom: 20px;
+      }
+      /* FORM LAYOUT */
+
+      .bt-popup form {
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      /* LABELS */
+
+      .bt-popup label {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: #cbd5f5;
+      }
+
+      /* INPUTS */
+
+      .bt-popup input[type="text"],
+      .bt-popup input[type="email"] {
+        width: 100%;
+        padding: 12px 14px;
+
+        background: #020617;
+
+        border: 1px solid rgba(96, 165, 250, 0.35);
+        border-radius: 8px;
+
+        color: white;
+        font-size: 14px;
+
+        transition: 0.25s;
+      }
+
+      /* INPUT FOCUS */
+
+      .bt-popup input:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.15);
+      }
+
+      /* SPACE BETWEEN FIELDS */
+
+      .bt-popup input {
+        margin-bottom: 16px;
+      }
+
+      /* INPUT */
+
+      .bt-popup input[type="text"],
+      .bt-popup input[type="email"] {
+        width: 100%;
+        padding: 11px;
+        margin-top: 6px;
+        margin-bottom: 16px;
+
+        background: #020617;
+
+        border: 1px solid rgba(96, 165, 250, 0.35);
+        border-radius: 7px;
+
+        color: white;
+      }
+
+      /* CHECKBOX */
+
+      .bt-check {
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      /* BUTTON */
+
+      .bt-btn {
+        width: 100%;
+        padding: 12px;
+
+        background: linear-gradient(90deg, #2563eb, #7c3aed);
+
+        border: none;
+        border-radius: 8px;
+
+        font-weight: 600;
+        color: white;
+        cursor: pointer;
+
+        transition: 0.25s;
+      }
+
+      .bt-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(124, 58, 237, 0.6);
+      }
+
+      /* ANIMATIONS */
+
+      @keyframes pulseGlow {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.07);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes scaleUp {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <script>
+      function closeGiveaway() {
+        document.getElementById("giveawayPopup").style.display = "none";
+      }
+
+      document
+        .getElementById("giveawayForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          alert("🎉 You are entered in the giveaway!");
+
+          closeGiveaway();
+        });
+    </script>
+    <!-- ================= Giveaway Popup END ================= -->
   </body>
 </html>

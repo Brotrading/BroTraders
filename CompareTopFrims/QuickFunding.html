@@ -239,16 +239,18 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <img
-            src="../Bro_Traders_logo-removebg-preview.png"
-            alt="Bro Trading"
-          />
+          <a href="../index.html"
+            ><img
+              src="../Bro_Traders_logo-removebg-preview.png"
+              alt="Bro Trading"
+          /></a>
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+
           <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
@@ -261,17 +263,19 @@
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
                   <a href="comparison.html">Prop Firm Comparison</a>
-                  <a href="TrueCost.html">True Cost to Funding</a>
-                  <a href="StartCost.html">Prop Firm Starting Costs</a>
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="BestDeals.html">Best Deals</a>
+                  <a href="bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -297,13 +301,13 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
               <a href="../Resourses/TradingTools.html">Trading Tools</a>
+              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -325,19 +329,26 @@
       /* ================= HEADER ================= */
 
       .bt-header {
-        position: sticky;
-        top: 0;
-        width: 100%;
+        position: fixed;
+        top: 40px;
+        left: 0;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000; /* Normal state */
         transition: all 0.35s ease;
       }
 
       .bt-header.bt-scrolled {
+        top: 0;
         background: rgba(10, 15, 30, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -355,12 +366,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -389,6 +400,8 @@
 
       /* ================= DROPDOWN ================= */
 
+      /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -403,17 +416,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -434,6 +448,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -445,7 +474,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -643,16 +672,13 @@
         <div class="comparison-right">
           <div class="card large-card">
             <img
-              src="https://plus.unsplash.com/premium_photo-1661371241897-3202947ace30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
+              src="../Photos/QF_img2.png"
               alt="Stock market trading screen"
             />
           </div>
 
           <div class="card small-card">
-            <img
-              src="https://images.unsplash.com/photo-1620266757065-5814239881fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRyYWRpbmd8ZW58MHx8MHx8fDA%3D"
-              alt="Financial growth chart"
-            />
+            <img src="../Photos/QF_img4.png" alt="Financial growth chart" />
           </div>
         </div>
       </div>
@@ -663,7 +689,7 @@
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        padding: 40px 8%;
+        padding: 135px 8%;
         color: white;
       }
 
@@ -782,7 +808,7 @@
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>Apex Trader Funding</h3>
-              <p class="funding">Funding: <span>7 days</span></p>
+              <p class="funding">Funding: <span>1 days</span></p>
             </div>
           </div>
 
@@ -872,7 +898,7 @@
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>LUCID</h3>
-              <p class="funding">Funding: <span>Max 5 days</span></p>
+              <p class="funding">Funding: <span>Max 3 days</span></p>
             </div>
           </div>
 
@@ -902,7 +928,7 @@
             <div class="ddc-info">
               <div class="ddc-stars">★★★★★</div>
               <h3>DayTraders</h3>
-              <p class="funding">Funding: <span>8 days</span></p>
+              <p class="funding">Funding: <span>2 days</span></p>
             </div>
           </div>
 
@@ -1241,9 +1267,7 @@
           <!-- Card 1 -->
           <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -1256,7 +1280,7 @@
           <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>

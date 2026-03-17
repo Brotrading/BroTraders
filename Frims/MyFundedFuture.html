@@ -238,7 +238,7 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <a href="https://myfundedfutures.com/challenge?ref=5117"
+          <a href="../index.html"
             ><img
               src="../Bro_Traders_logo-removebg-preview.png"
               alt="Bro Trading"
@@ -249,6 +249,7 @@
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+
           <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
@@ -263,19 +264,17 @@
                   <a href="../CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <a href="../CompareTopFrims/TrueCost.html"
-                    >True Cost to Funding</a
-                  >
-                  <a href="../CompareTopFrims/StartCost.html"
-                    >Prop Firm Starting Costs</a
-                  >
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="../CompareTopFrims/Drawdown.html"
                     >Largest Drawdown</a
                   >
                   <a href="../CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
                   >
-                  <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
+                  <a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
@@ -307,8 +306,8 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
               <a href="../Resourses/TradingTools.html">Trading Tools</a>
+              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
@@ -335,19 +334,26 @@
       /* ================= HEADER ================= */
 
       .bt-header {
-        position: sticky;
-        top: 0;
-        width: 100%;
+        position: fixed;
+        top: 40px;
+        left: 0;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000; /* Normal state */
         transition: all 0.35s ease;
       }
 
       .bt-header.bt-scrolled {
+        top: 0;
         background: rgba(10, 15, 30, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -365,12 +371,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -399,6 +405,8 @@
 
       /* ================= DROPDOWN ================= */
 
+      /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -413,17 +421,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -444,6 +453,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -455,7 +479,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -732,7 +756,7 @@
 
     <style>
       .firm-profile {
-        padding: 80px 10%;
+        padding: 130px 10%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -1070,6 +1094,94 @@
               </ul>
             </div>
           </div>
+
+          <div class="fps-item">
+            <button class="fps-title">
+              Restricted Countries
+              <span class="fps-arrow">+</span>
+            </button>
+
+            <div class="fps-content">
+              <ul class="fps-list">
+                <li>
+                  <strong>Key Restrictions:</strong>
+
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/bf.png" /> Burkina
+                    Faso</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/cm.png" /> Cameroon</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/cn.png" /> China</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/gi.png" />
+                    Gibraltar</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ht.png" /> Haiti</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/hk.png" /> Hong
+                    Kong</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/jo.png" /> Jordan</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ke.png" /> Kenya</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ml.png" /> Mali</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/mz.png" />
+                    Mozambique</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/mm.png" /> Myanmar</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/na.png" /> Namibia</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ng.png" /> Nigeria</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ph.png" />
+                    Philippines</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/qa.png" /> Qatar</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ro.png" /> Romania</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/sn.png" /> Senegal</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/za.png" /> South
+                    Africa</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/tz.png" /> Tanzania</span
+                  >,
+                  <span class="flag"
+                    ><img src="https://flagcdn.com/w20/ae.png" /> UAE</span
+                  >.
+                </li>
+
+                <li>
+                  Recently updated its list to comply with U.S.-registered
+                  Futures Commission Merchants (FCMs). They currently restrict
+                  about 21 countries.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1116,6 +1228,19 @@
         border-radius: 30px;
         font-size: 12px;
         /* font-family: "DM Mono", monospace; */
+      }
+      .flag {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 6px;
+      }
+
+      .flag img {
+        width: 18px;
+        height: auto;
+        margin-right: 4px;
+        border-radius: 2px;
+        vertical-align: middle;
       }
 
       .fps-summary-text {
@@ -1438,9 +1563,7 @@
           <!-- Card 1 -->
           <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -1453,7 +1576,7 @@
           <a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>

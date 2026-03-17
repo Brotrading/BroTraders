@@ -243,16 +243,18 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <img
-            src="../Bro_Traders_logo-removebg-preview.png"
-            alt="Bro Trading"
-          />
+          <a href="../index.html"
+            ><img
+              src="../Bro_Traders_logo-removebg-preview.png"
+              alt="Bro Trading"
+          /></a>
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+
           <a href="../index.html" class="bt-link">Home</a>
           <!-- Funding Plans -->
           <div class="bt-dropdown">
@@ -265,17 +267,19 @@
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
                   <a href="comparison.html">Prop Firm Comparison</a>
-                  <a href="TrueCost.html">True Cost to Funding</a>
-                  <a href="StartCost.html">Prop Firm Starting Costs</a>
+                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+                  <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="BestDeals.html">Best Deals</a>
+                  <a href="bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/BluSky Trading.html">Lucid Trading</a>
+                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
                   <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                 </div>
@@ -301,13 +305,13 @@
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
               <a href="../Resourses/TradingTools.html">Trading Tools</a>
+              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
           <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -329,19 +333,26 @@
       /* ================= HEADER ================= */
 
       .bt-header {
-        position: sticky;
-        top: 0;
-        width: 100%;
+        position: fixed;
+        top: 40px;
+        left: 0;
+        margin: 10px 15px;
+        margin-left: 180px;
+        border-radius: 15px;
+        width: 80%;
+        background: #00000073;
         z-index: 1000;
-        background: #000; /* Normal state */
         transition: all 0.35s ease;
       }
 
       .bt-header.bt-scrolled {
+        top: 0;
         background: rgba(10, 15, 30, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+        width: 63%;
+        margin-left: 276px;
       }
 
       .bt-container {
@@ -359,12 +370,12 @@
       }
 
       .bt-logo img {
-        height: 90px;
+        height: 55px;
         transition: height 0.3s ease;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 70px;
+        height: 50px;
       }
 
       /* ================= NAV ================= */
@@ -393,6 +404,8 @@
 
       /* ================= DROPDOWN ================= */
 
+      /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -407,17 +420,18 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        display: none;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.35s ease;
+
         z-index: 1001;
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
-      }
-
-      .bt-drop-menu.active {
-        display: block;
       }
 
       .bt-drop-grid {
@@ -438,6 +452,21 @@
         color: #00c2ff;
         padding-left: 5px;
       }
+      .bt-drop-menu strong:hover {
+        color: #f1f3f4;
+        padding-left: 0px !important;
+        transition: 0s;
+      }
+
+      /* DESKTOP HOVER OPEN */
+
+      @media (min-width: 1025px) {
+        .bt-dropdown:hover .bt-drop-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -449,7 +478,7 @@
 
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 12px 26px;
+        padding: 9px 22px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
@@ -665,7 +694,7 @@
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        padding: 40px 8%;
+        padding: 135px 8%;
         color: white;
       }
 
@@ -1076,7 +1105,7 @@
     <!-- ======= Today's Best Deals  End Section ========= -->
 
     <!-- ===== Market Ticker Section ===== -->
-    <script
+    <!-- <script
       type="module"
       src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"
     ></script>
@@ -1101,326 +1130,9 @@
       tv-ticker-tape {
         --tv-color-pane-background: #000000 !important;
       }
-    </style>
+    </style> -->
     <!-- ===== End Market Ticker Section ===== -->
 
-    <!-- ===================== Marketing Section ===================== -->
-    <section class="market-section">
-      <h1>Prepare to Enter the Market</h1>
-      <p class="subtitle">
-        Preparation is everything. Start your trading day informed with our
-        economic calendar, breaking news, market sentiment updates, and
-        real-time charts to guide every decision confidently.
-      </p>
-
-      <div class="market-dashboard">
-        <!-- SIDEBAR -->
-        <div class="market-sidebar">
-          <button class="tab-btn active" data-tab="calendar">
-            Economic Calendar >
-          </button>
-          <button class="tab-btn" data-tab="charts">Charts ></button>
-          <button class="tab-btn" data-tab="stories">Top Stories ></button>
-          <button class="tab-btn" data-tab="analysis">
-            Technical Analysis >
-          </button>
-        </div>
-
-        <!-- CONTENT AREA -->
-        <div class="market-content">
-          <div class="market-box">
-            <!-- ECONOMIC CALENDAR -->
-            <div class="tab-content active" id="calendar">
-              <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
-                  async
-                >
-                  {
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "locale": "en",
-                    "countryFilter": "ar,au,br,ca,cn,fr,de,in,id,it,jp,kr,mx,ru,sa,za,tr,gb,us,eu",
-                    "importanceFilter": "-1,0,1",
-                    "width": "100%",
-                    "height": 550
-                  }
-                </script>
-              </div>
-            </div>
-
-            <!-- CHARTS -->
-            <div class="tab-content" id="charts">
-              <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-                  async
-                >
-                  {
-                    "lineWidth": 2,
-                    "chartType": "area",
-                    "backgroundColor": "#0b1120",
-                    "widgetFontColor": "#DBDBDB",
-                    "colorTheme": "dark",
-                    "autosize": true,
-                    "width": "100%",
-                    "height": 550,
-                    "symbols": [
-                      ["Apple","NASDAQ:AAPL|1D"],
-                      ["Google","NASDAQ:GOOGL|1D"],
-                      ["Microsoft","NASDAQ:MSFT|1D"]
-                    ]
-                  }
-                </script>
-              </div>
-            </div>
-
-            <!-- TOP STORIES -->
-            <div class="tab-content" id="stories">
-              <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script
-                  type="text/javascript"
-                  src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
-                  async
-                >
-                  {
-                    "displayMode": "regular",
-                    "feedMode": "all_symbols",
-                    "colorTheme": "dark",
-                    "isTransparent": true,
-                    "locale": "en",
-                    "width": "100%",
-                    "height": 550
-                  }
-                </script>
-              </div>
-            </div>
-
-            <!-- TECHNICAL ANALYSIS -->
-            <div class="tab-content" id="analysis">
-              <div class="mobile-analysis-toggle">
-                <button class="analysis-toggle-btn active" data-analysis="nq">
-                  NQ1
-                </button>
-                <button class="analysis-toggle-btn" data-analysis="es">
-                  ES1
-                </button>
-              </div>
-
-              <div class="analysis-grid">
-                <div class="analysis-card analysis-nq active-analysis">
-                  <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script
-                      type="text/javascript"
-                      src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"
-                      async
-                    >
-                      {
-                        "interval": "1m",
-                        "width": "100%",
-                        "height": 450,
-                        "symbol": "CME_MINI:NQ1!",
-                        "showIntervalTabs": true,
-                        "locale": "en",
-                        "colorTheme": "dark",
-                        "isTransparent": true
-                      }
-                    </script>
-                  </div>
-                </div>
-
-                <div class="analysis-card analysis-es">
-                  <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script
-                      type="text/javascript"
-                      src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"
-                      async
-                    >
-                      {
-                        "interval": "1m",
-                        "width": "100%",
-                        "height": 450,
-                        "symbol": "CME_MINI:ES1!",
-                        "showIntervalTabs": true,
-                        "locale": "en",
-                        "colorTheme": "dark",
-                        "isTransparent": true
-                      }
-                    </script>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      .market-section {
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        padding: 90px 20px;
-        text-align: center;
-        color: #fff;
-      }
-
-      .market-section h1 {
-        font-size: 48px;
-        /* font-family: "DM Mono", monospace; */
-      }
-
-      .subtitle {
-        max-width: 800px;
-        margin: 20px auto 60px;
-        color: #bbb;
-        font-family: "Roboto", sans-serif;
-      }
-
-      /* DASHBOARD */
-      .market-dashboard {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        gap: 40px;
-        max-width: 1350px;
-        margin: auto;
-      }
-
-      /* SIDEBAR */
-      .market-sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        margin-top: 55px;
-      }
-
-      .market-sidebar .tab-btn {
-        text-align: left;
-        padding: 14px 28px;
-        border-radius: 12px;
-        border: 1px solid #1e3a8a;
-        background: #0000005c;
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-        transition: 0.3s;
-        /* font-family: "DM Mono", monospace; */
-      }
-
-      .market-sidebar .tab-btn.active {
-        background: black;
-        border-color: #2563eb;
-      }
-
-      .market-sidebar .tab-btn:hover {
-        border-color: #00c2ff;
-      }
-      .mobile-analysis-toggle {
-        display: none;
-        margin-bottom: 20px;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      /* CONTENT */
-      .market-box {
-        border-radius: 22px;
-        padding: 35px;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .tab-content {
-        display: none;
-      }
-      .tab-content.active {
-        display: block;
-      }
-
-      .analysis-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-      }
-
-      .analysis-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      /* MOBILE */
-      @media (max-width: 1000px) {
-        .market-dashboard {
-          grid-template-columns: 1fr;
-        }
-
-        .market-sidebar {
-          flex-direction: row;
-          overflow-x: auto;
-        }
-
-        .market-sidebar .tab-btn {
-          white-space: nowrap;
-          flex: 0 0 auto;
-        }
-
-        .analysis-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const tabs = document.querySelectorAll(".tab-btn");
-        const contents = document.querySelectorAll(".tab-content");
-
-        tabs.forEach((tab) => {
-          tab.addEventListener("click", () => {
-            tabs.forEach((btn) => btn.classList.remove("active"));
-            contents.forEach((c) => c.classList.remove("active"));
-
-            tab.classList.add("active");
-            document.getElementById(tab.dataset.tab).classList.add("active");
-          });
-        });
-
-        const toggleBtns = document.querySelectorAll(".analysis-toggle-btn");
-
-        toggleBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            toggleBtns.forEach((b) => b.classList.remove("active"));
-            btn.classList.add("active");
-
-            document
-              .querySelectorAll(".analysis-card")
-              .forEach((card) => card.classList.remove("active-analysis"));
-
-            if (btn.dataset.analysis === "nq") {
-              document
-                .querySelector(".analysis-nq")
-                .classList.add("active-analysis");
-            } else {
-              document
-                .querySelector(".analysis-es")
-                .classList.add("active-analysis");
-            }
-          });
-        });
-      });
-    </script>
-    <!-- ===================== Marketing Section END ===================== -->
     <!-- ================== CTF Compare Top Firm Section ================== -->
     <section class="ctf-compare-vault">
       <div class="ctf-compare-header">
@@ -1439,9 +1151,7 @@
           <!-- Card 1 -->
           <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -1454,7 +1164,7 @@
           <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>

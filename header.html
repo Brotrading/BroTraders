@@ -1,0 +1,410 @@
+<!-- ================= BRO TRADING HEADER ================= -->
+<header class="bt-header">
+  <div class="bt-container">
+    <!-- Logo -->
+    <div class="bt-logo">
+      <a href="index.html"
+        ><img src="Bro_Traders_logo-removebg-preview.png" alt="Bro Trading"
+      /></a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bt-nav">
+      <!-- Mobile Close Button -->
+      <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+
+      <a href="index.html" class="bt-link">Home</a>
+      <!-- Funding Plans -->
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
+          Funding Plans ▾
+        </button>
+
+        <div class="bt-drop-menu" id="funding">
+          <div class="bt-drop-grid">
+            <div>
+              <a href="#"><strong>Firm Lists :</strong></a>
+              <a href="CompareTopFrims/comparison.html">Prop Firm Comparison</a>
+              <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+              <!-- <a href="CompareTopFrims/StartCost.html"
+                >Prop Firm Starting Costs</a
+              > -->
+              <a href="CompareTopFrims/Drawdown.html">Largest Drawdown</a>
+              <a href="CompareTopFrims/QuickFunding.html">Quickest Funding</a>
+              <a href="CompareTopFrims/bestDeals.html">Best Deals</a>
+            </div>
+            <div>
+              <a href="#"><strong>Top Firms :</strong></a>
+              <a href="Frims/ApexFunding.html">Apex Trader Funding</a>
+              <a href="Frims/TradeifyTrader.html">Tradeify</a>
+              <a href="Frims/Lucid Trading.html">Lucid Trading</a>
+              <a href="Frims/MyFundedFuture.html"> My Funded Future</a>
+              <a href="Frims/DayTraders.html">Day Traders.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learn -->
+      <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
+          Resources ▾
+        </button>
+        <div class="bt-drop-menu small" id="resources">
+          <a href="Resourses/TradingTools.html">Trading Tools</a>
+          <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
+        </div>
+      </div>
+
+      <!-- <a href="#" class="bt-link">About</a> -->
+      <a href="GiveAway.html" class="bt-link">GiveAways</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="Subscribe.html" class="bt-cta">Subscribe</a>
+
+    <!-- Hamburger -->
+    <div class="bt-hamburger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Overlay -->
+<div class="bt-overlay" onclick="closeMobileMenu()"></div>
+
+<style>
+  /* ================= HEADER ================= */
+
+  .bt-header {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    margin: 10px 15px;
+    margin-left: 180px;
+    border-radius: 15px;
+    width: 80%;
+    background: #00000073;
+    z-index: 1000;
+    transition: all 0.35s ease;
+  }
+
+  .bt-header.bt-scrolled {
+    top: 0;
+    background: rgba(10, 15, 30, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+    width: 63%;
+    margin-left: 276px;
+  }
+
+  .bt-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.3s ease;
+  }
+
+  .bt-header.bt-scrolled .bt-container {
+    padding: 0px 30px;
+  }
+
+  .bt-logo img {
+    height: 55px;
+    transition: height 0.3s ease;
+  }
+
+  .bt-header.bt-scrolled .bt-logo img {
+    height: 50px;
+  }
+
+  /* ================= NAV ================= */
+
+  .bt-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .bt-link,
+  .bt-drop-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .bt-link:hover,
+  .bt-drop-btn:hover {
+    color: #00c2ff;
+  }
+
+  /* ================= DROPDOWN ================= */
+
+  /* ================= DROPDOWN ================= */
+
+  .bt-dropdown {
+    position: relative;
+  }
+
+  .bt-drop-menu {
+    position: absolute;
+    top: 170%;
+    left: 0;
+    min-width: 650px;
+    padding: 30px;
+    border-radius: 14px;
+    background: rgba(15, 20, 45, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 194, 255, 0.6);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+
+    z-index: 1001;
+  }
+
+  .bt-drop-menu.small {
+    min-width: 260px;
+    padding: 20px;
+  }
+
+  .bt-drop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .bt-drop-menu a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: 0.3s;
+  }
+
+  .bt-drop-menu a:hover {
+    color: #00c2ff;
+    padding-left: 5px;
+  }
+  .bt-drop-menu strong:hover {
+    color: #f1f3f4;
+    padding-left: 0px !important;
+    transition: 0s;
+  }
+
+  /* DESKTOP HOVER OPEN */
+
+  @media (min-width: 1025px) {
+    .bt-dropdown:hover .bt-drop-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+  /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
+  @media (min-width: 1025px) {
+    .bt-dropdown:hover .bt-drop-menu {
+      display: block;
+    }
+  }
+
+  /* ================= CTA ================= */
+
+  .bt-cta {
+    background: linear-gradient(135deg, #00c2ff, #1e90ff);
+    padding: 9px 22px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
+  }
+
+  .bt-cta:hover {
+    transform: translateY(-3px);
+    background: white;
+    color: #0b0f2a;
+  }
+
+  /* ================= HAMBURGER ================= */
+
+  .bt-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .bt-hamburger span {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+  }
+
+  /* ================= MOBILE MENU ================= */
+
+  .bt-mobile-close {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .bt-overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 900;
+  }
+
+  .bt-overlay.active {
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .bt-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%; /* Wider for better layout */
+      max-width: 420px;
+      height: 100vh;
+      background: #0b0f2a;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 100px 25px 40px;
+      gap: 20px;
+      transition: 0.4s ease;
+      z-index: 1002;
+      overflow-y: auto;
+    }
+
+    .bt-nav.active {
+      right: 0;
+      top: 15px;
+    }
+
+    .bt-hamburger {
+      display: flex;
+    }
+
+    .bt-cta {
+      display: none;
+    }
+
+    .bt-mobile-close {
+      display: block;
+    }
+
+    /* Dropdown styling */
+    .bt-drop-menu {
+      position: static;
+      min-width: 100%;
+      padding: 15px 0;
+      margin-top: 10px;
+      background: transparent;
+      border: none;
+      background: rgba(15, 20, 45, 0.6);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(0, 194, 255, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    /* 2 Column grid */
+    .bt-drop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 25px;
+    }
+
+    .bt-drop-menu a {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  /* Extra small mobile → 1 column */
+  @media (max-width: 480px) {
+    .bt-drop-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  function toggleDropdown(id) {
+    const menu = document.getElementById(id);
+
+    // Close ALL dropdowns first
+    document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+      if (m.id !== id) {
+        m.classList.remove("active");
+      }
+    });
+
+    // Toggle clicked one
+    menu.classList.toggle("active");
+  }
+
+  function toggleMobileMenu() {
+    document.querySelector(".bt-nav").classList.add("active");
+    document.querySelector(".bt-overlay").classList.add("active");
+  }
+
+  function closeMobileMenu() {
+    document.querySelector(".bt-nav").classList.remove("active");
+    document.querySelector(".bt-overlay").classList.remove("active");
+
+    document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+      m.classList.remove("active");
+    });
+  }
+  const header = document.querySelector(".bt-header");
+
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("bt-scrolled", window.scrollY > 50);
+  });
+  // Close other dropdowns on hover (desktop only)
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+      dropdown.addEventListener("mouseenter", function () {
+        const activeMenu = document.querySelector(".bt-drop-menu.active");
+        if (activeMenu && !this.contains(activeMenu)) {
+          activeMenu.classList.remove("active");
+        }
+      });
+    });
+  }
+</script>
+<!-- ================= HEADER END ================= -->
