@@ -1,515 +1,1161 @@
-<!-- ======== Drawdown Cards Section ======== -->
-<section class="ddc-section">
-  <div class="ddc-container">
-    <!-- ================= USED BY BRO ================= -->
-    <h2 style="grid-column: 1/-1; margin-bottom: 10px">Used by Bro</h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes"
+    />
+    <title>Prop Firms · unified filters + All · responsive</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #030712;
+      }
 
-    <!-- DeepCharts -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/deepcharts.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&retina=true"
-            class="ddc-logo"
-          />
-          <h3>DeepCharts</h3>
+      .zx-comparison-section {
+        padding: clamp(20px, 5vw, 70px) clamp(16px, 6vw, 120px);
+        background:
+          radial-gradient(circle at top center, #1e40af 0%, transparent 70%),
+          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+        color: white;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .ff-title {
+        font-size: clamp(32px, 8vw, 60px) !important;
+        font-weight: 700 !important;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      .ff-subtitle {
+        text-align: center;
+        opacity: 0.8;
+        max-width: 750px;
+        margin: 0 auto 30px auto;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        padding: 0 10px;
+      }
+
+      /* ===== FILTER PANEL – RESPONSIVE WRAP ===== */
+      .zx-filter-panel {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 12px 14px;
+        margin-bottom: 35px;
+        background: rgba(7, 19, 39, 0.8);
+        backdrop-filter: blur(12px);
+        padding: 18px 20px;
+        border-radius: 15px;
+        border: 1px solid #2e4f86;
+        justify-content: space-between;
+        position: relative;
+        z-index: 10;
+      }
+
+      .zx-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 140px;
+        flex: 1 1 140px;
+        position: relative;
+        z-index: 15;
+      }
+
+      .zx-filter label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      /* custom dropdown */
+      .dropdown-checkbox {
+        position: relative;
+        width: 100%;
+        z-index: 25;
+      }
+
+      .dropdown-checkbox .select-btn {
+        background: #0f1e38;
+        border: 1px solid #2e4b7a;
+        color: rgba(255, 255, 255, 0.9);
+        padding: 8px 12px;
+        border-radius: 40px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4px;
+        transition: 0.15s;
+        white-space: nowrap;
+      }
+      .dropdown-checkbox .select-btn:hover {
+        border-color: #1e90ff;
+        background: #142d4e;
+      }
+      .dropdown-checkbox .select-btn i {
+        font-size: 0.7rem;
+        color: #1e90ff;
+      }
+
+      .dropdown-checkbox .dropdown-content {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        width: 260px;
+        max-height: 300px;
+        overflow-y: auto;
+        background: #0a1a33;
+        border: 1px solid #2d4f88;
+        border-radius: 20px;
+        z-index: 9999;
+        padding: 12px 10px;
+        display: none;
+        box-shadow: 0 20px 40px -8px black;
+      }
+      .dropdown-checkbox .dropdown-content.show {
+        display: block;
+      }
+      .dropdown-checkbox .dropdown-content label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 8px;
+        font-size: 0.8rem;
+        text-transform: none;
+        opacity: 1;
+        font-weight: 400;
+        border-radius: 12px;
+        color: white;
+        cursor: pointer;
+      }
+      .dropdown-checkbox .dropdown-content label:hover {
+        background: #14345e;
+      }
+      .dropdown-checkbox .dropdown-content input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: #1e90ff;
+        cursor: pointer;
+      }
+
+      .selected-hint {
+        font-size: 0.65rem;
+        opacity: 0.6;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* ===== TABLE – scrollable & responsive ===== */
+      .zx-table-wrapper {
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 700px;
+        border-radius: 20px;
+        border: 1px solid #25487a;
+        background: #071327;
+        box-shadow: 0 30px 45px -12px black;
+        position: relative;
+        z-index: 5;
+      }
+
+      .zx-table-wrapper::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+      .zx-table-wrapper::-webkit-scrollbar-thumb {
+        background: #2d5c9e;
+        border-radius: 20px;
+        border: 2px solid #071327;
+      }
+      .zx-table-wrapper::-webkit-scrollbar-track {
+        background: #0e1f3a;
+      }
+
+      #zx-table {
+        width: 100%;
+        min-width: 1700px; /* allow horizontal scroll on small */
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #071327;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.85rem;
+      }
+
+      #zx-table th {
+        background: #10213f;
+        padding: 18px 8px;
+        font-weight: 600;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        color: #b4ccff;
+        position: sticky;
+        top: 0;
+        z-index: 12;
+        white-space: nowrap;
+        border-bottom: 2px solid #2f5496;
+        text-align: center;
+      }
+
+      #zx-table td {
+        padding: 14px 6px;
+        text-align: center;
+        border-bottom: 1px solid rgba(42, 80, 140, 0.5);
+        white-space: nowrap;
+      }
+
+      #zx-table td:nth-child(4) {
+        /* platform */
+        white-space: normal;
+        word-break: break-word;
+        max-width: 130px;
+        min-width: 120px;
+        font-size: 0.75rem;
+        line-height: 1.3;
+      }
+      #zx-table td:nth-child(9) {
+        color: #4ade80;
+        font-weight: 600;
+      } /* true cost */
+
+      #zx-table tbody tr {
+        background: #0a172e;
+      }
+      #zx-table tbody tr:nth-child(even) {
+        background: #0f2341;
+      }
+      #zx-table tbody tr:hover {
+        background: #163a64;
+      }
+      #zx-table tbody tr:hover .sticky-col {
+        background: #163a64;
+      }
+
+      .sticky-col {
+        position: sticky;
+        background: inherit;
+        z-index: 10;
+      }
+      .logo-col {
+        left: 0;
+        width: 60px;
+        min-width: 60px;
+      }
+      .firm-col {
+        left: 60px;
+        min-width: 170px;
+        text-align: left !important;
+        font-weight: 600;
+        box-shadow: 5px 0 8px rgba(0, 0, 0, 0.5);
+        text-align: center !important;
+      }
+      .website-fixed {
+        position: sticky;
+        right: 0;
+        background: inherit;
+        z-index: 10;
+        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.4);
+      }
+      #zx-table th.website-fixed {
+        background: #10213f;
+        z-index: 20;
+        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .country-flag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .country-flag img {
+        width: 18px;
+        height: 13px;
+        object-fit: cover;
+        border-radius: 2px;
+      }
+      .zx-logo {
+        width: 38px;
+        margin: 0px 8px;
+        height: auto;
+        filter: brightness(1.1);
+      }
+
+      .zx-code {
+        background: #1e3155;
+        border: 1px solid #416bb3;
+        padding: 4px 10px;
+        border-radius: 30px;
+        color: #b8d2ff;
+        cursor: pointer;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border: 3px solid transparent;
+      }
+      .zx-code:hover {
+        background: white;
+        color: #0b0f2a;
+        border: 3px solid #00c2ff;
+      }
+      .zx-firm-btn,
+      .zx-visit-btn {
+        padding: 4px 12px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.7rem;
+        display: inline-block;
+        white-space: nowrap;
+        margin: 6px 4px;
+      }
+      .zx-firm-btn {
+        background: #0f4e3a;
+        color: white;
+        border: 1px solid #1c7e5c;
+      }
+      .zx-firm-btn:hover {
+        background: white;
+        color: #0b2a0c;
+        border: 3px solid #00c2ff;
+      }
+      .zx-visit-btn {
+        background: #1e4a8b;
+        color: white;
+        border: 3px solid #3f7bcb;
+      }
+      .zx-visit-btn:hover {
+        transform: translateY(-4px);
+        background: white;
+        color: #0b0f2a;
+        border: 3px solid #00c2ff;
+      }
+
+      .filter-note {
+        margin-top: 15px;
+        font-size: 0.75rem;
+        color: #7f9fd5;
+        text-align: right;
+      }
+
+      /* small screen compact */
+      @media (max-width: 700px) {
+        .zx-filter-panel {
+          padding: 15px 14px;
+          border-radius: 30px;
+        }
+        .zx-filter {
+          min-width: 100%;
+        }
+        .dropdown-checkbox .dropdown-content {
+          width: 90vw;
+          left: 0;
+        }
+        .selected-hint {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="zx-comparison-section" id="FavoriteFrimsSection">
+      <h2 class="ff-title">Only the Best Firms for you Bro</h2>
+      <p class="ff-subtitle">
+        Select your Favorite Firm. On this page, you can pick and show support
+        for your favorite firm.
+      </p>
+
+      <!-- FILTER PANEL – all dropdowns now with "All" option (checkbox) -->
+      <div class="zx-filter-panel">
+        <!-- FIRM -->
+        <div class="zx-filter">
+          <label>FIRM</label>
+          <div class="dropdown-checkbox" id="firm-dropdown">
+            <div class="select-btn">
+              Select firms <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="firm-options"></div>
+          </div>
+          <div class="selected-hint" id="firm-hint"></div>
         </div>
-        <div class="ddc-stars">★★★★☆</div>
+        <!-- PLATFORM -->
+        <div class="zx-filter">
+          <label>PLATFORM</label>
+          <div class="dropdown-checkbox" id="platform-dropdown">
+            <div class="select-btn">
+              Select platforms <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="platform-options"></div>
+          </div>
+          <div class="selected-hint" id="platform-hint"></div>
+        </div>
+        <!-- DISCOUNT (≥) -->
+        <div class="zx-filter">
+          <label>DISCOUNT (≥)</label>
+          <div class="dropdown-checkbox" id="discount-dropdown">
+            <div class="select-btn">
+              Select % <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="discount-options"></div>
+          </div>
+          <div class="selected-hint" id="discount-hint"></div>
+        </div>
+        <!-- MAX ACCOUNTS -->
+        <div class="zx-filter">
+          <label>MAX ACCOUNTS</label>
+          <div class="dropdown-checkbox" id="max-dropdown">
+            <div class="select-btn">
+              Select max <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="max-options"></div>
+          </div>
+          <div class="selected-hint" id="max-hint"></div>
+        </div>
+        <!-- GOAL ($) -->
+        <div class="zx-filter">
+          <label>GOAL ($)</label>
+          <div class="dropdown-checkbox" id="goal-dropdown">
+            <div class="select-btn">
+              Select goal ≤ <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="goal-options"></div>
+          </div>
+          <div class="selected-hint" id="goal-hint"></div>
+        </div>
+        <!-- TRUE COST ($) -->
+        <div class="zx-filter">
+          <label>TRUE COST ($)</label>
+          <div class="dropdown-checkbox" id="cost-dropdown">
+            <div class="select-btn">
+              Select cost ≤ <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-content" id="cost-options"></div>
+          </div>
+          <div class="selected-hint" id="cost-hint"></div>
+        </div>
       </div>
 
-      <div class="ddc-divider"></div>
-
-      <div class="ddc-body">
-        <p class="ddc-description">
-          DeepCharts is a powerful order flow platform built for traders who
-          want to understand what’s really happening behind the candles. With
-          advanced footprint charts, liquidity insights, and volume analysis, it
-          helps traders read the market with more precision. Used by many
-          futures traders in the BroTrading community to analyze order flow and
-          spot high-probability setups.
-        </p>
-
-        <p class="ddc-price">Price: From $74/month</p>
-
-        <div class="ddc-actions">
-          <a href="https://deepcharts.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://deepcharts.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
+      <div class="zx-table-wrapper">
+        <table id="zx-table">
+          <thead>
+            <tr>
+              <th class="sticky-col logo-col">Logo</th>
+              <th class="sticky-col firm-col">Firm</th>
+              <th data-key="account" draggable="true">Account</th>
+              <th data-key="platform" draggable="true">Platform</th>
+              <th data-key="country" draggable="true">Country</th>
+              <th data-key="maxaccounts" draggable="true">Max Acc</th>
+              <th data-key="eval" draggable="true">Eval ($)</th>
+              <th data-key="activation" draggable="true">Act ($)</th>
+              <th data-key="truecost" draggable="true">True Cost ($)</th>
+              <th data-key="discount" draggable="true">Discount</th>
+              <th data-key="goal" draggable="true">Goal ($)</th>
+              <th data-key="ddt" draggable="true">DDT</th>
+              <th data-key="dd" draggable="true">DD ($)</th>
+              <th data-key="mindays" draggable="true">Min Days</th>
+              <th>Code</th>
+              <th>Firm Page</th>
+              <th class="website-fixed">Website</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
-    </div>
-
-    <!-- TradeZella -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/tradezella.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>TradeZella</h3>
-        </div>
-        <div class="ddc-stars">★★★★☆</div>
+      <div class="filter-note">
+        💰 K = thousand • flags • click code to copy • drag headers •
+        <strong>All option added to each filter</strong>
       </div>
+    </section>
 
-      <div class="ddc-divider"></div>
+    <script>
+      (function () {
+        const firms = [
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 25000,
+            goal: 1500,
+            ddt: "Intraday",
+            dd: 1500,
+            mindays: 1,
+            eval: 147,
+            activation: 80,
+            truecost: 109,
+            discount: "90%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2500,
+            mindays: 1,
+            eval: 167,
+            activation: 130,
+            truecost: 163,
+            discount: "90%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 1,
+            eval: 207,
+            activation: 150,
+            truecost: 191,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 150000,
+            goal: 9000,
+            ddt: "Intraday",
+            dd: 5000,
+            mindays: 1,
+            eval: 297,
+            activation: 220,
+            truecost: 279,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 250000,
+            goal: 15000,
+            ddt: "Intraday",
+            dd: 6500,
+            mindays: 1,
+            eval: 517,
+            activation: 240,
+            truecost: 343,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 300000,
+            goal: 20000,
+            ddt: "Intraday",
+            dd: 7500,
+            mindays: 1,
+            eval: 657,
+            activation: 260,
+            truecost: 391,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Apex Trader Funding",
+            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+            account: 100000,
+            goal: 3000,
+            ddt: "Static",
+            dd: 625,
+            mindays: 1,
+            eval: 137,
+            activation: 150,
+            truecost: 177,
+            discount: "80%",
+            code: "BRO",
+            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+            country: "USA",
+            maxaccounts: 20,
+            firmpage: "Frims/ApexFunding.html",
+            website: "https://apextraderfunding.com/member/aff/go/buurtie",
+          },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 1,
+            eval: 160,
+            activation: 0,
+            truecost: 112,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 1,
+            eval: 320,
+            activation: 0,
+            truecost: 224,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 150000,
+            goal: 9000,
+            ddt: "EOD",
+            dd: 5000,
+            mindays: 1,
+            eval: 440,
+            activation: 0,
+            truecost: 308,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 50000,
+            goal: 2500,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 3,
+            eval: 160,
+            activation: 0,
+            truecost: 112,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
+          {
+            firm: "Tradeify",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 3,
+            eval: 320,
+            activation: 0,
+            truecost: 224,
+            discount: "30%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView",
+            country: "USA",
+            maxaccounts: 5,
+            firmpage: "Frims/TradeifyTrader.html",
+            website: "https://tradeify.co/?ref=BFYQ2HKM",
+          },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 2,
+            eval: 150,
+            activation: 100,
+            truecost: 175,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 2,
+            eval: 300,
+            activation: 150,
+            truecost: 300,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2000,
+            mindays: 2,
+            eval: 165,
+            activation: 0,
+            truecost: 82,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
+          {
+            firm: "MyFundedFutures",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 2,
+            eval: 330,
+            activation: 0,
+            truecost: 165,
+            discount: "50%",
+            code: "BRO",
+            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+            country: "USA",
+            maxaccounts: 3,
+            firmpage: "Frims/MyFundedFuture.html",
+            website: "https://myfundedfutures.com/challenge?ref=5117",
+          },
+          {
+            firm: "Lucid Trading",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            account: 50000,
+            goal: 3000,
+            ddt: "EOD",
+            dd: 2000,
+            mindays: 5,
+            eval: 170,
+            activation: 0,
+            truecost: 85,
+            discount: "50%",
+            code: "BROTRADING",
+            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+            country: "UK",
+            maxaccounts: 5,
+            firmpage: "Frims/Lucid Trading.html",
+            website: "https://lucidtrading.com/ref/brotrading/",
+          },
+          {
+            firm: "Lucid Trading",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+            account: 100000,
+            goal: 6000,
+            ddt: "EOD",
+            dd: 3000,
+            mindays: 5,
+            eval: 285,
+            activation: 0,
+            truecost: 142,
+            discount: "50%",
+            code: "BROTRADING",
+            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+            country: "UK",
+            maxaccounts: 5,
+            firmpage: "Frims/Lucid Trading.html",
+            website: "https://lucidtrading.com/ref/brotrading/",
+          },
+          {
+            firm: "Day Traders",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            account: 50000,
+            goal: 3000,
+            ddt: "Intraday",
+            dd: 2500,
+            mindays: 1,
+            eval: 165,
+            activation: 130,
+            truecost: 229,
+            discount: "40%",
+            code: "BROTRADING",
+            platform: "ProjectX, Rithmic, NinjaTrader",
+            country: "USA",
+            maxaccounts: 15,
+            firmpage: "Frims/DayTraders.html",
+            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+          },
+          {
+            firm: "Day Traders",
+            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+            account: 100000,
+            goal: 6000,
+            ddt: "Intraday",
+            dd: 3000,
+            mindays: 1,
+            eval: 315,
+            activation: 130,
+            truecost: 319,
+            discount: "40%",
+            code: "BROTRADING",
+            platform: "ProjectX, Rithmic, NinjaTrader",
+            country: "USA",
+            maxaccounts: 15,
+            firmpage: "Frims/DayTraders.html",
+            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+          },
+        ];
+        firms.sort((a, b) => b.truecost - a.truecost);
 
-      <div class="ddc-body">
-        <p class="ddc-description">
-          TradeZella is a professional trading journal designed to help traders
-          improve their performance. Track trades, analyze statistics, and
-          identify patterns so you can refine your strategy. Many Bro’s use
-          TradeZella to review trades and stay accountable to their trading
-          plan.
-        </p>
+        // helpers
+        const toK = (v) =>
+          v >= 1000
+            ? (v / 1000).toFixed(v % 1000 === 0 ? 0 : 1).replace(/\.0$/, "") +
+              "K"
+            : v;
+        const getCountryFlag = (c) => {
+          const cc = c.trim().toLowerCase();
+          if (cc === "usa")
+            return '<img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="usa">';
+          if (cc === "uk")
+            return '<img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" alt="uk">';
+          return '<i class="fas fa-flag"></i>';
+        };
 
-        <p class="ddc-price">
-          Price: $29/month (Basic)<br />
-          $49/month (Premium)
-        </p>
+        // ---- build dropdowns with "All" checkbox at top ----
+        function buildWithAll(
+          container,
+          values,
+          isNumeric = false,
+          prefix = "≤ ",
+        ) {
+          container.innerHTML = "";
+          // All option
+          let allLabel = document.createElement("label");
+          allLabel.innerHTML = `<input type="checkbox" class="all-check" value="__ALL__"> All`;
+          container.appendChild(allLabel);
 
-        <div class="ddc-actions">
-          <a href="https://tradezella.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://tradezella.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
+          values.forEach((val) => {
+            let label = document.createElement("label");
+            let display = isNumeric ? prefix + val : val;
+            label.innerHTML = `<input type="checkbox" value="${val}"> ${display}`;
+            container.appendChild(label);
+          });
+        }
 
-    <!-- Bookmap -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/bookmap.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>Bookmap</h3>
-        </div>
-        <div class="ddc-stars">★★★★★</div>
-      </div>
+        // get unique sorted values
+        const firmVals = [...new Set(firms.map((f) => f.firm))].sort();
+        const platformVals = [
+          ...new Set(
+            firms.flatMap((f) => f.platform.split(",").map((p) => p.trim())),
+          ),
+        ].sort();
+        const discountVals = [...new Set(firms.map((f) => f.discount))].sort(
+          (a, b) => parseInt(a) - parseInt(b),
+        );
+        const maxVals = [...new Set(firms.map((f) => f.maxaccounts))].sort(
+          (a, b) => a - b,
+        );
+        const goalPresets = [20000, 15000, 10000, 6000, 3000, 1500];
+        const costPresets = [500, 400, 300, 200, 150, 100];
 
-      <div class="ddc-divider"></div>
+        buildWithAll(document.getElementById("firm-options"), firmVals, false);
+        buildWithAll(
+          document.getElementById("platform-options"),
+          platformVals,
+          false,
+        );
+        buildWithAll(
+          document.getElementById("discount-options"),
+          discountVals,
+          false,
+        );
+        buildWithAll(
+          document.getElementById("max-options"),
+          maxVals,
+          true,
+          "≤ ",
+        );
+        buildWithAll(
+          document.getElementById("goal-options"),
+          goalPresets,
+          true,
+          "≤ ",
+        );
+        buildWithAll(
+          document.getElementById("cost-options"),
+          costPresets,
+          true,
+          "≤ ",
+        );
 
-      <div class="ddc-body">
-        <p class="ddc-description">
-          Bookmap is one of the most advanced order flow visualization tools
-          available. Its heatmap technology allows traders to see liquidity,
-          large orders, and market activity in real time. This helps traders
-          understand supply and demand dynamics that traditional charts cannot
-          show.
-        </p>
+        // dropdown toggle
+        document.querySelectorAll(".dropdown-checkbox").forEach((dd) => {
+          const btn = dd.querySelector(".select-btn");
+          const content = dd.querySelector(".dropdown-content");
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            document.querySelectorAll(".dropdown-content").forEach((c) => {
+              if (c !== content) c.classList.remove("show");
+            });
+            content.classList.toggle("show");
+            btn.classList.toggle("open");
+          });
+          content.addEventListener("click", (e) => e.stopPropagation());
+        });
+        document.addEventListener("click", () => {
+          document
+            .querySelectorAll(".dropdown-content")
+            .forEach((c) => c.classList.remove("show"));
+        });
 
-        <p class="ddc-price">Price: Free – $79/month+</p>
+        // get selected values, but if "All" checked → empty array (means no filter)
+        function getSelected(containerId) {
+          const container = document.getElementById(containerId);
+          const allCheck = container.querySelector("input.all-check");
+          if (allCheck && allCheck.checked) return []; // All selected => no filter
 
-        <div class="ddc-actions">
-          <a href="https://bookmap.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://bookmap.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
+          return Array.from(
+            container.querySelectorAll(
+              "input[type=checkbox]:checked:not(.all-check)",
+            ),
+          ).map((cb) => cb.value);
+        }
 
-    <!-- ================= USED BY BRO COMMUNITY ================= -->
-    <h2 style="grid-column: 1/-1; margin-top: 40px; margin-bottom: 10px">
-      Used by Bro Community
-    </h2>
+        // update hints
+        function updateHints() {
+          const f = getSelected("firm-options");
+          document.getElementById("firm-hint").innerText = f.length
+            ? f.join(", ").slice(0, 20) + (f.length > 2 ? "…" : "")
+            : "All";
+          const p = getSelected("platform-options");
+          document.getElementById("platform-hint").innerText = p.length
+            ? p.join(", ").slice(0, 20) + "…"
+            : "All";
+          const d = getSelected("discount-options");
+          document.getElementById("discount-hint").innerText = d.length
+            ? d.join(", ")
+            : "All";
+          const m = getSelected("max-options").map((v) => "≤ " + v);
+          document.getElementById("max-hint").innerText = m.length
+            ? m.join(", ").slice(0, 20)
+            : "All";
+          const g = getSelected("goal-options").map((v) => "≤ " + v);
+          document.getElementById("goal-hint").innerText = g.length
+            ? g.join(", ")
+            : "All";
+          const c = getSelected("cost-options").map((v) => "≤ " + v);
+          document.getElementById("cost-hint").innerText = c.length
+            ? c.join(", ")
+            : "All";
+        }
 
-    <!-- ATAS -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/atas.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>ATAS</h3>
-        </div>
-        <div class="ddc-stars">★★★★☆</div>
-      </div>
+        // main filter
+        function applyFilters() {
+          const firmSel = getSelected("firm-options");
+          const platSel = getSelected("platform-options");
+          const discSel = getSelected("discount-options");
+          const maxSel = getSelected("max-options").map((v) => parseInt(v));
+          const goalSel = getSelected("goal-options").map((v) => parseInt(v));
+          const costSel = getSelected("cost-options").map((v) => parseInt(v));
 
-      <div class="ddc-divider"></div>
+          const filtered = firms.filter((f) => {
+            if (firmSel.length && !firmSel.includes(f.firm)) return false;
+            if (platSel.length) {
+              const plats = f.platform.split(",").map((p) => p.trim());
+              if (!platSel.some((p) => plats.includes(p))) return false;
+            }
+            if (discSel.length) {
+              const nums = discSel
+                .map((d) => parseInt(d.replace("%", "")))
+                .filter((n) => !isNaN(n));
+              if (
+                nums.length &&
+                Math.min(...nums) > parseInt(f.discount.replace("%", ""))
+              )
+                return false;
+            }
+            if (maxSel.length) {
+              const minMax = Math.min(...maxSel);
+              if (f.maxaccounts > minMax) return false;
+            }
+            if (goalSel.length) {
+              const minGoal = Math.min(...goalSel);
+              if (f.goal > minGoal) return false;
+            }
+            if (costSel.length) {
+              const minCost = Math.min(...costSel);
+              if (f.truecost > minCost) return false;
+            }
+            return true;
+          });
+          render(filtered);
+          updateHints();
+        }
 
-      <div class="ddc-body">
-        <p class="ddc-description">
-          ATAS is a professional order flow and volume analysis platform
-          designed for futures traders. It offers footprint charts, delta
-          analysis, volume clusters, and advanced tools to help traders
-          understand market activity at a deeper level.
-        </p>
+        // render table
+        function render(data) {
+          tbody.innerHTML = "";
+          data.forEach((f) => {
+            const row = document.createElement("tr");
+            const flagHtml = `<span class="country-flag">${getCountryFlag(f.country)} ${f.country}</span>`;
+            row.innerHTML = `
+          <td class="sticky-col logo-col"><img src="${f.logo}" class="zx-logo" alt="logo"></td>
+          <td class="sticky-col firm-col">${f.firm}</td>
+          <td>$${toK(f.account)}</td>
+          <td>${f.platform}</td>
+          <td>${flagHtml}</td>
+          <td>${f.maxaccounts}</td>
+          <td>$${toK(f.eval)}</td>
+          <td>$${toK(f.activation)}</td>
+          <td>$${f.truecost}</td>
+          <td>${f.discount}</td>
+          <td>$${toK(f.goal)}</td>
+          <td>${f.ddt}</td>
+          <td>$${toK(f.dd)}</td>
+          <td>${f.mindays}</td>
+          <td><button class="zx-code">${f.code}</button></td>
+          <td><a href="${f.firmpage}" class="zx-firm-btn">Open</a></td>
+          <td class="website-fixed"><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit</a></td>
+        `;
+            tbody.appendChild(row);
+          });
+        }
 
-        <p class="ddc-price">Price: €19 – €89/month</p>
+        const tbody = document.querySelector("#zx-table tbody");
 
-        <div class="ddc-actions">
-          <a href="https://atas.net/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a href="https://atas.net/" target="_blank" class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
+        // attach listeners to all checkboxes (including All)
+        function addListenersToContainer(containerId) {
+          document
+            .querySelectorAll(`#${containerId} input[type=checkbox]`)
+            .forEach((cb) => {
+              cb.addEventListener("change", function (e) {
+                const container = document.getElementById(containerId);
+                const allChk = container.querySelector("input.all-check");
+                if (this.classList.contains("all-check")) {
+                  // if All clicked, uncheck others (or keep them but our getSelected respects All)
+                  if (this.checked) {
+                    container
+                      .querySelectorAll("input:not(.all-check)")
+                      .forEach((c) => (c.checked = false));
+                  }
+                } else {
+                  // if any other is checked, uncheck All
+                  if (allChk) allChk.checked = false;
+                }
+                applyFilters();
+              });
+            });
+        }
 
-    <!-- IBKR -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/ibkr.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>Interactive Brokers</h3>
-        </div>
-        <div class="ddc-stars">★★★★☆</div>
-      </div>
+        addListenersToContainer("firm-options");
+        addListenersToContainer("platform-options");
+        addListenersToContainer("discount-options");
+        addListenersToContainer("max-options");
+        addListenersToContainer("goal-options");
+        addListenersToContainer("cost-options");
 
-      <div class="ddc-divider"></div>
+        // copy code
+        document.addEventListener("click", (e) => {
+          if (e.target.classList.contains("zx-code")) {
+            const orig = e.target.innerText;
+            navigator.clipboard.writeText(orig);
+            e.target.innerText = "Copied!";
+            setTimeout(() => (e.target.innerText = orig), 700);
+          }
+        });
 
-      <div class="ddc-body">
-        <p class="ddc-description">
-          Interactive Brokers is one of the largest and most trusted global
-          brokers offering access to stocks, futures, options, forex and more.
-          Known for its competitive fees and professional trading tools.
-        </p>
+        // drag columns
+        let dragIndex;
+        document
+          .querySelectorAll("#zx-table th[draggable=true]")
+          .forEach((th) => {
+            th.addEventListener("dragstart", () => (dragIndex = th.cellIndex));
+            th.addEventListener("dragover", (e) => e.preventDefault());
+            th.addEventListener("drop", function (e) {
+              e.preventDefault();
+              let dropIndex = this.cellIndex;
+              document.querySelectorAll("#zx-table tr").forEach((row) => {
+                row.insertBefore(
+                  row.children[dragIndex],
+                  row.children[dropIndex],
+                );
+              });
+            });
+          });
 
-        <p class="ddc-price">Price: No platform fee (low commissions)</p>
-
-        <div class="ddc-actions">
-          <a
-            href="https://www.interactivebrokers.com/"
-            target="_blank"
-            class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://www.interactivebrokers.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!-- AMP Futures -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/ampfutures.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=124&retina=true"
-            class="ddc-logo"
-          />
-          <h3>AMP Futures</h3>
-        </div>
-        <div class="ddc-stars">★★★★☆</div>
-      </div>
-
-      <div class="ddc-divider"></div>
-
-      <div class="ddc-body">
-        <p class="ddc-description">
-          AMP Futures is a popular futures broker known for its ultra-low
-          commissions and wide range of professional trading platforms including
-          Quantower, Sierra Chart, ATAS and TradingView.
-        </p>
-
-        <p class="ddc-price">Price: ~$0.46 – $0.49 per contract</p>
-
-        <div class="ddc-actions">
-          <a href="https://ampfutures.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://ampfutures.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!-- TradingView -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/tradingview.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>TradingView</h3>
-        </div>
-        <div class="ddc-stars">★★★★★</div>
-      </div>
-
-      <div class="ddc-divider"></div>
-
-      <div class="ddc-body">
-        <p class="ddc-description">
-          TradingView is one of the most popular charting platforms used by
-          traders worldwide. It offers powerful charts, hundreds of indicators,
-          and a huge community sharing trading ideas.
-        </p>
-
-        <p class="ddc-price">Price: Free – $59.95/month</p>
-
-        <div class="ddc-actions">
-          <a href="https://tradingview.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://tradingview.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!-- LuxAlgo -->
-    <div class="ddc-card">
-      <div class="ddc-header">
-        <div class="ddc-header-left">
-          <img
-            src="https://img.logo.dev/luxalgo.com?token=pk_NlPOQ3LWQTGT37XUcAxXKQ&size=137&format=png&retina=true"
-            class="ddc-logo"
-          />
-          <h3>LuxAlgo</h3>
-        </div>
-        <div class="ddc-stars">★★★★☆</div>
-      </div>
-
-      <div class="ddc-divider"></div>
-
-      <div class="ddc-body">
-        <p class="ddc-description">
-          LuxAlgo provides advanced TradingView indicators designed to help
-          traders identify trends, market structure, and entry and exit points
-          faster.
-        </p>
-
-        <p class="ddc-price">Price: Free – $59/month</p>
-
-        <div class="ddc-actions">
-          <a href="https://luxalgo.com/" target="_blank" class="ddc-btn"
-            >Check it out</a
-          >
-          <a
-            href="https://luxalgo.com/"
-            target="_blank"
-            class="ddc-btn-secondary"
-            >Learn More</a
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<style>
-  .ddc-section {
-    padding: 100px 6%;
-    background:
-      radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-      linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-    color: #ffffff;
-  }
-
-  .ddc-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
-
-  /* CARD */
-  .ddc-card {
-    background: linear-gradient(145deg, #0f172a, #1e293b);
-    border-radius: 26px;
-    padding: 20px;
-    margin: 4px -10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .ddc-container h2 {
-    font-weight: 700;
-    margin-top: 30px;
-    text-align: center;
-    font-size: 42px;
-  }
-  /* TOP AREA */
-  .ddc-top {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .ddc-logo {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    background: #000;
-    border-radius: 20px;
-    padding: 12px;
-  }
-
-  /* TEXT */
-  .ddc-stars {
-    color: #ffbd00;
-    font-size: 18px;
-    margin-bottom: 6px;
-  }
-
-  .ddc-info h3 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    /* font-family: "DM Mono", monospace; */
-  }
-  .ddc-info h3:hover {
-    color: #00c2ff;
-  }
-
-  .ddc-info p {
-    margin: 6px 0 0;
-    font-size: 16px;
-    color: #cbd5e1;
-    /* font-family: "DM Mono", monospace; */
-  }
-
-  .ddc-info span {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  /* BUTTON */
-  .ddc-btn {
-    margin-top: 28px;
-    display: block;
-    text-align: center;
-    background: linear-gradient(90deg, #00c2ff, #1e90ff);
-    color: white;
-    padding: 16px 28px;
-    border-radius: 40px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-    border: 3px solid transparent; /* prevents layout shift */
-  }
-
-  .ddc-btn:hover {
-    background: white;
-    color: #0b0f2a;
-    border-color: #00c2ff;
-    transform: translateY(-3px);
-  }
-
-  /* ============================= */
-  /* Responsive */
-  /* ============================= */
-
-  @media (max-width: 1200px) {
-    .ddc-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .ddc-container {
-      grid-template-columns: 1fr;
-    }
-
-    .ddc-section {
-      padding: 70px 5%;
-    }
-  }
-
-  /* ===== NEW STRUCTURE STYLES (NO COLOR CHANGES) ===== */
-
-  .ddc-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .ddc-header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .ddc-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.15);
-    margin: 18px 0 22px;
-  }
-
-  .ddc-body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ddc-description {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #cbd5e1;
-    margin-bottom: 18px;
-  }
-
-  .ddc-price {
-    /* font-family: "DM Mono", monospace; */
-    font-weight: 600;
-    margin-bottom: 25px;
-  }
-
-  /* Button Row */
-  .ddc-actions {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  /* Secondary button (uses your same theme structure) */
-  .ddc-btn-secondary {
-    margin-top: 28px;
-    display: block;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    padding: 16px;
-    border-radius: 40px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .ddc-btn-secondary:hover {
-    color: rgb(11, 11, 11);
-    background: rgba(255, 255, 255, 0.532);
-    /* border: 3px solid black; */
-  }
-</style>
-<!-- ======== Drawdown Cards Section ======== -->
+        render(firms);
+        updateHints();
+      })();
+    </script>
+    <!-- flagCDN used -->
+  </body>
+</html>

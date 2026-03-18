@@ -27,6 +27,14 @@
       body {
         overflow-x: hidden;
       }
+      h2 {
+        font-size: 60px !important;
+        font-weight: 700 !important;
+      }
+      p {
+        color: #ccd6e8;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -1186,1506 +1194,1792 @@ View Firm
     </style>
     <!-- ================= Ticker Tape Section ENDS ================= -->
 
-    <!-- ================= BRO DEALS SECTION ================= -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BRO deals · active animation on mobile</title>
+        <style>
+          /* ======== RESET / GLOBAL ======== */
+          .bro-deals-wrapper * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-    <div class="bro-deals-wrapper">
-      <section class="bro-deals-section">
-        <h2 class="bro-deals-title">The Best BRO Deals</h2>
+          .bro-deals-wrapper {
+            font-family:
+              system-ui,
+              -apple-system,
+              "Segoe UI",
+              Roboto,
+              sans-serif;
+          }
+          h2 {
+            font-size: 60px !important;
+            font-weight: 700 !important;
+          }
 
-        <div class="bro-carousel">
-          <button class="bro-nav bro-prev">&#10094;</button>
+          /* ======== MAIN SECTION ======== */
+          .bro-deals-section {
+            padding: 60px 0;
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            color: #fff;
+            overflow: hidden;
+          }
 
-          <div class="bro-carousel-track" id="broCarouselTrack"></div>
+          /* ======== TITLE — smaller ======== */
+          .bro-deals-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            letter-spacing: -0.02em;
+          }
 
-          <button class="bro-nav bro-next">&#10095;</button>
+          /* ======== CAROUSEL ======== */
+          .bro-carousel {
+            position: relative;
+            max-width: 1280px;
+            margin: auto;
+            overflow: hidden;
+          }
+
+          .bro-carousel-track {
+            display: flex;
+            align-items: stretch;
+            transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+          }
+
+          /* ======== CARD — smaller dimensions ======== */
+          .bro-card {
+            min-width: 50%;
+            margin: 0 16px;
+            border-radius: 24px;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            display: flex;
+            transition: 0.5s ease;
+            opacity: 0.5;
+            transform: scale(0.9);
+            /* needed for pseudo-element positioning */
+            position: relative;
+          }
+
+          .bro-card.bro-active {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 0 60px rgba(0, 194, 255, 0.25);
+            z-index: 2;
+          }
+
+          /* ======== BORDER ANIMATION — always visible on active card ======== */
+          .bro-card.bro-active::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 28px;
+            padding: 3px;
+            background:
+              linear-gradient(90deg, #00c2ff, #00c2ff) top,
+              linear-gradient(180deg, #00c2ff, #00c2ff) right,
+              linear-gradient(270deg, #00c2ff, #00c2ff) bottom,
+              linear-gradient(360deg, #00c2ff, #00c2ff) left;
+            background-size:
+              200% 3px,
+              3px 200%,
+              200% 3px,
+              3px 200%;
+            background-repeat: no-repeat;
+            animation: bro-borderRun 2.5s linear infinite;
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            /* ensure it's visible on mobile too — no display:none anywhere */
+          }
+
+          @keyframes bro-borderRun {
+            0% {
+              background-position:
+                -200% 0,
+                100% -200%,
+                200% 100%,
+                0 200%;
+            }
+            100% {
+              background-position:
+                200% 0,
+                100% 200%,
+                -200% 100%,
+                0 -200%;
+            }
+          }
+
+          /* ======== LEFT COL ======== */
+          .bro-card-left {
+            flex: 1.1;
+            padding: 35px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          .bro-card-logo {
+            max-height: 70px;
+            max-width: 150px;
+            margin: 0 auto 15px;
+            object-fit: contain;
+          }
+
+          .bro-card-left h3 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.3;
+          }
+
+          /* ======== DIVIDER ======== */
+          .bro-card-divider {
+            width: 1px;
+            background: linear-gradient(
+              to bottom,
+              transparent,
+              #00c2ff,
+              transparent
+            );
+            opacity: 0.6;
+          }
+
+          /* ======== RIGHT COL ======== */
+          .bro-card-right {
+            flex: 1.9;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          /* ======== DISCOUNT ======== */
+          .bro-discount {
+            font-size: 28px;
+            font-weight: 900;
+            color: #00c2ff;
+            margin-bottom: 16px;
+            opacity: 0;
+            transform: translateY(-40px);
+          }
+
+          .bro-card.bro-active .bro-discount {
+            animation: bro-drop 0.8s cubic-bezier(0.22, 1.2, 0.36, 1) forwards;
+            animation-delay: 0.6s;
+          }
+
+          @keyframes bro-drop {
+            0% {
+              opacity: 0;
+              transform: translateY(-40px);
+            }
+            70% {
+              opacity: 1;
+              transform: translateY(6px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          /* ======== DETAILS & CODE ======== */
+          .bro-details {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.9;
+          }
+
+          .bro-code {
+            font-size: 15px;
+            margin-bottom: 20px;
+          }
+
+          .bro-copy {
+            color: #00c2ff;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          /* ======== BUTTON ======== */
+          .bro-btn {
+            padding: 12px 32px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            width: fit-content;
+            transition: 0.3s;
+          }
+
+          .bro-btn:hover {
+            transform: translateY(-3px);
+            background: white;
+            color: #0b0f2a;
+          }
+
+          /* ======== ARROWS ======== */
+          .bro-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 32px;
+            background: none;
+            border: none;
+            color: #00c2ff;
+            cursor: pointer;
+            z-index: 10;
+            width: 50px;
+            text-shadow: 0 0 10px #00c2ff80;
+          }
+
+          .bro-prev {
+            left: -10px;
+          }
+          .bro-next {
+            right: -10px;
+          }
+
+          /* ======== RESPONSIVE: mobile ======== */
+          @media (max-width: 900px) {
+            .bro-deals-section {
+              padding: 40px 0;
+            }
+
+            .bro-deals-title {
+              font-size: 28px;
+              margin-bottom: 35px;
+            }
+
+            /* disable horizontal transform, use native scroll */
+            .bro-carousel-track {
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              transform: none !important;
+              gap: 16px;
+              padding: 0 12px;
+              scroll-padding: 0 12px;
+              /* keep flex behaviour */
+              display: flex;
+            }
+
+            .bro-card {
+              min-width: 85%;
+              flex-direction: column;
+              scroll-snap-align: center;
+              margin: 0; /* no extra margin, gap handles it */
+              transform: scale(0.98);
+              /* active card will scale to 1 and keep border animation */
+            }
+
+            .bro-card.bro-active {
+              transform: scale(1); /* active stands out */
+              /* border animation is inherited from base rule — no extra override */
+            }
+
+            .bro-nav {
+              display: none; /* hide arrows on mobile */
+            }
+
+            .bro-card-divider {
+              width: 100%;
+              height: 1px;
+              background: linear-gradient(
+                to right,
+                transparent,
+                #00c2ff,
+                transparent
+              );
+            }
+
+            .bro-card-left,
+            .bro-card-right {
+              padding: 24px 22px;
+              text-align: center;
+            }
+
+            .bro-card-left h3 {
+              font-size: 20px;
+            }
+
+            .bro-discount {
+              font-size: 26px;
+            }
+
+            .bro-details {
+              font-size: 15px;
+            }
+
+            .bro-btn {
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
+
+          /* extra small devices */
+          @media (max-width: 500px) {
+            .bro-card {
+              min-width: 92%;
+            }
+            .bro-card-left,
+            .bro-card-right {
+              padding: 20px 16px;
+            }
+            .bro-deals-title {
+              font-size: 26px;
+            }
+          }
+        </style>
+      </head>
+      <body style="margin: 0; background: #030712">
+        <div class="bro-deals-wrapper">
+          <section class="bro-deals-section">
+            <h2 class="bro-deals-title">The Best BRO Deals</h2>
+
+            <div class="bro-carousel">
+              <button class="bro-nav bro-prev">&#10094;</button>
+              <div class="bro-carousel-track" id="broCarouselTrack"></div>
+              <button class="bro-nav bro-next">&#10095;</button>
+            </div>
+          </section>
         </div>
-      </section>
-    </div>
-
-    <style>
-      /* ======== MAIN WRAPPER ======== */
-
-      .bro-deals-wrapper * {
-        box-sizing: border-box;
-      }
-
-      .bro-deals-section {
-        padding: 120px 0;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #fff;
-        overflow: hidden;
-      }
-
-      /* ======== TITLE ======== */
-
-      .bro-deals-title {
-        text-align: center;
-        font-size: 40px;
-        font-weight: 800;
-        margin-bottom: 70px;
-      }
-
-      /* ======== CAROUSEL ======== */
-
-      .bro-carousel {
-        position: relative;
-        max-width: 1400px;
-        margin: auto;
-        overflow: hidden;
-      }
-
-      .bro-carousel-track {
-        display: flex;
-        align-items: stretch;
-        transition: transform 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-      }
-
-      /* ======== CARD ======== */
-
-      .bro-card {
-        min-width: 50%;
-        margin: 0 20px;
-        border-radius: 28px;
-        background: rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(25px);
-        display: flex;
-        transition: 0.6s ease;
-        opacity: 0.5;
-        transform: scale(0.9);
-      }
-
-      .bro-card.bro-active {
-        opacity: 1;
-        transform: scale(1);
-        box-shadow: 0 0 70px rgba(0, 194, 255, 0.25);
-        position: relative;
-        z-index: 2;
-      }
-
-      /* ======== BORDER ANIMATION ======== */
-
-      .bro-card.bro-active::before {
-        content: "";
-        position: absolute;
-        inset: -10px;
-        border-radius: 32px;
-        padding: 3px;
-
-        background:
-          linear-gradient(90deg, #00c2ff, #00c2ff) top,
-          linear-gradient(180deg, #00c2ff, #00c2ff) right,
-          linear-gradient(270deg, #00c2ff, #00c2ff) bottom,
-          linear-gradient(360deg, #00c2ff, #00c2ff) left;
-
-        background-size:
-          200% 3px,
-          3px 200%,
-          200% 3px,
-          3px 200%;
-
-        background-repeat: no-repeat;
-
-        animation: bro-borderRun 2.5s linear infinite;
-
-        -webkit-mask:
-          linear-gradient(#000 0 0) content-box,
-          linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-
-        pointer-events: none;
-      }
-
-      @keyframes bro-borderRun {
-        0% {
-          background-position:
-            -200% 0,
-            100% -200%,
-            200% 100%,
-            0 200%;
-        }
-
-        100% {
-          background-position:
-            200% 0,
-            100% 200%,
-            -200% 100%,
-            0 -200%;
-        }
-      }
-
-      /* ======== LEFT ======== */
-
-      .bro-card-left {
-        flex: 1.1;
-        padding: 55px 35px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .bro-card-logo {
-        max-height: 90px;
-        max-width: 180px;
-        margin: 0 auto 20px;
-        object-fit: contain;
-      }
-
-      .bro-card-left h3 {
-        font-size: 24px;
-        font-weight: 700;
-      }
-
-      /* ======== DIVIDER ======== */
-
-      .bro-card-divider {
-        width: 1px;
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          #00c2ff,
-          transparent
-        );
-        opacity: 0.6;
-      }
-
-      /* ======== RIGHT ======== */
-
-      .bro-card-right {
-        flex: 1.9;
-        padding: 55px 45px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      /* ======== DISCOUNT ======== */
-
-      .bro-discount {
-        font-size: 32px;
-        font-weight: 900;
-        color: #00c2ff;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-
-      .bro-card.bro-active .bro-discount {
-        animation: bro-drop 0.8s cubic-bezier(0.22, 1.2, 0.36, 1) forwards;
-        animation-delay: 0.6s;
-      }
-
-      @keyframes bro-drop {
-        0% {
-          opacity: 0;
-          transform: translateY(-40px);
-        }
-
-        70% {
-          opacity: 1;
-          transform: translateY(8px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ======== TEXT ======== */
-
-      .bro-details {
-        font-size: 17px;
-        line-height: 1.9;
-        margin-bottom: 25px;
-        opacity: 0.9;
-      }
-
-      .bro-code {
-        font-size: 16px;
-        margin-bottom: 25px;
-      }
-
-      .bro-copy {
-        color: #00c2ff;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      /* ======== BUTTON ======== */
-
-      .bro-btn {
-        padding: 14px 40px;
-        border-radius: 50px;
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        color: #fff;
-        font-weight: 700;
-        font-size: 16px;
-        text-decoration: none;
-        width: fit-content;
-        transition: 0.3s;
-      }
-
-      .bro-btn:hover {
-        transform: translateY(-3px);
-        background: white;
-        color: #0b0f2a;
-      }
-
-      /* ======== ARROWS ======== */
-
-      .bro-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 32px;
-        background: none;
-        border: none;
-        color: #00c2ff;
-        cursor: pointer;
-        z-index: 10;
-      }
-
-      .bro-prev {
-        left: 0;
-      }
-      .bro-next {
-        right: 0;
-      }
-
-      /* ======== MOBILE ======== */
-
-      @media (max-width: 900px) {
-        .bro-carousel-track {
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          transform: none !important;
-        }
-
-        .bro-card {
-          min-width: 88%;
-          flex-direction: column;
-          scroll-snap-align: center;
-        }
-
-        .bro-nav {
-          display: none;
-        }
-
-        .bro-card-divider {
-          width: 100%;
-          height: 1px;
-          background: linear-gradient(
-            to right,
-            transparent,
-            #00c2ff,
-            transparent
-          );
-        }
-
-        .bro-card-left,
-        .bro-card-right {
-          padding: 25px;
-          text-align: center;
-        }
-      }
-    </style>
-
-    <script>
-      (function () {
-        const deals = [
-          {
-            name: "Apex Trader Funding",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/05/Layer_1.png",
-            discount: "90% Off",
-            details:
-              "No Consistency Rule in Evaluation!<br>All Evals!<br>Resets starting from $80.",
-            code: "BRO",
-            link: "https://apextraderfunding.com/",
-          },
-
-          {
-            name: "Lucid Trading",
-            logo: "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png.webp",
-            discount: "35%-50% Off",
-            details: "No Activation Fees<br>50% Off on New Accounts.",
-            code: "BROTRADING",
-            link: "https://lucidtrading.com/ref/brotrading/",
-          },
-
-          {
-            name: "My Funded Futures",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            discount: "Upto 50% Off",
-            details: "No Activation Fees + BOGO.",
-            code: "BRO",
-            link: "https://myfundedfutures.com/challenge?ref=5117",
-          },
-
-          {
-            name: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            discount: "30% Off",
-            details:
-              "30% Off The 150K Select Plan.<br>Choose Day-1 or 3-Day Payouts!",
-            code: "BRO",
-            link: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          {
-            name: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            discount: "90% Off",
-            details:
-              "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
-            code: "BROTRADING",
-            link: "https://daytraders.com/",
-          },
-        ];
-
-        const track = document.getElementById("broCarouselTrack");
-
-        function createCard(deal) {
-          const card = document.createElement("div");
-
-          card.className = "bro-card";
-
-          card.innerHTML = `
-
-<div class="bro-card-left">
-
-<img src="${deal.logo}" class="bro-card-logo">
-
-<h3>${deal.name}</h3>
-
-</div>
-
-<div class="bro-card-divider"></div>
-
-<div class="bro-card-right">
-
-<div class="bro-discount">${deal.discount}</div>
-
-<div class="bro-details">${deal.details}</div>
-
-<div class="bro-code">
-
-Copy Code:
-
-<span class="bro-copy" data-code="${deal.code}">${deal.code}</span>
-
-</div>
-
-<a href="${deal.link}" target="_blank" class="bro-btn">Get Deal</a>
-
-</div>
-
-`;
-
-          return card;
-        }
-
-        const extended = [deals[deals.length - 1], ...deals, deals[0]];
-
-        extended.forEach((d) => track.appendChild(createCard(d)));
-
-        let cards = document.querySelectorAll(".bro-card");
-
-        let index = 1;
-
-        function setActive(i) {
-          cards.forEach((c) => c.classList.remove("bro-active"));
-
-          cards[i].classList.add("bro-active");
-        }
-
-        function update(animate = true) {
-          if (window.innerWidth <= 900) return;
-
-          const w = cards[0].offsetWidth + 40;
-
-          track.style.transition = animate
-            ? "transform .7s cubic-bezier(.77,0,.18,1)"
-            : "none";
-
-          track.style.transform = `translateX(calc(50% - ${w / 2}px - ${index * w}px))`;
-
-          setActive(index);
-        }
-
-        function next() {
-          index++;
-
-          update();
-
-          if (index === cards.length - 1) {
-            setTimeout(() => {
-              index = 1;
-
-              update(false);
-            }, 700);
-          }
-        }
-
-        function prev() {
-          index--;
-
-          update();
-
-          if (index === 0) {
-            setTimeout(() => {
-              index = cards.length - 2;
-
-              update(false);
-            }, 700);
-          }
-        }
-
-        document.querySelector(".bro-next").onclick = next;
-
-        document.querySelector(".bro-prev").onclick = prev;
-
-        setInterval(() => {
-          if (window.innerWidth > 900) next();
-        }, 3500);
-
-        document.addEventListener("click", function (e) {
-          if (e.target.classList.contains("bro-copy")) {
-            const code = e.target.dataset.code;
-
-            navigator.clipboard.writeText(code);
-
-            e.target.innerText = "Copied!";
-
-            setTimeout(() => {
-              e.target.innerText = code;
-            }, 1500);
-          }
-        });
-
-        window.addEventListener("load", () => update(false));
-
-        window.addEventListener("resize", () => update(false));
-      })();
-    </script>
-    <!-- ================= BRO DEALS SECTION END ================= -->
+
+        <script>
+          (function () {
+            const deals = [
+              {
+                name: "Apex Trader Funding",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/05/Layer_1.png",
+                discount: "90% Off",
+                details:
+                  "No Consistency Rule in Evaluation!<br>All Evals!<br>Resets starting from $80.",
+                code: "BRO",
+                link: "https://apextraderfunding.com/",
+              },
+              {
+                name: "Lucid Trading",
+                logo: "https://lucidtrading.com/wp-content/uploads/2025/02/Untitled-design-2025-10-22T181841.622.png.webp",
+                discount: "35%-50% Off",
+                details: "No Activation Fees<br>50% Off on New Accounts.",
+                code: "BROTRADING",
+                link: "https://lucidtrading.com/ref/brotrading/",
+              },
+              {
+                name: "My Funded Futures",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+                discount: "Upto 50% Off",
+                details: "No Activation Fees + BOGO.",
+                code: "BRO",
+                link: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
+                name: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                discount: "30% Off",
+                details:
+                  "30% Off The 150K Select Plan.<br>Choose Day-1 or 3-Day Payouts!",
+                code: "BRO",
+                link: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                name: "Day Traders",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+                discount: "90% Off",
+                details:
+                  "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
+                code: "BROTRADING",
+                link: "https://daytraders.com/",
+              },
+            ];
+
+            const track = document.getElementById("broCarouselTrack");
+            if (!track) return;
+
+            function createCard(deal) {
+              const card = document.createElement("div");
+              card.className = "bro-card";
+              card.innerHTML = `
+        <div class="bro-card-left">
+          <img src="${deal.logo}" class="bro-card-logo" alt="${deal.name} logo" loading="lazy">
+          <h3>${deal.name}</h3>
+        </div>
+        <div class="bro-card-divider"></div>
+        <div class="bro-card-right">
+          <div class="bro-discount">${deal.discount}</div>
+          <div class="bro-details">${deal.details}</div>
+          <div class="bro-code">Copy Code: <span class="bro-copy" data-code="${deal.code}">${deal.code}</span></div>
+          <a href="${deal.link}" target="_blank" rel="noopener" class="bro-btn">Get Deal</a>
+        </div>
+      `;
+              return card;
+            }
+
+            // infinite loop: last, all, first
+            const extended = [deals[deals.length - 1], ...deals, deals[0]];
+            extended.forEach((d) => track.appendChild(createCard(d)));
+
+            let cards = document.querySelectorAll(".bro-card");
+            let index = 1; // first real deal (0 is clone)
+
+            function setActive(i) {
+              cards.forEach((c) => c.classList.remove("bro-active"));
+              cards[i]?.classList.add("bro-active");
+            }
+
+            function update(animate = true) {
+              if (window.innerWidth <= 900) {
+                // mobile: ensure active card is set (transform not used)
+                setActive(index);
+                return;
+              }
+
+              if (!cards.length) return;
+              const cardWidth = cards[0].offsetWidth + 32; // 16px left + 16px right margin
+              const trackWidth = track.offsetWidth;
+              const shift = trackWidth / 2 - cardWidth / 2 - index * cardWidth;
+
+              track.style.transition = animate
+                ? "transform 0.7s cubic-bezier(0.77, 0, 0.18, 1)"
+                : "none";
+              track.style.transform = `translateX(${shift}px)`;
+              setActive(index);
+            }
+
+            function next() {
+              if (window.innerWidth <= 900) {
+                // mobile: move to next card, update active
+                if (index < cards.length - 2) {
+                  // -2 because last is clone
+                  index++;
+                } else {
+                  index = 1; // loop back to first real
+                }
+                setActive(index);
+                // optional: smooth scroll into view (but scroll-snap handles it)
+                cards[index]?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "center",
+                });
+                return;
+              }
+
+              // desktop
+              index++;
+              update();
+
+              if (index === cards.length - 1) {
+                setTimeout(() => {
+                  index = 1;
+                  update(false);
+                }, 700);
+              }
+            }
+
+            function prev() {
+              if (window.innerWidth <= 900) {
+                if (index > 1) {
+                  index--;
+                } else {
+                  index = cards.length - 2; // last real
+                }
+                setActive(index);
+                cards[index]?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                  inline: "center",
+                });
+                return;
+              }
+
+              index--;
+              update();
+
+              if (index === 0) {
+                setTimeout(() => {
+                  index = cards.length - 2;
+                  update(false);
+                }, 700);
+              }
+            }
+
+            // Attach events
+            const nextBtn = document.querySelector(".bro-next");
+            const prevBtn = document.querySelector(".bro-prev");
+            if (nextBtn) nextBtn.onclick = next;
+            if (prevBtn) prevBtn.onclick = prev;
+
+            // Auto‑play desktop only
+            let autoplay = setInterval(() => {
+              if (window.innerWidth > 900) next();
+            }, 4000);
+
+            // Copy functionality
+            document.addEventListener("click", function (e) {
+              const copySpan = e.target.closest(".bro-copy");
+              if (copySpan) {
+                const code = copySpan.dataset.code;
+                navigator.clipboard.writeText(code).catch(() => {});
+                const originalText = copySpan.innerText;
+                copySpan.innerText = "Copied!";
+                setTimeout(() => {
+                  copySpan.innerText = code;
+                }, 1500);
+              }
+            });
+
+            // Sync active card with scroll on mobile (optional: update index when scrolling stops)
+            if ("IntersectionObserver" in window) {
+              const observer = new IntersectionObserver(
+                (entries) => {
+                  if (window.innerWidth <= 900) {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        const newIdx = Array.from(cards).indexOf(entry.target);
+                        if (newIdx !== -1 && newIdx !== index) {
+                          index = newIdx;
+                          setActive(index);
+                        }
+                      }
+                    });
+                  }
+                },
+                { threshold: 0.6, root: track },
+              ); // consider card active when 60% visible
+
+              cards.forEach((card) => observer.observe(card));
+            }
+
+            function resizeHandler() {
+              cards = document.querySelectorAll(".bro-card");
+              if (window.innerWidth <= 900) {
+                track.style.transform = "none";
+                // keep index valid
+                if (index >= cards.length - 1) index = cards.length - 2;
+                if (index <= 0) index = 1;
+                setActive(index);
+              } else {
+                update(false);
+              }
+            }
+
+            window.addEventListener("load", () => resizeHandler());
+            window.addEventListener("resize", () => resizeHandler());
+
+            // reset autoplay on resize
+            window.addEventListener("resize", () => {
+              clearInterval(autoplay);
+              autoplay = setInterval(() => {
+                if (window.innerWidth > 900) next();
+              }, 4000);
+            });
+          })();
+        </script>
+      </body>
+    </html>
+    <!-- ===============Bro deal end============  -->
 
     <!-- ===== FAVORITE FIRMS SECTION ===== -->
 
-    <section class="zx-comparison-section" id="FavoriteFrimsSection">
-      <h2 class="ff-title">Only the Best Firms for you Bro</h2>
-      <p class="ff-subtitle">
-        Select your Favorite Firm. On this page, you can pick and show support
-        for your favorite firm.
-      </p>
-
-      <!-- FILTER BAR -->
-
-      <div class="zx-filter-panel">
-        <div class="zx-filter">
-          <label>Firm</label>
-          <select id="firm-filter">
-            <option value="all">All</option>
-          </select>
-        </div>
-
-        <div class="zx-filter">
-          <label>Platform</label>
-          <select id="platform-filter">
-            <option value="all">All</option>
-          </select>
-        </div>
-
-        <div class="zx-filter">
-          <label>Discount</label>
-          <select id="discount-filter">
-            <option value="all">All</option>
-          </select>
-        </div>
-
-        <div class="zx-filter">
-          <label>Max Accounts</label>
-          <select id="max-filter">
-            <option value="all">All</option>
-          </select>
-        </div>
-
-        <div class="zx-filter">
-          <label>Goal ≤</label>
-          <input
-            type="range"
-            id="goal-range"
-            min="0"
-            max="20000"
-            step="500"
-            value="20000"
-          />
-          <span id="goal-value">≤ 20000</span>
-        </div>
-
-        <div class="zx-filter">
-          <label>True Cost ≤</label>
-          <input
-            type="range"
-            id="cost-range"
-            min="0"
-            max="500"
-            step="10"
-            value="500"
-          />
-          <span id="cost-value">≤ 500</span>
-        </div>
-      </div>
-
-      <div class="zx-table-wrapper">
-        <table id="zx-table">
-          <thead>
-            <tr>
-              <th class="sticky-col logo-col">Logo</th>
-              <th class="sticky-col firm-col">Firm</th>
-
-              <th data-key="account" draggable="true">Account</th>
-              <th data-key="platform" draggable="true">Platform</th>
-              <th data-key="country" draggable="true">Country</th>
-              <th data-key="maxaccounts" draggable="true">Max Accounts</th>
-
-              <th data-key="eval" draggable="true">Eval</th>
-              <th data-key="activation" draggable="true">Activation</th>
-              <th data-key="truecost" draggable="true">True Cost</th>
-
-              <th data-key="discount" draggable="true">Discount</th>
-              <th data-key="goal" draggable="true">Goal</th>
-              <th data-key="ddt" draggable="true">DDT</th>
-              <th data-key="dd" draggable="true">DD</th>
-              <th data-key="mindays" draggable="true">Min Days</th>
-
-              <th>Code</th>
-              <th>Firm Page</th>
-              <th>Website</th>
-            </tr>
-          </thead>
-
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
-
-    <style>
-      .zx-comparison-section {
-        padding: 70px 120px;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: white;
-        font-family: "DM Sans", sans-serif;
-      }
-
-      .ff-title {
-        font-size: 46px;
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .ff-subtitle {
-        text-align: center;
-        opacity: 0.8;
-        max-width: 750px;
-        margin: 0 auto 40px;
-      }
-
-      /* FILTER BAR */
-
-      .zx-controls {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        margin-bottom: 30px;
-      }
-
-      .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .filter-group label {
-        font-size: 13px;
-        opacity: 0.7;
-      }
-
-      .filter-group select {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 6px;
-        min-width: 160px;
-        height: 38px;
-      }
-
-      .range-filter input {
-        width: 180px;
-      }
-
-      .range-filter span {
-        font-size: 13px;
-        opacity: 0.8;
-      }
-
-      .zx-controls select {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        padding: 8px 12px;
-        color: white;
-        border-radius: 6px;
-        min-width: 150px;
-        height: 38px;
-      }
-      .zx-filter-panel {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 25px;
-        margin-bottom: 40px;
-      }
-
-      .zx-filter {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .zx-filter label {
-        font-size: 13px;
-        opacity: 0.7;
-      }
-
-      .zx-filter select {
-        background: #0f172a;
-        border: 1px solid #1e293b;
-        color: white;
-        padding: 8px 10px;
-        border-radius: 6px;
-        height: 40px;
-      }
-
-      .zx-filter input[type="range"] {
-        width: 180px;
-      }
-
-      .zx-filter span {
-        font-size: 13px;
-        opacity: 0.8;
-      }
-
-      /* TABLE WRAPPER */
-
-      .zx-table-wrapper {
-        overflow-x: auto;
-        overflow-y: auto;
-        max-height: 700px;
-        border-radius: 10px;
-      }
-
-      /* SCROLLBAR */
-
-      .zx-table-wrapper::-webkit-scrollbar {
-        height: 8px;
-        width: 8px;
-      }
-
-      .zx-table-wrapper::-webkit-scrollbar-thumb {
-        background: #1e90ff;
-        border-radius: 10px;
-      }
-
-      .zx-table-wrapper::-webkit-scrollbar-track {
-        background: #071327;
-      }
-
-      /* TABLE */
-
-      #zx-table {
-        width: 100%;
-        min-width: 1700px;
-        border-collapse: separate;
-        border-spacing: 0;
-        background: #071327;
-        color: white;
-      }
-
-      #zx-table th {
-        background: #0f172a;
-        padding: 16px 17px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 4;
-        white-space: nowrap;
-      }
-
-      #zx-table td {
-        padding: 16px;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        white-space: nowrap;
-        color: white;
-      }
-      /* PLATFORM COLUMN FIX */
-
-      #zx-table th[data-key="platform"],
-      #zx-table td:nth-child(4) {
-        max-width: 160px;
-        width: 160px;
-        white-space: normal;
-        line-height: 1.3;
-      }
-
-      #zx-table td:nth-child(9) {
-        color: #22c55e;
-      }
-
-      /* ROW COLORS */
-
-      #zx-table tbody tr {
-        background: #071327;
-      }
-
-      #zx-table tbody tr:nth-child(even) {
-        background: #0b1d3a;
-      }
-
-      #zx-table tr:hover {
-        background: rgba(0, 194, 255, 0.08);
-      }
-
-      /* sticky columns */
-
-      .logo-col {
-        position: sticky;
-        left: 0;
-        background: #071327;
-        z-index: 3;
-        width: 70px;
-      }
-
-      .firm-col {
-        position: sticky;
-        left: 70px;
-        background: #071327;
-        z-index: 3;
-        min-width: 160px;
-      }
-
-      /* LOGO */
-
-      .zx-logo {
-        width: 40px;
-        height: auto;
-      }
-
-      /* BUTTONS */
-
-      .zx-code {
-        background: #1e293b;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 6px;
-        color: #00c2ff;
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .zx-code:hover {
-        background: #00c2ff;
-        color: #071327;
-      }
-
-      .zx-visit-btn {
-        padding: 6px 14px;
-        background: #1e90ff;
-        color: white;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .zx-visit-btn:hover {
-        background: white;
-        color: #0b1d3a;
-      }
-
-      .zx-firm-btn {
-        background: #16a34a;
-        padding: 6px 12px;
-        border-radius: 6px;
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .zx-firm-btn:hover {
-        background: #22c55e;
-      }
-      .zx-filter select {
-        height: 40px;
-        overflow-y: auto;
-      }
-
-      #max-filter {
-        height: 40px !important;
-      }
-    </style>
-
-    <script>
-      window.addEventListener("load", function () {
-        const firms = [
-          /* APEX */
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 25000,
-            goal: 1500,
-            ddt: "Intraday",
-            dd: 1500,
-            mindays: 1,
-            eval: 147,
-            activation: 80,
-            truecost: 109,
-            discount: "90%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 50000,
-            goal: 3000,
-            ddt: "Intraday",
-            dd: 2500,
-            mindays: 1,
-            eval: 167,
-            activation: 130,
-            truecost: 163,
-            discount: "90%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 100000,
-            goal: 6000,
-            ddt: "Intraday",
-            dd: 3000,
-            mindays: 1,
-            eval: 207,
-            activation: 150,
-            truecost: 191,
-            discount: "80%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 150000,
-            goal: 9000,
-            ddt: "Intraday",
-            dd: 5000,
-            mindays: 1,
-            eval: 297,
-            activation: 220,
-            truecost: 279,
-            discount: "80%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 250000,
-            goal: 15000,
-            ddt: "Intraday",
-            dd: 6500,
-            mindays: 1,
-            eval: 517,
-            activation: 240,
-            truecost: 343,
-            discount: "80%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 300000,
-            goal: 20000,
-            ddt: "Intraday",
-            dd: 7500,
-            mindays: 1,
-            eval: 657,
-            activation: 260,
-            truecost: 391,
-            discount: "80%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          {
-            firm: "Apex Trader Funding",
-            logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-            account: 100000,
-            goal: 3000,
-            ddt: "Static",
-            dd: 625,
-            mindays: 1,
-            eval: 137,
-            activation: 150,
-            truecost: 177,
-            discount: "80%",
-            code: "BRO",
-            platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
-            country: "USA",
-            maxaccounts: 20,
-            firmpage: "Frims/ApexFunding.html",
-            website: "https://apextraderfunding.com/member/aff/go/buurtie",
-          },
-
-          /* TRADEIFY */
-
-          {
-            firm: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            account: 50000,
-            goal: 3000,
-            ddt: "EOD",
-            dd: 2000,
-            mindays: 1,
-            eval: 160,
-            activation: 0,
-            truecost: 112,
-            discount: "30%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/TradeifyTrader.html",
-            website: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          {
-            firm: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            account: 100000,
-            goal: 6000,
-            ddt: "EOD",
-            dd: 3000,
-            mindays: 1,
-            eval: 320,
-            activation: 0,
-            truecost: 224,
-            discount: "30%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/TradeifyTrader.html",
-            website: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          {
-            firm: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            account: 150000,
-            goal: 9000,
-            ddt: "EOD",
-            dd: 5000,
-            mindays: 1,
-            eval: 440,
-            activation: 0,
-            truecost: 308,
-            discount: "30%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/TradeifyTrader.html",
-            website: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          {
-            firm: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            account: 50000,
-            goal: 2500,
-            ddt: "EOD",
-            dd: 2000,
-            mindays: 3,
-            eval: 160,
-            activation: 0,
-            truecost: 112,
-            discount: "30%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/TradeifyTrader.html",
-            website: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          {
-            firm: "Tradeify",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-            account: 100000,
-            goal: 6000,
-            ddt: "EOD",
-            dd: 3000,
-            mindays: 3,
-            eval: 320,
-            activation: 0,
-            truecost: 224,
-            discount: "30%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/TradeifyTrader.html",
-            website: "https://tradeify.co/?ref=BFYQ2HKM",
-          },
-
-          /* MYFUNDEDFUTURES */
-
-          {
-            firm: "MyFundedFutures",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            account: 50000,
-            goal: 3000,
-            ddt: "EOD",
-            dd: 2000,
-            mindays: 2,
-            eval: 150,
-            activation: 100,
-            truecost: 175,
-            discount: "50%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-            country: "USA",
-            maxaccounts: 3,
-            firmpage: "Frims/MyFundedFuture.html",
-            website: "https://myfundedfutures.com/challenge?ref=5117",
-          },
-
-          {
-            firm: "MyFundedFutures",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            account: 100000,
-            goal: 6000,
-            ddt: "EOD",
-            dd: 3000,
-            mindays: 2,
-            eval: 300,
-            activation: 150,
-            truecost: 300,
-            discount: "50%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-            country: "USA",
-            maxaccounts: 3,
-            firmpage: "Frims/MyFundedFuture.html",
-            website: "https://myfundedfutures.com/challenge?ref=5117",
-          },
-
-          {
-            firm: "MyFundedFutures",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            account: 50000,
-            goal: 3000,
-            ddt: "Intraday",
-            dd: 2000,
-            mindays: 2,
-            eval: 165,
-            activation: 0,
-            truecost: 82,
-            discount: "50%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-            country: "USA",
-            maxaccounts: 3,
-            firmpage: "Frims/MyFundedFuture.html",
-            website: "https://myfundedfutures.com/challenge?ref=5117",
-          },
-
-          {
-            firm: "MyFundedFutures",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-            account: 100000,
-            goal: 6000,
-            ddt: "Intraday",
-            dd: 3000,
-            mindays: 2,
-            eval: 330,
-            activation: 0,
-            truecost: 165,
-            discount: "50%",
-            code: "BRO",
-            platform: "Tradovate, NinjaTrader, TradingView, Quantower",
-            country: "USA",
-            maxaccounts: 3,
-            firmpage: "Frims/MyFundedFuture.html",
-            website: "https://myfundedfutures.com/challenge?ref=5117",
-          },
-
-          /* LUCID */
-
-          {
-            firm: "Lucid Trading",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-            account: 50000,
-            goal: 3000,
-            ddt: "EOD",
-            dd: 2000,
-            mindays: 5,
-            eval: 170,
-            activation: 0,
-            truecost: 85,
-            discount: "50%",
-            code: "BROTRADING",
-            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
-            country: "UK",
-            maxaccounts: 5,
-            firmpage: "Frims/Lucid Trading.html",
-            website: "https://lucidtrading.com/ref/brotrading/",
-          },
-
-          {
-            firm: "Lucid Trading",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-            account: 100000,
-            goal: 6000,
-            ddt: "EOD",
-            dd: 3000,
-            mindays: 5,
-            eval: 285,
-            activation: 0,
-            truecost: 142,
-            discount: "50%",
-            code: "BROTRADING",
-            platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
-            country: "UK",
-            maxaccounts: 5,
-            firmpage: "Frims/Lucid Trading.html",
-            website: "https://lucidtrading.com/ref/brotrading/",
-          },
-
-          /* DAYTRADERS */
-
-          {
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: 50000,
-            goal: 3000,
-            ddt: "Intraday",
-            dd: 2500,
-            mindays: 1,
-            eval: 165,
-            activation: 130,
-            truecost: 229,
-            discount: "40%",
-            code: "BROTRADING",
-            platform: "ProjectX, Rithmic, NinjaTrader",
-            country: "USA",
-            maxaccounts: 15,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          },
-
-          {
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: 100000,
-            goal: 6000,
-            ddt: "Intraday",
-            dd: 3000,
-            mindays: 1,
-            eval: 315,
-            activation: 130,
-            truecost: 319,
-            discount: "40%",
-            code: "BROTRADING",
-            platform: "ProjectX, Rithmic, NinjaTrader",
-            country: "USA",
-            maxaccounts: 15,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          },
-        ];
-
-        const tbody = document.querySelector("#zx-table tbody");
-
-        /* ---------- SORT ---------- */
-
-        firms.sort((a, b) => b.truecost - a.truecost);
-
-        let filtered = [...firms];
-
-        /* ---------- TABLE RENDER ---------- */
-
-        function render(data) {
-          tbody.innerHTML = "";
-
-          data.forEach((f) => {
-            const row = document.createElement("tr");
-
-            row.innerHTML = `
-
-<td class="sticky-col logo-col">
-<img src="${f.logo}" class="zx-logo">
-</td>
-
-<td class="sticky-col firm-col">${f.firm}</td>
-
-<td>$${f.account.toLocaleString()}</td>
-<td>${f.platform}</td>
-<td>${f.country}</td>
-<td>${f.maxaccounts}</td>
-
-<td>$${f.eval}</td>
-<td>$${f.activation}</td>
-<td>$${f.truecost}</td>
-
-<td>${f.discount}</td>
-<td>$${f.goal}</td>
-<td>${f.ddt}</td>
-<td>$${f.dd}</td>
-<td>${f.mindays}</td>
-
-<td><button class="zx-code">${f.code}</button></td>
-
-<td><a href="${f.firmpage}" class="zx-firm-btn">Open</a></td>
-
-<td><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit</a></td>
-
-`;
-
-            tbody.appendChild(row);
-          });
-        }
-
-        render(filtered);
-
-        /* ---------- FILTER ---------- */
-
-        function applyFilters() {
-          const firm = document.getElementById("firm-filter").value;
-          const platform = document.getElementById("platform-filter").value;
-          const discount = document.getElementById("discount-filter").value;
-          const max = document.getElementById("max-filter").value;
-
-          const goalLimit = parseInt(
-            document.getElementById("goal-range").value,
-          );
-          const costLimit = parseInt(
-            document.getElementById("cost-range").value,
-          );
-
-          filtered = firms.filter((f) => {
-            if (firm != "all" && f.firm != firm) return false;
-
-            if (platform != "all") {
-              const pList = f.platform.split(",").map((p) => p.trim());
-
-              if (!pList.includes(platform)) return false;
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes"
+        />
+        <title>Prop Firms · unified filters + All · responsive</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            background: #030712;
+          }
+
+          .zx-comparison-section {
+            padding: clamp(20px, 5vw, 70px) clamp(16px, 6vw, 120px);
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 70%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            color: white;
+            font-family: "Roboto", sans-serif;
+          }
+
+          .ff-title {
+            font-size: clamp(32px, 8vw, 60px) !important;
+            font-weight: 700 !important;
+            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+          }
+
+          .ff-subtitle {
+            text-align: center;
+            opacity: 0.8;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            padding: 0 10px;
+          }
+
+          /* ===== FILTER PANEL – RESPONSIVE WRAP ===== */
+          .zx-filter-panel {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 12px 14px;
+            margin-bottom: 35px;
+            background: rgba(7, 19, 39, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 18px 20px;
+            border-radius: 15px;
+            border: 1px solid #2e4f86;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+          }
+
+          .zx-filter {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 140px;
+            flex: 1 1 140px;
+            position: relative;
+            z-index: 15;
+          }
+
+          .zx-filter label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            font-weight: 600;
+            white-space: nowrap;
+          }
+
+          /* custom dropdown */
+          .dropdown-checkbox {
+            position: relative;
+            width: 100%;
+            z-index: 25;
+          }
+
+          .dropdown-checkbox .select-btn {
+            background: #0f1e38;
+            border: 1px solid #2e4b7a;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4px;
+            transition: 0.15s;
+            white-space: nowrap;
+          }
+          .dropdown-checkbox .select-btn:hover {
+            border-color: #1e90ff;
+            background: #142d4e;
+          }
+          .dropdown-checkbox .select-btn i {
+            font-size: 0.7rem;
+            color: #1e90ff;
+          }
+
+          .dropdown-checkbox .dropdown-content {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 260px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #0a1a33;
+            border: 1px solid #2d4f88;
+            border-radius: 20px;
+            z-index: 9999;
+            padding: 12px 10px;
+            display: none;
+            box-shadow: 0 20px 40px -8px black;
+          }
+          .dropdown-checkbox .dropdown-content.show {
+            display: block;
+          }
+          .dropdown-checkbox .dropdown-content label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 8px;
+            font-size: 0.8rem;
+            text-transform: none;
+            opacity: 1;
+            font-weight: 400;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+          }
+          .dropdown-checkbox .dropdown-content label:hover {
+            background: #14345e;
+          }
+          .dropdown-checkbox .dropdown-content input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #1e90ff;
+            cursor: pointer;
+          }
+
+          .selected-hint {
+            font-size: 0.65rem;
+            opacity: 0.6;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          /* ===== TABLE – scrollable & responsive ===== */
+          .zx-table-wrapper {
+            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 700px;
+            border-radius: 20px;
+            border: 1px solid #25487a;
+            background: #071327;
+            box-shadow: 0 30px 45px -12px black;
+            position: relative;
+            z-index: 5;
+          }
+
+          .zx-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+          }
+          .zx-table-wrapper::-webkit-scrollbar-thumb {
+            background: #2d5c9e;
+            border-radius: 20px;
+            border: 2px solid #071327;
+          }
+          .zx-table-wrapper::-webkit-scrollbar-track {
+            background: #0e1f3a;
+          }
+
+          #zx-table {
+            width: 100%;
+            min-width: 1700px; /* allow horizontal scroll on small */
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #071327;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+          }
+
+          #zx-table th {
+            background: #10213f;
+            padding: 18px 8px;
+            font-weight: 600;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: #b4ccff;
+            position: sticky;
+            top: 0;
+            z-index: 12;
+            white-space: nowrap;
+            border-bottom: 2px solid #2f5496;
+            text-align: center;
+          }
+
+          #zx-table td {
+            padding: 14px 6px;
+            text-align: center;
+            border-bottom: 1px solid rgba(42, 80, 140, 0.5);
+            white-space: nowrap;
+          }
+
+          #zx-table td:nth-child(4) {
+            /* platform */
+            white-space: normal;
+            word-break: break-word;
+            max-width: 130px;
+            min-width: 120px;
+            font-size: 0.75rem;
+            line-height: 1.3;
+          }
+          #zx-table td:nth-child(9) {
+            color: #4ade80;
+            font-weight: 600;
+          } /* true cost */
+
+          #zx-table tbody tr {
+            background: #0a172e;
+          }
+          #zx-table tbody tr:nth-child(even) {
+            background: #0f2341;
+          }
+          #zx-table tbody tr:hover {
+            background: #163a64;
+          }
+          #zx-table tbody tr:hover .sticky-col {
+            background: #163a64;
+          }
+
+          .sticky-col {
+            position: sticky;
+            background: inherit;
+            z-index: 10;
+          }
+          .logo-col {
+            left: 0;
+            width: 60px;
+            min-width: 60px;
+          }
+          .firm-col {
+            left: 60px;
+            min-width: 170px;
+            text-align: left !important;
+            font-weight: 600;
+            box-shadow: 5px 0 8px rgba(0, 0, 0, 0.5);
+            text-align: center !important;
+          }
+          .website-fixed {
+            position: sticky;
+            right: 0;
+            background: inherit;
+            z-index: 10;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.4);
+          }
+          #zx-table th.website-fixed {
+            background: #10213f;
+            z-index: 20;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.5);
+          }
+
+          .country-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .country-flag img {
+            width: 18px;
+            height: 13px;
+            object-fit: cover;
+            border-radius: 2px;
+          }
+          .zx-logo {
+            width: 38px;
+            margin: 0px 8px;
+            height: auto;
+            filter: brightness(1.1);
+          }
+
+          .zx-code {
+            background: #1e3155;
+            border: 1px solid #416bb3;
+            padding: 4px 10px;
+            border-radius: 30px;
+            color: #b8d2ff;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 3px solid transparent;
+          }
+          .zx-code:hover {
+            background: white;
+            color: #0b0f2a;
+            border: 3px solid #00c2ff;
+          }
+          .zx-firm-btn,
+          .zx-visit-btn {
+            padding: 4px 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.7rem;
+            display: inline-block;
+            white-space: nowrap;
+            margin: 6px 4px;
+          }
+          .zx-firm-btn {
+            background: #0f4e3a;
+            color: white;
+            border: 1px solid #1c7e5c;
+          }
+          .zx-firm-btn:hover {
+            background: white;
+            color: #0b2a0c;
+            border: 3px solid #00c2ff;
+          }
+          .zx-visit-btn {
+            background: #1e4a8b;
+            color: white;
+            border: 3px solid #3f7bcb;
+          }
+          .zx-visit-btn:hover {
+            transform: translateY(-4px);
+            background: white;
+            color: #0b0f2a;
+            border: 3px solid #00c2ff;
+          }
+
+          .filter-note {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #7f9fd5;
+            text-align: right;
+          }
+
+          /* small screen compact */
+          @media (max-width: 700px) {
+            .zx-filter-panel {
+              padding: 15px 14px;
+              border-radius: 30px;
+            }
+            .zx-filter {
+              min-width: 100%;
+            }
+            .dropdown-checkbox .dropdown-content {
+              width: 90vw;
+              left: 0;
+            }
+            .selected-hint {
+              max-width: 100%;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <section class="zx-comparison-section" id="FavoriteFrimsSection">
+          <h2 class="ff-title">Only the Best Firms for you Bro</h2>
+          <p class="ff-subtitle">
+            Select your Favorite Firm. On this page, you can pick and show
+            support for your favorite firm.
+          </p>
+
+          <!-- FILTER PANEL – all dropdowns now with "All" option (checkbox) -->
+          <div class="zx-filter-panel">
+            <!-- FIRM -->
+            <div class="zx-filter">
+              <label>FIRM</label>
+              <div class="dropdown-checkbox" id="firm-dropdown">
+                <div class="select-btn">
+                  Select firms <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="firm-options"></div>
+              </div>
+              <div class="selected-hint" id="firm-hint"></div>
+            </div>
+            <!-- PLATFORM -->
+            <div class="zx-filter">
+              <label>PLATFORM</label>
+              <div class="dropdown-checkbox" id="platform-dropdown">
+                <div class="select-btn">
+                  Select platforms <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="platform-options"></div>
+              </div>
+              <div class="selected-hint" id="platform-hint"></div>
+            </div>
+            <!-- DISCOUNT (≥) -->
+            <div class="zx-filter">
+              <label>DISCOUNT (≥)</label>
+              <div class="dropdown-checkbox" id="discount-dropdown">
+                <div class="select-btn">
+                  Select % <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="discount-options"></div>
+              </div>
+              <div class="selected-hint" id="discount-hint"></div>
+            </div>
+            <!-- MAX ACCOUNTS -->
+            <div class="zx-filter">
+              <label>MAX ACCOUNTS</label>
+              <div class="dropdown-checkbox" id="max-dropdown">
+                <div class="select-btn">
+                  Select max <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="max-options"></div>
+              </div>
+              <div class="selected-hint" id="max-hint"></div>
+            </div>
+            <!-- GOAL ($) -->
+            <div class="zx-filter">
+              <label>GOAL ($)</label>
+              <div class="dropdown-checkbox" id="goal-dropdown">
+                <div class="select-btn">
+                  Select goal ≤ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="goal-options"></div>
+              </div>
+              <div class="selected-hint" id="goal-hint"></div>
+            </div>
+            <!-- TRUE COST ($) -->
+            <div class="zx-filter">
+              <label>TRUE COST ($)</label>
+              <div class="dropdown-checkbox" id="cost-dropdown">
+                <div class="select-btn">
+                  Select cost ≤ <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="cost-options"></div>
+              </div>
+              <div class="selected-hint" id="cost-hint"></div>
+            </div>
+          </div>
+
+          <div class="zx-table-wrapper">
+            <table id="zx-table">
+              <thead>
+                <tr>
+                  <th class="sticky-col logo-col">Logo</th>
+                  <th class="sticky-col firm-col">Firm</th>
+                  <th data-key="account" draggable="true">Account</th>
+                  <th data-key="platform" draggable="true">Platform</th>
+                  <th data-key="country" draggable="true">Country</th>
+                  <th data-key="maxaccounts" draggable="true">Max Acc</th>
+                  <th data-key="eval" draggable="true">Eval ($)</th>
+                  <th data-key="activation" draggable="true">Act ($)</th>
+                  <th data-key="truecost" draggable="true">True Cost ($)</th>
+                  <th data-key="discount" draggable="true">Discount</th>
+                  <th data-key="goal" draggable="true">Goal ($)</th>
+                  <th data-key="ddt" draggable="true">DDT</th>
+                  <th data-key="dd" draggable="true">DD ($)</th>
+                  <th data-key="mindays" draggable="true">Min Days</th>
+                  <th>Code</th>
+                  <th>Firm Page</th>
+                  <th class="website-fixed">Website</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="filter-note">
+            💰 K = thousand • flags • click code to copy • drag headers •
+            <strong>All option added to each filter</strong>
+          </div>
+        </section>
+
+        <script>
+          (function () {
+            const firms = [
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 25000,
+                goal: 1500,
+                ddt: "Intraday",
+                dd: 1500,
+                mindays: 1,
+                eval: 147,
+                activation: 80,
+                truecost: 109,
+                discount: "90%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 50000,
+                goal: 3000,
+                ddt: "Intraday",
+                dd: 2500,
+                mindays: 1,
+                eval: 167,
+                activation: 130,
+                truecost: 163,
+                discount: "90%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 100000,
+                goal: 6000,
+                ddt: "Intraday",
+                dd: 3000,
+                mindays: 1,
+                eval: 207,
+                activation: 150,
+                truecost: 191,
+                discount: "80%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 150000,
+                goal: 9000,
+                ddt: "Intraday",
+                dd: 5000,
+                mindays: 1,
+                eval: 297,
+                activation: 220,
+                truecost: 279,
+                discount: "80%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 250000,
+                goal: 15000,
+                ddt: "Intraday",
+                dd: 6500,
+                mindays: 1,
+                eval: 517,
+                activation: 240,
+                truecost: 343,
+                discount: "80%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 300000,
+                goal: 20000,
+                ddt: "Intraday",
+                dd: 7500,
+                mindays: 1,
+                eval: 657,
+                activation: 260,
+                truecost: 391,
+                discount: "80%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Apex Trader Funding",
+                logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
+                account: 100000,
+                goal: 3000,
+                ddt: "Static",
+                dd: 625,
+                mindays: 1,
+                eval: 137,
+                activation: 150,
+                truecost: 177,
+                discount: "80%",
+                code: "BRO",
+                platform: "NinjaTrader, Tradovate, Rithmic, TradingView",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "Frims/ApexFunding.html",
+                website: "https://apextraderfunding.com/member/aff/go/buurtie",
+              },
+              {
+                firm: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                account: 50000,
+                goal: 3000,
+                ddt: "EOD",
+                dd: 2000,
+                mindays: 1,
+                eval: 160,
+                activation: 0,
+                truecost: 112,
+                discount: "30%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "Frims/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                firm: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                account: 100000,
+                goal: 6000,
+                ddt: "EOD",
+                dd: 3000,
+                mindays: 1,
+                eval: 320,
+                activation: 0,
+                truecost: 224,
+                discount: "30%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "Frims/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                firm: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                account: 150000,
+                goal: 9000,
+                ddt: "EOD",
+                dd: 5000,
+                mindays: 1,
+                eval: 440,
+                activation: 0,
+                truecost: 308,
+                discount: "30%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "Frims/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                firm: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                account: 50000,
+                goal: 2500,
+                ddt: "EOD",
+                dd: 2000,
+                mindays: 3,
+                eval: 160,
+                activation: 0,
+                truecost: 112,
+                discount: "30%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "Frims/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                firm: "Tradeify",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
+                account: 100000,
+                goal: 6000,
+                ddt: "EOD",
+                dd: 3000,
+                mindays: 3,
+                eval: 320,
+                activation: 0,
+                truecost: 224,
+                discount: "30%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "Frims/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                firm: "MyFundedFutures",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+                account: 50000,
+                goal: 3000,
+                ddt: "EOD",
+                dd: 2000,
+                mindays: 2,
+                eval: 150,
+                activation: 100,
+                truecost: 175,
+                discount: "50%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+                country: "USA",
+                maxaccounts: 3,
+                firmpage: "Frims/MyFundedFuture.html",
+                website: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
+                firm: "MyFundedFutures",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+                account: 100000,
+                goal: 6000,
+                ddt: "EOD",
+                dd: 3000,
+                mindays: 2,
+                eval: 300,
+                activation: 150,
+                truecost: 300,
+                discount: "50%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+                country: "USA",
+                maxaccounts: 3,
+                firmpage: "Frims/MyFundedFuture.html",
+                website: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
+                firm: "MyFundedFutures",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+                account: 50000,
+                goal: 3000,
+                ddt: "Intraday",
+                dd: 2000,
+                mindays: 2,
+                eval: 165,
+                activation: 0,
+                truecost: 82,
+                discount: "50%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+                country: "USA",
+                maxaccounts: 3,
+                firmpage: "Frims/MyFundedFuture.html",
+                website: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
+                firm: "MyFundedFutures",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
+                account: 100000,
+                goal: 6000,
+                ddt: "Intraday",
+                dd: 3000,
+                mindays: 2,
+                eval: 330,
+                activation: 0,
+                truecost: 165,
+                discount: "50%",
+                code: "BRO",
+                platform: "Tradovate, NinjaTrader, TradingView, Quantower",
+                country: "USA",
+                maxaccounts: 3,
+                firmpage: "Frims/MyFundedFuture.html",
+                website: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
+                firm: "Lucid Trading",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+                account: 50000,
+                goal: 3000,
+                ddt: "EOD",
+                dd: 2000,
+                mindays: 5,
+                eval: 170,
+                activation: 0,
+                truecost: 85,
+                discount: "50%",
+                code: "BROTRADING",
+                platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+                country: "UK",
+                maxaccounts: 5,
+                firmpage: "Frims/Lucid Trading.html",
+                website: "https://lucidtrading.com/ref/brotrading/",
+              },
+              {
+                firm: "Lucid Trading",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
+                account: 100000,
+                goal: 6000,
+                ddt: "EOD",
+                dd: 3000,
+                mindays: 5,
+                eval: 285,
+                activation: 0,
+                truecost: 142,
+                discount: "50%",
+                code: "BROTRADING",
+                platform: "Rithmic, Tradovate, NinjaTrader, Quantower",
+                country: "UK",
+                maxaccounts: 5,
+                firmpage: "Frims/Lucid Trading.html",
+                website: "https://lucidtrading.com/ref/brotrading/",
+              },
+              {
+                firm: "Day Traders",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+                account: 50000,
+                goal: 3000,
+                ddt: "Intraday",
+                dd: 2500,
+                mindays: 1,
+                eval: 165,
+                activation: 130,
+                truecost: 229,
+                discount: "40%",
+                code: "BROTRADING",
+                platform: "ProjectX, Rithmic, NinjaTrader",
+                country: "USA",
+                maxaccounts: 15,
+                firmpage: "Frims/DayTraders.html",
+                website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+              },
+              {
+                firm: "Day Traders",
+                logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
+                account: 100000,
+                goal: 6000,
+                ddt: "Intraday",
+                dd: 3000,
+                mindays: 1,
+                eval: 315,
+                activation: 130,
+                truecost: 319,
+                discount: "40%",
+                code: "BROTRADING",
+                platform: "ProjectX, Rithmic, NinjaTrader",
+                country: "USA",
+                maxaccounts: 15,
+                firmpage: "Frims/DayTraders.html",
+                website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+              },
+            ];
+            firms.sort((a, b) => b.truecost - a.truecost);
+
+            // helpers
+            const toK = (v) =>
+              v >= 1000
+                ? (v / 1000)
+                    .toFixed(v % 1000 === 0 ? 0 : 1)
+                    .replace(/\.0$/, "") + "K"
+                : v;
+            const getCountryFlag = (c) => {
+              const cc = c.trim().toLowerCase();
+              if (cc === "usa")
+                return '<img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="usa">';
+              if (cc === "uk")
+                return '<img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" alt="uk">';
+              return '<i class="fas fa-flag"></i>';
+            };
+
+            // ---- build dropdowns with "All" checkbox at top ----
+            function buildWithAll(
+              container,
+              values,
+              isNumeric = false,
+              prefix = "≤ ",
+            ) {
+              container.innerHTML = "";
+              // All option
+              let allLabel = document.createElement("label");
+              allLabel.innerHTML = `<input type="checkbox" class="all-check" value="__ALL__"> All`;
+              container.appendChild(allLabel);
+
+              values.forEach((val) => {
+                let label = document.createElement("label");
+                let display = isNumeric ? prefix + val : val;
+                label.innerHTML = `<input type="checkbox" value="${val}"> ${display}`;
+                container.appendChild(label);
+              });
             }
 
-            if (discount != "all" && f.discount != discount) return false;
+            // get unique sorted values
+            const firmVals = [...new Set(firms.map((f) => f.firm))].sort();
+            const platformVals = [
+              ...new Set(
+                firms.flatMap((f) =>
+                  f.platform.split(",").map((p) => p.trim()),
+                ),
+              ),
+            ].sort();
+            const discountVals = [
+              ...new Set(firms.map((f) => f.discount)),
+            ].sort((a, b) => parseInt(a) - parseInt(b));
+            const maxVals = [...new Set(firms.map((f) => f.maxaccounts))].sort(
+              (a, b) => a - b,
+            );
+            const goalPresets = [20000, 15000, 10000, 6000, 3000, 1500];
+            const costPresets = [500, 400, 300, 200, 150, 100];
 
-            if (max != "all" && f.maxaccounts > parseInt(max)) return false;
+            buildWithAll(
+              document.getElementById("firm-options"),
+              firmVals,
+              false,
+            );
+            buildWithAll(
+              document.getElementById("platform-options"),
+              platformVals,
+              false,
+            );
+            buildWithAll(
+              document.getElementById("discount-options"),
+              discountVals,
+              false,
+            );
+            buildWithAll(
+              document.getElementById("max-options"),
+              maxVals,
+              true,
+              "≤ ",
+            );
+            buildWithAll(
+              document.getElementById("goal-options"),
+              goalPresets,
+              true,
+              "≤ ",
+            );
+            buildWithAll(
+              document.getElementById("cost-options"),
+              costPresets,
+              true,
+              "≤ ",
+            );
 
-            if (f.goal > goalLimit) return false;
-
-            if (f.truecost > costLimit) return false;
-
-            return true;
-          });
-
-          render(filtered);
-        }
-
-        /* ---------- EVENTS ---------- */
-
-        document
-          .querySelectorAll(".zx-filter-panel select")
-          .forEach((el) => el.addEventListener("change", applyFilters));
-
-        /* ---------- RANGE ---------- */
-
-        const goalRange = document.getElementById("goal-range");
-        const costRange = document.getElementById("cost-range");
-
-        const goalValue = document.getElementById("goal-value");
-        const costValue = document.getElementById("cost-value");
-
-        goalRange.addEventListener("input", function () {
-          goalValue.innerText = "≤ " + this.value;
-          applyFilters();
-        });
-
-        costRange.addEventListener("input", function () {
-          costValue.innerText = "≤ " + this.value;
-          applyFilters();
-        });
-
-        /* ---------- POPULATE FILTERS ---------- */
-
-        function populateFirm() {
-          const select = document.getElementById("firm-filter");
-
-          const values = [...new Set(firms.map((f) => f.firm))];
-
-          values.forEach((v) => {
-            const opt = document.createElement("option");
-
-            opt.value = v;
-            opt.textContent = v;
-
-            select.appendChild(opt);
-          });
-        }
-
-        function populatePlatform() {
-          const select = document.getElementById("platform-filter");
-
-          const arr = [];
-
-          firms.forEach((f) => {
-            f.platform.split(",").forEach((p) => arr.push(p.trim()));
-          });
-
-          const values = [...new Set(arr)];
-
-          values.forEach((v) => {
-            const opt = document.createElement("option");
-
-            opt.value = v;
-            opt.textContent = v;
-
-            select.appendChild(opt);
-          });
-        }
-
-        function populateDiscount() {
-          const select = document.getElementById("discount-filter");
-
-          const values = [...new Set(firms.map((f) => f.discount))];
-
-          values.forEach((v) => {
-            const opt = document.createElement("option");
-
-            opt.value = v;
-            opt.textContent = v;
-
-            select.appendChild(opt);
-          });
-        }
-
-        function populateMax() {
-          const select = document.getElementById("max-filter");
-
-          const values = [...new Set(firms.map((f) => f.maxaccounts))].sort(
-            (a, b) => a - b,
-          );
-
-          values.forEach((v) => {
-            const opt = document.createElement("option");
-
-            opt.value = v;
-            opt.textContent = "≤ " + v;
-
-            select.appendChild(opt);
-          });
-        }
-
-        populateFirm();
-        populatePlatform();
-        populateDiscount();
-        populateMax();
-
-        /* ---------- COPY BUTTON ---------- */
-
-        document.addEventListener("click", function (e) {
-          if (e.target.classList.contains("zx-code")) {
-            const original = e.target.innerText;
-
-            navigator.clipboard.writeText(original);
-
-            e.target.innerText = "Copied!";
-
-            setTimeout(() => {
-              e.target.innerText = original;
-            }, 1000);
-          }
-        });
-
-        /* ---------- COLUMN DRAG ---------- */
-
-        let dragIndex;
-
-        document
-          .querySelectorAll("#zx-table th[draggable=true]")
-          .forEach((th) => {
-            th.addEventListener("dragstart", () => {
-              dragIndex = th.cellIndex;
-            });
-
-            th.addEventListener("dragover", (e) => e.preventDefault());
-
-            th.addEventListener("drop", function () {
-              const dropIndex = this.cellIndex;
-
-              document.querySelectorAll("#zx-table tr").forEach((row) => {
-                const cells = row.children;
-
-                row.insertBefore(cells[dragIndex], cells[dropIndex]);
+            // dropdown toggle
+            document.querySelectorAll(".dropdown-checkbox").forEach((dd) => {
+              const btn = dd.querySelector(".select-btn");
+              const content = dd.querySelector(".dropdown-content");
+              btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                document.querySelectorAll(".dropdown-content").forEach((c) => {
+                  if (c !== content) c.classList.remove("show");
+                });
+                content.classList.toggle("show");
+                btn.classList.toggle("open");
               });
+              content.addEventListener("click", (e) => e.stopPropagation());
             });
-          });
-      });
-    </script>
+            document.addEventListener("click", () => {
+              document
+                .querySelectorAll(".dropdown-content")
+                .forEach((c) => c.classList.remove("show"));
+            });
+
+            // get selected values, but if "All" checked → empty array (means no filter)
+            function getSelected(containerId) {
+              const container = document.getElementById(containerId);
+              const allCheck = container.querySelector("input.all-check");
+              if (allCheck && allCheck.checked) return []; // All selected => no filter
+
+              return Array.from(
+                container.querySelectorAll(
+                  "input[type=checkbox]:checked:not(.all-check)",
+                ),
+              ).map((cb) => cb.value);
+            }
+
+            // update hints
+            function updateHints() {
+              const f = getSelected("firm-options");
+              document.getElementById("firm-hint").innerText = f.length
+                ? f.join(", ").slice(0, 20) + (f.length > 2 ? "…" : "")
+                : "All";
+              const p = getSelected("platform-options");
+              document.getElementById("platform-hint").innerText = p.length
+                ? p.join(", ").slice(0, 20) + "…"
+                : "All";
+              const d = getSelected("discount-options");
+              document.getElementById("discount-hint").innerText = d.length
+                ? d.join(", ")
+                : "All";
+              const m = getSelected("max-options").map((v) => "≤ " + v);
+              document.getElementById("max-hint").innerText = m.length
+                ? m.join(", ").slice(0, 20)
+                : "All";
+              const g = getSelected("goal-options").map((v) => "≤ " + v);
+              document.getElementById("goal-hint").innerText = g.length
+                ? g.join(", ")
+                : "All";
+              const c = getSelected("cost-options").map((v) => "≤ " + v);
+              document.getElementById("cost-hint").innerText = c.length
+                ? c.join(", ")
+                : "All";
+            }
+
+            // main filter
+            function applyFilters() {
+              const firmSel = getSelected("firm-options");
+              const platSel = getSelected("platform-options");
+              const discSel = getSelected("discount-options");
+              const maxSel = getSelected("max-options").map((v) => parseInt(v));
+              const goalSel = getSelected("goal-options").map((v) =>
+                parseInt(v),
+              );
+              const costSel = getSelected("cost-options").map((v) =>
+                parseInt(v),
+              );
+
+              const filtered = firms.filter((f) => {
+                if (firmSel.length && !firmSel.includes(f.firm)) return false;
+                if (platSel.length) {
+                  const plats = f.platform.split(",").map((p) => p.trim());
+                  if (!platSel.some((p) => plats.includes(p))) return false;
+                }
+                if (discSel.length) {
+                  const nums = discSel
+                    .map((d) => parseInt(d.replace("%", "")))
+                    .filter((n) => !isNaN(n));
+                  if (
+                    nums.length &&
+                    Math.min(...nums) > parseInt(f.discount.replace("%", ""))
+                  )
+                    return false;
+                }
+                if (maxSel.length) {
+                  const minMax = Math.min(...maxSel);
+                  if (f.maxaccounts > minMax) return false;
+                }
+                if (goalSel.length) {
+                  const minGoal = Math.min(...goalSel);
+                  if (f.goal > minGoal) return false;
+                }
+                if (costSel.length) {
+                  const minCost = Math.min(...costSel);
+                  if (f.truecost > minCost) return false;
+                }
+                return true;
+              });
+              render(filtered);
+              updateHints();
+            }
+
+            // render table
+            function render(data) {
+              tbody.innerHTML = "";
+              data.forEach((f) => {
+                const row = document.createElement("tr");
+                const flagHtml = `<span class="country-flag">${getCountryFlag(f.country)} ${f.country}</span>`;
+                row.innerHTML = `
+          <td class="sticky-col logo-col"><img src="${f.logo}" class="zx-logo" alt="logo"></td>
+          <td class="sticky-col firm-col">${f.firm}</td>
+          <td>$${toK(f.account)}</td>
+          <td>${f.platform}</td>
+          <td>${flagHtml}</td>
+          <td>${f.maxaccounts}</td>
+          <td>$${toK(f.eval)}</td>
+          <td>$${toK(f.activation)}</td>
+          <td>$${f.truecost}</td>
+          <td>${f.discount}</td>
+          <td>$${toK(f.goal)}</td>
+          <td>${f.ddt}</td>
+          <td>$${toK(f.dd)}</td>
+          <td>${f.mindays}</td>
+          <td><button class="zx-code">${f.code}</button></td>
+          <td><a href="${f.firmpage}" class="zx-firm-btn">Open</a></td>
+          <td class="website-fixed"><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit</a></td>
+        `;
+                tbody.appendChild(row);
+              });
+            }
+
+            const tbody = document.querySelector("#zx-table tbody");
+
+            // attach listeners to all checkboxes (including All)
+            function addListenersToContainer(containerId) {
+              document
+                .querySelectorAll(`#${containerId} input[type=checkbox]`)
+                .forEach((cb) => {
+                  cb.addEventListener("change", function (e) {
+                    const container = document.getElementById(containerId);
+                    const allChk = container.querySelector("input.all-check");
+                    if (this.classList.contains("all-check")) {
+                      // if All clicked, uncheck others (or keep them but our getSelected respects All)
+                      if (this.checked) {
+                        container
+                          .querySelectorAll("input:not(.all-check)")
+                          .forEach((c) => (c.checked = false));
+                      }
+                    } else {
+                      // if any other is checked, uncheck All
+                      if (allChk) allChk.checked = false;
+                    }
+                    applyFilters();
+                  });
+                });
+            }
+
+            addListenersToContainer("firm-options");
+            addListenersToContainer("platform-options");
+            addListenersToContainer("discount-options");
+            addListenersToContainer("max-options");
+            addListenersToContainer("goal-options");
+            addListenersToContainer("cost-options");
+
+            // copy code
+            document.addEventListener("click", (e) => {
+              if (e.target.classList.contains("zx-code")) {
+                const orig = e.target.innerText;
+                navigator.clipboard.writeText(orig);
+                e.target.innerText = "Copied!";
+                setTimeout(() => (e.target.innerText = orig), 700);
+              }
+            });
+
+            // drag columns
+            let dragIndex;
+            document
+              .querySelectorAll("#zx-table th[draggable=true]")
+              .forEach((th) => {
+                th.addEventListener(
+                  "dragstart",
+                  () => (dragIndex = th.cellIndex),
+                );
+                th.addEventListener("dragover", (e) => e.preventDefault());
+                th.addEventListener("drop", function (e) {
+                  e.preventDefault();
+                  let dropIndex = this.cellIndex;
+                  document.querySelectorAll("#zx-table tr").forEach((row) => {
+                    row.insertBefore(
+                      row.children[dragIndex],
+                      row.children[dropIndex],
+                    );
+                  });
+                });
+              });
+
+            render(firms);
+            updateHints();
+          })();
+        </script>
+        <!-- flagCDN used -->
+      </body>
+    </html>
 
     <!-- ===== FAVORITE FIRMS END ===== -->
 
@@ -3868,7 +4162,7 @@ Copy Code:
       <span>$100K</span>
     </div> -->
 
-        <h2>Win a FREE <span>$100K</span> Prop Firm Challenge</h2>
+        <h3>Win a FREE <span>$100K</span> Prop Firm Challenge</h3>
 
         <p class="bt-desc">
           Join the <b>BroTrading newsletter</b> for updates on the best Propfirm
@@ -3982,7 +4276,7 @@ Copy Code:
 
       /* TITLE */
 
-      .bt-popup h2 {
+      .bt-popup h3 {
         font-size: 22px;
         margin-bottom: 10px;
       }
