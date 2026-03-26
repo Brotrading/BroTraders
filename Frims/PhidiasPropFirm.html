@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Day Traders | Bro Trading</title>
+    <title>Phidias PropFirm | Bro Trading</title>
     <link
       rel="shortcut icon"
       href="../Bro Traders logo.jpeg"
@@ -21,63 +21,38 @@
   <body>
     <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
     <div class="bt-topbar">
-      <!-- SCROLLING SECTION -->
       <div class="bt-ticker-wrapper">
         <div class="bt-arrow">&#10094;</div>
-
         <div class="bt-ticker">
           <div class="bt-ticker-track">
-            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is 50% Off All Accounts! Use Code: BROTRADING
-            </a>
-
+            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank"
+              >Lucid Trading is 50% Off All Accounts! Use Code: BROTRADING</a
+            >
             <a
               href="https://apextraderfunding.com/?keyword=&c=&gclid=&gad_source="
               target="_blank"
+              >✅ Apex Trader Funding is 40% Off & No Fee! Use Code: BRO</a
             >
-              ✅ Apex Trader Funding is 40% Off & No Fee! Use Code: BRO
-            </a>
-
             <a
               href="https://myfundedfutures.com/challenge?ref=5117"
               target="_blank"
+              >💀 20% Off At MyFundedFutures!</a
             >
-              💀 20% Off At MyFundedFutures!
-            </a>
-
-            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">
-              🚨 90% Off Tradeify! 1 Day To Pass Use Code: BRO
-            </a>
-
-            <!-- duplicate for smooth loop -->
+            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank"
+              >🚨 90% Off Tradeify! 1 Day To Pass Use Code: BRO</a
+            >
             <a
               href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
               target="_blank"
+              >DayTraders.com is 50% Off All Accounts! Use Code: BROTRADING</a
             >
-              DayTraders.com is 50% Off All Accounts! Use Code: BROTRADING
-            </a>
           </div>
         </div>
-
         <div class="bt-arrow">&#10095;</div>
       </div>
-
-      <!-- RIGHT SIDE BUTTONS -->
-      <!-- <div class="bt-right-links">
-        <a href="https://www.youtube.com/c/PatrickWieland" target="_blank"
-          >#1 Day Trader on YouTube</a
-        >
-        <a href="https://bigdickhouse.com/" target="_blank">OPF Shop</a>
-        <a href="https://onlypropfirms.com/register/" target="_blank"
-          >Subscription</a
-        >
-        <a href="https://onlypropfirms.com/login/" target="_blank">Login</a>
-      </div> -->
     </div>
 
     <style>
-      /* ================= TOP BAR ================= */
-
       .bt-topbar {
         display: flex;
         align-items: center;
@@ -89,9 +64,6 @@
         position: relative;
         z-index: 99999;
       }
-
-      /* ================= TICKER ================= */
-
       .bt-ticker-wrapper {
         display: flex;
         align-items: center;
@@ -99,7 +71,6 @@
         background: #ffa239;
         overflow: hidden;
       }
-
       .bt-arrow {
         padding: 0 12px;
         font-size: 18px;
@@ -107,18 +78,15 @@
         color: #000;
         cursor: pointer;
       }
-
       .bt-ticker {
         overflow: hidden;
         white-space: nowrap;
         flex: 1;
       }
-
       .bt-ticker-track {
         display: inline-block;
         animation: scrollTicker 30s linear infinite;
       }
-
       .bt-ticker-track a {
         display: inline-block;
         margin-right: 60px;
@@ -126,12 +94,9 @@
         font-weight: 600;
         text-decoration: none;
       }
-
       .bt-ticker-track a:hover {
         text-decoration: underline;
       }
-
-      /* Smooth infinite scroll */
       @keyframes scrollTicker {
         0% {
           transform: translateX(0);
@@ -140,103 +105,36 @@
           transform: translateX(-50%);
         }
       }
-
-      /* ================= RIGHT SIDE ================= */
-
-      .bt-right-links {
-        display: flex;
-        align-items: center;
-        background: #f3f3f3;
-      }
-
-      .bt-right-links a {
-        padding: 0 16px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        color: #000;
-        text-decoration: none;
-        border-left: 1px solid #ddd;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .bt-right-links a:hover {
-        background: #e5e5e5;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      /* ====== Tablet ====== */
       @media (max-width: 1024px) {
         .bt-topbar {
           height: 40px;
           font-size: 13px;
         }
-
         .bt-ticker-track {
           animation: scrollTicker 25s linear infinite;
         }
-
-        .bt-right-links a {
-          padding: 0 12px;
-          font-size: 13px;
-        }
       }
-
-      /* ====== Small Tablet ====== */
-      @media (max-width: 900px) {
-        .bt-right-links {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        .bt-right-links a {
-          flex: 0 0 auto;
-        }
-      }
-
-      /* ====== Mobile ====== */
       @media (max-width: 600px) {
         .bt-topbar {
           flex-direction: column;
           height: auto;
         }
-
         .bt-ticker-wrapper {
           width: 100%;
         }
-
-        .bt-right-links {
-          width: 100%;
-          justify-content: center;
-          background: #111;
-        }
-
-        .bt-right-links a {
-          border-left: none;
-          border-right: 1px solid #222;
-          color: #fff;
-          font-size: 12px;
-          padding: 6px 10px;
-          height: auto;
-        }
-
         .bt-arrow {
           font-size: 16px;
           padding: 0 8px;
         }
-
         .bt-ticker-track {
           animation: scrollTicker 20s linear infinite;
         }
       }
     </style>
-    <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
+
     <!-- ================= BRO TRADING HEADER ================= -->
     <header class="bt-header">
       <div class="bt-container">
-        <!-- Logo -->
         <div class="bt-logo">
           <a href="../index.html"
             ><img
@@ -244,19 +142,13 @@
               alt="Bro Trading"
           /></a>
         </div>
-
-        <!-- Navigation -->
         <nav class="bt-nav">
-          <!-- Mobile Close Button -->
           <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
-
           <a href="../index.html" class="bt-link">Home</a>
-          <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
               Funding Plans ▾
             </button>
-
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
@@ -264,10 +156,6 @@
                   <a href="../CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
                   <a href="../CompareTopFrims/Drawdown.html"
                     >Largest Drawdown</a
                   >
@@ -288,20 +176,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
-
-          <!-- Resources -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
               Resources ▾
@@ -311,29 +185,17 @@
               <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
-
-          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
-
-        <!-- CTA -->
         <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
-
-        <!-- Hamburger -->
         <div class="bt-hamburger" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
       </div>
     </header>
-
-    <!-- Overlay -->
     <div class="bt-overlay" onclick="closeMobileMenu()"></div>
 
     <style>
-      /* ================= HEADER ================= */
-
       .bt-header {
         position: fixed;
         top: 40px;
@@ -346,17 +208,13 @@
         z-index: 1000;
         transition: all 0.35s ease;
       }
-
       .bt-header.bt-scrolled {
         top: 0;
         background: rgba(10, 15, 30, 0.75);
         backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid rgba(0, 194, 255, 0.25);
         width: 63%;
         margin-left: 276px;
       }
-
       .bt-container {
         max-width: 1400px;
         margin: auto;
@@ -364,30 +222,19 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        transition: padding 0.3s ease;
       }
-
-      .bt-header.bt-scrolled .bt-container {
-        padding: 0px 30px;
-      }
-
       .bt-logo img {
         height: 55px;
         transition: height 0.3s ease;
       }
-
       .bt-header.bt-scrolled .bt-logo img {
         height: 50px;
       }
-
-      /* ================= NAV ================= */
-
       .bt-nav {
         display: flex;
         gap: 30px;
         align-items: center;
       }
-
       .bt-link,
       .bt-drop-btn {
         background: none;
@@ -398,20 +245,13 @@
         text-decoration: none;
         transition: 0.3s;
       }
-
       .bt-link:hover,
       .bt-drop-btn:hover {
         color: #00c2ff;
       }
-
-      /* ================= DROPDOWN ================= */
-
-      /* ================= DROPDOWN ================= */
-
       .bt-dropdown {
         position: relative;
       }
-
       .bt-drop-menu {
         position: absolute;
         top: 170%;
@@ -422,26 +262,21 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.35s ease;
-
         z-index: 1001;
       }
-
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
       }
-
       .bt-drop-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 40px;
       }
-
       .bt-drop-menu a {
         display: block;
         color: #cbd5e1;
@@ -449,19 +284,10 @@
         margin-bottom: 12px;
         transition: 0.3s;
       }
-
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
       }
-      .bt-drop-menu strong:hover {
-        color: #f1f3f4;
-        padding-left: 0px !important;
-        transition: 0s;
-      }
-
-      /* DESKTOP HOVER OPEN */
-
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
           opacity: 1;
@@ -469,15 +295,6 @@
           transform: translateY(0);
         }
       }
-      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          display: block;
-        }
-      }
-
-      /* ================= CTA ================= */
-
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
         padding: 9px 22px;
@@ -485,34 +302,24 @@
         color: #fff;
         text-decoration: none;
         font-weight: 600;
-        letter-spacing: 0.5px;
         transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
       }
-
       .bt-cta:hover {
         transform: translateY(-3px);
         background: white;
         color: #0b0f2a;
       }
-
-      /* ================= HAMBURGER ================= */
-
       .bt-hamburger {
         display: none;
         flex-direction: column;
         gap: 6px;
         cursor: pointer;
       }
-
       .bt-hamburger span {
         width: 26px;
         height: 3px;
         background: #fff;
       }
-
-      /* ================= MOBILE MENU ================= */
-
       .bt-mobile-close {
         display: none;
         position: absolute;
@@ -522,7 +329,6 @@
         color: #fff;
         cursor: pointer;
       }
-
       .bt-overlay {
         position: fixed;
         inset: 0;
@@ -531,17 +337,15 @@
         display: none;
         z-index: 900;
       }
-
       .bt-overlay.active {
         display: block;
       }
-
       @media (max-width: 1024px) {
         .bt-nav {
           position: fixed;
           top: 0;
           right: -100%;
-          width: 85%; /* Wider for better layout */
+          width: 85%;
           max-width: 420px;
           height: 100vh;
           background: #0b0f2a;
@@ -553,55 +357,31 @@
           z-index: 1002;
           overflow-y: auto;
         }
-
         .bt-nav.active {
           right: 0;
           top: 15px;
         }
-
         .bt-hamburger {
           display: flex;
         }
-
         .bt-cta {
           display: none;
         }
-
         .bt-mobile-close {
           display: block;
         }
-
-        /* Dropdown styling */
         .bt-drop-menu {
           position: static;
           min-width: 100%;
           padding: 15px 0;
           margin-top: 10px;
-          background: transparent;
-          border: none;
           background: rgba(15, 20, 45, 0.6);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
-
-        /* 2 Column grid */
         .bt-drop-grid {
-          display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 20px 25px;
-        }
-
-        .bt-drop-menu a {
-          font-size: 14px;
-          line-height: 1.5;
-        }
-      }
-
-      /* Extra small mobile → 1 column */
-      @media (max-width: 480px) {
-        .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
         }
       }
     </style>
@@ -609,51 +389,38 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
-
-        // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          if (m.id !== id) {
-            m.classList.remove("active");
-          }
+          if (m.id !== id) m.classList.remove("active");
         });
-
-        // Toggle clicked one
         menu.classList.toggle("active");
       }
-
       function toggleMobileMenu() {
         document.querySelector(".bt-nav").classList.add("active");
         document.querySelector(".bt-overlay").classList.add("active");
       }
-
       function closeMobileMenu() {
         document.querySelector(".bt-nav").classList.remove("active");
         document.querySelector(".bt-overlay").classList.remove("active");
-
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
           m.classList.remove("active");
         });
       }
       const header = document.querySelector(".bt-header");
-
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
-      // Close other dropdowns on hover (desktop only)
       if (window.innerWidth > 1024) {
         document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
           dropdown.addEventListener("mouseenter", function () {
             const activeMenu = document.querySelector(".bt-drop-menu.active");
-            if (activeMenu && !this.contains(activeMenu)) {
+            if (activeMenu && !this.contains(activeMenu))
               activeMenu.classList.remove("active");
-            }
           });
         });
       }
     </script>
-    <!-- ================= HEADER END ================= -->
 
-    <!-- =========About DAYTRAder=======  -->
+    <!-- ========= PHIDIAS PROPFIRM PROFILE SECTION ========= -->
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -661,97 +428,78 @@
 
     <section class="firm-profile">
       <div class="firm-container">
-        <!-- LEFT INFO -->
         <div class="firm-left">
           <div class="firm-logo">
-            <a
-              href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
-              target="_blank"
-              ><img
-                src="https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg"
-                alt="Day Traders Logo"
-            /></a>
+            <img
+              src="https://tradersklub.com/wp-content/uploads/2026/03/Phidias.jpeg"
+              alt="Phidias PropFirm Logo"
+            />
           </div>
-
           <div class="firm-details">
-            <h1>Day Traders</h1>
-            <div class="likes">♡ 23884</div>
-
+            <h1>Phidias PropFirm</h1>
+            <div class="likes">♡ 12456</div>
             <div class="firm-meta">
+              <div><span>Founded</span><strong>2022</strong></div>
               <div>
-                <span>CEO</span>
-                <strong>Leo Riot</strong>
+                <span>Country</span
+                ><strong
+                  ><img src="https://flagcdn.com/w80/us.png" /> Global</strong
+                >
               </div>
-              <div>
-                <span>Country</span>
-                <strong><img src="https://flagcdn.com/w80/us.png" /> US</strong>
-              </div>
-              <div>
-                <span>Trust Pilot</span>
-                <strong>4.6</strong>
-              </div>
-              <div>
-                <span>Date Created</span>
-                <strong>Jun 2023</strong>
-              </div>
-              <div>
-                <span>Years in Operation</span>
-                <strong>3</strong>
-              </div>
+              <div><span>Trust Pilot</span><strong>4.8</strong></div>
+              <div><span>Evaluation Type</span><strong>1-Step</strong></div>
+              <div><span>Profit Split</span><strong>80–90%</strong></div>
             </div>
           </div>
         </div>
-
-        <!-- RIGHT RATING -->
         <div class="firm-rating">
           <div class="rating-score">
-            <h2>4.6</h2>
+            <h2>4.9</h2>
             <div class="stars">★★★★★</div>
-            <p>192 total reviews</p>
+            <p>186 reviews</p>
           </div>
-
           <div class="rating-bars">
             <div class="bar-row">
               <span>5★</span>
-              <div class="bar"><div style="width: 80%"></div></div>
-              <span>29</span>
+              <div class="bar"><div style="width: 88%"></div></div>
+              <span>165</span>
             </div>
             <div class="bar-row">
               <span>4★</span>
-              <div class="bar"><div style="width: 70%"></div></div>
-              <span>38</span>
-            </div>
-            <div class="bar-row">
-              <span>3★</span>
-              <div class="bar"><div style="width: 30%"></div></div>
+              <div class="bar"><div style="width: 8%"></div></div>
               <span>15</span>
             </div>
             <div class="bar-row">
-              <span>2★</span>
-              <div class="bar"><div style="width: 15%"></div></div>
+              <span>3★</span>
+              <div class="bar"><div style="width: 2%"></div></div>
               <span>4</span>
             </div>
             <div class="bar-row">
+              <span>2★</span>
+              <div class="bar"><div style="width: 1%"></div></div>
+              <span>1</span>
+            </div>
+            <div class="bar-row">
               <span>1★</span>
-              <div class="bar"><div style="width: 10%"></div></div>
-              <span>6</span>
+              <div class="bar"><div style="width: 1%"></div></div>
+              <span>1</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- DISCOUNT CARD -->
       <div class="discount-card">
         <div class="discount-left">
-          <div class="discount-badge">🔥 90% OFF</div>
+          <div class="discount-badge">🔥 60% OFF</div>
         </div>
-
         <div class="discount-middle">
-          <h3>Day Traders</h3>
-          <div class="mini-rating">4.6 ★★★★★ (192)</div>
-          <p>90% off (Limited Period Offer) - on all evaluations & Account</p>
+          <h3>Phidias PropFirm</h3>
+          <div class="mini-rating">4.9 ★★★★★ (186)</div>
+          <p>
+            Use code BROTRADING for ~60% discount on all evaluation plans <br />
+            — fast 1-step funding.
+          </p>
         </div>
-
         <div class="discount-right">
           <button class="firm-btn" data-code="BROTRADING">
             Code : BROTRADING
@@ -769,22 +517,18 @@
         color: #fff;
         font-family: "DM Sans", sans-serif;
       }
-
       .firm-container {
         display: flex;
         justify-content: space-between;
         gap: 60px;
         flex-wrap: wrap;
       }
-
-      /* LEFT SIDE */
       .firm-left {
         display: flex;
         gap: 25px;
         flex: 1.5;
         min-width: 300px;
       }
-
       .firm-logo {
         background: #000000;
         padding: 25px;
@@ -792,25 +536,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 124px;
-        margin-top: 9px;
+        height: 100px;
+        margin-top: 20px;
       }
-
       .firm-logo img {
         width: 90px;
+        object-fit: contain;
       }
-
       .firm-details h1 {
-        /* font-family: "DM Mono", monospace; */
         font-size: 36px;
         margin-bottom: 8px;
       }
-
       .likes {
         color: #ff4d4d;
         margin-bottom: 20px;
       }
-
       .firm-meta {
         display: flex;
         gap: 40px;
@@ -821,18 +561,14 @@
         height: 13px;
         padding-left: 0px;
       }
-
       .firm-meta span {
         font-size: 13px;
         color: #9ca3af;
         display: block;
       }
-
       .firm-meta strong {
         font-size: 15px;
       }
-
-      /* RIGHT SIDE */
       .firm-rating {
         display: flex;
         gap: 40px;
@@ -844,7 +580,6 @@
         border-radius: 33px;
         background: #00000030;
       }
-
       .rating-score {
         display: flex;
         flex-direction: column;
@@ -852,26 +587,20 @@
         justify-content: center;
         text-align: center;
       }
-
       .rating-score h2 {
         font-size: 60px;
-        /* font-family: "DM Mono", monospace; */
         margin: 0;
       }
-
       .rating-score .stars {
         margin: 6px 0;
         color: #fff100;
       }
-
       .rating-score p {
         margin: 0;
       }
-
       .rating-bars {
         width: 250px;
       }
-
       .bar-row {
         display: flex;
         align-items: center;
@@ -879,7 +608,6 @@
         margin-bottom: 8px;
         font-size: 13px;
       }
-
       .bar {
         flex: 1;
         height: 6px;
@@ -887,13 +615,10 @@
         border-radius: 20px;
         overflow: hidden;
       }
-
       .bar div {
         height: 100%;
         background: #00c2ff;
       }
-
-      /* DISCOUNT CARD */
       .discount-card {
         margin-top: 60px;
         background: #0f172a;
@@ -906,73 +631,57 @@
         gap: 30px;
         border: 1px solid #1f2937;
       }
-
       .discount-badge {
         background: linear-gradient(135deg, #44d2ef, #001fd0);
         padding: 40px 50px;
         border-radius: 20px;
-        /* font-family: "DM Mono", monospace; */
         font-size: 28px;
       }
-
       .discount-middle h3 {
-        /* font-family: "DM Mono", monospace; */
         margin-bottom: 8px;
       }
-
       .discount-middle p {
         color: #d1d5db;
         margin-top: 8px;
       }
-
       .firm-btn {
         padding: 14px 30px;
         border-radius: 40px;
         font-weight: 600;
-        /* font-family: "DM Mono", monospace; */
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: white;
         border: 3px solid transparent;
         cursor: pointer;
         transition: 0.3s;
-        min-width: 190px; /* prevents movement */
+        min-width: 190px;
         text-align: center;
         font-size: 16px;
       }
-
       .firm-btn:hover {
         transform: translateY(-3px);
         background: white;
         color: #0b0f2a;
         border: 3px solid #00c2ff;
       }
-
-      /* RESPONSIVE */
       @media (max-width: 992px) {
         .firm-container {
           flex-direction: column;
         }
-
-        .firm-rating {
-          justify-content: space-between;
-        }
-
         .discount-card {
           flex-direction: column;
           text-align: center;
         }
       }
     </style>
+
     <script>
       document.querySelectorAll(".firm-btn").forEach((btn) => {
         btn.addEventListener("click", function () {
           const code =
             this.dataset.code || this.innerText.replace("Code : ", "");
           navigator.clipboard.writeText(code);
-
           this.classList.add("copied");
           this.innerText = "Copied ✓";
-
           setTimeout(() => {
             this.classList.remove("copied");
             this.innerText = "Code : " + code;
@@ -981,172 +690,128 @@
       });
     </script>
 
-    <!-- =========About DAYtraders end=======  -->
-
-    <!-- ========= More details ======  -->
+    <!-- ========= More details (Phidias specific) ========= -->
     <section class="firm-pro-section">
       <div class="fps-container">
-        <!-- AI SUMMARY -->
         <div class="fps-summary-card">
           <div class="fps-summary-header">
             <h2>AI Summary</h2>
             <span class="fps-badge">AI Generated</span>
           </div>
-
           <p class="fps-summary-text">
-            DayTraders is a futures prop trading firm offering a simple
-            evaluation model for traders who want access to funded futures
-            accounts. Traders can qualify for accounts ranging from $25,000 to
-            $300,000 while trading popular CME futures markets such as the
-            E-mini S&P 500, NASDAQ, and Crude Oil. The firm supports
-            professional trading platforms including Tradovate and Rithmic. With
-            flexible scaling, structured risk rules, and competitive profit
-            splits, DayTraders provides an accessible pathway for traders
-            looking to trade funded capital in the futures market.
+            Phidias PropFirm offers a streamlined 1-step evaluation with account
+            sizes from $25K up to $150K. Evaluation costs range $44–$225, with
+            zero activation fees on OTP plans or $149–169 activation. True cost
+            between $55–$397. Profit target is 6% with EOD trailing / static
+            drawdown between $500–$4,500. Minimum trading days: 3. Max accounts:
+            15, total allocation up to $1.6M. Profit split 80–90%. Highly rated
+            ~4.9⭐ with exclusive discount code TAKEOFF99 (~60% off).
           </p>
         </div>
 
-        <!-- ACCORDION GRID -->
         <div class="fps-accordion">
-          <!-- ITEM -->
           <div class="fps-item">
             <button class="fps-title">
-              Firm Overview
-              <span class="fps-arrow">+</span>
+              Firm Overview <span class="fps-arrow">+</span>
             </button>
-
             <div class="fps-content">
               <div class="fps-grid">
                 <div>
                   <strong>Brokers</strong>
-                  <p>Tradovate, Rithmic</p>
+                  <p>Rithmic, Tradovate, NinjaTrader</p>
                 </div>
-
                 <div>
-                  <strong>Markets</strong>
-                  <p>Futures (CME Products)</p>
+                  <strong>Instruments</strong>
+                  <p>Futures, Forex, Indices</p>
                 </div>
-
                 <div>
-                  <strong>Platforms</strong>
-                  <p>Tradovate, NinjaTrader, TradingView</p>
+                  <strong>Payment</strong>
+                  <p>Credit/Debit, Crypto</p>
                 </div>
-
                 <div>
-                  <strong>Payment Methods</strong>
-                  <p>Credit Card, Debit Card</p>
-                </div>
-
-                <div>
-                  <strong>Payout Method</strong>
-                  <p>Bank Transfer / ACH</p>
-                </div>
-
-                <div>
-                  <strong>Account Sizes</strong>
-                  <p>$25K – $300K</p>
+                  <strong>Payout</strong>
+                  <p>ACH, Wise, Crypto</p>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="fps-item">
             <button class="fps-title">
-              Leverage & Contracts
-              <span class="fps-arrow">+</span>
+              Account Sizes & Costs <span class="fps-arrow">+</span>
             </button>
-
             <div class="fps-content">
               <div class="fps-contract-grid">
-                <div>$25K <span>4 Contracts</span></div>
-                <div>$50K <span>10 Contracts</span></div>
-                <div>$75K <span>12 Contracts</span></div>
-                <div>$100K <span>14 Contracts</span></div>
-                <div>$150K <span>17 Contracts</span></div>
-                <div>$250K <span>27 Contracts</span></div>
-                <div>$300K <span>35 Contracts</span></div>
+                <div>
+                  $25K <span>Eval: $44</span><span>True Cost: $55</span>
+                </div>
+                <div>
+                  $50K <span>Eval: $99</span><span>True Cost: $125</span>
+                </div>
+                <div>
+                  $100K <span>Eval: $169</span><span>True Cost: $215</span>
+                </div>
+                <div>
+                  $150K <span>Eval: $225</span><span>True Cost: $397</span>
+                </div>
               </div>
             </div>
           </div>
-
           <div class="fps-item">
             <button class="fps-title">
-              Trading Rules
-              <span class="fps-arrow">+</span>
+              Trading Rules <span class="fps-arrow">+</span>
             </button>
-
             <div class="fps-content">
               <ul class="fps-list">
-                <li>Traders must follow the maximum trailing drawdown rule.</li>
-                <li>Consistency rule limits large single-day profits.</li>
-                <li>No account hedging across multiple accounts.</li>
-                <li>All trades must be closed before market close.</li>
+                <li>1-Step evaluation: 6% profit target</li>
                 <li>
-                  Risk management and position sizing consistency required.
+                  EOD Trailing / Static drawdown: $500 – $4,500 depending on
+                  plan
                 </li>
+                <li>Minimum 3 trading days to pass</li>
+                <li>No minimum trading days after funding</li>
+                <li>Consistent risk management encouraged</li>
               </ul>
             </div>
           </div>
-
           <div class="fps-item">
             <button class="fps-title">
-              Payout Policy
-              <span class="fps-arrow">+</span>
+              Payout & Scaling <span class="fps-arrow">+</span>
             </button>
-
             <div class="fps-content">
               <ul class="fps-list">
-                <li>Up to 90% profit split for funded traders.</li>
-                <li>
-                  First payouts available after meeting minimum trading days.
-                </li>
-                <li>Minimum payout request typically starts from $500.</li>
-                <li>
-                  Traders must follow consistency and risk rules to qualify.
-                </li>
-                <li>Regular payout cycles once requirements are met.</li>
+                <li>Profit Split: 80% standard, up to 90% with scaling</li>
+                <li>First payout after 3-5 days, bi-weekly thereafter</li>
+                <li>Max allocation: $1.6M across 15 accounts</li>
+                <li>No maximum payout cap after scaling</li>
               </ul>
             </div>
           </div>
-
           <div class="fps-item">
             <button class="fps-title">
-              Resricted Countries
-              <span class="fps-arrow">+</span>
+              Restricted Countries <span class="fps-arrow">+</span>
             </button>
-
             <div class="fps-content">
               <ul class="fps-list">
                 <li>
-                  <strong>Key Restrictions:</strong> This platform typically
-                  follows the restrictions of the brokers they connect with
-                  (like Tradovate or NinjaTrader). This usually means
-
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/ru.png" /> Russia</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/by.png" /> Belarus</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/ir.png" /> Iran</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/kp.png" /> North
-                    Korea</span
-                  >, and
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/cu.png" /> Cuba</span
-                  >
-
-                  are strictly barred.
+                  <strong>Sanctioned regions:</strong> Iran, North Korea, Syria,
+                  Russia, Belarus, Crimea
                 </li>
+                <li>
+                  <strong>Africa:</strong> Nigeria, Algeria, Somalia, Sudan,
+                  Zimbabwe, Congo
+                </li>
+                <li>
+                  <strong>Asia:</strong> China, Pakistan, Myanmar, Vietnam,
+                  Yemen
+                </li>
+                <li>Full list available on Phidias website</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <style>
       .firm-pro-section {
         padding: 100px 5%;
@@ -1155,13 +820,10 @@
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
         color: #fff;
       }
-
       .fps-container {
         max-width: 1200px;
         margin: auto;
       }
-
-      /* Summary Card */
       .fps-summary-card {
         background: rgba(15, 23, 42, 0.6);
         backdrop-filter: blur(12px);
@@ -1169,132 +831,87 @@
         border-radius: 20px;
         padding: 40px;
         margin-bottom: 60px;
-        box-shadow: 0 0 40px rgba(0, 194, 255, 0.08);
       }
-
       .fps-summary-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
       }
-
       .fps-summary-header h2 {
-        /* font-family: "DM Mono", monospace; */
         font-size: 28px;
       }
-
       .fps-badge {
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         padding: 6px 14px;
         border-radius: 30px;
         font-size: 12px;
-        /* font-family: "DM Mono", monospace; */
       }
-
       .fps-summary-text {
-        font-family: "DM Sans", sans-serif;
         line-height: 1.8;
         color: #cbd5e1;
       }
-      .flag {
-        display: inline-flex;
-        align-items: center;
-        margin-right: 6px;
-      }
-
-      .flag img {
-        width: 18px;
-        height: auto;
-        margin-right: 4px;
-        border-radius: 2px;
-        vertical-align: middle;
-      }
-
-      /* Accordion */
       .fps-item {
         margin-bottom: 20px;
         border-radius: 16px;
         overflow: hidden;
         background: rgba(15, 23, 42, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: 0.3s;
       }
-
       .fps-item:hover {
         border: 1px solid rgba(0, 194, 255, 0.3);
       }
-
       .fps-title {
         width: 100%;
         padding: 22px 25px;
         background: none;
         border: none;
         color: #fff;
-        /* font-family: "DM Mono", monospace; */
         font-size: 16px;
         display: flex;
         justify-content: space-between;
         cursor: pointer;
       }
-
       .fps-arrow {
         transition: 0.3s;
       }
-
       .fps-content {
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease;
         padding: 0 25px;
       }
-
       .fps-content.active {
         padding: 20px 25px;
         max-height: 500px;
       }
-
-      /* Grid layout */
       .fps-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
       }
-
-      .fps-grid strong {
-        /* font-family: "DM Mono", monospace; */
-      }
-
       .fps-contract-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
       }
-
       .fps-contract-grid div {
         background: rgba(0, 194, 255, 0.08);
         padding: 15px;
         border-radius: 12px;
-        font-family: "DM Sans", sans-serif;
       }
-
       .fps-contract-grid span {
         display: block;
         color: #00c2ff;
         margin-top: 5px;
       }
-
       .fps-list {
-        font-family: "DM Sans", sans-serif;
-        color: #cbd5e1;
         padding-left: 18px;
+        color: #cbd5e1;
       }
-
       .fps-list li {
         margin-bottom: 10px;
       }
-
-      /* Responsive */
       @media (max-width: 768px) {
         .fps-summary-header {
           flex-direction: column;
@@ -1303,49 +920,39 @@
         }
       }
     </style>
+
     <script>
       document.querySelectorAll(".fps-title").forEach((btn) => {
         btn.addEventListener("click", () => {
           const content = btn.nextElementSibling;
           const arrow = btn.querySelector(".fps-arrow");
-
           content.classList.toggle("active");
           arrow.style.transform = content.classList.contains("active")
             ? "rotate(45deg)"
-            : "rotate(0deg)";
+            : "rotate(0deg);";
         });
       });
     </script>
-    <!-- ========= More details END ======  -->
 
     <!-- =========== Youtube Section ========= -->
     <section class="yt-hero">
       <div class="yt-container">
-        <!-- LEFT -->
         <div class="yt-content">
-          <h2>
-            Trade Live With <br />
-            BroTrading
-          </h2>
-
+          <h2>Trade Live With <br />BroTrading</h2>
           <p>Live Futures Trading Sessions</p>
           <p>Market Breakdown • Strategy Execution • Real-Time Entries</p>
           <p>Join Our Community of Serious Traders</p>
-
           <a
             href="https://m.youtube.com/@Brotradingz"
             target="_blank"
             class="yt-btn"
+            >Subscribe on YouTube</a
           >
-            Subscribe on YouTube
-          </a>
         </div>
-
-        <!-- RIGHT -->
         <div class="yt-media">
           <div class="yt-video-wrapper">
             <iframe
-              src="https://www.youtube.com/embed/KXO67YQ-ous"
+              src="https://youtu.be/4wwcYuEPoA8?si=xKVF7jwrpVXHAMJF"
               title="BroTradingz Live Trading"
               frameborder="0"
               allow="
@@ -1357,8 +964,7 @@
                 picture-in-picture;
               "
               allowfullscreen
-            >
-            </iframe>
+            ></iframe>
           </div>
         </div>
       </div>
@@ -1373,9 +979,8 @@
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #ffffff;
+        color: #fff;
       }
-
       .yt-container {
         max-width: 1400px;
         width: 93%;
@@ -1385,57 +990,42 @@
         justify-content: space-between;
         gap: 60px;
       }
-
-      /* LEFT SIDE */
-
       .yt-content {
         flex: 1;
         max-width: 550px;
       }
-
       .yt-content h2 {
         font-size: 52px;
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 25px;
-        /* font-family: "DM Mono", monospace; */
       }
-
       .yt-content p {
         font-size: 18px;
         color: #d1d5db;
         margin-bottom: 12px;
-        font-family: "DM Sans", sans-serif;
       }
-
-      /* BUTTON */
-
       .yt-btn {
         display: inline-block;
         padding: 14px 36px;
         border-radius: 50px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        color: #ffffff;
+        color: #fff;
         font-weight: 600;
         text-decoration: none;
         margin-top: 20px;
         transition: all 0.3s ease;
       }
-
       .yt-btn:hover {
-        background: #ffffff;
+        background: #fff;
         color: #0b0f2a;
         border: 2px solid #00c2ff;
       }
-
-      /* RIGHT SIDE (VIDEO) */
-
       .yt-media {
         flex: 1;
         display: flex;
         justify-content: center;
       }
-
       .yt-video-wrapper {
         position: relative;
         width: 100%;
@@ -1445,7 +1035,6 @@
         overflow: hidden;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       }
-
       .yt-video-wrapper iframe {
         position: absolute;
         top: 0;
@@ -1454,89 +1043,43 @@
         height: 100%;
         border: none;
       }
-
-      /* ================= RESPONSIVE ================= */
-
       @media (max-width: 992px) {
-        .yt-hero {
-          min-height: auto;
-          padding: 60px 20px;
-        }
-
         .yt-container {
           flex-direction: column;
           text-align: center;
           gap: 35px;
         }
-
         .yt-media {
           order: -1;
         }
-
-        .yt-video-wrapper {
-          max-width: 100%;
-          border-radius: 16px;
-        }
-
         .yt-content h2 {
           font-size: 30px;
-          line-height: 1.25;
-        }
-
-        .yt-content p {
-          font-size: 15px;
-        }
-
-        .yt-btn {
-          padding: 12px 28px;
-          font-size: 14px;
-        }
-      }
-
-      /* SMALL PHONES */
-
-      @media (max-width: 480px) {
-        .yt-content h2 {
-          font-size: 24px;
-        }
-
-        .yt-content p {
-          font-size: 14px;
         }
       }
     </style>
-    <!-- ============ Youtube section END=======  -->
 
     <!-- ================== CTF Compare Top Firm Section ================== -->
     <section class="ctf-compare-vault">
       <div class="ctf-compare-header">
         <h2>Compare Top Firms</h2>
-
         <div class="ctf-compare-nav">
-          <button class="ctf-nav-btn ctf-prev" id="ctfPrev">&#10094;</button>
-          <button class="ctf-nav-btn ctf-next" id="ctfNext">&#10095;</button>
+          <button class="ctf-nav-btn ctf-prev" id="ctfPrev">&#10094;</button
+          ><button class="ctf-nav-btn ctf-next" id="ctfNext">&#10095;</button>
         </div>
       </div>
-
       <div class="ctf-slider-shell" id="ctfSlider">
         <div class="ctf-slider-track">
-          <!-- KEEP ALL YOUR CARDS SAME -->
-
-          <!-- Card 1 -->
-          <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card">
-            <div class="ctf-card-icon">
+          <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card"
+            ><div class="ctf-card-icon">
               <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
               Compare top prop firms instantly — discover rules, pricing, and
               payouts.
-            </p>
-          </a>
-
-          <!-- Card 2 -->
-          <a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card">
-            <div class="ctf-card-icon">
+            </p></a
+          ><a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card"
+            ><div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
@@ -1544,57 +1087,43 @@
             <h3>Best Deals</h3>
             <p>
               Unlock the best prop firm deals — exclusive discounts and offers.
-            </p>
-          </a>
-
-          <!-- Card 3 -->
-          <a href="../CompareTopFrims/StartCost.html" class="ctf-compare-card">
-            <div class="ctf-card-icon">
+            </p></a
+          ><a href="../CompareTopFrims/StartCost.html" class="ctf-compare-card"
+            ><div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/play.png" />
             </div>
             <h3>Starting Costs</h3>
-            <p>Find the lowest starting costs fast.</p>
-          </a>
-
-          <!-- Card 4 -->
-          <a href="../CompareTopFrims/TrueCost.html" class="ctf-compare-card">
-            <div class="ctf-card-icon">
+            <p>Find the lowest starting costs fast.</p></a
+          ><a href="../CompareTopFrims/TrueCost.html" class="ctf-compare-card"
+            ><div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
               />
             </div>
             <h3>True Cost</h3>
-            <p>See the real price of getting funded.</p>
-          </a>
-
-          <!-- Card 5 -->
-          <a href="../CompareTopFrims/Drawdown.html" class="ctf-compare-card">
-            <div class="ctf-card-icon">
+            <p>See the real price of getting funded.</p></a
+          ><a href="../CompareTopFrims/Drawdown.html" class="ctf-compare-card"
+            ><div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/combo-chart--v1.png"
               />
             </div>
             <h3>Largest Drawdown</h3>
-            <p>Compare firms by drawdown limits.</p>
-          </a>
-
-          <!-- Card 6 -->
-          <a
+            <p>Compare firms by drawdown limits.</p></a
+          ><a
             href="../CompareTopFrims/QuickFunding.html"
             class="ctf-compare-card"
-          >
-            <div class="ctf-card-icon">
+            ><div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/rocket.png" />
             </div>
             <h3>Quickest Funding</h3>
-            <p>Discover the quickest funding paths.</p>
-          </a>
+            <p>Discover the quickest funding paths.</p></a
+          >
         </div>
       </div>
     </section>
 
     <style>
-      /* ===== DESKTOP (UNCHANGED) ===== */
       .ctf-compare-vault {
         padding: 80px 7%;
         color: white;
@@ -1603,27 +1132,19 @@
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
         overflow: hidden;
       }
-
       .ctf-compare-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 50px;
       }
-
       .ctf-compare-header h2 {
         font-size: 42px;
-        /* font-family: "DM Mono", monospace; */
       }
-
       .ctf-compare-nav {
         display: flex;
         gap: 12px;
       }
-      .ctf-compare-card h3 {
-        padding: 10px;
-      }
-
       .ctf-nav-btn {
         width: 44px;
         height: 44px;
@@ -1635,23 +1156,18 @@
         color: #fff;
         transition: 0.3s;
       }
-
       .ctf-nav-btn.disabled {
         background: #111;
         color: #555;
         cursor: not-allowed;
       }
-
-      /* ===== SLIDER ===== */
       .ctf-slider-shell {
         overflow: hidden;
       }
-
       .ctf-slider-track {
         display: flex;
         gap: 30px;
       }
-
       .ctf-compare-card {
         min-width: 298px;
         padding: 41px 28px 30px;
@@ -1662,33 +1178,22 @@
         background: #0000005c;
         text-align: center;
       }
-
-      /* ================= MOBILE ONLY ================= */
       @media (max-width: 900px) {
         .ctf-compare-header {
           justify-content: center;
           gap: 20px;
         }
-
         .ctf-compare-header h2 {
           font-size: 26px;
         }
-
-        /* Enable normal horizontal scroll */
         .ctf-slider-shell {
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
         }
-
-        .ctf-slider-shell::-webkit-scrollbar {
-          display: none;
-        }
-
         .ctf-slider-track {
           gap: 10px;
         }
-
         .ctf-compare-card {
           min-width: 100%;
           scroll-snap-align: start;
@@ -1700,63 +1205,47 @@
       const shell = document.getElementById("ctfSlider");
       const prevBtn = document.getElementById("ctfPrev");
       const nextBtn = document.getElementById("ctfNext");
-
       function updateButtons() {
         const maxScroll = shell.scrollWidth - shell.clientWidth;
-
         prevBtn.classList.toggle("disabled", shell.scrollLeft <= 5);
         nextBtn.classList.toggle("disabled", shell.scrollLeft >= maxScroll - 5);
       }
-
       nextBtn.addEventListener("click", () => {
         shell.scrollBy({ left: shell.clientWidth, behavior: "smooth" });
       });
-
       prevBtn.addEventListener("click", () => {
         shell.scrollBy({ left: -shell.clientWidth, behavior: "smooth" });
       });
-
       shell.addEventListener("scroll", updateButtons);
       window.addEventListener("resize", updateButtons);
-
       updateButtons();
     </script>
-    <!-- ==================CTF Compare Top Firm Section END ================== -->
-    <!-- ========== hero section=========  -->
+
+    <!-- ========== Hero section (Phidias CTA) ========== -->
     <section class="apex-section">
       <div class="apex-container">
-        <!-- Left Logo -->
         <div class="apex-logo-box">
           <img
-            src="https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png"
-            alt="Day Traders Logo"
+            src="https://tradersklub.com/wp-content/uploads/2026/03/Phidias.jpeg"
+            alt="Phidias PropFirm"
           />
         </div>
-
-        <!-- Right Content -->
         <div class="apex-content">
           <div class="apex-stars">★ ★ ★ ★ ★</div>
-          <h2>So try, Day Traders <span>NOW</span>...!!</h2>
-
+          <h2>So try, Phidias PropFirm <span>NOW</span>...!!</h2>
           <p>
-            Day Traders is a familiar and trusted name in the prop trading
-            space, and it’s come back stronger than ever. The firm offers
-            flexible funding options and a streamlined account structure built
-            around what traders actually want. With both instant funding and
-            customizable setups through the new Select Plan, Day Traders lets
-            traders tailor their accounts instead of forcing them into a
-            one-size-fits-all model. <br />
-            <br />
-            Traders can choose the features that matter most to them, including
-            day-one or five-day payout options, giving more control over how and
-            when profits are accessed. With refreshed programs and the same
-            reliable, trader-focused support, Day Traders delivers a versatile,
-            accessible, and efficient path for traders looking to get funded and
-            stay funded.
+            Phidias PropFirm offers one of the most competitive 1-step
+            evaluation models with low starting costs, fast 3-day minimum to
+            pass, and a generous profit split up to 90%. With EOD trailing
+            drawdown and no hidden scaling tricks, traders can scale up to $1.6M
+            across 15 accounts. Simple, transparent, and backed by excellent
+            user ratings. Get started with code TAKEOFF99 and save big.
           </p>
-
           <div class="apex-buttons">
-            <a href="https://tradeify.co/?ref=11241" class="apex-btn"
+            <a
+              href="https://phidiaspropfirm.com/"
+              class="apex-btn"
+              target="_blank"
               >Get Evaluation</a
             >
             <a href="#" class="apex-btn copy-code" data-code="BROTRADING"
@@ -1766,18 +1255,15 @@
         </div>
       </div>
     </section>
+
     <script>
       document.querySelectorAll(".copy-code").forEach((btn) => {
         btn.addEventListener("click", function (e) {
           e.preventDefault();
-
           const code = this.dataset.code;
-
           navigator.clipboard.writeText(code);
-
           const original = this.innerText;
           this.innerText = "Copied ✓";
-
           setTimeout(() => {
             this.innerText = original;
           }, 2000);
@@ -1793,7 +1279,6 @@
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
         color: #fff;
       }
-
       .apex-container {
         max-width: 1200px;
         margin: auto;
@@ -1802,8 +1287,6 @@
         gap: 60px;
         flex-wrap: wrap;
       }
-
-      /* Logo Box */
       .apex-logo-box {
         background: #000;
         padding: 40px;
@@ -1815,52 +1298,40 @@
         justify-content: center;
         align-items: center;
       }
-
       .apex-logo-box img {
         max-width: 220px;
         width: 135%;
       }
-
-      /* Content */
       .apex-content {
         flex: 1.5;
         min-width: 300px;
       }
-
       .apex-stars {
         color: #fbff12;
         font-size: 24px;
         margin-bottom: 11px;
       }
-
       .apex-content h2 {
-        /* font-family: "DM Mono", monospace; */
         font-size: 42px;
         margin-bottom: 12px;
       }
       .apex-content h2 span {
         color: #00c2ff;
       }
-
       .apex-content p {
-        font-family: "DM Sans", sans-serif;
         font-size: 17px;
         line-height: 1.7;
         color: #d1d5db;
         margin-bottom: 30px;
       }
-
-      /* Buttons */
       .apex-buttons {
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
       }
-
       .apex-btn {
         padding: 14px 28px;
         border-radius: 40px;
-        /* font-family: "DM Mono", monospace; */
         font-size: 16px;
         text-decoration: none;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
@@ -1874,35 +1345,28 @@
         text-align: center;
         font-weight: 600;
       }
-
       .apex-btn:hover {
         background: white;
         color: #0b0f2a;
         border: 3px solid #00c2ff;
       }
-
-      /* Responsive */
       @media (max-width: 992px) {
         .apex-container {
           flex-direction: column;
           text-align: center;
         }
-
         .apex-buttons {
           justify-content: center;
         }
-
         .apex-content h2 {
           font-size: 32px;
         }
       }
     </style>
-    <!-- ==========hero section End========= -->
 
     <!-- ================= BRO TRADING FOOTER ================= -->
     <footer class="bt-footer">
       <div class="bt-footer-container">
-        <!-- Brand -->
         <div class="bt-footer-brand">
           <img
             src="../Bro_Traders_logo-removebg-preview.png"
@@ -1911,71 +1375,58 @@
           />
           <p class="bt-footer-text">
             Bro Trading is a premium trading resource platform helping traders
-            compare Bro Tradings, improve skills, and scale profitably.
+            compare Prop Firms, improve skills, and scale profitably.
           </p>
-
-          <!-- Social Icons -->
           <div class="bt-social-icons">
-            <a href="https://m.youtube.com/@Brotradingz" target="_blank">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#"><i class="fab fa-x-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://m.youtube.com/@Brotradingz" target="_blank"
+              ><i class="fab fa-youtube"></i></a
+            ><a href="#"><i class="fab fa-x-twitter"></i></a
+            ><a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-
-        <!-- Column 1 -->
         <div class="bt-footer-col">
           <h4>Bro Trading Finder</h4>
-          <a href="../CompareTopFrims/comparison.html">Top Frims Comparison</a>
-          <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a>
-          <a href="../CompareTopFrims/StartCost.html">Starting Costs</a>
-          <a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a>
-          <a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a>
-          <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
+          <a href="../CompareTopFrims/comparison.html">Top Firms Comparison</a
+          ><a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a
+          ><a href="../CompareTopFrims/StartCost.html">Starting Costs</a
+          ><a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a
+          ><a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a
+          ><a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
         </div>
-
-        <!-- Column 2 -->
         <div class="bt-footer-col">
           <h4>Resources</h4>
-          <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
-          <a href="../Resourses/TradingTools.html">Trading Tools</a>
-          <a href="../More/About-us.html">About Us</a>
-          <a href="../More/Contact-Us.html">Contact Us</a>
-          <a href="../More/Privacy-Terms.html">Privacy Terms</a>
-          <a href="../More/Refund-policy.html">Refund Policy</a>
+          <a href="../Resourses/MarketAnalysis.html">Market Analysis</a
+          ><a href="../Resourses/TradingTools.html">Trading Tools</a
+          ><a href="../More/About-us.html">About Us</a
+          ><a href="../More/Contact-Us.html">Contact Us</a
+          ><a href="../More/Privacy-Terms.html">Privacy Terms</a
+          ><a href="../More/Refund-policy.html">Refund Policy</a>
         </div>
-
-        <!-- Column 3 -->
         <div class="bt-footer-col bt-resources">
-          <h4>Bro Tradings Frims</h4>
-          <a href="ApexFunding.html">Apex Trader Funding</a>
-          <a href="TradeifyTrader.html">Tradeify</a>
-          <a href="Lucid Trading.html">Lucid Trading</a>
-          <a href="MyFundedFuture.html">My Funded Futures</a>
-          <a href="DayTraders.html">Day Trader</a>
+          <h4>Prop Firms</h4>
+          <a href="ApexFunding.html">Apex Trader Funding</a
+          ><a href="TradeifyTrader.html">Tradeify</a
+          ><a href="Lucid Trading.html">Lucid Trading</a
+          ><a href="MyFundedFuture.html">My Funded Futures</a
+          ><a href="DayTraders.html">Day Trader</a>
           <a href="PhidiasPropFirm.html">Phidias PropFirm</a>
         </div>
       </div>
-
       <div class="bt-footer-bottom">
         © 2026 Bro Trading. All rights reserved.
       </div>
     </footer>
 
-    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
     <style>
       .bt-footer {
         background: #000;
         color: #fff;
         padding: 52px 20px 40px;
       }
-
       .bt-footer-container {
         max-width: 1250px;
         margin: auto;
@@ -1983,26 +1434,20 @@
         grid-template-columns: 1.5fr 1fr 1fr 1fr;
         gap: 80px;
       }
-
-      /* Brand */
       .bt-footer-logo {
         width: 170px;
         margin-bottom: 25px;
       }
-
       .bt-footer-text {
         color: #9ca3af;
         font-size: 14px;
         line-height: 1.8;
         margin-bottom: 25px;
       }
-
-      /* Social Icons */
       .bt-social-icons {
         display: flex;
         gap: 18px;
       }
-
       .bt-social-icons a {
         width: 38px;
         height: 38px;
@@ -2015,13 +1460,10 @@
         transition: all 0.3s ease;
         font-size: 16px;
       }
-
       .bt-social-icons a:hover {
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         transform: translateY(-4px);
       }
-
-      /* Columns */
       .bt-footer-col h4 {
         font-size: 16px;
         margin-bottom: 22px;
@@ -2032,7 +1474,6 @@
         padding: 0;
         margin-left: -1px;
       }
-
       .bt-footer-col a {
         display: block;
         color: #9ca3af;
@@ -2041,13 +1482,10 @@
         font-size: 14px;
         transition: all 0.3s ease;
       }
-
       .bt-footer-col a:hover {
         color: #fff;
         transform: translateX(4px);
       }
-
-      /* Bottom */
       .bt-footer-bottom {
         text-align: center;
         margin-top: 80px;
@@ -2056,19 +1494,15 @@
         color: #666;
         font-size: 13px;
       }
-
-      /* ================= TABLET ================= */
       @media (max-width: 1024px) {
         .bt-footer-container {
           grid-template-columns: repeat(2, 1fr);
           gap: 50px;
         }
-
         .bt-footer-brand {
           grid-column: span 2;
           text-align: center;
         }
-
         .bt-social-icons {
           justify-content: center;
         }
@@ -2078,43 +1512,23 @@
           margin-top: -15px;
         }
       }
-
-      /* ================= MOBILE ================= */
       @media (max-width: 600px) {
-        .bt-footer {
-          padding: 70px 20px 30px;
-        }
-
         .bt-footer-container {
           grid-template-columns: repeat(2, 1fr);
           gap: 35px;
           text-align: center;
         }
-
         .bt-footer-brand {
           grid-column: span 2;
         }
-
         .bt-footer-logo {
           margin: 0 auto 20px;
-          display: block;
-        }
-
-        .bt-footer-text {
-          margin: auto;
-          max-width: 320px;
-        }
-
-        .bt-social-icons {
-          justify-content: center;
         }
         .bt-resources {
           grid-column: span 2;
           text-align: center;
-          margin-top: -15px;
         }
       }
     </style>
-    <!-- ================= BRO TRADING FOOTER END ================= -->
   </body>
 </html>
