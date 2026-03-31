@@ -1,1280 +1,617 @@
-<!-- ========================
-======FAVRITE FRIM=====
-=======================  -->
+<header class="bt-header">
+  <div class="bt-container">
+    <!-- Logo -->
+    <div class="bt-logo">
+      <a href="../index.html">
+        <img src="../Bro_Traders_logo-removebg-preview.png" alt="Bro Trading" />
+      </a>
+    </div>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes"
-    />
-    <title>Prop Firms · Sorted by True Cost · Advanced Filters</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background: #030712;
-        font-family:
-          "Inter",
-          "DM Sans",
-          system-ui,
-          -apple-system,
-          sans-serif;
-      }
-      .zx-comparison-section {
-        padding: clamp(20px, 5vw, 70px) clamp(16px, 6vw, 120px);
-        background:
-          radial-gradient(circle at 20% 0%, #1e3a8a, transparent 65%),
-          linear-gradient(145deg, #0a1a2f 0%, #030712 100%);
-        color: white;
-      }
-      .ff-title {
-        font-size: clamp(32px, 8vw, 52px);
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 12px;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, #ffffff, #94a3ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .ff-subtitle {
-        text-align: center;
-        opacity: 0.85;
-        max-width: 780px;
-        margin: 0 auto 32px auto;
-        font-size: clamp(0.9rem, 3vw, 1.05rem);
-        font-weight: 400;
-      }
-      .zx-filter-panel {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        gap: 12px 16px;
-        margin-bottom: 28px;
-        background: rgba(7, 19, 39, 0.85);
-        backdrop-filter: blur(14px);
-        padding: 20px 24px;
-        border-radius: 28px;
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        justify-content: space-between;
-        position: relative;
-        z-index: 20;
-      }
-      .zx-filter {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        min-width: 140px;
-        flex: 1 1 130px;
-        position: relative;
-      }
-      .zx-filter label {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.7px;
-        font-weight: 700;
-        opacity: 0.7;
-      }
-      .dropdown-checkbox {
-        position: relative;
-        width: 100%;
-      }
-      .dropdown-checkbox .select-btn {
-        background: #0f1e38;
-        border: 1px solid #2e5480;
-        color: rgba(255, 255, 255, 0.9);
-        padding: 8px 14px;
-        border-radius: 44px;
-        cursor: pointer;
-        font-size: 0.8rem;
-        font-weight: 500;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: all 0.2s;
-      }
-      .dropdown-checkbox .select-btn:hover {
-        border-color: #3b82f6;
-        background: #142d52;
-      }
-      .dropdown-checkbox .select-btn i {
-        font-size: 0.7rem;
-        color: #60a5fa;
-      }
-      .dropdown-checkbox .dropdown-content {
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        width: 280px;
-        max-height: 320px;
-        overflow-y: auto;
-        background: #0e1d3a;
-        border: 1px solid #2e5a9a;
-        border-radius: 24px;
-        z-index: 9999;
-        padding: 12px;
-        display: none;
-        box-shadow: 0 20px 35px -10px black;
-        backdrop-filter: blur(4px);
-      }
-      .dropdown-checkbox .dropdown-content.show {
-        display: block;
-      }
-      .dropdown-checkbox .dropdown-content label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 10px;
-        font-size: 0.8rem;
-        font-weight: 400;
-        border-radius: 14px;
-        color: #eef4ff;
-        cursor: pointer;
-        transition: 0.1s;
-      }
-      .dropdown-checkbox .dropdown-content label:hover {
-        background: #1f3b66;
-      }
-      .dropdown-checkbox .dropdown-content input {
-        accent-color: #3b82f6;
-        width: 16px;
-        height: 16px;
-      }
-      .selected-hint {
-        font-size: 0.6rem;
-        opacity: 0.65;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 170px;
-      }
+    <!-- Navigation -->
+    <nav class="bt-nav">
+      <!-- Mobile Close Button -->
+      <button class="bt-mobile-close" aria-label="Close menu">✕</button>
 
-      .zx-table-wrapper {
-        overflow-x: auto;
-        overflow-y: auto;
-        max-height: 68vh;
-        border-radius: 12px;
-        border: 1px solid #2b4a7a;
-        background: #071327;
-        box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.6);
-        position: relative;
-        z-index: 5;
-      }
-      .zx-table-wrapper::-webkit-scrollbar {
-        height: 10px;
-        width: 10px;
-        background: #0f1e3a;
-        border-radius: 10px;
-      }
-      .zx-table-wrapper::-webkit-scrollbar-thumb {
-        background: #3b82f6;
-        border-radius: 10px;
-      }
-      .zx-table-wrapper::-webkit-scrollbar-track {
-        background: #1a2a4a;
-        border-radius: 10px;
-      }
+      <a href="../index.html" class="bt-link">Home</a>
 
-      #zx-table {
-        width: 100%;
-        min-width: 2100px;
-        border-collapse: separate;
-        border-spacing: 0;
-        background: #071327;
-        color: #f0f4fe;
-        font-size: 0.78rem;
-      }
-      #zx-table th {
-        background: #0f1e3c;
-        padding: 14px 8px;
-        font-weight: 600;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #bfd6ff;
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        white-space: nowrap;
-        border-bottom: 2px solid #3b6cb0;
-        text-align: center;
-      }
-      #zx-table td {
-        padding: 11px 6px;
-        text-align: center;
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        white-space: nowrap;
-        background: #071327;
-        transition: background 0.15s;
-      }
-      #zx-table tr:hover td {
-        background: #0f1e3a;
-      }
-      #zx-table td:nth-child(4) {
-        white-space: normal;
-        word-break: break-word;
-        min-width: 130px;
-        max-width: 160px;
-        font-size: 0.7rem;
-        line-height: 1.3;
-      }
-      #zx-table td:nth-child(10) {
-        font-weight: 700;
-        color: #facc15;
-        background: rgba(250, 204, 21, 0.08);
-      }
-      #zx-table td:nth-child(11) {
-        color: #4ade80;
-        font-weight: 700;
-        background: rgba(74, 222, 128, 0.08);
-      }
-      .sticky-col {
-        position: sticky;
-        background: #071327;
-        z-index: 10;
-      }
-      .logo-col {
-        left: 0;
-        width: 68px;
-        min-width: 68px;
-      }
-      .firm-col {
-        left: 68px;
-        min-width: 140px;
-        text-align: left !important;
-        font-weight: 700;
-        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
-        background: #071327;
-      }
-      .website-fixed {
-        position: sticky;
-        right: 0;
-        background: #071327;
-        z-index: 10;
-        box-shadow: -5px 0 12px rgba(0, 0, 0, 0.45);
-      }
-      #zx-table th.website-fixed {
-        background: #0f1e3c;
-        z-index: 25;
-      }
-      .country-flag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .country-flag img {
-        width: 19px;
-        height: 13px;
-        border-radius: 2px;
-        object-fit: cover;
-      }
-      .zx-logo {
-        width: 58px;
-        height: auto;
-        max-height: 33px;
-        object-fit: contain;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-      }
-      .zx-code {
-        background: #1f3157;
-        border: 1px solid #4870b0;
-        padding: 4px 12px;
-        border-radius: 40px;
-        color: #cae3ff;
-        cursor: pointer;
-        font-size: 0.68rem;
-        font-weight: 600;
-        transition: 0.15s;
-        white-space: nowrap;
-        display: inline-block;
-      }
-      .zx-code:hover {
-        background: white;
-        color: #0a142e;
-        border-color: #3b82f6;
-        transform: scale(0.97);
-      }
-      .zx-firm-btn,
-      .zx-visit-btn {
-        padding: 5px 12px;
-        border-radius: 32px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.68rem;
-        display: inline-block;
-        margin: 2px 3px;
-        transition: 0.2s;
-      }
-      .zx-firm-btn {
-        background: #0f4e3a;
-        color: white;
-        border: 1px solid #2a8e68;
-      }
-      .zx-firm-btn:hover {
-        background: #fff;
-        color: #0f2a1a;
-        border-color: #22d3ee;
-        transform: translateY(-1px);
-      }
-      .zx-visit-btn {
-        background: #1e4b8b;
-        color: white;
-        border: 1px solid #3f7bcb;
-      }
-      .zx-visit-btn:hover {
-        background: white;
-        color: #0b1a3a;
-        border-color: #38bdf8;
-        transform: translateY(-2px);
-      }
-
-      .sort-indicator {
-        font-size: 0.65rem;
-        margin-left: 4px;
-        color: #60a5fa;
-      }
-      .filter-note-bar {
-        margin-top: 18px;
-        display: flex;
-        justify-content: flex-end;
-        gap: 16px;
-        font-size: 0.7rem;
-        color: #87abdf;
-        background: rgba(7, 19, 39, 0.5);
-        padding: 10px 18px;
-        border-radius: 20px;
-        border-left: 2px solid #3b82f6;
-      }
-      .verify-warning {
-        color: #fbbf24;
-        font-weight: 500;
-      }
-      i.icon-mr {
-        margin-right: 6px;
-      }
-      @media (max-width: 720px) {
-        .zx-filter-panel {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .zx-filter {
-          min-width: 100%;
-        }
-        .dropdown-checkbox .dropdown-content {
-          width: 85vw;
-        }
-        .filter-note-bar {
-          flex-direction: column;
-          text-align: left;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <section class="zx-comparison-section">
-      <h2 class="ff-title">Prop Firms Comparison</h2>
-      <p class="ff-subtitle">
-        Compare funding plans · Sorted by true cost (lowest to highest) ·
-        Advanced filters for firms, platforms, discounts, and account limits
-      </p>
-
-      <div class="zx-filter-panel">
-        <div class="zx-filter">
-          <label>FIRM</label>
-          <div class="dropdown-checkbox" id="firm-dropdown">
-            <div class="select-btn">
-              Select firms <i class="fas fa-chevron-down"></i>
+      <!-- Funding Plans -->
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" data-dropdown="funding">
+          Funding Plans ▾
+        </button>
+        <div class="bt-drop-menu" id="funding">
+          <div class="bt-drop-grid">
+            <div>
+              <a href="#"><strong>Firm Lists :</strong></a>
+              <a href="comparison.html">Prop Firm Comparison</a>
+              <a href="Drawdown.html">Largest Drawdown</a>
+              <a href="QuickFunding.html">Quickest Funding</a>
+              <a href="bestDeals.html">Best Deals</a>
             </div>
-            <div class="dropdown-content" id="firm-options"></div>
-          </div>
-          <div class="selected-hint" id="firm-hint"></div>
-        </div>
-        <div class="zx-filter">
-          <label>PLATFORM</label>
-          <div class="dropdown-checkbox" id="platform-dropdown">
-            <div class="select-btn">
-              Select platforms <i class="fas fa-chevron-down"></i>
+            <div>
+              <a href="#"><strong>Top Firms :</strong></a>
+              <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
+              <a href="../Frims/TradeifyTrader.html">Tradeify</a>
+              <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
+              <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
+              <a href="../Frims/DayTraders.html">Day Traders.com</a>
+              <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
             </div>
-            <div class="dropdown-content" id="platform-options"></div>
           </div>
-          <div class="selected-hint" id="platform-hint"></div>
-        </div>
-        <div class="zx-filter">
-          <label>DISCOUNT</label>
-          <div class="dropdown-checkbox" id="discount-dropdown">
-            <div class="select-btn">
-              Min % <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="dropdown-content" id="discount-options"></div>
-          </div>
-          <div class="selected-hint" id="discount-hint"></div>
-        </div>
-        <div class="zx-filter">
-          <label>MAX ACCOUNTS</label>
-          <div class="dropdown-checkbox" id="max-dropdown">
-            <div class="select-btn">
-              Max ≤ <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="dropdown-content" id="max-options"></div>
-          </div>
-          <div class="selected-hint" id="max-hint"></div>
-        </div>
-        <div class="zx-filter">
-          <label>GOAL AMOUNT</label>
-          <div class="dropdown-checkbox" id="goal-dropdown">
-            <div class="select-btn">
-              Goal ≤ <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="dropdown-content" id="goal-options"></div>
-          </div>
-          <div class="selected-hint" id="goal-hint"></div>
-        </div>
-        <div class="zx-filter">
-          <label>TRUE COST</label>
-          <div class="dropdown-checkbox" id="cost-dropdown">
-            <div class="select-btn">
-              Cost ≤ <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="dropdown-content" id="cost-options"></div>
-          </div>
-          <div class="selected-hint" id="cost-hint"></div>
         </div>
       </div>
 
-      <div class="zx-table-wrapper">
-        <table id="zx-table">
-          <thead>
-            <tr>
-              <th class="sticky-col logo-col"><i class="fas fa-image"></i></th>
-              <th class="sticky-col firm-col">
-                <i class="fas fa-building"></i> Firm
-              </th>
-              <th draggable="true">
-                <i class="fas fa-chart-line"></i> Account
-              </th>
-              <th draggable="true"><i class="fas fa-desktop"></i> Platform</th>
-              <th draggable="true">
-                <i class="fas fa-map-marker-alt"></i> Country
-              </th>
-              <th draggable="true">
-                <i class="fas fa-layer-group"></i> Max Acc
-              </th>
-              <th draggable="true">
-                <i class="fas fa-dollar-sign"></i> Eval Fee
-              </th>
-              <th draggable="true"><i class="fas fa-rocket"></i> Activation</th>
-              <th draggable="true">
-                <i class="fas fa-bullseye"></i> Profit Target
-              </th>
-              <th draggable="true"><i class="fas fa-coins"></i> True Cost</th>
-              <th draggable="true"><i class="fas fa-tag"></i> Discount</th>
-              <th draggable="true">
-                <i class="fas fa-flag-checkered"></i> Goal
-              </th>
-              <th draggable="true">
-                <i class="fas fa-chart-simple"></i> DD Type
-              </th>
-              <th draggable="true">
-                <i class="fas fa-arrow-trend-down"></i> Drawdown
-              </th>
-              <th draggable="true">
-                <i class="fas fa-calendar-day"></i> Min Days
-              </th>
-              <th><i class="fas fa-key"></i> Code</th>
-              <th><i class="fas fa-folder-open"></i> Firm Page</th>
-              <th class="website-fixed">
-                <i class="fas fa-external-link-alt"></i> Website
-              </th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <!-- Resources -->
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" data-dropdown="resources">
+          Resources ▾
+        </button>
+        <div class="bt-drop-menu small" id="resources">
+          <a href="../Resourses/TradingTools.html">Trading Tools</a>
+          <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
+        </div>
       </div>
 
-      <div class="filter-note-bar">
-        <span
-          ><i class="fas fa-chart-simple icon-mr"></i> Sorted by True Cost
-          (lowest to highest) | Click code to copy</span
-        >
-        <span
-          ><i class="fas fa-arrows-alt icon-mr"></i> Drag headers to reorder
-          columns</span
-        >
-        <span class="verify-warning"
-          ><i class="fas fa-exclamation-triangle"></i> Verify current discount
-          with code — subject to change</span
-        >
-      </div>
-    </section>
+      <a href="GiveAway.html" class="bt-link">GiveAways</a>
+    </nav>
 
-    <script>
-      (function () {
-        // ============================================================
-        // COMPLETE DATA - All rows from Excel (160+ rows)
-        // SORTED BY TRUE COST (ASCENDING)
-        // NO EMOJIS, CLEAN ICONS, MODERN TABLE
-        // ============================================================
+    <!-- CTA -->
+    <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
 
-        const allRows = [];
+    <!-- Hamburger -->
+    <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
-        // APEX (24 rows)
-        const apexPlatforms = ["Tradovate", "Rithmic", "WealthCharts"];
-        const apexAccounts = [
-          "25K",
-          "50K",
-          "75K",
-          "100K",
-          "150K",
-          "250K",
-          "300K",
-          "50K Static",
-        ];
-        const apexGoals = {
-          "25K": 1500,
-          "50K": 3000,
-          "75K": 4500,
-          "100K": 6000,
-          "150K": 9000,
-          "250K": 15000,
-          "300K": 20000,
-          "50K Static": 3000,
-        };
-        const apexDD = {
-          "25K": 1500,
-          "50K": 2500,
-          "75K": 3500,
-          "100K": 3000,
-          "150K": 5000,
-          "250K": 6500,
-          "300K": 7500,
-          "50K Static": 2500,
-        };
-        const apexEval = {
-          "25K": 147,
-          "50K": 167,
-          "75K": 187,
-          "100K": 207,
-          "150K": 297,
-          "250K": 517,
-          "300K": 657,
-          "50K Static": 167,
-        };
-        const apexTrue = {
-          "25K": 109,
-          "50K": 163,
-          "75K": 179,
-          "100K": 191,
-          "150K": 279,
-          "250K": 343,
-          "300K": 391,
-          "50K Static": 163,
-        };
-        const apexDisc = {
-          "25K": "90%",
-          "50K": "90%",
-          "75K": "85%",
-          "100K": "80%",
-          "150K": "80%",
-          "250K": "80%",
-          "300K": "80%",
-          "50K Static": "80%",
-        };
+<!-- Overlay -->
+<div class="bt-overlay" id="overlay"></div>
 
-        for (let plat of apexPlatforms) {
-          for (let acc of apexAccounts) {
-            allRows.push({
-              firm: "Apex Trader Funding",
-              logo: "https://apextraderfunding.com/assets/2024/images/apex-logo-stack-light.png?v=1744408131",
-              account: acc,
-              goal: apexGoals[acc],
-              profitTarget: apexGoals[acc],
-              ddt: acc === "50K Static" ? "Static" : "EOD Trailing",
-              dd: apexDD[acc],
-              mindays: 7,
-              eval: apexEval[acc],
-              activation: 99,
-              truecost: apexTrue[acc],
-              discount: apexDisc[acc],
-              code: "BRO",
-              platform: plat,
-              country: "USA",
-              maxaccounts: 20,
-              firmpage: "Frims/ApexFunding.html",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            });
-          }
-        }
+<style>
+  /* ================= HEADER ================= */
+  .bt-header {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    margin: 10px 15px;
+    margin-left: 180px;
+    border-radius: 15px;
+    width: 80%;
+    background: #00000073;
+    z-index: 1000;
+    transition: all 0.35s ease;
+  }
 
-        // TRADEIFY (72 rows)
-        const tradeifyAccounts = [
-          "25K",
-          "50K",
-          "75K",
-          "100K",
-          "150K",
-          "250K",
-          "300K",
-        ];
-        const tradeifyGoals = {
-          "25K": 1500,
-          "50K": 3000,
-          "75K": 4500,
-          "100K": 6000,
-          "150K": 9000,
-          "250K": 15000,
-          "300K": 18000,
-        };
-        const tradeifyDD = {
-          "25K": 1000,
-          "50K": 2000,
-          "75K": 3000,
-          "100K": 3000,
-          "150K": 5000,
-          "250K": 7500,
-          "300K": 9000,
-        };
-        const tradeifyEval = {
-          "25K": 80,
-          "50K": 160,
-          "75K": 240,
-          "100K": 320,
-          "150K": 440,
-          "250K": 660,
-          "300K": 880,
-        };
-        const tradeifyTrue = {
-          "25K": 56,
-          "50K": 112,
-          "75K": 168,
-          "100K": 224,
-          "150K": 308,
-          "250K": 462,
-          "300K": 616,
-        };
-        const tradeifyPlatforms = ["Tradovate", "NinjaTrader", "Quantower"];
-        for (let plat of tradeifyPlatforms) {
-          for (let acc of tradeifyAccounts) {
-            for (let prod of ["Evaluation", "Funded", "Instant"]) {
-              allRows.push({
-                firm: "Tradeify",
-                logo: "https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png",
-                account: acc,
-                goal: tradeifyGoals[acc],
-                profitTarget: tradeifyGoals[acc],
-                ddt: "EOD",
-                dd: tradeifyDD[acc],
-                mindays: prod === "Instant" ? 0 : 1,
-                eval: tradeifyEval[acc],
-                activation: 0,
-                truecost: tradeifyTrue[acc],
-                discount: "30%",
-                code: "BRO",
-                platform: plat,
-                country: "Global",
-                maxaccounts: 5,
-                firmpage: "Frims/TradeifyTrader.html",
-                website: "https://tradeify.co/?ref=BFYQ2HKM",
-              });
+  .bt-header.bt-scrolled {
+    top: 0;
+    background: rgba(10, 15, 30, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+    width: 63%;
+    margin-left: 276px;
+  }
+
+  .bt-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.3s ease;
+  }
+
+  .bt-header.bt-scrolled .bt-container {
+    padding: 0px 30px;
+  }
+
+  .bt-logo img {
+    height: 55px;
+    transition: height 0.3s ease;
+    display: block;
+  }
+
+  .bt-header.bt-scrolled .bt-logo img {
+    height: 50px;
+  }
+
+  /* ================= NAV ================= */
+  .bt-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .bt-link,
+  .bt-drop-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+    font-family: inherit;
+  }
+
+  .bt-link:hover,
+  .bt-drop-btn:hover {
+    color: #00c2ff;
+  }
+
+  /* ================= DROPDOWN ================= */
+  .bt-dropdown {
+    position: relative;
+  }
+
+  .bt-drop-menu {
+    position: absolute;
+    top: 170%;
+    left: 0;
+    min-width: 650px;
+    padding: 30px;
+    border-radius: 14px;
+    background: rgba(15, 20, 45, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 194, 255, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+    z-index: 1001;
+  }
+
+  .bt-drop-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .bt-drop-menu.small {
+    min-width: 260px;
+    padding: 20px;
+  }
+
+  .bt-drop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .bt-drop-menu a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-bottom: 12px;
+    transition: 0.3s;
+    font-size: 15px;
+  }
+
+  .bt-drop-menu a:hover {
+    color: #00c2ff;
+    padding-left: 5px;
+  }
+  .bt-drop-menu strong:hover {
+    color: #f1f3f4;
+    padding-left: 0px !important;
+    transition: 0s;
+  }
+
+  /* DESKTOP HOVER OPEN */
+  @media (min-width: 1025px) {
+    .bt-dropdown:hover .bt-drop-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  /* ================= CTA ================= */
+  .bt-cta {
+    background: linear-gradient(135deg, #00c2ff, #1e90ff);
+    padding: 9px 22px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .bt-cta:hover {
+    transform: translateY(-3px);
+    background: white;
+    color: #0b0f2a;
+  }
+
+  /* ================= HAMBURGER ================= */
+  .bt-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1003;
+    transition: all 0.3s ease;
+  }
+
+  .bt-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .bt-hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .bt-hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .bt-hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .bt-hamburger:hover span {
+    background: #00c2ff;
+  }
+
+  /* ================= MOBILE MENU ================= */
+  .bt-mobile-close {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 300;
+    transition: 0.2s;
+    z-index: 1004;
+    background: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bt-mobile-close:hover {
+    color: #00c2ff;
+    transform: rotate(90deg);
+  }
+
+  .bt-overlay {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 900;
+    transition: 0.3s;
+  }
+
+  .bt-overlay.active {
+    display: block;
+  }
+
+  @media (max-width: 1024px) {
+    .bt-hamburger {
+      display: flex;
+    }
+
+    .bt-cta {
+      display: none;
+    }
+
+    .bt-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      max-width: 85%;
+      height: 100vh;
+      background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 80px 25px 30px;
+      gap: 15px;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1002;
+      overflow-y: auto;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
+      border-left: 1px solid rgba(0, 194, 255, 0.3);
+    }
+
+    .bt-nav.active {
+      right: 0;
+    }
+
+    .bt-mobile-close {
+      display: flex;
+    }
+
+    .bt-dropdown {
+      width: 100%;
+    }
+
+    .bt-drop-btn {
+      width: 100%;
+      text-align: left;
+      font-size: 18px;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .bt-drop-btn::after {
+      content: "▾";
+      font-size: 16px;
+      transition: transform 0.3s;
+    }
+
+    .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
+      transform: rotate(180deg);
+    }
+
+    .bt-drop-menu {
+      position: static;
+      min-width: 100%;
+      padding: 0;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      background: rgba(15, 20, 45, 0.8);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(0, 194, 255, 0.3);
+      border-radius: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: none;
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 15px;
+    }
+
+    .bt-drop-menu.active {
+      opacity: 1;
+      visibility: visible;
+      max-height: 500px;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+
+    .bt-drop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .bt-drop-menu a {
+      font-size: 13px;
+      padding: 5px 0;
+      margin-bottom: 0;
+    }
+
+    .bt-link {
+      font-size: 18px;
+      padding: 10px 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bt-drop-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .bt-nav {
+      width: 280px;
+    }
+  }
+
+  /* Header responsive fixes */
+  @media (max-width: 1300px) {
+    .bt-header {
+      width: calc(100% - 40px);
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .bt-header.bt-scrolled {
+      width: calc(100% - 40px);
+      margin-left: 20px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .bt-header,
+    .bt-header.bt-scrolled {
+      width: calc(100% - 30px);
+      margin-left: 15px;
+      margin-right: 15px;
+      top: 15px;
+    }
+    .bt-header.bt-scrolled {
+      top: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bt-container {
+      padding: 0px 20px;
+    }
+    .bt-logo img {
+      height: 48px;
+    }
+  }
+</style>
+
+<script>
+  // Get elements
+  const hamburger = document.getElementById("hamburgerBtn");
+  const mobileMenu = document.querySelector(".bt-nav");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.querySelector(".bt-mobile-close");
+
+  // Toggle mobile menu functions
+  function openMobileMenu() {
+    mobileMenu.classList.add("active");
+    overlay.classList.add("active");
+    hamburger.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.classList.remove("active");
+    document.body.style.overflow = "";
+
+    // Close all open dropdowns
+    document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+      menu.classList.remove("active");
+    });
+
+    // Reset dropdown button ARIA
+    document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
+      btn.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  // Toggle function
+  function toggleMobileMenu() {
+    if (mobileMenu.classList.contains("active")) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Hamburger click event
+  if (hamburger) {
+    hamburger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+  }
+
+  // Close button click
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      closeMobileMenu();
+    });
+  }
+
+  // Overlay click to close
+  if (overlay) {
+    overlay.addEventListener("click", function () {
+      closeMobileMenu();
+    });
+  }
+
+  // Dropdown toggle for mobile
+  const dropBtns = document.querySelectorAll(".bt-drop-btn");
+  dropBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const dropdownId = this.getAttribute("data-dropdown");
+      const menu = document.getElementById(dropdownId);
+
+      if (menu) {
+        const isExpanded = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", !isExpanded);
+        menu.classList.toggle("active");
+
+        // Close other dropdowns
+        dropBtns.forEach((otherBtn) => {
+          if (otherBtn !== btn) {
+            const otherId = otherBtn.getAttribute("data-dropdown");
+            const otherMenu = document.getElementById(otherId);
+            if (otherMenu) {
+              otherMenu.classList.remove("active");
+              otherBtn.setAttribute("aria-expanded", "false");
             }
-          }
-        }
-
-        // MFFU (16 rows)
-        const mffuAccounts = ["25K", "50K", "100K", "150K"];
-        const mffuGoals = {
-          "25K": 1500,
-          "50K": 3000,
-          "100K": 6000,
-          "150K": 9000,
-        };
-        const mffuDD = { "25K": 1000, "50K": 2000, "100K": 3000, "150K": 5000 };
-        const mffuEval = { "25K": 100, "50K": 150, "100K": 300, "150K": 450 };
-        const mffuTrue = { "25K": 75, "50K": 105, "100K": 210, "150K": 315 };
-        const mffuPlans = ["Core", "Scale", "Pro", "Rapid"];
-        for (let plan of mffuPlans) {
-          for (let acc of mffuAccounts) {
-            allRows.push({
-              firm: "MyFundedFutures",
-              logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png",
-              account: acc,
-              goal: mffuGoals[acc],
-              profitTarget: mffuGoals[acc],
-              ddt: plan === "Rapid" ? "Trailing" : "EOD Trailing",
-              dd: mffuDD[acc],
-              mindays: 5,
-              eval: mffuEval[acc],
-              activation: 0,
-              truecost: mffuTrue[acc],
-              discount: "50%",
-              code: "BRO",
-              platform: "Multi (Tradovate, NinjaTrader, Quantower)",
-              country: "Global",
-              maxaccounts: 5,
-              firmpage: "Frims/MyFundedFuture.html",
-              website: "https://myfundedfutures.com/challenge?ref=5117",
-            });
-          }
-        }
-
-        // LUCID (12 rows)
-        const lucidAccounts = ["25K", "50K", "100K", "150K"];
-        const lucidGoals = {
-          "25K": 1250,
-          "50K": 3000,
-          "100K": 6000,
-          "150K": 9000,
-        };
-        const lucidDD = {
-          "25K": 1000,
-          "50K": 2000,
-          "100K": 3000,
-          "150K": 4500,
-        };
-        const lucidEval = { "25K": 100, "50K": 170, "100K": 285, "150K": 400 };
-        const lucidTrue = { "25K": 50, "50K": 85, "100K": 142, "150K": 200 };
-        const lucidPlans = ["LucidPro", "LucidFlex", "LucidDirect"];
-        for (let plan of lucidPlans) {
-          for (let acc of lucidAccounts) {
-            allRows.push({
-              firm: "Lucid Trading",
-              logo: "https://onlypropfirms.com/wp-content/uploads/2025/10/lucidicon-1.png",
-              account: acc,
-              goal: lucidGoals[acc],
-              profitTarget: lucidGoals[acc],
-              ddt: "EOD",
-              dd: lucidDD[acc],
-              mindays: 1,
-              eval: lucidEval[acc],
-              activation: 0,
-              truecost: lucidTrue[acc],
-              discount: "50%",
-              code: "BROTRADING",
-              platform: "Tradovate",
-              country: "UK",
-              maxaccounts: 5,
-              firmpage: "Frims/Lucid Trading.html",
-              website: "https://lucidtrading.com/ref/brotrading/",
-            });
-          }
-        }
-
-        // DAY TRADERS (Trail, Static, S2F, S2L)
-        const dtAccounts = ["25K", "50K", "100K", "150K", "300K"];
-        const dtGoalsTrail = {
-          "25K": 1500,
-          "50K": 3000,
-          "100K": 6000,
-          "150K": 8500,
-          "300K": 15000,
-        };
-        const dtGoalsStatic = {
-          "25K": 2500,
-          "50K": 3750,
-          "100K": 5750,
-          "150K": 6750,
-          "300K": 12000,
-        };
-        const dtGoalsS2F = {
-          "25K": 1500,
-          "50K": 3000,
-          "100K": 6000,
-          "150K": 9000,
-          "300K": 18000,
-        };
-        const dtDDTrail = {
-          "25K": 1500,
-          "50K": 2500,
-          "100K": 3000,
-          "150K": 4500,
-          "300K": 7000,
-        };
-        const dtDDStatic = {
-          "25K": 750,
-          "50K": 1000,
-          "100K": 1500,
-          "150K": 1750,
-          "300K": 3500,
-        };
-        const dtDDS2F = {
-          "25K": 1000,
-          "50K": 2500,
-          "100K": 3000,
-          "150K": 6000,
-          "300K": 10000,
-        };
-        const dtEvalTrail = {
-          "25K": 249,
-          "50K": 379,
-          "100K": 599,
-          "150K": 699,
-          "300K": 879,
-        };
-        const dtEvalStatic = {
-          "25K": 150,
-          "50K": 200,
-          "100K": 325,
-          "150K": 400,
-          "300K": 600,
-        };
-        const dtEvalS2F = {
-          "25K": 370,
-          "50K": 570,
-          "100K": 750,
-          "150K": 825,
-          "300K": 1200,
-        };
-        const dtAct = {
-          "25K": 130,
-          "50K": 130,
-          "100K": 130,
-          "150K": 130,
-          "300K": 130,
-        };
-
-        for (let acc of dtAccounts) {
-          allRows.push({
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: acc,
-            goal: dtGoalsTrail[acc],
-            profitTarget: dtGoalsTrail[acc],
-            ddt: "Intraday Trailing",
-            dd: dtDDTrail[acc],
-            mindays: 1,
-            eval: dtEvalTrail[acc],
-            activation: dtAct[acc],
-            truecost: dtEvalTrail[acc] + dtAct[acc],
-            discount: "40%",
-            code: "BROTRADING",
-            platform: "Tradovate",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          });
-        }
-        for (let acc of dtAccounts) {
-          allRows.push({
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: acc,
-            goal: dtGoalsStatic[acc],
-            profitTarget: dtGoalsStatic[acc],
-            ddt: "Static",
-            dd: dtDDStatic[acc],
-            mindays: 1,
-            eval: dtEvalStatic[acc],
-            activation: dtAct[acc],
-            truecost: dtEvalStatic[acc] + dtAct[acc],
-            discount: "40%",
-            code: "BROTRADING",
-            platform: "Tradovate",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          });
-        }
-        for (let acc of dtAccounts) {
-          allRows.push({
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: acc,
-            goal: dtGoalsS2F[acc],
-            profitTarget: dtGoalsS2F[acc],
-            ddt: "EOD (No Eval)",
-            dd: dtDDS2F[acc],
-            mindays: 1,
-            eval: dtEvalS2F[acc],
-            activation: 0,
-            truecost: dtEvalS2F[acc],
-            discount: "N/A",
-            code: "BROTRADING",
-            platform: "Tradovate",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          });
-        }
-        const s2lAccounts = ["50K", "150K", "300K"];
-        const s2lGoals = { "50K": 3000, "150K": 9000, "300K": 18000 };
-        const s2lEval = { "50K": 329, "150K": 469, "300K": 599 };
-        for (let acc of s2lAccounts) {
-          allRows.push({
-            firm: "Day Traders",
-            logo: "https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg",
-            account: acc,
-            goal: s2lGoals[acc],
-            profitTarget: s2lGoals[acc],
-            ddt: "Trailing (Eval+Live)",
-            dd: acc === "50K" ? 2000 : acc === "150K" ? 4500 : 7000,
-            mindays: 1,
-            eval: s2lEval[acc],
-            activation: 0,
-            truecost: s2lEval[acc],
-            discount: "N/A",
-            code: "BROTRADING",
-            platform: "Tradovate",
-            country: "USA",
-            maxaccounts: 5,
-            firmpage: "Frims/DayTraders.html",
-            website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-          });
-        }
-
-        // PHIDIAS (16 rows)
-        const phidiasAccounts = ["25K", "50K", "100K", "150K"];
-        const phidiasGoals = {
-          "25K": 1500,
-          "50K": 3000,
-          "100K": 6000,
-          "150K": 9000,
-        };
-        const phidiasDD = {
-          "25K": 1000,
-          "50K": 2000,
-          "100K": 3000,
-          "150K": 5000,
-        };
-        const phidiasEval = {
-          "25K": 125,
-          "50K": 175,
-          "100K": 250,
-          "150K": 375,
-        };
-        const phidiasTrue = {
-          "25K": 125,
-          "50K": 175,
-          "100K": 250,
-          "150K": 375,
-        };
-        const phidiasPlans = [
-          "Static",
-          "Fundamental",
-          "Swing",
-          "10K Challenge",
-        ];
-        for (let plan of phidiasPlans) {
-          for (let acc of phidiasAccounts) {
-            allRows.push({
-              firm: "Phidias",
-              logo: "https://tradersklub.com/wp-content/uploads/2026/03/Phidias.jpeg",
-              account: acc,
-              goal: phidiasGoals[acc],
-              profitTarget: phidiasGoals[acc],
-              ddt: "EOD",
-              dd: phidiasDD[acc],
-              mindays: 3,
-              eval: phidiasEval[acc],
-              activation: 0,
-              truecost: phidiasTrue[acc],
-              discount: "Dynamic",
-              code: "BROTRADING",
-              platform: "Tradovate",
-              country: "Netherlands",
-              maxaccounts: 3,
-              firmpage: "Frims/Phidias.html",
-              website: "https://phidiaspropfirm.com/",
-            });
-          }
-        }
-
-        // SORT BY TRUE COST (ASCENDING - lowest to highest)
-        const firms = allRows
-          .map((f) => ({ ...f, profitTarget: f.goal }))
-          .sort((a, b) => a.truecost - b.truecost);
-
-        const toK = (v) => {
-          if (typeof v === "string") return v;
-          return v >= 1000
-            ? (v / 1000).toFixed(v % 1000 === 0 ? 0 : 1).replace(/\.0$/, "") +
-                "K"
-            : v;
-        };
-        const getCountryFlag = (c) => {
-          const cc = c.trim().toLowerCase();
-          if (cc === "usa")
-            return '<img src="https://flagcdn.com/w20/us.png" srcset="https://flagcdn.com/w40/us.png 2x" alt="USA">';
-          if (cc === "uk")
-            return '<img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" alt="UK">';
-          if (cc === "netherlands")
-            return '<img src="https://flagcdn.com/w20/nl.png" srcset="https://flagcdn.com/w40/nl.png 2x" alt="NL">';
-          return '<i class="fas fa-globe"></i>';
-        };
-
-        // Build filters
-        const firmVals = [...new Set(firms.map((f) => f.firm))].sort();
-        const platformVals = [
-          ...new Set(
-            firms.flatMap((f) => f.platform.split(",").map((p) => p.trim())),
-          ),
-        ].sort();
-        const discountVals = [...new Set(firms.map((f) => f.discount))]
-          .filter((d) => d !== "Dynamic" && d !== "N/A")
-          .sort((a, b) => parseInt(a) - parseInt(b));
-        discountVals.unshift("Dynamic", "N/A");
-        const maxVals = [...new Set(firms.map((f) => f.maxaccounts))].sort(
-          (a, b) => a - b,
-        );
-        const goalPresets = [20000, 15000, 10000, 6000, 3000, 1500];
-        const costPresets = [500, 400, 300, 200, 150, 100, 75, 50];
-
-        function buildWithAll(
-          container,
-          values,
-          isNumeric = false,
-          prefix = "≤ ",
-        ) {
-          container.innerHTML = "";
-          let allLabel = document.createElement("label");
-          allLabel.innerHTML = `<input type="checkbox" class="all-check" value="__ALL__"> All`;
-          container.appendChild(allLabel);
-          values.forEach((val) => {
-            let label = document.createElement("label");
-            let display = isNumeric ? prefix + val : val;
-            label.innerHTML = `<input type="checkbox" value="${val}"> ${display}`;
-            container.appendChild(label);
-          });
-        }
-
-        buildWithAll(document.getElementById("firm-options"), firmVals, false);
-        buildWithAll(
-          document.getElementById("platform-options"),
-          platformVals,
-          false,
-        );
-        buildWithAll(
-          document.getElementById("discount-options"),
-          discountVals,
-          false,
-        );
-        buildWithAll(
-          document.getElementById("max-options"),
-          maxVals,
-          true,
-          "≤ ",
-        );
-        buildWithAll(
-          document.getElementById("goal-options"),
-          goalPresets,
-          true,
-          "≤ ",
-        );
-        buildWithAll(
-          document.getElementById("cost-options"),
-          costPresets,
-          true,
-          "≤ ",
-        );
-
-        // Dropdown toggles
-        document.querySelectorAll(".dropdown-checkbox").forEach((dd) => {
-          const btn = dd.querySelector(".select-btn");
-          const content = dd.querySelector(".dropdown-content");
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            document.querySelectorAll(".dropdown-content").forEach((c) => {
-              if (c !== content) c.classList.remove("show");
-            });
-            content.classList.toggle("show");
-          });
-          content.addEventListener("click", (e) => e.stopPropagation());
-        });
-        document.addEventListener("click", () =>
-          document
-            .querySelectorAll(".dropdown-content")
-            .forEach((c) => c.classList.remove("show")),
-        );
-
-        function getSelected(containerId) {
-          const container = document.getElementById(containerId);
-          const allCheck = container.querySelector("input.all-check");
-          if (allCheck && allCheck.checked) return [];
-          return Array.from(
-            container.querySelectorAll(
-              "input[type=checkbox]:checked:not(.all-check)",
-            ),
-          ).map((cb) => cb.value);
-        }
-
-        function updateHints() {
-          document.getElementById("firm-hint").innerText = getSelected(
-            "firm-options",
-          ).length
-            ? getSelected("firm-options").join(", ").slice(0, 24) + "…"
-            : "All";
-          document.getElementById("platform-hint").innerText = getSelected(
-            "platform-options",
-          ).length
-            ? getSelected("platform-options").join(", ").slice(0, 22) + "…"
-            : "All";
-          document.getElementById("discount-hint").innerText = getSelected(
-            "discount-options",
-          ).length
-            ? getSelected("discount-options").join(", ")
-            : "All";
-          document.getElementById("max-hint").innerText =
-            getSelected("max-options")
-              .map((v) => "≤ " + v)
-              .join(",")
-              .slice(0, 22) || "All";
-          document.getElementById("goal-hint").innerText =
-            getSelected("goal-options")
-              .map((v) => "≤ " + v)
-              .join(",") || "All";
-          document.getElementById("cost-hint").innerText =
-            getSelected("cost-options")
-              .map((v) => "≤ " + v)
-              .join(",") || "All";
-        }
-
-        function applyFilters() {
-          const firmSel = getSelected("firm-options");
-          const platSel = getSelected("platform-options");
-          const discSel = getSelected("discount-options");
-          const maxSel = getSelected("max-options").map((v) => parseInt(v));
-          const goalSel = getSelected("goal-options").map((v) => parseInt(v));
-          const costSel = getSelected("cost-options").map((v) => parseInt(v));
-          const filtered = firms.filter((f) => {
-            if (firmSel.length && !firmSel.includes(f.firm)) return false;
-            if (platSel.length) {
-              const plats = f.platform.split(",").map((p) => p.trim());
-              if (!platSel.some((p) => plats.includes(p))) return false;
-            }
-            if (discSel.length && !discSel.includes(f.discount)) {
-              if (f.discount !== "Dynamic" && f.discount !== "N/A") {
-                let discNum = parseInt(f.discount.replace("%", ""));
-                let minDisc = Math.min(
-                  ...discSel
-                    .filter((d) => !isNaN(parseInt(d)))
-                    .map((d) => parseInt(d.replace("%", ""))),
-                );
-                if (discNum < minDisc) return false;
-              } else if (!discSel.includes(f.discount)) return false;
-            }
-            if (maxSel.length && f.maxaccounts > Math.min(...maxSel))
-              return false;
-            if (goalSel.length && f.goal > Math.min(...goalSel)) return false;
-            if (costSel.length && f.truecost > Math.min(...costSel))
-              return false;
-            return true;
-          });
-          render(filtered);
-          updateHints();
-        }
-
-        function render(data) {
-          const tbody = document.querySelector("#zx-table tbody");
-          tbody.innerHTML = "";
-          data.forEach((f) => {
-            const flagHtml = `<span class="country-flag">${getCountryFlag(f.country)} ${f.country}</span>`;
-            const row = document.createElement("tr");
-            row.innerHTML = `
-          <td class="sticky-col logo-col"><img src="${f.logo}" class="zx-logo" alt="logo" onerror="this.src='https://placehold.co/40x30?text=logo'"></td>
-          <td class="sticky-col firm-col">${f.firm}</td>
-          <td>${f.account}</td>
-          <td>${f.platform}</td>
-          <td>${flagHtml}</td>
-          <td>${f.maxaccounts}</td>
-          <td>$${toK(f.eval)}</td>
-          <td>$${toK(f.activation)}</td>
-          <td style="font-weight:700; color:#facc15;">$${toK(f.profitTarget)}</td>
-          <td style="color:#4ade80; font-weight:700;">$${f.truecost}</td>
-          <td>${f.discount}</td>
-          <td>$${toK(f.goal)}</td>
-          <td>${f.ddt}</td>
-          <td>$${toK(f.dd)}</td>
-          <td>${f.mindays}</td>
-          <td><button class="zx-code">${f.code}</button></td>
-          <td><a href="${f.firmpage}" class="zx-firm-btn">Open</a></td>
-          <td class="website-fixed"><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit</a></td>
-        `;
-            tbody.appendChild(row);
-          });
-        }
-
-        function addListeners(containerId) {
-          document
-            .querySelectorAll(`#${containerId} input[type=checkbox]`)
-            .forEach((cb) => {
-              cb.addEventListener("change", function () {
-                const container = document.getElementById(containerId);
-                const allChk = container.querySelector("input.all-check");
-                if (this.classList.contains("all-check") && this.checked) {
-                  container
-                    .querySelectorAll("input:not(.all-check)")
-                    .forEach((c) => (c.checked = false));
-                } else if (
-                  !this.classList.contains("all-check") &&
-                  this.checked &&
-                  allChk
-                ) {
-                  allChk.checked = false;
-                }
-                applyFilters();
-              });
-            });
-        }
-
-        addListeners("firm-options");
-        addListeners("platform-options");
-        addListeners("discount-options");
-        addListeners("max-options");
-        addListeners("goal-options");
-        addListeners("cost-options");
-
-        document.addEventListener("click", (e) => {
-          if (e.target.classList.contains("zx-code")) {
-            const original = e.target.innerText;
-            navigator.clipboard.writeText(original);
-            e.target.innerText = "Copied!";
-            setTimeout(() => (e.target.innerText = original), 800);
           }
         });
+      }
+    });
+  });
 
-        let dragIndex;
-        document
-          .querySelectorAll("#zx-table th[draggable=true]")
-          .forEach((th) => {
-            th.setAttribute("draggable", "true");
-            th.addEventListener("dragstart", () => (dragIndex = th.cellIndex));
-            th.addEventListener("dragover", (e) => e.preventDefault());
-            th.addEventListener("drop", function (e) {
-              e.preventDefault();
-              let dropIndex = this.cellIndex;
-              document.querySelectorAll("#zx-table tr").forEach((row) => {
-                if (row.children[dragIndex] && row.children[dropIndex])
-                  row.insertBefore(
-                    row.children[dragIndex],
-                    row.children[dropIndex],
-                  );
-              });
-            });
-          });
+  // Close mobile menu when clicking on nav links (except dropdown buttons)
+  const navLinks = document.querySelectorAll(".bt-nav a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      if (window.innerWidth <= 1024) {
+        setTimeout(() => {
+          closeMobileMenu();
+        }, 100);
+      }
+    });
+  });
 
-        render(firms);
-        updateHints();
-      })();
-    </script>
-  </body>
-</html>
+  // Header scroll effect
+  const header = document.querySelector(".bt-header");
+  window.addEventListener("scroll", () => {
+    if (header) {
+      if (window.scrollY > 50) {
+        header.classList.add("bt-scrolled");
+      } else {
+        header.classList.remove("bt-scrolled");
+      }
+    }
+  });
 
-<!-- ========================
-======FAVRITE FRIM ENDS=====
-=======================  -->
+  // Close menu on window resize
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1024) {
+      if (mobileMenu && mobileMenu.classList.contains("active")) {
+        closeMobileMenu();
+      }
+    }
+  });
+
+  // Close dropdowns when clicking outside (desktop)
+  document.addEventListener("click", function (e) {
+    if (window.innerWidth > 1024) {
+      const isDropdown = e.target.closest(".bt-dropdown");
+      if (!isDropdown) {
+        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+        dropBtns.forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
+        });
+      }
+    }
+  });
+
+  // Initialize ARIA attributes
+  dropBtns.forEach((btn) => {
+    btn.setAttribute("aria-expanded", "false");
+  });
+</script>

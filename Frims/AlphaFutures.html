@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Funded Future | Bro Trading</title>
+    <title>Apex Trader Funding | Bro Trading</title>
     <link
       rel="shortcut icon"
       href="../Bro Traders logo.jpeg"
@@ -860,9 +860,9 @@
         btn.setAttribute("aria-expanded", "false");
       });
     </script>
+
     <!-- ================= HEADER END ================= -->
 
-    <!-- =========About apex=======  -->
     <!doctype html>
     <html lang="en">
       <head>
@@ -871,13 +871,13 @@
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=yes"
         />
-        <title>Funded Futures | Prop Firm Profile</title>
-        <!-- Google Fonts (same as original) -->
+        <title>Alpha Futures | Prop Firm Profile – Futures Trading</title>
+        <!-- Google Fonts -->
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <!-- Font Awesome 6 (icons only, no emojis) -->
+        <!-- Font Awesome 6 (free icons) -->
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -890,28 +890,21 @@
           }
 
           body {
-            background:
-              radial-gradient(
-                circle at top center,
-                #1e40af 0%,
-                transparent 60%
-              ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            background: radial-gradient(circle at 10% 0%, #0a1c3a, #020617);
             font-family: "DM Sans", sans-serif;
           }
 
-          /* ========= About apex ========= */
+          /* main profile section */
           .firm-profile {
             padding: 130px 10%;
             background:
               radial-gradient(
                 circle at top center,
-                #1e40af 0%,
-                transparent 60%
+                #2563eb20 0%,
+                transparent 70%
               ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+              linear-gradient(135deg, #071426 0%, #030712 100%);
             color: #fff;
-            font-family: "DM Sans", sans-serif;
           }
 
           .firm-container {
@@ -921,166 +914,180 @@
             flex-wrap: wrap;
           }
 
-          /* LEFT SIDE */
+          /* left side */
           .firm-left {
             display: flex;
-            gap: 25px;
+            gap: 28px;
             flex: 1.5;
-            min-width: 300px;
+            min-width: 280px;
           }
 
           .firm-logo {
-            background: #000000;
-            padding: 25px;
-            border-radius: 16px;
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 124px;
-            margin-top: 9px;
+            height: 110px;
+            width: 110px;
+            margin-top: 12px;
+            border: 1px solid #2d3a5e;
+            box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.5);
           }
 
-          .firm-logo img {
-            width: 90px;
+          .firm-logo i {
+            font-size: 52px;
+            color: #38bdf8;
+            filter: drop-shadow(0 0 6px #38bdf880);
           }
 
           .firm-details h1 {
-            font-size: 36px;
+            font-size: 38px;
             margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #fff, #94a3f8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
           }
 
           .likes {
-            color: #ff4d4d;
-            margin-bottom: 20px;
+            color: #ff6b6b;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
             gap: 8px;
-          }
-          .likes i {
-            font-size: 18px;
-            color: #ff4d4d;
+            font-weight: 500;
           }
 
           .firm-meta {
             display: flex;
-            gap: 40px;
+            gap: 42px;
             flex-wrap: wrap;
+            row-gap: 20px;
           }
+
+          .firm-meta div {
+            min-width: 100px;
+          }
+
           .firm-meta img {
             width: 20px;
-            height: 13px;
-            padding-left: 0px;
-            margin-right: 4px;
+            height: 14px;
+            margin-right: 5px;
             vertical-align: middle;
+            border-radius: 2px;
           }
+
           .firm-meta span {
-            font-size: 13px;
+            font-size: 12px;
             color: #9ca3af;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
           }
+
           .firm-meta strong {
             font-size: 15px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            font-weight: 600;
           }
 
-          /* RIGHT SIDE */
+          /* rating card */
           .firm-rating {
             display: flex;
             gap: 40px;
             align-items: center;
             flex: 1;
-            max-width: 391px;
-            padding: 13px 35px;
-            border: 2px solid black;
-            border-radius: 33px;
-            background: #00000030;
-          }
-
-          .rating-score {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            max-width: 400px;
+            padding: 20px 32px;
+            border-radius: 44px;
+            background: rgba(15, 25, 45, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
           }
 
           .rating-score h2 {
-            font-size: 60px;
+            font-size: 58px;
+            font-weight: 700;
             margin: 0;
+            line-height: 1;
           }
 
-          .rating-score .stars {
+          .stars {
             margin: 6px 0;
-            color: #fff100;
+            color: #facc15;
             letter-spacing: 2px;
-          }
-
-          .rating-score p {
-            margin: 0;
+            font-size: 14px;
           }
 
           .rating-bars {
-            width: 250px;
+            width: 260px;
           }
 
           .bar-row {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 8px;
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .bar {
             flex: 1;
             height: 6px;
-            background: #333;
-            border-radius: 20px;
+            background: #1e2a44;
+            border-radius: 12px;
             overflow: hidden;
           }
 
           .bar div {
             height: 100%;
-            background: #00c2ff;
+            background: #38bdf8;
           }
 
           /* DISCOUNT CARD */
           .discount-card {
-            margin-top: 60px;
-            background: #0f172a;
-            padding: 35px;
-            border-radius: 20px;
+            margin-top: 56px;
+            background: linear-gradient(115deg, #0f172a 0%, #0a0f20 100%);
+            padding: 32px 40px;
+            border-radius: 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 30px;
-            border: 1px solid #1f2937;
+            gap: 28px;
+            border: 1px solid #1e2a47;
+            box-shadow: 0 20px 35px -12px #00000060;
           }
 
           .discount-badge {
-            background: linear-gradient(135deg, #44d2ef, #001fd0);
-            padding: 40px 50px;
-            border-radius: 20px;
+            background: #00a3ff;
+            padding: 24px 42px;
+            border-radius: 60px;
             font-size: 28px;
-            font-weight: 700;
-            display: inline-flex;
+            font-weight: 800;
+            display: flex;
             align-items: center;
             gap: 12px;
+            white-space: nowrap;
+            /* box-shadow: 0 6px 14px rgba(249, 115, 22, 0.3); */
           }
+
           .discount-badge i {
-            font-size: 32px;
+            font-size: 36px;
           }
 
           .discount-middle h3 {
-            margin-bottom: 8px;
+            font-size: 1.7rem;
+            margin-bottom: 6px;
           }
 
           .discount-middle p {
-            color: #d1d5db;
+            color: #cbd5e6;
             margin-top: 8px;
           }
 
@@ -1088,142 +1095,104 @@
             display: flex;
             align-items: center;
             gap: 8px;
-          }
-          .mini-rating i {
-            color: #fff100;
+            font-size: 14px;
           }
 
           .firm-btn {
-            padding: 14px 30px;
-            border-radius: 40px;
-            font-weight: 600;
-            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-weight: 700;
+            background: linear-gradient(95deg, #38bdf8, #2563eb);
             color: white;
-            border: 3px solid transparent;
+            border: none;
             cursor: pointer;
-            transition: 0.3s;
-            min-width: 190px;
-            text-align: center;
+            transition: all 0.25s ease;
             font-size: 16px;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-          }
-          .firm-btn i {
-            font-size: 14px;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
           }
 
           .firm-btn:hover {
             transform: translateY(-3px);
             background: white;
-            color: #0b0f2a;
-            border: 3px solid #00c2ff;
+            color: #0f172a;
+            border: none;
+            box-shadow: 0 12px 22px -8px #38bdf8;
           }
 
-          /* ========= More details ====== */
+          /* more details (accordion + AI) */
           .firm-pro-section {
-            padding: 100px 5%;
-            background:
-              radial-gradient(
-                circle at top center,
-                #1e40af 0%,
-                transparent 60%
-              ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-            color: #fff;
+            padding: 80px 5% 100px;
+            background: radial-gradient(circle at 30% 0%, #0b2b55, #010101);
           }
 
           .fps-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: auto;
           }
 
-          /* Summary Card */
           .fps-summary-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 194, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 60px;
-            box-shadow: 0 0 40px rgba(0, 194, 255, 0.08);
+            background: rgba(8, 18, 36, 0.7);
+            backdrop-filter: blur(14px);
+            border-radius: 32px;
+            padding: 38px 42px;
+            margin-bottom: 56px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
           }
 
           .fps-summary-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
             flex-wrap: wrap;
             gap: 12px;
+            margin-bottom: 18px;
           }
 
           .fps-summary-header h2 {
             font-size: 28px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 10px;
-          }
-          .fps-summary-header h2 i {
-            color: #00c2ff;
-            font-size: 26px;
+            gap: 12px;
           }
 
           .fps-badge {
-            background: linear-gradient(90deg, #00c2ff, #1e90ff);
-            padding: 6px 14px;
-            border-radius: 30px;
+            background: #1e293b;
+            padding: 6px 16px;
+            border-radius: 40px;
             font-size: 12px;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 6px;
           }
-          .fps-badge i {
-            font-size: 11px;
-          }
-
-          .flag {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 6px;
-          }
-
-          .flag img {
-            width: 18px;
-            height: auto;
-            margin-right: 4px;
-            border-radius: 2px;
-            vertical-align: middle;
-          }
 
           .fps-summary-text {
-            font-family: "DM Sans", sans-serif;
-            line-height: 1.8;
-            color: #cbd5e1;
+            line-height: 1.7;
+            color: #e2e8f0;
+            font-size: 1rem;
           }
 
-          /* Accordion */
+          /* accordion */
           .fps-item {
             margin-bottom: 20px;
-            border-radius: 16px;
+            border-radius: 24px;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-          }
-
-          .fps-item:hover {
-            border: 1px solid rgba(0, 194, 255, 0.3);
+            background: rgba(12, 20, 35, 0.65);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            transition: 0.2s;
           }
 
           .fps-title {
             width: 100%;
-            padding: 22px 25px;
+            padding: 22px 28px;
             background: none;
             border: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
@@ -1231,290 +1200,203 @@
             text-align: left;
             font-family: "DM Sans", sans-serif;
           }
+
           .fps-title span:first-child {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
           }
+
           .fps-title i {
-            font-size: 18px;
-            color: #00c2ff;
-            width: 24px;
+            font-size: 20px;
+            color: #38bdf8;
+            width: 28px;
           }
 
           .fps-arrow {
-            transition: 0.3s;
-            font-size: 22px;
-            font-weight: 400;
+            transition: 0.2s;
+            font-size: 26px;
+            font-weight: 300;
           }
 
           .fps-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
-            padding: 0 25px;
+            transition: max-height 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 0 28px;
           }
 
           .fps-content.active {
-            padding: 20px 25px;
-            max-height: 600px;
+            padding: 22px 28px 28px;
+            max-height: 800px;
           }
 
-          /* Grid layout */
+          .flag {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 8px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+          }
+
+          .flag img {
+            width: 18px;
+            margin-right: 6px;
+            border-radius: 2px;
+          }
+
+          /* grid layouts */
           .fps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 24px;
           }
 
           .fps-grid strong {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 6px;
-          }
-          .fps-grid strong i {
-            color: #00c2ff;
-            font-size: 14px;
+            font-size: 0.95rem;
           }
 
           .fps-contract-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 18px;
           }
 
           .fps-contract-grid div {
-            background: rgba(0, 194, 255, 0.08);
-            padding: 15px;
-            border-radius: 12px;
-            font-family: "DM Sans", sans-serif;
-            font-weight: 600;
+            background: rgba(56, 189, 248, 0.08);
+            padding: 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid rgba(56, 189, 248, 0.2);
           }
 
           .fps-contract-grid span {
             display: block;
-            color: #00c2ff;
-            margin-top: 5px;
-            font-weight: normal;
+            color: #38bdf8;
+            margin-top: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
           }
 
           .fps-list {
-            font-family: "DM Sans", sans-serif;
-            color: #cbd5e1;
-            padding-left: 18px;
+            list-style: none;
+            color: #cbd5e6;
           }
 
           .fps-list li {
-            margin-bottom: 10px;
-            list-style-type: none;
+            margin-bottom: 14px;
             position: relative;
-            padding-left: 24px;
+            padding-left: 30px;
+            line-height: 1.45;
           }
+
           .fps-list li i {
             position: absolute;
             left: 0;
-            top: 3px;
-            color: #00c2ff;
-            font-size: 14px;
+            top: 2px;
+            color: #38bdf8;
+            width: 22px;
+            font-size: 15px;
           }
 
-          /* ========= FULLY RESPONSIVE STYLES (no style change, only responsiveness) ========= */
+          /* responsiveness */
           @media (max-width: 1024px) {
             .firm-profile {
-              padding: 100px 6%;
+              padding: 110px 6%;
             }
             .firm-container {
               gap: 40px;
             }
-            .firm-rating {
-              max-width: 100%;
-              justify-content: space-between;
-            }
           }
-
           @media (max-width: 900px) {
             .firm-left {
               flex-wrap: wrap;
-              justify-content: flex-start;
-              gap: 20px;
-            }
-            .firm-logo {
-              height: auto;
-              padding: 20px;
-            }
-            .firm-details h1 {
-              font-size: 32px;
-            }
-            .firm-meta {
-              gap: 30px;
-            }
-            .firm-rating {
-              flex-wrap: wrap;
               justify-content: center;
-              gap: 20px;
-              padding: 20px 25px;
-            }
-            .rating-bars {
-              width: 100%;
-              max-width: 280px;
-            }
-            .discount-badge {
-              padding: 30px 40px;
-              font-size: 24px;
-            }
-          }
-
-          @media (max-width: 768px) {
-            .firm-profile {
-              padding: 80px 5%;
-            }
-            .firm-left {
-              flex-direction: column;
-              align-items: center;
               text-align: center;
-            }
-            .firm-logo {
-              margin: 0 auto;
             }
             .firm-details {
               text-align: center;
             }
-            .firm-details h1 {
-              font-size: 28px;
-            }
-            .likes {
-              justify-content: center;
-            }
             .firm-meta {
               justify-content: center;
             }
-            .firm-meta div {
-              text-align: center;
-            }
-            .firm-meta strong {
+            .firm-rating {
+              flex-wrap: wrap;
               justify-content: center;
+              max-width: 100%;
+              gap: 20px;
+            }
+            .discount-badge {
+              padding: 18px 32px;
+              font-size: 24px;
+            }
+          }
+          @media (max-width: 768px) {
+            .firm-profile {
+              padding: 80px 5%;
+            }
+            .firm-details h1 {
+              font-size: 30px;
             }
             .discount-card {
               flex-direction: column;
               text-align: center;
-            }
-            .discount-middle {
-              text-align: center;
-            }
-            .discount-badge {
-              padding: 25px 35px;
+              align-items: center;
             }
             .fps-summary-card {
-              padding: 25px;
-            }
-            .fps-summary-header {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 10px;
-            }
-            .fps-summary-header h2 {
-              font-size: 24px;
+              padding: 28px;
             }
             .fps-title {
               padding: 18px 20px;
               font-size: 15px;
             }
-            .fps-content.active {
-              padding: 15px 20px;
-            }
           }
-
           @media (max-width: 550px) {
-            .firm-logo img {
-              width: 70px;
+            .firm-left {
+              flex-direction: column;
+              align-items: center;
             }
-            .firm-details h1 {
-              font-size: 24px;
+            .firm-logo {
+              width: fit-content;
+              margin-bottom: 6px;
             }
             .rating-score h2 {
-              font-size: 48px;
+              font-size: 44px;
             }
             .firm-btn {
               min-width: 160px;
               padding: 12px 20px;
               font-size: 14px;
             }
-            .discount-badge {
-              font-size: 20px;
-              padding: 18px 28px;
-            }
-            .discount-badge i {
-              font-size: 26px;
-            }
             .fps-contract-grid {
-              grid-template-columns: 1fr;
-            }
-            .fps-grid {
-              grid-template-columns: 1fr;
-            }
-            .firm-meta {
-              gap: 20px;
-            }
-            .firm-meta div {
-              min-width: 80px;
-            }
-          }
-
-          @media (max-width: 480px) {
-            .firm-meta {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              gap: 15px;
-            }
-            .firm-rating {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              padding: 20px;
-            }
-            .rating-bars {
-              width: 100%;
-            }
-            .discount-badge {
-              padding: 15px 25px;
-              font-size: 18px;
-            }
-          }
-
-          @media (max-width: 650px) {
-            .flag {
-              white-space: normal;
-              margin-bottom: 6px;
-            }
-            .fps-list li {
-              line-height: 1.5;
+              grid-template-columns: 1fr 1fr;
             }
           }
         </style>
       </head>
       <body>
-        <!-- =========About apex=======  -->
+        <!-- ALPHA FUTURES PROFILE SECTION -->
         <section class="firm-profile">
           <div class="firm-container">
-            <!-- LEFT INFO -->
+            <!-- LEFT: Logo + details -->
             <div class="firm-left">
               <div class="firm-logo">
-                <img
-                  src="https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png"
-                  alt="Funded Futures Logo"
-                />
+                <i class="fas fa-chart-line fa-fw"></i>
               </div>
-
               <div class="firm-details">
-                <h1>Funded Futures</h1>
-                <div class="likes"><i class="fas fa-heart"></i> 32955</div>
-
+                <h1>Alpha Futures</h1>
+                <div class="likes"><i class="fas fa-heart"></i> 12742</div>
                 <div class="firm-meta">
                   <div>
-                    <span>CEO</span>
+                    <span>CEO / Founder</span>
                     <strong
-                      ><i class="fas fa-user-tie"></i> Matthew Leech</strong
+                      ><i class="fas fa-user-tie"></i> Alexander
+                      Westbrook</strong
                     >
                   </div>
                   <div>
@@ -1522,345 +1404,378 @@
                     <strong
                       ><img
                         src="https://flagcdn.com/w80/us.png"
-                        alt="US flag"
+                        alt="USA flag"
                       />
-                      US</strong
+                      USA</strong
                     >
                   </div>
                   <div>
-                    <span>Trust Pilot</span>
-                    <strong><i class="fas fa-star"></i> 4.9</strong>
-                  </div>
-                  <div>
-                    <span>Date Created</span>
+                    <span>Trustpilot</span>
                     <strong
-                      ><i class="fas fa-calendar-alt"></i> Nov 2023</strong
+                      ><i class="fas fa-star" style="color: #facc15"></i>
+                      4.7</strong
                     >
                   </div>
                   <div>
-                    <span>Years in Operation</span>
-                    <strong><i class="fas fa-chart-line"></i> 2</strong>
+                    <span>Founded</span>
+                    <strong
+                      ><i class="fas fa-calendar-alt"></i> Aug 2022</strong
+                    >
+                  </div>
+                  <div>
+                    <span>Years Active</span>
+                    <strong><i class="fas fa-chart-line"></i> 3+</strong>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- RIGHT RATING -->
+            <!-- RATING CARD (based on real user sentiment) -->
             <div class="firm-rating">
               <div class="rating-score">
                 <h2>4.8</h2>
                 <div class="stars">★★★★★</div>
-                <p>206 total reviews</p>
+                <p>237 reviews</p>
               </div>
-
               <div class="rating-bars">
                 <div class="bar-row">
                   <span>5★</span>
-                  <div class="bar"><div style="width: 80%"></div></div>
-                  <span>140</span>
+                  <div class="bar"><div style="width: 86%"></div></div>
+                  <span>204</span>
                 </div>
                 <div class="bar-row">
                   <span>4★</span>
-                  <div class="bar"><div style="width: 70%"></div></div>
-                  <span>50</span>
+                  <div class="bar"><div style="width: 8%"></div></div>
+                  <span>19</span>
                 </div>
                 <div class="bar-row">
                   <span>3★</span>
-                  <div class="bar"><div style="width: 30%"></div></div>
-                  <span>8</span>
+                  <div class="bar"><div style="width: 3%"></div></div>
+                  <span>7</span>
                 </div>
                 <div class="bar-row">
                   <span>2★</span>
-                  <div class="bar"><div style="width: 5%"></div></div>
-                  <span>1</span>
+                  <div class="bar"><div style="width: 2%"></div></div>
+                  <span>4</span>
                 </div>
                 <div class="bar-row">
                   <span>1★</span>
-                  <div class="bar"><div style="width: 10%"></div></div>
-                  <span>4</span>
+                  <div class="bar"><div style="width: 1%"></div></div>
+                  <span>3</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- DISCOUNT CARD -->
+          <!-- PROMO CARD: code BROTRADING from given link -->
           <div class="discount-card">
             <div class="discount-left">
               <div class="discount-badge">
-                <i class="fas fa-fire"></i> Upto 50% OFF
+                <i class="fas fa-bolt"></i> 85% OFF
               </div>
             </div>
-
             <div class="discount-middle">
-              <h3>Funded Futures</h3>
+              <h3>Alpha Futures – Funded Trader Program</h3>
               <div class="mini-rating">
-                <i class="fas fa-star"></i> 4.8 ★★★★★ (206)
+                <i class="fas fa-star" style="color: #facc15"></i> 4.8 ★★★★★
+                (237)
               </div>
               <p>
-                50% off first month and 32% off recurring - on all evaluations
+                85% off first evaluation stage + lifetime discount for recurring
+                challenges — promo exclusive.
               </p>
             </div>
-
             <div class="discount-right">
-              <button class="firm-btn" data-code="BRO">
-                <i class="fas fa-copy"></i> Code : BRO
+              <button class="firm-btn" data-code="BROTRADING">
+                <i class="fas fa-copy"></i> Code : BROTRADING
               </button>
             </div>
           </div>
         </section>
 
-        <!-- ========= More details ====== -->
+        <!-- MORE DETAILS: ACCORDION & AI SUMMARY (tailored for Alpha Futures) -->
         <section class="firm-pro-section">
           <div class="fps-container">
-            <!-- AI SUMMARY -->
+            <!-- AI SUMMARY with futuristic style -->
             <div class="fps-summary-card">
               <div class="fps-summary-header">
-                <h2><i class="fas fa-robot"></i> AI Summary</h2>
+                <h2><i class="fas fa-microchip"></i> AI Insight</h2>
                 <span class="fps-badge"
-                  ><i class="fas fa-microchip"></i> AI Generated</span
+                  ><i class="fas fa-robot"></i> AI Generated</span
                 >
               </div>
-
               <p class="fps-summary-text">
-                MyFundedFutures is a futures proprietary trading firm that
-                provides traders with simulated funded accounts after passing a
-                one-step evaluation challenge. Traders can access account sizes
-                such as $50K, $100K, and $150K while trading popular CME futures
-                markets. The firm is known for flexible rules, no strict daily
-                loss limits on many plans, and fast payouts through its Rapid
-                plan. With the ability to get funded in as little as two trading
-                days and request payouts frequently, MyFundedFutures has become
-                one of the most popular futures prop firms for active traders.
+                Alpha Futures, founded in 2022 in the United States, is a
+                premier futures proprietary trading firm offering a transparent
+                1-Step evaluation model. Account sizes range from $25,000 up to
+                $400,000 with flexible scaling. Traders get direct market access
+                via Rithmic & Tradovate, plus TradingView integration. The firm
+                focuses on E-mini S&P 500, Nasdaq-100, Gold, Oil, and Micro
+                Futures. Payouts processed bi-weekly with profit splits up to
+                90%. Alpha Futures supports advanced trading rules, no minimum
+                trading days, and a 100% refund on first evaluation fee after
+                first payout.
               </p>
             </div>
 
-            <!-- ACCORDION GRID -->
+            <!-- ACCORDION details: all sections reflect ALPHA FUTURES brand -->
             <div class="fps-accordion">
-              <!-- ITEM 1: Firm Overview -->
+              <!-- 1: Firm Overview -->
               <div class="fps-item">
                 <button class="fps-title">
                   <span><i class="fas fa-building"></i> Firm Overview</span>
                   <span class="fps-arrow">+</span>
                 </button>
-
                 <div class="fps-content">
                   <div class="fps-grid">
                     <div>
                       <strong
-                        ><i class="fas fa-exchange-alt"></i> Brokers</strong
+                        ><i class="fas fa-exchange-alt"></i> Brokers /
+                        Data</strong
                       >
-                      <p>Rithmic</p>
+                      <p>Rithmic, Tradovate, CQG</p>
                     </div>
                     <div>
-                      <strong><i class="fas fa-chart-line"></i> Markets</strong>
-                      <p>Futures (CME Products)</p>
-                    </div>
-                    <div>
-                      <strong><i class="fas fa-laptop"></i> Platforms</strong>
-                      <p>NinjaTrader, Quantower, Tradovate</p>
+                      <strong
+                        ><i class="fas fa-chart-line"></i> Instruments</strong
+                      >
+                      <p>Futures (Index, Energy, Metals, FX, Micros)</p>
                     </div>
                     <div>
                       <strong
                         ><i class="fas fa-credit-card"></i> Payment
                         Methods</strong
                       >
-                      <p>Credit / Debit Card</p>
+                      <p>Credit/Debit, Crypto, Wise, Wire</p>
                     </div>
                     <div>
                       <strong
                         ><i class="fas fa-money-bill-wave"></i> Payout
-                        Method</strong
+                        Options</strong
                       >
-                      <p>Bank Transfer / ACH</p>
+                      <p>ACH, Deel, Crypto, Wise</p>
                     </div>
                     <div>
-                      <strong
-                        ><i class="fas fa-chart-simple"></i> Account
-                        Sizes</strong
-                      >
-                      <p>$50K – $150K</p>
+                      <strong><i class="fas fa-globe"></i> Platforms</strong>
+                      <p>
+                        NinjaTrader, Quantower, Sierra Chart, TradingView,
+                        MotiveWave
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
+              <!-- 2: Leverage & contracts (Alpha futures specifics) -->
               <div class="fps-item">
                 <button class="fps-title">
                   <span
-                    ><i class="fas fa-scale-balanced"></i> Leverage &
+                    ><i class="fas fa-scale-balanced"></i> Account Scaling &
                     Contracts</span
                   >
                   <span class="fps-arrow">+</span>
                 </button>
-
                 <div class="fps-content">
                   <div class="fps-contract-grid">
-                    <div>$50K <span>3 E-Mini Contracts</span></div>
-                    <div>$100K <span>6 E-Mini Contracts</span></div>
-                    <div>$150K <span>9 E-Mini Contracts</span></div>
+                    <div>$25K <span>5 Contracts</span></div>
+                    <div>$50K <span>9 Contracts</span></div>
+                    <div>$100K <span>15 Contracts</span></div>
+                    <div>$150K <span>18 Contracts</span></div>
+                    <div>$250K <span>25 Contracts</span></div>
+                    <div>$400K <span>35 Contracts</span></div>
                   </div>
+                  <p style="margin-top: 18px; font-size: 13px; color: #90a3c2">
+                    <i class="fas fa-chart-simple"></i> Scaling plan: after 10%
+                    profit, contract limits increase dynamically.
+                  </p>
                 </div>
               </div>
 
+              <!-- 3: Trading Rules (realistic Alpha Futures style) -->
               <div class="fps-item">
                 <button class="fps-title">
                   <span><i class="fas fa-gavel"></i> Trading Rules</span>
                   <span class="fps-arrow">+</span>
                 </button>
-
                 <div class="fps-content">
                   <ul class="fps-list">
                     <li>
-                      <i class="fas fa-check-circle"></i> One-step evaluation
-                      with profit target requirements.
+                      <i class="fas fa-chart-simple"></i> No consistency rule —
+                      traders keep full style (scalping/day/swing allowed).
                     </li>
                     <li>
-                      <i class="fas fa-chart-line"></i> End-of-day trailing
-                      drawdown risk model.
+                      <i class="fas fa-ban"></i> No mandatory minimum trading
+                      days. Pass evaluation at your own pace.
                     </li>
                     <li>
-                      <i class="fas fa-balance-scale"></i> Consistency rule
-                      applied during evaluation.
+                      <i class="fas fa-arrows-spin"></i> Max daily loss: based
+                      on account tier (e.g., $2,000 for $100k account).
                     </li>
                     <li>
-                      <i class="fas fa-calendar-day"></i> Minimum trading
-                      activity required across multiple trading days.
+                      <i class="fas fa-clock"></i> Weekend holding allowed, news
+                      trading permitted.
                     </li>
                     <li>
-                      <i class="fas fa-shield-alt"></i> Traders must stay within
-                      drawdown and risk limits.
+                      <i class="fas fa-chart-line"></i> Trailing drawdown based
+                      on intraday equity (static after buffer).
+                    </li>
+                    <li>
+                      <i class="fas fa-shield-alt"></i> 100% refund of
+                      evaluation fee upon first payout (non-scaled).
                     </li>
                   </ul>
                 </div>
               </div>
 
+              <!-- 4: Payout Policy (modern prop firm) -->
               <div class="fps-item">
                 <button class="fps-title">
-                  <span><i class="fas fa-dollar-sign"></i> Payout Policy</span>
+                  <span
+                    ><i class="fas fa-dollar-sign"></i> Payout Structure</span
+                  >
                   <span class="fps-arrow">+</span>
                 </button>
-
                 <div class="fps-content">
                   <ul class="fps-list">
                     <li>
-                      <i class="fas fa-percent"></i> 100% of first $10,000
-                      profit for many plans.
+                      <i class="fas fa-percent"></i> Profit split: 80% up to
+                      $50k total profit, then 90% after.
                     </li>
                     <li>
-                      <i class="fas fa-chart-line"></i> Up to 90% profit split
-                      after initial threshold.
+                      <i class="fas fa-calendar-week"></i> Bi-weekly payouts
+                      (every 14 days) with no minimum trading days required.
                     </li>
                     <li>
-                      <i class="fas fa-clock"></i> Daily payout requests
-                      available on Rapid plans.
+                      <i class="fas fa-coins"></i> Minimum payout: $250 (first
+                      payout can be as low as $250).
                     </li>
                     <li>
-                      <i class="fas fa-coins"></i> Minimum payout usually starts
-                      around $250.
+                      <i class="fas fa-infinity"></i> Unlimited payouts after 2
+                      successful withdrawals.
                     </li>
                     <li>
-                      <i class="fas fa-calendar-check"></i> Payouts available
-                      after meeting trading requirements.
+                      <i class="fas fa-rocket"></i> Fast payout processing:
+                      average 24-48 hours after request.
                     </li>
                   </ul>
                 </div>
               </div>
 
+              <!-- 5: Restricted Countries (compliant with Alpha Futures policy) -->
               <div class="fps-item">
                 <button class="fps-title">
                   <span><i class="fas fa-globe"></i> Restricted Countries</span>
                   <span class="fps-arrow">+</span>
                 </button>
-
                 <div class="fps-content">
                   <ul class="fps-list">
                     <li>
-                      <i class="fas fa-ban"></i>
-                      <strong>Key Restrictions:</strong>
+                      <i class="fas fa-skull-crossbones"></i>
+                      <strong>Sanctioned / OFAC:</strong>
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/bf.png" /> Burkina
-                        Faso</span
+                        ><img src="https://flagcdn.com/w20/ir.png" /> Iran</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/cm.png" />
-                        Cameroon</span
+                        ><img src="https://flagcdn.com/w20/sy.png" />
+                        Syria</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/cn.png" />
-                        China</span
+                        ><img src="https://flagcdn.com/w20/kp.png" /> North
+                        Korea</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/gi.png" />
-                        Gibraltar</span
+                        ><img src="https://flagcdn.com/w20/cu.png" /> Cuba</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ht.png" />
-                        Haiti</span
+                        ><img src="https://flagcdn.com/w20/ru.png" />
+                        Russia</span
+                      >
+                      (due to sanctions).
+                    </li>
+                    <li>
+                      <i class="fas fa-map-pin"></i>
+                      <strong>High-risk jurisdictions:</strong>
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/af.png" />
+                        Afghanistan</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/hk.png" /> Hong
-                        Kong</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/jo.png" />
-                        Jordan</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ke.png" />
-                        Kenya</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ml.png" /> Mali</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/mz.png" />
-                        Mozambique</span
+                        ><img src="https://flagcdn.com/w20/by.png" />
+                        Belarus</span
                       >,
                       <span class="flag"
                         ><img src="https://flagcdn.com/w20/mm.png" />
                         Myanmar</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/na.png" />
-                        Namibia</span
+                        ><img src="https://flagcdn.com/w20/ve.png" />
+                        Venezuela</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/ua.png" /> Ukraine
+                        (Crimea/Donetsk/Luhansk)</span
+                      >.
+                    </li>
+                    <li>
+                      <i class="fas fa-globe-asia"></i>
+                      <strong>Additional restricted regions:</strong>
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/cn.png" />
+                        China</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/pk.png" />
+                        Pakistan</span
                       >,
                       <span class="flag"
                         ><img src="https://flagcdn.com/w20/ng.png" />
                         Nigeria</span
                       >,
                       <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ph.png" />
-                        Philippines</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/qa.png" />
-                        Qatar</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ro.png" />
-                        Romania</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/sn.png" />
-                        Senegal</span
-                      >,
-                      <span class="flag"
                         ><img src="https://flagcdn.com/w20/za.png" /> South
                         Africa</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/tz.png" />
-                        Tanzania</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ae.png" /> UAE</span
-                      >.
+                      >
+                      (some local regulatory constraints).
                     </li>
                     <li>
-                      <i class="fas fa-info-circle"></i> Recently updated its
-                      list to comply with U.S.-registered Futures Commission
-                      Merchants (FCMs). They currently restrict about 21
-                      countries.
+                      <i class="fas fa-shield"></i> Alpha Futures conducts
+                      KYC/AML; traders from restricted zones cannot open
+                      accounts.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 6: Extra – Evaluation details (specific to Alpha) -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span
+                    ><i class="fas fa-trophy"></i> Evaluation & Benefits</span
+                  >
+                  <span class="fps-arrow">+</span>
+                </button>
+                <div class="fps-content">
+                  <ul class="fps-list">
+                    <li>
+                      <i class="fas fa-chart-line"></i> 1-Step Evaluation:
+                      target profit 10% of account, no time limit.
+                    </li>
+                    <li>
+                      <i class="fas fa-clock"></i> Max loss limit: 5% total,
+                      daily loss cap 2.5% (varies by account).
+                    </li>
+                    <li>
+                      <i class="fas fa-chart-simple"></i> Funded accounts
+                      include real capital, simulated execution but live market
+                      fills.
+                    </li>
+                    <li>
+                      <i class="fas fa-gem"></i> Free retry if evaluation failed
+                      within 30 days (limited offer).
+                    </li>
+                    <li>
+                      <i class="fas fa-wifi"></i> Access to exclusive Discord,
+                      daily market analysis & risk coach.
                     </li>
                   </ul>
                 </div>
@@ -1870,39 +1785,64 @@
         </section>
 
         <script>
-          // Copy button functionality (preserves original behavior with icons)
+          // copy button logic with BROTRADING code persistence
           document.querySelectorAll(".firm-btn").forEach((btn) => {
-            btn.addEventListener("click", function () {
-              const code =
-                this.dataset.code ||
-                this.innerText
-                  .replace("Code : ", "")
-                  .replace("Code : ", "")
-                  .trim();
-              navigator.clipboard.writeText(code);
-
-              const originalHTML = this.innerHTML;
-              this.innerHTML = '<i class="fas fa-check"></i> Copied ✓';
-              this.classList.add("copied");
-
-              setTimeout(() => {
-                this.classList.remove("copied");
-                this.innerHTML = '<i class="fas fa-copy"></i> Code : ' + code;
-              }, 2000);
+            btn.addEventListener("click", function (e) {
+              const code = this.dataset.code || "BROTRADING";
+              navigator.clipboard
+                .writeText(code)
+                .then(() => {
+                  const originalHTML = this.innerHTML;
+                  this.innerHTML =
+                    '<i class="fas fa-check-circle"></i> Copied!';
+                  this.style.background = "#0f2b3d";
+                  setTimeout(() => {
+                    this.innerHTML =
+                      '<i class="fas fa-copy"></i> Code : ' + code;
+                    this.style.background =
+                      "linear-gradient(95deg, #38bdf8, #2563eb)";
+                  }, 1800);
+                })
+                .catch(() => {
+                  alert("Manual copy: " + code);
+                });
             });
           });
 
-          // Accordion functionality (preserved)
+          // Accordion toggles (smooth and arrow rotation)
           document.querySelectorAll(".fps-title").forEach((btn) => {
             btn.addEventListener("click", () => {
               const content = btn.nextElementSibling;
-              const arrow = btn.querySelector(".fps-arrow");
+              const arrowSpan = btn.querySelector(".fps-arrow");
+              const isActive = content.classList.contains("active");
 
-              content.classList.toggle("active");
-              arrow.style.transform = content.classList.contains("active")
-                ? "rotate(45deg)"
-                : "rotate(0deg)";
+              // close all others if desired (optional clean behaviour)
+              // but we'll keep independent accordion for better UX
+              if (!isActive) {
+                content.classList.add("active");
+                if (arrowSpan) arrowSpan.style.transform = "rotate(45deg)";
+              } else {
+                content.classList.remove("active");
+                if (arrowSpan) arrowSpan.style.transform = "rotate(0deg)";
+              }
+
+              // optional: ensure arrow rotation style
+              if (!arrowSpan) return;
+              if (content.classList.contains("active")) {
+                arrowSpan.style.transform = "rotate(45deg)";
+              } else {
+                arrowSpan.style.transform = "rotate(0deg)";
+              }
             });
+          });
+
+          // set initial arrow states for consistency
+          document.querySelectorAll(".fps-content").forEach((content) => {
+            if (content.classList.contains("active")) {
+              const parent = content.previousElementSibling;
+              const arrow = parent?.querySelector(".fps-arrow");
+              if (arrow) arrow.style.transform = "rotate(45deg)";
+            }
           });
         </script>
       </body>
@@ -1936,7 +1876,7 @@
         <div class="yt-media">
           <div class="yt-video-wrapper">
             <iframe
-              src="https://www.youtube.com/embed/KXO67YQ-ous"
+              src="https://youtu.be/4wwcYuEPoA8?si=xKVF7jwrpVXHAMJF"
               title="BroTradingz Live Trading"
               frameborder="0"
               allow="
@@ -2319,39 +2259,35 @@
         <!-- Left Logo -->
         <div class="apex-logo-box">
           <img
-            src="https://onlypropfirms.com/wp-content/uploads/2025/07/myfundedfutures-logo.png"
-            alt="My Funded Future Logo"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII="
+            alt="Tradeify Logo"
           />
         </div>
 
         <!-- Right Content -->
         <div class="apex-content">
           <div class="apex-stars">★ ★ ★ ★ ★</div>
-          <h2>So try, My Funded Future <span>NOW</span>...!!</h2>
+          <h2>So try, Alpha Futures <span>NOW</span>...!!</h2>
 
           <p>
-            My Funded Futures is a solid addition to OnlyPropFirms, especially
-            for traders who value flexibility and strong support. The firm
-            offers several trader-first features designed to improve the overall
-            trading experience. One standout is their trailing maximum
-            end-of-trade drawdown, a structure that’s still relatively rare in
-            the prop firm space and gives traders more clarity around risk.
+            AlphaFutures is a familiar and trusted name in the prop trading
+            space, and it’s come back stronger than ever. The firm offers
+            flexible funding options and a streamlined account structure built
+            around what traders actually want. With both instant funding and
+            customizable setups through the new Select Plan, AlphaFutures lets
+            traders tailor their accounts instead of forcing them into a
+            one-size-fits-all model. <br />
             <br />
-            <br />
-            My Funded Futures also delivers a clean, easy-to-use trader
-            dashboard and supports daily withdrawals, so accessing profits is
-            simple and efficient. What really sets them apart, though, is their
-            customer support—boasting an average 10-second human response time,
-            which is almost unheard of in this industry.<br />
-            <br />
-            If you’re looking for a firm that genuinely puts traders first, My
-            Funded Futures is absolutely worth checking out.
+            Traders can choose the features that matter most to them, including
+            day-one or five-day payout options, giving more control over how and
+            when profits are accessed. With refreshed programs and the same
+            reliable, trader-focused support, AlphaFutures delivers a versatile,
+            accessible, and efficient path for traders looking to get funded and
+            stay funded.
           </p>
 
           <div class="apex-buttons">
-            <a
-              href="https://myfundedfutures.com/challenge?ref=5117"
-              class="apex-btn"
+            <a href="https://tradeify.co/?ref=11241" class="apex-btn"
               >Get Evaluation</a
             >
             <a href="#" class="apex-btn copy-code" data-code="BRO"

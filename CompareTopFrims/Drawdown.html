@@ -239,34 +239,31 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <a href="../index.html"
-            ><img
+          <a href="../index.html">
+            <img
               src="../Bro_Traders_logo-removebg-preview.png"
               alt="Bro Trading"
-          /></a>
+            />
+          </a>
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
-          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
 
           <a href="../index.html" class="bt-link">Home</a>
+
           <!-- Funding Plans -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
+            <button class="bt-drop-btn" data-dropdown="funding">
               Funding Plans ▾
             </button>
-
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
                   <a href="comparison.html">Prop Firm Comparison</a>
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
                   <a href="bestDeals.html">Best Deals</a>
@@ -276,7 +273,7 @@
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
                   <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-                  <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
+                  <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                   <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
                 </div>
@@ -284,21 +281,9 @@
             </div>
           </div>
 
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
-
           <!-- Resources -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
+            <button class="bt-drop-btn" data-dropdown="resources">
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
@@ -307,7 +292,6 @@
             </div>
           </div>
 
-          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
@@ -315,20 +299,19 @@
         <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
 
         <!-- Hamburger -->
-        <div class="bt-hamburger" onclick="toggleMobileMenu()">
+        <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </header>
 
     <!-- Overlay -->
-    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
+    <div class="bt-overlay" id="overlay"></div>
 
     <style>
       /* ================= HEADER ================= */
-
       .bt-header {
         position: fixed;
         top: 40px;
@@ -369,6 +352,7 @@
       .bt-logo img {
         height: 55px;
         transition: height 0.3s ease;
+        display: block;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
@@ -376,7 +360,6 @@
       }
 
       /* ================= NAV ================= */
-
       .bt-nav {
         display: flex;
         gap: 30px;
@@ -392,6 +375,8 @@
         cursor: pointer;
         text-decoration: none;
         transition: 0.3s;
+        font-weight: 500;
+        font-family: inherit;
       }
 
       .bt-link:hover,
@@ -400,7 +385,6 @@
       }
 
       /* ================= DROPDOWN ================= */
-
       .bt-dropdown {
         position: relative;
       }
@@ -415,13 +399,17 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.35s ease;
-
         z-index: 1001;
+      }
+
+      .bt-drop-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
       .bt-drop-menu.small {
@@ -441,6 +429,7 @@
         text-decoration: none;
         margin-bottom: 12px;
         transition: 0.3s;
+        font-size: 15px;
       }
 
       .bt-drop-menu a:hover {
@@ -454,7 +443,6 @@
       }
 
       /* DESKTOP HOVER OPEN */
-
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
           opacity: 1;
@@ -462,15 +450,8 @@
           transform: translateY(0);
         }
       }
-      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          display: block;
-        }
-      }
 
       /* ================= CTA ================= */
-
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
         padding: 9px 22px;
@@ -480,7 +461,7 @@
         font-weight: 600;
         letter-spacing: 0.5px;
         transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
+        white-space: nowrap;
       }
 
       .bt-cta:hover {
@@ -490,30 +471,72 @@
       }
 
       /* ================= HAMBURGER ================= */
-
       .bt-hamburger {
         display: none;
         flex-direction: column;
-        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: 1003;
+        transition: all 0.3s ease;
       }
 
       .bt-hamburger span {
-        width: 26px;
-        height: 3px;
-        background: #fff;
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .bt-hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .bt-hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      .bt-hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .bt-hamburger:hover span {
+        background: #00c2ff;
       }
 
       /* ================= MOBILE MENU ================= */
-
       .bt-mobile-close {
         display: none;
         position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 26px;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
         color: #fff;
         cursor: pointer;
+        font-weight: 300;
+        transition: 0.2s;
+        z-index: 1004;
+        background: transparent;
+        border: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bt-mobile-close:hover {
+        color: #00c2ff;
+        transform: rotate(90deg);
       }
 
       .bt-overlay {
@@ -523,6 +546,7 @@
         background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 900;
+        transition: 0.3s;
       }
 
       .bt-overlay.active {
@@ -530,28 +554,6 @@
       }
 
       @media (max-width: 1024px) {
-        .bt-nav {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 85%; /* Wider for better layout */
-          max-width: 420px;
-          height: 100vh;
-          background: #0b0f2a;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 100px 25px 40px;
-          gap: 20px;
-          transition: 0.4s ease;
-          z-index: 1002;
-          overflow-y: auto;
-        }
-
-        .bt-nav.active {
-          right: 0;
-          top: 15px;
-        }
-
         .bt-hamburger {
           display: flex;
         }
@@ -560,90 +562,300 @@
           display: none;
         }
 
-        .bt-mobile-close {
-          display: block;
+        .bt-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 320px;
+          max-width: 85%;
+          height: 100vh;
+          background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          padding: 80px 25px 30px;
+          gap: 15px;
+          transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          z-index: 1002;
+          overflow-y: auto;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
+          border-left: 1px solid rgba(0, 194, 255, 0.3);
         }
 
-        /* Dropdown styling */
+        .bt-nav.active {
+          right: 0;
+        }
+
+        .bt-mobile-close {
+          display: flex;
+        }
+
+        .bt-dropdown {
+          width: 100%;
+        }
+
+        .bt-drop-btn {
+          width: 100%;
+          text-align: left;
+          font-size: 18px;
+          padding: 10px 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .bt-drop-btn::after {
+          content: "▾";
+          font-size: 16px;
+          transition: transform 0.3s;
+        }
+
+        .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
+          transform: rotate(180deg);
+        }
+
         .bt-drop-menu {
           position: static;
           min-width: 100%;
-          padding: 15px 0;
+          padding: 0;
           margin-top: 10px;
-          background: transparent;
-          border: none;
-          background: rgba(15, 20, 45, 0.6);
+          margin-bottom: 5px;
+          background: rgba(15, 20, 45, 0.8);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+          border-radius: 12px;
+          opacity: 0;
+          visibility: hidden;
+          transform: none;
+          transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+          display: block;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0 15px;
         }
 
-        /* 2 Column grid */
+        .bt-drop-menu.active {
+          opacity: 1;
+          visibility: visible;
+          max-height: 500px;
+          padding: 15px;
+          margin-bottom: 10px;
+        }
+
         .bt-drop-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px 25px;
+          gap: 15px;
         }
 
         .bt-drop-menu a {
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 13px;
+          padding: 5px 0;
+          margin-bottom: 0;
+        }
+
+        .bt-link {
+          font-size: 18px;
+          padding: 10px 0;
+          width: 100%;
         }
       }
 
-      /* Extra small mobile → 1 column */
       @media (max-width: 480px) {
         .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .bt-nav {
+          width: 280px;
+        }
+      }
+
+      /* Header responsive fixes */
+      @media (max-width: 1300px) {
+        .bt-header {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        .bt-header.bt-scrolled {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .bt-header,
+        .bt-header.bt-scrolled {
+          width: calc(100% - 30px);
+          margin-left: 15px;
+          margin-right: 15px;
+          top: 15px;
+        }
+        .bt-header.bt-scrolled {
+          top: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .bt-container {
+          padding: 0px 20px;
+        }
+        .bt-logo img {
+          height: 48px;
         }
       }
     </style>
 
     <script>
-      function toggleDropdown(id) {
-        const menu = document.getElementById(id);
+      // Get elements
+      const hamburger = document.getElementById("hamburgerBtn");
+      const mobileMenu = document.querySelector(".bt-nav");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.querySelector(".bt-mobile-close");
 
-        // Close ALL dropdowns first
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          if (m.id !== id) {
-            m.classList.remove("active");
-          }
-        });
-
-        // Toggle clicked one
-        menu.classList.toggle("active");
-      }
-
-      function toggleMobileMenu() {
-        document.querySelector(".bt-nav").classList.add("active");
-        document.querySelector(".bt-overlay").classList.add("active");
+      // Toggle mobile menu functions
+      function openMobileMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        hamburger.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
 
       function closeMobileMenu() {
-        document.querySelector(".bt-nav").classList.remove("active");
-        document.querySelector(".bt-overlay").classList.remove("active");
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        hamburger.classList.remove("active");
+        document.body.style.overflow = "";
 
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+        // Close all open dropdowns
+        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Reset dropdown button ARIA
+        document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
         });
       }
-      const header = document.querySelector(".bt-header");
 
-      window.addEventListener("scroll", () => {
-        header.classList.toggle("bt-scrolled", window.scrollY > 50);
+      // Toggle function
+      function toggleMobileMenu() {
+        if (mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      // Hamburger click event
+      if (hamburger) {
+        hamburger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
+      }
+
+      // Close button click
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Overlay click to close
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Dropdown toggle for mobile
+      const dropBtns = document.querySelectorAll(".bt-drop-btn");
+      dropBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const dropdownId = this.getAttribute("data-dropdown");
+          const menu = document.getElementById(dropdownId);
+
+          if (menu) {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            menu.classList.toggle("active");
+
+            // Close other dropdowns
+            dropBtns.forEach((otherBtn) => {
+              if (otherBtn !== btn) {
+                const otherId = otherBtn.getAttribute("data-dropdown");
+                const otherMenu = document.getElementById(otherId);
+                if (otherMenu) {
+                  otherMenu.classList.remove("active");
+                  otherBtn.setAttribute("aria-expanded", "false");
+                }
+              }
+            });
+          }
+        });
       });
-      // Close other dropdowns on hover (desktop only)
-      if (window.innerWidth > 1024) {
-        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
-          dropdown.addEventListener("mouseenter", function () {
-            const activeMenu = document.querySelector(".bt-drop-menu.active");
-            if (activeMenu && !this.contains(activeMenu)) {
-              activeMenu.classList.remove("active");
-            }
-          });
+
+      // Close mobile menu when clicking on nav links (except dropdown buttons)
+      const navLinks = document.querySelectorAll(".bt-nav a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => {
+              closeMobileMenu();
+            }, 100);
+          }
         });
-      }
+      });
+
+      // Header scroll effect
+      const header = document.querySelector(".bt-header");
+      window.addEventListener("scroll", () => {
+        if (header) {
+          if (window.scrollY > 50) {
+            header.classList.add("bt-scrolled");
+          } else {
+            header.classList.remove("bt-scrolled");
+          }
+        }
+      });
+
+      // Close menu on window resize
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 1024) {
+          if (mobileMenu && mobileMenu.classList.contains("active")) {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Close dropdowns when clicking outside (desktop)
+      document.addEventListener("click", function (e) {
+        if (window.innerWidth > 1024) {
+          const isDropdown = e.target.closest(".bt-dropdown");
+          if (!isDropdown) {
+            document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+              menu.classList.remove("active");
+            });
+            dropBtns.forEach((btn) => {
+              btn.setAttribute("aria-expanded", "false");
+            });
+          }
+        }
+      });
+
+      // Initialize ARIA attributes
+      dropBtns.forEach((btn) => {
+        btn.setAttribute("aria-expanded", "false");
+      });
     </script>
+
     <!-- ================= HEADER END ================= -->
 
     <!-- ========== DRAWDOWN ANALYSIS HERO SECTION ========== -->

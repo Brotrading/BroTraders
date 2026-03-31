@@ -243,604 +243,924 @@
     </style>
     <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
     <!-- ================= BRO TRADING HEADER ================= -->
-    <header class="bt-header">
-      <div class="bt-container">
-        <!-- Logo -->
-        <div class="bt-logo">
-          <a href="../index.html"
-            ><img
-              src="../Bro_Traders_logo-removebg-preview.png"
-              alt="Bro Trading"
-          /></a>
-        </div>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <title>Bro Traders | Best Deals</title>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-        <!-- Navigation -->
-        <nav class="bt-nav">
-          <!-- Mobile Close Button -->
-          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+          body {
+            background: #030712;
+            font-family: system-ui, "Segoe UI", "Inter", "Roboto", sans-serif;
+            overflow-x: hidden;
+          }
 
-          <a href="../index.html" class="bt-link">Home</a>
-          <!-- Funding Plans -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
-              Funding Plans ▾
+          /* ================= HEADER ================= */
+          .bt-header {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            margin: 10px 15px;
+            margin-left: 180px;
+            border-radius: 15px;
+            width: 80%;
+            background: #00000073;
+            z-index: 1000;
+            transition: all 0.35s ease;
+          }
+
+          .bt-header.bt-scrolled {
+            top: 0;
+            background: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+            width: 63%;
+            margin-left: 276px;
+          }
+
+          .bt-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 0px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: padding 0.3s ease;
+          }
+
+          .bt-header.bt-scrolled .bt-container {
+            padding: 0px 30px;
+          }
+
+          .bt-logo img {
+            height: 55px;
+            transition: height 0.3s ease;
+            display: block;
+          }
+
+          .bt-header.bt-scrolled .bt-logo img {
+            height: 50px;
+          }
+
+          /* ================= NAV ================= */
+          .bt-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+          }
+
+          .bt-link,
+          .bt-drop-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 500;
+            font-family: inherit;
+          }
+
+          .bt-link:hover,
+          .bt-drop-btn:hover {
+            color: #00c2ff;
+          }
+
+          /* ================= DROPDOWN ================= */
+          .bt-dropdown {
+            position: relative;
+          }
+
+          .bt-drop-menu {
+            position: absolute;
+            top: 170%;
+            left: 0;
+            min-width: 650px;
+            padding: 30px;
+            border-radius: 14px;
+            background: rgba(15, 20, 45, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 194, 255, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            z-index: 1001;
+          }
+
+          .bt-drop-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+
+          .bt-drop-menu.small {
+            min-width: 260px;
+            padding: 20px;
+          }
+
+          .bt-drop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+
+          .bt-drop-menu a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            font-size: 15px;
+          }
+
+          .bt-drop-menu a:hover {
+            color: #00c2ff;
+            padding-left: 5px;
+          }
+          .bt-drop-menu strong:hover {
+            color: #f1f3f4;
+            padding-left: 0px !important;
+            transition: 0s;
+          }
+
+          /* DESKTOP HOVER OPEN */
+          @media (min-width: 1025px) {
+            .bt-dropdown:hover .bt-drop-menu {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(0);
+            }
+          }
+
+          /* ================= CTA ================= */
+          .bt-cta {
+            background: linear-gradient(135deg, #00c2ff, #1e90ff);
+            padding: 9px 22px;
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: 0.3s ease;
+            white-space: nowrap;
+          }
+
+          .bt-cta:hover {
+            transform: translateY(-3px);
+            background: white;
+            color: #0b0f2a;
+          }
+
+          /* ================= HAMBURGER - PERFECT SPACING ================= */
+          .bt-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            z-index: 1003;
+            transition: all 0.3s ease;
+          }
+
+          .bt-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }
+
+          /* Animated hamburger when active */
+          .bt-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+            width: 24px;
+          }
+
+          .bt-hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scale(0);
+          }
+
+          .bt-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+            width: 24px;
+          }
+
+          /* Hover effect */
+          .bt-hamburger:hover span {
+            background: #00c2ff;
+          }
+
+          /* ================= MOBILE MENU ================= */
+          .bt-mobile-close {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            font-size: 32px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 300;
+            transition: 0.2s;
+            z-index: 1004;
+            background: transparent;
+            border: none;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .bt-mobile-close:hover {
+            color: #00c2ff;
+            transform: rotate(90deg);
+          }
+
+          .bt-overlay {
+            position: fixed;
+            inset: 0;
+            backdrop-filter: blur(2px);
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 900;
+            transition: 0.3s;
+          }
+
+          .bt-overlay.active {
+            display: block;
+          }
+
+          @media (max-width: 1024px) {
+            .bt-hamburger {
+              display: flex;
+            }
+
+            .bt-cta {
+              display: none;
+            }
+
+            .bt-nav {
+              position: fixed;
+              top: 0;
+              right: -100%;
+              width: 320px;
+              max-width: 85%;
+              height: 100vh;
+              background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
+              backdrop-filter: blur(10px);
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: flex-start;
+              padding: 80px 25px 30px;
+              gap: 15px;
+              transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+              z-index: 1002;
+              overflow-y: auto;
+              box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
+              border-left: 1px solid rgba(0, 194, 255, 0.3);
+            }
+
+            .bt-nav.active {
+              right: 0;
+            }
+
+            .bt-mobile-close {
+              display: flex;
+            }
+
+            .bt-dropdown {
+              width: 100%;
+            }
+
+            .bt-drop-btn {
+              width: 100%;
+              text-align: left;
+              font-size: 18px;
+              padding: 10px 0;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .bt-drop-btn::after {
+              content: "▾";
+              font-size: 16px;
+              transition: transform 0.3s;
+            }
+
+            .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
+              transform: rotate(180deg);
+            }
+
+            .bt-drop-menu {
+              position: static;
+              min-width: 100%;
+              padding: 0;
+              margin-top: 10px;
+              margin-bottom: 5px;
+              background: rgba(15, 20, 45, 0.8);
+              backdrop-filter: blur(25px);
+              border: 1px solid rgba(0, 194, 255, 0.3);
+              border-radius: 12px;
+              opacity: 0;
+              visibility: hidden;
+              transform: none;
+              transition:
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+              display: block;
+              max-height: 0;
+              overflow: hidden;
+              padding: 0 15px;
+            }
+
+            .bt-drop-menu.active {
+              opacity: 1;
+              visibility: visible;
+              max-height: 500px;
+              padding: 15px;
+              margin-bottom: 10px;
+            }
+
+            .bt-drop-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 15px;
+            }
+
+            .bt-drop-menu a {
+              font-size: 13px;
+              padding: 5px 0;
+              margin-bottom: 0;
+            }
+
+            .bt-link {
+              font-size: 18px;
+              padding: 10px 0;
+              width: 100%;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .bt-drop-grid {
+              grid-template-columns: 1fr;
+              gap: 10px;
+            }
+
+            .bt-nav {
+              width: 280px;
+            }
+          }
+
+          /* ========== BEST DEALS HERO SECTION ========== */
+          .comparison-hero {
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            padding: 135px 8% 100px;
+            color: white;
+            width: 100%;
+          }
+
+          .comparison-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            flex-wrap: wrap;
+          }
+
+          /* ===== LEFT SIDE ===== */
+          .comparison-left {
+            flex: 1;
+            min-width: 260px;
+          }
+
+          .main-heading {
+            font-size: 90px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+          }
+
+          .line1,
+          .line2 {
+            display: block;
+          }
+
+          .line2 {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+          }
+
+          .highlight {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .subtext {
+            font-size: 18px;
+            max-width: 520px;
+            color: #dcdcdc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+          }
+
+          .primary-btn {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s ease;
+            display: inline-block;
+          }
+
+          .primary-btn:hover {
+            background: white;
+            color: #0b0f2a;
+            transform: translateY(-2px);
+          }
+
+          /* ===== RIGHT SIDE - TWO PHOTOS SIDE BY SIDE ===== */
+          .comparison-right {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+
+          .card {
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1);
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.5);
+          }
+
+          .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+          }
+
+          .card:hover img {
+            transform: scale(1.03);
+          }
+
+          .large-card {
+            width: 280px;
+            height: 380px;
+            margin-top: 90px;
+          }
+
+          .small-card {
+            width: 220px;
+            height: 380px;
+          }
+
+          .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 28px 45px rgba(0, 194, 255, 0.25);
+          }
+
+          /* ===== RESPONSIVE ===== */
+          @media (max-width: 1024px) {
+            .comparison-container {
+              flex-direction: column;
+              text-align: center;
+              gap: 45px;
+            }
+
+            .comparison-left {
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .line2 {
+              justify-content: center;
+            }
+
+            .main-heading {
+              font-size: 60px;
+            }
+
+            .subtext {
+              max-width: 90%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .comparison-right {
+              flex-direction: row;
+              justify-content: center;
+              gap: 25px;
+            }
+
+            .large-card {
+              width: 240px;
+              height: 330px;
+              margin-top: 40px;
+            }
+
+            .small-card {
+              width: 200px;
+              height: 330px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .comparison-hero {
+              padding: 120px 5% 80px;
+            }
+            .main-heading {
+              font-size: 52px;
+            }
+            .comparison-right {
+              gap: 20px;
+            }
+            .large-card {
+              width: 210px;
+              height: 290px;
+              margin-top: 20px;
+            }
+            .small-card {
+              width: 180px;
+              height: 290px;
+            }
+          }
+
+          @media (max-width: 600px) {
+            .main-heading {
+              font-size: 42px;
+            }
+            .comparison-right {
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: center;
+            }
+            .large-card,
+            .small-card {
+              width: 45%;
+              min-width: 140px;
+              height: auto;
+              aspect-ratio: 3 / 4;
+              margin-top: 0;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .comparison-right {
+              gap: 12px;
+            }
+            .large-card,
+            .small-card {
+              width: 44%;
+              min-width: 130px;
+            }
+          }
+
+          /* Header responsive fixes */
+          @media (max-width: 1300px) {
+            .bt-header {
+              width: calc(100% - 40px);
+              margin-left: 20px;
+              margin-right: 20px;
+            }
+            .bt-header.bt-scrolled {
+              width: calc(100% - 40px);
+              margin-left: 20px;
+            }
+          }
+
+          @media (max-width: 1024px) {
+            .bt-header,
+            .bt-header.bt-scrolled {
+              width: calc(100% - 30px);
+              margin-left: 15px;
+              margin-right: 15px;
+              top: 15px;
+            }
+            .bt-header.bt-scrolled {
+              top: 0;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .bt-container {
+              padding: 0px 20px;
+            }
+            .bt-logo img {
+              height: 48px;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <header class="bt-header">
+          <div class="bt-container">
+            <!-- Logo -->
+            <div class="bt-logo">
+              <a href="../index.html">
+                <img
+                  src="../Bro_Traders_logo-removebg-preview.png"
+                  alt="Bro Trading"
+                  onerror="this.src = 'https://placehold.co/55x55?text=BT'"
+                />
+              </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="bt-nav">
+              <!-- Mobile Close Button -->
+              <!-- <button class="bt-mobile-close" aria-label="Close menu">✕</button> -->
+
+              <a href="../index.html" class="bt-link">Home</a>
+
+              <!-- Funding Plans -->
+              <div class="bt-dropdown">
+                <button class="bt-drop-btn" data-dropdown="funding">
+                  Funding Plans ▾
+                </button>
+                <div class="bt-drop-menu" id="funding">
+                  <div class="bt-drop-grid">
+                    <div>
+                      <a href="#"><strong>Firm Lists :</strong></a>
+                      <a href="comparison.html">Prop Firm Comparison</a>
+                      <a href="Drawdown.html">Largest Drawdown</a>
+                      <a href="QuickFunding.html">Quickest Funding</a>
+                      <a href="bestDeals.html">Best Deals</a>
+                    </div>
+                    <div>
+                      <a href="#"><strong>Top Firms :</strong></a>
+                      <a href="../Frims/ApexFunding.html"
+                        >Apex Trader Funding</a
+                      >
+                      <a href="../Frims/TradeifyTrader.html">Tradeify</a>
+                      <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
+                      <a href="../Frims/MyFundedFuture.html"
+                        >My Funded Future</a
+                      >
+                      <a href="../Frims/DayTraders.html">Day Traders.com</a>
+                      <a href="../Frims/PhidiasPropFirm.html"
+                        >Phidias PropFirm</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Resources -->
+              <div class="bt-dropdown">
+                <button class="bt-drop-btn" data-dropdown="resources">
+                  Resources ▾
+                </button>
+                <div class="bt-drop-menu small" id="resources">
+                  <a href="../Resourses/TradingTools.html">Trading Tools</a>
+                  <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
+                </div>
+              </div>
+
+              <a href="GiveAway.html" class="bt-link">GiveAways</a>
+            </nav>
+
+            <!-- CTA -->
+            <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
+
+            <!-- Hamburger -->
+            <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
+          </div>
+        </header>
 
-            <div class="bt-drop-menu" id="funding">
-              <div class="bt-drop-grid">
-                <div>
-                  <a href="#"><strong>Firm Lists :</strong></a>
-                  <a href="comparison.html">Prop Firm Comparison</a>
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
-                  <a href="Drawdown.html">Largest Drawdown</a>
-                  <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="bestDeals.html">Best Deals</a>
-                </div>
-                <div>
-                  <a href="#"><strong>Top Firms :</strong></a>
-                  <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
-                  <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-                  <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
-                  <a href="../Frims/DayTraders.html">Day Traders.com</a>
-                  <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
-                </div>
+        <!-- Overlay -->
+        <div class="bt-overlay" id="overlay"></div>
+
+        <!-- MAIN CONTENT: TWO PHOTOS SIDE BY SIDE -->
+        <section class="comparison-hero">
+          <div class="comparison-container">
+            <!-- LEFT SIDE -->
+            <div class="comparison-left">
+              <h1 class="main-heading">
+                <span class="line1">
+                  THE <span class="highlight">BEST</span>
+                </span>
+                <span class="line2">DEALS!</span>
+              </h1>
+              <p class="subtext">
+                Unlock exclusive prop firm discounts, limited-time offers, and
+                verified promo codes. Save more on evaluation fees, activation
+                costs, and resets — all curated by Bro Traders.
+              </p>
+              <a href="#" class="primary-btn">Explore Offers →</a>
+            </div>
+
+            <!-- RIGHT SIDE: TWO PHOTOS SIDE BY SIDE -->
+            <div class="comparison-right">
+              <div class="card large-card">
+                <img
+                  src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format"
+                  alt="Trading Charts"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card small-card">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format"
+                  alt="Finance Growth"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
+        <script>
+          // Get elements
+          const hamburger = document.getElementById("hamburgerBtn");
+          const mobileMenu = document.querySelector(".bt-nav");
+          const overlay = document.getElementById("overlay");
+          const closeBtn = document.querySelector(".bt-mobile-close");
 
-          <!-- Resources -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
-              Resources ▾
-            </button>
-            <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/TradingTools.html">Trading Tools</a>
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
-            </div>
-          </div>
-
-          <!-- <a href="#" class="bt-link">About</a> -->
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
-        </nav>
-
-        <!-- CTA -->
-        <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
-
-        <!-- Hamburger -->
-        <div class="bt-hamburger" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Overlay -->
-    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
-
-    <style>
-      /* ================= HEADER ================= */
-
-      .bt-header {
-        position: fixed;
-        top: 40px;
-        left: 0;
-        margin: 10px 15px;
-        margin-left: 180px;
-        border-radius: 15px;
-        width: 80%;
-        background: #00000073;
-        z-index: 1000;
-        transition: all 0.35s ease;
-      }
-
-      .bt-header.bt-scrolled {
-        top: 0;
-        background: rgba(10, 15, 30, 0.75);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid rgba(0, 194, 255, 0.25);
-        width: 63%;
-        margin-left: 276px;
-      }
-
-      .bt-container {
-        max-width: 1400px;
-        margin: auto;
-        padding: 0px 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: padding 0.3s ease;
-      }
-
-      .bt-header.bt-scrolled .bt-container {
-        padding: 0px 30px;
-      }
-
-      .bt-logo img {
-        height: 55px;
-        transition: height 0.3s ease;
-      }
-
-      .bt-header.bt-scrolled .bt-logo img {
-        height: 50px;
-      }
-
-      /* ================= NAV ================= */
-
-      .bt-nav {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-      }
-
-      .bt-link,
-      .bt-drop-btn {
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 20px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: 0.3s;
-      }
-
-      .bt-link:hover,
-      .bt-drop-btn:hover {
-        color: #00c2ff;
-      }
-
-      /* ================= DROPDOWN ================= */
-
-      /* ================= DROPDOWN ================= */
-
-      .bt-dropdown {
-        position: relative;
-      }
-
-      .bt-drop-menu {
-        position: absolute;
-        top: 170%;
-        left: 0;
-        min-width: 650px;
-        padding: 30px;
-        border-radius: 14px;
-        background: rgba(15, 20, 45, 0.85);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(0, 194, 255, 0.6);
-
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.35s ease;
-
-        z-index: 1001;
-      }
-
-      .bt-drop-menu.small {
-        min-width: 260px;
-        padding: 20px;
-      }
-
-      .bt-drop-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
-
-      .bt-drop-menu a {
-        display: block;
-        color: #cbd5e1;
-        text-decoration: none;
-        margin-bottom: 12px;
-        transition: 0.3s;
-      }
-
-      .bt-drop-menu a:hover {
-        color: #00c2ff;
-        padding-left: 5px;
-      }
-      .bt-drop-menu strong:hover {
-        color: #f1f3f4;
-        padding-left: 0px !important;
-        transition: 0s;
-      }
-
-      /* DESKTOP HOVER OPEN */
-
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
-      }
-      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          display: block;
-        }
-      }
-
-      /* ================= CTA ================= */
-
-      .bt-cta {
-        background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 9px 22px;
-        border-radius: 30px;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
-      }
-
-      .bt-cta:hover {
-        transform: translateY(-3px);
-        background: white;
-        color: #0b0f2a;
-      }
-
-      /* ================= HAMBURGER ================= */
-
-      .bt-hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-      }
-
-      .bt-hamburger span {
-        width: 26px;
-        height: 3px;
-        background: #fff;
-      }
-
-      /* ================= MOBILE MENU ================= */
-
-      .bt-mobile-close {
-        display: none;
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 26px;
-        color: #fff;
-        cursor: pointer;
-      }
-
-      .bt-overlay {
-        position: fixed;
-        inset: 0;
-        backdrop-filter: blur(2px);
-        background: rgba(0, 0, 0, 0.5);
-        display: none;
-        z-index: 900;
-      }
-
-      .bt-overlay.active {
-        display: block;
-      }
-
-      @media (max-width: 1024px) {
-        .bt-nav {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 85%; /* Wider for better layout */
-          max-width: 420px;
-          height: 100vh;
-          background: #0b0f2a;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 100px 25px 40px;
-          gap: 20px;
-          transition: 0.4s ease;
-          z-index: 1002;
-          overflow-y: auto;
-        }
-
-        .bt-nav.active {
-          right: 0;
-          top: 15px;
-        }
-
-        .bt-hamburger {
-          display: flex;
-        }
-
-        .bt-cta {
-          display: none;
-        }
-
-        .bt-mobile-close {
-          display: block;
-        }
-
-        /* Dropdown styling */
-        .bt-drop-menu {
-          position: static;
-          min-width: 100%;
-          padding: 15px 0;
-          margin-top: 10px;
-          background: transparent;
-          border: none;
-          background: rgba(15, 20, 45, 0.6);
-          backdrop-filter: blur(25px);
-          border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        /* 2 Column grid */
-        .bt-drop-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px 25px;
-        }
-
-        .bt-drop-menu a {
-          font-size: 14px;
-          line-height: 1.5;
-        }
-      }
-
-      /* Extra small mobile → 1 column */
-      @media (max-width: 480px) {
-        .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-    </style>
-
-    <script>
-      function toggleDropdown(id) {
-        const menu = document.getElementById(id);
-
-        // Close ALL dropdowns first
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          if (m.id !== id) {
-            m.classList.remove("active");
+          // Toggle mobile menu functions
+          function openMobileMenu() {
+            mobileMenu.classList.add("active");
+            overlay.classList.add("active");
+            hamburger.classList.add("active");
+            document.body.style.overflow = "hidden";
           }
-        });
 
-        // Toggle clicked one
-        menu.classList.toggle("active");
-      }
+          function closeMobileMenu() {
+            mobileMenu.classList.remove("active");
+            overlay.classList.remove("active");
+            hamburger.classList.remove("active");
+            document.body.style.overflow = "";
 
-      function toggleMobileMenu() {
-        document.querySelector(".bt-nav").classList.add("active");
-        document.querySelector(".bt-overlay").classList.add("active");
-      }
+            // Close all open dropdowns
+            document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+              menu.classList.remove("active");
+            });
 
-      function closeMobileMenu() {
-        document.querySelector(".bt-nav").classList.remove("active");
-        document.querySelector(".bt-overlay").classList.remove("active");
+            // Reset dropdown button ARIA
+            document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
+              btn.setAttribute("aria-expanded", "false");
+            });
+          }
 
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
-        });
-      }
-      const header = document.querySelector(".bt-header");
+          // Toggle function
+          function toggleMobileMenu() {
+            if (mobileMenu.classList.contains("active")) {
+              closeMobileMenu();
+            } else {
+              openMobileMenu();
+            }
+          }
 
-      window.addEventListener("scroll", () => {
-        header.classList.toggle("bt-scrolled", window.scrollY > 50);
-      });
-      // Close other dropdowns on hover (desktop only)
-      if (window.innerWidth > 1024) {
-        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
-          dropdown.addEventListener("mouseenter", function () {
-            const activeMenu = document.querySelector(".bt-drop-menu.active");
-            if (activeMenu && !this.contains(activeMenu)) {
-              activeMenu.classList.remove("active");
+          // Hamburger click event
+          if (hamburger) {
+            hamburger.addEventListener("click", function (e) {
+              e.stopPropagation();
+              toggleMobileMenu();
+            });
+          }
+
+          // Close button click
+          if (closeBtn) {
+            closeBtn.addEventListener("click", function () {
+              closeMobileMenu();
+            });
+          }
+
+          // Overlay click to close
+          if (overlay) {
+            overlay.addEventListener("click", function () {
+              closeMobileMenu();
+            });
+          }
+
+          // Dropdown toggle for mobile
+          const dropBtns = document.querySelectorAll(".bt-drop-btn");
+          dropBtns.forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const dropdownId = this.getAttribute("data-dropdown");
+              const menu = document.getElementById(dropdownId);
+
+              if (menu) {
+                const isExpanded =
+                  this.getAttribute("aria-expanded") === "true";
+                this.setAttribute("aria-expanded", !isExpanded);
+                menu.classList.toggle("active");
+
+                // Close other dropdowns
+                dropBtns.forEach((otherBtn) => {
+                  if (otherBtn !== btn) {
+                    const otherId = otherBtn.getAttribute("data-dropdown");
+                    const otherMenu = document.getElementById(otherId);
+                    if (otherMenu) {
+                      otherMenu.classList.remove("active");
+                      otherBtn.setAttribute("aria-expanded", "false");
+                    }
+                  }
+                });
+              }
+            });
+          });
+
+          // Close mobile menu when clicking on nav links (except dropdown buttons)
+          const navLinks = document.querySelectorAll(".bt-nav a");
+          navLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
+              if (window.innerWidth <= 1024) {
+                setTimeout(() => {
+                  closeMobileMenu();
+                }, 100);
+              }
+            });
+          });
+
+          // Header scroll effect
+          const header = document.querySelector(".bt-header");
+          window.addEventListener("scroll", () => {
+            if (header) {
+              if (window.scrollY > 50) {
+                header.classList.add("bt-scrolled");
+              } else {
+                header.classList.remove("bt-scrolled");
+              }
             }
           });
-        });
-      }
-    </script>
-    <!-- ================= HEADER END ================= -->
 
-    <!-- ========== BEST DEALS HERO SECTION ========== -->
-    <section class="comparison-hero">
-      <div class="comparison-container">
-        <!-- LEFT SIDE -->
-        <div class="comparison-left">
-          <h1 class="main-heading">
-            <span class="line1"> THE <span class="highlight">BEST</span> </span>
-            <span class="line2">DEALS!</span>
-          </h1>
+          // Close menu on window resize (if switching to desktop)
+          window.addEventListener("resize", function () {
+            if (window.innerWidth > 1024) {
+              if (mobileMenu && mobileMenu.classList.contains("active")) {
+                closeMobileMenu();
+              }
+            }
+          });
 
-          <p class="subtext">
-            Unlock exclusive prop firm discounts, limited-time offers, and
-            verified promo codes. Save more on evaluation fees, activation
-            costs, and resets — all curated by Bro Traders.
-          </p>
-        </div>
+          // Close dropdowns when clicking outside (desktop)
+          document.addEventListener("click", function (e) {
+            if (window.innerWidth > 1024) {
+              const isDropdown = e.target.closest(".bt-dropdown");
+              if (!isDropdown) {
+                document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+                  menu.classList.remove("active");
+                });
+                dropBtns.forEach((btn) => {
+                  btn.setAttribute("aria-expanded", "false");
+                });
+              }
+            }
+          });
 
-        <!-- RIGHT SIDE -->
-        <div class="comparison-right">
-          <div class="card large-card">
-            <img
-              src="https://plus.unsplash.com/premium_vector-1682309294185-ab67b54027fd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHJhZGluZ3xlbnwwfHwwfHx8MA%3D%3D"
-              alt="Trading Charts"
-            />
-          </div>
-
-          <div class="card small-card">
-            <img
-              src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&auto=format&fit=crop&q=60"
-              alt="Finance Growth"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      /* ===== SECTION ===== */
-
-      .comparison-hero {
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        padding: 135px 8%;
-        color: white;
-      }
-
-      .comparison-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 60px;
-      }
-
-      /* ===== LEFT SIDE ===== */
-
-      .main-heading {
-        font-size: 90px;
-        font-weight: 800;
-        line-height: 1;
-        margin-bottom: 30px;
-      }
-
-      .line1,
-      .line2,
-      .line3 {
-        display: block;
-      }
-
-      .line2 {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .heading-logo {
-        height: 70px;
-        width: auto;
-      }
-
-      .highlight {
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .subtext {
-        font-size: 18px;
-        max-width: 520px;
-        color: #dcdcdc;
-        margin-bottom: 30px;
-        line-height: 1.6;
-        font-family: "Roboto", sans-serif;
-      }
-
-      .primary-btn {
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        padding: 14px 28px;
-        border-radius: 8px;
-        text-decoration: none;
-        color: white;
-        font-weight: 600;
-        transition: 0.3s ease;
-      }
-
-      .primary-btn:hover {
-        background: white;
-        color: #0b0f2a;
-      }
-
-      /* ===== RIGHT SIDE ===== */
-
-      .comparison-right {
-        display: flex;
-        gap: 20px;
-      }
-
-      .card {
-        border-radius: 16px;
-        overflow: hidden;
-        backdrop-filter: blur(8px);
-        transition: 0.4s ease;
-      }
-
-      .card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .large-card {
-        width: 280px;
-        height: 380px;
-        margin-top: 90px;
-      }
-
-      .small-card {
-        width: 220px;
-        height: 380px;
-      }
-
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 194, 255, 0.3);
-      }
-
-      /* ===== RESPONSIVE ===== */
-
-      @media (max-width: 1024px) {
-        .comparison-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .line2 {
-          justify-content: center;
-        }
-
-        .main-heading {
-          font-size: 60px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .main-heading {
-          font-size: 42px;
-        }
-
-        .heading-logo {
-          height: 45px;
-        }
-
-        .comparison-right {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .large-card,
-        .small-card {
-          width: 100%;
-          max-width: 320px;
-          height: 300px;
-        }
-      }
-    </style>
+          // Initialize ARIA attributes
+          dropBtns.forEach((btn) => {
+            btn.setAttribute("aria-expanded", "false");
+          });
+        </script>
+      </body>
+    </html>
     <!-- ========== BEST DEALS HERO SECTION END ========== -->
 
     <!-- ======= Today's Best Deals Section ========= -->
