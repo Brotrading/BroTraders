@@ -251,25 +251,26 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <a href="../index.html"
-            ><img
+          <a href="../index.html">
+            <img
               src="../Bro_Traders_logo-removebg-preview.png"
               alt="Bro Trading"
-          /></a>
+            />
+          </a>
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
-          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
 
           <a href="../index.html" class="bt-link">Home</a>
+
           <!-- Funding Plans -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
+            <button class="bt-drop-btn" data-dropdown="funding">
               Funding Plans ▾
             </button>
-
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
@@ -277,10 +278,6 @@
                   <a href="../CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
                   <a href="../CompareTopFrims/Drawdown.html"
                     >Largest Drawdown</a
                   >
@@ -294,7 +291,7 @@
                   <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
                   <a href="../Frims/TradeifyTrader.html">Tradeify</a>
                   <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-                  <a href="../Frims/MyFundedFuture.html"> My Funded Future</a>
+                  <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
                   <a href="../Frims/DayTraders.html">Day Traders.com</a>
                   <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
                 </div>
@@ -302,30 +299,17 @@
             </div>
           </div>
 
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
-
           <!-- Resources -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
+            <button class="bt-drop-btn" data-dropdown="resources">
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/TradingTools.html">Trading Tools</a>
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
+              <a href="TradingTools.html">Trading Tools</a>
+              <a href="MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
-          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
@@ -333,20 +317,19 @@
         <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
 
         <!-- Hamburger -->
-        <div class="bt-hamburger" onclick="toggleMobileMenu()">
+        <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </header>
 
     <!-- Overlay -->
-    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
+    <div class="bt-overlay" id="overlay"></div>
 
     <style>
       /* ================= HEADER ================= */
-
       .bt-header {
         position: fixed;
         top: 40px;
@@ -387,6 +370,7 @@
       .bt-logo img {
         height: 55px;
         transition: height 0.3s ease;
+        display: block;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
@@ -394,7 +378,6 @@
       }
 
       /* ================= NAV ================= */
-
       .bt-nav {
         display: flex;
         gap: 30px;
@@ -410,6 +393,8 @@
         cursor: pointer;
         text-decoration: none;
         transition: 0.3s;
+        font-weight: 500;
+        font-family: inherit;
       }
 
       .bt-link:hover,
@@ -418,9 +403,6 @@
       }
 
       /* ================= DROPDOWN ================= */
-
-      /* ================= DROPDOWN ================= */
-
       .bt-dropdown {
         position: relative;
       }
@@ -435,13 +417,17 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.35s ease;
-
         z-index: 1001;
+      }
+
+      .bt-drop-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
       .bt-drop-menu.small {
@@ -461,6 +447,7 @@
         text-decoration: none;
         margin-bottom: 12px;
         transition: 0.3s;
+        font-size: 15px;
       }
 
       .bt-drop-menu a:hover {
@@ -474,7 +461,6 @@
       }
 
       /* DESKTOP HOVER OPEN */
-
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
           opacity: 1;
@@ -482,15 +468,8 @@
           transform: translateY(0);
         }
       }
-      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          display: block;
-        }
-      }
 
       /* ================= CTA ================= */
-
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
         padding: 9px 22px;
@@ -500,7 +479,7 @@
         font-weight: 600;
         letter-spacing: 0.5px;
         transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
+        white-space: nowrap;
       }
 
       .bt-cta:hover {
@@ -510,30 +489,72 @@
       }
 
       /* ================= HAMBURGER ================= */
-
       .bt-hamburger {
         display: none;
         flex-direction: column;
-        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: 1003;
+        transition: all 0.3s ease;
       }
 
       .bt-hamburger span {
-        width: 26px;
-        height: 3px;
-        background: #fff;
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .bt-hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .bt-hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      .bt-hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .bt-hamburger:hover span {
+        background: #00c2ff;
       }
 
       /* ================= MOBILE MENU ================= */
-
       .bt-mobile-close {
         display: none;
         position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 26px;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
         color: #fff;
         cursor: pointer;
+        font-weight: 300;
+        transition: 0.2s;
+        z-index: 1004;
+        background: transparent;
+        border: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bt-mobile-close:hover {
+        color: #00c2ff;
+        transform: rotate(90deg);
       }
 
       .bt-overlay {
@@ -543,6 +564,7 @@
         background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 900;
+        transition: 0.3s;
       }
 
       .bt-overlay.active {
@@ -550,28 +572,6 @@
       }
 
       @media (max-width: 1024px) {
-        .bt-nav {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 85%; /* Wider for better layout */
-          max-width: 420px;
-          height: 100vh;
-          background: #0b0f2a;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 100px 25px 40px;
-          gap: 20px;
-          transition: 0.4s ease;
-          z-index: 1002;
-          overflow-y: auto;
-        }
-
-        .bt-nav.active {
-          right: 0;
-          top: 15px;
-        }
-
         .bt-hamburger {
           display: flex;
         }
@@ -580,197 +580,636 @@
           display: none;
         }
 
-        .bt-mobile-close {
-          display: block;
+        .bt-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 320px;
+          max-width: 85%;
+          height: 100vh;
+          background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          padding: 80px 25px 30px;
+          gap: 15px;
+          transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          z-index: 1002;
+          overflow-y: auto;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
+          border-left: 1px solid rgba(0, 194, 255, 0.3);
         }
 
-        /* Dropdown styling */
+        .bt-nav.active {
+          right: 0;
+        }
+
+        .bt-mobile-close {
+          display: flex;
+        }
+
+        .bt-dropdown {
+          width: 100%;
+        }
+
+        .bt-drop-btn {
+          width: 100%;
+          text-align: left;
+          font-size: 18px;
+          padding: 10px 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .bt-drop-btn::after {
+          content: "▾";
+          font-size: 16px;
+          transition: transform 0.3s;
+        }
+
+        .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
+          transform: rotate(180deg);
+        }
+
         .bt-drop-menu {
           position: static;
           min-width: 100%;
-          padding: 15px 0;
+          padding: 0;
           margin-top: 10px;
-          background: transparent;
-          border: none;
-          background: rgba(15, 20, 45, 0.6);
+          margin-bottom: 5px;
+          background: rgba(15, 20, 45, 0.8);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+          border-radius: 12px;
+          opacity: 0;
+          visibility: hidden;
+          transform: none;
+          transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+          display: block;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0 15px;
         }
 
-        /* 2 Column grid */
+        .bt-drop-menu.active {
+          opacity: 1;
+          visibility: visible;
+          max-height: 500px;
+          padding: 15px;
+          margin-bottom: 10px;
+        }
+
         .bt-drop-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px 25px;
+          gap: 15px;
         }
 
         .bt-drop-menu a {
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 13px;
+          padding: 5px 0;
+          margin-bottom: 0;
+        }
+
+        .bt-link {
+          font-size: 18px;
+          padding: 10px 0;
+          width: 100%;
         }
       }
 
-      /* Extra small mobile → 1 column */
       @media (max-width: 480px) {
         .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .bt-nav {
+          width: 280px;
+        }
+      }
+
+      /* Header responsive fixes */
+      @media (max-width: 1300px) {
+        .bt-header {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        .bt-header.bt-scrolled {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .bt-header,
+        .bt-header.bt-scrolled {
+          width: calc(100% - 30px);
+          margin-left: 15px;
+          margin-right: 15px;
+          top: 15px;
+        }
+        .bt-header.bt-scrolled {
+          top: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .bt-container {
+          padding: 0px 20px;
+        }
+        .bt-logo img {
+          height: 48px;
         }
       }
     </style>
 
     <script>
-      function toggleDropdown(id) {
-        const menu = document.getElementById(id);
+      // Get elements
+      const hamburger = document.getElementById("hamburgerBtn");
+      const mobileMenu = document.querySelector(".bt-nav");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.querySelector(".bt-mobile-close");
 
-        // Close ALL dropdowns first
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          if (m.id !== id) {
-            m.classList.remove("active");
-          }
-        });
-
-        // Toggle clicked one
-        menu.classList.toggle("active");
-      }
-
-      function toggleMobileMenu() {
-        document.querySelector(".bt-nav").classList.add("active");
-        document.querySelector(".bt-overlay").classList.add("active");
+      // Toggle mobile menu functions
+      function openMobileMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        hamburger.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
 
       function closeMobileMenu() {
-        document.querySelector(".bt-nav").classList.remove("active");
-        document.querySelector(".bt-overlay").classList.remove("active");
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        hamburger.classList.remove("active");
+        document.body.style.overflow = "";
 
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+        // Close all open dropdowns
+        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Reset dropdown button ARIA
+        document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
         });
       }
-      const header = document.querySelector(".bt-header");
 
-      window.addEventListener("scroll", () => {
-        header.classList.toggle("bt-scrolled", window.scrollY > 50);
+      // Toggle function
+      function toggleMobileMenu() {
+        if (mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      // Hamburger click event
+      if (hamburger) {
+        hamburger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
+      }
+
+      // Close button click
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Overlay click to close
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Dropdown toggle for mobile
+      const dropBtns = document.querySelectorAll(".bt-drop-btn");
+      dropBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const dropdownId = this.getAttribute("data-dropdown");
+          const menu = document.getElementById(dropdownId);
+
+          if (menu) {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            menu.classList.toggle("active");
+
+            // Close other dropdowns
+            dropBtns.forEach((otherBtn) => {
+              if (otherBtn !== btn) {
+                const otherId = otherBtn.getAttribute("data-dropdown");
+                const otherMenu = document.getElementById(otherId);
+                if (otherMenu) {
+                  otherMenu.classList.remove("active");
+                  otherBtn.setAttribute("aria-expanded", "false");
+                }
+              }
+            });
+          }
+        });
       });
-      // Close other dropdowns on hover (desktop only)
-      if (window.innerWidth > 1024) {
-        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
-          dropdown.addEventListener("mouseenter", function () {
-            const activeMenu = document.querySelector(".bt-drop-menu.active");
-            if (activeMenu && !this.contains(activeMenu)) {
-              activeMenu.classList.remove("active");
-            }
-          });
+
+      // Close mobile menu when clicking on nav links (except dropdown buttons)
+      const navLinks = document.querySelectorAll(".bt-nav a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => {
+              closeMobileMenu();
+            }, 100);
+          }
         });
-      }
+      });
+
+      // Header scroll effect
+      const header = document.querySelector(".bt-header");
+      window.addEventListener("scroll", () => {
+        if (header) {
+          if (window.scrollY > 50) {
+            header.classList.add("bt-scrolled");
+          } else {
+            header.classList.remove("bt-scrolled");
+          }
+        }
+      });
+
+      // Close menu on window resize
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 1024) {
+          if (mobileMenu && mobileMenu.classList.contains("active")) {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Close dropdowns when clicking outside (desktop)
+      document.addEventListener("click", function (e) {
+        if (window.innerWidth > 1024) {
+          const isDropdown = e.target.closest(".bt-dropdown");
+          if (!isDropdown) {
+            document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+              menu.classList.remove("active");
+            });
+            dropBtns.forEach((btn) => {
+              btn.setAttribute("aria-expanded", "false");
+            });
+          }
+        }
+      });
+
+      // Initialize ARIA attributes
+      dropBtns.forEach((btn) => {
+        btn.setAttribute("aria-expanded", "false");
+      });
     </script>
     <!-- ================= HEADER END ================= -->
 
     <!-- ======== Contact us========  -->
-    <section class="contact-section">
-      <div class="contact-container">
-        <h2>Contact BroTraders</h2>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <title>BroTraders | Contact & Community</title>
+        <!-- Font Awesome 6 (Free CDN) for crisp, scalable icons -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-        <p class="contact-subtext">
-          Have questions about prop firms, found incorrect information, or want
-          to collaborate with BroTraders? Reach out anytime.
-        </p>
+          body {
+            font-family:
+              system-ui, "Segoe UI", "Inter", "Helvetica Neue", sans-serif;
+            background: #030712;
+            scroll-behavior: smooth;
+          }
 
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>📧 Email</h3>
-            <p>For general questions and support</p>
-            <a href="mailto:contact@brotraders.com">contact@brotraders.com</a>
-          </div>
+          /* main contact section – fully responsive */
+          .contact-section {
+            padding: clamp(3rem, 8vw, 8rem) clamp(1.25rem, 5vw, 3rem);
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 70%
+              ),
+              linear-gradient(145deg, #0b1d3a 0%, #030712 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            isolation: isolate;
+          }
 
-          <div class="contact-card">
-            <h3>🤝 Partnerships</h3>
-            <p>Affiliate or brand collaborations</p>
-            <a href="mailto:partner@brotraders.com">partner@brotraders.com</a>
-          </div>
+          /* subtle overlay to improve text contrast on gradients */
+          .contact-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.2);
+            pointer-events: none;
+            z-index: 0;
+          }
 
-          <div class="contact-card">
-            <h3>💬 Community</h3>
-            <p>Join our trading community</p>
+          .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+          }
 
-            <div class="contact-socials">
-              <a href="#">Twitter</a>
-              <a href="#">Telegram</a>
-              <a href="#">Discord</a>
+          /* typography with responsive scaling */
+          .contact-section h2 {
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, #b9d0ff 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+          }
+
+          .contact-subtext {
+            color: #cbd5e1;
+            max-width: 680px;
+            margin: 0 auto 2.8rem auto;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            line-height: 1.5;
+            font-weight: 400;
+          }
+
+          /* responsive grid: flexible columns */
+          .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 0.5rem;
+          }
+
+          /* card design – glassmorphic / modern dark card */
+          .contact-card {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 1.75rem;
+            padding: 2.2rem 1.8rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+          }
+
+          .contact-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(59, 130, 246, 0.6);
+            background: rgba(17, 24, 39, 0.96);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6);
+          }
+
+          /* icon wrapper – consistent styling for Font Awesome icons */
+          .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            background: linear-gradient(145deg, #3b82f6, #60a5fa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            transition: transform 0.2s ease;
+          }
+
+          .contact-card:hover .card-icon {
+            transform: scale(1.05);
+          }
+
+          .contact-card h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+            color: #f3f4f6;
+          }
+
+          .contact-card p {
+            color: #9ca3af;
+            margin-bottom: 1.3rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+          }
+
+          /* email & partner links */
+          .contact-card a:not(.social-link) {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition:
+              color 0.2s,
+              gap 0.2s;
+            word-break: break-all;
+          }
+
+          .contact-card a:not(.social-link):hover {
+            color: #93c5fd;
+            gap: 0.7rem;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+          }
+
+          /* social links container */
+          .contact-socials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+          }
+
+          /* social icon links (clean & modern) */
+          .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(59, 130, 246, 0.12);
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(4px);
+          }
+
+          .social-link i {
+            font-size: 1.1rem;
+            color: #60a5fa;
+            transition: transform 0.2s;
+          }
+
+          .social-link:hover {
+            background: #1e3a8a;
+            border-color: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+          }
+
+          .social-link:hover i {
+            transform: scale(1.1);
+            color: white;
+          }
+
+          /* additional micro responsiveness */
+          @media (max-width: 768px) {
+            .contact-card {
+              padding: 1.8rem 1.4rem;
+            }
+
+            .contact-card h3 {
+              font-size: 1.5rem;
+            }
+
+            .card-icon {
+              font-size: 2.4rem;
+            }
+
+            .contact-socials {
+              gap: 1rem;
+            }
+
+            .social-link {
+              padding: 0.5rem 1rem;
+              font-size: 0.85rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .contact-section {
+              padding: 3rem 1rem;
+              padding-top: 100px;
+            }
+
+            .contact-grid {
+              gap: 1.3rem;
+            }
+
+            .contact-card a:not(.social-link) {
+              font-size: 0.9rem;
+            }
+
+            .social-link i {
+              font-size: 1rem;
+            }
+          }
+
+          /* accessibility & focus */
+          a:focus-visible,
+          .social-link:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 3px;
+            border-radius: 40px;
+          }
+
+          /* small tweak for email link wrapping */
+          .contact-card .email-link {
+            word-break: break-word;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="contact-section">
+          <div class="contact-container">
+            <h2>Contact BroTraders</h2>
+            <p class="contact-subtext">
+              Have questions about prop firms, found incorrect information, or
+              want to collaborate with BroTraders? Reach out anytime.
+            </p>
+
+            <div class="contact-grid">
+              <!-- Email Card: uses envelope icon + optional micro icon inside link -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email Support</h3>
+                <p>For general questions and support</p>
+                <a href="mailto:contact@brotraders.com" class="email-link">
+                  <i class="fas fa-paper-plane" style="font-size: 0.85rem"></i>
+                  contact@brotraders.com
+                </a>
+              </div>
+
+              <!-- Partnerships Card: handshake icon / briefcase-style partnership -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Partnerships</h3>
+                <p>Affiliate or brand collaborations</p>
+                <a href="mailto:partner@brotraders.com">
+                  <i class="fas fa-chart-line" style="font-size: 0.85rem"></i>
+                  partner@brotraders.com
+                </a>
+              </div>
+
+              <!-- Community Card: interactive social icons instead of emojis -->
+              <div class="contact-card">
+                <div class="card-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3>Community</h3>
+                <p>Join our trading community</p>
+                <div class="contact-socials">
+                  <!-- <a href="#" class="social-link" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                  </a>
+                  <a href="#" class="social-link" aria-label="Telegram">
+                    <i class="fab fa-telegram"></i> Telegram
+                  </a> -->
+                  <a
+                    href="https://discord.com/invite/brotrading"
+                    class="social-link"
+                    aria-label="Discord"
+                  >
+                    <i class="fab fa-discord"></i> Discord
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-    <style>
-      .contact-section {
-        padding: 130px 20px;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: white;
-        text-align: center;
-      }
-
-      .contact-container {
-        max-width: 1100px;
-        margin: auto;
-      }
-
-      .contact-section h2 {
-        font-size: 36px;
-        margin-bottom: 15px;
-      }
-
-      .contact-subtext {
-        color: #9ca3af;
-        max-width: 600px;
-        margin: auto;
-        margin-bottom: 60px;
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 30px;
-      }
-
-      .contact-card {
-        background: #111827;
-        padding: 35px;
-        border-radius: 10px;
-        transition: 0.3s;
-      }
-
-      .contact-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .contact-card h3 {
-        margin-bottom: 10px;
-      }
-
-      .contact-card p {
-        color: #9ca3af;
-        margin-bottom: 15px;
-      }
-
-      .contact-card a {
-        color: #3b82f6;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .contact-socials a {
-        margin: 0 10px;
-      }
-    </style>
+        </section>
+      </body>
+    </html>
     <!-- =======Contact us end=====  -->
 
     <!-- ================== CTF Compare Top Firm Section ================== -->
     <section class="ctf-compare-vault">
       <div class="ctf-compare-header">
-        <h2>Check our Top Firms</h2>
+        <h2>Compare Top Firms</h2>
 
         <div class="ctf-compare-nav">
           <button class="ctf-nav-btn ctf-prev" id="ctfPrev">&#10094;</button>
@@ -785,9 +1224,7 @@
           <!-- Card 1 -->
           <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
-              />
+              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -800,7 +1237,7 @@
           <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
+                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
             </div>
             <h3>Best Deals</h3>
@@ -810,16 +1247,16 @@
           </a>
 
           <!-- Card 3 -->
-          <a href="StartCost.html" class="ctf-compare-card">
+          <!-- <a href="StartCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/play.png" />
             </div>
             <h3>Starting Costs</h3>
             <p>Find the lowest starting costs fast.</p>
-          </a>
+          </a> -->
 
           <!-- Card 4 -->
-          <a href="TrueCost.html" class="ctf-compare-card">
+          <!-- <a href="TrueCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
@@ -827,7 +1264,7 @@
             </div>
             <h3>True Cost</h3>
             <p>See the real price of getting funded.</p>
-          </a>
+          </a> -->
 
           <!-- Card 5 -->
           <a href="Drawdown.html" class="ctf-compare-card">
@@ -987,14 +1424,13 @@
       <div class="yt-container">
         <!-- LEFT -->
         <div class="yt-content">
-          <h2>
-            Trade Live With <br />
-            BroTrading
-          </h2>
+          <h2>Trade Live With The Bro’s</h2>
 
           <p>Live Futures Trading Sessions</p>
-          <p>Market Breakdown • Strategy Execution • Real-Time Entries</p>
-          <p>Join Our Community of Serious Traders</p>
+          <p>
+            Market Breakdown • Live Analysis • Talking about real time entry’s
+          </p>
+          <p>Join the community where we laugh and cry together.</p>
 
           <a
             href="https://m.youtube.com/@Brotradingz"
@@ -1201,8 +1637,8 @@
         <div class="bt-footer-col">
           <h4>Bro Trading Finder</h4>
           <a href="../CompareTopFrims/comparison.html">Top Frims Comparison</a>
-          <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a>
-          <a href="../CompareTopFrims/StartCost.html">Starting Costs</a>
+          <!-- <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
+          <!-- <a href="../CompareTopFrims/StartCost.html">Starting Costs</a> -->
           <a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a>
           <a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a>
           <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
