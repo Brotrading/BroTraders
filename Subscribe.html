@@ -246,98 +246,79 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <a href="index.html"
-            ><img src="Bro_Traders_logo-removebg-preview.png" alt="Bro Trading"
-          /></a>
+          <a href="../index.html">
+            <img
+              src="Bro_Traders_logo-removebg-preview.png"
+              alt="Bro Trading"
+            />
+          </a>
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
-          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
+          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
 
-          <a href="index.html" class="bt-link">Home</a>
+          <a href="../index.html" class="bt-link">Home</a>
+
           <!-- Funding Plans -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
+            <button class="bt-drop-btn" data-dropdown="funding">
               Funding Plans ▾
             </button>
-
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
-                  <a href="CompareTopFrims/comparison.html"
-                    >Prop Firm Comparison</a
-                  >
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
-                  <a href="CompareTopFrims/Drawdown.html">Largest Drawdown</a>
-                  <a href="CompareTopFrims/QuickFunding.html"
-                    >Quickest Funding</a
-                  >
-                  <a href="CompareTopFrims/bestDeals.html">Best Deals</a>
+                  <a href="comparison.html">Prop Firm Comparison</a>
+                  <a href="Drawdown.html">Largest Drawdown</a>
+                  <a href="QuickFunding.html">Quickest Funding</a>
+                  <a href="bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
-                  <a href="Frims/ApexFunding.html">Apex Trader Funding</a>
-                  <a href="Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="Frims/Lucid Trading.html">Lucid Trading</a>
-                  <a href="Frims/MyFundedFuture.html"> My Funded Future</a>
-                  <a href="Frims/DayTraders.html">Day Traders.com</a>
-                  <a href="Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
+                  <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
+                  <a href="../Frims/TradeifyTrader.html">Tradeify</a>
+                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
+                  <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
+                  <a href="../Frims/DayTraders.html">Day Traders.com</a>
+                  <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
-
           <!-- Resources -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
+            <button class="bt-drop-btn" data-dropdown="resources">
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="Resourses/TradingTools.html">Trading Tools</a>
-              <a href="Resourses/MarketAnalysis.html">Market Analysis</a>
+              <a href="../Resourses/TradingTools.html">Trading Tools</a>
+              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
             </div>
           </div>
 
-          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
-        <a href="Subscribe.html" class="bt-cta">Subscribe</a>
+        <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
 
         <!-- Hamburger -->
-        <div class="bt-hamburger" onclick="toggleMobileMenu()">
+        <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </header>
 
     <!-- Overlay -->
-    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
+    <div class="bt-overlay" id="overlay"></div>
 
     <style>
       /* ================= HEADER ================= */
-
       .bt-header {
         position: fixed;
         top: 40px;
@@ -378,6 +359,7 @@
       .bt-logo img {
         height: 55px;
         transition: height 0.3s ease;
+        display: block;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
@@ -385,7 +367,6 @@
       }
 
       /* ================= NAV ================= */
-
       .bt-nav {
         display: flex;
         gap: 30px;
@@ -401,6 +382,8 @@
         cursor: pointer;
         text-decoration: none;
         transition: 0.3s;
+        font-weight: 500;
+        font-family: inherit;
       }
 
       .bt-link:hover,
@@ -409,9 +392,6 @@
       }
 
       /* ================= DROPDOWN ================= */
-
-      /* ================= DROPDOWN ================= */
-
       .bt-dropdown {
         position: relative;
       }
@@ -426,13 +406,17 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.35s ease;
-
         z-index: 1001;
+      }
+
+      .bt-drop-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
 
       .bt-drop-menu.small {
@@ -452,6 +436,7 @@
         text-decoration: none;
         margin-bottom: 12px;
         transition: 0.3s;
+        font-size: 15px;
       }
 
       .bt-drop-menu a:hover {
@@ -465,7 +450,6 @@
       }
 
       /* DESKTOP HOVER OPEN */
-
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
           opacity: 1;
@@ -473,15 +457,8 @@
           transform: translateY(0);
         }
       }
-      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
-      @media (min-width: 1025px) {
-        .bt-dropdown:hover .bt-drop-menu {
-          display: block;
-        }
-      }
 
       /* ================= CTA ================= */
-
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
         padding: 9px 22px;
@@ -491,7 +468,7 @@
         font-weight: 600;
         letter-spacing: 0.5px;
         transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
+        white-space: nowrap;
       }
 
       .bt-cta:hover {
@@ -501,30 +478,72 @@
       }
 
       /* ================= HAMBURGER ================= */
-
       .bt-hamburger {
         display: none;
         flex-direction: column;
-        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: 1003;
+        transition: all 0.3s ease;
       }
 
       .bt-hamburger span {
-        width: 26px;
-        height: 3px;
-        background: #fff;
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .bt-hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .bt-hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      .bt-hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .bt-hamburger:hover span {
+        background: #00c2ff;
       }
 
       /* ================= MOBILE MENU ================= */
-
       .bt-mobile-close {
         display: none;
         position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 26px;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
         color: #fff;
         cursor: pointer;
+        font-weight: 300;
+        transition: 0.2s;
+        z-index: 1004;
+        background: transparent;
+        border: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bt-mobile-close:hover {
+        color: #00c2ff;
+        transform: rotate(90deg);
       }
 
       .bt-overlay {
@@ -534,6 +553,7 @@
         background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 900;
+        transition: 0.3s;
       }
 
       .bt-overlay.active {
@@ -541,28 +561,6 @@
       }
 
       @media (max-width: 1024px) {
-        .bt-nav {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 85%; /* Wider for better layout */
-          max-width: 420px;
-          height: 100vh;
-          background: #0b0f2a;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 100px 25px 40px;
-          gap: 20px;
-          transition: 0.4s ease;
-          z-index: 1002;
-          overflow-y: auto;
-        }
-
-        .bt-nav.active {
-          right: 0;
-          top: 15px;
-        }
-
         .bt-hamburger {
           display: flex;
         }
@@ -571,439 +569,1014 @@
           display: none;
         }
 
-        .bt-mobile-close {
-          display: block;
+        .bt-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 320px;
+          max-width: 85%;
+          height: 100vh;
+          background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          padding: 80px 25px 30px;
+          gap: 15px;
+          transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          z-index: 1002;
+          overflow-y: auto;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
+          border-left: 1px solid rgba(0, 194, 255, 0.3);
         }
 
-        /* Dropdown styling */
+        .bt-nav.active {
+          right: 0;
+        }
+
+        .bt-mobile-close {
+          display: flex;
+        }
+
+        .bt-dropdown {
+          width: 100%;
+        }
+
+        .bt-drop-btn {
+          width: 100%;
+          text-align: left;
+          font-size: 18px;
+          padding: 10px 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .bt-drop-btn::after {
+          content: "▾";
+          font-size: 16px;
+          transition: transform 0.3s;
+        }
+
+        .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
+          transform: rotate(180deg);
+        }
+
         .bt-drop-menu {
           position: static;
           min-width: 100%;
-          padding: 15px 0;
+          padding: 0;
           margin-top: 10px;
-          background: transparent;
-          border: none;
-          background: rgba(15, 20, 45, 0.6);
+          margin-bottom: 5px;
+          background: rgba(15, 20, 45, 0.8);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+          border-radius: 12px;
+          opacity: 0;
+          visibility: hidden;
+          transform: none;
+          transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+          display: block;
+          max-height: 0;
+          overflow: hidden;
+          padding: 0 15px;
         }
 
-        /* 2 Column grid */
+        .bt-drop-menu.active {
+          opacity: 1;
+          visibility: visible;
+          max-height: 500px;
+          padding: 15px;
+          margin-bottom: 10px;
+        }
+
         .bt-drop-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px 25px;
+          gap: 15px;
         }
 
         .bt-drop-menu a {
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 13px;
+          padding: 5px 0;
+          margin-bottom: 0;
+        }
+
+        .bt-link {
+          font-size: 18px;
+          padding: 10px 0;
+          width: 100%;
         }
       }
 
-      /* Extra small mobile → 1 column */
       @media (max-width: 480px) {
         .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .bt-nav {
+          width: 280px;
+        }
+      }
+
+      /* Header responsive fixes */
+      @media (max-width: 1300px) {
+        .bt-header {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        .bt-header.bt-scrolled {
+          width: calc(100% - 40px);
+          margin-left: 20px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .bt-header,
+        .bt-header.bt-scrolled {
+          width: calc(100% - 30px);
+          margin-left: 15px;
+          margin-right: 15px;
+          top: 15px;
+        }
+        .bt-header.bt-scrolled {
+          top: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .bt-container {
+          padding: 0px 20px;
+        }
+        .bt-logo img {
+          height: 48px;
         }
       }
     </style>
 
     <script>
-      function toggleDropdown(id) {
-        const menu = document.getElementById(id);
+      // Get elements
+      const hamburger = document.getElementById("hamburgerBtn");
+      const mobileMenu = document.querySelector(".bt-nav");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.querySelector(".bt-mobile-close");
 
-        // Close ALL dropdowns first
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          if (m.id !== id) {
-            m.classList.remove("active");
-          }
-        });
-
-        // Toggle clicked one
-        menu.classList.toggle("active");
-      }
-
-      function toggleMobileMenu() {
-        document.querySelector(".bt-nav").classList.add("active");
-        document.querySelector(".bt-overlay").classList.add("active");
+      // Toggle mobile menu functions
+      function openMobileMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        hamburger.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
 
       function closeMobileMenu() {
-        document.querySelector(".bt-nav").classList.remove("active");
-        document.querySelector(".bt-overlay").classList.remove("active");
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        hamburger.classList.remove("active");
+        document.body.style.overflow = "";
 
-        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
-          m.classList.remove("active");
+        // Close all open dropdowns
+        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Reset dropdown button ARIA
+        document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
         });
       }
-      const header = document.querySelector(".bt-header");
 
-      window.addEventListener("scroll", () => {
-        header.classList.toggle("bt-scrolled", window.scrollY > 50);
+      // Toggle function
+      function toggleMobileMenu() {
+        if (mobileMenu.classList.contains("active")) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      // Hamburger click event
+      if (hamburger) {
+        hamburger.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
+      }
+
+      // Close button click
+      if (closeBtn) {
+        closeBtn.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Overlay click to close
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          closeMobileMenu();
+        });
+      }
+
+      // Dropdown toggle for mobile
+      const dropBtns = document.querySelectorAll(".bt-drop-btn");
+      dropBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const dropdownId = this.getAttribute("data-dropdown");
+          const menu = document.getElementById(dropdownId);
+
+          if (menu) {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !isExpanded);
+            menu.classList.toggle("active");
+
+            // Close other dropdowns
+            dropBtns.forEach((otherBtn) => {
+              if (otherBtn !== btn) {
+                const otherId = otherBtn.getAttribute("data-dropdown");
+                const otherMenu = document.getElementById(otherId);
+                if (otherMenu) {
+                  otherMenu.classList.remove("active");
+                  otherBtn.setAttribute("aria-expanded", "false");
+                }
+              }
+            });
+          }
+        });
       });
-      // Close other dropdowns on hover (desktop only)
-      if (window.innerWidth > 1024) {
-        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
-          dropdown.addEventListener("mouseenter", function () {
-            const activeMenu = document.querySelector(".bt-drop-menu.active");
-            if (activeMenu && !this.contains(activeMenu)) {
-              activeMenu.classList.remove("active");
-            }
-          });
+
+      // Close mobile menu when clicking on nav links (except dropdown buttons)
+      const navLinks = document.querySelectorAll(".bt-nav a");
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => {
+              closeMobileMenu();
+            }, 100);
+          }
         });
-      }
+      });
+
+      // Header scroll effect
+      const header = document.querySelector(".bt-header");
+      window.addEventListener("scroll", () => {
+        if (header) {
+          if (window.scrollY > 50) {
+            header.classList.add("bt-scrolled");
+          } else {
+            header.classList.remove("bt-scrolled");
+          }
+        }
+      });
+
+      // Close menu on window resize
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 1024) {
+          if (mobileMenu && mobileMenu.classList.contains("active")) {
+            closeMobileMenu();
+          }
+        }
+      });
+
+      // Close dropdowns when clicking outside (desktop)
+      document.addEventListener("click", function (e) {
+        if (window.innerWidth > 1024) {
+          const isDropdown = e.target.closest(".bt-dropdown");
+          if (!isDropdown) {
+            document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
+              menu.classList.remove("active");
+            });
+            dropBtns.forEach((btn) => {
+              btn.setAttribute("aria-expanded", "false");
+            });
+          }
+        }
+      });
+
+      // Initialize ARIA attributes
+      dropBtns.forEach((btn) => {
+        btn.setAttribute("aria-expanded", "false");
+      });
     </script>
+
     <!-- ================= HEADER END ================= -->
 
     <!-- ========== PREMIUM DISCORD HERO SECTION ========== -->
-    <section class="premium-hero">
-      <div class="hero-container">
-        <!-- LEFT SIDE -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <title>BRO Trading | Premium Discord</title>
+        <style>
+          /* RESET & BASE - preserving all original aesthetics */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-        <div class="hero-left">
-          <div class="hero-badge">🔥 50% OFF LAUNCH OFFER</div>
+          body {
+            background: #020b25;
+            font-family:
+              system-ui,
+              -apple-system,
+              "Segoe UI",
+              Roboto,
+              "Helvetica Neue",
+              sans-serif;
+          }
 
-          <h1>
-            Watch Real Trades <span>Live</span><br />
-            Inside Our Premium Discord
-          </h1>
+          .premium-hero {
+            padding: 120px 8%;
+            background: linear-gradient(180deg, #020b25, #030f33);
+            color: white;
+            width: 100%;
+            overflow-x: hidden;
+          }
 
-          <p class="hero-sub">
-            Our free Discord gives you the community. Premium unlocks the real
-            edge with <strong>Live Trading Sessions</strong>, real trade setups
-            and exclusive strategy channels.
-          </p>
+          .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 70px;
+            max-width: 1300px;
+            margin: auto;
+          }
 
-          <!-- VALUE CARDS -->
+          /* LEFT */
+          .hero-left {
+            max-width: 600px;
+            flex: 1;
+          }
 
-          <div class="value-cards">
-            <div class="value-card highlight">
-              🟢 Live Trading Sessions
-              <span>Watch real trades happening live</span>
+          .hero-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+          }
+
+          .hero-left h1 {
+            font-size: 50px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+          }
+
+          .hero-left span {
+            color: #00c2ff;
+          }
+
+          .hero-sub {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+          }
+
+          /* VALUE CARDS */
+          .value-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+          }
+
+          .value-card {
+            background: rgba(255, 255, 255, 0.07);
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            letter-spacing: 1.2px;
+            font-weight: 500;
+            transition:
+              transform 0.2s ease,
+              background 0.2s;
+          }
+
+          .value-card span {
+            display: block;
+            opacity: 0.7;
+            font-size: 14px;
+            margin-top: 4px;
+            letter-spacing: normal;
+            margin-left: 26px;
+            font-weight: normal;
+          }
+
+          .highlight {
+            border-left: 4px solid red;
+            background: rgba(255, 0, 0, 0.08);
+          }
+          .effect {
+            border-left: 4px solid rgb(0, 217, 255);
+          }
+
+          /* PRICE */
+          .price-box {
+            font-size: 22px;
+            background: #2c2c2e;
+            padding: 10px 10px;
+            margin: 0px 92px 21px 0px;
+            border-radius: 14px;
+            text-align: center;
+            border: 3px solid #ffffff26;
+            backdrop-filter: blur(2px);
+            font-weight: 500;
+          }
+
+          .price-box .old {
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin-right: 8px;
+            font-size: 1.1rem;
+          }
+
+          .price-box .new {
+            color: #00c2ff;
+            font-weight: bold;
+            font-size: 1.8rem;
+            margin-right: 4px;
+          }
+
+          .price-box p {
+            font-size: 0.85rem;
+            margin-top: 4px;
+            opacity: 0.9;
+          }
+
+          /* TIMER */
+          .countdown {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+          }
+
+          .countdown div {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 70px;
+            backdrop-filter: blur(4px);
+          }
+
+          .countdown span {
+            font-size: 28px;
+            font-weight: bold;
+            display: block;
+            line-height: 1;
+            letter-spacing: 1px;
+          }
+
+          .countdown small {
+            font-size: 12px;
+            opacity: 0.7;
+            display: block;
+            margin-top: 5px;
+          }
+
+          /* BUTTONS */
+          .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+          }
+
+          .btn-primary {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 14px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+          }
+
+          .btn-primary:hover {
+            transform: scale(1.02);
+            background: linear-gradient(90deg, #1e90ff, #00c2ff);
+            box-shadow: 0 8px 20px rgba(0, 194, 255, 0.3);
+          }
+
+          .btn-outline {
+            border: 2px solid #00c2ff;
+            padding: 14px 26px;
+            border-radius: 10px;
+            color: #00c2ff;
+            text-decoration: none;
+            font-weight: bold;
+            background: transparent;
+            transition: 0.2s;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+          }
+
+          .btn-outline:hover {
+            background: rgba(0, 194, 255, 0.1);
+            border-color: #fff;
+            color: white;
+          }
+
+          /* RIGHT SIDE */
+          .hero-right {
+            position: relative;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 280px;
+          }
+
+          .trading-image {
+            width: 520px;
+            max-width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            margin-top: -84px;
+            object-fit: cover;
+            display: block;
+          }
+
+          /* YOUTUBE PREVIEW */
+          .youtube-preview {
+            position: absolute;
+            bottom: -140px;
+            right: -43px;
+            width: 356px;
+            max-width: 80%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            background: #000;
+            transition: transform 0.2s;
+          }
+
+          .youtube-preview iframe {
+            width: 100%;
+            height: 220px;
+            display: block;
+            aspect-ratio: 16 / 9;
+          }
+
+          /* MEMBERS CARD */
+          .members-card {
+            position: absolute;
+            top: -79px;
+            left: -30px;
+            background: rgb(0 0 0 / 74%);
+            backdrop-filter: blur(8px);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #00c2ff;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 194, 255, 0.3);
+          }
+
+          /* RESPONSIVE DESIGN - full style preservation + perfect mobile/tablet adaptation */
+          @media (max-width: 1100px) {
+            .premium-hero {
+              padding: 100px 5%;
+            }
+            .hero-container {
+              gap: 40px;
+            }
+            .hero-left h1 {
+              font-size: 44px;
+            }
+            .price-box {
+              margin-right: 40px;
+            }
+            .trading-image {
+              width: 450px;
+            }
+            .youtube-preview {
+              width: 300px;
+              bottom: -100px;
+              right: -20px;
+            }
+            .members-card {
+              top: -60px;
+              left: -10px;
+              white-space: nowrap;
+            }
+          }
+
+          @media (max-width: 900px) {
+            .hero-container {
+              flex-direction: column;
+              text-align: center;
+              gap: 60px;
+            }
+
+            .hero-left {
+              max-width: 100%;
+              text-align: center;
+            }
+
+            .hero-badge {
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .hero-left h1 {
+              font-size: 42px;
+            }
+
+            .hero-sub {
+              max-width: 90%;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .value-cards {
+              max-width: 550px;
+              margin-left: auto;
+              margin-right: auto;
+              width: 100%;
+            }
+
+            .value-card {
+              text-align: left;
+            }
+
+            .price-box {
+              margin: 0 0 25px 0;
+              max-width: 320px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .countdown {
+              justify-content: center;
+              margin-bottom: 30px;
+            }
+
+            .hero-buttons {
+              justify-content: center;
+            }
+
+            .hero-right {
+              width: 100%;
+              margin-top: 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              position: relative;
+            }
+
+            .trading-image {
+              width: 90%;
+              max-width: 520px;
+              margin-top: 0;
+              margin-bottom: 30px;
+            }
+
+            /* reposition overlapping elements for tablet/mobile - but keep original design logic intact */
+            .youtube-preview {
+              position: relative;
+              bottom: auto;
+              right: auto;
+              margin-top: 20px;
+              width: 90%;
+              max-width: 450px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            .members-card {
+              position: relative;
+              top: auto;
+              left: auto;
+              margin-top: 20px;
+              margin-bottom: 10px;
+              display: inline-block;
+              white-space: nowrap;
+              width: auto;
+              align-self: center;
+            }
+
+            /* reorder members card to appear after trading image or before? maintain visual flow */
+            .hero-right {
+              flex-direction: column;
+            }
+            /* make members card appear like a badge below main image, but style untouched */
+            .members-card {
+              order: 2;
+              margin-top: 20px;
+              background: rgba(0, 0, 0, 0.8);
+            }
+            .trading-image {
+              order: 1;
+            }
+            .youtube-preview {
+              order: 3;
+              margin-bottom: 0;
+            }
+          }
+
+          @media (max-width: 640px) {
+            .premium-hero {
+              padding: 70px 5%;
+            }
+
+            .hero-left h1 {
+              font-size: 34px;
+              line-height: 1.25;
+            }
+
+            .hero-badge {
+              font-size: 0.8rem;
+              padding: 6px 16px;
+            }
+
+            .hero-sub {
+              font-size: 0.95rem;
+            }
+
+            .value-card {
+              font-size: 14px;
+              padding: 12px 14px;
+            }
+            .value-card span {
+              font-size: 12px;
+              margin-left: 22px;
+            }
+
+            .price-box {
+              padding: 8px 8px;
+              font-size: 18px;
+            }
+            .price-box .new {
+              font-size: 1.6rem;
+            }
+            .countdown div {
+              padding: 8px 12px;
+              min-width: 60px;
+            }
+            .countdown span {
+              font-size: 22px;
+            }
+            .hero-buttons {
+              flex-direction: column;
+              width: 100%;
+              gap: 12px;
+            }
+            .btn-primary,
+            .btn-outline {
+              text-align: center;
+              width: 100%;
+              padding: 14px 20px;
+            }
+
+            .trading-image {
+              width: 100%;
+              border-radius: 20px;
+            }
+
+            .youtube-preview {
+              width: 100%;
+              max-width: 100%;
+            }
+            .youtube-preview iframe {
+              height: auto;
+              aspect-ratio: 16 / 9;
+            }
+
+            .members-card {
+              font-size: 12px;
+              padding: 8px 14px;
+              white-space: normal;
+              text-align: center;
+              width: auto;
+            }
+          }
+
+          /* maintain safe spacing on very small devices */
+          @media (max-width: 480px) {
+            .countdown {
+              gap: 8px;
+            }
+            .countdown div {
+              padding: 8px 10px;
+              min-width: 55px;
+            }
+            .countdown span {
+              font-size: 20px;
+            }
+            .countdown small {
+              font-size: 10px;
+            }
+            .price-box {
+              margin-left: auto;
+              margin-right: auto;
+              width: 90%;
+            }
+          }
+
+          /* additional micro-fixes to preserve original style while responsive */
+          @media (min-width: 901px) and (max-width: 1150px) {
+            .hero-right {
+              transform: scale(0.95);
+            }
+            .youtube-preview {
+              right: -20px;
+              bottom: -110px;
+            }
+            .members-card {
+              left: -15px;
+              top: -60px;
+            }
+          }
+
+          /* optional hover & smoothness */
+          .value-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(4px);
+          }
+
+          .btn-primary,
+          .btn-outline {
+            transition: all 0.2s ease;
+          }
+
+          /* keep original countdown digits style */
+          .countdown span {
+            font-family: monospace;
+            letter-spacing: 1px;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="premium-hero">
+          <div class="hero-container">
+            <!-- LEFT SIDE -->
+            <div class="hero-left">
+              <div class="hero-badge">🔥 50% OFF LAUNCH OFFER</div>
+
+              <h1>
+                Watch Real Trades <span>Live</span><br />
+                Inside Our Premium Discord
+              </h1>
+
+              <p class="hero-sub">
+                Our free Discord gives you the community. Premium unlocks the
+                real edge with <strong>Live Trading Sessions</strong>, real
+                trade setups and exclusive strategy channels.
+              </p>
+
+              <!-- VALUE CARDS -->
+              <div class="value-cards">
+                <div class="value-card highlight">
+                  🟢 Live Trading Sessions
+                  <span>Watch real trades happening live</span>
+                </div>
+
+                <div class="value-card effect">
+                  💬 Premium Channels
+                  <span>Strategies, breakdowns & analysis</span>
+                </div>
+
+                <div class="value-card effect">
+                  📈 Real Trade Setups
+                  <span>See how trades are executed</span>
+                </div>
+              </div>
+
+              <!-- PRICE -->
+              <div class="price-box">
+                <span class="old">€20</span>
+                <span class="new">€10</span>
+                <span>/ month</span>
+                <p>50% OFF first 2 months</p>
+              </div>
+
+              <!-- TIMER -->
+              <div class="countdown">
+                <div><span id="days">00</span><small>Days</small></div>
+                <div><span id="hours">00</span><small>Hours</small></div>
+                <div><span id="minutes">00</span><small>Min</small></div>
+                <div><span id="seconds">00</span><small>Sec</small></div>
+              </div>
+
+              <!-- BUTTONS -->
+              <div class="hero-buttons">
+                <a
+                  href="https://discord.com/invite/brotrading"
+                  target="_blank"
+                  class="btn-primary"
+                >
+                  Join Free Discord
+                </a>
+
+                <a
+                  href="https://discord.com/invite/brotrading"
+                  target="_blank"
+                  class="btn-outline"
+                >
+                  Unlock Premium Trading Room
+                </a>
+              </div>
             </div>
 
-            <div class="value-card effect">
-              💬 Premium Channels
-              <span>Strategies, breakdowns & analysis</span>
+            <!-- RIGHT SIDE -->
+            <div class="hero-right">
+              <!-- LIVE TRADING IMAGE -->
+              <img
+                class="trading-image"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Live Trading Dashboard"
+              />
+
+              <!-- YOUTUBE LIVE PREVIEW -->
+              <div class="youtube-preview">
+                <iframe
+                  width="100%"
+                  height="220"
+                  src="https://www.youtube.com/embed/poLTzNhpfb8"
+                  title="Live Trading Session"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                  "
+                  allowfullscreen
+                >
+                </iframe>
+              </div>
+
+              <!-- MEMBERS CARD -->
+              <div class="members-card">👥 1312 traders joined this month</div>
             </div>
-
-            <div class="value-card effect">
-              📈 Real Trade Setups
-              <span>See how trades are executed</span>
-            </div>
           </div>
+        </section>
 
-          <!-- PRICE -->
+        <script>
+          // Countdown timer: exactly 7 days from now (preserving original logic)
+          const endDate = new Date();
+          endDate.setDate(endDate.getDate() + 7);
 
-          <div class="price-box">
-            <span class="old">€20</span>
-            <span class="new">€10</span>
-            <span>/ month</span>
+          function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
 
-            <p>50% OFF first 2 months</p>
-          </div>
+            // Handle timer expiration gracefully
+            if (distance < 0) {
+              document.getElementById("days").innerText = "00";
+              document.getElementById("hours").innerText = "00";
+              document.getElementById("minutes").innerText = "00";
+              document.getElementById("seconds").innerText = "00";
+              return;
+            }
 
-          <!-- TIMER -->
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((distance / (1000 * 60)) % 60);
+            const seconds = Math.floor((distance / 1000) % 60);
 
-          <div class="countdown">
-            <div><span id="days">00</span><small>Days</small></div>
-            <div><span id="hours">00</span><small>Hours</small></div>
-            <div><span id="minutes">00</span><small>Min</small></div>
-            <div><span id="seconds">00</span><small>Sec</small></div>
-          </div>
+            // Format with leading zeros
+            document.getElementById("days").innerText =
+              days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText =
+              hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText =
+              minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText =
+              seconds < 10 ? "0" + seconds : seconds;
+          }
 
-          <!-- BUTTONS -->
-
-          <div class="hero-buttons">
-            <a
-              href="https://discord.com/invite/brotrading"
-              target="_blank"
-              class="btn-primary"
-            >
-              Join Free Discord
-            </a>
-
-            <a
-              href="https://discord.com/invite/brotrading"
-              target="_blankN"
-              class="btn-outline"
-            >
-              Unlock Premium Trading Room
-            </a>
-          </div>
-        </div>
-
-        <!-- RIGHT SIDE -->
-
-        <div class="hero-right">
-          <!-- LIVE TRADING IMAGE -->
-
-          <img
-            class="trading-image"
-            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
-
-          <!-- YOUTUBE LIVE PREVIEW -->
-
-          <div class="youtube-preview">
-            <iframe
-              width="100%"
-              height="220"
-              src="https://www.youtube.com/embed/poLTzNhpfb8"
-              title="Live Trading"
-              frameborder="0"
-              allowfullscreen
-            >
-            </iframe>
-          </div>
-
-          <!-- MEMBERS CARD -->
-
-          <div class="members-card">👥 1312 traders joined this month</div>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      .premium-hero {
-        padding: 120px 8%;
-        background: linear-gradient(180deg, #020b25, #030f33);
-        color: white;
-      }
-
-      .hero-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 70px;
-        max-width: 1300px;
-        margin: auto;
-      }
-
-      /* LEFT */
-
-      .hero-left {
-        max-width: 600px;
-      }
-
-      .hero-badge {
-        display: inline-block;
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        padding: 8px 20px;
-        border-radius: 30px;
-        margin-bottom: 20px;
-      }
-
-      .hero-left h1 {
-        font-size: 50px;
-        line-height: 1.2;
-        margin-bottom: 20px;
-      }
-
-      .hero-left span {
-        color: #00c2ff;
-      }
-
-      .hero-sub {
-        opacity: 0.9;
-        margin-bottom: 30px;
-      }
-
-      /* VALUE CARDS */
-
-      .value-cards {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 30px;
-      }
-
-      .value-card {
-        background: rgba(255, 255, 255, 0.07);
-        padding: 14px 16px;
-        border-radius: 10px;
-        font-size: 16px;
-        letter-spacing: 1.2px;
-      }
-
-      .value-card span {
-        display: block;
-        opacity: 0.7;
-        font-size: 14px;
-        margin-top: 4px;
-        letter-spacing: normal;
-        margin-left: 26px;
-      }
-
-      .highlight {
-        border-left: 4px solid red;
-        background: rgba(255, 0, 0, 0.08);
-      }
-      .effect {
-        border-left: 4px solid rgb(0, 217, 255);
-        /* background: rgba(255, 0, 0, 0.08); */
-      }
-
-      /* PRICE */
-
-      .price-box {
-        font-size: 22px;
-        /* margin-bottom: 20px; */
-        background: #2c2c2e;
-        padding: 10px 10px;
-        margin: 0px 92px 21px 0px;
-        border-radius: 14px;
-        text-align: center;
-        border: 3px solid #ffffff26;
-      }
-
-      .price-box .old {
-        text-decoration: line-through;
-        opacity: 0.5;
-        margin-right: 8px;
-      }
-
-      .price-box .new {
-        color: #00c2ff;
-        font-weight: bold;
-      }
-
-      /* TIMER */
-
-      .countdown {
-        display: flex;
-        gap: 14px;
-        margin-bottom: 30px;
-      }
-
-      .countdown div {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 12px 16px;
-        border-radius: 10px;
-        text-align: center;
-      }
-
-      .countdown span {
-        font-size: 20px;
-        font-weight: bold;
-        display: block;
-      }
-
-      /* BUTTONS */
-
-      .hero-buttons {
-        display: flex;
-        gap: 14px;
-      }
-
-      .btn-primary {
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        padding: 14px 26px;
-        border-radius: 10px;
-        text-decoration: none;
-        color: white;
-      }
-
-      .btn-outline {
-        border: 2px solid #00c2ff;
-        padding: 14px 26px;
-        border-radius: 10px;
-        color: #00c2ff;
-        text-decoration: none;
-      }
-
-      /* RIGHT */
-
-      .hero-right {
-        position: relative;
-      }
-
-      .trading-image {
-        width: 520px;
-        border-radius: 18px;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-        margin-top: -84px;
-      }
-
-      /* YOUTUBE */
-
-      .youtube-preview {
-        position: absolute;
-        bottom: -140px;
-        right: -43px;
-        width: 356px;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-      }
-
-      /* MEMBERS */
-
-      .members-card {
-        position: absolute;
-        top: -79px;
-        left: -30px;
-        background: rgb(0 0 0 / 74%);
-        padding: 10px 14px;
-        border-radius: 10px;
-        font-size: 14px;
-        color: #00c2ff;
-      }
-
-      /* MOBILE */
-
-      @media (max-width: 900px) {
-        .hero-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .hero-buttons {
-          justify-content: center;
-        }
-
-        .countdown {
-          justify-content: center;
-        }
-
-        .trading-image {
-          width: 100%;
-        }
-
-        .youtube-preview {
-          position: relative;
-          bottom: auto;
-          right: auto;
-          margin-top: 20px;
-          width: 100%;
-        }
-      }
-    </style>
-
-    <script>
-      const endDate = new Date();
-      endDate.setDate(endDate.getDate() + 7);
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = endDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((distance / (1000 * 60)) % 60);
-        const seconds = Math.floor((distance / 1000) % 60);
-
-        document.getElementById("days").innerText = days;
-        document.getElementById("hours").innerText = hours;
-        document.getElementById("minutes").innerText = minutes;
-        document.getElementById("seconds").innerText = seconds;
-      }
-
-      setInterval(updateCountdown, 1000);
-    </script>
-
+          // initial call
+          updateCountdown();
+          // update every second
+          setInterval(updateCountdown, 1000);
+        </script>
+      </body>
+    </html>
     <!-- ========== END  ========== -->
 
     <!-- =======Right Choicse Section ======  -->
@@ -1286,7 +1859,7 @@
     <!-- =======Right Choicse Section END ======  -->
 
     <!-- ====== Key Considerations Section ======  -->
-    <section class="bt-key-section">
+    <!-- <section class="bt-key-section">
       <h2 class="bt-title">What Matters the Most :</h2>
 
       <div class="bt-key-grid">
@@ -1497,7 +2070,7 @@
           grid-template-columns: 1fr;
         }
       }
-    </style>
+    </style> -->
     <!-- ====== Key Considerations Section END ======  -->
 
     <!-- =========== Youtube Section ========= -->

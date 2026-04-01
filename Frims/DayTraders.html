@@ -863,668 +863,970 @@
     <!-- ================= HEADER END ================= -->
 
     <!-- =========About DAYTRAder=======  -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <title>Day Traders | Prop Firm Profile</title>
+        <!-- Google Fonts + DM Mono & Sans -->
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+        <!-- Font Awesome 6 (free icons, no emojis) -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-    <section class="firm-profile">
-      <div class="firm-container">
-        <!-- LEFT INFO -->
-        <div class="firm-left">
-          <div class="firm-logo">
-            <a
-              href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
-              target="_blank"
-              ><img
-                src="https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg"
-                alt="Day Traders Logo"
-            /></a>
-          </div>
+          body {
+            background: #030712;
+          }
 
-          <div class="firm-details">
-            <h1>Day Traders</h1>
-            <div class="likes">♡ 23884</div>
+          /* ========== FIRM PROFILE SECTION ========== */
+          .firm-profile {
+            padding: 130px 10%;
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            color: #fff;
+            font-family: "DM Sans", sans-serif;
+          }
 
-            <div class="firm-meta">
-              <div>
-                <span>CEO</span>
-                <strong>Leo Riot</strong>
+          .firm-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            flex-wrap: wrap;
+          }
+
+          /* LEFT SIDE */
+          .firm-left {
+            display: flex;
+            gap: 25px;
+            flex: 1.5;
+            min-width: 280px;
+          }
+
+          .firm-logo {
+            background: #000000;
+            padding: 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 124px;
+            margin-top: 9px;
+          }
+
+          .firm-logo img {
+            width: 90px;
+          }
+
+          .firm-details h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+          }
+
+          .likes {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+          }
+          .likes i {
+            font-size: 1.1rem;
+            color: #ff4d4d;
+          }
+
+          .firm-meta {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            row-gap: 18px;
+          }
+          .firm-meta > div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+          .firm-meta i {
+            margin-right: 4px;
+            font-size: 13px;
+            width: 16px;
+            color: #9ca3af;
+          }
+          .firm-meta span {
+            font-size: 13px;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          }
+          .firm-meta strong {
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .firm-meta img {
+            width: 20px;
+            height: auto;
+            border-radius: 2px;
+          }
+
+          /* RIGHT SIDE RATING */
+          .firm-rating {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex: 1;
+            max-width: 420px;
+            padding: 13px 35px;
+            border: 2px solid rgba(0, 0, 0, 0.4);
+            border-radius: 33px;
+            background: #00000030;
+            backdrop-filter: blur(4px);
+          }
+
+          .rating-score {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+
+          .rating-score h2 {
+            font-size: 60px;
+            margin: 0;
+            font-weight: 700;
+          }
+
+          .rating-score .stars {
+            margin: 6px 0;
+            color: #ffd966;
+            letter-spacing: 2px;
+            font-size: 18px;
+          }
+          .rating-score .stars i {
+            margin: 0 1px;
+          }
+          .rating-score p {
+            margin: 0;
+            font-size: 13px;
+            color: #cbd5e1;
+          }
+
+          .rating-bars {
+            width: 260px;
+          }
+
+          .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+          }
+          .bar-row span:first-child {
+            min-width: 32px;
+          }
+          .bar-row span:last-child {
+            min-width: 28px;
+            text-align: right;
+          }
+          .bar {
+            flex: 1;
+            height: 6px;
+            background: #2d3a4e;
+            border-radius: 20px;
+            overflow: hidden;
+          }
+          .bar div {
+            height: 100%;
+            background: #00c2ff;
+            border-radius: 20px;
+          }
+
+          /* DISCOUNT CARD */
+          .discount-card {
+            margin-top: 60px;
+            background: #0f172a;
+            padding: 35px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            border: 1px solid #1f2937;
+            backdrop-filter: blur(4px);
+          }
+
+          .discount-badge {
+            background: linear-gradient(135deg, #44d2ef, #001fd0);
+            padding: 30px 44px;
+            border-radius: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+          }
+          .discount-badge i {
+            font-size: 34px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+          }
+
+          .discount-middle h3 {
+            margin-bottom: 8px;
+            font-size: 26px;
+            font-weight: 600;
+          }
+          .discount-middle .mini-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+          }
+          .discount-middle .mini-rating i {
+            color: #ffd966;
+            letter-spacing: 2px;
+          }
+          .discount-middle p {
+            color: #d1d5db;
+            margin-top: 10px;
+            font-size: 14px;
+          }
+
+          .firm-btn {
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            color: white;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            min-width: 210px;
+            text-align: center;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          }
+          .firm-btn i {
+            font-size: 1rem;
+          }
+          .firm-btn:hover {
+            transform: translateY(-3px);
+            background: white;
+            color: #0b0f2a;
+            border: 3px solid #00c2ff;
+          }
+
+          /* ========== MORE DETAILS (PRO SECTION) ========== */
+          .firm-pro-section {
+            padding: 100px 5%;
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            color: #fff;
+          }
+
+          .fps-container {
+            max-width: 1200px;
+            margin: auto;
+          }
+
+          /* Summary Card */
+          .fps-summary-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 0 40px rgba(0, 194, 255, 0.08);
+          }
+
+          .fps-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 12px;
+          }
+          .fps-summary-header h2 {
+            font-size: 28px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+          }
+          .fps-summary-header h2 i {
+            color: #00c2ff;
+            font-size: 28px;
+          }
+          .fps-badge {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .fps-badge i {
+            font-size: 12px;
+          }
+          .fps-summary-text {
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
+            color: #cbd5e1;
+          }
+
+          /* Accordion */
+          .fps-item {
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+          }
+          .fps-item:hover {
+            border: 1px solid rgba(0, 194, 255, 0.3);
+          }
+
+          .fps-title {
+            width: 100%;
+            padding: 22px 25px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: "DM Sans", sans-serif;
+            text-align: left;
+          }
+          .fps-title i:first-child {
+            margin-right: 12px;
+            color: #00c2ff;
+            width: 24px;
+          }
+          .fps-arrow {
+            transition: transform 0.3s ease;
+            font-size: 22px;
+            font-weight: 300;
+          }
+
+          .fps-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            padding: 0 25px;
+          }
+          .fps-content.active {
+            padding: 20px 25px 28px 25px;
+            max-height: 700px;
+          }
+
+          /* Grid layout */
+          .fps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 22px;
+          }
+          .fps-grid > div {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px 16px;
+            border-radius: 18px;
+            border-left: 2px solid #00c2ff;
+          }
+          .fps-grid strong {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+          }
+          .fps-grid strong i {
+            color: #00c2ff;
+            width: 18px;
+          }
+          .fps-grid p {
+            margin: 0;
+            font-size: 14px;
+            color: #cbd5e6;
+          }
+
+          /* Contracts grid */
+          .fps-contract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+          }
+          .fps-contract-grid div {
+            background: rgba(0, 194, 255, 0.08);
+            padding: 14px 12px;
+            border-radius: 14px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+          }
+          .fps-contract-grid span {
+            display: block;
+            color: #00c2ff;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          .fps-list {
+            font-family: "DM Sans", sans-serif;
+            color: #cbd5e1;
+            padding-left: 20px;
+            list-style-type: none;
+          }
+          .fps-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+          }
+          .fps-list li i {
+            color: #00c2ff;
+            font-size: 14px;
+            margin-top: 3px;
+            min-width: 18px;
+          }
+          .flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 10px 2px 6px;
+            border-radius: 30px;
+            margin: 0 4px;
+          }
+          .flag img {
+            width: 18px;
+            height: auto;
+            border-radius: 2px;
+          }
+
+          /* responsive */
+          @media (max-width: 992px) {
+            .firm-profile {
+              padding: 100px 6%;
+            }
+            .firm-container {
+              flex-direction: column;
+            }
+            .firm-rating {
+              justify-content: space-between;
+              max-width: 100%;
+            }
+            .discount-card {
+              flex-direction: column;
+              text-align: center;
+              align-items: center;
+            }
+            .discount-middle {
+              text-align: center;
+            }
+            .discount-badge {
+              white-space: normal;
+              padding: 20px 30px;
+            }
+          }
+
+          @media (max-width: 700px) {
+            .firm-left {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+            }
+            .firm-meta {
+              justify-content: center;
+            }
+            .firm-rating {
+              flex-direction: column;
+              align-items: center;
+              gap: 20px;
+              padding: 25px 20px;
+            }
+            .rating-bars {
+              width: 100%;
+            }
+            .fps-summary-card {
+              padding: 25px;
+            }
+            .fps-summary-header h2 {
+              font-size: 24px;
+            }
+            .fps-title {
+              padding: 18px 18px;
+            }
+            .fps-content.active {
+              padding: 16px 18px 22px;
+            }
+            .discount-badge {
+              font-size: 22px;
+              padding: 18px 25px;
+            }
+            .firm-btn {
+              min-width: 180px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .firm-profile {
+              padding: 80px 5%;
+            }
+            .firm-details h1 {
+              font-size: 28px;
+            }
+            .rating-score h2 {
+              font-size: 48px;
+            }
+          }
+
+          .copied {
+            background: #22c55e !important;
+            border-color: #15803d !important;
+          }
+        </style>
+      </head>
+      <body>
+        <!-- ========= ABOUT DAYTRADER =======  -->
+        <section class="firm-profile">
+          <div class="firm-container">
+            <!-- LEFT INFO -->
+            <div class="firm-left">
+              <div class="firm-logo">
+                <a
+                  href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
+                  target="_blank"
+                >
+                  <img
+                    src="https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg"
+                    alt="Day Traders Logo"
+                  />
+                </a>
               </div>
-              <div>
-                <span>Country</span>
-                <strong><img src="https://flagcdn.com/w80/us.png" /> US</strong>
-              </div>
-              <div>
-                <span>Trust Pilot</span>
-                <strong>4.6</strong>
-              </div>
-              <div>
-                <span>Date Created</span>
-                <strong>Jun 2023</strong>
-              </div>
-              <div>
-                <span>Years in Operation</span>
-                <strong>3</strong>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- RIGHT RATING -->
-        <div class="firm-rating">
-          <div class="rating-score">
-            <h2>4.6</h2>
-            <div class="stars">★★★★★</div>
-            <p>192 total reviews</p>
-          </div>
+              <div class="firm-details">
+                <h1>Day Traders</h1>
+                <div class="likes"><i class="fas fa-heart"></i> 23884</div>
 
-          <div class="rating-bars">
-            <div class="bar-row">
-              <span>5★</span>
-              <div class="bar"><div style="width: 80%"></div></div>
-              <span>29</span>
-            </div>
-            <div class="bar-row">
-              <span>4★</span>
-              <div class="bar"><div style="width: 70%"></div></div>
-              <span>38</span>
-            </div>
-            <div class="bar-row">
-              <span>3★</span>
-              <div class="bar"><div style="width: 30%"></div></div>
-              <span>15</span>
-            </div>
-            <div class="bar-row">
-              <span>2★</span>
-              <div class="bar"><div style="width: 15%"></div></div>
-              <span>4</span>
-            </div>
-            <div class="bar-row">
-              <span>1★</span>
-              <div class="bar"><div style="width: 10%"></div></div>
-              <span>6</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DISCOUNT CARD -->
-      <div class="discount-card">
-        <div class="discount-left">
-          <div class="discount-badge">🔥 90% OFF</div>
-        </div>
-
-        <div class="discount-middle">
-          <h3>Day Traders</h3>
-          <div class="mini-rating">4.6 ★★★★★ (192)</div>
-          <p>90% off (Limited Period Offer) - on all evaluations & Account</p>
-        </div>
-
-        <div class="discount-right">
-          <button class="firm-btn" data-code="BROTRADING">
-            Code : BROTRADING
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      .firm-profile {
-        padding: 130px 10%;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #fff;
-        font-family: "DM Sans", sans-serif;
-      }
-
-      .firm-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 60px;
-        flex-wrap: wrap;
-      }
-
-      /* LEFT SIDE */
-      .firm-left {
-        display: flex;
-        gap: 25px;
-        flex: 1.5;
-        min-width: 300px;
-      }
-
-      .firm-logo {
-        background: #000000;
-        padding: 25px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 124px;
-        margin-top: 9px;
-      }
-
-      .firm-logo img {
-        width: 90px;
-      }
-
-      .firm-details h1 {
-        /* font-family: "DM Mono", monospace; */
-        font-size: 36px;
-        margin-bottom: 8px;
-      }
-
-      .likes {
-        color: #ff4d4d;
-        margin-bottom: 20px;
-      }
-
-      .firm-meta {
-        display: flex;
-        gap: 40px;
-        flex-wrap: wrap;
-      }
-      .firm-meta img {
-        width: 20px;
-        height: 13px;
-        padding-left: 0px;
-      }
-
-      .firm-meta span {
-        font-size: 13px;
-        color: #9ca3af;
-        display: block;
-      }
-
-      .firm-meta strong {
-        font-size: 15px;
-      }
-
-      /* RIGHT SIDE */
-      .firm-rating {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-        flex: 1;
-        max-width: 391px;
-        padding: 13px 35px;
-        border: 2px solid black;
-        border-radius: 33px;
-        background: #00000030;
-      }
-
-      .rating-score {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .rating-score h2 {
-        font-size: 60px;
-        /* font-family: "DM Mono", monospace; */
-        margin: 0;
-      }
-
-      .rating-score .stars {
-        margin: 6px 0;
-        color: #fff100;
-      }
-
-      .rating-score p {
-        margin: 0;
-      }
-
-      .rating-bars {
-        width: 250px;
-      }
-
-      .bar-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-        font-size: 13px;
-      }
-
-      .bar {
-        flex: 1;
-        height: 6px;
-        background: #333;
-        border-radius: 20px;
-        overflow: hidden;
-      }
-
-      .bar div {
-        height: 100%;
-        background: #00c2ff;
-      }
-
-      /* DISCOUNT CARD */
-      .discount-card {
-        margin-top: 60px;
-        background: #0f172a;
-        padding: 35px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 30px;
-        border: 1px solid #1f2937;
-      }
-
-      .discount-badge {
-        background: linear-gradient(135deg, #44d2ef, #001fd0);
-        padding: 40px 50px;
-        border-radius: 20px;
-        /* font-family: "DM Mono", monospace; */
-        font-size: 28px;
-      }
-
-      .discount-middle h3 {
-        /* font-family: "DM Mono", monospace; */
-        margin-bottom: 8px;
-      }
-
-      .discount-middle p {
-        color: #d1d5db;
-        margin-top: 8px;
-      }
-
-      .firm-btn {
-        padding: 14px 30px;
-        border-radius: 40px;
-        font-weight: 600;
-        /* font-family: "DM Mono", monospace; */
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        color: white;
-        border: 3px solid transparent;
-        cursor: pointer;
-        transition: 0.3s;
-        min-width: 190px; /* prevents movement */
-        text-align: center;
-        font-size: 16px;
-      }
-
-      .firm-btn:hover {
-        transform: translateY(-3px);
-        background: white;
-        color: #0b0f2a;
-        border: 3px solid #00c2ff;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 992px) {
-        .firm-container {
-          flex-direction: column;
-        }
-
-        .firm-rating {
-          justify-content: space-between;
-        }
-
-        .discount-card {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-    </style>
-    <script>
-      document.querySelectorAll(".firm-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          const code =
-            this.dataset.code || this.innerText.replace("Code : ", "");
-          navigator.clipboard.writeText(code);
-
-          this.classList.add("copied");
-          this.innerText = "Copied ✓";
-
-          setTimeout(() => {
-            this.classList.remove("copied");
-            this.innerText = "Code : " + code;
-          }, 2000);
-        });
-      });
-    </script>
-
-    <!-- =========About DAYtraders end=======  -->
-
-    <!-- ========= More details ======  -->
-    <section class="firm-pro-section">
-      <div class="fps-container">
-        <!-- AI SUMMARY -->
-        <div class="fps-summary-card">
-          <div class="fps-summary-header">
-            <h2>AI Summary</h2>
-            <span class="fps-badge">AI Generated</span>
-          </div>
-
-          <p class="fps-summary-text">
-            DayTraders is a futures prop trading firm offering a simple
-            evaluation model for traders who want access to funded futures
-            accounts. Traders can qualify for accounts ranging from $25,000 to
-            $300,000 while trading popular CME futures markets such as the
-            E-mini S&P 500, NASDAQ, and Crude Oil. The firm supports
-            professional trading platforms including Tradovate and Rithmic. With
-            flexible scaling, structured risk rules, and competitive profit
-            splits, DayTraders provides an accessible pathway for traders
-            looking to trade funded capital in the futures market.
-          </p>
-        </div>
-
-        <!-- ACCORDION GRID -->
-        <div class="fps-accordion">
-          <!-- ITEM -->
-          <div class="fps-item">
-            <button class="fps-title">
-              Firm Overview
-              <span class="fps-arrow">+</span>
-            </button>
-
-            <div class="fps-content">
-              <div class="fps-grid">
-                <div>
-                  <strong>Brokers</strong>
-                  <p>Tradovate, Rithmic</p>
+                <div class="firm-meta">
+                  <div>
+                    <span><i class="fas fa-user-tie"></i> CEO</span>
+                    <strong>Leo Riot</strong>
+                  </div>
+                  <div>
+                    <span><i class="fas fa-map-marker-alt"></i> Country</span>
+                    <strong
+                      ><img
+                        src="https://flagcdn.com/w80/us.png"
+                        alt="US flag"
+                      />
+                      US</strong
+                    >
+                  </div>
+                  <div>
+                    <span><i class="fab fa-trustpilot"></i> Trust Pilot</span>
+                    <strong>4.6</strong>
+                  </div>
+                  <div>
+                    <span
+                      ><i class="far fa-calendar-alt"></i> Date Created</span
+                    >
+                    <strong>Jun 2023</strong>
+                  </div>
+                  <div>
+                    <span
+                      ><i class="fas fa-chart-line"></i> Years in
+                      Operation</span
+                    >
+                    <strong>3</strong>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <div>
-                  <strong>Markets</strong>
-                  <p>Futures (CME Products)</p>
+            <!-- RIGHT RATING (icon stars) -->
+            <div class="firm-rating">
+              <div class="rating-score">
+                <h2>4.6</h2>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star-half-alt"></i>
                 </div>
+                <p>192 total reviews</p>
+              </div>
 
-                <div>
-                  <strong>Platforms</strong>
-                  <p>Tradovate, NinjaTrader, TradingView</p>
+              <div class="rating-bars">
+                <div class="bar-row">
+                  <span>5★</span>
+                  <div class="bar"><div style="width: 80%"></div></div>
+                  <span>29</span>
                 </div>
-
-                <div>
-                  <strong>Payment Methods</strong>
-                  <p>Credit Card, Debit Card</p>
+                <div class="bar-row">
+                  <span>4★</span>
+                  <div class="bar"><div style="width: 70%"></div></div>
+                  <span>38</span>
                 </div>
-
-                <div>
-                  <strong>Payout Method</strong>
-                  <p>Bank Transfer / ACH</p>
+                <div class="bar-row">
+                  <span>3★</span>
+                  <div class="bar"><div style="width: 30%"></div></div>
+                  <span>15</span>
                 </div>
-
-                <div>
-                  <strong>Account Sizes</strong>
-                  <p>$25K – $300K</p>
+                <div class="bar-row">
+                  <span>2★</span>
+                  <div class="bar"><div style="width: 15%"></div></div>
+                  <span>4</span>
+                </div>
+                <div class="bar-row">
+                  <span>1★</span>
+                  <div class="bar"><div style="width: 10%"></div></div>
+                  <span>6</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="fps-item">
-            <button class="fps-title">
-              Leverage & Contracts
-              <span class="fps-arrow">+</span>
-            </button>
+          <!-- DISCOUNT CARD with icon instead of emoji -->
+          <div class="discount-card">
+            <div class="discount-badge">
+              <i class="fas fa-fire-flame-curved"></i> 90% OFF
+            </div>
 
-            <div class="fps-content">
-              <div class="fps-contract-grid">
-                <div>$25K <span>4 Contracts</span></div>
-                <div>$50K <span>10 Contracts</span></div>
-                <div>$75K <span>12 Contracts</span></div>
-                <div>$100K <span>14 Contracts</span></div>
-                <div>$150K <span>17 Contracts</span></div>
-                <div>$250K <span>27 Contracts</span></div>
-                <div>$300K <span>35 Contracts</span></div>
+            <div class="discount-middle">
+              <h3>Day Traders</h3>
+              <div class="mini-rating">
+                <span>4.6</span>
+                <span
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                  ><i class="fas fa-star-half-alt"></i
+                ></span>
+                <span>(192)</span>
               </div>
+              <p>
+                90% off (Limited Period Offer) - on all evaluations & Account
+              </p>
+            </div>
+
+            <div class="discount-right">
+              <button class="firm-btn" data-code="BROTRADING">
+                <i class="fas fa-copy"></i> Code : BROTRADING
+              </button>
             </div>
           </div>
+        </section>
 
-          <div class="fps-item">
-            <button class="fps-title">
-              Trading Rules
-              <span class="fps-arrow">+</span>
-            </button>
-
-            <div class="fps-content">
-              <ul class="fps-list">
-                <li>Traders must follow the maximum trailing drawdown rule.</li>
-                <li>Consistency rule limits large single-day profits.</li>
-                <li>No account hedging across multiple accounts.</li>
-                <li>All trades must be closed before market close.</li>
-                <li>
-                  Risk management and position sizing consistency required.
-                </li>
-              </ul>
+        <!-- ========= More details ======  -->
+        <section class="firm-pro-section">
+          <div class="fps-container">
+            <!-- AI SUMMARY -->
+            <div class="fps-summary-card">
+              <div class="fps-summary-header">
+                <h2><i class="fas fa-robot"></i> AI Summary</h2>
+                <span class="fps-badge"
+                  ><i class="fas fa-microchip"></i> AI Generated</span
+                >
+              </div>
+              <p class="fps-summary-text">
+                DayTraders is a futures prop trading firm offering a simple
+                evaluation model for traders who want access to funded futures
+                accounts. Traders can qualify for accounts ranging from $25,000
+                to $300,000 while trading popular CME futures markets such as
+                the E-mini S&P 500, NASDAQ, and Crude Oil. The firm supports
+                professional trading platforms including Tradovate and Rithmic.
+                With flexible scaling, structured risk rules, and competitive
+                profit splits, DayTraders provides an accessible pathway for
+                traders looking to trade funded capital in the futures market.
+              </p>
             </div>
-          </div>
 
-          <div class="fps-item">
-            <button class="fps-title">
-              Payout Policy
-              <span class="fps-arrow">+</span>
-            </button>
+            <!-- ACCORDION GRID (all icons) -->
+            <div class="fps-accordion">
+              <!-- ITEM 1 -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span><i class="fas fa-building"></i> Firm Overview</span>
+                  <span class="fps-arrow"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="fps-content">
+                  <div class="fps-grid">
+                    <div>
+                      <strong
+                        ><i class="fas fa-chart-simple"></i> Brokers</strong
+                      >
+                      <p>Tradovate, Rithmic</p>
+                    </div>
+                    <div>
+                      <strong><i class="fas fa-chart-line"></i> Markets</strong>
+                      <p>Futures (CME Products)</p>
+                    </div>
+                    <div>
+                      <strong
+                        ><i class="fas fa-laptop-code"></i> Platforms</strong
+                      >
+                      <p>Tradovate, NinjaTrader, TradingView</p>
+                    </div>
+                    <div>
+                      <strong
+                        ><i class="fas fa-credit-card"></i> Payment
+                        Methods</strong
+                      >
+                      <p>Credit Card, Debit Card</p>
+                    </div>
+                    <div>
+                      <strong
+                        ><i class="fas fa-money-bill-wave"></i> Payout
+                        Method</strong
+                      >
+                      <p>Bank Transfer / ACH</p>
+                    </div>
+                    <div>
+                      <strong
+                        ><i class="fas fa-chart-pie"></i> Account Sizes</strong
+                      >
+                      <p>$25K – $300K</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <div class="fps-content">
-              <ul class="fps-list">
-                <li>Up to 90% profit split for funded traders.</li>
-                <li>
-                  First payouts available after meeting minimum trading days.
-                </li>
-                <li>Minimum payout request typically starts from $500.</li>
-                <li>
-                  Traders must follow consistency and risk rules to qualify.
-                </li>
-                <li>Regular payout cycles once requirements are met.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="fps-item">
-            <button class="fps-title">
-              Resricted Countries
-              <span class="fps-arrow">+</span>
-            </button>
-
-            <div class="fps-content">
-              <ul class="fps-list">
-                <li>
-                  <strong>Key Restrictions:</strong> This platform typically
-                  follows the restrictions of the brokers they connect with
-                  (like Tradovate or NinjaTrader). This usually means
-
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/ru.png" /> Russia</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/by.png" /> Belarus</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/ir.png" /> Iran</span
-                  >,
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/kp.png" /> North
-                    Korea</span
-                  >, and
-                  <span class="flag"
-                    ><img src="https://flagcdn.com/w20/cu.png" /> Cuba</span
+              <!-- ITEM 2 Leverage & Contracts -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span
+                    ><i class="fas fa-scale-balanced"></i> Leverage &
+                    Contracts</span
                   >
+                  <span class="fps-arrow"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="fps-content">
+                  <div class="fps-contract-grid">
+                    <div>$25K <span>4 Contracts</span></div>
+                    <div>$50K <span>10 Contracts</span></div>
+                    <div>$75K <span>12 Contracts</span></div>
+                    <div>$100K <span>14 Contracts</span></div>
+                    <div>$150K <span>17 Contracts</span></div>
+                    <div>$250K <span>27 Contracts</span></div>
+                    <div>$300K <span>35 Contracts</span></div>
+                  </div>
+                </div>
+              </div>
 
-                  are strictly barred.
-                </li>
-              </ul>
+              <!-- ITEM 3 Trading Rules -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span><i class="fas fa-gavel"></i> Trading Rules</span>
+                  <span class="fps-arrow"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="fps-content">
+                  <ul class="fps-list">
+                    <li>
+                      <i class="fas fa-arrow-right"></i> Traders must follow the
+                      maximum trailing drawdown rule.
+                    </li>
+                    <li>
+                      <i class="fas fa-arrow-right"></i> Consistency rule limits
+                      large single-day profits.
+                    </li>
+                    <li>
+                      <i class="fas fa-arrow-right"></i> No account hedging
+                      across multiple accounts.
+                    </li>
+                    <li>
+                      <i class="fas fa-arrow-right"></i> All trades must be
+                      closed before market close.
+                    </li>
+                    <li>
+                      <i class="fas fa-arrow-right"></i> Risk management and
+                      position sizing consistency required.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- ITEM 4 Payout Policy -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span><i class="fas fa-wallet"></i> Payout Policy</span>
+                  <span class="fps-arrow"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="fps-content">
+                  <ul class="fps-list">
+                    <li>
+                      <i class="fas fa-percent"></i> Up to 90% profit split for
+                      funded traders.
+                    </li>
+                    <li>
+                      <i class="fas fa-calendar-check"></i> First payouts
+                      available after meeting minimum trading days.
+                    </li>
+                    <li>
+                      <i class="fas fa-dollar-sign"></i> Minimum payout request
+                      typically starts from $500.
+                    </li>
+                    <li>
+                      <i class="fas fa-chart-line"></i> Traders must follow
+                      consistency and risk rules to qualify.
+                    </li>
+                    <li>
+                      <i class="fas fa-repeat"></i> Regular payout cycles once
+                      requirements are met.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- ITEM 5 Restricted Countries (flag icons + flagcdn) -->
+              <div class="fps-item">
+                <button class="fps-title">
+                  <span><i class="fas fa-globe"></i> Restricted Countries</span>
+                  <span class="fps-arrow"><i class="fas fa-plus"></i></span>
+                </button>
+                <div class="fps-content">
+                  <ul class="fps-list">
+                    <li>
+                      <i class="fas fa-ban"></i>
+                      <strong>Key Restrictions:</strong> This platform typically
+                      follows the restrictions of the brokers they connect with
+                      (like Tradovate or NinjaTrader). This usually means
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/ru.png" alt="RU" />
+                        Russia</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/by.png" alt="BY" />
+                        Belarus</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/ir.png" alt="IR" />
+                        Iran</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/kp.png" alt="KP" />
+                        North Korea</span
+                      >,
+                      <span class="flag"
+                        ><img src="https://flagcdn.com/w20/cu.png" alt="CU" />
+                        Cuba</span
+                      >
+                      are strictly barred.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-    <style>
-      .firm-pro-section {
-        padding: 100px 5%;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #fff;
-      }
+        </section>
 
-      .fps-container {
-        max-width: 1200px;
-        margin: auto;
-      }
+        <script>
+          // Discount button copy (icon update stays)
+          document.querySelectorAll(".firm-btn").forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const code =
+                this.dataset.code ||
+                this.innerText
+                  .replace(/Code\s*:\s*/i, "")
+                  .replace(/[^\w]/g, "");
+              navigator.clipboard.writeText(code);
+              const originalHTML = this.innerHTML;
+              this.innerHTML = '<i class="fas fa-check-circle"></i> Copied ✓';
+              this.classList.add("copied");
+              setTimeout(() => {
+                this.classList.remove("copied");
+                this.innerHTML = '<i class="fas fa-copy"></i> Code : ' + code;
+              }, 2000);
+            });
+          });
 
-      /* Summary Card */
-      .fps-summary-card {
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(0, 194, 255, 0.2);
-        border-radius: 20px;
-        padding: 40px;
-        margin-bottom: 60px;
-        box-shadow: 0 0 40px rgba(0, 194, 255, 0.08);
-      }
+          // Accordion functionality with plus/minus icon transform
+          document.querySelectorAll(".fps-title").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const content = btn.nextElementSibling;
+              const arrowSpan = btn.querySelector(".fps-arrow i");
+              const isActive = content.classList.contains("active");
 
-      .fps-summary-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-
-      .fps-summary-header h2 {
-        /* font-family: "DM Mono", monospace; */
-        font-size: 28px;
-      }
-
-      .fps-badge {
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        padding: 6px 14px;
-        border-radius: 30px;
-        font-size: 12px;
-        /* font-family: "DM Mono", monospace; */
-      }
-
-      .fps-summary-text {
-        font-family: "DM Sans", sans-serif;
-        line-height: 1.8;
-        color: #cbd5e1;
-      }
-      .flag {
-        display: inline-flex;
-        align-items: center;
-        margin-right: 6px;
-      }
-
-      .flag img {
-        width: 18px;
-        height: auto;
-        margin-right: 4px;
-        border-radius: 2px;
-        vertical-align: middle;
-      }
-
-      /* Accordion */
-      .fps-item {
-        margin-bottom: 20px;
-        border-radius: 16px;
-        overflow: hidden;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: 0.3s;
-      }
-
-      .fps-item:hover {
-        border: 1px solid rgba(0, 194, 255, 0.3);
-      }
-
-      .fps-title {
-        width: 100%;
-        padding: 22px 25px;
-        background: none;
-        border: none;
-        color: #fff;
-        /* font-family: "DM Mono", monospace; */
-        font-size: 16px;
-        display: flex;
-        justify-content: space-between;
-        cursor: pointer;
-      }
-
-      .fps-arrow {
-        transition: 0.3s;
-      }
-
-      .fps-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-        padding: 0 25px;
-      }
-
-      .fps-content.active {
-        padding: 20px 25px;
-        max-height: 500px;
-      }
-
-      /* Grid layout */
-      .fps-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-      }
-
-      .fps-grid strong {
-        /* font-family: "DM Mono", monospace; */
-      }
-
-      .fps-contract-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-      }
-
-      .fps-contract-grid div {
-        background: rgba(0, 194, 255, 0.08);
-        padding: 15px;
-        border-radius: 12px;
-        font-family: "DM Sans", sans-serif;
-      }
-
-      .fps-contract-grid span {
-        display: block;
-        color: #00c2ff;
-        margin-top: 5px;
-      }
-
-      .fps-list {
-        font-family: "DM Sans", sans-serif;
-        color: #cbd5e1;
-        padding-left: 18px;
-      }
-
-      .fps-list li {
-        margin-bottom: 10px;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .fps-summary-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 10px;
-        }
-      }
-    </style>
-    <script>
-      document.querySelectorAll(".fps-title").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const content = btn.nextElementSibling;
-          const arrow = btn.querySelector(".fps-arrow");
-
-          content.classList.toggle("active");
-          arrow.style.transform = content.classList.contains("active")
-            ? "rotate(45deg)"
-            : "rotate(0deg)";
-        });
-      });
-    </script>
+              if (!isActive) {
+                // close others (optional but clean)
+                document.querySelectorAll(".fps-content").forEach((c) => {
+                  if (c !== content && c.classList.contains("active")) {
+                    c.classList.remove("active");
+                    const otherBtn = c
+                      .closest(".fps-item")
+                      ?.querySelector(".fps-title .fps-arrow i");
+                    if (otherBtn) {
+                      otherBtn.className = "fas fa-plus";
+                    }
+                  }
+                });
+                content.classList.add("active");
+                if (arrowSpan) arrowSpan.className = "fas fa-minus";
+              } else {
+                content.classList.remove("active");
+                if (arrowSpan) arrowSpan.className = "fas fa-plus";
+              }
+            });
+          });
+          // ensure initial plus icons
+          document
+            .querySelectorAll(".fps-title .fps-arrow i")
+            .forEach((icon) => {
+              if (
+                !icon.classList.contains("fa-plus") &&
+                !icon.classList.contains("fa-minus")
+              ) {
+                icon.className = "fas fa-plus";
+              }
+            });
+          // set first active plus/minus sync for any pre-opened (none by default)
+        </script>
+      </body>
+    </html>
     <!-- ========= More details END ======  -->
 
     <!-- =========== Youtube Section ========= -->
@@ -1937,7 +2239,7 @@
         <!-- Left Logo -->
         <div class="apex-logo-box">
           <img
-            src="https://onlypropfirms.com/wp-content/uploads/2025/12/White-logo-no-background-scaled.png"
+            src="https://onlypropfirms.com/wp-content/uploads/2025/07/dt_logo3.svg"
             alt="Day Traders Logo"
           />
         </div>

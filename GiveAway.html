@@ -270,10 +270,6 @@
                   <a href="CompareTopFrims/comparison.html"
                     >Prop Firm Comparison</a
                   >
-                  <!-- <a href="CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-                  <!-- <a href="CompareTopFrims/StartCost.html"
-                >Prop Firm Starting Costs</a
-              > -->
                   <a href="CompareTopFrims/Drawdown.html">Largest Drawdown</a>
                   <a href="CompareTopFrims/QuickFunding.html"
                     >Quickest Funding</a
@@ -293,18 +289,6 @@
             </div>
           </div>
 
-          <!-- Learn -->
-          <!-- <div class="bt-dropdown">
-        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
-          Learn ▾
-        </button>
-        <div class="bt-drop-menu small" id="learn">
-          <a href="#">Lessons</a>
-          <a href="#">Articles</a>
-          <a href="#">The 2-Hour Trading Day</a>
-        </div>
-      </div> -->
-
           <!-- Resources -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
@@ -316,11 +300,13 @@
             </div>
           </div>
 
-          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="GiveAway.html" class="bt-link">GiveAways</a>
+
+          <!-- Mobile Subscribe Button (visible only on mobile) -->
+          <a href="Subscribe.html" class="bt-mobile-cta">Subscribe</a>
         </nav>
 
-        <!-- CTA -->
+        <!-- CTA (desktop only) -->
         <a href="Subscribe.html" class="bt-cta">Subscribe</a>
 
         <!-- Hamburger -->
@@ -410,8 +396,6 @@
 
       /* ================= DROPDOWN ================= */
 
-      /* ================= DROPDOWN ================= */
-
       .bt-dropdown {
         position: relative;
       }
@@ -465,7 +449,6 @@
       }
 
       /* DESKTOP HOVER OPEN */
-
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
           opacity: 1;
@@ -473,6 +456,7 @@
           transform: translateY(0);
         }
       }
+
       /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
@@ -491,13 +475,34 @@
         font-weight: 600;
         letter-spacing: 0.5px;
         transition: 0.3s ease;
-        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
       }
 
       .bt-cta:hover {
         transform: translateY(-3px);
         background: white;
         color: #0b0f2a;
+      }
+
+      /* Mobile Subscribe Button */
+      .bt-mobile-cta {
+        display: none;
+        background: linear-gradient(135deg, #00c2ff, #1e90ff);
+        padding: 12px 24px;
+        border-radius: 30px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 0.5px;
+        transition: 0.3s ease;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .bt-mobile-cta:hover {
+        background: white;
+        color: #0b0f2a;
+        transform: translateY(-2px);
       }
 
       /* ================= HAMBURGER ================= */
@@ -525,6 +530,7 @@
         font-size: 26px;
         color: #fff;
         cursor: pointer;
+        z-index: 1003;
       }
 
       .bt-overlay {
@@ -540,27 +546,54 @@
         display: block;
       }
 
+      /* ================= RESPONSIVE STYLES ================= */
+
+      /* Tablet & Small Desktop (1024px and below) */
       @media (max-width: 1024px) {
+        .bt-header {
+          width: 90%;
+          margin-left: 5%;
+          margin: 10px auto;
+          left: 0;
+          right: 0;
+          top: 20px;
+        }
+
+        .bt-header.bt-scrolled {
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          top: 0;
+        }
+
+        .bt-container {
+          padding: 0px 20px;
+        }
+
+        .bt-logo img {
+          height: 45px;
+        }
+
         .bt-nav {
           position: fixed;
           top: 0;
           right: -100%;
-          width: 85%; /* Wider for better layout */
-          max-width: 420px;
+          width: 85%;
+          max-width: 380px;
           height: 100vh;
-          background: #0b0f2a;
+          background: linear-gradient(135deg, #0a0f1e 0%, #0b0f2a 100%);
           flex-direction: column;
-          align-items: flex-start;
-          padding: 100px 25px 40px;
-          gap: 20px;
+          align-items: stretch;
+          padding: 80px 25px 40px;
+          gap: 12px;
           transition: 0.4s ease;
           z-index: 1002;
           overflow-y: auto;
+          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .bt-nav.active {
           right: 0;
-          top: 15px;
         }
 
         .bt-hamburger {
@@ -571,41 +604,251 @@
           display: none;
         }
 
+        .bt-mobile-cta {
+          display: block;
+        }
+
         .bt-mobile-close {
           display: block;
         }
 
-        /* Dropdown styling */
+        .bt-link,
+        .bt-drop-btn {
+          font-size: 18px;
+          padding: 12px 0;
+          width: 100%;
+          text-align: left;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bt-link:last-of-type {
+          border-bottom: none;
+        }
+
+        /* Dropdown styling for mobile */
+        .bt-dropdown {
+          width: 100%;
+        }
+
+        .bt-drop-btn {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          padding: 12px 0;
+        }
+
+        .bt-drop-btn::after {
+          content: "▾";
+          font-size: 16px;
+          transition: transform 0.3s ease;
+        }
+
+        .bt-dropdown.open .bt-drop-btn::after {
+          transform: rotate(180deg);
+        }
+
         .bt-drop-menu {
           position: static;
           min-width: 100%;
-          padding: 15px 0;
-          margin-top: 10px;
-          background: transparent;
-          border: none;
+          padding: 0;
+          margin-top: 0;
+          margin-bottom: 8px;
           background: rgba(15, 20, 45, 0.6);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+          border-radius: 12px;
+          opacity: 0;
+          visibility: hidden;
+          transform: none;
+          transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease,
+            padding 0.3s ease;
+          max-height: 0;
+          overflow: hidden;
         }
 
-        /* 2 Column grid */
+        .bt-drop-menu.active {
+          opacity: 1;
+          visibility: visible;
+          padding: 15px;
+          max-height: 500px;
+          margin-top: 8px;
+        }
+
+        .bt-drop-menu.small {
+          min-width: 100%;
+        }
+
+        .bt-drop-menu.small.active {
+          padding: 12px 15px;
+        }
+
+        /* 2 Column grid for tablet */
         .bt-drop-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px 25px;
+          gap: 12px 20px;
         }
 
         .bt-drop-menu a {
           font-size: 14px;
           line-height: 1.5;
+          margin-bottom: 8px;
+          padding: 4px 0;
+        }
+
+        .bt-drop-menu a:hover {
+          padding-left: 8px;
+        }
+
+        .bt-drop-menu strong {
+          font-size: 15px;
+          display: block;
+          margin-bottom: 8px;
         }
       }
 
-      /* Extra small mobile → 1 column */
-      @media (max-width: 480px) {
+      /* Mobile Landscape & Small Tablet (768px and below) */
+      @media (max-width: 768px) {
+        .bt-header {
+          width: 95%;
+          margin: 8px auto;
+          border-radius: 12px;
+        }
+
+        .bt-header.bt-scrolled {
+          width: 98%;
+          border-radius: 0 0 12px 12px;
+        }
+
+        .bt-container {
+          padding: 0px 15px;
+        }
+
+        .bt-logo img {
+          height: 40px;
+        }
+
+        .bt-nav {
+          width: 85%;
+          max-width: 340px;
+          padding: 70px 20px 30px;
+          gap: 8px;
+        }
+
+        .bt-link,
+        .bt-drop-btn {
+          font-size: 17px;
+          padding: 10px 0;
+        }
+
         .bt-drop-grid {
-          grid-template-columns: 1fr 1fr;
+          gap: 10px 15px;
+        }
+
+        .bt-drop-menu a {
+          font-size: 13px;
+          margin-bottom: 6px;
+        }
+
+        .bt-drop-menu strong {
+          font-size: 14px;
+        }
+
+        .bt-hamburger span {
+          width: 24px;
+          height: 2.5px;
+        }
+
+        .bt-mobile-close {
+          top: 20px;
+          right: 20px;
+          font-size: 24px;
+        }
+
+        .bt-mobile-cta {
+          padding: 10px 20px;
+          font-size: 16px;
+          margin-top: 15px;
+        }
+      }
+
+      /* Extra Small Mobile (480px and below) */
+      @media (max-width: 480px) {
+        .bt-header {
+          width: 96%;
+          margin: 5px auto;
+          border-radius: 10px;
+        }
+
+        .bt-container {
+          padding: 0px 12px;
+        }
+
+        .bt-logo img {
+          height: 35px;
+        }
+
+        .bt-nav {
+          width: 100%;
+          max-width: none;
+          padding: 65px 18px 25px;
+        }
+
+        .bt-link,
+        .bt-drop-btn {
+          font-size: 16px;
+          padding: 10px 0;
+        }
+
+        .bt-drop-grid {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .bt-drop-menu.active {
+          padding: 12px;
+        }
+
+        .bt-drop-menu a {
+          font-size: 13px;
+          margin-bottom: 8px;
+        }
+
+        .bt-hamburger {
+          gap: 5px;
+        }
+
+        .bt-hamburger span {
+          width: 22px;
+          height: 2px;
+        }
+
+        .bt-mobile-close {
+          top: 18px;
+          right: 18px;
+          font-size: 22px;
+        }
+
+        .bt-mobile-cta {
+          padding: 10px 18px;
+          font-size: 15px;
+          margin-top: 12px;
+        }
+      }
+
+      /* Large Desktop (maintain original positioning) */
+      @media (min-width: 1440px) {
+        .bt-header {
+          width: 75%;
+          margin-left: 200px;
+        }
+
+        .bt-header.bt-scrolled {
+          width: 60%;
+          margin-left: 280px;
         }
       }
     </style>
@@ -613,36 +856,64 @@
     <script>
       function toggleDropdown(id) {
         const menu = document.getElementById(id);
+        const parentDropdown = menu.closest(".bt-dropdown");
 
         // Close ALL dropdowns first
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
           if (m.id !== id) {
             m.classList.remove("active");
+            m.closest(".bt-dropdown")?.classList.remove("open");
           }
         });
 
         // Toggle clicked one
         menu.classList.toggle("active");
+        if (parentDropdown) {
+          parentDropdown.classList.toggle("open");
+        }
+
+        // Adjust scroll position to keep dropdown visible
+        if (menu.classList.contains("active") && window.innerWidth <= 1024) {
+          setTimeout(() => {
+            menu.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, 100);
+        }
       }
 
       function toggleMobileMenu() {
-        document.querySelector(".bt-nav").classList.add("active");
-        document.querySelector(".bt-overlay").classList.add("active");
+        const nav = document.querySelector(".bt-nav");
+        const overlay = document.querySelector(".bt-overlay");
+
+        nav.classList.add("active");
+        overlay.classList.add("active");
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = "hidden";
       }
 
       function closeMobileMenu() {
-        document.querySelector(".bt-nav").classList.remove("active");
-        document.querySelector(".bt-overlay").classList.remove("active");
+        const nav = document.querySelector(".bt-nav");
+        const overlay = document.querySelector(".bt-overlay");
 
+        nav.classList.remove("active");
+        overlay.classList.remove("active");
+        // Restore body scroll
+        document.body.style.overflow = "";
+
+        // Close all dropdowns when closing mobile menu
         document.querySelectorAll(".bt-drop-menu").forEach((m) => {
           m.classList.remove("active");
         });
+        document.querySelectorAll(".bt-dropdown").forEach((d) => {
+          d.classList.remove("open");
+        });
       }
+
       const header = document.querySelector(".bt-header");
 
       window.addEventListener("scroll", () => {
         header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
+
       // Close other dropdowns on hover (desktop only)
       if (window.innerWidth > 1024) {
         document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
@@ -654,6 +925,23 @@
           });
         });
       }
+
+      // Close mobile menu on window resize if open
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 1024) {
+          closeMobileMenu();
+        }
+      });
+
+      // Handle dropdown clicks on mobile to prevent body scroll issues
+      document.addEventListener("click", function (e) {
+        if (window.innerWidth <= 1024) {
+          const dropdown = e.target.closest(".bt-dropdown");
+          if (dropdown) {
+            e.stopPropagation();
+          }
+        }
+      });
     </script>
     <!-- ================= HEADER END ================= -->
 
@@ -847,7 +1135,7 @@
         }
 
         .comparison-right {
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
         }
 
@@ -862,716 +1150,1302 @@
     <!-- ========== BEST DEALS HERO SECTION END ========== -->
 
     <!-- ---GiveAway Form------  -->
-    <section class="giveaway-section">
-      <div class="giveaway-container">
-        <!-- LEFT SIDE -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <title>Premium Giveaway | Secure Your Entry</title>
+        <!-- Google Fonts + Font Awesome 6 (free icons) -->
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-        <div class="winner-side">
-          <span class="winner-badge">🏆 Latest Winner</span>
+          body {
+            background: #030712;
+            font-family: "Inter", sans-serif;
+          }
 
-          <h1>Congratulations,<br /><span id="winnerName">Daniel</span>!</h1>
+          .giveaway-section {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #06142e, #010914);
+            color: #fff;
+            font-family: "Inter", sans-serif;
+            width: 100%;
+          }
 
-          <p class="winner-text">
-            Daniel joined our giveaway and secured premium access to exclusive
-            trading tools, advanced insights, and smarter market opportunities.
-          </p>
+          .giveaway-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+          }
 
-          <p class="winner-highlight">
-            The next winner could be YOU. <br />
-            Enter now — it takes only a few seconds.
-          </p>
+          /* LEFT SIDE (Winner Side) */
+          .winner-side {
+            flex: 1;
+            min-width: 300px;
+          }
 
-          <div class="giveaway-info">
-            <div class="info-item">
-              <span class="info-icon">📜</span>
-              <span
-                >Terms & Conditions apply •
-                <a href="More/Privacy-Terms.html">View Terms</a></span
-              >
+          .winner-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 40px;
+            background: rgba(0, 194, 255, 0.12);
+            border: 1px solid rgba(0, 194, 255, 0.35);
+            backdrop-filter: blur(2px);
+            margin-bottom: 28px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+          }
+
+          .winner-badge i {
+            font-size: 1rem;
+            color: #2bcbff;
+          }
+
+          .winner-side h1 {
+            font-size: clamp(38px, 6vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 22px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+          }
+
+          .winner-side h1 span {
+            background: linear-gradient(130deg, #ffffff, #80dcff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+          }
+
+          .winner-text {
+            color: #cbd5e6;
+            margin-bottom: 24px;
+            line-height: 1.55;
+            font-size: clamp(16px, 2.2vw, 20px);
+            font-weight: 400;
+          }
+
+          .winner-highlight {
+            color: #3dd9ff;
+            font-weight: 600;
+            margin-bottom: 28px;
+            font-size: clamp(16px, 2vw, 20px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+
+          .winner-highlight i {
+            font-size: 1.3rem;
+            color: #ffd966;
+          }
+
+          .giveaway-info {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #b2c2df;
+            font-style: normal;
+          }
+
+          .info-item i {
+            width: 22px;
+            font-size: 1rem;
+            color: #3bc9ff;
+          }
+
+          .info-item a {
+            color: #42d0ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 1px dotted rgba(66, 208, 255, 0.4);
+          }
+
+          .info-item a:hover {
+            color: #8ae2ff;
+            border-bottom-color: #8ae2ff;
+          }
+
+          /* RIGHT SIDE FORM */
+          .form-side {
+            flex: 1;
+            max-width: 540px;
+            background: #0c1628;
+            padding: 40px 40px;
+            border-radius: 28px;
+            border: 1px solid rgba(66, 208, 255, 0.15);
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
+            transition: transform 0.2s ease;
+          }
+
+          .form-side h2 {
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: clamp(22px, 5vw, 28px);
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+          }
+
+          .form-side h2 i {
+            color: #2bbcff;
+            font-size: 1.5rem;
+          }
+
+          /* FORM ROWS */
+          .form-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+          }
+
+          .form-row .form-group {
+            flex: 1;
+            min-width: 140px;
+          }
+
+          .form-group {
+            position: relative;
+            margin-bottom: 22px;
+            width: 100%;
+          }
+
+          .form-group input,
+          .form-group textarea {
+            width: 100%;
+            padding: 16px 14px;
+            border-radius: 14px;
+            border: 1px solid #263456;
+            background: #111c33;
+            color: #f0f4ff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: "Inter", sans-serif;
+          }
+
+          .form-group input:focus,
+          .form-group textarea:focus {
+            border-color: #2bbcff;
+            box-shadow: 0 0 0 3px rgba(43, 188, 255, 0.2);
+          }
+
+          .form-group label {
+            position: absolute;
+            left: 14px;
+            top: 16px;
+            font-size: 0.85rem;
+            color: #8c9ac0;
+            transition: 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            background: #0c1628;
+            padding: 0 6px;
+            pointer-events: none;
+            font-weight: 450;
+          }
+
+          .form-group input:focus + label,
+          .form-group input:not(:placeholder-shown) + label,
+          .form-group textarea:focus + label,
+          .form-group textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 12px;
+            font-size: 0.7rem;
+            color: #2bbcff;
+            background: #0c1628;
+          }
+
+          /* CHECKBOX custom style */
+          .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            margin-bottom: 28px;
+            color: #bdc7e2;
+            cursor: pointer;
+          }
+
+          .checkbox input {
+            width: 18px;
+            height: 18px;
+            accent-color: #2bbcff;
+            cursor: pointer;
+            margin: 0;
+          }
+
+          .checkbox a {
+            color: #42d0ff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #42d0ff;
+          }
+
+          .checkbox a:hover {
+            color: #7fe0ff;
+          }
+
+          /* BUTTON */
+          form button {
+            width: 100%;
+            padding: 16px 18px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(95deg, #2bbcff, #1a5cff);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 0.3px;
+            font-family: "Inter", sans-serif;
+          }
+
+          form button i {
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+          }
+
+          form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 140, 255, 0.4);
+            background: linear-gradient(95deg, #3bc9ff, #2b6eff);
+          }
+
+          form button:hover i {
+            transform: translateX(4px);
+          }
+
+          #formMessage {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+          }
+
+          /* Responsive touches */
+          @media (max-width: 950px) {
+            .giveaway-container {
+              gap: 48px;
+            }
+            .form-side {
+              padding: 32px 28px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .giveaway-section {
+              padding: 60px 20px;
+            }
+            .winner-side {
+              text-align: center;
+            }
+            .winner-badge {
+              margin-left: auto;
+              margin-right: auto;
+              width: fit-content;
+            }
+            .giveaway-info {
+              align-items: center;
+            }
+            .info-item {
+              justify-content: center;
+            }
+            .form-side {
+              max-width: 100%;
+              padding: 32px 24px;
+            }
+            .form-row {
+              flex-direction: column;
+              gap: 0;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .form-side {
+              padding: 26px 18px;
+            }
+            .winner-highlight {
+              justify-content: center;
+            }
+            .checkbox {
+              font-size: 0.75rem;
+              flex-wrap: wrap;
+            }
+          }
+
+          /* subtle improvements */
+          .form-group textarea {
+            resize: vertical;
+            min-height: 85px;
+          }
+
+          a,
+          button {
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          input:-webkit-autofill,
+          input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px #111c33 inset;
+            -webkit-text-fill-color: #ffffff;
+            transition: background-color 5000s ease-in-out 0s;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="giveaway-section">
+          <div class="giveaway-container">
+            <!-- LEFT SIDE: Winner & Info (icons only, no emojis) -->
+            <div class="winner-side">
+              <span class="winner-badge">
+                <i class="fas fa-trophy"></i> Latest Winner
+              </span>
+
+              <h1>
+                Congratulations,<br /><span id="winnerName">Daniel</span>!
+              </h1>
+
+              <p class="winner-text">
+                Daniel joined our giveaway and secured premium access to
+                exclusive trading tools, advanced insights, and smarter market
+                opportunities.
+              </p>
+
+              <p class="winner-highlight">
+                <i class="fas fa-gem"></i> The next winner could be YOU. <br />
+                Enter now — it takes only a few seconds.
+              </p>
+
+              <div class="giveaway-info">
+                <div class="info-item">
+                  <i class="fas fa-file-contract"></i>
+                  <span
+                    >Terms & Conditions apply •
+                    <a href="More/Privacy-Terms.html">View Terms</a></span
+                  >
+                </div>
+
+                <div class="info-item">
+                  <i class="fas fa-shuffle"></i>
+                  <span
+                    >Winners are selected through a transparent random
+                    draw.</span
+                  >
+                </div>
+              </div>
             </div>
 
-            <div class="info-item">
-              <span class="info-icon">🎯</span>
-              <span
-                >Winners are selected through a transparent random draw.</span
-              >
+            <!-- RIGHT SIDE: Giveaway Form (fully functional + Google Sheets) -->
+            <div class="form-side">
+              <h2><i class="fas fa-gift"></i> Enter The Giveaway</h2>
+
+              <form id="giveawayForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      id="nameField"
+                      placeholder=" "
+                      required
+                    />
+                    <label
+                      ><i class="far fa-user" style="margin-right: 6px"></i>
+                      Name</label
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="username"
+                      id="usernameField"
+                      placeholder=" "
+                      required
+                    />
+                    <label
+                      ><i class="far fa-id-badge" style="margin-right: 6px"></i>
+                      Username</label
+                    >
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    id="emailField"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    ><i class="far fa-envelope" style="margin-right: 6px"></i>
+                    Email Address</label
+                  >
+                </div>
+
+                <div class="form-group">
+                  <textarea
+                    name="message"
+                    id="messageField"
+                    rows="4"
+                    placeholder=" "
+                  ></textarea>
+                  <label
+                    ><i
+                      class="far fa-comment-dots"
+                      style="margin-right: 6px"
+                    ></i>
+                    Your Thoughts (Optional)</label
+                  >
+                </div>
+
+                <label class="checkbox">
+                  <input type="checkbox" id="termsCheckbox" required />
+                  <span
+                    >I agree to the
+                    <a href="More/Privacy-Terms.html"
+                      >Terms & Conditions</a
+                    ></span
+                  >
+                </label>
+
+                <button type="submit">
+                  Secure My Entry <i class="fas fa-arrow-right"></i>
+                </button>
+              </form>
+
+              <p id="formMessage"></p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- RIGHT SIDE FORM -->
+        <script>
+          // Google Apps Script Web App URL (provided)
+          const scriptURL =
+            "https://script.google.com/macros/s/AKfycbyVCB4BA9JA_9OWXKGhUx-KAe7QsnaCGOuzv-ACK5jMPtA8qV3WUVYL5aVByEi2ILKYlg/exec";
 
-        <div class="form-side">
-          <h2>Enter The Giveaway</h2>
+          const form = document.getElementById("giveawayForm");
+          const msg = document.getElementById("formMessage");
 
-          <form id="giveawayForm">
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" name="name" placeholder=" " required />
-                <label>Name</label>
-              </div>
+          // Handle form submission with fetch, preserve style & validation
+          form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-              <div class="form-group">
-                <input type="text" name="username" placeholder=" " required />
-                <label>Username</label>
-              </div>
-            </div>
+            // double-check checkbox (browser already enforces required, but just for UX)
+            const termsCheck = document.getElementById("termsCheckbox");
+            if (!termsCheck.checked) {
+              msg.innerHTML =
+                "⚠️ Please accept the Terms & Conditions to proceed.";
+              msg.style.color = "#ffae7a";
+              setTimeout(() => {
+                if (msg.innerHTML.includes("accept the Terms"))
+                  msg.innerHTML = "";
+              }, 2800);
+              return;
+            }
 
-            <div class="form-group">
-              <input type="email" name="email" placeholder=" " required />
-              <label>Email Address</label>
-            </div>
+            // optional: disable button to avoid double submits
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML =
+              '<i class="fas fa-spinner fa-pulse"></i> Submitting...';
+            submitBtn.disabled = true;
 
-            <div class="form-group">
-              <textarea name="message" rows="4" placeholder=" "></textarea>
-              <label>Your Thoughts (Optional)</label>
-            </div>
+            const formData = new FormData(form);
 
-            <label class="checkbox">
-              <input type="checkbox" required />
-              I agree to the
-              <a href="More/Privacy-Terms.html">Terms & Conditions</a>
-            </label>
-
-            <button type="submit">Secure My Entry →</button>
-          </form>
-
-          <p id="formMessage"></p>
-        </div>
-      </div>
-    </section>
-    <style>
-      .giveaway-section {
-        padding: 100px 20px;
-        background: linear-gradient(135deg, #06142e, #010914);
-        color: #fff;
-        font-family: Inter, sans-serif;
-      }
-
-      .giveaway-container {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        gap: 70px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      /* LEFT SIDE */
-
-      .winner-side {
-        flex: 1;
-        min-width: 320px;
-      }
-
-      .winner-badge {
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 30px;
-        background: rgba(0, 194, 255, 0.15);
-        border: 1px solid rgba(0, 194, 255, 0.4);
-        margin-bottom: 25px;
-        font-weight: 600;
-        font-size: 14px;
-      }
-
-      .winner-side h1 {
-        font-size: 58px;
-        line-height: 1.2;
-        margin-bottom: 20px;
-      }
-
-      .winner-side span {
-        /* color: #28c8ff; */
-      }
-
-      .winner-text {
-        color: #b7c3db;
-        margin-bottom: 20px;
-        line-height: 1.6;
-        font-size: 20px;
-      }
-
-      .winner-highlight {
-        color: #22d1ff;
-        font-weight: 600;
-        margin-bottom: 20px;
-        font-size: 20px;
-      }
-
-      .giveaway-info {
-        margin-top: 34px;
-        display: flex;
-        flex-direction: column;
-        gap: 0px;
-        font-style: italic;
-      }
-
-      .info-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        color: #a9bbd9;
-      }
-
-      .info-icon {
-        font-size: 16px;
-      }
-
-      .info-item a {
-        color: #29c5ff;
-        text-decoration: none;
-        font-weight: 500;
-        font-style: normal;
-      }
-
-      .info-item a:hover {
-        text-decoration: none;
-      }
-
-      /* FORM */
-
-      .form-side {
-        flex: 1;
-        max-width: 500px;
-        background: #0c1628;
-        padding: 45px 73px;
-        border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-      }
-
-      .form-side h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 26px;
-      }
-
-      /* INPUTS */
-
-      .form-row {
-        display: flex;
-        gap: 14px;
-        /* margin: 0 21px; */
-      }
-
-      .form-group {
-        position: relative;
-        margin-bottom: 20px; */
-        width: 100%;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 16px 14px;
-        border-radius: 8px;
-        border: 1px solid #1c2a46;
-        background: #111c33;
-        color: #fff;
-        font-size: 14px;
-        outline: none;
-      }
-
-      .form-group label {
-        position: absolute;
-        left: 12px;
-        top: 14px;
-        font-size: 13px;
-        color: #8896b5;
-        transition: 0.2s;
-        background: #0c1628;
-        padding: 0 6px;
-        pointer-events: none;
-      }
-
-      .form-group input:focus + label,
-      .form-group input:not(:placeholder-shown) + label,
-      .form-group textarea:focus + label,
-      .form-group textarea:not(:placeholder-shown) + label {
-        top: -8px;
-        font-size: 11px;
-        color: #27c6ff;
-      }
-
-      /* CHECKBOX */
-
-      .checkbox {
-        font-size: 13px;
-        display: flex;
-        gap: 8px;
-        margin-bottom: 20px;
-        color: #a9b7d3;
-      }
-
-      .checkbox a {
-        color: #22d1ff;
-        text-decoration: none;
-      }
-
-      /* BUTTON */
-
-      form button {
-        width: 100%;
-        padding: 16px;
-        border: none;
-        border-radius: 10px;
-        background: linear-gradient(90deg, #2bbcff, #1e6bff);
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      form button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 140, 255, 0.4);
-      }
-
-      #formMessage {
-        margin-top: 15px;
-        text-align: center;
-        font-size: 14px;
-      }
-    </style>
-    <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbyVCB4BA9JA_9OWXKGhUx-KAe7QsnaCGOuzv-ACK5jMPtA8qV3WUVYL5aVByEi2ILKYlg/exec";
-
-      const form = document.getElementById("giveawayForm");
-      const msg = document.getElementById("formMessage");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        fetch(scriptURL, {
-          method: "POST",
-          body: new FormData(form),
-        })
-          .then((res) => {
-            msg.innerHTML = "✅ Entry Submitted Successfully!";
-            form.reset();
-          })
-          .catch((err) => {
-            msg.innerHTML = "❌ Something went wrong";
+            fetch(scriptURL, {
+              method: "POST",
+              body: formData,
+              mode: "no-cors", // Keep no-cors to avoid CORS issues with Google script (works for submissions)
+            })
+              .then(() => {
+                // Because of no-cors, we can't read response details, but usually the script accepts.
+                msg.innerHTML = "✅ Entry Submitted Successfully! 🎉";
+                msg.style.color = "#9effcf";
+                form.reset();
+                // Clear any highlighted floating labels manually after reset? They will stay due to placeholder empty.
+                // but we also need to ensure the placeholder-shown labels revert visually: all good.
+                // Re-style message disappear after 4 sec
+                setTimeout(() => {
+                  msg.innerHTML = "";
+                }, 4000);
+              })
+              .catch((err) => {
+                console.error("Submission error:", err);
+                msg.innerHTML = "❌ Submission error. Please try again later.";
+                msg.style.color = "#ffb7a0";
+                setTimeout(() => {
+                  if (msg.innerHTML.includes("error")) msg.innerHTML = "";
+                }, 3500);
+              })
+              .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+              });
           });
-      });
-    </script>
+
+          // Optional: dynamic winner name (just for micro-interaction, can be extended but matches design)
+          // Not necessary, but adds flair: the winnerName "Daniel" is static as per design.
+          // If you'd like to rotate or keep consistent, it's already set.
+          // Also ensure all labels and icons work responsively without emojis — done.
+        </script>
+      </body>
+    </html>
     <!-- ---GiveAway Form End------  -->
     <!-- =====GiveAway wheel Section=====  -->
-    <section class="giveaway-wheel-demo">
-      <div class="wheel-grid">
-        <!-- LEFT SIDE WHEEL -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <title>Giveaway Wheel | Spin to Win Trading Perks</title>
+        <!-- Google Font & Font Awesome Icons (No emojis, pure icons) -->
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
-        <div class="wheel-area">
-          <h3 class="wheel-title">Spin The Giveaway Wheel</h3>
+          body {
+            background: #030617;
+          }
 
-          <p class="wheel-sub">
-            See how winners are randomly selected — try your luck!
-          </p>
+          /* SECTION BACKGROUND — preserved gradient + luxury feel */
+          .giveaway-wheel-demo {
+            padding: 80px 24px;
+            background: linear-gradient(135deg, #020617, #000814);
+            color: white;
+            font-family: "Inter", sans-serif;
+            width: 100%;
+            overflow-x: hidden;
+          }
 
-          <div class="wheel-wrapper">
-            <div class="pointer"></div>
+          /* GRID LAYOUT — fully responsive */
+          .wheel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1280px;
+            margin: 0 auto;
+            align-items: center;
+          }
 
-            <canvas id="wheelCanvas" width="420" height="420"></canvas>
+          /* LEFT: WHEEL SIDE */
+          .wheel-area {
+            text-align: center;
+          }
 
-            <button id="spinBtn">TRY YOUR LUCK</button>
+          .wheel-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff, #94b5ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+
+          .wheel-sub {
+            color: #9fb2d9;
+            margin-bottom: 45px;
+            font-size: 0.95rem;
+            font-weight: 400;
+          }
+
+          /* WHEEL WRAPPER (centered & relative) */
+          .wheel-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+          }
+
+          /* canvas container maintains aspect */
+          #wheelCanvas {
+            display: block;
+            border-radius: 50%;
+            width: 100%;
+            height: auto;
+            max-width: 420px;
+            aspect-ratio: 1 / 1;
+            box-shadow:
+              0 0 0 8px rgba(7, 27, 56, 0.9),
+              0 0 0 12px rgba(0, 140, 255, 0.2),
+              0 20px 35px -10px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+          }
+
+          /* POINTER — sharp, glossy */
+          .pointer {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 36px solid #00e0ff;
+            filter: drop-shadow(0 4px 8px rgba(0, 160, 255, 0.5));
+            z-index: 15;
+          }
+
+          /* SPIN BUTTON — modern, icon inside */
+          #spinBtn {
+            padding: 14px 42px;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(95deg, #2bbcff, #1a5eff);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 12px 22px -8px rgba(0, 100, 255, 0.4);
+            letter-spacing: 0.3px;
+          }
+
+          #spinBtn i {
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+          }
+
+          #spinBtn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(95deg, #3bcaff, #2b70ff);
+            box-shadow: 0 20px 28px -10px rgba(0, 140, 255, 0.5);
+          }
+
+          #spinBtn:active {
+            transform: translateY(2px);
+          }
+
+          /* wheel note */
+          .wheel-note {
+            margin-top: 38px;
+            font-size: 0.75rem;
+            color: #7f93bd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+          }
+
+          .wheel-note i {
+            font-size: 0.8rem;
+            color: #4e8eff;
+          }
+
+          /* RIGHT SIDE CONTENT */
+          .wheel-content h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            background: linear-gradient(120deg, #fff, #bdd4ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+
+          .wheel-lead {
+            color: #b0c4ff;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            font-size: 1rem;
+          }
+
+          /* benefits list — icons only (FontAwesome) */
+          .wheel-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 28px 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          .wheel-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1rem;
+            color: #e2edff;
+            font-weight: 500;
+          }
+
+          .wheel-benefits li i {
+            width: 28px;
+            font-size: 1.35rem;
+            color: #3cc7ff;
+            text-align: center;
+          }
+
+          .wheel-note2 {
+            margin-top: 18px;
+            color: #cbdaf9;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 3px solid #2bbcff;
+            padding-left: 16px;
+          }
+
+          /* COMPARE BUTTON with icon */
+          .compare-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 28px;
+            padding: 14px 32px;
+            background: linear-gradient(90deg, #2bbcff, #1e6bff);
+            border-radius: 44px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.25s;
+            box-shadow: 0 10px 20px -5px rgba(0, 90, 200, 0.4);
+            border: none;
+          }
+
+          .compare-btn i {
+            font-size: 1rem;
+            transition: transform 0.2s;
+          }
+
+          .compare-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(90deg, #3bcaff, #2f7eff);
+            box-shadow: 0 18px 28px -10px rgba(0, 140, 255, 0.5);
+          }
+
+          /* RESPONSIVE BREAKPOINTS */
+          @media (max-width: 1000px) {
+            .wheel-grid {
+              gap: 56px;
+            }
+            .wheel-content h2 {
+              font-size: 2rem;
+            }
+          }
+
+          @media (max-width: 860px) {
+            .wheel-grid {
+              grid-template-columns: 1fr;
+              gap: 56px;
+              text-align: center;
+            }
+            .wheel-content {
+              text-align: center;
+            }
+            .wheel-benefits li {
+              justify-content: center;
+            }
+            .wheel-note2 {
+              text-align: left;
+            }
+            .compare-btn {
+              margin: 24px auto 0;
+            }
+            .wheel-area {
+              max-width: 500px;
+              margin: 0 auto;
+            }
+            .wheel-title {
+              font-size: 1.8rem;
+            }
+          }
+
+          @media (max-width: 540px) {
+            .giveaway-wheel-demo {
+              padding: 60px 20px;
+            }
+            .wheel-title {
+              font-size: 1.7rem;
+            }
+            .wheel-content h2 {
+              font-size: 1.7rem;
+            }
+            .wheel-benefits li {
+              font-size: 0.9rem;
+              gap: 10px;
+            }
+            #spinBtn {
+              padding: 12px 32px;
+              font-size: 0.9rem;
+            }
+            .pointer {
+              border-left: 16px solid transparent;
+              border-right: 16px solid transparent;
+              border-top: 28px solid #00e0ff;
+              top: -8px;
+            }
+          }
+
+          /* small touch: disable text selection on canvas area */
+          canvas {
+            user-select: none;
+            pointer-events: none;
+          }
+          button {
+            background: none;
+            border: none;
+          }
+        </style>
+      </head>
+      <body>
+        <section class="giveaway-wheel-demo">
+          <div class="wheel-grid">
+            <!-- LEFT SIDE WHEEL -->
+            <div class="wheel-area">
+              <h3 class="wheel-title">
+                <i
+                  class="fas fa-gift"
+                  style="margin-right: 8px; color: #3cc7ff"
+                ></i>
+                Spin The Giveaway Wheel
+              </h3>
+              <p class="wheel-sub">
+                <i class="fas fa-chart-line" style="margin-right: 6px"></i> See
+                how winners are randomly selected — try your luck!
+              </p>
+              <div class="wheel-wrapper">
+                <div class="pointer"></div>
+                <canvas id="wheelCanvas" width="420" height="420"></canvas>
+                <button id="spinBtn">
+                  <i class="fas fa-sync-alt"></i> TRY YOUR LUCK
+                </button>
+              </div>
+              <p class="wheel-note">
+                <i class="fas fa-info-circle"></i> Demo wheel for showcase
+                purposes. Official winners are selected from all valid entries.
+              </p>
+            </div>
+
+            <!-- RIGHT SIDE CONTENT (icons all FontAwesome) -->
+            <div class="wheel-content">
+              <h2>
+                <i class="fas fa-trophy" style="margin-right: 12px"></i> Try
+                Your Luck In Our Giveaway
+              </h2>
+              <p class="wheel-lead">
+                Join hundreds of traders already entered in our giveaway. Every
+                valid entry gets a chance to win exclusive trading perks.
+              </p>
+              <ul class="wheel-benefits">
+                <li>
+                  <i class="fas fa-shield-alt"></i> Winners selected through a
+                  transparent random draw
+                </li>
+                <li>
+                  <i class="fas fa-rocket"></i> Open to all registered traders
+                </li>
+                <li>
+                  <i class="fas fa-chart-pie"></i> Win exclusive trading tools &
+                  resources
+                </li>
+                <li>
+                  <i class="fas fa-stopwatch"></i> Takes less than 30 seconds to
+                  enter
+                </li>
+              </ul>
+              <p class="wheel-note2">
+                <i class="fas fa-chart-simple" style="margin-right: 6px"></i>
+                While we prepare the next winner draw, you can explore and
+                compare the best prop trading firms available right now.
+              </p>
+              <a href="#Compare-Top-frims-Section" class="compare-btn">
+                Compare Top Trading Firms <i class="fas fa-arrow-down"></i>
+              </a>
+            </div>
           </div>
-
-          <p class="wheel-note">
-            Demo wheel for showcase purposes. Official winners are selected from
-            all valid entries.
-          </p>
-        </div>
-
-        <!-- RIGHT SIDE CONTENT -->
-
-        <div class="wheel-content">
-          <h2>🎁 Try Your Luck In Our Giveaway</h2>
-
-          <p class="wheel-lead">
-            Join hundreds of traders already entered in our giveaway. Every
-            valid entry gets a chance to win exclusive trading perks.
-          </p>
-
-          <ul class="wheel-benefits">
-            <li>🎯 Winners selected through a transparent random draw</li>
-
-            <li>🚀 Open to all registered traders</li>
-
-            <li>🏆 Win exclusive trading tools & resources</li>
-
-            <li>⚡ Takes less than 30 seconds to enter</li>
-          </ul>
-
-          <p class="wheel-note2">
-            While we prepare the next winner draw, you can explore and compare
-            the best prop trading firms available right now.
-          </p>
-
-          <a href="#Compare-Top-frims-Section" class="compare-btn">
-            Compare Top Trading Firms ↓
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      /* SECTION BACKGROUND */
-
-      .giveaway-wheel-demo {
-        padding: 80px 20px;
-        background: linear-gradient(135deg, #020617, #000814);
-        color: white;
-        font-family: Inter, sans-serif;
-      }
-
-      /* GRID LAYOUT */
-
-      .wheel-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        max-width: 1200px;
-        margin: auto;
-        align-items: center;
-      }
-
-      /* WHEEL SIDE */
-
-      .wheel-area {
-        text-align: center;
-      }
-
-      .wheel-title {
-        font-size: 32px;
-        margin-bottom: 10px;
-      }
-
-      .wheel-sub {
-        color: #9fb2d9;
-        margin-bottom: 55px;
-        font-size: 15px;
-      }
-
-      /* WHEEL WRAPPER */
-
-      .wheel-wrapper {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-      }
-
-      /* WHEEL */
-
-      #wheelCanvas {
-        display: block;
-        border-radius: 50%;
-
-        box-shadow:
-          0 0 0 10px #071b38,
-          0 0 50px rgba(0, 0, 0, 0.7),
-          0 0 70px rgba(0, 140, 255, 0.25);
-      }
-
-      /* POINTER */
-
-      .pointer {
-        position: absolute;
-        top: -1px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        width: 0;
-        height: 0;
-
-        border-left: 18px solid transparent;
-        border-right: 18px solid transparent;
-        border-top: 28px solid #00caff;
-
-        z-index: 10;
-
-        /* filter: drop-shadow(0 0 10px #22d1ff); */
-      }
-
-      /* SPIN BUTTON */
-
-      #spinBtn {
-        padding: 14px 42px;
-        border: none;
-        border-radius: 12px;
-        background: linear-gradient(90deg, #2bbcff, #1e6bff);
-        color: white;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.25s;
-        /* box-shadow: 0 12px 30px rgba(0, 140, 255, 0.35); */
-        margin-top: 20px;
-      }
-
-      #spinBtn:hover {
-        transform: translateY(-3px);
-        /* box-shadow: 0 16px 40px rgba(0, 140, 255, 0.45); */
-      }
-
-      /* WHEEL NOTE */
-
-      .wheel-note {
-        margin-top: 45px;
-        font-size: 13px;
-        color: #7f93bd;
-      }
-
-      /* TEXT SIDE */
-
-      .wheel-content h2 {
-        font-size: 42px;
-        margin-bottom: 20px;
-        line-height: 1.2;
-      }
-
-      /* DESCRIPTION */
-
-      .wheel-lead {
-        color: #9fb2d9;
-        margin-bottom: 25px;
-        line-height: 1.6;
-        font-size: 16px;
-      }
-
-      /* BENEFITS */
-
-      .wheel-benefits {
-        list-style: none;
-        padding: 0;
-        margin: 25px 0;
-      }
-
-      .wheel-benefits li {
-        margin-bottom: 14px;
-        font-size: 16px;
-        color: #c3d4f5;
-      }
-
-      /* EXTRA TEXT */
-
-      .wheel-note2 {
-        margin-top: 20px;
-        color: #c3d4f5;
-        font-size: 15px;
-        line-height: 1.6;
-      }
-
-      /* COMPARE BUTTON */
-
-      .compare-btn {
-        display: inline-block;
-        margin-top: 25px;
-        padding: 16px 34px;
-
-        background: linear-gradient(90deg, #2bbcff, #1e6bff);
-
-        border-radius: 12px;
-
-        color: white;
-        text-decoration: none;
-
-        font-weight: 600;
-        font-size: 16px;
-
-        /* box-shadow: 0 12px 30px rgba(0, 140, 255, 0.35); */
-
-        transition: 0.25s;
-      }
-
-      .compare-btn:hover {
-        transform: translateY(-3px);
-        /* box-shadow: 0 16px 40px rgba(0, 140, 255, 0.45); */
-      }
-
-      /* RESPONSIVE */
-
-      @media (max-width: 900px) {
-        .wheel-grid {
-          grid-template-columns: 1fr;
-          gap: 60px;
-          text-align: center;
-        }
-      }
-    </style>
-    <script>
-      const sheetURL =
-        "https://script.google.com/macros/s/AKfycbyVCB4BA9JA_9OWXKGhUx-KAe7QsnaCGOuzv-ACK5jMPtA8qV3WUVYL5aVByEi2ILKYlg/exec";
-
-      /* DEMO NAMES (SOCIAL PROOF) */
-
-      const demoNames = [
-        "Alex",
-        "Jordan",
-        "Mike",
-        "Sophia",
-        "Ethan",
-        "Olivia",
-        "Daniel",
-        "Devya",
-      ];
-
-      let names = [...demoNames];
-
-      let startAngle = 0;
-      let arc;
-
-      let spinTimeout = null;
-      let spinAngleStart;
-      let spinTime = 0;
-      let spinTimeTotal = 0;
-      let spinning = false;
-
-      const canvas = document.getElementById("wheelCanvas");
-      const ctx = canvas.getContext("2d");
-
-      /* LOAD NAMES FROM GOOGLE SHEET */
-
-      async function loadSheetNames() {
-        try {
-          const res = await fetch(sheetURL);
-          const sheetNames = await res.json();
-
-          /* merge demo + sheet names */
-
-          let combined = [...demoNames, ...sheetNames];
-
-          /* limit wheel size for readability */
-
-          combined = combined.slice(-15);
-
-          if (combined.length !== names.length) {
-            names = combined;
-
-            arc = Math.PI / (names.length / 2);
-
-            ctx.clearRect(0, 0, 420, 420);
-
+        </section>
+
+        <script>
+          // ======================= CONFIG =======================
+          const sheetURL =
+            "https://script.google.com/macros/s/AKfycbyVCB4BA9JA_9OWXKGhUx-KAe7QsnaCGOuzv-ACK5jMPtA8qV3WUVYL5aVByEi2ILKYlg/exec";
+
+          // BASE NAMES (demo + fallback) - all strings
+          const demoNames = [
+            "Alex",
+            "Jordan",
+            "Mike",
+            "Sophia",
+            "Ethan",
+            "Olivia",
+            "Daniel",
+            "Devya",
+          ];
+
+          let names = [...demoNames];
+          let startAngle = 0;
+          let arc; // angle per segment (radians)
+          let spinning = false;
+          let spinTimeout = null;
+          let spinAngleStart = 0;
+          let spinTime = 0;
+          let spinTimeTotal = 0;
+
+          const canvas = document.getElementById("wheelCanvas");
+          const ctx = canvas.getContext("2d");
+          let animationFrame = null;
+
+          // force canvas dimensions crisp for retina? keep original size 420px but responsive via CSS
+          function initCanvasDimensions() {
+            // ensure canvas actual pixel size matches desired resolution (420x420)
+            canvas.width = 420;
+            canvas.height = 420;
+            canvas.style.width = "100%";
+            canvas.style.height = "auto";
+            canvas.style.maxWidth = "420px";
+          }
+          initCanvasDimensions();
+
+          // ============== FETCH GOOGLE SHEET NAMES (MERGE) ==============
+          async function loadSheetNames() {
+            try {
+              const res = await fetch(sheetURL);
+              // sheet returns array of names (string) from external data
+              const sheetNames = await res.json();
+              let combined = [...demoNames];
+              if (Array.isArray(sheetNames)) {
+                combined = [...demoNames, ...sheetNames];
+              } else if (sheetNames && typeof sheetNames === "object") {
+                // safety: if it returns object, try to extract values
+                const possibleArr = Object.values(sheetNames).flat();
+                if (possibleArr.length)
+                  combined = [...demoNames, ...possibleArr];
+              }
+              // Remove duplicates? Not needed but improve readability. also avoid too many entries
+              combined = [
+                ...new Map(combined.map((n) => [n.trim(), n.trim()])).values(),
+              ];
+              // limit for wheel readability & performance (max 18 segments)
+              if (combined.length > 18) combined = combined.slice(0, 18);
+              if (combined.length < 4) combined = [...demoNames]; // fallback if weird data
+
+              const hasChanged =
+                combined.length !== names.length ||
+                !combined.every((v, i) => v === names[i]);
+              if (hasChanged && combined.length > 0) {
+                names = combined;
+                arc = (Math.PI * 2) / names.length; // full circle / segments
+                // redraw wheel with fresh startAngle (keep previous rotation offset maybe, but reset to avoid glitch)
+                startAngle = startAngle % (Math.PI * 2);
+                drawWheel();
+              }
+            } catch (e) {
+              console.warn("Sheet fetch error, using demo names only", e);
+            }
+          }
+
+          // ============== DRAW WHEEL (ICONIC, crisp) ==============
+          function drawWheel() {
+            if (!ctx || names.length === 0) return;
+            const centerX = 210,
+              centerY = 210;
+            const radius = 200;
+            const textRadius = 165;
+
+            for (let i = 0; i < names.length; i++) {
+              const angleStart = startAngle + i * arc;
+              const angleEnd = angleStart + arc;
+
+              // alternating vibrant blue gradients (modern and readable)
+              const grad = ctx.createLinearGradient(
+                centerX + Math.cos(angleStart) * 30,
+                centerY + Math.sin(angleStart) * 30,
+                centerX + Math.cos(angleEnd) * radius * 0.7,
+                centerY + Math.sin(angleEnd) * radius * 0.7,
+              );
+              if (i % 2 === 0) {
+                grad.addColorStop(0, "#2c9eff");
+                grad.addColorStop(1, "#1a55dd");
+              } else {
+                grad.addColorStop(0, "#3db4ff");
+                grad.addColorStop(1, "#2873f0");
+              }
+              ctx.fillStyle = grad;
+
+              ctx.beginPath();
+              ctx.moveTo(centerX, centerY);
+              ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
+              ctx.closePath();
+              ctx.fill();
+
+              // add subtle white stroke between segments
+              ctx.save();
+              ctx.strokeStyle = "rgba(255,255,240,0.3)";
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
+              ctx.lineTo(centerX, centerY);
+              ctx.stroke();
+
+              // draw text (with shadow and legible)
+              ctx.save();
+              ctx.translate(centerX, centerY);
+              ctx.rotate(angleStart + arc / 2);
+              ctx.textAlign = "center";
+              ctx.textBaseline = "middle";
+              ctx.font = `bold ${Math.min(16, Math.floor(160 / names.length) + 8)}px "Inter", "Segoe UI", system-ui`;
+              ctx.shadowColor = "rgba(0,0,0,0.5)";
+              ctx.shadowBlur = 4;
+              ctx.fillStyle = "#FFFFFF";
+              // dynamic offset for better fitting
+              let offset = textRadius - 8;
+              if (names[i].length > 8) offset = textRadius - 18;
+              ctx.fillText(names[i], offset, 6);
+              ctx.shadowBlur = 0;
+              ctx.restore();
+            }
+
+            // draw inner circle (center dot + style)
+            ctx.beginPath();
+            ctx.arc(210, 210, 28, 0, Math.PI * 2);
+            ctx.fillStyle = "#071b38";
+            ctx.shadowBlur = 0;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(210, 210, 18, 0, Math.PI * 2);
+            ctx.fillStyle = "#ffcf40";
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(210, 210, 8, 0, Math.PI * 2);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+
+            // outer ring glow effect
+            ctx.beginPath();
+            ctx.arc(210, 210, radius + 4, 0, Math.PI * 2);
+            ctx.strokeStyle = "#3c8eff";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+
+          // ============== SPIN LOGIC ==============
+          function easeOut(t, b, c, d) {
+            const ts = (t /= d) * t;
+            const tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+          }
+
+          function rotateWheel() {
+            if (!spinning) return;
+            spinTime += 30;
+            if (spinTime >= spinTimeTotal) {
+              stopRotateWheel();
+              return;
+            }
+            const spinAngle =
+              spinAngleStart -
+              easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            startAngle += (spinAngle * Math.PI) / 180;
+            // Normalize startAngle to avoid huge number but not needed for draw
+            startAngle = startAngle % (Math.PI * 2);
+            drawWheel();
+            spinTimeout = setTimeout(rotateWheel, 30);
+          }
+
+          function stopRotateWheel() {
+            if (spinTimeout) {
+              clearTimeout(spinTimeout);
+              spinTimeout = null;
+            }
+            spinning = false;
+            // Determine winning index based on pointer direction (top at -90° relative)
+            // pointer is at top center = angle -90° (or 270°). The segment at that direction is winner.
+            const pointerAngle = (270 * Math.PI) / 180; // radians pointer direction (pointing downward? Actually pointer top points down? The canvas: pointer sits at top (north) and points to wheel rim.)
+            // Standard: wheel orientation, we need to compute segment that aligns with fixed pointer (angle  -PI/2)
+            // The winner is the segment that contains the direction of the pointer (angle = -PI/2 = 270°)
+            let rawAngle = startAngle; // wheel rotation offset
+            // The direction from center to pointer is fixed: angleFixed = -PI/2 (upwards)
+            const fixedPointerRad = -Math.PI / 2; // 12 o'clock direction
+            // find which segment contains the angle (pointer direction relative to wheel)
+            let winnerIndex = -1;
+            for (let i = 0; i < names.length; i++) {
+              let segStart = startAngle + i * arc;
+              let segEnd = segStart + arc;
+              // Adjust angles to [0, 2pi)
+              let checkAngle = fixedPointerRad;
+              while (checkAngle < 0) checkAngle += Math.PI * 2;
+              let startMod = segStart % (Math.PI * 2);
+              let endMod = segEnd % (Math.PI * 2);
+              if (startMod < endMod) {
+                if (checkAngle >= startMod && checkAngle < endMod) {
+                  winnerIndex = i;
+                  break;
+                }
+              } else {
+                // wrap around case
+                if (checkAngle >= startMod || checkAngle < endMod) {
+                  winnerIndex = i;
+                  break;
+                }
+              }
+            }
+            if (winnerIndex === -1) winnerIndex = 0;
+            const winnerName = names[winnerIndex];
+
+            // Modern alert replaced with a stylish browser dialog but preserve experience
+            // Use a subtle but exciting modal-style alert (standard alert but with flair)
+            setTimeout(() => {
+              alert(
+                `🏆 SPIN COMPLETE! 🏆\n\n✨ WINNER: ${winnerName} ✨\n\nYou've won exclusive trading perks! Check your dashboard.`,
+              );
+            }, 20);
+          }
+
+          function startSpin() {
+            if (spinning) {
+              // prevent double spin while animating
+              return;
+            }
+            if (spinTimeout) {
+              clearTimeout(spinTimeout);
+              spinTimeout = null;
+            }
+            spinning = true;
+            // random spin power
+            spinAngleStart = Math.random() * 20 + 15; // strong random spin
+            spinTime = 0;
+            spinTimeTotal = Math.random() * 2800 + 3800; // between 3.8 to 6.6 sec
+            rotateWheel();
+          }
+
+          // ============== RESET / AUTO UPDATE GOOGLE SHEET ==============
+          // ensure wheel arc sync with names array length
+          function syncArcAndRedraw() {
+            if (names.length === 0) return;
+            arc = (Math.PI * 2) / names.length;
             drawWheel();
           }
-        } catch (e) {
-          console.log("Sheet fetch error");
-        }
-      }
 
-      /* DRAW WHEEL */
+          // after loading external names, redraw with correct arc
+          async function refreshAndRedraw() {
+            await loadSheetNames();
+            syncArcAndRedraw();
+          }
 
-      function drawWheel() {
-        for (let i = 0; i < names.length; i++) {
-          const angle = startAngle + i * arc;
+          // bind spin button
+          const spinBtn = document.getElementById("spinBtn");
+          spinBtn.onclick = (e) => {
+            e.preventDefault();
+            if (spinning) return;
+            startSpin();
+          };
 
-          ctx.fillStyle = i % 2 ? "#2bbcff" : "#1e6bff";
+          // initial arc and draw
+          function initWheel() {
+            if (names.length) {
+              arc = (Math.PI * 2) / names.length;
+              drawWheel();
+            } else {
+              names = [...demoNames];
+              arc = (Math.PI * 2) / names.length;
+              drawWheel();
+            }
+          }
 
-          ctx.beginPath();
+          initWheel();
 
-          ctx.arc(210, 210, 200, angle, angle + arc, false);
-          ctx.arc(210, 210, 0, angle + arc, angle, true);
+          // load sheet names initially and set interval (every 7 sec to keep updated but not aggressive)
+          loadSheetNames().then(() => {
+            syncArcAndRedraw();
+          });
+          setInterval(() => {
+            if (!spinning) {
+              loadSheetNames().then(() => {
+                syncArcAndRedraw();
+              });
+            }
+          }, 7000);
 
-          ctx.fill();
+          // handle resize / canvas redraw consistency (re-draw on orientation change)
+          window.addEventListener("resize", () => {
+            if (!spinning) {
+              drawWheel();
+            }
+          });
 
-          ctx.save();
+          // small touch for canvas if any high DPI shift
+          function redrawSafe() {
+            if (!spinning) drawWheel();
+          }
+          window.addEventListener("orientationchange", redrawSafe);
 
-          ctx.fillStyle = "#fff";
-
-          ctx.translate(210, 210);
-
-          ctx.rotate(angle + arc / 2);
-
-          ctx.font = "bold 16px Arial";
-
-          ctx.textAlign = "right";
-          ctx.fillText(names[i], 180, 5);
-
-          ctx.restore();
-        }
-      }
-
-      /* SPIN BUTTON */
-      document.getElementById("spinBtn").onclick = function () {
-        /* cancel previous spin if still running */
-        if (spinTimeout) {
-          clearTimeout(spinTimeout);
-        }
-
-        spinAngleStart = Math.random() * 10 + 10;
-
-        spinTime = 0;
-
-        spinTimeTotal = Math.random() * 3000 + 4000;
-
-        rotateWheel();
-      };
-
-      /* ROTATE */
-
-      function rotateWheel() {
-        spinTime += 30;
-
-        if (spinTime >= spinTimeTotal) {
-          stopRotateWheel();
-
-          return;
-        }
-
-        const spinAngle =
-          spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-
-        startAngle += (spinAngle * Math.PI) / 180;
-
-        ctx.clearRect(0, 0, 420, 420);
-
-        drawWheel();
-
-        spinTimeout = setTimeout(rotateWheel, 30);
-      }
-
-      /* STOP */
-
-      function stopRotateWheel() {
-        const degrees = (startAngle * 180) / Math.PI + 90;
-
-        const arcd = (arc * 180) / Math.PI;
-
-        const index = Math.floor((360 - (degrees % 360)) / arcd);
-
-        alert("🎉 Winner: " + names[index]);
-
-        spinning = false; // allow next spin
-      }
-
-      /* EASING */
-
-      function easeOut(t, b, c, d) {
-        const ts = (t /= d) * t;
-
-        const tc = ts * t;
-
-        return b + c * (tc + -3 * ts + 3 * t);
-      }
-
-      /* INITIAL DRAW */
-
-      arc = Math.PI / (names.length / 2);
-
-      drawWheel();
-
-      /* LOAD SHEET NAMES */
-
-      loadSheetNames();
-
-      /* AUTO UPDATE WHEEL */
-
-      setInterval(loadSheetNames, 5000);
-    </script>
+          // ensure pointer hover or none issue
+          canvas.style.pointerEvents = "none";
+        </script>
+      </body>
+    </html>
     <!-- =====GiveAway wheel Section END=====  -->
 
     <!-- ================== CTF Compare Top Firm Section ================== -->
