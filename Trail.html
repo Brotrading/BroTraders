@@ -4,1046 +4,1066 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
-    <title>Verde Capital | Institutional Trading Desk</title>
+    <title>BroTrading Giveaway | Spin & Win</title>
+    <!-- Google Fonts + Font Awesome 6 -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      /* ---------- RESET & GLOBAL ---------- */
 
-      body {
-        background: linear-gradient(135deg, #03070a 0%, #051012 100%);
-        font-family:
-          "Inter",
-          "Plus Jakarta Sans",
-          -apple-system,
-          BlinkMacSystemFont,
-          sans-serif;
-        overflow-x: hidden;
-        min-height: 100vh;
+      .giveaway-section,
+      .giveaway-wheel-demo {
+        width: 100%;
+      }
+      /* ----- SECTION 1: FORM + WINNER (updated text) ----- */
+      .giveaway-section {
+        padding: 80px 24px;
+        background:
+          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
+          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+        color: #fff;
+      }
+      .giveaway-container {
+        max-width: 1280px;
+        margin: 0 auto;
         display: flex;
+        gap: 60px;
         align-items: center;
         justify-content: center;
-        padding: 2rem;
+        flex-wrap: wrap;
       }
-
-      .verde-contact-section {
-        width: 100%;
-        max-width: 1400px;
-        position: relative;
-      }
-
-      /* MAIN CARD CONTAINER - Premium glass card */
-      .contact-card {
-        background: rgba(2, 12, 15, 0.75);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: 2rem;
-        overflow: hidden;
-        border: 1px solid rgba(0, 230, 195, 0.3);
-        box-shadow:
-          0 25px 50px -12px rgba(0, 0, 0, 0.5),
-          0 0 0 1px rgba(0, 230, 195, 0.1);
-        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        animation: cardGlow 2s ease-in-out infinite;
-      }
-
-      @keyframes cardGlow {
-        0%,
-        100% {
-          box-shadow:
-            0 25px 50px -12px rgba(0, 0, 0, 0.5),
-            0 0 0 1px rgba(0, 230, 195, 0.1);
-        }
-        50% {
-          box-shadow:
-            0 30px 60px -12px rgba(0, 0, 0, 0.6),
-            0 0 0 2px rgba(0, 230, 195, 0.3);
-        }
-      }
-
-      .contact-card:hover {
-        transform: translateY(-5px);
-        box-shadow:
-          0 35px 70px -12px rgba(0, 0, 0, 0.7),
-          0 0 0 2px rgba(0, 230, 195, 0.4);
-      }
-
-      /* SPLIT LAYOUT INSIDE CARD */
-      .card-split {
-        display: flex;
-        min-height: 620px;
-      }
-
-      /* LEFT SIDE - FULL PHOTO (desktop) */
-      .photo-side {
+      .winner-side {
         flex: 1;
-        position: relative;
-        overflow: hidden;
-        background: #051012;
-        animation: slideInLeft 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        min-width: 300px;
       }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .full-photo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 20%;
-        filter: brightness(0.7) contrast(1.1);
-        transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      }
-
-      .photo-side:hover .full-photo {
-        transform: scale(1.08);
-      }
-
-      .photo-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(0, 20, 22, 0.5) 0%,
-          rgba(0, 0, 0, 0.7) 100%
-        );
-        z-index: 1;
-      }
-
-      .photo-content {
-        position: absolute;
-        bottom: 2.5rem;
-        left: 2rem;
-        right: 2rem;
-        z-index: 2;
-        animation: fadeInUp 0.8s ease-out 0.2s both;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .photo-badge {
-        display: inline-block;
-        background: rgba(0, 230, 195, 0.2);
-        backdrop-filter: blur(10px);
-        padding: 0.4rem 1rem;
+      .winner-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
         border-radius: 40px;
-        font-size: 0.7rem;
+        background: rgba(0, 194, 255, 0.12);
+        border: 1px solid rgba(0, 194, 255, 0.35);
+        backdrop-filter: blur(2px);
+        margin-bottom: 28px;
         font-weight: 600;
-        letter-spacing: 1px;
-        color: #00e6c3;
-        border: 1px solid rgba(0, 230, 195, 0.4);
-        margin-bottom: 1rem;
-        animation: pulse 2s ease-in-out infinite;
+        font-size: 0.9rem;
       }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(0, 230, 195, 0.4);
-        }
-        50% {
-          box-shadow: 0 0 0 8px rgba(0, 230, 195, 0);
-        }
+      .winner-badge i {
+        color: #2bcbff;
       }
-
-      .photo-content h3 {
-        font-size: 1.8rem;
-        font-weight: 700;
+      .winner-side h1 {
+        font-size: clamp(38px, 6vw, 58px);
         line-height: 1.2;
-        margin-bottom: 0.5rem;
-        color: white;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .photo-content p {
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.85);
-        max-width: 85%;
-      }
-
-      /* RIGHT SIDE - FORM CONTAINER */
-      .form-side {
-        flex: 1;
-        background: linear-gradient(
-          135deg,
-          rgba(1, 10, 12, 0.9),
-          rgba(0, 5, 7, 0.95)
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2.5rem;
-        animation: slideInRight 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .form-wrapper {
-        max-width: 540px;
-        width: 100%;
-      }
-
-      /* FORM HEADER */
-      .form-header {
-        margin-bottom: 2rem;
-        animation: fadeInUp 0.6s ease-out;
-      }
-
-      .accent-line {
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(90deg, #00e6c3, #008f7a);
-        border-radius: 4px;
-        margin-bottom: 1rem;
-        animation: expandWidth 0.8s ease-out;
-      }
-
-      @keyframes expandWidth {
-        from {
-          width: 0;
-          opacity: 0;
-        }
-        to {
-          width: 60px;
-          opacity: 1;
-        }
-      }
-
-      .form-badge {
-        display: inline-block;
-        font-size: 0.7rem;
+        margin-bottom: 22px;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #00e6c3;
-        background: rgba(0, 230, 195, 0.12);
-        padding: 0.3rem 1rem;
-        border-radius: 40px;
-        margin-bottom: 1rem;
-        animation: fadeInUp 0.6s ease-out 0.1s both;
+        letter-spacing: -0.02em;
       }
-
-      .form-header h2 {
-        font-size: 2rem;
-        font-weight: 800;
-        line-height: 1.2;
-        color: #ffffff;
-        margin-bottom: 0.75rem;
-        animation: fadeInUp 0.6s ease-out 0.2s both;
-      }
-
-      .gradient-text {
-        background: linear-gradient(125deg, #ffffff, #6effe6, #00d4b5);
+      .winner-side h1 span {
+        background: linear-gradient(130deg, #ffffff, #80dcff);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: shimmer 3s infinite;
+        display: inline-block;
       }
-
-      @keyframes shimmer {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+      .winner-text {
+        color: #cbd5e6;
+        margin-bottom: 24px;
+        line-height: 1.55;
+        font-size: clamp(16px, 2.2vw, 20px);
       }
-
-      .form-header p {
-        color: rgba(170, 230, 220, 0.85);
-        font-size: 0.9rem;
-        line-height: 1.5;
-        animation: fadeInUp 0.6s ease-out 0.3s both;
+      .highlight-giveaway {
+        background: rgba(43, 188, 255, 0.08);
+        border-left: 3px solid #2bbcff;
+        padding: 14px 18px;
+        border-radius: 16px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #e0edff;
       }
-
-      /* FORM STYLES */
-      .contact-form {
-        width: 100%;
+      .highlight-giveaway i {
+        color: #2bbcff;
+        margin-right: 10px;
       }
-
-      .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .input-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        animation: fadeInUp 0.5s ease-out backwards;
-      }
-
-      .input-group:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .input-group:nth-child(2) {
-        animation-delay: 0.15s;
-      }
-      .input-group:nth-child(3) {
-        animation-delay: 0.2s;
-      }
-      .input-group:nth-child(4) {
-        animation-delay: 0.25s;
-      }
-      .input-group:nth-child(5) {
-        animation-delay: 0.3s;
-      }
-
-      .input-group label {
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #b2f5ea;
+      .winner-highlight {
+        color: #3dd9ff;
+        font-weight: 600;
+        margin-bottom: 28px;
+        font-size: clamp(16px, 2vw, 20px);
         display: flex;
         align-items: center;
         gap: 8px;
-        transition: all 0.3s ease;
+        flex-wrap: wrap;
       }
-
-      .input-group label svg {
-        opacity: 0.7;
-        transition: all 0.3s ease;
+      .winner-highlight i {
+        color: #ffd966;
       }
-
-      .input-group.focused label {
-        color: #00e6c3;
+      .giveaway-info {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
-
-      .input-group.focused label svg {
-        opacity: 1;
-        transform: scale(1.1);
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.85rem;
+        color: #b2c2df;
       }
-
-      .input-group input,
-      .input-group textarea {
-        background: rgba(5, 18, 20, 0.8);
-        border: 1.5px solid rgba(0, 200, 180, 0.4);
-        border-radius: 1rem;
-        padding: 0.85rem 1.2rem;
-        font-family: inherit;
-        font-size: 0.9rem;
+      .info-item i {
+        width: 22px;
+        color: #3bc9ff;
+      }
+      .info-item a {
+        color: #42d0ff;
+        text-decoration: none;
         font-weight: 500;
-        color: #f0fdfa;
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        outline: none;
+        border-bottom: 1px dotted rgba(66, 208, 255, 0.4);
+      }
+      .form-side {
+        flex: 1;
+        max-width: 540px;
+        background: #0c1628;
+        padding: 40px 40px;
+        border-radius: 28px;
+        border: 1px solid rgba(66, 208, 255, 0.15);
+        box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.6);
+      }
+      .form-side h2 {
+        text-align: center;
+        margin-bottom: 32px;
+        font-size: clamp(22px, 5vw, 28px);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .form-side h2 i {
+        color: #2bbcff;
+      }
+      .form-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .form-row .form-group {
+        flex: 1;
+        min-width: 140px;
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 22px;
         width: 100%;
       }
-
-      .input-group input:focus,
-      .input-group textarea:focus {
-        border-color: #00e6c3;
-        background: rgba(8, 28, 32, 0.95);
-        box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.2);
-        transform: translateY(-2px);
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 16px 14px;
+        border-radius: 14px;
+        border: 1px solid #263456;
+        background: #111c33;
+        color: #f0f4ff;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.2s;
+        font-family: "Inter", sans-serif;
       }
-
-      .input-group input::placeholder,
-      .input-group textarea::placeholder {
-        color: rgba(130, 190, 180, 0.6);
-        font-weight: 400;
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: #2bbcff;
+        box-shadow: 0 0 0 3px rgba(43, 188, 255, 0.2);
       }
-
-      .input-group textarea {
-        resize: vertical;
-        min-height: 100px;
+      .form-group label {
+        position: absolute;
+        left: 14px;
+        top: 16px;
+        font-size: 0.85rem;
+        color: #8c9ac0;
+        transition: 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        background: #0c1628;
+        padding: 0 6px;
+        pointer-events: none;
+        font-weight: 450;
       }
-
-      .full-width {
-        grid-column: span 2;
+      .form-group input:focus + label,
+      .form-group input:not(:placeholder-shown) + label,
+      .form-group textarea:focus + label,
+      .form-group textarea:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 12px;
+        font-size: 0.7rem;
+        color: #2bbcff;
+        background: #0c1628;
       }
-
-      /* BUTTON - with hover animation */
-      .btn-radiant {
-        background: linear-gradient(105deg, #007a66, #005f4f);
+      .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.8rem;
+        margin-bottom: 28px;
+        color: #bdc7e2;
+        cursor: pointer;
+      }
+      .checkbox input {
+        width: 18px;
+        height: 18px;
+        accent-color: #2bbcff;
+        cursor: pointer;
+        margin: 0;
+      }
+      .checkbox a {
+        color: #42d0ff;
+        text-decoration: none;
+        border-bottom: 1px dotted #42d0ff;
+      }
+      form button {
+        width: 100%;
+        padding: 16px 18px;
         border: none;
-        padding: 1rem 1.8rem;
-        border-radius: 2.5rem;
-        font-weight: 700;
-        font-size: 0.9rem;
-        font-family: inherit;
+        border-radius: 40px;
+        background: linear-gradient(95deg, #2bbcff, #1a5cff);
         color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 12px;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        width: 100%;
-        margin-top: 0.5rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(0, 230, 195, 0.5);
-        position: relative;
-        overflow: hidden;
-        animation: fadeInUp 0.6s ease-out 0.35s both;
+        font-family: "Inter", sans-serif;
       }
-
-      .btn-radiant::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.6s ease;
+      form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(0, 140, 255, 0.4);
+        background: linear-gradient(95deg, #3bc9ff, #2b6eff);
       }
-
-      .btn-radiant:hover::before {
-        left: 100%;
-      }
-
-      .btn-radiant:hover {
-        background: linear-gradient(105deg, #00997f, #007158);
-        transform: translateY(-3px) scale(1.02);
-        gap: 16px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-        border-color: rgba(0, 255, 210, 0.8);
-      }
-
-      .btn-radiant:active {
-        transform: translateY(0) scale(0.98);
-      }
-
-      .btn-radiant.submitting {
-        opacity: 0.85;
-        cursor: wait;
-        transform: none;
-      }
-
-      .spinner {
-        width: 18px;
-        height: 18px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-top-color: white;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* FORM FOOTER */
-      .form-footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 1.8rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(0, 200, 180, 0.3);
-        animation: fadeInUp 0.6s ease-out 0.4s both;
-      }
-
-      .trust-badge,
-      .response-time {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        color: rgba(150, 210, 195, 0.85);
-        transition: all 0.3s ease;
-      }
-
-      .trust-badge:hover,
-      .response-time:hover {
-        color: #00e6c3;
-        transform: translateX(5px);
-      }
-
-      .trust-badge svg,
-      .response-time svg {
-        stroke: #00e6c3;
-        stroke-width: 1.8;
-        transition: transform 0.3s ease;
-      }
-
-      .trust-badge:hover svg,
-      .response-time:hover svg {
-        transform: scale(1.1);
-      }
-
-      /* TOAST NOTIFICATION */
-      .toast-premium {
+      /* Modern popup (no emojis, only icons) */
+      .popup-notification {
         position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        background: rgba(0, 18, 20, 0.96);
-        backdrop-filter: blur(20px);
-        padding: 0.9rem 2rem;
-        border-radius: 60px;
-        color: #e6fffa;
-        font-weight: 600;
-        font-size: 0.85rem;
-        z-index: 9999;
+        bottom: 30px;
+        right: 30px;
+        max-width: 400px;
+        width: calc(100% - 40px);
+        background: #0f172fe6;
+        backdrop-filter: blur(16px);
+        border-radius: 28px;
+        border-left: 5px solid;
+        box-shadow:
+          0 25px 40px -14px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(66, 208, 255, 0.2);
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transform: translateX(120%);
+        transition:
+          transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+          opacity 0.3s ease;
         opacity: 0;
-        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        pointer-events: none;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border: 1px solid rgba(0, 230, 195, 0.5);
-        font-family: inherit;
-        animation: slideUp 0.5s ease-out;
+        z-index: 10000;
+        pointer-events: auto;
+        font-family: "Inter", sans-serif;
       }
-
-      @keyframes slideUp {
-        from {
-          transform: translateX(-50%) translateY(30px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(-50%) translateY(0);
-          opacity: 1;
-        }
-      }
-
-      .toast-premium.show {
+      .popup-notification.show {
+        transform: translateX(0);
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
       }
-
-      .toast-premium.success {
-        border-left: 5px solid #00e6c3;
-      }
-
-      .toast-premium.error {
-        border-left: 5px solid #ff7755;
-      }
-
-      .toast-premium.error .toast-icon svg {
-        stroke: #ff7755;
-      }
-
-      .toast-icon {
+      .popup-icon {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background: rgba(43, 188, 255, 0.12);
+        border-radius: 60px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
       }
-
-      /* RESPONSIVE: On tablet & mobile, HIDE PHOTO SIDE, show only form */
-      @media (max-width: 900px) {
-        body {
-          padding: 1rem;
-        }
-
-        .card-split {
-          flex-direction: column;
-        }
-
-        .photo-side {
-          display: none;
-        }
-
-        .form-side {
-          flex: none;
-          width: 100%;
-          padding: 2rem 1.5rem;
-          animation: slideInUp 0.6s ease-out;
-        }
-
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .form-wrapper {
-          max-width: 100%;
-        }
-
-        .form-header h2 {
-          font-size: 1.8rem;
-        }
+      .popup-content {
+        flex: 1;
       }
-
+      .popup-title {
+        font-weight: 800;
+        font-size: 1rem;
+        margin-bottom: 6px;
+        letter-spacing: -0.2px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .popup-message {
+        font-size: 0.85rem;
+        color: #cbd5ff;
+        line-height: 1.45;
+      }
+      .popup-close {
+        background: transparent;
+        border: none;
+        color: #7e8bb6;
+        cursor: pointer;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+        border-radius: 40px;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .popup-close:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+      }
+      .popup-success {
+        border-left-color: #2bcb7a;
+      }
+      .popup-success .popup-icon {
+        color: #2bcb7a;
+      }
+      .popup-error {
+        border-left-color: #ff5c6c;
+      }
+      .popup-error .popup-icon {
+        color: #ff5c6c;
+      }
+      .popup-warning {
+        border-left-color: #ffb347;
+      }
+      .popup-warning .popup-icon {
+        color: #ffb347;
+      }
+      .popup-info {
+        border-left-color: #2bbcff;
+      }
+      .popup-info .popup-icon {
+        color: #2bbcff;
+      }
+      .popup-win {
+        border-left-color: #ffcc44;
+      }
+      .popup-win .popup-icon {
+        color: #ffcc44;
+      }
       @media (max-width: 640px) {
-        .form-side {
-          padding: 1.5rem;
+        .popup-notification {
+          left: 20px;
+          right: 20px;
+          bottom: 20px;
+          max-width: none;
+          padding: 14px 18px;
         }
-
-        .form-grid {
-          grid-template-columns: 1fr;
-          gap: 1rem;
-        }
-
-        .full-width {
-          grid-column: span 1;
-        }
-
-        .form-header h2 {
-          font-size: 1.6rem;
-        }
-
-        .form-footer {
-          flex-direction: column;
-          gap: 0.8rem;
-          align-items: flex-start;
-        }
-
-        .toast-premium {
-          max-width: 90vw;
-          white-space: normal;
-          text-align: center;
-          padding: 0.7rem 1.2rem;
-        }
-
-        .btn-radiant {
-          padding: 0.85rem 1.2rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .form-header h2 {
+        .popup-icon {
+          width: 40px;
+          height: 40px;
           font-size: 1.4rem;
         }
-
-        .form-badge {
-          font-size: 0.65rem;
+      }
+      #formMessage {
+        display: none;
+      }
+      /* ----- SECTION 2: WHEEL (unchanged visuals) ----- */
+      .giveaway-wheel-demo {
+        padding: 80px 24px;
+        background: linear-gradient(135deg, #020617, #000814);
+        color: white;
+        overflow-x: hidden;
+      }
+      .wheel-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        max-width: 1280px;
+        margin: 0 auto;
+        align-items: center;
+      }
+      .wheel-area {
+        text-align: center;
+      }
+      .wheel-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #ffffff, #94b5ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .wheel-sub {
+        color: #9fb2d9;
+        margin-bottom: 45px;
+        font-size: 0.95rem;
+      }
+      .wheel-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+      #wheelCanvas {
+        display: block;
+        border-radius: 50%;
+        width: 100%;
+        height: auto;
+        max-width: 420px;
+        aspect-ratio: 1 / 1;
+        box-shadow:
+          0 0 0 8px rgba(7, 27, 56, 0.9),
+          0 0 0 12px rgba(0, 140, 255, 0.2),
+          0 20px 35px -10px rgba(0, 0, 0, 0.6);
+      }
+      .pointer {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 36px solid #00e0ff;
+        filter: drop-shadow(0 4px 8px rgba(0, 160, 255, 0.5));
+        z-index: 15;
+      }
+      #spinBtn {
+        padding: 14px 42px;
+        border: none;
+        border-radius: 60px;
+        background: linear-gradient(95deg, #2bbcff, #1a5eff);
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 12px 22px -8px rgba(0, 100, 255, 0.4);
+      }
+      #spinBtn:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(95deg, #3bcaff, #2b70ff);
+      }
+      .wheel-note {
+        margin-top: 38px;
+        font-size: 0.75rem;
+        color: #7f93bd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .wheel-content h2 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(120deg, #fff, #bdd4ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .wheel-lead {
+        color: #b0c4ff;
+        margin-bottom: 28px;
+        line-height: 1.5;
+      }
+      .wheel-benefits {
+        list-style: none;
+        margin: 28px 0 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .wheel-benefits li {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 1rem;
+        color: #e2edff;
+        font-weight: 500;
+      }
+      .wheel-benefits li i {
+        width: 28px;
+        font-size: 1.35rem;
+        color: #3cc7ff;
+      }
+      .wheel-note2 {
+        margin-top: 18px;
+        color: #cbdaf9;
+        font-size: 0.9rem;
+        border-left: 3px solid #2bbcff;
+        padding-left: 16px;
+      }
+      .compare-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 28px;
+        padding: 14px 32px;
+        background: linear-gradient(90deg, #2bbcff, #1e6bff);
+        border-radius: 44px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+      }
+      .compare-btn:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(90deg, #3bcaff, #2f7eff);
+      }
+      @media (max-width: 860px) {
+        .wheel-grid {
+          grid-template-columns: 1fr;
+          gap: 56px;
+          text-align: center;
+        }
+        .wheel-benefits li {
+          justify-content: center;
         }
       }
-
-      /* Autofill styles */
-      input:-webkit-autofill,
-      textarea:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px rgba(0, 28, 30, 0.95) inset;
-        -webkit-text-fill-color: #f0fdfa;
-        border-color: rgba(0, 230, 195, 0.6);
-      }
-
-      /* Floating animation for card */
-      @keyframes floatIn {
-        from {
-          opacity: 0;
-          transform: scale(0.95);
+      @media (max-width: 540px) {
+        .wheel-title {
+          font-size: 1.7rem;
         }
-        to {
-          opacity: 1;
-          transform: scale(1);
+        .wheel-content h2 {
+          font-size: 1.7rem;
+        }
+        .pointer {
+          border-left: 16px solid transparent;
+          border-right: 16px solid transparent;
+          border-top: 28px solid #00e0ff;
+          top: -8px;
         }
       }
-
-      .contact-card {
-        animation: floatIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      canvas {
+        user-select: none;
+        pointer-events: none;
       }
     </style>
-  </head>
-  <body>
-    <section class="verde-contact-section">
-      <div class="contact-card">
-        <div class="card-split">
-          <!-- LEFT SIDE: FULL PHOTO (desktop only) -->
-          <div class="photo-side">
-            <img
-              class="full-photo"
-              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop"
-              alt="Institutional trading floor"
-            />
-            <div class="photo-overlay"></div>
-            <div class="photo-content">
-              <span class="photo-badge">✦ Direct Market Access</span>
-              <h3>Institutional-grade<br />liquidity solutions</h3>
-              <p>45+ global exchanges • 0.2ms latency • $2.1B daily volume</p>
-            </div>
+
+    <!-- ========== SECTION 1: FORM + WINNER INFO (updated with short giveaway text) ========== -->
+    <section class="giveaway-section">
+      <div class="giveaway-container">
+        <div class="winner-side">
+          <span class="winner-badge"
+            ><i class="fas fa-trophy"></i> Latest Winner</span
+          >
+          <h1>Congratulations,<br /><span id="winnerName">Daniel</span>!</h1>
+          <p class="winner-text">
+            Daniel joined our giveaway and secured premium access to exclusive
+            trading tools, advanced insights, and smarter market opportunities.
+          </p>
+          <!-- New short giveaway description (icon-based, concise) -->
+          <div class="highlight-giveaway">
+            <i class="fas fa-calendar-week"></i>
+            <strong>Every Friday is Giveaway Friday!</strong><br />
+            <i class="fas fa-gift"></i> Win funded accounts, trading perks &
+            BroTrading surprises.<br />
+            <i class="fas fa-chart-line"></i> Enter, win & enjoy the vibes —
+            next winner could be YOU.
           </div>
-
-          <!-- RIGHT SIDE: FORM ONLY -->
-          <div class="form-side">
-            <div class="form-wrapper">
-              <div class="form-header">
-                <div class="accent-line"></div>
-                <span class="form-badge">Trading Desk</span>
-                <h2>
-                  Execute with<br />
-                  <span class="gradient-text">institutional precision</span>
-                </h2>
-                <p>
-                  Connect with our senior brokers — response within 45 minutes
-                </p>
-              </div>
-
-              <form id="brokerContactForm" class="contact-form">
-                <div class="form-grid">
-                  <div class="input-group" id="groupFullName">
-                    <label>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                      </svg>
-                      Full name
-                    </label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      id="fullName"
-                      placeholder="James Carter"
-                      autocomplete="name"
-                    />
-                  </div>
-
-                  <div class="input-group" id="groupPhone">
-                    <label>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
-                        />
-                      </svg>
-                      Phone (direct line)
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      id="phone"
-                      placeholder="+1 (212) 555-8920"
-                      autocomplete="tel"
-                    />
-                  </div>
-
-                  <div class="input-group" id="groupEmail">
-                    <label>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                        />
-                        <polyline points="22,6 12,13 2,6" />
-                      </svg>
-                      Business email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="j.carter@capital.com"
-                      autocomplete="email"
-                    />
-                  </div>
-
-                  <div class="input-group full-width" id="groupSubject">
-                    <label>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                        />
-                        <polyline points="14 2 14 8 20 8" />
-                      </svg>
-                      Strategy / Inquiry
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      id="subject"
-                      placeholder="Liquidity provisioning | API connectivity | Prime brokerage"
-                    />
-                  </div>
-
-                  <div class="input-group full-width" id="groupMessage">
-                    <label>
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path
-                          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                        />
-                      </svg>
-                      Trading details
-                    </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      placeholder="Describe your capital requirements, instruments, or collaboration opportunity..."
-                      rows="4"
-                    ></textarea>
-                  </div>
-                </div>
-
-                <button class="btn-radiant" type="submit" id="submitBtn">
-                  <span class="btn-text-default"
-                    >Connect with trading desk</span
-                  >
-                  <span class="btn-text-loading" style="display: none"
-                    ><span class="spinner"></span> Submitting...</span
-                  >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <line x1="22" y1="2" x2="11" y2="13" />
-                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                  </svg>
-                </button>
-              </form>
-
-              <div class="form-footer">
-                <div class="trust-badge">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                  <span>256-bit encrypted • FINRA regulated</span>
-                </div>
-                <div class="response-time">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  <span>Avg. response: <strong>45 min</strong></span>
-                </div>
-              </div>
+          <p class="winner-highlight">
+            <i class="fas fa-gem"></i> The next winner could be YOU. <br />
+            Enter now — it takes only a few seconds.
+          </p>
+          <div class="giveaway-info">
+            <div class="info-item">
+              <i class="fas fa-file-contract"></i
+              ><span
+                >Terms & Conditions apply •
+                <a href="More/Privacy-Terms.html">View Terms</a></span
+              >
+            </div>
+            <div class="info-item">
+              <i class="fas fa-shuffle"></i
+              ><span
+                >Winners are selected through a transparent random draw.</span
+              >
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- TOAST NOTIFICATION -->
-      <div class="toast-premium" id="toastNotification">
-        <div class="toast-icon" id="toastIcon"></div>
-        <span id="toastMessage"></span>
+        <div class="form-side">
+          <h2><i class="fas fa-gift"></i> Enter The Giveaway</h2>
+          <form id="giveawayForm">
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  id="nameField"
+                  placeholder=" "
+                  required
+                /><label><i class="far fa-user"></i> Name</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="username"
+                  id="usernameField"
+                  placeholder=" "
+                  required
+                /><label><i class="far fa-id-badge"></i> Username</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                name="email"
+                id="emailField"
+                placeholder=" "
+                required
+              /><label><i class="far fa-envelope"></i> Email Address</label>
+            </div>
+            <div class="form-group">
+              <textarea
+                name="message"
+                id="messageField"
+                rows="4"
+                placeholder=" "
+              ></textarea
+              ><label
+                ><i class="far fa-comment-dots"></i> Your Thoughts
+                (Optional)</label
+              >
+            </div>
+            <label class="checkbox"
+              ><input type="checkbox" id="termsCheckbox" required /><span
+                >I agree to the
+                <a href="More/Privacy-Terms.html">Terms & Conditions</a></span
+              ></label
+            >
+            <button type="submit">
+              Secure My Entry <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+          <p id="formMessage"></p>
+        </div>
       </div>
     </section>
 
+    <!-- ========== SECTION 2: SPIN WHEEL ========== -->
+    <section class="giveaway-wheel-demo">
+      <div class="wheel-grid">
+        <div class="wheel-area">
+          <h3 class="wheel-title">
+            <i class="fas fa-gift" style="margin-right: 8px"></i> Spin The
+            Giveaway Wheel
+          </h3>
+          <p class="wheel-sub">
+            <i class="fas fa-chart-line"></i> See how winners are randomly
+            selected — try your luck!
+          </p>
+          <div class="wheel-wrapper">
+            <div class="pointer"></div>
+            <canvas id="wheelCanvas" width="420" height="420"></canvas
+            ><button id="spinBtn">
+              <i class="fas fa-sync-alt"></i> TRY YOUR LUCK
+            </button>
+          </div>
+          <p class="wheel-note">
+            <i class="fas fa-info-circle"></i> Demo wheel for showcase purposes.
+            Official winners are selected from all valid entries.
+          </p>
+        </div>
+        <div class="wheel-content">
+          <h2><i class="fas fa-trophy"></i> Try Your Luck In Our Giveaway</h2>
+          <p class="wheel-lead">
+            Join hundreds of traders already entered in our giveaway. Every
+            valid entry gets a chance to win exclusive trading perks.
+          </p>
+          <ul class="wheel-benefits">
+            <li><i class="fas fa-shield-alt"></i> Transparent random draw</li>
+            <li>
+              <i class="fas fa-rocket"></i> Open to all registered traders
+            </li>
+            <li>
+              <i class="fas fa-chart-pie"></i> Win funded accounts & tools
+            </li>
+            <li><i class="fas fa-stopwatch"></i> Takes less than 30 seconds</li>
+          </ul>
+          <p class="wheel-note2">
+            <i class="fas fa-chart-simple"></i> While we prepare the next winner
+            draw, you can explore and compare the best prop trading firms.
+          </p>
+          <a href="#Compare-Top-frims-Section" class="compare-btn"
+            >Compare Top Firms <i class="fas fa-arrow-down"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <div id="popupRoot"></div>
+
     <script>
-      (function () {
-        // DOM Elements
-        const form = document.getElementById("brokerContactForm");
-        const fullName = document.getElementById("fullName");
-        const phone = document.getElementById("phone");
-        const email = document.getElementById("email");
-        const subject = document.getElementById("subject");
-        const message = document.getElementById("message");
-        const submitBtn = document.getElementById("submitBtn");
-        const btnDefault = submitBtn.querySelector(".btn-text-default");
-        const btnLoading = submitBtn.querySelector(".btn-text-loading");
-        const sendIcon = submitBtn.querySelector("svg:last-child");
+      // ----------------------------------------------
+      // POPUP MANAGER (NO EMOJIS, ONLY ICONS)
+      // ----------------------------------------------
+      const popupRoot = document.getElementById("popupRoot");
+      function showPopup(message, type = "success", title = "") {
+        const popup = document.createElement("div");
+        let iconHtml = "",
+          defaultTitle = "",
+          finalType = type;
+        if (type === "win") finalType = "win";
+        popup.className = `popup-notification popup-${finalType === "win" ? "win" : finalType}`;
 
-        const toastEl = document.getElementById("toastNotification");
-        const toastMsg = document.getElementById("toastMessage");
-        const toastIconDiv = document.getElementById("toastIcon");
-
-        let isSubmitting = false;
-
-        // Helper: show notification
-        function showNotification(msg, isError = false) {
-          toastMsg.innerText = msg;
-          toastIconDiv.innerHTML = isError
-            ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
-            : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-          toastEl.classList.add("show");
-          if (isError) toastEl.classList.add("error");
-          else toastEl.classList.remove("error");
-          setTimeout(() => {
-            toastEl.classList.remove("show");
-          }, 3200);
+        if (type === "success") {
+          iconHtml = '<i class="fas fa-check-circle"></i>';
+          defaultTitle = "Success";
+        } else if (type === "error") {
+          iconHtml = '<i class="fas fa-exclamation-triangle"></i>';
+          defaultTitle = "Error";
+        } else if (type === "warning") {
+          iconHtml = '<i class="fas fa-clock"></i>';
+          defaultTitle = "Notice";
+        } else if (type === "win") {
+          iconHtml = '<i class="fas fa-crown"></i>';
+          defaultTitle = "Grand Winner";
+        } else {
+          iconHtml = '<i class="fas fa-info-circle"></i>';
+          defaultTitle = "Info";
         }
 
-        // Validation helpers
-        const isValidPhone = (val) => {
-          const digits = val.replace(/[\s\-\(\)\+\.]/g, "");
-          const count = (digits.match(/\d/g) || []).length;
-          return count >= 5 && count <= 15;
+        const finalTitle = title || defaultTitle;
+        popup.innerHTML = `
+        <div class="popup-icon">${iconHtml}</div>
+        <div class="popup-content">
+          <div class="popup-title">${finalTitle}</div>
+          <div class="popup-message">${message}</div>
+        </div>
+        <button class="popup-close" aria-label="Close"><i class="fas fa-times"></i></button>
+      `;
+        popupRoot.appendChild(popup);
+        setTimeout(() => popup.classList.add("show"), 10);
+        const closeBtn = popup.querySelector(".popup-close");
+        const removePopup = () => {
+          popup.classList.remove("show");
+          setTimeout(() => {
+            if (popup.parentNode) popup.parentNode.removeChild(popup);
+          }, 350);
         };
-        const isValidEmail = (val) => /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(val);
-        const notEmpty = (val) => val && val.trim().length > 0;
-
-        // Focus management for visual feedback
-        const groups = {
-          fullName: document.getElementById("groupFullName"),
-          phone: document.getElementById("groupPhone"),
-          email: document.getElementById("groupEmail"),
-          subject: document.getElementById("groupSubject"),
-          message: document.getElementById("groupMessage"),
-        };
-
-        const removeAllFocus = () => {
-          Object.values(groups).forEach((g) => g?.classList.remove("focused"));
-        };
-
-        const addFocus = (groupKey) => {
-          removeAllFocus();
-          if (groups[groupKey]) groups[groupKey].classList.add("focused");
-        };
-
-        fullName.addEventListener("focus", () => addFocus("fullName"));
-        phone.addEventListener("focus", () => addFocus("phone"));
-        email.addEventListener("focus", () => addFocus("email"));
-        subject.addEventListener("focus", () => addFocus("subject"));
-        message.addEventListener("focus", () => addFocus("message"));
-        fullName.addEventListener("blur", removeAllFocus);
-        phone.addEventListener("blur", removeAllFocus);
-        email.addEventListener("blur", removeAllFocus);
-        subject.addEventListener("blur", removeAllFocus);
-        message.addEventListener("blur", removeAllFocus);
-
-        // Submit handler
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          if (isSubmitting) return;
-
-          const nameVal = fullName.value.trim();
-          const phoneVal = phone.value.trim();
-          const emailVal = email.value.trim();
-          const subjectVal = subject.value.trim();
-          const messageVal = message.value.trim();
-
-          if (!notEmpty(nameVal))
-            return showNotification(
-              "Please enter your full name (required for trading desk verification)",
-              true,
-            );
-          if (!isValidPhone(phoneVal))
-            return showNotification(
-              "Valid phone number required for direct broker callback",
-              true,
-            );
-          if (!isValidEmail(emailVal))
-            return showNotification(
-              "Please enter a valid institutional email address",
-              true,
-            );
-          if (!notEmpty(subjectVal))
-            return showNotification("Inquiry subject is required", true);
-          if (messageVal.length < 8)
-            return showNotification(
-              "Please provide more details (minimum 8 characters)",
-              true,
-            );
-
-          isSubmitting = true;
-          submitBtn.classList.add("submitting");
-          if (btnDefault) btnDefault.style.display = "none";
-          if (btnLoading) btnLoading.style.display = "flex";
-          if (sendIcon) sendIcon.style.opacity = "0.5";
-
-          try {
-            // Simulate API call to trading desk
-            await new Promise((resolve) => setTimeout(resolve, 1200));
-            showNotification(
-              "✓ Trading desk request received! A specialist will contact you within 45 minutes.",
-            );
-            // Reset form
-            fullName.value = "";
-            phone.value = "";
-            email.value = "";
-            subject.value = "";
-            message.value = "";
-            removeAllFocus();
-          } catch (err) {
-            showNotification(
-              "Connection error. Please retry or contact support directly.",
-              true,
-            );
-          } finally {
-            isSubmitting = false;
-            submitBtn.classList.remove("submitting");
-            if (btnDefault) btnDefault.style.display = "flex";
-            if (btnLoading) btnLoading.style.display = "none";
-            if (sendIcon) sendIcon.style.opacity = "1";
-          }
+        closeBtn.addEventListener("click", removePopup);
+        let autoTimer = setTimeout(removePopup, 5000);
+        popup.addEventListener("mouseenter", () => clearTimeout(autoTimer));
+        popup.addEventListener("mouseleave", () => {
+          autoTimer = setTimeout(removePopup, 2200);
         });
+      }
+
+      // ----------------------------------------------
+      // WHEEL & FIFO QUEUE (unchanged logic)
+      // ----------------------------------------------
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzO3_aIads5J2ekdJqVKqC-XS7IKuIGG0wD_3tX-i8R2DAD5zCKV6-gWhLfjf1jC0gAFA/exec";
+      const form = document.getElementById("giveawayForm");
+      const MAX_WHEEL_NAMES = 16;
+      let wheelNamesQueue = [];
+      let startAngle = 0,
+        arc = 0,
+        spinning = false,
+        spinTimeout = null,
+        spinAngleStart = 0,
+        spinTime = 0,
+        spinTimeTotal = 0;
+      const canvas = document.getElementById("wheelCanvas");
+      const ctx = canvas.getContext("2d");
+      const defaultInitialNames = [
+        "Alex",
+        "Jordan",
+        "Mike",
+        "Sophia",
+        "Ethan",
+        "Olivia",
+        "Daniel",
+        "Devya",
+      ];
+
+      function initCanvasDimensions() {
+        canvas.width = 420;
+        canvas.height = 420;
+        canvas.style.width = "100%";
+        canvas.style.height = "auto";
+        canvas.style.maxWidth = "420px";
+      }
+      initCanvasDimensions();
+
+      function drawWheel() {
+        if (!ctx || wheelNamesQueue.length === 0) return;
+        const centerX = 210,
+          centerY = 210,
+          radius = 200,
+          textRadius = 165;
+        for (let i = 0; i < wheelNamesQueue.length; i++) {
+          const angleStart = startAngle + i * arc,
+            angleEnd = angleStart + arc;
+          const grad = ctx.createLinearGradient(
+            centerX + Math.cos(angleStart) * 30,
+            centerY + Math.sin(angleStart) * 30,
+            centerX + Math.cos(angleEnd) * radius * 0.7,
+            centerY + Math.sin(angleEnd) * radius * 0.7,
+          );
+          grad.addColorStop(0, i % 2 === 0 ? "#2c9eff" : "#3db4ff");
+          grad.addColorStop(1, i % 2 === 0 ? "#1a55dd" : "#2873f0");
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
+          ctx.closePath();
+          ctx.fill();
+          ctx.save();
+          ctx.strokeStyle = "rgba(255,255,240,0.3)";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
+          ctx.lineTo(centerX, centerY);
+          ctx.stroke();
+          ctx.restore();
+          ctx.save();
+          ctx.translate(centerX, centerY);
+          ctx.rotate(angleStart + arc / 2);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          let fontSize = Math.min(
+            16,
+            Math.floor(160 / wheelNamesQueue.length) + 8,
+          );
+          ctx.font = `bold ${fontSize}px "Inter", "Segoe UI", system-ui`;
+          ctx.shadowColor = "rgba(0,0,0,0.5)";
+          ctx.shadowBlur = 4;
+          ctx.fillStyle = "#FFFFFF";
+          let offset = textRadius - 8;
+          if (wheelNamesQueue[i].length > 8) offset = textRadius - 18;
+          ctx.fillText(wheelNamesQueue[i], offset, 6);
+          ctx.shadowBlur = 0;
+          ctx.restore();
+        }
+        ctx.beginPath();
+        ctx.arc(210, 210, 28, 0, Math.PI * 2);
+        ctx.fillStyle = "#071b38";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(210, 210, 18, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffcf40";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(210, 210, 8, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(210, 210, radius + 4, 0, Math.PI * 2);
+        ctx.strokeStyle = "#3c8eff";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+      function syncWheelFromQueue() {
+        if (!wheelNamesQueue.length) wheelNamesQueue = [...defaultInitialNames];
+        if (wheelNamesQueue.length > MAX_WHEEL_NAMES)
+          wheelNamesQueue = wheelNamesQueue.slice(0, MAX_WHEEL_NAMES);
+        arc = (Math.PI * 2) / wheelNamesQueue.length;
+        drawWheel();
+      }
+      function addNameToWheelFIFO(newName) {
+        if (!newName?.trim()) return;
+        wheelNamesQueue.push(newName.trim());
+        while (wheelNamesQueue.length > MAX_WHEEL_NAMES)
+          wheelNamesQueue.shift();
+        syncWheelFromQueue();
+      }
+      async function fetchSheetNamesAndInitQueue() {
+        try {
+          const res = await fetch(scriptURL);
+          const data = await res.json();
+          let sheetNames = Array.isArray(data)
+            ? data
+            : data && typeof data === "object"
+              ? Object.values(data).flat()
+              : [];
+          let cleanNames = sheetNames
+            .filter((n) => n && typeof n === "string")
+            .map((n) => n.trim());
+          let combined = [...defaultInitialNames, ...cleanNames];
+          let unique = [];
+          let seen = new Set();
+          for (let name of combined)
+            if (!seen.has(name)) {
+              seen.add(name);
+              unique.push(name);
+            }
+          wheelNamesQueue =
+            unique.length > MAX_WHEEL_NAMES
+              ? unique.slice(-MAX_WHEEL_NAMES)
+              : unique;
+          syncWheelFromQueue();
+        } catch (e) {
+          wheelNamesQueue = [...defaultInitialNames];
+          syncWheelFromQueue();
+        }
+      }
+      function easeOut(t, b, c, d) {
+        const ts = (t /= d) * t;
+        const tc = ts * t;
+        return b + c * (tc + -3 * ts + 3 * t);
+      }
+      function rotateWheel() {
+        if (!spinning) return;
+        spinTime += 30;
+        if (spinTime >= spinTimeTotal) {
+          stopRotateWheel();
+          return;
+        }
+        const spinAngle =
+          spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+        startAngle += (spinAngle * Math.PI) / 180;
+        startAngle %= Math.PI * 2;
+        drawWheel();
+        spinTimeout = setTimeout(rotateWheel, 30);
+      }
+      function stopRotateWheel() {
+        if (spinTimeout) clearTimeout(spinTimeout);
+        spinning = false;
+        const fixedPointerRad = -Math.PI / 2;
+        let winnerIndex = -1;
+        for (let i = 0; i < wheelNamesQueue.length; i++) {
+          let segStart = startAngle + i * arc,
+            segEnd = segStart + arc;
+          let checkAngle = fixedPointerRad;
+          while (checkAngle < 0) checkAngle += Math.PI * 2;
+          let startMod = segStart % (Math.PI * 2),
+            endMod = segEnd % (Math.PI * 2);
+          if (startMod < endMod) {
+            if (checkAngle >= startMod && checkAngle < endMod) {
+              winnerIndex = i;
+              break;
+            }
+          } else {
+            if (checkAngle >= startMod || checkAngle < endMod) {
+              winnerIndex = i;
+              break;
+            }
+          }
+        }
+        if (winnerIndex === -1 && wheelNamesQueue.length) winnerIndex = 0;
+        const winnerName =
+          winnerIndex >= 0 ? wheelNamesQueue[winnerIndex] : "Guest";
+        setTimeout(() => {
+          showPopup(
+            `🎉 CONGRATULATIONS, ${winnerName}! 🎉\nYou won exclusive trading perks! Stay tuned for your prize.`,
+            "win",
+            "You're a Winner!",
+          );
+        }, 20);
+      }
+      function startSpin() {
+        if (spinning) return;
+        if (spinTimeout) clearTimeout(spinTimeout);
+        if (!wheelNamesQueue.length) {
+          showPopup("Wheel is loading, please wait.", "warning");
+          return;
+        }
+        spinning = true;
+        spinAngleStart = Math.random() * 20 + 15;
+        spinTime = 0;
+        spinTimeTotal = Math.random() * 2800 + 3800;
+        rotateWheel();
+      }
+      document.getElementById("spinBtn").onclick = (e) => {
+        e.preventDefault();
+        if (!spinning) startSpin();
+      };
+
+      // FORM SUBMIT (popup only, no inline messages)
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const termsCheck = document.getElementById("termsCheckbox");
+        if (!termsCheck.checked) {
+          showPopup(
+            "Please accept the Terms & Conditions to proceed.",
+            "warning",
+            "Terms Required",
+          );
+          return;
+        }
+        const nameInput = document.getElementById("nameField").value.trim();
+        if (!nameInput) {
+          showPopup("Please enter your name.", "warning", "Missing Info");
+          return;
+        }
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-pulse"></i> Submitting...';
+        submitBtn.disabled = true;
+        const formData = new FormData(form);
+        fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" })
+          .then(() => {
+            showPopup(
+              "Entry submitted successfully! You're now in the giveaway.",
+              "success",
+              "Entry Confirmed",
+            );
+            form.reset();
+            addNameToWheelFIFO(nameInput);
+          })
+          .catch(() => {
+            showPopup(
+              "Submission error. Please try again later.",
+              "error",
+              "Network Issue",
+            );
+          })
+          .finally(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          });
+      });
+
+      async function refreshWheelFromSheetPeriodically() {
+        if (!spinning) {
+          try {
+            const res = await fetch(scriptURL);
+            const data = await res.json();
+            let sheetNames = Array.isArray(data)
+              ? data
+              : data && typeof data === "object"
+                ? Object.values(data).flat()
+                : [];
+            let cleanNames = sheetNames
+              .filter((n) => n && typeof n === "string")
+              .map((n) => n.trim());
+            if (cleanNames.length) {
+              let combined = [...wheelNamesQueue];
+              for (let n of cleanNames)
+                if (!combined.includes(n)) combined.push(n);
+              if (combined.length > MAX_WHEEL_NAMES)
+                combined = combined.slice(-MAX_WHEEL_NAMES);
+              wheelNamesQueue = combined;
+              syncWheelFromQueue();
+            }
+          } catch (e) {}
+        }
+        setTimeout(refreshWheelFromSheetPeriodically, 12000);
+      }
+      (async () => {
+        await fetchSheetNamesAndInitQueue();
+        refreshWheelFromSheetPeriodically();
       })();
+      window.addEventListener("resize", () => {
+        if (!spinning) drawWheel();
+      });
+      window.addEventListener("orientationchange", () => {
+        if (!spinning) drawWheel();
+      });
     </script>
-  </body>
+  </head>
 </html>
