@@ -826,7 +826,7 @@
         }
 
         .bt-drop-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr/2fr;
           gap: 8px;
         }
 
@@ -2793,7 +2793,7 @@
 
           #zx-table th {
             background: #0f1e3c;
-            padding: 12px 6px;
+            padding: 12px 14px;
             font-weight: 600;
             font-size: 0.68rem;
             text-transform: uppercase;
@@ -2844,7 +2844,7 @@
 
           /* STICKY COLUMNS: only logo and firm name stay fixed — website column NOT sticky for smooth scroll */
           .sticky-col {
-            position: sticky;
+            position: sticky !important;
             background: #071327;
             z-index: 15;
           }
@@ -3162,7 +3162,9 @@
                   </th>
                   <th><i class="fas fa-key"></i> Code</th>
                   <th><i class="fas fa-folder-open"></i> Firm Page</th>
-                  <th><i class="fas fa-external-link-alt"></i> Website</th>
+                  <th class="sticky-col">
+                    <i class="fas fa-external-link-alt"></i> Website
+                  </th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -3599,7 +3601,8 @@
                 country: "International",
                 maxaccounts: 3,
                 firmpage: "Frims/NexGen.html",
-                website: "https://nexgenprotrader.com",
+                website:
+                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
               });
               allRows.push({
                 firm: "NexGen Pro Trader",
@@ -3619,7 +3622,8 @@
                 country: "International",
                 maxaccounts: 3,
                 firmpage: "Frims/NexGen.html",
-                website: "https://nexgenprotrader.com",
+                website:
+                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
               });
             }
 

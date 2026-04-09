@@ -196,7 +196,7 @@
             </div>
           </div>
 
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -570,7 +570,7 @@
 
       @media (max-width: 480px) {
         .bt-drop-grid {
-          grid-template-columns: 1fr;
+          /* grid-template-columns: 1fr; */
           gap: 10px;
         }
 
@@ -1679,22 +1679,30 @@
     <!-- =========== Youtube Section ========= -->
     <section class="yt-hero">
       <div class="yt-container">
+        <!-- LEFT -->
         <div class="yt-content">
-          <h2>Trade Live With <br />BroTrading</h2>
+          <h2>Trade Live With The Bro’s</h2>
+
           <p>Live Futures Trading Sessions</p>
-          <p>Market Breakdown • Strategy Execution • Real-Time Entries</p>
-          <p>Join Our Community of Serious Traders</p>
+          <p>
+            Market Breakdown • Live Analysis • Talking about real time entry’s
+          </p>
+          <p>Join the community where we laugh and cry together.</p>
+
           <a
             href="https://m.youtube.com/@Brotradingz"
             target="_blank"
             class="yt-btn"
-            >Subscribe on YouTube</a
           >
+            Subscribe on YouTube
+          </a>
         </div>
+
+        <!-- RIGHT -->
         <div class="yt-media">
           <div class="yt-video-wrapper">
             <iframe
-              src="https://youtu.be/4wwcYuEPoA8?si=xKVF7jwrpVXHAMJF"
+              src="https://www.youtube.com/embed/KXO67YQ-ous"
               title="BroTradingz Live Trading"
               frameborder="0"
               allow="
@@ -1706,7 +1714,8 @@
                 picture-in-picture;
               "
               allowfullscreen
-            ></iframe>
+            >
+            </iframe>
           </div>
         </div>
       </div>
@@ -1721,8 +1730,9 @@
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #fff;
+        color: #ffffff;
       }
+
       .yt-container {
         max-width: 1400px;
         width: 93%;
@@ -1732,42 +1742,57 @@
         justify-content: space-between;
         gap: 60px;
       }
+
+      /* LEFT SIDE */
+
       .yt-content {
         flex: 1;
         max-width: 550px;
       }
+
       .yt-content h2 {
         font-size: 52px;
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 25px;
+        /* font-family: "DM Mono", monospace; */
       }
+
       .yt-content p {
         font-size: 18px;
         color: #d1d5db;
         margin-bottom: 12px;
+        font-family: "DM Sans", sans-serif;
       }
+
+      /* BUTTON */
+
       .yt-btn {
         display: inline-block;
         padding: 14px 36px;
         border-radius: 50px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        color: #fff;
+        color: #ffffff;
         font-weight: 600;
         text-decoration: none;
         margin-top: 20px;
         transition: all 0.3s ease;
       }
+
       .yt-btn:hover {
-        background: #fff;
+        background: #ffffff;
         color: #0b0f2a;
         border: 2px solid #00c2ff;
       }
+
+      /* RIGHT SIDE (VIDEO) */
+
       .yt-media {
         flex: 1;
         display: flex;
         justify-content: center;
       }
+
       .yt-video-wrapper {
         position: relative;
         width: 100%;
@@ -1777,6 +1802,7 @@
         overflow: hidden;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       }
+
       .yt-video-wrapper iframe {
         position: absolute;
         top: 0;
@@ -1785,21 +1811,57 @@
         height: 100%;
         border: none;
       }
+
+      /* ================= RESPONSIVE ================= */
+
       @media (max-width: 992px) {
+        .yt-hero {
+          min-height: auto;
+          padding: 60px 20px;
+        }
+
         .yt-container {
           flex-direction: column;
           text-align: center;
           gap: 35px;
         }
+
         .yt-media {
           order: -1;
         }
+
+        .yt-video-wrapper {
+          max-width: 100%;
+          border-radius: 16px;
+        }
+
         .yt-content h2 {
           font-size: 30px;
+          line-height: 1.25;
+        }
+
+        .yt-content p {
+          font-size: 15px;
+        }
+
+        .yt-btn {
+          padding: 12px 28px;
+          font-size: 14px;
+        }
+      }
+
+      /* SMALL PHONES */
+
+      @media (max-width: 480px) {
+        .yt-content h2 {
+          font-size: 24px;
+        }
+
+        .yt-content p {
+          font-size: 14px;
         }
       }
     </style>
-
     <!-- ================== CTF Compare Top Firm Section ================== -->
     <section class="ctf-compare-vault">
       <div class="ctf-compare-header">
@@ -1809,19 +1871,26 @@
           ><button class="ctf-nav-btn ctf-next" id="ctfNext">&#10095;</button>
         </div>
       </div>
+
       <div class="ctf-slider-shell" id="ctfSlider">
         <div class="ctf-slider-track">
-          <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+          <!-- KEEP ALL YOUR CARDS SAME -->
+
+          <!-- Card 1 -->
+          <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card">
+            <div class="ctf-card-icon">
               <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
               Compare top prop firms instantly — discover rules, pricing, and
               payouts.
-            </p></a
-          ><a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+            </p>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card">
+            <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
               />
@@ -1829,38 +1898,51 @@
             <h3>Best Deals</h3>
             <p>
               Unlock the best prop firm deals — exclusive discounts and offers.
-            </p></a
-          ><a href="../CompareTopFrims/StartCost.html" class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+            </p>
+          </a>
+
+          <!-- Card 3 -->
+          <!-- <a href="../CompareTopFrims/StartCost.html" class="ctf-compare-card">
+            <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/play.png" />
             </div>
             <h3>Starting Costs</h3>
-            <p>Find the lowest starting costs fast.</p></a
-          ><a href="../CompareTopFrims/TrueCost.html" class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+            <p>Find the lowest starting costs fast.</p>
+          </a> -->
+
+          <!-- Card 4 -->
+          <!-- <a href="../CompareTopFrims/TrueCost.html" class="ctf-compare-card">
+            <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
               />
             </div>
             <h3>True Cost</h3>
-            <p>See the real price of getting funded.</p></a
-          ><a href="../CompareTopFrims/Drawdown.html" class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+            <p>See the real price of getting funded.</p>
+          </a> -->
+
+          <!-- Card 5 -->
+          <a href="../CompareTopFrims/Drawdown.html" class="ctf-compare-card">
+            <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/combo-chart--v1.png"
               />
             </div>
             <h3>Largest Drawdown</h3>
-            <p>Compare firms by drawdown limits.</p></a
-          ><a
+            <p>Compare firms by drawdown limits.</p>
+          </a>
+
+          <!-- Card 6 -->
+          <a
             href="../CompareTopFrims/QuickFunding.html"
             class="ctf-compare-card"
-            ><div class="ctf-card-icon">
+          >
+            <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/rocket.png" />
             </div>
             <h3>Quickest Funding</h3>
-            <p>Discover the quickest funding paths.</p></a
-          >
+            <p>Discover the quickest funding paths.</p>
+          </a>
         </div>
       </div>
     </section>

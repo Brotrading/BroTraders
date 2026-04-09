@@ -1,617 +1,1049 @@
-<header class="bt-header">
-  <div class="bt-container">
-    <!-- Logo -->
-    <div class="bt-logo">
-      <a href="../index.html">
-        <img src="../Bro_Traders_logo-removebg-preview.png" alt="Bro Trading" />
-      </a>
-    </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Verde Capital | Institutional Trading Desk</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    <!-- Navigation -->
-    <nav class="bt-nav">
-      <!-- Mobile Close Button -->
-      <button class="bt-mobile-close" aria-label="Close menu">✕</button>
+      body {
+        background: linear-gradient(135deg, #03070a 0%, #051012 100%);
+        font-family:
+          "Inter",
+          "Plus Jakarta Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
 
-      <a href="../index.html" class="bt-link">Home</a>
+      .verde-contact-section {
+        width: 100%;
+        max-width: 1400px;
+        position: relative;
+      }
 
-      <!-- Funding Plans -->
-      <div class="bt-dropdown">
-        <button class="bt-drop-btn" data-dropdown="funding">
-          Funding Plans ▾
-        </button>
-        <div class="bt-drop-menu" id="funding">
-          <div class="bt-drop-grid">
-            <div>
-              <a href="#"><strong>Firm Lists :</strong></a>
-              <a href="comparison.html">Prop Firm Comparison</a>
-              <a href="Drawdown.html">Largest Drawdown</a>
-              <a href="QuickFunding.html">Quickest Funding</a>
-              <a href="bestDeals.html">Best Deals</a>
+      /* MAIN CARD CONTAINER - Premium glass card */
+      .contact-card {
+        background: rgba(2, 12, 15, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 2rem;
+        overflow: hidden;
+        border: 1px solid rgba(0, 230, 195, 0.3);
+        box-shadow:
+          0 25px 50px -12px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(0, 230, 195, 0.1);
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        animation: cardGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes cardGlow {
+        0%,
+        100% {
+          box-shadow:
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(0, 230, 195, 0.1);
+        }
+        50% {
+          box-shadow:
+            0 30px 60px -12px rgba(0, 0, 0, 0.6),
+            0 0 0 2px rgba(0, 230, 195, 0.3);
+        }
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 35px 70px -12px rgba(0, 0, 0, 0.7),
+          0 0 0 2px rgba(0, 230, 195, 0.4);
+      }
+
+      /* SPLIT LAYOUT INSIDE CARD */
+      .card-split {
+        display: flex;
+        min-height: 620px;
+      }
+
+      /* LEFT SIDE - FULL PHOTO (desktop) */
+      .photo-side {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        background: #051012;
+        animation: slideInLeft 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .full-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        filter: brightness(0.7) contrast(1.1);
+        transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+
+      .photo-side:hover .full-photo {
+        transform: scale(1.08);
+      }
+
+      .photo-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 20, 22, 0.5) 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        z-index: 1;
+      }
+
+      .photo-content {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 2rem;
+        right: 2rem;
+        z-index: 2;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .photo-badge {
+        display: inline-block;
+        background: rgba(0, 230, 195, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 0.4rem 1rem;
+        border-radius: 40px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #00e6c3;
+        border: 1px solid rgba(0, 230, 195, 0.4);
+        margin-bottom: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 230, 195, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 0 8px rgba(0, 230, 195, 0);
+        }
+      }
+
+      .photo-content h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        color: white;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .photo-content p {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 85%;
+      }
+
+      /* RIGHT SIDE - FORM CONTAINER */
+      .form-side {
+        flex: 1;
+        background: linear-gradient(
+          135deg,
+          rgba(1, 10, 12, 0.9),
+          rgba(0, 5, 7, 0.95)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem;
+        animation: slideInRight 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .form-wrapper {
+        max-width: 540px;
+        width: 100%;
+      }
+
+      /* FORM HEADER */
+      .form-header {
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .accent-line {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #00e6c3, #008f7a);
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        animation: expandWidth 0.8s ease-out;
+      }
+
+      @keyframes expandWidth {
+        from {
+          width: 0;
+          opacity: 0;
+        }
+        to {
+          width: 60px;
+          opacity: 1;
+        }
+      }
+
+      .form-badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #00e6c3;
+        background: rgba(0, 230, 195, 0.12);
+        padding: 0.3rem 1rem;
+        border-radius: 40px;
+        margin-bottom: 1rem;
+        animation: fadeInUp 0.6s ease-out 0.1s both;
+      }
+
+      .form-header h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #ffffff;
+        margin-bottom: 0.75rem;
+        animation: fadeInUp 0.6s ease-out 0.2s both;
+      }
+
+      .gradient-text {
+        background: linear-gradient(125deg, #ffffff, #6effe6, #00d4b5);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .form-header p {
+        color: rgba(170, 230, 220, 0.85);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        animation: fadeInUp 0.6s ease-out 0.3s both;
+      }
+
+      /* FORM STYLES */
+      .contact-form {
+        width: 100%;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        animation: fadeInUp 0.5s ease-out backwards;
+      }
+
+      .input-group:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .input-group:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .input-group:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .input-group:nth-child(4) {
+        animation-delay: 0.25s;
+      }
+      .input-group:nth-child(5) {
+        animation-delay: 0.3s;
+      }
+
+      .input-group label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #b2f5ea;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .input-group label svg {
+        opacity: 0.7;
+        transition: all 0.3s ease;
+      }
+
+      .input-group.focused label {
+        color: #00e6c3;
+      }
+
+      .input-group.focused label svg {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .input-group input,
+      .input-group textarea {
+        background: rgba(5, 18, 20, 0.8);
+        border: 1.5px solid rgba(0, 200, 180, 0.4);
+        border-radius: 1rem;
+        padding: 0.85rem 1.2rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #f0fdfa;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        outline: none;
+        width: 100%;
+      }
+
+      .input-group input:focus,
+      .input-group textarea:focus {
+        border-color: #00e6c3;
+        background: rgba(8, 28, 32, 0.95);
+        box-shadow: 0 0 0 4px rgba(0, 230, 195, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .input-group input::placeholder,
+      .input-group textarea::placeholder {
+        color: rgba(130, 190, 180, 0.6);
+        font-weight: 400;
+      }
+
+      .input-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .full-width {
+        grid-column: span 2;
+      }
+
+      /* BUTTON - with hover animation */
+      .btn-radiant {
+        background: linear-gradient(105deg, #007a66, #005f4f);
+        border: none;
+        padding: 1rem 1.8rem;
+        border-radius: 2.5rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        width: 100%;
+        margin-top: 0.5rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(0, 230, 195, 0.5);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.6s ease-out 0.35s both;
+      }
+
+      .btn-radiant::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .btn-radiant:hover::before {
+        left: 100%;
+      }
+
+      .btn-radiant:hover {
+        background: linear-gradient(105deg, #00997f, #007158);
+        transform: translateY(-3px) scale(1.02);
+        gap: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        border-color: rgba(0, 255, 210, 0.8);
+      }
+
+      .btn-radiant:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .btn-radiant.submitting {
+        opacity: 0.85;
+        cursor: wait;
+        transform: none;
+      }
+
+      .spinner {
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* FORM FOOTER */
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.8rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(0, 200, 180, 0.3);
+        animation: fadeInUp 0.6s ease-out 0.4s both;
+      }
+
+      .trust-badge,
+      .response-time {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: rgba(150, 210, 195, 0.85);
+        transition: all 0.3s ease;
+      }
+
+      .trust-badge:hover,
+      .response-time:hover {
+        color: #00e6c3;
+        transform: translateX(5px);
+      }
+
+      .trust-badge svg,
+      .response-time svg {
+        stroke: #00e6c3;
+        stroke-width: 1.8;
+        transition: transform 0.3s ease;
+      }
+
+      .trust-badge:hover svg,
+      .response-time:hover svg {
+        transform: scale(1.1);
+      }
+
+      /* TOAST NOTIFICATION */
+      .toast-premium {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: rgba(0, 18, 20, 0.96);
+        backdrop-filter: blur(20px);
+        padding: 0.9rem 2rem;
+        border-radius: 60px;
+        color: #e6fffa;
+        font-weight: 600;
+        font-size: 0.85rem;
+        z-index: 9999;
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        pointer-events: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid rgba(0, 230, 195, 0.5);
+        font-family: inherit;
+        animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateX(-50%) translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .toast-premium.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .toast-premium.success {
+        border-left: 5px solid #00e6c3;
+      }
+
+      .toast-premium.error {
+        border-left: 5px solid #ff7755;
+      }
+
+      .toast-premium.error .toast-icon svg {
+        stroke: #ff7755;
+      }
+
+      .toast-icon {
+        display: flex;
+        align-items: center;
+      }
+
+      /* RESPONSIVE: On tablet & mobile, HIDE PHOTO SIDE, show only form */
+      @media (max-width: 900px) {
+        body {
+          padding: 1rem;
+        }
+
+        .card-split {
+          flex-direction: column;
+        }
+
+        .photo-side {
+          display: none;
+        }
+
+        .form-side {
+          flex: none;
+          width: 100%;
+          padding: 2rem 1.5rem;
+          animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .form-wrapper {
+          max-width: 100%;
+        }
+
+        .form-header h2 {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .form-side {
+          padding: 1.5rem;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .full-width {
+          grid-column: span 1;
+        }
+
+        .form-header h2 {
+          font-size: 1.6rem;
+        }
+
+        .form-footer {
+          flex-direction: column;
+          gap: 0.8rem;
+          align-items: flex-start;
+        }
+
+        .toast-premium {
+          max-width: 90vw;
+          white-space: normal;
+          text-align: center;
+          padding: 0.7rem 1.2rem;
+        }
+
+        .btn-radiant {
+          padding: 0.85rem 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .form-header h2 {
+          font-size: 1.4rem;
+        }
+
+        .form-badge {
+          font-size: 0.65rem;
+        }
+      }
+
+      /* Autofill styles */
+      input:-webkit-autofill,
+      textarea:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px rgba(0, 28, 30, 0.95) inset;
+        -webkit-text-fill-color: #f0fdfa;
+        border-color: rgba(0, 230, 195, 0.6);
+      }
+
+      /* Floating animation for card */
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .contact-card {
+        animation: floatIn 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="verde-contact-section">
+      <div class="contact-card">
+        <div class="card-split">
+          <!-- LEFT SIDE: FULL PHOTO (desktop only) -->
+          <div class="photo-side">
+            <img
+              class="full-photo"
+              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop"
+              alt="Institutional trading floor"
+            />
+            <div class="photo-overlay"></div>
+            <div class="photo-content">
+              <span class="photo-badge">✦ Direct Market Access</span>
+              <h3>Institutional-grade<br />liquidity solutions</h3>
+              <p>45+ global exchanges • 0.2ms latency • $2.1B daily volume</p>
             </div>
-            <div>
-              <a href="#"><strong>Top Firms :</strong></a>
-              <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
-              <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-              <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-              <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
-              <a href="../Frims/DayTraders.html">Day Traders.com</a>
-              <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
+          </div>
+
+          <!-- RIGHT SIDE: FORM ONLY -->
+          <div class="form-side">
+            <div class="form-wrapper">
+              <div class="form-header">
+                <div class="accent-line"></div>
+                <span class="form-badge">Trading Desk</span>
+                <h2>
+                  Execute with<br />
+                  <span class="gradient-text">institutional precision</span>
+                </h2>
+                <p>
+                  Connect with our senior brokers — response within 45 minutes
+                </p>
+              </div>
+
+              <form id="brokerContactForm" class="contact-form">
+                <div class="form-grid">
+                  <div class="input-group" id="groupFullName">
+                    <label>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                      Full name
+                    </label>
+                    <input
+                      type="text"
+                      name="fullName"
+                      id="fullName"
+                      placeholder="James Carter"
+                      autocomplete="name"
+                    />
+                  </div>
+
+                  <div class="input-group" id="groupPhone">
+                    <label>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                        />
+                      </svg>
+                      Phone (direct line)
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      placeholder="+1 (212) 555-8920"
+                      autocomplete="tel"
+                    />
+                  </div>
+
+                  <div class="input-group" id="groupEmail">
+                    <label>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                        />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                      Business email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="j.carter@capital.com"
+                      autocomplete="email"
+                    />
+                  </div>
+
+                  <div class="input-group full-width" id="groupSubject">
+                    <label>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                        />
+                        <polyline points="14 2 14 8 20 8" />
+                      </svg>
+                      Strategy / Inquiry
+                    </label>
+                    <input
+                      type="text"
+                      name="subject"
+                      id="subject"
+                      placeholder="Liquidity provisioning | API connectivity | Prime brokerage"
+                    />
+                  </div>
+
+                  <div class="input-group full-width" id="groupMessage">
+                    <label>
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                        />
+                      </svg>
+                      Trading details
+                    </label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      placeholder="Describe your capital requirements, instruments, or collaboration opportunity..."
+                      rows="4"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button class="btn-radiant" type="submit" id="submitBtn">
+                  <span class="btn-text-default"
+                    >Connect with trading desk</span
+                  >
+                  <span class="btn-text-loading" style="display: none"
+                    ><span class="spinner"></span> Submitting...</span
+                  >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                  </svg>
+                </button>
+              </form>
+
+              <div class="form-footer">
+                <div class="trust-badge">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  <span>256-bit encrypted • FINRA regulated</span>
+                </div>
+                <div class="response-time">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>Avg. response: <strong>45 min</strong></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Resources -->
-      <div class="bt-dropdown">
-        <button class="bt-drop-btn" data-dropdown="resources">
-          Resources ▾
-        </button>
-        <div class="bt-drop-menu small" id="resources">
-          <a href="../Resourses/TradingTools.html">Trading Tools</a>
-          <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
-        </div>
+      <!-- TOAST NOTIFICATION -->
+      <div class="toast-premium" id="toastNotification">
+        <div class="toast-icon" id="toastIcon"></div>
+        <span id="toastMessage"></span>
       </div>
-
-      <a href="GiveAway.html" class="bt-link">GiveAways</a>
-    </nav>
-
-    <!-- CTA -->
-    <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
-
-    <!-- Hamburger -->
-    <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</header>
-
-<!-- Overlay -->
-<div class="bt-overlay" id="overlay"></div>
-
-<style>
-  /* ================= HEADER ================= */
-  .bt-header {
-    position: fixed;
-    top: 40px;
-    left: 0;
-    margin: 10px 15px;
-    margin-left: 180px;
-    border-radius: 15px;
-    width: 80%;
-    background: #00000073;
-    z-index: 1000;
-    transition: all 0.35s ease;
-  }
-
-  .bt-header.bt-scrolled {
-    top: 0;
-    background: rgba(10, 15, 30, 0.75);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(0, 194, 255, 0.25);
-    width: 63%;
-    margin-left: 276px;
-  }
-
-  .bt-container {
-    max-width: 1400px;
-    margin: auto;
-    padding: 0px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: padding 0.3s ease;
-  }
-
-  .bt-header.bt-scrolled .bt-container {
-    padding: 0px 30px;
-  }
-
-  .bt-logo img {
-    height: 55px;
-    transition: height 0.3s ease;
-    display: block;
-  }
-
-  .bt-header.bt-scrolled .bt-logo img {
-    height: 50px;
-  }
-
-  /* ================= NAV ================= */
-  .bt-nav {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-  }
-
-  .bt-link,
-  .bt-drop-btn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: 0.3s;
-    font-weight: 500;
-    font-family: inherit;
-  }
-
-  .bt-link:hover,
-  .bt-drop-btn:hover {
-    color: #00c2ff;
-  }
-
-  /* ================= DROPDOWN ================= */
-  .bt-dropdown {
-    position: relative;
-  }
-
-  .bt-drop-menu {
-    position: absolute;
-    top: 170%;
-    left: 0;
-    min-width: 650px;
-    padding: 30px;
-    border-radius: 14px;
-    background: rgba(15, 20, 45, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 194, 255, 0.6);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.35s ease;
-    z-index: 1001;
-  }
-
-  .bt-drop-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .bt-drop-menu.small {
-    min-width: 260px;
-    padding: 20px;
-  }
-
-  .bt-drop-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  .bt-drop-menu a {
-    display: block;
-    color: #cbd5e1;
-    text-decoration: none;
-    margin-bottom: 12px;
-    transition: 0.3s;
-    font-size: 15px;
-  }
-
-  .bt-drop-menu a:hover {
-    color: #00c2ff;
-    padding-left: 5px;
-  }
-  .bt-drop-menu strong:hover {
-    color: #f1f3f4;
-    padding-left: 0px !important;
-    transition: 0s;
-  }
-
-  /* DESKTOP HOVER OPEN */
-  @media (min-width: 1025px) {
-    .bt-dropdown:hover .bt-drop-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-  }
-
-  /* ================= CTA ================= */
-  .bt-cta {
-    background: linear-gradient(135deg, #00c2ff, #1e90ff);
-    padding: 9px 22px;
-    border-radius: 30px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: 0.3s ease;
-    white-space: nowrap;
-  }
-
-  .bt-cta:hover {
-    transform: translateY(-3px);
-    background: white;
-    color: #0b0f2a;
-  }
-
-  /* ================= HAMBURGER ================= */
-  .bt-hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    z-index: 1003;
-    transition: all 0.3s ease;
-  }
-
-  .bt-hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
-
-  .bt-hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-
-  .bt-hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  .bt-hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  .bt-hamburger:hover span {
-    background: #00c2ff;
-  }
-
-  /* ================= MOBILE MENU ================= */
-  .bt-mobile-close {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    font-size: 32px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 300;
-    transition: 0.2s;
-    z-index: 1004;
-    background: transparent;
-    border: none;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bt-mobile-close:hover {
-    color: #00c2ff;
-    transform: rotate(90deg);
-  }
-
-  .bt-overlay {
-    position: fixed;
-    inset: 0;
-    backdrop-filter: blur(2px);
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 900;
-    transition: 0.3s;
-  }
-
-  .bt-overlay.active {
-    display: block;
-  }
-
-  @media (max-width: 1024px) {
-    .bt-hamburger {
-      display: flex;
-    }
-
-    .bt-cta {
-      display: none;
-    }
-
-    .bt-nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 320px;
-      max-width: 85%;
-      height: 100vh;
-      background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
-      backdrop-filter: blur(10px);
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 80px 25px 30px;
-      gap: 15px;
-      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1002;
-      overflow-y: auto;
-      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
-      border-left: 1px solid rgba(0, 194, 255, 0.3);
-    }
-
-    .bt-nav.active {
-      right: 0;
-    }
-
-    .bt-mobile-close {
-      display: flex;
-    }
-
-    .bt-dropdown {
-      width: 100%;
-    }
-
-    .bt-drop-btn {
-      width: 100%;
-      text-align: left;
-      font-size: 18px;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .bt-drop-btn::after {
-      content: "▾";
-      font-size: 16px;
-      transition: transform 0.3s;
-    }
-
-    .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
-      transform: rotate(180deg);
-    }
-
-    .bt-drop-menu {
-      position: static;
-      min-width: 100%;
-      padding: 0;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      background: rgba(15, 20, 45, 0.8);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(0, 194, 255, 0.3);
-      border-radius: 12px;
-      opacity: 0;
-      visibility: hidden;
-      transform: none;
-      transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease;
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 15px;
-    }
-
-    .bt-drop-menu.active {
-      opacity: 1;
-      visibility: visible;
-      max-height: 500px;
-      padding: 15px;
-      margin-bottom: 10px;
-    }
-
-    .bt-drop-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .bt-drop-menu a {
-      font-size: 13px;
-      padding: 5px 0;
-      margin-bottom: 0;
-    }
-
-    .bt-link {
-      font-size: 18px;
-      padding: 10px 0;
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .bt-drop-grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .bt-nav {
-      width: 280px;
-    }
-  }
-
-  /* Header responsive fixes */
-  @media (max-width: 1300px) {
-    .bt-header {
-      width: calc(100% - 40px);
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-    .bt-header.bt-scrolled {
-      width: calc(100% - 40px);
-      margin-left: 20px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .bt-header,
-    .bt-header.bt-scrolled {
-      width: calc(100% - 30px);
-      margin-left: 15px;
-      margin-right: 15px;
-      top: 15px;
-    }
-    .bt-header.bt-scrolled {
-      top: 0;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .bt-container {
-      padding: 0px 20px;
-    }
-    .bt-logo img {
-      height: 48px;
-    }
-  }
-</style>
-
-<script>
-  // Get elements
-  const hamburger = document.getElementById("hamburgerBtn");
-  const mobileMenu = document.querySelector(".bt-nav");
-  const overlay = document.getElementById("overlay");
-  const closeBtn = document.querySelector(".bt-mobile-close");
-
-  // Toggle mobile menu functions
-  function openMobileMenu() {
-    mobileMenu.classList.add("active");
-    overlay.classList.add("active");
-    hamburger.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeMobileMenu() {
-    mobileMenu.classList.remove("active");
-    overlay.classList.remove("active");
-    hamburger.classList.remove("active");
-    document.body.style.overflow = "";
-
-    // Close all open dropdowns
-    document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
-      menu.classList.remove("active");
-    });
-
-    // Reset dropdown button ARIA
-    document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
-      btn.setAttribute("aria-expanded", "false");
-    });
-  }
-
-  // Toggle function
-  function toggleMobileMenu() {
-    if (mobileMenu.classList.contains("active")) {
-      closeMobileMenu();
-    } else {
-      openMobileMenu();
-    }
-  }
-
-  // Hamburger click event
-  if (hamburger) {
-    hamburger.addEventListener("click", function (e) {
-      e.stopPropagation();
-      toggleMobileMenu();
-    });
-  }
-
-  // Close button click
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function () {
-      closeMobileMenu();
-    });
-  }
-
-  // Overlay click to close
-  if (overlay) {
-    overlay.addEventListener("click", function () {
-      closeMobileMenu();
-    });
-  }
-
-  // Dropdown toggle for mobile
-  const dropBtns = document.querySelectorAll(".bt-drop-btn");
-  dropBtns.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      const dropdownId = this.getAttribute("data-dropdown");
-      const menu = document.getElementById(dropdownId);
-
-      if (menu) {
-        const isExpanded = this.getAttribute("aria-expanded") === "true";
-        this.setAttribute("aria-expanded", !isExpanded);
-        menu.classList.toggle("active");
-
-        // Close other dropdowns
-        dropBtns.forEach((otherBtn) => {
-          if (otherBtn !== btn) {
-            const otherId = otherBtn.getAttribute("data-dropdown");
-            const otherMenu = document.getElementById(otherId);
-            if (otherMenu) {
-              otherMenu.classList.remove("active");
-              otherBtn.setAttribute("aria-expanded", "false");
-            }
+    </section>
+
+    <script>
+      (function () {
+        // DOM Elements
+        const form = document.getElementById("brokerContactForm");
+        const fullName = document.getElementById("fullName");
+        const phone = document.getElementById("phone");
+        const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+        const submitBtn = document.getElementById("submitBtn");
+        const btnDefault = submitBtn.querySelector(".btn-text-default");
+        const btnLoading = submitBtn.querySelector(".btn-text-loading");
+        const sendIcon = submitBtn.querySelector("svg:last-child");
+
+        const toastEl = document.getElementById("toastNotification");
+        const toastMsg = document.getElementById("toastMessage");
+        const toastIconDiv = document.getElementById("toastIcon");
+
+        let isSubmitting = false;
+
+        // Helper: show notification
+        function showNotification(msg, isError = false) {
+          toastMsg.innerText = msg;
+          toastIconDiv.innerHTML = isError
+            ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`
+            : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+          toastEl.classList.add("show");
+          if (isError) toastEl.classList.add("error");
+          else toastEl.classList.remove("error");
+          setTimeout(() => {
+            toastEl.classList.remove("show");
+          }, 3200);
+        }
+
+        // Validation helpers
+        const isValidPhone = (val) => {
+          const digits = val.replace(/[\s\-\(\)\+\.]/g, "");
+          const count = (digits.match(/\d/g) || []).length;
+          return count >= 5 && count <= 15;
+        };
+        const isValidEmail = (val) => /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(val);
+        const notEmpty = (val) => val && val.trim().length > 0;
+
+        // Focus management for visual feedback
+        const groups = {
+          fullName: document.getElementById("groupFullName"),
+          phone: document.getElementById("groupPhone"),
+          email: document.getElementById("groupEmail"),
+          subject: document.getElementById("groupSubject"),
+          message: document.getElementById("groupMessage"),
+        };
+
+        const removeAllFocus = () => {
+          Object.values(groups).forEach((g) => g?.classList.remove("focused"));
+        };
+
+        const addFocus = (groupKey) => {
+          removeAllFocus();
+          if (groups[groupKey]) groups[groupKey].classList.add("focused");
+        };
+
+        fullName.addEventListener("focus", () => addFocus("fullName"));
+        phone.addEventListener("focus", () => addFocus("phone"));
+        email.addEventListener("focus", () => addFocus("email"));
+        subject.addEventListener("focus", () => addFocus("subject"));
+        message.addEventListener("focus", () => addFocus("message"));
+        fullName.addEventListener("blur", removeAllFocus);
+        phone.addEventListener("blur", removeAllFocus);
+        email.addEventListener("blur", removeAllFocus);
+        subject.addEventListener("blur", removeAllFocus);
+        message.addEventListener("blur", removeAllFocus);
+
+        // Submit handler
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          if (isSubmitting) return;
+
+          const nameVal = fullName.value.trim();
+          const phoneVal = phone.value.trim();
+          const emailVal = email.value.trim();
+          const subjectVal = subject.value.trim();
+          const messageVal = message.value.trim();
+
+          if (!notEmpty(nameVal))
+            return showNotification(
+              "Please enter your full name (required for trading desk verification)",
+              true,
+            );
+          if (!isValidPhone(phoneVal))
+            return showNotification(
+              "Valid phone number required for direct broker callback",
+              true,
+            );
+          if (!isValidEmail(emailVal))
+            return showNotification(
+              "Please enter a valid institutional email address",
+              true,
+            );
+          if (!notEmpty(subjectVal))
+            return showNotification("Inquiry subject is required", true);
+          if (messageVal.length < 8)
+            return showNotification(
+              "Please provide more details (minimum 8 characters)",
+              true,
+            );
+
+          isSubmitting = true;
+          submitBtn.classList.add("submitting");
+          if (btnDefault) btnDefault.style.display = "none";
+          if (btnLoading) btnLoading.style.display = "flex";
+          if (sendIcon) sendIcon.style.opacity = "0.5";
+
+          try {
+            // Simulate API call to trading desk
+            await new Promise((resolve) => setTimeout(resolve, 1200));
+            showNotification(
+              "✓ Trading desk request received! A specialist will contact you within 45 minutes.",
+            );
+            // Reset form
+            fullName.value = "";
+            phone.value = "";
+            email.value = "";
+            subject.value = "";
+            message.value = "";
+            removeAllFocus();
+          } catch (err) {
+            showNotification(
+              "Connection error. Please retry or contact support directly.",
+              true,
+            );
+          } finally {
+            isSubmitting = false;
+            submitBtn.classList.remove("submitting");
+            if (btnDefault) btnDefault.style.display = "flex";
+            if (btnLoading) btnLoading.style.display = "none";
+            if (sendIcon) sendIcon.style.opacity = "1";
           }
         });
-      }
-    });
-  });
-
-  // Close mobile menu when clicking on nav links (except dropdown buttons)
-  const navLinks = document.querySelectorAll(".bt-nav a");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      if (window.innerWidth <= 1024) {
-        setTimeout(() => {
-          closeMobileMenu();
-        }, 100);
-      }
-    });
-  });
-
-  // Header scroll effect
-  const header = document.querySelector(".bt-header");
-  window.addEventListener("scroll", () => {
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add("bt-scrolled");
-      } else {
-        header.classList.remove("bt-scrolled");
-      }
-    }
-  });
-
-  // Close menu on window resize
-  window.addEventListener("resize", function () {
-    if (window.innerWidth > 1024) {
-      if (mobileMenu && mobileMenu.classList.contains("active")) {
-        closeMobileMenu();
-      }
-    }
-  });
-
-  // Close dropdowns when clicking outside (desktop)
-  document.addEventListener("click", function (e) {
-    if (window.innerWidth > 1024) {
-      const isDropdown = e.target.closest(".bt-dropdown");
-      if (!isDropdown) {
-        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
-          menu.classList.remove("active");
-        });
-        dropBtns.forEach((btn) => {
-          btn.setAttribute("aria-expanded", "false");
-        });
-      }
-    }
-  });
-
-  // Initialize ARIA attributes
-  dropBtns.forEach((btn) => {
-    btn.setAttribute("aria-expanded", "false");
-  });
-</script>
+      })();
+    </script>
+  </body>
+</html>

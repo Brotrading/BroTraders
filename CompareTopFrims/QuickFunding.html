@@ -295,7 +295,7 @@
             </div>
           </div>
 
-          <a href="GiveAway.html" class="bt-link">GiveAways</a>
+          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
         <!-- CTA -->
@@ -669,7 +669,7 @@
 
       @media (max-width: 480px) {
         .bt-drop-grid {
-          grid-template-columns: 1fr;
+          /* grid-template-columns: 1fr; */
           gap: 10px;
         }
 
@@ -1333,14 +1333,13 @@
       <div class="yt-container">
         <!-- LEFT -->
         <div class="yt-content">
-          <h2>
-            Trade Live With <br />
-            BroTradingz
-          </h2>
+          <h2>Trade Live With The Bro’s</h2>
 
           <p>Live Futures Trading Sessions</p>
-          <p>Market Breakdown • Strategy Execution • Real-Time Entries</p>
-          <p>Join Our Community of Serious Traders</p>
+          <p>
+            Market Breakdown • Live Analysis • Talking about real time entry’s
+          </p>
+          <p>Join the community where we laugh and cry together.</p>
 
           <a
             href="https://m.youtube.com/@Brotradingz"
@@ -1375,13 +1374,11 @@
     </section>
 
     <style>
-      /* ================= YOUTUBE HERO SECTION ================= */
-
       .yt-hero {
-        min-height: 75vh;
+        min-height: 70vh;
         display: flex;
         align-items: center;
-        padding: 60px 6%;
+        padding: 70px 6%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -1390,7 +1387,7 @@
 
       .yt-container {
         max-width: 1400px;
-        width: 100%;
+        width: 93%;
         margin: auto;
         display: flex;
         align-items: center;
@@ -1410,7 +1407,7 @@
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 25px;
-        font-family: "DM Mono", monospace;
+        /* font-family: "DM Mono", monospace; */
       }
 
       .yt-content p {
@@ -1424,7 +1421,7 @@
 
       .yt-btn {
         display: inline-block;
-        padding: 16px 42px;
+        padding: 14px 36px;
         border-radius: 50px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: #ffffff;
@@ -1432,14 +1429,12 @@
         text-decoration: none;
         margin-top: 20px;
         transition: all 0.3s ease;
-        /* box-shadow: 0 10px 25px rgba(0, 194, 255, 0.4); */
       }
 
       .yt-btn:hover {
-        /* transform: translateY(-4px); */
         background: #ffffff;
         color: #0b0f2a;
-        border: 3px solid #00c2ff;
+        border: 2px solid #00c2ff;
       }
 
       /* RIGHT SIDE (VIDEO) */
@@ -1454,8 +1449,8 @@
         position: relative;
         width: 100%;
         max-width: 650px;
-        padding-top: 56.25%; /* 16:9 Ratio */
-        border-radius: 22px;
+        padding-top: 56.25%;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       }
@@ -1472,22 +1467,50 @@
       /* ================= RESPONSIVE ================= */
 
       @media (max-width: 992px) {
+        .yt-hero {
+          min-height: auto;
+          padding: 60px 20px;
+        }
+
         .yt-container {
           flex-direction: column;
           text-align: center;
+          gap: 35px;
         }
 
         .yt-media {
           order: -1;
-          margin-bottom: 30px;
+        }
+
+        .yt-video-wrapper {
+          max-width: 100%;
+          border-radius: 16px;
         }
 
         .yt-content h2 {
-          font-size: 34px;
+          font-size: 30px;
+          line-height: 1.25;
         }
 
         .yt-content p {
-          font-size: 16px;
+          font-size: 15px;
+        }
+
+        .yt-btn {
+          padding: 12px 28px;
+          font-size: 14px;
+        }
+      }
+
+      /* SMALL PHONES */
+
+      @media (max-width: 480px) {
+        .yt-content h2 {
+          font-size: 24px;
+        }
+
+        .yt-content p {
+          font-size: 14px;
         }
       }
     </style>
