@@ -2047,128 +2047,90 @@
                 restrictedCountries: RESTRICTED_APEX,
               });
 
-            // Tradeify
-            const tradeifyAccounts = [
-              "25K",
-              "50K",
-              "75K",
-              "100K",
-              "150K",
-              "250K",
-              "300K",
+            // Tradeify — verified Apr 2026 from Mike's data dump.
+            // 4 plans (Growth, Select Daily, Select Flex, Lightning Instant) × up to 4 sizes.
+            // 40% off w/ BROTRADING. Activation FREE. Sizes 25K/50K/100K/150K only
+            // (no 75K/250K/300K anymore). Some (plan, size) combos missing — TODO with Mike.
+            const tradeifyGoals = { "25K": 1500, "50K": 3000, "100K": 4500, "150K": 6500 };
+            const tradeifyDD    = { "25K": 1000, "50K": 2000, "100K": 3000, "150K": 5000 };
+            const tradeifyVariants = [
+              { plan: "Growth",       size: "50K",  eval: 87.00,  ddt: "EOD",      mindays: 5 },
+              { plan: "Growth",       size: "150K", eval: 221.40, ddt: "EOD",      mindays: 5 },
+              { plan: "Select Daily", size: "25K",  eval: 65.40,  ddt: "EOD",      mindays: 1 },
+              { plan: "Select Daily", size: "50K",  eval: 99.00,  ddt: "EOD",      mindays: 1 },
+              { plan: "Select Daily", size: "100K", eval: 159.00, ddt: "EOD",      mindays: 1 },
+              { plan: "Select Flex",  size: "100K", eval: 159.00, ddt: "EOD",      mindays: 5 },
+              { plan: "Select Flex",  size: "150K", eval: 221.40, ddt: "EOD",      mindays: 5 },
+              { plan: "Lightning",    size: "25K",  eval: 207.00, ddt: "Trailing", mindays: 0 },
+              { plan: "Lightning",    size: "50K",  eval: 295.20, ddt: "Trailing", mindays: 0 },
+              { plan: "Lightning",    size: "100K", eval: 396.00, ddt: "Trailing", mindays: 0 },
             ];
-            const tradeifyGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "75K": 4500,
-              "100K": 6000,
-              "150K": 9000,
-              "250K": 15000,
-              "300K": 18000,
-            };
-            const tradeifyDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "75K": 3000,
-              "100K": 3000,
-              "150K": 5000,
-              "250K": 7500,
-              "300K": 9000,
-            };
-            const tradeifyEval = {
-              "25K": 80,
-              "50K": 160,
-              "75K": 240,
-              "100K": 320,
-              "150K": 440,
-              "250K": 660,
-              "300K": 880,
-            };
-            const tradeifyTrue = {
-              "25K": 56,
-              "50K": 112,
-              "75K": 168,
-              "100K": 224,
-              "150K": 308,
-              "250K": 462,
-              "300K": 616,
-            };
-            const tradeifyPlatforms = ["Tradovate", "NinjaTrader", "Quantower"];
-            for (let plat of tradeifyPlatforms)
-              for (let acc of tradeifyAccounts)
-                for (let prod of ["Evaluation", "Funded", "Instant"])
-                  allRows.push({
-                    firm: "Tradeify",
-                    logo: "../Photos/firms/tradeify.png",
-                    account: acc,
-                    goal: tradeifyGoals[acc],
-                    profitTarget: tradeifyGoals[acc],
-                    ddt: "EOD",
-                    dd: tradeifyDD[acc],
-                    mindays: prod === "Instant" ? 0 : 1,
-                    eval: tradeifyEval[acc],
-                    activation: 0,
-                    truecost: tradeifyTrue[acc],
-                    discount: "30%",
-                    code: "BRO",
-                    platform: plat,
-                    country: "Global",
-                    maxaccounts: 5,
-                    firmpage: "../Firms/TradeifyTrader.html",
-                    website: "https://tradeify.co/?ref=BFYQ2HKM",
-                    restrictedCountries: RESTRICTED_TRADEIFY,
-                  });
+            for (let v of tradeifyVariants)
+              allRows.push({
+                firm: "Tradeify",
+                logo: "../Photos/firms/tradeify.png",
+                account: `${v.size} ${v.plan}`,
+                goal: tradeifyGoals[v.size],
+                profitTarget: tradeifyGoals[v.size],
+                ddt: v.ddt,
+                dd: tradeifyDD[v.size],
+                mindays: v.mindays,
+                eval: v.eval,
+                activation: 0,
+                truecost: v.eval,
+                discount: "40%",
+                code: "BROTRADING",
+                platform: "Tradovate, NinjaTrader, Quantower, Rithmic, TradingView, WealthCharts",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "../Firms/TradeifyTrader.html",
+                website: "https://tradeify.co/?ref=BFYQ2HKM",
+                restrictedCountries: RESTRICTED_TRADEIFY,
+              });
 
-            // MyFundedFutures
-            const mffuAccounts = ["25K", "50K", "100K", "150K"];
-            const mffuGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const mffuDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 5000,
-            };
-            const mffuEval = {
-              "25K": 100,
-              "50K": 150,
-              "100K": 300,
-              "150K": 450,
-            };
-            const mffuTrue = {
-              "25K": 75,
-              "50K": 105,
-              "100K": 210,
-              "150K": 315,
-            };
-            const mffuPlans = ["Core", "Scale", "Pro", "Rapid"];
-            for (let plan of mffuPlans)
-              for (let acc of mffuAccounts)
-                allRows.push({
-                  firm: "MyFundedFutures",
-                  logo: "../Photos/firms/myfundedfutures.png",
-                  account: acc,
-                  goal: mffuGoals[acc],
-                  profitTarget: mffuGoals[acc],
-                  ddt: plan === "Rapid" ? "Trailing" : "EOD Trailing",
-                  dd: mffuDD[acc],
-                  mindays: 5,
-                  eval: mffuEval[acc],
-                  activation: 0,
-                  truecost: mffuTrue[acc],
-                  discount: "50%",
-                  code: "BRO",
-                  platform: "Multi (Tradovate, NinjaTrader, Quantower)",
-                  country: "Global",
-                  maxaccounts: 5,
-                  firmpage: "../Firms/MyFundedFuture.html",
-                  website: "https://myfundedfutures.com/challenge?ref=5117",
-                  restrictedCountries: RESTRICTED_MFFU,
-                });
+            // MyFundedFutures — verified Apr 2026 from Mike's data dump.
+            // 4 plans, NOT all sizes per plan. Pro=50%off, Rapid=20%off, Flex=40%off,
+            // Builder=40%off. Activation FREE. Rapid=Trailing, others=EOD Trailing.
+            const mffuGoals = { "25K": 1500, "50K": 3000, "100K": 6000, "150K": 9000 };
+            const mffuDD    = { "25K": 1000, "50K": 2000, "100K": 3000, "150K": 5000 };
+            const mffuVariants = [
+              // Pro: 50K/100K/150K (no 25K). 50% off w/ BROTRADING. EOD Trailing.
+              { plan: "Pro",     size: "50K",  eval: 113.50, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
+              { plan: "Pro",     size: "100K", eval: 172.00, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
+              { plan: "Pro",     size: "150K", eval: 238.50, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
+              // Rapid: all 4 sizes. 20% off. Trailing (intraday).
+              { plan: "Rapid",   size: "25K",  eval: 87.20,  ddt: "Trailing",     mindays: 0, discount: "20%" },
+              { plan: "Rapid",   size: "50K",  eval: 125.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
+              { plan: "Rapid",   size: "100K", eval: 213.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
+              { plan: "Rapid",   size: "150K", eval: 277.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
+              // Flex: 25K/50K only. ~40% off. EOD Trailing. 5 winning days.
+              { plan: "Flex",    size: "25K",  eval: 49.00,  ddt: "EOD Trailing", mindays: 5, discount: "40%" },
+              { plan: "Flex",    size: "50K",  eval: 107.00, ddt: "EOD Trailing", mindays: 5, discount: "40%" },
+              // Builder: 50K only. 40% off. EOD Trailing. Every 48h payouts.
+              { plan: "Builder", size: "50K",  eval: 91.80,  ddt: "EOD Trailing", mindays: 2, discount: "40%" },
+            ];
+            for (let v of mffuVariants)
+              allRows.push({
+                firm: "MyFundedFutures",
+                logo: "../Photos/firms/myfundedfutures.png",
+                account: `${v.size} ${v.plan}`,
+                goal: mffuGoals[v.size],
+                profitTarget: mffuGoals[v.size],
+                ddt: v.ddt,
+                dd: mffuDD[v.size],
+                mindays: v.mindays,
+                eval: v.eval,
+                activation: 0,
+                truecost: v.eval,
+                discount: v.discount,
+                code: "BROTRADING",
+                platform: "Tradovate, NinjaTrader, Quantower, TradingView, ATAS, Volbook, Volsys, Volumetrica",
+                country: "USA",
+                maxaccounts: 5,
+                firmpage: "../Firms/MyFundedFuture.html",
+                website: "https://myfundedfutures.com/challenge?ref=5117",
+                restrictedCountries: RESTRICTED_MFFU,
+              });
 
             // Lucid Trading — verified Apr 2026 from Mike screenshots.
             // 3 plans × 4 sizes. Pro/Flex = 40% off, Direct = 30% off (both via BROTRADING).
@@ -2289,33 +2251,45 @@
                   restrictedCountries: RESTRICTED_PHIDIAS,
                 });
 
-            // Alpha Futures
-            const alphaMap = {
-              "50K": { eval: 99.99, goal: 3000, dd: 2000, true: 99.99 },
-              "100K": { eval: 199.99, goal: 6000, dd: 4000, true: 199.99 },
-              "150K": { eval: 279.99, goal: 9000, dd: 6000, true: 279.99 },
-              "300K": { eval: 499.99, goal: 18000, dd: 10000, true: 499.99 },
-            };
-            for (let [acc, data] of Object.entries(alphaMap))
+            // Alpha Futures — verified Apr 2026 from Mike's data dump.
+            // 3 plans (Standard, Zero, Advanced), all 20% off w/ BROTRADING. UK-based.
+            // EAs/bots/copy trading prohibited across all plans. Activation FREE.
+            const alphaGoals = { "25K": 1500, "50K": 3000, "100K": 6000, "150K": 9000 };
+            const alphaDD    = { "25K": 1000, "50K": 2000, "100K": 4000, "150K": 6000 };
+            const alphaVariants = [
+              // Standard: 50K/100K/150K. Tiered split 70/80/90. Bi-weekly payouts.
+              { plan: "Standard", size: "50K",  eval: 63.20  },
+              { plan: "Standard", size: "100K", eval: 127.20 },
+              { plan: "Standard", size: "150K", eval: 191.20 },
+              // Zero: 25K/50K/100K. Flat 90% split. Weekly payouts.
+              { plan: "Zero",     size: "25K",  eval: 63.20  },
+              { plan: "Zero",     size: "50K",  eval: 95.20  },
+              { plan: "Zero",     size: "100K", eval: 191.20 },
+              // Advanced: 50K/100K/150K. Flat 90% split. Weekly payouts.
+              { plan: "Advanced", size: "50K",  eval: 111.20 },
+              { plan: "Advanced", size: "100K", eval: 223.20 },
+              { plan: "Advanced", size: "150K", eval: 335.20 },
+            ];
+            for (let v of alphaVariants)
               allRows.push({
                 firm: "Alpha Futures",
-                logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII=",
-                account: acc,
-                goal: data.goal,
-                profitTarget: data.goal,
-                ddt: "Static",
-                dd: data.dd,
-                mindays: 0,
-                eval: data.eval,
+                logo: "../Photos/firms/alphafutures.svg",
+                account: `${v.size} ${v.plan}`,
+                goal: alphaGoals[v.size],
+                profitTarget: alphaGoals[v.size],
+                ddt: "Trailing",
+                dd: alphaDD[v.size],
+                mindays: 5,
+                eval: v.eval,
                 activation: 0,
-                truecost: data.true,
-                discount: "N/A",
-                code: "BRO",
-                platform: "Tradovate, NinjaTrader",
-                country: "USA",
+                truecost: v.eval,
+                discount: "20%",
+                code: "BROTRADING",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "UK",
                 maxaccounts: 5,
                 firmpage: "../Firms/AlphaFutures.html",
-                website: "https://alphafutures.com",
+                website: "https://app.alpha-futures.com/signup/BROTRADING/",
                 restrictedCountries: RESTRICTED_ALPHA,
               });
 
@@ -2387,35 +2361,51 @@
               });
             }
 
-            // Top One Futures
-            const topAccounts = ["50K", "100K"];
-            const topEval = { "50K": 149, "100K": 249 };
-            const topAct = { "50K": 99, "100K": 149 };
-            const topTarget = { "50K": 4000, "100K": 8000 };
-            const topDDmap = { "50K": 2500, "100K": 5000 };
-            for (let acc of topAccounts) {
+            // Top One Futures — verified Apr 2026 from Mike's data dump.
+            // 5 plans: Elite, Elite Access (flat $39!), Instant Sim Funded, S2F Sim Pro, Ignite.
+            // Most plans 60% off w/ BRO. Activation FREE (prices include all fees).
+            // EAs/bots prohibited. 10-second min trade duration.
+            const topGoals = { "25K": 1500, "50K": 3000, "100K": 6000, "150K": 9000 };
+            const topDD    = { "25K": 1500, "50K": 2500, "100K": 5000, "150K": 7500 };
+            const topVariants = [
+              // Elite (1-Step). 60% off. 25% consistency on funded.
+              { plan: "Elite",        size: "25K",  eval: 27.60,  ddt: "Static",   mindays: 0,  discount: "60%" },
+              // Elite Access (1-Step). FLAT $39 across sizes. 40% consistency on funded.
+              { plan: "Elite Access", size: "25K",  eval: 39.00,  ddt: "Static",   mindays: 0,  discount: "Flat" },
+              { plan: "Elite Access", size: "50K",  eval: 39.00,  ddt: "Static",   mindays: 0,  discount: "Flat" },
+              { plan: "Elite Access", size: "100K", eval: 39.00,  ddt: "Static",   mindays: 0,  discount: "Flat" },
+              // Instant Sim Funded (Instant). 20% consistency.
+              { plan: "Instant",      size: "25K",  eval: 167.60, ddt: "Trailing", mindays: 0,  discount: "60%" },
+              // S2F Sim Pro (Instant). Combined 20% consistency. 10 trading days min.
+              { plan: "S2F Sim Pro",  size: "25K",  eval: 102.80, ddt: "Static",   mindays: 10, discount: "60%" },
+              { plan: "S2F Sim Pro",  size: "50K",  eval: 168.40, ddt: "Static",   mindays: 10, discount: "60%" },
+              { plan: "S2F Sim Pro",  size: "100K", eval: 252.80, ddt: "Static",   mindays: 10, discount: "60%" },
+              // Ignite (Instant Funding). 15% consistency. No min trading days.
+              { plan: "Ignite",       size: "25K",  eval: 87.20,  ddt: "Static",   mindays: 0,  discount: "60%" },
+              { plan: "Ignite",       size: "150K", eval: 319.60, ddt: "Static",   mindays: 0,  discount: "60%" },
+            ];
+            for (let v of topVariants)
               allRows.push({
                 firm: "Top One Futures",
                 logo: "../Photos/firms/topone.svg",
-                account: `${acc} 1-Step`,
-                goal: topTarget[acc],
-                profitTarget: topTarget[acc],
-                ddt: "Absolute Static",
-                dd: topDDmap[acc],
-                mindays: 3,
-                eval: topEval[acc],
-                activation: topAct[acc],
-                truecost: topEval[acc] + topAct[acc],
-                discount: "BRO",
+                account: `${v.size} ${v.plan}`,
+                goal: topGoals[v.size],
+                profitTarget: topGoals[v.size],
+                ddt: v.ddt,
+                dd: topDD[v.size],
+                mindays: v.mindays,
+                eval: v.eval,
+                activation: 0,
+                truecost: v.eval,
+                discount: v.discount,
                 code: "BRO",
-                platform: "Tradovate",
-                country: "International",
+                platform: "Tradovate, NinjaTrader, TradingView",
+                country: "USA",
                 maxaccounts: 3,
                 firmpage: "../Firms/TopOne.html",
-                website: "https://toponefutures.com",
+                website: "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
                 restrictedCountries: RESTRICTED_TOPONE,
               });
-            }
 
             // YRM Prop
             allRows.push({
