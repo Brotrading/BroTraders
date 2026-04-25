@@ -1909,8 +1909,7 @@
             // ----- Apex Trader Funding -----
             // Verified from apextraderfunding.com — 90% off sale active (code BRO).
             // 4 account sizes (25K, 50K, 100K, 150K), each in 2 drawdown variants (Trail / EOD).
-            // Same prices across platforms (Rithmic, Tradovate, WealthCharts).
-            const apexPlatforms = ["Rithmic", "Tradovate", "WealthCharts"];
+            // Same prices across all 3 platforms — listed inline in one Platform cell.
             const apexVariants = [
               { size: "25K Trail",  goal: 1500, dd: 1000, ddt: "Trailing", evalReg: 199, evalSale: 19.90,  activation: 89,  truecost: 109 },
               { size: "50K Trail",  goal: 3000, dd: 2000, ddt: "Trailing", evalReg: 249, evalSale: 24.90,  activation: 69,  truecost: 94 },
@@ -1921,29 +1920,28 @@
               { size: "100K EOD",   goal: 6000, dd: 3000, ddt: "Static",   evalReg: 599, evalSale: 59.90,  activation: 139, truecost: 199 },
               { size: "150K EOD",   goal: 9000, dd: 4000, ddt: "Static",   evalReg: 799, evalSale: 79.90,  activation: 159, truecost: 239 },
             ];
-            for (let plat of apexPlatforms)
-              for (let v of apexVariants)
-                allRows.push({
-                  firm: "Apex Trader Funding",
-                  logo: "../Photos/firms/apex.png",
-                  account: v.size,
-                  goal: v.goal,
-                  profitTarget: v.goal,
-                  ddt: v.ddt,
-                  dd: v.dd,
-                  mindays: 1,
-                  eval: v.evalSale,
-                  activation: v.activation,
-                  truecost: v.truecost,
-                  discount: "90%",
-                  code: "BRO",
-                  platform: plat,
-                  country: "USA",
-                  maxaccounts: 20,
-                  firmpage: "../Firms/ApexFunding.html",
-                  website:
-                    "https://apextraderfunding.com/member/aff/go/buurtie",
-                });
+            for (let v of apexVariants)
+              allRows.push({
+                firm: "Apex Trader Funding",
+                logo: "../Photos/firms/apex.png",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: 1,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "90%",
+                code: "BRO",
+                platform: "Rithmic, Tradovate, WealthCharts",
+                country: "USA",
+                maxaccounts: 20,
+                firmpage: "../Firms/ApexFunding.html",
+                website:
+                  "https://apextraderfunding.com/member/aff/go/buurtie",
+              });
 
             // Tradeify
             const tradeifyAccounts = [
