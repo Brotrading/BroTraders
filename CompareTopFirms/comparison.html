@@ -1969,6 +1969,23 @@
             const RESTRICTED_TOPONE = [
               "Afghanistan","Albania","Algeria","Angola","Antarctica","Armenia","Azerbaijan","Bahamas","Barbados","Belarus","Bosnia and Herzegovina","Botswana","Burkina Faso","Burundi","Cambodia","Central African Republic","Chad","Cote d'Ivoire (Ivory Coast)","Crimea (Region of Ukraine)","Cuba","Democratic Republic of the Congo (Congo Free State)","Djibouti","Ecuador","Ethiopia","Ghana","Guinea-Bissau","Indonesia","Iran","Iraq","Jamaica","Jordan","Kazakhstan","Kosovo","Kuwait","Laos","Lebanon","Lesotho","Macedonia","Malawi","Mauritius","Mongolia","Montenegro","Morocco","Myanmar (Burma)","Nicaragua","North Korea","Pakistan","Palestinian Territory","Panama","Papua New Guinea","Philippines","Russia","Rwanda","Sierra Leone","Somalia","South Sudan","Sri Lanka","Sudan","Syria","Tajikistan","Timor-Leste (East Timor)","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine","Venezuela","Vietnam","Yemen","Zimbabwe"
             ];
+            // Source: proptradingvibes.com (DayTraders.com restricted countries 2026)
+            const RESTRICTED_DAYTRADERS = [
+              "Afghanistan","Algeria","Azerbaijan","Bahrain","Bangladesh","Belarus","Benin","Brunei","Burkina Faso","Cameroon","Central African Republic","Chad","China","Congo","Cote d'Ivoire (Ivory Coast)","Cuba","Curacao","Cyprus","Egypt","Gabon","Grenada","Haiti","Indonesia","Iran","Iraq","Jersey","Jordan","Kazakhstan","Kenya","Kosovo","Kuwait","Lebanon","Lesotho","Libya","Madagascar","Maldives","Mauritania","Mauritius","Mongolia","Morocco","Mozambique","Namibia","Nepal","Nicaragua","Niger","Nigeria","Oman","Pakistan","Palestine","Qatar","Republic of Moldova","Republic of the Congo","Reunion","Russia","Rwanda","Saint Pierre and Miquelon","Saudi Arabia","Senegal","Serbia","Somalia","South Africa","Sri Lanka","Syria","Tanzania","Thailand","Togo","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine","Uzbekistan","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"
+            ];
+            // Source: thetrustedprop.com Phidias review (Apr 2026). Phidias help center is CF-protected.
+            const RESTRICTED_PHIDIAS = [
+              "Afghanistan","Albania","Algeria","Angola","Belarus","Bosnia and Herzegovina","Botswana","Bulgaria","Burkina Faso","Burundi","Central African Republic","Croatia","Cuba","Democratic People's Republic of Korea","Democratic Republic of the Congo","Ecuador","Ethiopia","Guyana","Haiti","Indonesia","Iran","Iraq","Jamaica","Kenya","Kosovo","Lao PDR","Lebanon","Libya","Mali","Malta","Mauritius","Montenegro","Mozambique","Myanmar","Namibia","Nicaragua","Nigeria","North Korea","North Macedonia","Pakistan","Papua New Guinea","Philippines","Romania","Russia","Senegal","Serbia","Slovenia","Somalia","South Africa","South Sudan","Sri Lanka","Sudan","Syria","Tanzania","Trinidad and Tobago","Tunisia","Ukraine (Crimea Region)","Venezuela","Yemen","Zimbabwe"
+            ];
+            // NexGen Pro Trader uses AMP Futures as broker → inherits AMP's restricted list.
+            // Source: restrictedcountries.com (AMP Futures 2025).
+            const RESTRICTED_NEXGEN = [
+              "Afghanistan","Albania","Algeria","Angola","Anguilla","Antigua and Barbuda","Azerbaijan","Bangladesh","Belarus","Belize","Benin","Botswana","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Central African Republic","Chad","Comoros","Congo","Congo Democratic Republic","Cote d'Ivoire","Cuba","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Fiji","Gabon","Gambia","Ghana","Guinea","Guinea-Bissau","Haiti","Iran","Iraq","Jordan","Kenya","North Korea","Laos PDR","Lesotho","Liberia","Libya","Madagascar","Malawi","Mali","Malta","Marshall Islands","Mauritania","Morocco","Mozambique","Myanmar","Namibia","Nicaragua","Niger","Nigeria","Palau","Palestinian Territory","Panama","Papua New Guinea","Russia","Rwanda","Samoa","Sao Tome and Principe","Senegal","Seychelles","Sierra Leone","Somalia","South Africa","South Sudan","Sri Lanka","Sudan","Swaziland","Syria","Tajikistan","Tanzania","Togo","Trinidad and Tobago","Tunisia","Turks and Caicos Islands","Uganda","Ukraine","Vanuatu","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"
+            ];
+            // Source: proptradingvibes.com — YRM has no public list, OFAC + regional only.
+            const RESTRICTED_YRM = [
+              "Iran","North Korea","Syria","Cuba","Russia","Belarus","Venezuela","Crimea (Region of Ukraine)","Donetsk","Luhansk","Palestinian Territory"
+            ];
 
             // ----- Apex Trader Funding -----
             // Verified from apextraderfunding.com — 90% off sale active (code BRO).
@@ -2212,6 +2229,7 @@
                 maxaccounts: 5,
                 firmpage: "../Firms/DayTraders.html",
                 website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+                restrictedCountries: RESTRICTED_DAYTRADERS,
               });
 
             // Phidias
@@ -2260,6 +2278,7 @@
                   maxaccounts: 3,
                   firmpage: "../Firms/Phidias.html",
                   website: "https://phidiaspropfirm.com/",
+                  restrictedCountries: RESTRICTED_PHIDIAS,
                 });
 
             // Alpha Futures
@@ -2334,6 +2353,7 @@
                 firmpage: "../Firms/NexGen.html",
                 website:
                   "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+                restrictedCountries: RESTRICTED_NEXGEN,
               });
               allRows.push({
                 firm: "NexGen Pro Trader",
@@ -2355,6 +2375,7 @@
                 firmpage: "../Firms/NexGen.html",
                 website:
                   "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+                restrictedCountries: RESTRICTED_NEXGEN,
               });
             }
 
@@ -2408,6 +2429,7 @@
               maxaccounts: 5,
               firmpage: "../Firms/YRM.html",
               website: "https://yrmprop.com",
+              restrictedCountries: RESTRICTED_YRM,
             });
 
             const firms = allRows.slice();
