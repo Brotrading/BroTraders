@@ -33,7 +33,7 @@
         <div class="bt-ticker">
           <div class="bt-ticker-track">
             <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is 50% Off All Accounts! Use Code: BROTRADING
+              Lucid Trading is up to 40% Off All Accounts! Use Code: BROTRADING
             </a>
 
             <a
@@ -2170,51 +2170,37 @@
                   restrictedCountries: RESTRICTED_MFFU,
                 });
 
-            // Lucid Trading
+            // Lucid Trading — verified Apr 2026 from Mike screenshots.
+            // 3 plans × 4 sizes. Pro/Flex = 40% off, Direct = 30% off (both via BROTRADING).
+            // Activation FREE on all. EOD drawdown across all plans.
             const lucidAccounts = ["25K", "50K", "100K", "150K"];
-            const lucidGoals = {
-              "25K": 1250,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
+            const lucidGoals = { "25K": 1250, "50K": 3000, "100K": 6000, "150K": 9000 };
+            const lucidDD = { "25K": 1000, "50K": 2000, "100K": 3000, "150K": 4500 };
+            const lucidPrices = {
+              LucidPro:    { "25K": 81,  "50K": 111, "100K": 171, "150K": 222 },
+              LucidFlex:   { "25K": 60,  "50K": 84,  "100K": 135, "150K": 252 },
+              LucidDirect: { "25K": 238, "50K": 364, "100K": 490, "150K": 588 },
             };
-            const lucidDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 4500,
-            };
-            const lucidEval = {
-              "25K": 100,
-              "50K": 170,
-              "100K": 285,
-              "150K": 400,
-            };
-            const lucidTrue = {
-              "25K": 50,
-              "50K": 85,
-              "100K": 142,
-              "150K": 200,
-            };
-            const lucidPlans = ["LucidPro", "LucidFlex", "LucidDirect"];
-            for (let plan of lucidPlans)
+            const lucidDiscount = { LucidPro: "40%", LucidFlex: "40%", LucidDirect: "30%" };
+            const lucidMinDays = { LucidPro: 3, LucidFlex: 5, LucidDirect: 0 };
+            for (let plan of Object.keys(lucidPrices))
               for (let acc of lucidAccounts)
                 allRows.push({
                   firm: "Lucid Trading",
                   logo: "../Photos/firms/lucid.webp",
-                  account: acc,
+                  account: `${acc} ${plan.replace("Lucid", "")}`,
                   goal: lucidGoals[acc],
                   profitTarget: lucidGoals[acc],
                   ddt: "EOD",
                   dd: lucidDD[acc],
-                  mindays: 1,
-                  eval: lucidEval[acc],
+                  mindays: lucidMinDays[plan],
+                  eval: lucidPrices[plan][acc],
                   activation: 0,
-                  truecost: lucidTrue[acc],
-                  discount: "50%",
+                  truecost: lucidPrices[plan][acc],
+                  discount: lucidDiscount[plan],
                   code: "BROTRADING",
-                  platform: "Tradovate",
-                  country: "UK",
+                  platform: "Tradovate, NinjaTrader, Sierra Chart, Quantower, Bookmap, ATAS, MotiveWave, MultiCharts",
+                  country: "USA",
                   maxaccounts: 5,
                   firmpage: "../Firms/Lucid Trading.html",
                   website: "https://lucidtrading.com/ref/brotrading/",
