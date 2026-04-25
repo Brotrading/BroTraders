@@ -1800,11 +1800,13 @@
             selected — try your luck!
           </p>
           <div class="wheel-wrapper">
-            <div class="pointer"></div>
-            <canvas id="wheelCanvas" width="420" height="420"></canvas
-            ><button id="spinBtn">
-              <i class="fas fa-sync-alt"></i> TRY YOUR LUCK
-            </button>
+            <iframe
+              id="wheelFrame"
+              src="wheel/"
+              title="BroTrading Giveaway Wheel"
+              style="width: 100%; max-width: 760px; height: 720px; border: 0; border-radius: 16px; overflow: hidden; background: transparent;"
+              allow="autoplay"
+            ></iframe>
           </div>
           <p class="wheel-note">
             <i class="fas fa-info-circle"></i> Demo wheel for showcase purposes.
@@ -1897,227 +1899,28 @@
       }
 
       // ----------------------------------------------
-      // WHEEL & FIFO QUEUE (unchanged logic)
+      // FORM SUBMIT + WHEEL IFRAME BRIDGE
       // ----------------------------------------------
       const scriptURL =
         "https://script.google.com/macros/s/AKfycbzO3_aIads5J2ekdJqVKqC-XS7IKuIGG0wD_3tX-i8R2DAD5zCKV6-gWhLfjf1jC0gAFA/exec";
       const form = document.getElementById("giveawayForm");
-      const MAX_WHEEL_NAMES = 16;
-      let wheelNamesQueue = [];
-      let startAngle = 0,
-        arc = 0,
-        spinning = false,
-        spinTimeout = null,
-        spinAngleStart = 0,
-        spinTime = 0,
-        spinTimeTotal = 0;
-      const canvas = document.getElementById("wheelCanvas");
-      const ctx = canvas.getContext("2d");
-      const defaultInitialNames = [
-        "Alex",
-        "Jordan",
-        "Mike",
-        "Sophia",
-        "Ethan",
-        "Olivia",
-        "Daniel",
-        "Devya",
-      ];
+      const wheelFrame = document.getElementById("wheelFrame");
 
-      function initCanvasDimensions() {
-        canvas.width = 420;
-        canvas.height = 420;
-        canvas.style.width = "100%";
-        canvas.style.height = "auto";
-        canvas.style.maxWidth = "420px";
-      }
-      initCanvasDimensions();
-
-      function drawWheel() {
-        if (!ctx || wheelNamesQueue.length === 0) return;
-        const centerX = 210,
-          centerY = 210,
-          radius = 200,
-          textRadius = 165;
-        for (let i = 0; i < wheelNamesQueue.length; i++) {
-          const angleStart = startAngle + i * arc,
-            angleEnd = angleStart + arc;
-          const grad = ctx.createLinearGradient(
-            centerX + Math.cos(angleStart) * 30,
-            centerY + Math.sin(angleStart) * 30,
-            centerX + Math.cos(angleEnd) * radius * 0.7,
-            centerY + Math.sin(angleEnd) * radius * 0.7,
-          );
-          grad.addColorStop(0, i % 2 === 0 ? "#2c9eff" : "#3db4ff");
-          grad.addColorStop(1, i % 2 === 0 ? "#1a55dd" : "#2873f0");
-          ctx.fillStyle = grad;
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
-          ctx.closePath();
-          ctx.fill();
-          ctx.save();
-          ctx.strokeStyle = "rgba(255,255,240,0.3)";
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, radius, angleStart, angleEnd);
-          ctx.lineTo(centerX, centerY);
-          ctx.stroke();
-          ctx.restore();
-          ctx.save();
-          ctx.translate(centerX, centerY);
-          ctx.rotate(angleStart + arc / 2);
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          let fontSize = Math.min(
-            16,
-            Math.floor(160 / wheelNamesQueue.length) + 8,
-          );
-          ctx.font = `bold ${fontSize}px "Inter", "Segoe UI", system-ui`;
-          ctx.shadowColor = "rgba(0,0,0,0.5)";
-          ctx.shadowBlur = 4;
-          ctx.fillStyle = "#FFFFFF";
-          let offset = textRadius - 8;
-          if (wheelNamesQueue[i].length > 8) offset = textRadius - 18;
-          ctx.fillText(wheelNamesQueue[i], offset, 6);
-          ctx.shadowBlur = 0;
-          ctx.restore();
-        }
-        ctx.beginPath();
-        ctx.arc(210, 210, 28, 0, Math.PI * 2);
-        ctx.fillStyle = "#071b38";
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(210, 210, 18, 0, Math.PI * 2);
-        ctx.fillStyle = "#ffcf40";
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(210, 210, 8, 0, Math.PI * 2);
-        ctx.fillStyle = "#ffffff";
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(210, 210, radius + 4, 0, Math.PI * 2);
-        ctx.strokeStyle = "#3c8eff";
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
-      function syncWheelFromQueue() {
-        if (!wheelNamesQueue.length) wheelNamesQueue = [...defaultInitialNames];
-        if (wheelNamesQueue.length > MAX_WHEEL_NAMES)
-          wheelNamesQueue = wheelNamesQueue.slice(0, MAX_WHEEL_NAMES);
-        arc = (Math.PI * 2) / wheelNamesQueue.length;
-        drawWheel();
-      }
-      function addNameToWheelFIFO(newName) {
-        if (!newName?.trim()) return;
-        wheelNamesQueue.push(newName.trim());
-        while (wheelNamesQueue.length > MAX_WHEEL_NAMES)
-          wheelNamesQueue.shift();
-        syncWheelFromQueue();
-      }
-      async function fetchSheetNamesAndInitQueue() {
+      function pushNameToWheel(name) {
+        if (!name || !wheelFrame || !wheelFrame.contentWindow) return;
         try {
-          const res = await fetch(scriptURL);
-          const data = await res.json();
-          let sheetNames = Array.isArray(data)
-            ? data
-            : data && typeof data === "object"
-              ? Object.values(data).flat()
-              : [];
-          let cleanNames = sheetNames
-            .filter((n) => n && typeof n === "string")
-            .map((n) => n.trim());
-          let combined = [...defaultInitialNames, ...cleanNames];
-          let unique = [];
-          let seen = new Set();
-          for (let name of combined)
-            if (!seen.has(name)) {
-              seen.add(name);
-              unique.push(name);
-            }
-          wheelNamesQueue =
-            unique.length > MAX_WHEEL_NAMES
-              ? unique.slice(-MAX_WHEEL_NAMES)
-              : unique;
-          syncWheelFromQueue();
-        } catch (e) {
-          wheelNamesQueue = [...defaultInitialNames];
-          syncWheelFromQueue();
-        }
-      }
-      function easeOut(t, b, c, d) {
-        const ts = (t /= d) * t;
-        const tc = ts * t;
-        return b + c * (tc + -3 * ts + 3 * t);
-      }
-      function rotateWheel() {
-        if (!spinning) return;
-        spinTime += 30;
-        if (spinTime >= spinTimeTotal) {
-          stopRotateWheel();
-          return;
-        }
-        const spinAngle =
-          spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
-        startAngle += (spinAngle * Math.PI) / 180;
-        startAngle %= Math.PI * 2;
-        drawWheel();
-        spinTimeout = setTimeout(rotateWheel, 30);
-      }
-      function stopRotateWheel() {
-        if (spinTimeout) clearTimeout(spinTimeout);
-        spinning = false;
-        const fixedPointerRad = -Math.PI / 2;
-        let winnerIndex = -1;
-        for (let i = 0; i < wheelNamesQueue.length; i++) {
-          let segStart = startAngle + i * arc,
-            segEnd = segStart + arc;
-          let checkAngle = fixedPointerRad;
-          while (checkAngle < 0) checkAngle += Math.PI * 2;
-          let startMod = segStart % (Math.PI * 2),
-            endMod = segEnd % (Math.PI * 2);
-          if (startMod < endMod) {
-            if (checkAngle >= startMod && checkAngle < endMod) {
-              winnerIndex = i;
-              break;
-            }
-          } else {
-            if (checkAngle >= startMod || checkAngle < endMod) {
-              winnerIndex = i;
-              break;
-            }
-          }
-        }
-        if (winnerIndex === -1 && wheelNamesQueue.length) winnerIndex = 0;
-        const winnerName =
-          winnerIndex >= 0 ? wheelNamesQueue[winnerIndex] : "Guest";
-        setTimeout(() => {
-          showPopup(
-            `🎉 CONGRATULATIONS, ${winnerName}! 🎉\nYou won exclusive Trading perks! Stay tuned on Friday.\n You Could Be The Next Winner!`,
-            "win",
-            "You're a Winner!",
+          wheelFrame.contentWindow.postMessage(
+            { type: "addName", name: String(name).trim() },
+            "*",
           );
-        }, 20);
-      }
-      function startSpin() {
-        if (spinning) return;
-        if (spinTimeout) clearTimeout(spinTimeout);
-        if (!wheelNamesQueue.length) {
-          showPopup("Wheel is loading, please wait.", "warning");
-          return;
+        } catch (e) {
+          console.warn("Wheel iframe message failed:", e);
         }
-        spinning = true;
-        spinAngleStart = Math.random() * 20 + 15;
-        spinTime = 0;
-        spinTimeTotal = Math.random() * 2800 + 3800;
-        rotateWheel();
       }
-      document.getElementById("spinBtn").onclick = (e) => {
-        e.preventDefault();
-        if (!spinning) startSpin();
-      };
 
-      // FORM SUBMIT (popup only, no inline messages)
+
+      // FORM SUBMIT — sends entry to Google Sheet AND pushes the
+      // Discord username (or Name fallback) into the embedded wheel.
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const termsCheck = document.getElementById("termsCheckbox");
@@ -2130,10 +1933,16 @@
           return;
         }
         const nameInput = document.getElementById("nameField").value.trim();
+        const usernameInput = document
+          .getElementById("usernameField")
+          .value.trim();
         if (!nameInput) {
           showPopup("Please enter your name.", "warning", "Missing Info");
           return;
         }
+
+        const wheelEntry = usernameInput || nameInput;
+
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML =
@@ -2143,12 +1952,12 @@
         fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" })
           .then(() => {
             showPopup(
-              "Entry submitted successfully! You're now in the giveaway.",
+              `Entry submitted! ${wheelEntry} is now on the wheel.`,
               "success",
               "Entry Confirmed",
             );
             form.reset();
-            addNameToWheelFIFO(nameInput);
+            pushNameToWheel(wheelEntry);
           })
           .catch(() => {
             showPopup(
@@ -2161,43 +1970,6 @@
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
           });
-      });
-
-      async function refreshWheelFromSheetPeriodically() {
-        if (!spinning) {
-          try {
-            const res = await fetch(scriptURL);
-            const data = await res.json();
-            let sheetNames = Array.isArray(data)
-              ? data
-              : data && typeof data === "object"
-                ? Object.values(data).flat()
-                : [];
-            let cleanNames = sheetNames
-              .filter((n) => n && typeof n === "string")
-              .map((n) => n.trim());
-            if (cleanNames.length) {
-              let combined = [...wheelNamesQueue];
-              for (let n of cleanNames)
-                if (!combined.includes(n)) combined.push(n);
-              if (combined.length > MAX_WHEEL_NAMES)
-                combined = combined.slice(-MAX_WHEEL_NAMES);
-              wheelNamesQueue = combined;
-              syncWheelFromQueue();
-            }
-          } catch (e) {}
-        }
-        setTimeout(refreshWheelFromSheetPeriodically, 12000);
-      }
-      (async () => {
-        await fetchSheetNamesAndInitQueue();
-        refreshWheelFromSheetPeriodically();
-      })();
-      window.addEventListener("resize", () => {
-        if (!spinning) drawWheel();
-      });
-      window.addEventListener("orientationchange", () => {
-        if (!spinning) drawWheel();
       });
     </script>
   
