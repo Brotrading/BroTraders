@@ -1431,10 +1431,32 @@
             background: #1f3b66;
           }
 
-          .dropdown-checkbox .dropdown-content input {
+          .dropdown-checkbox .dropdown-content input[type="checkbox"] {
             accent-color: #3b82f6;
             width: 14px;
             height: 14px;
+          }
+
+          .dropdown-checkbox .dropdown-content .dropdown-search {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 7px 11px;
+            margin-bottom: 6px;
+            border: 1px solid #2c3e60;
+            border-radius: 10px;
+            background: #071327;
+            color: #eef4ff;
+            font-size: 0.78rem;
+            outline: none;
+            position: sticky;
+            top: -10px;
+            z-index: 2;
+          }
+          .dropdown-checkbox .dropdown-content .dropdown-search:focus {
+            border-color: #3b82f6;
+          }
+          .dropdown-checkbox .dropdown-content .dropdown-search::placeholder {
+            color: #6b8bbd;
           }
 
           .selected-hint {
@@ -2580,9 +2602,26 @@
               prefix = "≤ ",
             ) {
               const cont = document.getElementById(container);
-              cont.innerHTML = `<label><input type="checkbox" class="all-check" value="__ALL__"> All</label>`;
+              let html = `<input type="text" class="dropdown-search" placeholder="Search…">`;
+              html += `<label><input type="checkbox" class="all-check" value="__ALL__"> All</label>`;
               values.forEach((v) => {
-                cont.innerHTML += `<label><input type="checkbox" value="${v}"> ${isNum ? prefix + v : v}</label>`;
+                html += `<label><input type="checkbox" value="${v}"> ${isNum ? prefix + v : v}</label>`;
+              });
+              cont.innerHTML = html;
+              const search = cont.querySelector(".dropdown-search");
+              search.addEventListener("click", (e) => e.stopPropagation());
+              search.addEventListener("input", () => {
+                const q = search.value.toLowerCase().trim();
+                cont.querySelectorAll("label").forEach((lbl) => {
+                  const isAll = lbl.querySelector(".all-check");
+                  if (isAll) {
+                    lbl.style.display = q ? "none" : "flex";
+                    return;
+                  }
+                  const txt = lbl.textContent.toLowerCase();
+                  lbl.style.display =
+                    !q || txt.includes(q) ? "flex" : "none";
+                });
               });
             }
             buildDropdown("firm-options", firmVals);
