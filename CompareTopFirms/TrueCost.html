@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drawdown Analysis | Bro Trading</title>
+    <title>True Costing | Bro Trading</title>
     <link
       rel="shortcut icon"
       href="../Bro Traders logo.jpeg"
@@ -228,59 +228,70 @@
       <div class="bt-container">
         <!-- Logo -->
         <div class="bt-logo">
-          <a href="../index.html">
-            <img
-              src="../Bro_Traders_logo-removebg-preview.png"
-              alt="Bro Trading"
-            />
-          </a>
+          <img
+            src="../Bro_Traders_logo-removebg-preview.png"
+            alt="Bro Trading"
+          />
         </div>
 
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
-          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
-
+          <div class="bt-mobile-close" onclick="closeMobileMenu()">✕</div>
           <a href="../index.html" class="bt-link">Home</a>
-
           <!-- Funding Plans -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" data-dropdown="funding">
+            <button class="bt-drop-btn" onclick="toggleDropdown('funding')">
               Funding Plans ▾
             </button>
+
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
                   <a href="comparison.html">Prop Firm Comparison</a>
+                  <a href="TrueCost.html">True Cost to Funding</a>
+                  <a href="StartCost.html">Prop Firm Starting Costs</a>
                   <a href="Drawdown.html">Largest Drawdown</a>
                   <a href="QuickFunding.html">Quickest Funding</a>
-                  <a href="bestDeals.html">Best Deals</a>
+                  <a href="BestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
-                  <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
-                  <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-                  <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-                  <a href="../Frims/MyFundedFuture.html">My Funded Future</a>
-                  <a href="../Frims/DayTraders.html">Day Traders.com</a>
-                  <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
+                  <a href="../Firms/ApexFunding.html">Apex Trader Funding</a>
+                  <a href="../Firms/TradeifyTrader.html">Tradeify</a>
+                  <a href="../Firms/BluSky Trading.html">Lucid Trading</a>
+                  <a href="../Firms/MyFundedFuture.html"> My Funded Future</a>
+                  <a href="../Firms/DayTraders.html">Day Traders.com</a>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Learn -->
+          <!-- <div class="bt-dropdown">
+        <button class="bt-drop-btn" onclick="toggleDropdown('learn')">
+          Learn ▾
+        </button>
+        <div class="bt-drop-menu small" id="learn">
+          <a href="#">Lessons</a>
+          <a href="#">Articles</a>
+          <a href="#">The 2-Hour Trading Day</a>
+        </div>
+      </div> -->
+
           <!-- Resources -->
           <div class="bt-dropdown">
-            <button class="bt-drop-btn" data-dropdown="resources">
+            <button class="bt-drop-btn" onclick="toggleDropdown('resources')">
               Resources ▾
             </button>
             <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/TradingTools.html">Trading Tools</a>
               <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
+              <a href="../Resourses/TradingTools.html">Trading Tools</a>
             </div>
           </div>
 
+          <!-- <a href="#" class="bt-link">About</a> -->
           <a href="../GiveAway.html" class="bt-link">GiveAways</a>
         </nav>
 
@@ -288,40 +299,34 @@
         <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
 
         <!-- Hamburger -->
-        <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
+        <div class="bt-hamburger" onclick="toggleMobileMenu()">
           <span></span>
           <span></span>
           <span></span>
-        </button>
+        </div>
       </div>
     </header>
 
     <!-- Overlay -->
-    <div class="bt-overlay" id="overlay"></div>
+    <div class="bt-overlay" onclick="closeMobileMenu()"></div>
 
     <style>
       /* ================= HEADER ================= */
+
       .bt-header {
-        position: fixed;
-        top: 40px;
-        left: 0;
-        margin: 10px 15px;
-        margin-left: 180px;
-        border-radius: 15px;
-        width: 80%;
-        background: #00000073;
+        position: sticky;
+        top: 0;
+        width: 100%;
         z-index: 1000;
+        background: #000; /* Normal state */
         transition: all 0.35s ease;
       }
 
       .bt-header.bt-scrolled {
-        top: 0;
         background: rgba(10, 15, 30, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
         border-bottom: 1px solid rgba(0, 194, 255, 0.25);
-        width: 63%;
-        margin-left: 276px;
       }
 
       .bt-container {
@@ -339,16 +344,16 @@
       }
 
       .bt-logo img {
-        height: 55px;
+        height: 90px;
         transition: height 0.3s ease;
-        display: block;
       }
 
       .bt-header.bt-scrolled .bt-logo img {
-        height: 50px;
+        height: 70px;
       }
 
       /* ================= NAV ================= */
+
       .bt-nav {
         display: flex;
         gap: 30px;
@@ -364,8 +369,6 @@
         cursor: pointer;
         text-decoration: none;
         transition: 0.3s;
-        font-weight: 500;
-        font-family: inherit;
       }
 
       .bt-link:hover,
@@ -374,6 +377,7 @@
       }
 
       /* ================= DROPDOWN ================= */
+
       .bt-dropdown {
         position: relative;
       }
@@ -388,22 +392,17 @@
         background: rgba(15, 20, 45, 0.85);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(0, 194, 255, 0.6);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.35s ease;
+        display: none;
         z-index: 1001;
-      }
-
-      .bt-drop-menu.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
       }
 
       .bt-drop-menu.small {
         min-width: 260px;
         padding: 20px;
+      }
+
+      .bt-drop-menu.active {
+        display: block;
       }
 
       .bt-drop-grid {
@@ -418,39 +417,31 @@
         text-decoration: none;
         margin-bottom: 12px;
         transition: 0.3s;
-        font-size: 15px;
       }
 
       .bt-drop-menu a:hover {
         color: #00c2ff;
         padding-left: 5px;
       }
-      .bt-drop-menu strong:hover {
-        color: #f1f3f4;
-        padding-left: 0px !important;
-        transition: 0s;
-      }
-
-      /* DESKTOP HOVER OPEN */
+      /* ================= HOVER DROPDOWN (DESKTOP ONLY) ================= */
       @media (min-width: 1025px) {
         .bt-dropdown:hover .bt-drop-menu {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
+          display: block;
         }
       }
 
       /* ================= CTA ================= */
+
       .bt-cta {
         background: linear-gradient(135deg, #00c2ff, #1e90ff);
-        padding: 9px 22px;
+        padding: 12px 26px;
         border-radius: 30px;
         color: #fff;
         text-decoration: none;
         font-weight: 600;
         letter-spacing: 0.5px;
         transition: 0.3s ease;
-        white-space: nowrap;
+        /* box-shadow: 0 0 15px rgba(0, 194, 255, 0.5); */
       }
 
       .bt-cta:hover {
@@ -460,72 +451,30 @@
       }
 
       /* ================= HAMBURGER ================= */
+
       .bt-hamburger {
         display: none;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        width: 40px;
-        height: 40px;
+        gap: 6px;
         cursor: pointer;
-        background: transparent;
-        border: none;
-        padding: 0;
-        margin: 0;
-        z-index: 1003;
-        transition: all 0.3s ease;
       }
 
       .bt-hamburger span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: white;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      }
-
-      .bt-hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .bt-hamburger.active span:nth-child(2) {
-        opacity: 0;
-        transform: scale(0);
-      }
-
-      .bt-hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-
-      .bt-hamburger:hover span {
-        background: #00c2ff;
+        width: 26px;
+        height: 3px;
+        background: #fff;
       }
 
       /* ================= MOBILE MENU ================= */
+
       .bt-mobile-close {
         display: none;
         position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        font-size: 32px;
+        top: 25px;
+        right: 25px;
+        font-size: 26px;
         color: #fff;
         cursor: pointer;
-        font-weight: 300;
-        transition: 0.2s;
-        z-index: 1004;
-        background: transparent;
-        border: none;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .bt-mobile-close:hover {
-        color: #00c2ff;
-        transform: rotate(90deg);
       }
 
       .bt-overlay {
@@ -535,7 +484,6 @@
         background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 900;
-        transition: 0.3s;
       }
 
       .bt-overlay.active {
@@ -543,6 +491,28 @@
       }
 
       @media (max-width: 1024px) {
+        .bt-nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 85%; /* Wider for better layout */
+          max-width: 420px;
+          height: 100vh;
+          background: #0b0f2a;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 100px 25px 40px;
+          gap: 20px;
+          transition: 0.4s ease;
+          z-index: 1002;
+          overflow-y: auto;
+        }
+
+        .bt-nav.active {
+          right: 0;
+          top: 15px;
+        }
+
         .bt-hamburger {
           display: flex;
         }
@@ -551,319 +521,107 @@
           display: none;
         }
 
-        .bt-nav {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 320px;
-          max-width: 85%;
-          height: 100vh;
-          background: linear-gradient(135deg, #0a0e25 0%, #080c20 100%);
-          backdrop-filter: blur(10px);
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: flex-start;
-          padding: 80px 25px 30px;
-          gap: 15px;
-          transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          z-index: 1002;
-          overflow-y: auto;
-          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.6);
-          border-left: 1px solid rgba(0, 194, 255, 0.3);
-        }
-
-        .bt-nav.active {
-          right: 0;
-        }
-
         .bt-mobile-close {
-          display: flex;
+          display: block;
         }
 
-        .bt-dropdown {
-          width: 100%;
-        }
-
-        .bt-drop-btn {
-          width: 100%;
-          text-align: left;
-          font-size: 18px;
-          padding: 10px 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .bt-drop-btn::after {
-          content: "▾";
-          font-size: 16px;
-          transition: transform 0.3s;
-        }
-
-        .bt-dropdown .bt-drop-btn[aria-expanded="true"]::after {
-          transform: rotate(180deg);
-        }
-
+        /* Dropdown styling */
         .bt-drop-menu {
           position: static;
           min-width: 100%;
-          padding: 0;
+          padding: 15px 0;
           margin-top: 10px;
-          margin-bottom: 5px;
-          background: rgba(15, 20, 45, 0.8);
+          background: transparent;
+          border: none;
+          background: rgba(15, 20, 45, 0.6);
           backdrop-filter: blur(25px);
           border: 1px solid rgba(0, 194, 255, 0.3);
-          border-radius: 12px;
-          opacity: 0;
-          visibility: hidden;
-          transform: none;
-          transition:
-            opacity 0.25s ease,
-            visibility 0.25s ease;
-          display: block;
-          max-height: 0;
-          overflow: hidden;
-          padding: 0 15px;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .bt-drop-menu.active {
-          opacity: 1;
-          visibility: visible;
-          max-height: 500px;
-          padding: 15px;
-          margin-bottom: 10px;
-        }
-
+        /* 2 Column grid */
         .bt-drop-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 15px;
+          gap: 20px 25px;
         }
 
         .bt-drop-menu a {
-          font-size: 13px;
-          padding: 5px 0;
-          margin-bottom: 0;
-        }
-
-        .bt-link {
-          font-size: 18px;
-          padding: 10px 0;
-          width: 100%;
+          font-size: 14px;
+          line-height: 1.5;
         }
       }
 
+      /* Extra small mobile → 1 column */
       @media (max-width: 480px) {
         .bt-drop-grid {
-          /* grid-template-columns: 1fr; */
-          gap: 10px;
-        }
-
-        .bt-nav {
-          width: 280px;
-        }
-      }
-
-      /* Header responsive fixes */
-      @media (max-width: 1300px) {
-        .bt-header {
-          width: calc(100% - 40px);
-          margin-left: 20px;
-          margin-right: 20px;
-        }
-        .bt-header.bt-scrolled {
-          width: calc(100% - 40px);
-          margin-left: 20px;
-        }
-      }
-
-      @media (max-width: 1024px) {
-        .bt-header,
-        .bt-header.bt-scrolled {
-          width: calc(100% - 30px);
-          margin-left: 15px;
-          margin-right: 15px;
-          top: 15px;
-        }
-        .bt-header.bt-scrolled {
-          top: 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .bt-container {
-          padding: 0px 20px;
-        }
-        .bt-logo img {
-          height: 48px;
+          grid-template-columns: 1fr 1fr;
         }
       }
     </style>
 
     <script>
-      // Get elements
-      const hamburger = document.getElementById("hamburgerBtn");
-      const mobileMenu = document.querySelector(".bt-nav");
-      const overlay = document.getElementById("overlay");
-      const closeBtn = document.querySelector(".bt-mobile-close");
+      function toggleDropdown(id) {
+        const menu = document.getElementById(id);
 
-      // Toggle mobile menu functions
-      function openMobileMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        hamburger.classList.add("active");
-        document.body.style.overflow = "hidden";
+        // Close ALL dropdowns first
+        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+          if (m.id !== id) {
+            m.classList.remove("active");
+          }
+        });
+
+        // Toggle clicked one
+        menu.classList.toggle("active");
+      }
+
+      function toggleMobileMenu() {
+        document.querySelector(".bt-nav").classList.add("active");
+        document.querySelector(".bt-overlay").classList.add("active");
       }
 
       function closeMobileMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        hamburger.classList.remove("active");
-        document.body.style.overflow = "";
+        document.querySelector(".bt-nav").classList.remove("active");
+        document.querySelector(".bt-overlay").classList.remove("active");
 
-        // Close all open dropdowns
-        document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
-          menu.classList.remove("active");
-        });
-
-        // Reset dropdown button ARIA
-        document.querySelectorAll(".bt-drop-btn").forEach((btn) => {
-          btn.setAttribute("aria-expanded", "false");
+        document.querySelectorAll(".bt-drop-menu").forEach((m) => {
+          m.classList.remove("active");
         });
       }
-
-      // Toggle function
-      function toggleMobileMenu() {
-        if (mobileMenu.classList.contains("active")) {
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
-        }
-      }
-
-      // Hamburger click event
-      if (hamburger) {
-        hamburger.addEventListener("click", function (e) {
-          e.stopPropagation();
-          toggleMobileMenu();
-        });
-      }
-
-      // Close button click
-      if (closeBtn) {
-        closeBtn.addEventListener("click", function () {
-          closeMobileMenu();
-        });
-      }
-
-      // Overlay click to close
-      if (overlay) {
-        overlay.addEventListener("click", function () {
-          closeMobileMenu();
-        });
-      }
-
-      // Dropdown toggle for mobile
-      const dropBtns = document.querySelectorAll(".bt-drop-btn");
-      dropBtns.forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          const dropdownId = this.getAttribute("data-dropdown");
-          const menu = document.getElementById(dropdownId);
-
-          if (menu) {
-            const isExpanded = this.getAttribute("aria-expanded") === "true";
-            this.setAttribute("aria-expanded", !isExpanded);
-            menu.classList.toggle("active");
-
-            // Close other dropdowns
-            dropBtns.forEach((otherBtn) => {
-              if (otherBtn !== btn) {
-                const otherId = otherBtn.getAttribute("data-dropdown");
-                const otherMenu = document.getElementById(otherId);
-                if (otherMenu) {
-                  otherMenu.classList.remove("active");
-                  otherBtn.setAttribute("aria-expanded", "false");
-                }
-              }
-            });
-          }
-        });
-      });
-
-      // Close mobile menu when clicking on nav links (except dropdown buttons)
-      const navLinks = document.querySelectorAll(".bt-nav a");
-      navLinks.forEach((link) => {
-        link.addEventListener("click", function (e) {
-          if (window.innerWidth <= 1024) {
-            setTimeout(() => {
-              closeMobileMenu();
-            }, 100);
-          }
-        });
-      });
-
-      // Header scroll effect
       const header = document.querySelector(".bt-header");
+
       window.addEventListener("scroll", () => {
-        if (header) {
-          if (window.scrollY > 50) {
-            header.classList.add("bt-scrolled");
-          } else {
-            header.classList.remove("bt-scrolled");
-          }
-        }
+        header.classList.toggle("bt-scrolled", window.scrollY > 50);
       });
-
-      // Close menu on window resize
-      window.addEventListener("resize", function () {
-        if (window.innerWidth > 1024) {
-          if (mobileMenu && mobileMenu.classList.contains("active")) {
-            closeMobileMenu();
-          }
-        }
-      });
-
-      // Close dropdowns when clicking outside (desktop)
-      document.addEventListener("click", function (e) {
-        if (window.innerWidth > 1024) {
-          const isDropdown = e.target.closest(".bt-dropdown");
-          if (!isDropdown) {
-            document.querySelectorAll(".bt-drop-menu").forEach((menu) => {
-              menu.classList.remove("active");
-            });
-            dropBtns.forEach((btn) => {
-              btn.setAttribute("aria-expanded", "false");
-            });
-          }
-        }
-      });
-
-      // Initialize ARIA attributes
-      dropBtns.forEach((btn) => {
-        btn.setAttribute("aria-expanded", "false");
-      });
+      // Close other dropdowns on hover (desktop only)
+      if (window.innerWidth > 1024) {
+        document.querySelectorAll(".bt-dropdown").forEach((dropdown) => {
+          dropdown.addEventListener("mouseenter", function () {
+            const activeMenu = document.querySelector(".bt-drop-menu.active");
+            if (activeMenu && !this.contains(activeMenu)) {
+              activeMenu.classList.remove("active");
+            }
+          });
+        });
+      }
     </script>
-
     <!-- ================= HEADER END ================= -->
 
-    <!-- ========== DRAWDOWN ANALYSIS HERO SECTION ========== -->
+    <!-- ========== TOP FIRMS COSTING HERO SECTION ========== -->
     <section class="comparison-hero">
       <div class="comparison-container">
         <!-- LEFT SIDE -->
         <div class="comparison-left">
           <h1 class="main-heading">
-            <span class="line1">DRAWDOWN</span>
-            <span class="line2">ANALYSIS</span>
-            <span class="line3 highlight">RISK CONTROL</span>
+            <span class="line1">TOP</span>
+            <span class="line2">FIRMS</span>
+            <span class="line3 highlight">COSTING</span>
           </h1>
 
           <p class="subtext">
-            Drawdown flexibility can make or break your trading journey. Whether
-            you're a beginner seeking a forgiving account or a seasoned trader
-            refining risk management, firms with higher maximum drawdown provide
-            the cushion needed to handle market fluctuations. Compare policies
-            below and choose a firm that keeps you in the game longer.
+            Explore and compare prop firm challenge fees, account sizes, reset
+            costs, and hidden charges. Make smarter funding decisions with
+            transparent pricing insights — all in one place.
           </p>
         </div>
 
@@ -871,15 +629,15 @@
         <div class="comparison-right">
           <div class="card large-card">
             <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60"
-              alt="Risk management charts"
+              src="https://images.unsplash.com/photo-1559526324-593bc073d938?w=600&auto=format&fit=crop&q=60"
+              alt="Trading Cost Analysis"
             />
           </div>
 
           <div class="card small-card">
             <img
-              src="https://images.unsplash.com/photo-1523875194681-bedd468c58bf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cmlzayUyMG1hbmFnZW1lbnR8ZW58MHx8MHx8fDA%3D"
-              alt="Stock trading dashboard"
+              src="https://plus.unsplash.com/premium_photo-1678567671419-c799c782ac9c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29zdGluZ3xlbnwwfHwwfHx8MA%3D%3D"
+              alt="Financial Charts and Pricing"
             />
           </div>
         </div>
@@ -887,11 +645,13 @@
     </section>
 
     <style>
+      /* ===== SECTION ===== */
+
       .comparison-hero {
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        padding: 135px 8%;
+        padding: 40px 8%;
         color: white;
       }
 
@@ -902,11 +662,13 @@
         gap: 60px;
       }
 
+      /* ===== LEFT SIDE ===== */
+
       .main-heading {
         font-size: 90px;
         font-weight: 800;
         line-height: 1;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
       .line1,
@@ -919,17 +681,18 @@
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 70px;
-        margin-top: 6px;
       }
 
       .subtext {
-        font-size: 16px;
-        max-width: 500px;
-        color: #d1d5db;
-        line-height: 1.5;
+        font-size: 18px;
+        max-width: 520px;
+        color: #dcdcdc;
+        margin-bottom: 30px;
+        line-height: 1.6;
         font-family: "Roboto", sans-serif;
       }
+
+      /* ===== RIGHT SIDE ===== */
 
       .comparison-right {
         display: flex;
@@ -939,6 +702,7 @@
       .card {
         border-radius: 16px;
         overflow: hidden;
+        backdrop-filter: blur(8px);
         transition: 0.4s ease;
       }
 
@@ -963,6 +727,8 @@
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0, 194, 255, 0.3);
       }
+
+      /* ===== RESPONSIVE ===== */
 
       @media (max-width: 1024px) {
         .comparison-container {
@@ -993,239 +759,571 @@
         }
       }
     </style>
-    <!-- ========== DRAWDOWN ANALYSIS HERO SECTION END ========== -->
+    <!-- ========== TOP FIRMS COSTING HERO SECTION END ========== -->
 
-    <!-- ======== Drawdown Cards Section ======== -->
-    <section class="ddc-section">
-      <h2 class="ddc-drawdown-heading">Drawdown comparison 50K accounts</h2>
-      <div class="ddc-container">
-        <!-- Apex -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+    <!-- ====== Key Considerations Section ======  -->
+    <section class="bt-key-section">
+      <h2 class="bt-title">What Matters the Most :</h2>
+
+      <div class="bt-key-grid">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/apex.png"
-              class="ddc-logo"
+              src="https://images.unsplash.com/photo-1612178991541-b48cc8e92a4d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
-
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>Apex Trader Funding</h3>
-            </div>
+            <span class="bt-icon">📊</span>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$85</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$252</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Account Based</b>
-            </div>
+          <div class="bt-card-content">
+            <h3>⇝ Market Access</h3>
+            <p>
+              Choose prop firms offering access to futures, commodities, and
+              major trading markets.
+            </p>
           </div>
-
-          <a
-            href="https://apextraderfunding.com/?keyword&c&gclid&gad_source"
-            class="ddc-btn"
-            >Get Evaluation</a
-          >
         </div>
 
-        <!-- Tradeify -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/tradeify.png"
-              class="ddc-logo"
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
-
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>Tradeify</h3>
-            </div>
+            <span class="bt-icon">💰</span>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$90</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$289</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Varies</b>
-            </div>
+          <div class="bt-card-content">
+            <h3>⇝ Account Size</h3>
+            <p>
+              Most firms start traders with a 50k funded account after passing
+              evaluation.
+            </p>
           </div>
-
-          <a href="https://tradeify.co/?ref=BFYQ2HKM" class="ddc-btn"
-            >Get Evaluation</a
-          >
         </div>
 
-        <!-- MyFundedFutures -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/myfundedfutures.png"
-              class="ddc-logo"
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1311&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
-
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>MyFundedFutures</h3>
-            </div>
+            <span class="bt-icon">🎯</span>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$85</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$273</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Account Based</b>
-            </div>
+          <div class="bt-card-content">
+            <h3>⇝ Profit Targets</h3>
+            <p>
+              Understand profit targets, drawdown limits, and overall risk
+              rules.
+            </p>
           </div>
-
-          <a
-            href="https://myfundedfutures.com/challenge?ref=5117"
-            class="ddc-btn"
-            >Get Evaluation</a
-          >
         </div>
 
-        <!-- Lucid -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/lucid.webp"
-              class="ddc-logo"
+              src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=900&auto=format&fit=crop"
             />
-
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>LUCID Traders</h3>
-            </div>
+            <span class="bt-icon">💳</span>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$80</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$255</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Varies</b>
-            </div>
+          <div class="bt-card-content">
+            <h3>⇝ Fee Structure</h3>
+            <p>Compare evaluation fees, monthly costs, and hidden charges.</p>
           </div>
-
-          <a href="https://lucidtrading.com/ref/brotrading/" class="ddc-btn"
-            >Get Evaluation</a
-          >
         </div>
 
-        <!-- DayTraders -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/daytraders.svg"
-              class="ddc-logo"
+              src="https://plus.unsplash.com/premium_photo-1661443781814-333019eaad2d?q=80&w=2151&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
-
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>DayTraders</h3>
-            </div>
+            <span class="bt-icon">📈</span>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$95</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$294</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Varies</b>
-            </div>
+          <div class="bt-card-content">
+            <h3>⇝ Trading Tools</h3>
+            <p>
+              Some firms provide TradingView integration and additional trader
+              tools.
+            </p>
           </div>
-
-          <a
-            href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
-            class="ddc-btn"
-            >Get Evaluation</a
-          >
         </div>
 
-        <!-- Phidias PropFirm -->
-        <div class="ddc-card">
-          <div class="ddc-top">
+        <div class="bt-key-card">
+          <div class="bt-card-image">
             <img
-              src="../Photos/firms/phidias.jpeg"
-              class="ddc-logo"
+              src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=900&auto=format&fit=crop"
             />
+            <span class="bt-icon">🏆</span>
+          </div>
 
-            <div class="ddc-info">
-              <div class="ddc-stars">★★★★★</div>
-              <h3>Phidias PropFirm</h3>
+          <div class="bt-card-content">
+            <h3>⇝ Payout Speed</h3>
+            <p>
+              Check payout frequency and how quickly profits are distributed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      .bt-key-section {
+        padding: 120px 20px;
+        background:
+          radial-gradient(circle at top, #1e3a8a 0%, transparent 60%),
+          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+        font-family: "Roboto", sans-serif;
+      }
+
+      .bt-title {
+        text-align: center;
+        font-size: 38px;
+        margin-bottom: 70px;
+        color: white;
+        font-weight: 700;
+      }
+
+      .bt-key-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1150px;
+        margin: auto;
+      }
+
+      .bt-key-card {
+        background: #0f172a;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: 0.35s;
+      }
+
+      .bt-key-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        border-color: #38bdf8;
+      }
+
+      /* IMAGE HEADER */
+
+      .bt-card-image {
+        position: relative;
+        height: 150px;
+        overflow: hidden;
+      }
+
+      .bt-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.7);
+      }
+      .bt-card-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(2, 6, 23, 0.9)
+        );
+      }
+
+      /* ICON */
+
+      .bt-icon {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #000000;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 18px;
+        /* box-shadow: 0 0 14px rgba(56, 189, 248, 0.6); */
+      }
+
+      /* TEXT */
+
+      .bt-card-content {
+        padding: 22px;
+      }
+
+      .bt-card-content h3 {
+        color: #38bdf8;
+        font-size: 19px;
+        margin-bottom: 8px;
+      }
+
+      .bt-card-content p {
+        color: #cbd5e1;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      /* RESPONSIVE */
+
+      @media (max-width: 900px) {
+        .bt-key-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .bt-key-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <!-- ====== Key Considerations Section END ======  -->
+
+    <!-- =======Right Choicse Section ======  -->
+    <section class="bt-choice-section">
+      <div class="bt-choice-container">
+        <div class="bt-choice-image">
+          <img
+            src="https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg"
+            alt="Trader analyzing charts"
+          />
+
+          <div class="bt-floating-card card1">
+            <h4>$50K</h4>
+            <p>Typical Starting Account</p>
+          </div>
+
+          <div class="bt-floating-card card2">
+            <h4>90%</h4>
+            <p>Profit Split</p>
+          </div>
+
+          <div class="bt-floating-card card3">
+            <h4>$2K</h4>
+            <p>Daily Loss Limit</p>
+          </div>
+        </div>
+
+        <div class="bt-choice-content">
+          <h2>What Traders Should Consider..</h2>
+
+          <p class="bt-choice-intro">
+            Asking the right questions helps avoid unnecessary risk and improves
+            the chances of long-term trading success.
+          </p>
+
+          <div class="bt-steps">
+            <div class="bt-step">
+              <span>01</span>
+              <div>
+                <h3>Is the Account Size Right for My Strategy?</h3>
+                <p>
+                  Does the firm provide enough trading capital for your
+                  strategy, and are scaling opportunities available after
+                  consistent performance?
+                </p>
+              </div>
+            </div>
+
+            <div class="bt-step">
+              <span>02</span>
+              <div>
+                <h3>Do I Fully Understand the Profit Targets?</h3>
+                <p>
+                  What profit target must be reached during evaluation, and are
+                  the rules realistic for your trading style and risk tolerance?
+                </p>
+              </div>
+            </div>
+
+            <div class="bt-step">
+              <span>03</span>
+              <div>
+                <h3>Are the Risk Rules Manageable?</h3>
+                <p>
+                  Check daily loss limits, trailing drawdowns, and consistency
+                  rules to ensure they align with how you normally trade.
+                </p>
+              </div>
+            </div>
+
+            <div class="bt-step">
+              <span>04</span>
+              <div>
+                <h3>Are the Payout Rules Fair and Reliable?</h3>
+                <p>
+                  Review payout frequency, profit splits, and withdrawal
+                  conditions to understand how and when traders receive their
+                  profits.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div class="ddc-stats">
-            <!-- <div class="ddc-box">
-              <span>Activation Cost</span>
-              <b>$95</b>
-            </div> -->
-
-            <div class="ddc-box">
-              <span>Total Cost</span>
-              <b>$350</b>
-            </div>
-
-            <div class="ddc-box wide">
-              <span>Drawdown</span>
-              <b>Varies</b>
-            </div>
-          </div>
-
-          <a href="https://phidiaspropfirm.com/" class="ddc-btn"
-            >Get Evaluation</a
-          >
+          <p class="bt-choice-end">
+            By evaluating these factors before starting an evaluation, traders
+            can select a prop firm that fits their trading style and improves
+            their chances of reaching a funded trading account.
+          </p>
         </div>
       </div>
     </section>
 
     <style>
-      .ddc-section {
-        padding: 75px 6%;
+      .bt-choice-section {
+        padding: 10px 20px 85px;
+        background: #030712;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .bt-choice-container {
+        display: flex;
+        align-items: center;
+        gap: 95px;
+        max-width: 1074px;
+        margin: auto;
+      }
+
+      /* IMAGE */
+      .bt-choice-image {
+        position: relative;
+        flex: 0 0 420px;
+      }
+
+      .bt-choice-image img {
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+        border-radius: 16px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+      }
+
+      /* FLOATING CARDS */
+
+      .bt-floating-card {
+        position: absolute;
+        background: #0f172a;
+        padding: 14px 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        font-family: "Roboto", sans-serif;
+      }
+
+      .bt-floating-card h4 {
+        color: white;
+        font-size: 18px;
+        margin-bottom: 2px;
+      }
+
+      .bt-floating-card p {
+        font-size: 12px;
+        color: #94a3b8;
+      }
+
+      /* CARD POSITIONS */
+
+      .card1 {
+        top: 40px;
+        left: -40px;
+      }
+
+      .card2 {
+        top: 200px;
+        right: -40px;
+      }
+
+      .card3 {
+        bottom: 40px;
+        left: 40px;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 900px) {
+        .bt-floating-card {
+          display: none;
+        }
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 900px) {
+        .bt-image-secondary {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          margin-top: 20px;
+          width: 100%;
+        }
+
+        .bt-image-secondary img {
+          height: 200px;
+        }
+      }
+
+      /* CONTENT */
+
+      .bt-choice-content {
+        color: white;
+      }
+
+      .bt-choice-content h2 {
+        font-size: 38px;
+        margin-bottom: 18px;
+        font-weight: 700;
+      }
+
+      .bt-choice-intro {
+        color: #94a3b8;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 35px;
+        max-width: 520px;
+      }
+
+      /* STEPS */
+
+      .bt-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .bt-step {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        padding: 20px;
+        background: #0f172a;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: 0.3s;
+        max-width: 520px;
+      }
+
+      .bt-step:hover {
+        transform: translateX(6px);
+        border-color: #38bdf8;
+        background: linear-gradient(145deg, #0f172a, #020617);
+      }
+
+      /* NUMBER */
+
+      .bt-step span {
+        font-size: 20px;
+        font-weight: 700;
+        color: #38bdf8;
+        background: #020617;
+        padding: 10px 14px;
+        border-radius: 8px;
+      }
+
+      /* TEXT */
+
+      .bt-step h3 {
+        font-size: 17px;
+        margin-bottom: 5px;
+      }
+
+      .bt-step p {
+        font-size: 14px;
+        color: #94a3b8;
+        line-height: 1.6;
+      }
+
+      /* END TEXT */
+
+      .bt-choice-end {
+        margin-top: 28px;
+        color: #94a3b8;
+        line-height: 1.7;
+        max-width: 520px;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 900px) {
+        .bt-choice-container {
+          flex-direction: column;
+        }
+
+        .bt-choice-image img {
+          height: 420px;
+        }
+      }
+      .bt-floating-card {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <!-- =======Right Choicse Section END ======  -->
+
+    <!-- ===== Real Cost Comparison Section ===== -->
+
+    <section class="zx-comparison-section">
+      <h2 class="ff-title">Real Cost Breakdown Across top Firms :</h2>
+      <div class="zx-filters">
+        <select id="truecost-filter">
+          <option value="">Filter by True Cost</option>
+          <option value="250">Under $250</option>
+          <option value="270">Under $270</option>
+          <option value="300">Under $300</option>
+        </select>
+
+        <select id="reset-filter">
+          <option value="">Filter by Reset Fee</option>
+          <option value="70">Under $70</option>
+          <option value="80">Under $80</option>
+          <option value="90">Under $90</option>
+        </select>
+      </div>
+      <div class="zx-table-wrapper">
+        <table id="zx-table">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Firm Name</th>
+
+              <th data-key="eval">Evaluation Cost</th>
+              <th data-key="activation">Activation Cost</th>
+              <th data-key="reset">Reset Fee</th>
+              <th data-key="truecost">True Cost</th>
+
+              <th>Discount Code</th>
+              <th>Website</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <p class="zx-bottom-text">
+        True Cost = Evaluation + Activation (excluding resets). Always evaluate
+        payout structure, drawdown rules & consistency model — not just price.
+        <br />
+        <br />
+        *Please remember that the True Cost to Funding is subject to change and
+        should not be the only consideration when making your BroTrading firm
+        choice. However, since price is the number one factor when choosing a
+        prop firm, please use this table and data to make the most informed
+        decision possible.
+      </p>
+    </section>
+
+    <style>
+      .zx-comparison-section {
+        padding: 70px 100px;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -1233,152 +1331,340 @@
         font-family: "Roboto", sans-serif;
       }
 
-      .ddc-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      /* CARD */
-
-      .ddc-card {
-        background: linear-gradient(145deg, #0f172a, #1e293b);
-        border-radius: 26px;
-        padding: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition:
-          transform 0.25s ease,
-          border 0.25s ease;
-      }
-      .ddc-drawdown-heading {
-        font-size: 46px;
+      .ff-title {
         text-align: center;
-        margin-bottom: 60px;
+        font-size: 48px;
+        margin-bottom: 50px;
       }
 
-      .ddc-card:hover {
-        transform: translateY(-4px);
-        border: 1px solid rgba(0, 194, 255, 0.6);
+      .zx-table-wrapper {
+        overflow: auto;
       }
 
-      /* TOP */
+      /* TABLE */
 
-      .ddc-top {
-        display: flex;
-        align-items: center;
-        gap: 16px;
+      #zx-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #071327;
+        border-radius: 12px;
+        overflow: hidden;
+        color: white;
+        min-width: 1000px;
       }
 
-      .ddc-logo {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        background: #000;
-        border-radius: 18px;
-        padding: 10px;
+      /* HEADER */
+
+      #zx-table th {
+        background: #0f172a;
+        padding: 14px 10px;
+        font-weight: 600;
+        font-size: 15px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        cursor: pointer;
       }
 
-      .ddc-stars {
-        color: #ffbd00;
-        font-size: 16px;
-      }
+      /* CELLS */
 
-      .ddc-info h3 {
-        margin: 4px 0 0;
+      #zx-table td {
+        padding: 17px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: center;
         font-size: 18px;
       }
 
-      /* STATS */
-
-      .ddc-stats {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 10px;
-        margin-top: 20px;
+      #zx-table tr:hover {
+        background: rgba(0, 194, 255, 0.08);
       }
 
-      .ddc-box {
-        background: #020617;
-        border-radius: 12px;
-        padding: 12px;
-        text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+      /* LOGO */
+
+      .zx-logo {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px;
+        border-radius: 10px;
       }
 
-      .ddc-box span {
-        display: block;
-        font-size: 12px;
-        color: #94a3b8;
-        margin-bottom: 4px;
+      /* TRUE COST */
+
+      .zx-true {
+        color: #22c55e;
+        font-weight: 700;
       }
 
-      .ddc-box b {
-        color: #00c2ff;
-        font-size: 16px;
+      /* CODE BUTTON */
+
+      .zx-code {
+        background: #6e6e6e;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        color: #ffffff;
+        cursor: pointer;
       }
 
-      /* FULL WIDTH BOX */
-
-      .ddc-box.wide {
-        grid-column: 1 / -1;
-        text-align: center;
+      .zx-code:hover {
+        transform: translateY(-3px);
+        background: #292929;
       }
 
-      /* BUTTON */
+      /* WEBSITE BUTTON */
 
-      .ddc-btn {
-        margin-top: 22px;
-        display: block;
-        text-align: center;
+      .zx-visit-btn {
+        display: inline-block;
+        padding: 6px 14px;
+        /* padding: 10px 25px; */
+        border-radius: 30px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: white;
-        padding: 14px;
-        border-radius: 40px;
-        font-weight: 600;
         text-decoration: none;
-        border: 3px solid transparent;
+        font-weight: 600;
+        display: inline-block;
         transition: 0.3s;
       }
 
-      .ddc-btn:hover {
+      .zx-visit-btn:hover {
         background: white;
         color: #0b0f2a;
-        border-color: #00c2ff;
+        border: 2px solid #00c2ff;
+        transform: translateY(-3px);
       }
 
-      /* RESPONSIVE */
+      /* FOOT TEXT */
 
-      @media (max-width: 1100px) {
-        .ddc-container {
-          grid-template-columns: repeat(2, 1fr);
-        }
+      .zx-bottom-text {
+        margin-top: 25px;
+        font-size: 13px;
+        color: white;
+        max-width: 900px;
+        margin-left: 180px;
+        opacity: 0.7;
       }
 
-      @media (max-width: 700px) {
-        .ddc-container {
-          grid-template-columns: 1fr;
-        }
+      .sort-icon {
+        margin-left: 6px;
+        font-size: 12px;
+        opacity: 0.7;
+      }
+      .zx-filters {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+        margin-bottom: 25px;
+      }
+
+      .zx-filters select {
+        padding: 14px 24px;
+        border-radius: 40px;
+        background: #1e3a8a;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .zx-filters select:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #00c2ff;
       }
     </style>
-    <!-- ======== Drawdown Cards Section END ======== -->
+
+    <script>
+      const firms = [
+        {
+          firm: "Apex Trader Funding",
+          logo: "../Photos/firms/apex.png",
+          eval: 167,
+          activation: 85,
+          reset: 80,
+          truecost: 252,
+          code: "BRO",
+          website: "#",
+        },
+
+        {
+          firm: "Tradeify",
+          logo: "../Photos/firms/tradeify.png",
+          eval: 199,
+          activation: 90,
+          reset: 75,
+          truecost: 289,
+          code: "BRO",
+          website: "#",
+        },
+
+        {
+          firm: "MyFundedFutures",
+          logo: "../Photos/firms/myfundedfutures.png",
+          eval: 188,
+          activation: 85,
+          reset: 70,
+          truecost: 273,
+          code: "BRO",
+          website: "#",
+        },
+
+        {
+          firm: "LUCID",
+          logo: "../Photos/firms/lucid.webp",
+          eval: 175,
+          activation: 80,
+          reset: 65,
+          truecost: 255,
+          code: "BROTRADING",
+          website: "#",
+        },
+
+        {
+          firm: "DayTraders",
+          logo: "../Photos/firms/daytraders.svg",
+          eval: 199,
+          activation: 95,
+          reset: 85,
+          truecost: 294,
+          code: "BROTRADING",
+          website: "#",
+        },
+      ];
+
+      let filteredData = [...firms];
+      let sortState = { key: null, direction: -1 };
+
+      const tbody = document.querySelector("#zx-table tbody");
+
+      /* RENDER */
+
+      function render(data) {
+        tbody.innerHTML = "";
+
+        data.forEach((f) => {
+          tbody.innerHTML += `
+
+<tr>
+
+<td><img src="${f.logo}" class="zx-logo"></td>
+
+<td>${f.firm}</td>
+
+<td>$${f.eval}</td>
+
+<td>$${f.activation}</td>
+
+<td>$${f.reset}</td>
+
+<td class="zx-true">$${f.truecost}</td>
+
+<td>
+<button class="zx-code" onclick="copyCode(this,'${f.code}')">
+${f.code}
+</button>
+</td>
+
+<td>
+<a href="${f.website}" target="_blank" class="zx-visit-btn">
+Learn More
+</a>
+</td>
+
+</tr>
+
+`;
+        });
+      }
+
+      render(filteredData);
+
+      /* SORT */
+
+      document.querySelectorAll("#zx-table th[data-key]").forEach((th) => {
+        const key = th.dataset.key;
+
+        /* add arrow */
+        const icon = document.createElement("span");
+        icon.className = "sort-icon";
+        icon.textContent = "▼";
+        th.appendChild(icon);
+
+        th.addEventListener("click", () => {
+          if (sortState.key === key) {
+            sortState.direction *= -1;
+          } else {
+            sortState.key = key;
+            sortState.direction = -1;
+          }
+
+          filteredData.sort(
+            (a, b) => (a[key] > b[key] ? 1 : -1) * sortState.direction,
+          );
+
+          /* reset arrows */
+
+          document
+            .querySelectorAll(".sort-icon")
+            .forEach((i) => (i.textContent = "▼"));
+
+          /* set current arrow */
+
+          icon.textContent = sortState.direction === -1 ? "▼" : "▲";
+
+          render(filteredData);
+        });
+      });
+
+      /* COPY CODE */
+
+      function copyCode(btn, code) {
+        navigator.clipboard.writeText(code);
+
+        btn.innerText = "Copied!";
+
+        setTimeout(() => (btn.innerText = code), 1200);
+      }
+      /* FILTERS */
+
+      document
+        .getElementById("truecost-filter")
+        .addEventListener("change", applyFilters);
+      document
+        .getElementById("reset-filter")
+        .addEventListener("change", applyFilters);
+
+      function applyFilters() {
+        const trueCost = document.getElementById("truecost-filter").value;
+        const reset = document.getElementById("reset-filter").value;
+
+        filteredData = firms.filter((f) => {
+          let trueCheck = !trueCost || f.truecost <= trueCost;
+          let resetCheck = !reset || f.reset <= reset;
+
+          return trueCheck && resetCheck;
+        });
+
+        render(filteredData);
+      }
+    </script>
+
+    <!-- ===== Real Cost Comparison Section END ===== -->
 
     <!-- =========== Youtube Section ========= -->
     <section class="yt-hero">
       <div class="yt-container">
         <!-- LEFT -->
         <div class="yt-content">
-          <h2>Trade Live With The Bro’s</h2>
+          <h2>
+            Trade Live With <br />
+            BroTradingz
+          </h2>
 
           <p>Live Futures Trading Sessions</p>
-          <p>
-            Market Breakdown • Live Analysis • Talking about real time entry’s
-          </p>
-          <p>Join the community where we laugh and cry together.</p>
+          <p>Market Breakdown • Strategy Execution • Real-Time Entries</p>
+          <p>Join Our Community of Serious Traders</p>
 
           <a
             href="https://m.youtube.com/@Brotradingz"
@@ -1413,11 +1699,13 @@
     </section>
 
     <style>
+      /* ================= YOUTUBE HERO SECTION ================= */
+
       .yt-hero {
-        min-height: 70vh;
+        min-height: 75vh;
         display: flex;
         align-items: center;
-        padding: 70px 6%;
+        padding: 60px 6%;
         background:
           radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
           linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
@@ -1426,7 +1714,7 @@
 
       .yt-container {
         max-width: 1400px;
-        width: 93%;
+        width: 100%;
         margin: auto;
         display: flex;
         align-items: center;
@@ -1446,7 +1734,7 @@
         font-weight: 700;
         line-height: 1.1;
         margin-bottom: 25px;
-        /* font-family: "DM Mono", monospace; */
+        font-family: "DM Mono", monospace;
       }
 
       .yt-content p {
@@ -1460,7 +1748,7 @@
 
       .yt-btn {
         display: inline-block;
-        padding: 14px 36px;
+        padding: 16px 42px;
         border-radius: 50px;
         background: linear-gradient(90deg, #00c2ff, #1e90ff);
         color: #ffffff;
@@ -1468,12 +1756,14 @@
         text-decoration: none;
         margin-top: 20px;
         transition: all 0.3s ease;
+        /* box-shadow: 0 10px 25px rgba(0, 194, 255, 0.4); */
       }
 
       .yt-btn:hover {
+        /* transform: translateY(-4px); */
         background: #ffffff;
         color: #0b0f2a;
-        border: 2px solid #00c2ff;
+        border: 3px solid #00c2ff;
       }
 
       /* RIGHT SIDE (VIDEO) */
@@ -1488,8 +1778,8 @@
         position: relative;
         width: 100%;
         max-width: 650px;
-        padding-top: 56.25%;
-        border-radius: 20px;
+        padding-top: 56.25%; /* 16:9 Ratio */
+        border-radius: 22px;
         overflow: hidden;
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       }
@@ -1506,50 +1796,22 @@
       /* ================= RESPONSIVE ================= */
 
       @media (max-width: 992px) {
-        .yt-hero {
-          min-height: auto;
-          padding: 60px 20px;
-        }
-
         .yt-container {
           flex-direction: column;
           text-align: center;
-          gap: 35px;
         }
 
         .yt-media {
           order: -1;
-        }
-
-        .yt-video-wrapper {
-          max-width: 100%;
-          border-radius: 16px;
+          margin-bottom: 30px;
         }
 
         .yt-content h2 {
-          font-size: 30px;
-          line-height: 1.25;
+          font-size: 34px;
         }
 
         .yt-content p {
-          font-size: 15px;
-        }
-
-        .yt-btn {
-          padding: 12px 28px;
-          font-size: 14px;
-        }
-      }
-
-      /* SMALL PHONES */
-
-      @media (max-width: 480px) {
-        .yt-content h2 {
-          font-size: 24px;
-        }
-
-        .yt-content p {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
     </style>
@@ -1573,7 +1835,9 @@
           <!-- Card 1 -->
           <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
-              <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
+              <img
+                src="https://img.icons8.com/?size=100&id=110187&format=png&color=000000"
+              />
             </div>
             <h3>Prop Firm Comparison</h3>
             <p>
@@ -1586,7 +1850,7 @@
           <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
-                src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
+                src="https://img.icons8.com/?size=100&id=117333&format=png&color=000000"
               />
             </div>
             <h3>Best Deals</h3>
@@ -1596,16 +1860,16 @@
           </a>
 
           <!-- Card 3 -->
-          <!-- <a href="StartCost.html" class="ctf-compare-card">
+          <a href="StartCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/play.png" />
             </div>
             <h3>Starting Costs</h3>
             <p>Find the lowest starting costs fast.</p>
-          </a> -->
+          </a>
 
           <!-- Card 4 -->
-          <!-- <a href="TrueCost.html" class="ctf-compare-card">
+          <a href="TrueCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
@@ -1613,7 +1877,7 @@
             </div>
             <h3>True Cost</h3>
             <p>See the real price of getting funded.</p>
-          </a> -->
+          </a>
 
           <!-- Card 5 -->
           <a href="Drawdown.html" class="ctf-compare-card">
@@ -1797,9 +2061,9 @@
         <!-- Column 1 -->
         <div class="bt-footer-col">
           <h4>Bro Trading Finder</h4>
-          <a href="comparison.html">Top Frims Comparison</a>
-          <!-- <a href="TrueCost.html">True Cost to Funding</a> -->
-          <!-- <a href="StartCost.html">Starting Costs</a> -->
+          <a href="comparison.html">Top Firms Comparison</a>
+          <a href="TrueCost.html">True Cost to Funding</a>
+          <a href="StartCost.html">Starting Costs</a>
           <a href="Drawdown.html">Largest Drawdown</a>
           <a href="QuickFunding.html">Quickest Funding</a>
           <a href="BestDeals.html">Best Deals</a>
@@ -1818,13 +2082,12 @@
 
         <!-- Column 3 -->
         <div class="bt-footer-col bt-resources">
-          <h4>Bro Tradings Frims</h4>
-          <a href="../Frims/ApexFunding.html">Apex Trader Funding</a>
-          <a href="../Frims/TradeifyTrader.html">Tradeify</a>
-          <a href="../Frims/Lucid Trading.html">Lucid Trading</a>
-          <a href="../Frims/MyFundedFuture.html">My Funded Futures</a>
-          <a href="../Frims/DayTrader.html">Day Trader</a>
-          <a href="../Frims/PhidiasPropFirm.html">Phidias PropFirm</a>
+          <h4>Bro Tradings Firms</h4>
+          <a href="../Firms/ApexFunding.html">Apex Trader Funding</a>
+          <a href="../Firms/TradeifyTrader.html">Tradeify</a>
+          <a href="../Firms/Lucid Trading.html">Lucid Trading</a>
+          <a href="../Firms/MyFundedFuture.html">My Funded Futures</a>
+          <a href="../Firms/DayTrader.html">Day Trader</a>
         </div>
       </div>
 
@@ -1920,7 +2183,7 @@
       /* Bottom */
       .bt-footer-bottom {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 80px;
         padding-top: 25px;
         border-top: 1px solid #111;
         color: #666;
@@ -1952,12 +2215,12 @@
       /* ================= MOBILE ================= */
       @media (max-width: 600px) {
         .bt-footer {
-          padding: 30px 20px 30px;
+          padding: 70px 20px 30px;
         }
 
         .bt-footer-container {
           grid-template-columns: repeat(2, 1fr);
-          gap: 22px;
+          gap: 35px;
           text-align: center;
         }
 

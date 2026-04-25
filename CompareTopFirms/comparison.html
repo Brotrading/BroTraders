@@ -2,8 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tradeify | Bro Trading</title>
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Top Comparison | Propfirm Bro</title>
     <link
       rel="shortcut icon"
       href="../Bro Traders logo.jpeg"
@@ -15,6 +19,7 @@
         padding: 0;
         box-sizing: border-box;
         font-family: "Roboto", sans-serif;
+        box-sizing: border-box;
       }
     </style>
   </head>
@@ -222,6 +227,7 @@
       }
     </style>
     <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
+
     <!-- ================= BRO TRADING HEADER ================= -->
     <header class="bt-header">
       <div class="bt-container">
@@ -238,38 +244,32 @@
         <!-- Navigation -->
         <nav class="bt-nav">
           <!-- Mobile Close Button -->
-          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
+          <!-- <button class="bt-mobile-close" aria-label="Close menu">✕</button> -->
 
           <a href="../index.html" class="bt-link">Home</a>
 
           <!-- Funding Plans -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" data-dropdown="funding">
-              Funding Plans ▾
+              Funding Plans
             </button>
             <div class="bt-drop-menu" id="funding">
               <div class="bt-drop-grid">
                 <div>
                   <a href="#"><strong>Firm Lists :</strong></a>
-                  <a href="../CompareTopFrims/comparison.html"
-                    >Prop Firm Comparison</a
-                  >
-                  <a href="../CompareTopFrims/Drawdown.html"
-                    >Largest Drawdown</a
-                  >
-                  <a href="../CompareTopFrims/QuickFunding.html"
-                    >Quickest Funding</a
-                  >
-                  <a href="../CompareTopFrims/bestDeals.html">Best Deals</a>
+                  <a href="comparison.html">Prop Firm Comparison</a>
+                  <a href="Drawdown.html">Largest Drawdown</a>
+                  <a href="QuickFunding.html">Quickest Funding</a>
+                  <a href="bestDeals.html">Best Deals</a>
                 </div>
                 <div>
                   <a href="#"><strong>Top Firms :</strong></a>
-                  <a href="ApexFunding.html">Apex Trader Funding</a>
-                  <a href="TradeifyTrader.html">Tradeify</a>
-                  <a href="Lucid Trading.html">Lucid Trading</a>
-                  <a href="MyFundedFuture.html">My Funded Future</a>
-                  <a href="DayTraders.html">Day Traders.com</a>
-                  <a href="PhidiasPropFirm.html">Phidias PropFirm</a>
+                  <a href="../Firms/ApexFunding.html">Apex Trader Funding</a>
+                  <a href="../Firms/TradeifyTrader.html">Tradeify</a>
+                  <a href="../Firms/Lucid Trading.html">Lucid Trading</a>
+                  <a href="../Firms/MyFundedFuture.html">My Funded Future</a>
+                  <a href="../Firms/DayTraders.html">Day Traders.com</a>
+                  <a href="../Firms/PhidiasPropFirm.html">Phidias PropFirm</a>
                 </div>
               </div>
             </div>
@@ -278,7 +278,7 @@
           <!-- Resources -->
           <div class="bt-dropdown">
             <button class="bt-drop-btn" data-dropdown="resources">
-              Resources ▾
+              Resources
             </button>
             <div class="bt-drop-menu small" id="resources">
               <a href="../Resourses/TradingTools.html">Trading Tools</a>
@@ -851,7 +851,7 @@
     </script>
     <!-- ================= HEADER END ================= -->
 
-    <!-- =========About apex=======  -->
+    <!-- ========== TOP FIRM COMPARISON HERO SECTION ========== -->
     <!doctype html>
     <html lang="en">
       <head>
@@ -860,16 +860,425 @@
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=yes"
         />
-        <title>Tradeify | Prop Firm Profile</title>
-        <!-- Google Fonts (same as original) -->
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
-          rel="stylesheet"
+        <title>Top Firm Comparison | Prop Firm Dashboard</title>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          body {
+            background: #030712;
+            font-family: system-ui, "Segoe UI", "Roboto", sans-serif;
+          }
+
+          /* ===== SECTION ===== */
+          .comparison-hero {
+            background:
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            padding: 135px 8%;
+            color: white;
+            width: 100%;
+            position: relative;
+          }
+
+          .comparison-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+          }
+
+          /* ===== LEFT SIDE ===== */
+          .comparison-left {
+            flex: 1.1;
+          }
+
+          .main-heading {
+            font-size: 85px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+          }
+
+          .line1,
+          .line2,
+          .line3 {
+            display: block;
+          }
+
+          .line2 {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+          }
+
+          .heading-logo {
+            height: 70px;
+            width: auto;
+          }
+
+          .highlight {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #1e90ff;
+          }
+
+          .subtext {
+            font-size: 18px;
+            max-width: 520px;
+            color: #dcdcdc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-family: "Roboto", system-ui, sans-serif;
+          }
+
+          .primary-btn {
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: 0.3s ease;
+            display: inline-block;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0, 194, 255, 0.2);
+          }
+
+          .primary-btn:hover {
+            background: white;
+            color: #0b0f2a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 194, 255, 0.3);
+          }
+
+          /* ===== RIGHT SIDE ===== */
+          .comparison-right {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            justify-content: flex-end;
+            flex: 1;
+          }
+
+          .card {
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            transition: 0.4s ease;
+            background: rgba(10, 20, 40, 0.2);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+          }
+
+          .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+
+          .large-card {
+            width: 280px;
+            height: 380px;
+            margin-top: 90px;
+          }
+
+          .small-card {
+            width: 220px;
+            height: 380px;
+          }
+
+          .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 194, 255, 0.3);
+          }
+
+          /* ===== RESPONSIVE ===== */
+          /* Tablet & medium screens: keep side-by-side images but adjust sizing */
+          @media (max-width: 1100px) {
+            .comparison-hero {
+              padding: 100px 6%;
+            }
+            .main-heading {
+              font-size: 70px;
+            }
+            .large-card {
+              width: 250px;
+              height: 340px;
+              margin-top: 70px;
+            }
+            .small-card {
+              width: 200px;
+              height: 340px;
+            }
+            .comparison-right {
+              gap: 18px;
+            }
+          }
+
+          /* At 950px and below: container stacks vertically, but IMAGES REMAIN SIDE BY SIDE */
+          @media (max-width: 950px) {
+            .comparison-container {
+              flex-direction: column;
+              text-align: center;
+              gap: 48px;
+            }
+            .comparison-left {
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            .subtext {
+              max-width: 560px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .line2 {
+              justify-content: center;
+            }
+            .main-heading {
+              font-size: 64px;
+            }
+
+            /* CRITICAL: Images stay side by side horizontally */
+            .comparison-right {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 24px;
+              flex-wrap: nowrap;
+              width: 100%;
+            }
+            .large-card,
+            .small-card {
+              margin-top: 0;
+            }
+            .large-card {
+              width: 280px;
+              height: 360px;
+            }
+            .small-card {
+              width: 240px;
+              height: 360px;
+            }
+          }
+
+          /* For screens between 720px and 950px: keep side-by-side, perfect proportions */
+          @media (max-width: 850px) and (min-width: 721px) {
+            .large-card {
+              width: 260px;
+              height: 340px;
+            }
+            .small-card {
+              width: 220px;
+              height: 340px;
+            }
+            .comparison-right {
+              gap: 20px;
+            }
+          }
+
+          /* Mobile landscape & tablets: side-by-side with adjusted sizes */
+          @media (max-width: 720px) {
+            .comparison-hero {
+              padding: 70px 5%;
+            }
+            .main-heading {
+              font-size: 52px;
+            }
+            .line3 {
+              font-size: 48px;
+            }
+            .subtext {
+              font-size: 16px;
+              padding: 0 8px;
+            }
+
+            /* Force side-by-side images — NO STACKING */
+            .comparison-right {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              justify-content: center;
+              gap: 18px;
+              width: 100%;
+            }
+            .large-card {
+              width: calc(50% - 9px);
+              max-width: 260px;
+              height: auto;
+              aspect-ratio: 280 / 380;
+              margin-top: 0;
+            }
+            .small-card {
+              width: calc(50% - 9px);
+              max-width: 220px;
+              height: auto;
+              aspect-ratio: 220 / 380;
+              margin-top: 0;
+            }
+            .card {
+              height: auto;
+            }
+            .card img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          /* Small mobile devices: images remain side by side, shrink gracefully */
+          @media (max-width: 550px) {
+            .comparison-hero {
+              padding: 50px 20px;
+            }
+            .main-heading {
+              font-size: 42px;
+            }
+            .line1,
+            .line2,
+            .line3 {
+              font-size: 42px;
+            }
+            .highlight {
+              font-size: 42px;
+            }
+            .subtext {
+              font-size: 15px;
+            }
+            .comparison-right {
+              gap: 14px;
+              flex-wrap: nowrap;
+            }
+            .large-card {
+              width: calc(50% - 7px);
+              min-width: 140px;
+              aspect-ratio: 280 / 380;
+            }
+            .small-card {
+              width: calc(50% - 7px);
+              min-width: 120px;
+              aspect-ratio: 220 / 380;
+            }
+          }
+
+          /* Extra small devices (below 420px): still side by side, never stacked */
+          @media (max-width: 420px) {
+            .main-heading {
+              font-size: 34px;
+              margin-top: 40px;
+            }
+            .line1,
+            .line2,
+            .line3 {
+              font-size: 34px;
+            }
+            .highlight {
+              font-size: 34px;
+            }
+            .subtext {
+              font-size: 13.5px;
+            }
+            .comparison-right {
+              gap: 12px;
+            }
+            .large-card {
+              width: calc(50% - 6px);
+              min-width: 130px;
+            }
+            .small-card {
+              width: calc(50% - 6px);
+              min-width: 110px;
+            }
+          }
+
+          /* For extremely narrow devices, ensure no overflow */
+          @media (max-width: 360px) {
+            .comparison-right {
+              gap: 10px;
+            }
+            .large-card {
+              width: calc(50% - 5px);
+              min-width: 115px;
+            }
+            .small-card {
+              width: calc(50% - 5px);
+              min-width: 100px;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <section class="comparison-hero">
+          <div class="comparison-container">
+            <!-- LEFT SIDE -->
+            <div class="comparison-left">
+              <h1 class="main-heading">
+                <span class="line1">TOP</span>
+                <span class="line2"> FIRM </span>
+                <span class="line3 highlight">COMPARISION</span>
+              </h1>
+
+              <p class="subtext">
+                Compare top prop firms side-by-side. Analyze drawdown rules,
+                profit splits, pricing, platforms, and exclusive discounts — all
+                in one powerful dashboard.
+              </p>
+
+              <!-- <a href="#" class="primary-btn">Compare Now</a> -->
+            </div>
+
+            <!-- RIGHT SIDE: TWO IMAGES SIDE BY SIDE ON ALL DEVICES -->
+            <div class="comparison-right">
+              <div class="card large-card">
+                <img
+                  src="../Photos/img4.png"
+                  alt="Prop firm comparison chart"
+                />
+              </div>
+
+              <div class="card small-card">
+                <img
+                  src="../Photos/ChatGPT Image 7.png"
+                  alt="Trading performance dashboard"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </body>
+    </html>
+    <!-- ========== TOP FIRM COMPARISON HERO SECTION END ========== -->
+
+    <!-- ===== Favorite Firms Section ===== -->
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
-        <!-- Font Awesome 6 (icons only, no emojis) -->
+        <title>Favorite Firms | Responsive Prop Firm Comparison</title>
+        <!-- Google Fonts: DM Sans + Roboto + DM Mono (optional) for consistency -->
         <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         />
         <style>
           * {
@@ -879,6 +1288,13 @@
           }
 
           body {
+            background: #030712;
+            font-family: "DM Sans", sans-serif;
+          }
+
+          /* MAIN SECTION — FULLY RESPONSIVE */
+          .zx-comparison-section {
+            padding: 70px 150px;
             background:
               radial-gradient(
                 circle at top center,
@@ -886,1028 +1302,738 @@
                 transparent 60%
               ),
               linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+            color: white;
             font-family: "DM Sans", sans-serif;
+            width: 100%;
+            transition: all 0.3s ease;
           }
 
-          /* ========= Firm Profile ========= */
-          .firm-profile {
-            padding: 130px 10%;
-            background:
-              radial-gradient(
-                circle at top center,
-                #1e40af 0%,
-                transparent 60%
-              ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-            color: #fff;
-            font-family: "DM Sans", sans-serif;
+          .ff-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
           }
 
-          .firm-container {
+          .ff-subtitle {
+            text-align: center;
+            opacity: 0.85;
+            max-width: 750px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+          }
+
+          /* FILTER BAR — FLEX WRAP RESPONSIVE */
+          .zx-controls {
             display: flex;
-            justify-content: space-between;
-            gap: 60px;
+            gap: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
+            align-items: center;
           }
 
-          /* LEFT SIDE */
-          .firm-left {
-            display: flex;
-            gap: 25px;
-            flex: 1.5;
-            min-width: 300px;
+          .zx-controls input,
+          .zx-controls select {
+            padding: 12px 16px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-family: "DM Sans", sans-serif;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            flex: 1 1 180px;
           }
 
-          .firm-logo {
-            background: #000000;
-            padding: 25px;
+          .zx-controls input:focus,
+          .zx-controls select:focus {
+            outline: none;
+            border-color: #00c2ff;
+            box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.2);
+          }
+
+          .zx-controls input::placeholder {
+            color: #94a3b8;
+          }
+
+          /* TABLE WRAPPER — smooth overflow & responsive */
+          .zx-table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #568bff #0b1a2a;
+            -webkit-overflow-scrolling: touch;
+          }
+
+          .zx-table-wrapper::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+          }
+
+          .zx-table-wrapper::-webkit-scrollbar-track {
+            background: #0b1a2a;
+            border-radius: 10px;
+          }
+
+          .zx-table-wrapper::-webkit-scrollbar-thumb {
+            background: #28a3fb;
+            border-radius: 10px;
+          }
+
+          /* TABLE STYLES — PRESERVE EXACT ORIGINAL STYLE + BETTER RESPONSIVE */
+          #zx-table {
+            width: 100%;
+            min-width: 1300px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #071327;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 124px;
-            margin-top: 9px;
+            overflow: hidden;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
           }
 
-          .firm-logo img {
-            width: 90px;
+          #zx-table th {
+            background: #0f172a;
+            padding: 14px 10px;
+            font-weight: 600;
+            text-align: center !important;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(2px);
+            white-space: nowrap;
           }
 
-          .firm-details h1 {
-            font-size: 36px;
-            margin-bottom: 8px;
+          #zx-table th[data-key] {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
           }
 
-          .likes {
-            color: #ff4d4d;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-          .likes i {
-            font-size: 18px;
-            color: #ff4d4d;
+          #zx-table th[data-key]:hover {
+            background: #1e2a4a;
           }
 
-          .firm-meta {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-          }
-          .firm-meta img {
-            width: 20px;
-            height: 13px;
-            padding-left: 0px;
-            margin-right: 4px;
+          #zx-table td {
+            padding: 17px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            font-size: 16px;
             vertical-align: middle;
           }
-          .firm-meta span {
-            font-size: 13px;
-            color: #9ca3af;
-            display: block;
-            margin-bottom: 4px;
-          }
-          .firm-meta strong {
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+
+          #zx-table tr:hover {
+            background: rgba(0, 194, 255, 0.08);
+            transition: background 0.2s;
           }
 
-          /* RIGHT SIDE */
-          .firm-rating {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            flex: 1;
-            max-width: 391px;
-            padding: 13px 35px;
-            border: 2px solid black;
-            border-radius: 33px;
-            background: #00000030;
+          .zx-logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px;
           }
 
-          .rating-score {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-          }
-
-          .rating-score h2 {
-            font-size: 60px;
-            margin: 0;
-          }
-
-          .rating-score .stars {
-            margin: 6px 0;
-            color: #fff100;
-            letter-spacing: 2px;
-          }
-
-          .rating-score p {
-            margin: 0;
-          }
-
-          .rating-bars {
-            width: 250px;
-          }
-
-          .bar-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-            font-size: 13px;
-          }
-
-          .bar {
-            flex: 1;
-            height: 6px;
-            background: #333;
-            border-radius: 20px;
-            overflow: hidden;
-          }
-
-          .bar div {
-            height: 100%;
-            background: #00c2ff;
-          }
-
-          /* DISCOUNT CARD */
-          .discount-card {
-            margin-top: 60px;
-            background: #0f172a;
-            padding: 35px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            border: 1px solid #1f2937;
-          }
-
-          .discount-badge {
-            background: linear-gradient(135deg, #44d2ef, #001fd0);
-            padding: 40px 50px;
-            border-radius: 20px;
-            font-size: 28px;
+          .zx-true {
+            color: #22c55e;
             font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-          }
-          .discount-badge i {
-            font-size: 32px;
           }
 
-          .discount-middle h3 {
-            margin-bottom: 8px;
-          }
-
-          .discount-middle p {
-            color: #d1d5db;
-            margin-top: 8px;
-          }
-
-          .mini-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-          .mini-rating i {
-            color: #fff100;
-          }
-
-          .firm-btn {
-            padding: 14px 30px;
+          .zx-code {
+            background: #1e293b;
+            border: none;
+            padding: 8px 16px;
             border-radius: 40px;
+            color: #00c2ff;
+            cursor: pointer;
             font-weight: 600;
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            transition: all 0.2s;
+          }
+
+          .zx-code:hover {
+            background: #00c2ff;
+            color: #0b1d3a;
+            transform: scale(0.97);
+          }
+
+          .zx-visit-btn {
+            display: inline-block;
+            padding: 8px 18px;
             background: linear-gradient(90deg, #00c2ff, #1e90ff);
             color: white;
-            border: 3px solid transparent;
-            cursor: pointer;
-            transition: 0.3s;
-            min-width: 190px;
-            text-align: center;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-          }
-          .firm-btn i {
-            font-size: 14px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 194, 255, 0.3);
           }
 
-          .firm-btn:hover {
-            transform: translateY(-3px);
+          .zx-visit-btn:hover {
             background: white;
-            color: #0b0f2a;
-            border: 3px solid #00c2ff;
+            color: #0b1d3a;
+            transform: translateY(-2px);
           }
 
-          /* ========= More details ========= */
-          .firm-pro-section {
-            padding: 100px 5%;
-            background:
-              radial-gradient(
-                circle at top center,
-                #1e40af 0%,
-                transparent 60%
-              ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-            color: #fff;
-          }
-
-          .fps-container {
-            max-width: 1200px;
-            margin: auto;
-          }
-
-          /* Summary Card */
-          .fps-summary-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 194, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 60px;
-            box-shadow: 0 0 40px rgba(0, 194, 255, 0.08);
-          }
-
-          .fps-summary-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 12px;
-          }
-
-          .fps-summary-header h2 {
-            font-size: 28px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-          }
-          .fps-summary-header h2 i {
-            color: #00c2ff;
-            font-size: 26px;
-          }
-
-          .fps-badge {
-            background: linear-gradient(90deg, #00c2ff, #1e90ff);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-          }
-          .fps-badge i {
+          .sort-icon {
+            margin-left: 8px;
             font-size: 11px;
+            opacity: 0.8;
+            display: inline-block;
           }
 
-          .fps-summary-text {
-            font-family: "DM Sans", sans-serif;
-            line-height: 1.8;
-            color: #cbd5e1;
+          .dragging {
+            opacity: 0.5;
           }
 
-          /* Accordion */
-          .fps-item {
-            margin-bottom: 20px;
-            border-radius: 16px;
-            overflow: hidden;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
+          .drag-over {
+            border-left: 3px solid #00c2ff;
+            background: rgba(0, 194, 255, 0.2);
           }
 
-          .fps-item:hover {
-            border: 1px solid rgba(0, 194, 255, 0.3);
-          }
-
-          .fps-title {
-            width: 100%;
-            padding: 22px 25px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            cursor: pointer;
-            text-align: left;
-            font-family: "DM Sans", sans-serif;
-          }
-          .fps-title span:first-child {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-          }
-          .fps-title i {
-            font-size: 18px;
-            color: #00c2ff;
-            width: 24px;
-          }
-
-          .fps-arrow {
-            transition: 0.3s;
-            font-size: 22px;
-            font-weight: 400;
-          }
-
-          .fps-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            padding: 0 25px;
-          }
-
-          .fps-content.active {
-            padding: 20px 25px;
-            max-height: 600px;
-          }
-
-          /* Grid layout */
-          .fps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-          }
-
-          .fps-grid strong {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-          }
-          .fps-grid strong i {
-            color: #00c2ff;
-            font-size: 14px;
-          }
-
-          .fps-contract-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-          }
-
-          .fps-contract-grid div {
-            background: rgba(0, 194, 255, 0.08);
-            padding: 15px;
-            border-radius: 12px;
-            font-family: "DM Sans", sans-serif;
-            font-weight: 600;
-          }
-
-          .fps-contract-grid span {
-            display: block;
-            color: #00c2ff;
-            margin-top: 5px;
-            font-weight: normal;
-          }
-
-          .fps-list {
-            font-family: "DM Sans", sans-serif;
-            color: #cbd5e1;
-            padding-left: 18px;
-          }
-
-          .fps-list li {
-            margin-bottom: 10px;
-            list-style-type: none;
-            position: relative;
-            padding-left: 24px;
-          }
-          .fps-list li i {
-            position: absolute;
-            left: 0;
-            top: 3px;
-            color: #00c2ff;
-            font-size: 14px;
-          }
-
-          .flag {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 6px;
-          }
-
-          .flag img,
-          .fps-list li img {
-            width: 18px;
-            height: auto;
-            margin-right: 4px;
-            border-radius: 2px;
-            vertical-align: middle;
-          }
-
-          /* ========= FULLY RESPONSIVE STYLES (no style change, only responsiveness) ========= */
-          @media (max-width: 1024px) {
-            .firm-profile {
-              padding: 100px 6%;
+          /* ----- RESPONSIVE BREAKPOINTS (RETAIN VISUAL IDENTITY) ----- */
+          @media screen and (max-width: 1400px) {
+            .zx-comparison-section {
+              padding: 50px 80px;
             }
-            .firm-container {
-              gap: 40px;
-            }
-            .firm-rating {
-              max-width: 100%;
-              justify-content: space-between;
+            .ff-title {
+              font-size: 42px;
             }
           }
 
-          @media (max-width: 900px) {
-            .firm-left {
-              flex-wrap: wrap;
-              justify-content: flex-start;
-              gap: 20px;
+          @media screen and (max-width: 1200px) {
+            .zx-comparison-section {
+              padding: 45px 50px;
             }
-            .firm-logo {
-              height: auto;
-              padding: 20px;
+            .ff-title {
+              font-size: 38px;
             }
-            .firm-details h1 {
+            .ff-subtitle {
+              font-size: 1rem;
+              margin-bottom: 40px;
+            }
+            #zx-table td {
+              font-size: 14px;
+              padding: 14px 10px;
+            }
+            #zx-table th {
+              padding: 12px 8px;
+              font-size: 13px;
+            }
+            .zx-logo {
+              width: 38px;
+              height: 38px;
+            }
+          }
+
+          @media screen and (max-width: 900px) {
+            .zx-comparison-section {
+              padding: 40px 24px;
+            }
+            .ff-title {
               font-size: 32px;
             }
-            .firm-meta {
-              gap: 30px;
+            .ff-subtitle {
+              font-size: 0.95rem;
+              margin-bottom: 30px;
             }
-            .firm-rating {
-              flex-wrap: wrap;
-              justify-content: center;
-              gap: 20px;
-              padding: 20px 25px;
+            .zx-controls {
+              gap: 12px;
             }
-            .rating-bars {
-              width: 100%;
-              max-width: 280px;
+            .zx-controls input,
+            .zx-controls select {
+              padding: 10px 12px;
+              font-size: 13px;
+              flex: 1 1 150px;
             }
-            .discount-badge {
-              padding: 30px 40px;
-              font-size: 24px;
+            .zx-visit-btn {
+              padding: 6px 12px;
+              font-size: 11px;
+            }
+            .zx-code {
+              padding: 6px 12px;
+              font-size: 11px;
+            }
+            #zx-table {
+              min-width: 1100px;
             }
           }
 
-          @media (max-width: 768px) {
-            .firm-profile {
-              padding: 80px 5%;
+          @media screen and (max-width: 640px) {
+            .zx-comparison-section {
+              padding: 30px 16px;
             }
-            .firm-left {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-            }
-            .firm-logo {
-              margin: 0 auto;
-            }
-            .firm-details {
-              text-align: center;
-            }
-            .firm-details h1 {
+            .ff-title {
               font-size: 28px;
+              margin-bottom: 8px;
             }
-            .likes {
-              justify-content: center;
+            .ff-subtitle {
+              font-size: 0.85rem;
+              margin-bottom: 28px;
+              padding: 0 8px;
             }
-            .firm-meta {
-              justify-content: center;
-            }
-            .firm-meta div {
-              text-align: center;
-            }
-            .firm-meta strong {
-              justify-content: center;
-            }
-            .discount-card {
+            .zx-controls {
               flex-direction: column;
-              text-align: center;
+              gap: 12px;
             }
-            .discount-middle {
-              text-align: center;
+            .zx-controls input,
+            .zx-controls select {
+              width: 100%;
+              flex: auto;
             }
-            .discount-badge {
-              padding: 25px 35px;
+            .zx-table-wrapper {
+              border-radius: 16px;
             }
-            .fps-summary-card {
-              padding: 25px;
+            #zx-table td,
+            #zx-table th {
+              padding: 10px 8px;
+              font-size: 12px;
             }
-            .fps-summary-header {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 10px;
+            .zx-logo {
+              width: 32px;
+              height: 32px;
             }
-            .fps-summary-header h2 {
-              font-size: 24px;
+            .zx-visit-btn {
+              padding: 5px 10px;
+              font-size: 10px;
             }
-            .fps-title {
-              padding: 18px 20px;
-              font-size: 15px;
+            .zx-code {
+              padding: 5px 10px;
+              font-size: 10px;
             }
-            .fps-content.active {
-              padding: 15px 20px;
+            .sort-icon {
+              margin-left: 4px;
+              font-size: 9px;
             }
           }
 
-          @media (max-width: 550px) {
-            .firm-logo img {
-              width: 70px;
+          /* additional smoothness for ultra small devices */
+          @media screen and (max-width: 480px) {
+            .zx-comparison-section {
+              padding: 24px 12px;
             }
-            .firm-details h1 {
-              font-size: 24px;
-            }
-            .rating-score h2 {
-              font-size: 48px;
-            }
-            .firm-btn {
-              min-width: 160px;
-              padding: 12px 20px;
-              font-size: 14px;
-            }
-            .discount-badge {
-              font-size: 20px;
-              padding: 18px 28px;
-            }
-            .discount-badge i {
+            .ff-title {
               font-size: 26px;
             }
-            .fps-contract-grid {
-              grid-template-columns: 1fr;
-            }
-            .fps-grid {
-              grid-template-columns: 1fr;
-            }
-            .firm-meta {
-              gap: 20px;
-            }
-            .firm-meta div {
-              min-width: 80px;
+            #zx-table {
+              min-width: 1000px;
             }
           }
 
-          @media (max-width: 480px) {
-            .firm-meta {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              gap: 15px;
+          /* preserve original design for larger screens but responsive everywhere */
+          @media (min-width: 1600px) {
+            .zx-comparison-section {
+              padding: 80px 200px;
             }
-            .firm-rating {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              padding: 20px;
+            .ff-title {
+              font-size: 56px;
             }
-            .rating-bars {
-              width: 100%;
-            }
-            .discount-badge {
-              padding: 15px 25px;
+            #zx-table td {
               font-size: 18px;
+              padding: 18px 16px;
             }
+          }
+
+          /* tooltip / helper */
+          .copy-tooltip {
+            transition: all 0.1s;
           }
         </style>
       </head>
       <body>
-        <!-- ========= About Tradeify ========= -->
-        <section class="firm-profile">
-          <div class="firm-container">
-            <!-- LEFT INFO -->
-            <div class="firm-left">
-              <div class="firm-logo">
-                <img
-                  src="../Photos/firms/tradeify.png"
-                  alt="Tradeify Logo"
-                />
-              </div>
+        <section class="zx-comparison-section">
+          <h2 class="ff-title">Favorite Firms</h2>
+          <p class="ff-subtitle">
+            Select your Favorite Firm. On this page, you can pick and show
+            support for your favorite firm. The pick can be changed at any time
+            here or in your member section.
+          </p>
+          <!-- FILTER BAR -->
+          <div class="zx-controls">
+            <input
+              type="text"
+              id="zx-search"
+              placeholder="Search firm..."
+              aria-label="Search firm"
+            />
 
-              <div class="firm-details">
-                <h1>Tradeify</h1>
-                <div class="likes"><i class="fas fa-heart"></i> 23884</div>
+            <select id="zx-account-filter" aria-label="Account Size">
+              <option value="">Account Size</option>
+              <option value="50000">$50K</option>
+              <option value="100000">$100K</option>
+            </select>
 
-                <div class="firm-meta">
-                  <div>
-                    <span>CEO</span>
-                    <strong
-                      ><i class="fas fa-user-tie"></i> Brett Simberkoff</strong
-                    >
-                  </div>
-                  <div>
-                    <span>Country</span>
-                    <strong
-                      ><img
-                        src="https://flagcdn.com/w80/us.png"
-                        alt="US flag"
-                      />
-                      US</strong
-                    >
-                  </div>
-                  <div>
-                    <span>Trust Pilot</span>
-                    <strong><i class="fas fa-star"></i> 4.6</strong>
-                  </div>
-                  <div>
-                    <span>Date Created</span>
-                    <strong
-                      ><i class="fas fa-calendar-alt"></i> Jun 2024</strong
-                    >
-                  </div>
-                  <div>
-                    <span>Years in Operation</span>
-                    <strong><i class="fas fa-chart-line"></i> 1</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- RIGHT RATING -->
-            <div class="firm-rating">
-              <div class="rating-score">
-                <h2>4.8</h2>
-                <div class="stars">★★★★★</div>
-                <p>691 total reviews</p>
-              </div>
-
-              <div class="rating-bars">
-                <div class="bar-row">
-                  <span>5★</span>
-                  <div class="bar"><div style="width: 80%"></div></div>
-                  <span></span>
-                </div>
-                <div class="bar-row">
-                  <span>4★</span>
-                  <div class="bar"><div style="width: 70%"></div></div>
-                  <span></span>
-                </div>
-                <div class="bar-row">
-                  <span>3★</span>
-                  <div class="bar"><div style="width: 30%"></div></div>
-                  <span></span>
-                </div>
-                <div class="bar-row">
-                  <span>2★</span>
-                  <div class="bar"><div style="width: 15%"></div></div>
-                  <span></span>
-                </div>
-                <div class="bar-row">
-                  <span>1★</span>
-                  <div class="bar"><div style="width: 10%"></div></div>
-                  <span></span>
-                </div>
-              </div>
-            </div>
+            <select id="zx-dd-filter" aria-label="Drawdown Type">
+              <option value="">Drawdown Type</option>
+              <option value="Trailing">Trailing</option>
+              <option value="Static">Static</option>
+            </select>
           </div>
 
-          <!-- DISCOUNT CARD -->
-          <div class="discount-card">
-            <div class="discount-left">
-              <div class="discount-badge">
-                <i class="fas fa-fire"></i> 30% OFF
-              </div>
-            </div>
-
-            <div class="discount-middle">
-              <h3>Tradeify</h3>
-              <div class="mini-rating">
-                <i class="fas fa-star"></i> 4.8 ★★★★★ (2K)
-              </div>
-              <p>
-                30% off recurring - on all Evaluations - No Activation Charges
-              </p>
-            </div>
-
-            <div class="discount-right">
-              <button class="firm-btn" data-code="BRO">
-                <i class="fas fa-copy"></i> Code : BRO
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- ========= More details ========= -->
-        <section class="firm-pro-section">
-          <div class="fps-container">
-            <!-- AI SUMMARY -->
-            <div class="fps-summary-card">
-              <div class="fps-summary-header">
-                <h2><i class="fas fa-robot"></i> AI Summary</h2>
-                <span class="fps-badge"
-                  ><i class="fas fa-microchip"></i> AI Generated</span
-                >
-              </div>
-
-              <p class="fps-summary-text">
-                Tradeify is a futures prop trading firm offering fast evaluation
-                and instant funding programs for traders. The firm provides
-                simulated funded accounts with capital scaling up to $750,000
-                and allows traders to keep up to 90% of their profits. Traders
-                can access markets through platforms like Tradovate and
-                WealthCharts while trading major CME futures contracts. Tradeify
-                is known for its quick evaluation process, flexible funding
-                models, automated payouts, and a structured path to live capital
-                after consistent payouts.
-              </p>
-            </div>
-
-            <!-- ACCORDION GRID -->
-            <div class="fps-accordion">
-              <!-- ITEM 1: Firm Overview -->
-              <div class="fps-item">
-                <button class="fps-title">
-                  <span><i class="fas fa-building"></i> Firm Overview</span>
-                  <span class="fps-arrow">+</span>
-                </button>
-
-                <div class="fps-content">
-                  <div class="fps-grid">
-                    <div>
-                      <strong
-                        ><i class="fas fa-exchange-alt"></i> Brokers</strong
-                      >
-                      <p>Tradovate</p>
-                    </div>
-
-                    <div>
-                      <strong><i class="fas fa-chart-line"></i> Markets</strong>
-                      <p>Futures (CME Products)</p>
-                    </div>
-
-                    <div>
-                      <strong><i class="fas fa-laptop"></i> Platforms</strong>
-                      <p>Tradovate, WealthCharts</p>
-                    </div>
-
-                    <div>
-                      <strong
-                        ><i class="fas fa-credit-card"></i> Payment
-                        Methods</strong
-                      >
-                      <p>Credit Card / Debit Card</p>
-                    </div>
-
-                    <div>
-                      <strong
-                        ><i class="fas fa-money-bill-wave"></i> Payout
-                        Method</strong
-                      >
-                      <p>Bank Transfer / Rise / ACH</p>
-                    </div>
-
-                    <div>
-                      <strong
-                        ><i class="fas fa-chart-simple"></i> Max Funding</strong
-                      >
-                      <p>Up to $750,000</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ITEM 2: Leverage & Contracts -->
-              <div class="fps-item">
-                <button class="fps-title">
-                  <span
-                    ><i class="fas fa-scale-balanced"></i> Leverage &
-                    Contracts</span
-                  >
-                  <span class="fps-arrow">+</span>
-                </button>
-
-                <div class="fps-content">
-                  <div class="fps-contract-grid">
-                    <div>$25K <span>1 Mini / 10 Micros</span></div>
-                    <div>$50K <span>5 Minis / 50 Micros</span></div>
-                    <div>$100K <span>10 Minis / 100 Micros</span></div>
-                    <div>$150K <span>15 Minis / 150 Micros</span></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ITEM 3: Trading Rules -->
-              <div class="fps-item">
-                <button class="fps-title">
-                  <span><i class="fas fa-gavel"></i> Trading Rules</span>
-                  <span class="fps-arrow">+</span>
-                </button>
-
-                <div class="fps-content">
-                  <ul class="fps-list">
-                    <li>
-                      <i class="fas fa-chart-simple"></i> 40% consistency rule
-                      during evaluation.
-                    </li>
-                    <li>
-                      <i class="fas fa-chart-line"></i> Trailing drawdown limits
-                      based on account size.
-                    </li>
-                    <li>
-                      <i class="fas fa-robot"></i> No high-frequency trading
-                      bots allowed.
-                    </li>
-                    <li>
-                      <i class="fas fa-shield-alt"></i> Risk parameters
-                      monitored in real time.
-                    </li>
-                    <li>
-                      <i class="fas fa-check-circle"></i> Consistency rules
-                      apply when requesting payouts.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- ITEM 4: Payout Policy -->
-              <div class="fps-item">
-                <button class="fps-title">
-                  <span><i class="fas fa-dollar-sign"></i> Payout Policy</span>
-                  <span class="fps-arrow">+</span>
-                </button>
-
-                <div class="fps-content">
-                  <ul class="fps-list">
-                    <li>
-                      <i class="fas fa-percent"></i> Up to 90% profit split for
-                      funded traders.
-                    </li>
-                    <li>
-                      <i class="fas fa-clock"></i> Payout requests allowed after
-                      meeting trading requirements.
-                    </li>
-                    <li>
-                      <i class="fas fa-calendar-day"></i> First payout possible
-                      after 5 profitable trading days.
-                    </li>
-                    <li>
-                      <i class="fas fa-bolt"></i> Payouts typically processed
-                      within 24–48 hours.
-                    </li>
-                    <li>
-                      <i class="fas fa-layer-group"></i> Up to 5 funded accounts
-                      allowed per trader.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- ITEM 5: Restricted Countries -->
-              <div class="fps-item">
-                <button class="fps-title">
-                  <span><i class="fas fa-globe"></i> Restricted Countries</span>
-                  <span class="fps-arrow">+</span>
-                </button>
-
-                <div class="fps-content">
-                  <ul class="fps-list">
-                    <li>
-                      <i class="fas fa-ban"></i>
-                      <strong>Completely Restricted:</strong><br />
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/af.png" alt="AF" />
-                        Afghanistan</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/al.png" alt="AL" />
-                        Albania</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/by.png" alt="BY" />
-                        Belarus</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/mm.png" alt="MM" />
-                        Burma</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/cu.png" alt="CU" />
-                        Cuba</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ir.png" alt="IR" />
-                        Iran</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/iq.png" alt="IQ" />
-                        Iraq</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/il.png" alt="IL" />
-                        Israel</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/kp.png" alt="KP" />
-                        North Korea</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/pk.png" alt="PK" />
-                        Pakistan</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ru.png" alt="RU" />
-                        Russia</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/sy.png" alt="SY" />
-                        Syria</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ua.png" alt="UA" />
-                        Ukraine</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ve.png" alt="VE" />
-                        Venezuela</span
-                      >
-                    </li>
-
-                    <li>
-                      <i class="fas fa-chart-line"></i>
-                      <strong>Sim-Funded Only (No Elite Live):</strong><br />
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ca.png" alt="CA" />
-                        Canada</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/cn.png" alt="CN" />
-                        China</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/hk.png" alt="HK" />
-                        Hong Kong</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ng.png" alt="NG" />
-                        Nigeria</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ph.png" alt="PH" />
-                        Philippines</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/za.png" alt="ZA" />
-                        South Africa</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/ae.png" alt="AE" />
-                        UAE</span
-                      >,
-                      <span class="flag"
-                        ><img src="https://flagcdn.com/w20/vn.png" alt="VN" />
-                        Vietnam</span
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div class="zx-table-wrapper">
+            <table id="zx-table">
+              <thead>
+                <tr>
+                  <th>Logo</th>
+                  <th>Firm</th>
+                  <th data-key="account" draggable="true">Account</th>
+                  <th data-key="eval" draggable="true">Evaluation</th>
+                  <th data-key="activation" draggable="true">Activation</th>
+                  <th data-key="truecost" draggable="true">True Cost</th>
+                  <th data-key="ddt" draggable="true">DDT</th>
+                  <th data-key="goal" draggable="true">Goal</th>
+                  <th data-key="dd" draggable="true">DD</th>
+                  <th data-key="mindays" draggable="true">Min Days</th>
+                  <th data-key="discount" draggable="true">Discount</th>
+                  <th>Code</th>
+                  <th>Website</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
           </div>
         </section>
 
         <script>
-          // Copy button functionality (preserves original behavior with icons)
-          document.querySelectorAll(".firm-btn").forEach((btn) => {
-            btn.addEventListener("click", function () {
-              const code =
-                this.dataset.code ||
-                this.innerText
-                  .replace("Code : ", "")
-                  .replace("Code : ", "")
-                  .trim();
-              navigator.clipboard.writeText(code);
+          // ===================== DATA (PRESERVED + ENHANCED FOR ACCURACY) =====================
+          const firms = [
+            {
+              firm: "Apex Traders",
+              logo: "../Photos/firms/apex.png",
+              account: 50000,
+              eval: 250,
+              activation: 100,
+              truecost: 350,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2500,
+              mindays: 7,
+              discount: "40%",
+              code: "BRO",
+              website: "https://apextraderfunding.com/member/aff/go/buurtie",
+            },
+            {
+              firm: "Tradeify",
+              logo: "../Photos/firms/tradeify.png",
+              account: 100000,
+              eval: 230,
+              activation: 95,
+              truecost: 325,
+              ddt: "Static",
+              goal: 6000,
+              dd: 4000,
+              mindays: 5,
+              discount: "20%",
+              code: "BRO",
+              website: "https://tradeify.co/?ref=BFYQ2HKM",
+            },
+            {
+              firm: "MyFundedFutures",
+              logo: "../Photos/firms/myfundedfutures.png",
+              account: 50000,
+              eval: 210,
+              activation: 90,
+              truecost: 300,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2000,
+              mindays: 5,
+              discount: "10%",
+              code: "BRO",
+              website: "https://myfundedfutures.com/challenge?ref=5117",
+            },
+            {
+              firm: "Lucid Trading",
+              logo: "../Photos/firms/lucid.webp",
+              account: 100000,
+              eval: 220,
+              activation: 89,
+              truecost: 309,
+              ddt: "Static",
+              goal: 6000,
+              dd: 4000,
+              mindays: 5,
+              discount: "15%",
+              code: "BROTRADING",
+              website: "https://lucidtrading.com/ref/brotrading/",
+            },
+            {
+              firm: "DayTraders",
+              logo: "../Photos/firms/daytraders.svg",
+              account: 50000,
+              eval: 199,
+              activation: 80,
+              truecost: 279,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2000,
+              mindays: 7,
+              discount: "50%",
+              code: "BROTRADING",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
+              firm: "Phidias PropFirm",
+              logo: "../Photos/firms/phidias.jpeg",
+              account: "150K",
+              eval: "225",
+              activation: 0,
+              truecost: 397,
+              ddt: "Trailing/EOD",
+              goal: 3000,
+              dd: 2000,
+              mindays: 3,
+              discount: "60%",
+              code: "BROTRADING",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
+              firm: "YRM Prop",
+              logo: "../Photos/firms/yrmprop.svg",
+              account: "150K",
+              eval: "124",
+              activation: 0,
+              truecost: 124,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 3,
+              discount: "Limited Time",
+              code: "BRO",
+              website: "https://yrmprop.com/ref/Bro/",
+            },
+            {
+              firm: "Nexgen ProTrader Funding",
+              logo: "../Photos/firms/nexgen.png",
+              account: "150K",
+              eval: "228",
+              activation: 169,
+              truecost: 397,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 3,
+              discount: "60%",
+              code: "BRO",
+              website:
+                "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+            },
+            {
+              firm: "Top One Futures",
+              logo: "../Photos/firms/topone.svg",
+              account: "150K",
+              eval: "201",
+              activation: 199,
+              truecost: 400,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 1,
+              discount: "35% - 60%",
+              code: "BRO",
+              website:
+                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
+            },
+            {
+              firm: "Alpha Futures",
+              logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII=",
+              account: "150K",
+              eval: "239",
+              activation: 149,
+              truecost: 388,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 6000,
+              mindays: 2,
+              discount: "Varies",
+              code: "BROTRADING",
+              website: "https://app.alpha-futures.com/signup/BROTRADING/",
+            },
+          ];
 
-              const originalHTML = this.innerHTML;
-              this.innerHTML = '<i class="fas fa-check"></i> Copied ✓';
-              this.classList.add("copied");
+          let filteredData = [...firms];
+          let sortState = { key: null, direction: -1 };
+          const tbody = document.querySelector("#zx-table tbody");
 
-              setTimeout(() => {
-                this.classList.remove("copied");
-                this.innerHTML = '<i class="fas fa-copy"></i> Code : ' + code;
-              }, 2000);
+          function render(data) {
+            tbody.innerHTML = "";
+            data.forEach((f) => {
+              // format numeric fields for display
+              const displayAccount =
+                typeof f.account === "number"
+                  ? `$${f.account.toLocaleString()}`
+                  : f.account;
+              const displayEval = f.eval;
+              const displayActivation = f.activation;
+              const displayTrueCost = f.truecost;
+              const displayGoal =
+                typeof f.goal === "number"
+                  ? `$${f.goal.toLocaleString()}`
+                  : f.goal;
+              const displayDD =
+                typeof f.dd === "number" ? `$${f.dd.toLocaleString()}` : f.dd;
+              tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${f.logo}" class="zx-logo" alt="${f.firm} logo" loading="lazy" onerror="this.src='https://placehold.co/45x45?text=Logo'"></td>
+                        <td>${f.firm}</td>
+                        <td>${displayAccount}</td>
+                        <td>$${displayEval}</td>
+                        <td>$${displayActivation}</td>
+                        <td class="zx-true">$${displayTrueCost}</td>
+                        <td>${f.ddt}</td>
+                        <td>${displayGoal}</td>
+                        <td>${displayDD}</td>
+                        <td>${f.mindays}</td>
+                        <td>${f.discount}</td>
+                        <td><button class="zx-code" onclick="window.copyCode(this,'${f.code.replace(/'/g, "\\'")}')">${f.code}</button></td>
+                        <td><a href="${f.website}" target="_blank" rel="noopener noreferrer" class="zx-visit-btn">Visit</a></td>
+                    </tr>
+                `;
+            });
+          }
+
+          window.copyCode = function (btn, code) {
+            navigator.clipboard.writeText(code);
+            btn.innerText = "Copied!";
+            setTimeout(() => (btn.innerText = code), 1200);
+          };
+
+          function applyFilters() {
+            const search = document
+              .getElementById("zx-search")
+              .value.toLowerCase();
+            const account = document.getElementById("zx-account-filter").value;
+            const ddt = document.getElementById("zx-dd-filter").value;
+
+            filteredData = firms.filter((f) => {
+              const matchSearch = f.firm.toLowerCase().includes(search);
+              let matchAccount = true;
+              if (account) {
+                const accNum = parseInt(account, 10);
+                matchAccount = f.account === accNum;
+              }
+              let matchDDT = true;
+              if (ddt) matchDDT = f.ddt === ddt;
+              return matchSearch && matchAccount && matchDDT;
+            });
+            if (sortState.key) {
+              filteredData.sort((a, b) => {
+                let aVal = a[sortState.key],
+                  bVal = b[sortState.key];
+                if (typeof aVal === "string" && isNaN(aVal))
+                  aVal = aVal.toString();
+                if (typeof bVal === "string" && isNaN(bVal))
+                  bVal = bVal.toString();
+                if (aVal > bVal) return sortState.direction;
+                if (aVal < bVal) return -sortState.direction;
+                return 0;
+              });
+            }
+            render(filteredData);
+          }
+
+          document
+            .getElementById("zx-search")
+            .addEventListener("input", applyFilters);
+          document
+            .getElementById("zx-account-filter")
+            .addEventListener("change", applyFilters);
+          document
+            .getElementById("zx-dd-filter")
+            .addEventListener("change", applyFilters);
+
+          // Sorting with icons
+          document.querySelectorAll("#zx-table th[data-key]").forEach((th) => {
+            const key = th.dataset.key;
+            const icon = document.createElement("span");
+            icon.className = "sort-icon";
+            icon.textContent = "▼";
+            th.appendChild(icon);
+            th.addEventListener("click", () => {
+              if (sortState.key === key) sortState.direction *= -1;
+              else {
+                sortState.key = key;
+                sortState.direction = 1;
+              }
+              filteredData.sort((a, b) => {
+                let aVal = a[key],
+                  bVal = b[key];
+                if (
+                  typeof aVal === "string" &&
+                  !isNaN(parseFloat(aVal)) &&
+                  aVal.toString().includes("K")
+                )
+                  aVal = aVal;
+                if (
+                  typeof bVal === "string" &&
+                  !isNaN(parseFloat(bVal)) &&
+                  bVal.toString().includes("K")
+                )
+                  bVal = bVal;
+                if (aVal > bVal) return sortState.direction;
+                if (aVal < bVal) return -sortState.direction;
+                return 0;
+              });
+              document
+                .querySelectorAll(".sort-icon")
+                .forEach((i) => (i.textContent = "▼"));
+              icon.textContent = sortState.direction === 1 ? "▲" : "▼";
+              render(filteredData);
             });
           });
 
-          // Accordion functionality (preserved)
-          document.querySelectorAll(".fps-title").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const content = btn.nextElementSibling;
-              const arrow = btn.querySelector(".fps-arrow");
-
-              content.classList.toggle("active");
-              arrow.style.transform = content.classList.contains("active")
-                ? "rotate(45deg)"
-                : "rotate(0deg)";
+          // Drag & drop column reorder (preserved)
+          let dragStartIndex = null;
+          const table = document.getElementById("zx-table");
+          const headers = table.querySelectorAll("th[draggable=true]");
+          headers.forEach((header) => {
+            header.setAttribute("draggable", "true");
+            header.addEventListener("dragstart", function (e) {
+              dragStartIndex = this.cellIndex;
+              this.classList.add("dragging");
+              e.dataTransfer.effectAllowed = "move";
+            });
+            header.addEventListener("dragend", function () {
+              this.classList.remove("dragging");
+            });
+            header.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              this.classList.add("drag-over");
+            });
+            header.addEventListener("dragleave", () =>
+              this.classList.remove("drag-over"),
+            );
+            header.addEventListener("drop", function () {
+              if (dragStartIndex !== null)
+                moveColumn(dragStartIndex, this.cellIndex);
+              this.classList.remove("drag-over");
             });
           });
+          function moveColumn(from, to) {
+            if (from === to) return;
+            for (let row of table.rows)
+              row.insertBefore(row.cells[from], row.cells[to]);
+          }
+
+          render(filteredData);
         </script>
       </body>
     </html>
-    <!-- ========= More details END ======  -->
+
+    <!-- ===== Favorite Firms Section END ===== -->
 
     <!-- =========== Youtube Section ========= -->
+
     <section class="yt-hero">
       <div class="yt-container">
         <!-- LEFT -->
@@ -2093,6 +2219,7 @@
         }
       }
     </style>
+
     <!-- ============ Youtube section END=======  -->
 
     <!-- ================== CTF Compare Top Firm Section ================== -->
@@ -2111,7 +2238,7 @@
           <!-- KEEP ALL YOUR CARDS SAME -->
 
           <!-- Card 1 -->
-          <a href="../CompareTopFrims/comparison.html" class="ctf-compare-card">
+          <a href="comparison.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img src="https://img.icons8.com/?size=96&id=11897&format=png" />
             </div>
@@ -2123,7 +2250,7 @@
           </a>
 
           <!-- Card 2 -->
-          <a href="../CompareTopFrims/bestDeals.html" class="ctf-compare-card">
+          <a href="bestDeals.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/?size=96&id=E4XDlQ9MdNr2&format=png"
@@ -2136,7 +2263,7 @@
           </a>
 
           <!-- Card 3 -->
-          <!-- <a href="../CompareTopFrims/StartCost.html" class="ctf-compare-card">
+          <!-- <a href="StartCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/play.png" />
             </div>
@@ -2145,7 +2272,7 @@
           </a> -->
 
           <!-- Card 4 -->
-          <!-- <a href="../CompareTopFrims/TrueCost.html" class="ctf-compare-card">
+          <!-- <a href="TrueCost.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/bank-card-back-side.png"
@@ -2156,7 +2283,7 @@
           </a> -->
 
           <!-- Card 5 -->
-          <a href="../CompareTopFrims/Drawdown.html" class="ctf-compare-card">
+          <a href="Drawdown.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img
                 src="https://img.icons8.com/fluency/96/00c2ff/combo-chart--v1.png"
@@ -2167,10 +2294,7 @@
           </a>
 
           <!-- Card 6 -->
-          <a
-            href="../CompareTopFrims/QuickFunding.html"
-            class="ctf-compare-card"
-          >
+          <a href="QuickFunding.html" class="ctf-compare-card">
             <div class="ctf-card-icon">
               <img src="https://img.icons8.com/fluency/96/00c2ff/rocket.png" />
             </div>
@@ -2207,9 +2331,6 @@
       .ctf-compare-nav {
         display: flex;
         gap: 12px;
-      }
-      .ctf-compare-card h3 {
-        padding: 10px;
       }
 
       .ctf-nav-btn {
@@ -2249,6 +2370,9 @@
         border: 1px solid rgba(255, 255, 255, 0.8);
         background: #0000005c;
         text-align: center;
+      }
+      .ctf-compare-card h3 {
+        padding: 10px;
       }
 
       /* ================= MOBILE ONLY ================= */
@@ -2310,193 +2434,18 @@
       updateButtons();
     </script>
     <!-- ==================CTF Compare Top Firm Section END ================== -->
-    <!-- ========== hero section=========  -->
-    <section class="apex-section">
-      <div class="apex-container">
-        <!-- Left Logo -->
-        <div class="apex-logo-box">
-          <img
-            src="../Photos/firms/tradeify.png"
-            alt="Tradeify Logo"
-          />
-        </div>
-
-        <!-- Right Content -->
-        <div class="apex-content">
-          <div class="apex-stars">★ ★ ★ ★ ★</div>
-          <h2>So try, Tradeify <span>NOW</span>...!!</h2>
-
-          <p>
-            Tradeify is a familiar and trusted name in the prop trading space,
-            and it’s come back stronger than ever. The firm offers flexible
-            funding options and a streamlined account structure built around
-            what traders actually want. With both instant funding and
-            customizable setups through the new Select Plan, Tradeify lets
-            traders tailor their accounts instead of forcing them into a
-            one-size-fits-all model. <br />
-            <br />
-            Traders can choose the features that matter most to them, including
-            day-one or five-day payout options, giving more control over how and
-            when profits are accessed. With refreshed programs and the same
-            reliable, trader-focused support, Tradeify delivers a versatile,
-            accessible, and efficient path for traders looking to get funded and
-            stay funded.
-          </p>
-
-          <div class="apex-buttons">
-            <a href="https://tradeify.co/?ref=11241" class="apex-btn"
-              >Get Evaluation</a
-            >
-            <a href="#" class="apex-btn copy-code" data-code="BRO"
-              >Code : BRO</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-    <script>
-      document.querySelectorAll(".copy-code").forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const code = this.dataset.code;
-
-          navigator.clipboard.writeText(code);
-
-          const original = this.innerText;
-          this.innerText = "Copied ✓";
-
-          setTimeout(() => {
-            this.innerText = original;
-          }, 2000);
-        });
-      });
-    </script>
-
-    <style>
-      .apex-section {
-        padding: 80px 5%;
-        background:
-          radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
-          linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-        color: #fff;
-      }
-
-      .apex-container {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        gap: 60px;
-        flex-wrap: wrap;
-      }
-
-      /* Logo Box */
-      .apex-logo-box {
-        background: #000;
-        padding: 40px;
-        border-radius: 20px;
-        flex: 0 0 230px;
-        max-width: 180px;
-        height: 152px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .apex-logo-box img {
-        max-width: 220px;
-        width: 135%;
-      }
-
-      /* Content */
-      .apex-content {
-        flex: 1.5;
-        min-width: 300px;
-      }
-
-      .apex-stars {
-        color: #fbff12;
-        font-size: 24px;
-        margin-bottom: 11px;
-      }
-
-      .apex-content h2 {
-        /* font-family: "DM Mono", monospace; */
-        font-size: 42px;
-        margin-bottom: 12px;
-      }
-      .apex-content h2 span {
-        color: #00c2ff;
-      }
-
-      .apex-content p {
-        font-family: "DM Sans", sans-serif;
-        font-size: 17px;
-        line-height: 1.7;
-        color: #d1d5db;
-        margin-bottom: 30px;
-      }
-
-      /* Buttons */
-      .apex-buttons {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .apex-btn {
-        padding: 14px 28px;
-        border-radius: 40px;
-        /* font-family: "DM Mono", monospace; */
-        font-size: 16px;
-        text-decoration: none;
-        background: linear-gradient(90deg, #00c2ff, #1e90ff);
-        color: white;
-        transition: all 0.3s ease;
-        border: 3px solid transparent;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 150px;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      .apex-btn:hover {
-        background: white;
-        color: #0b0f2a;
-        border: 3px solid #00c2ff;
-      }
-
-      /* Responsive */
-      @media (max-width: 992px) {
-        .apex-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .apex-buttons {
-          justify-content: center;
-        }
-
-        .apex-content h2 {
-          font-size: 32px;
-        }
-      }
-    </style>
-    <!-- ==========hero section End========= -->
 
     <!-- ================= BRO TRADING FOOTER ================= -->
     <footer class="bt-footer">
       <div class="bt-footer-container">
         <!-- Brand -->
         <div class="bt-footer-brand">
-          <img
-            src="../Bro_Traders_logo-removebg-preview.png"
-            alt="Bro Trading"
-            class="bt-footer-logo"
-          />
+          <a href="../index.html"
+            ><img
+              src="../Bro_Traders_logo-removebg-preview.png"
+              alt="Bro Trading"
+              class="bt-footer-logo"
+          /></a>
           <p class="bt-footer-text">
             Bro Trading is a premium trading resource platform helping traders
             compare Bro Tradings, improve skills, and scale profitably.
@@ -2515,12 +2464,12 @@
         <!-- Column 1 -->
         <div class="bt-footer-col">
           <h4>Bro Trading Finder</h4>
-          <a href="../CompareTopFrims/comparison.html">Top Frims Comparison</a>
-          <!-- <a href="../CompareTopFrims/TrueCost.html">True Cost to Funding</a> -->
-          <!-- <a href="../CompareTopFrims/StartCost.html">Starting Costs</a> -->
-          <a href="../CompareTopFrims/Drawdown.html">Largest Drawdown</a>
-          <a href="../CompareTopFrims/QuickFunding.html">Quickest Funding</a>
-          <a href="../CompareTopFrims/BestDeals.html">Best Deals</a>
+          <a href="comparison.html">Top Firms Comparison</a>
+          <!-- <a href="TrueCost.html">True Cost to Funding</a> -->
+          <!-- <a href="StartCost.html">Starting Costs</a> -->
+          <a href="Drawdown.html">Largest Drawdown</a>
+          <a href="QuickFunding.html">Quickest Funding</a>
+          <a href="BestDeals.html">Best Deals</a>
         </div>
 
         <!-- Column 2 -->
@@ -2536,13 +2485,13 @@
 
         <!-- Column 3 -->
         <div class="bt-footer-col bt-resources">
-          <h4>Bro Tradings Frims</h4>
-          <a href="ApexFunding.html">Apex Trader Funding</a>
-          <a href="TradeifyTrader.html">Tradeify</a>
-          <a href="Lucid Trading.html">Lucid Trading</a>
-          <a href="MyFundedFuture.html">My Funded Futures</a>
-          <a href="DayTraders.html">Day Trader</a>
-          <a href="PhidiasPropFirm.html">Phidias PropFirm</a>
+          <h4>Bro Tradings Firms</h4>
+          <a href="../Firms/ApexFunding.html">Apex Trader Funding</a>
+          <a href="../Firms/TradeifyTrader.html">Tradeify</a>
+          <a href="../Firms/Lucid Trading.html">Lucid Trading</a>
+          <a href="../Firms/MyFundedFuture.html">My Funded Futures</a>
+          <a href="../Firms/DayTrader.html">Day Trader</a>
+          <a href="../Firms/PhidiasPropFirm.html">Phidias PropFirm</a>
         </div>
       </div>
 
