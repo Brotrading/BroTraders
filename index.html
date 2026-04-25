@@ -5515,7 +5515,7 @@
         </style>
       </head>
       <body>
-        <div id="giveawayPopup" class="bt-popup-overlay">
+        <div id="giveawayPopup" class="bt-popup-overlay" style="display: none;">
           <div class="bt-popup">
             <!-- Close button with icon (times-circle style) -->
             <button
@@ -5646,6 +5646,32 @@
               }
             });
           }
+
+          // Exit-intent: show popup only when cursor leaves the page from the top.
+          // Once per browser session — won't keep popping up after closing.
+          (function () {
+            const POPUP_KEY = "giveawayPopupShown";
+            const popup = document.getElementById("giveawayPopup");
+            if (!popup) return;
+            if (sessionStorage.getItem(POPUP_KEY)) return;
+
+            function showPopup() {
+              popup.style.display = "flex";
+              sessionStorage.setItem(POPUP_KEY, "1");
+            }
+
+            // Desktop: cursor leaves through top of viewport
+            document.addEventListener("mouseleave", function (e) {
+              if (e.clientY <= 0) showPopup();
+            });
+
+            // Mobile fallback: show after 30 seconds OR on rapid scroll-up
+            const isTouch =
+              "ontouchstart" in window || navigator.maxTouchPoints > 0;
+            if (isTouch) {
+              setTimeout(showPopup, 30000);
+            }
+          })();
         </script>
       </body>
     </html>
