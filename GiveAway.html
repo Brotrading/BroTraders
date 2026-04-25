@@ -1761,6 +1761,15 @@
               /><label><i class="far fa-envelope"></i> Email Address</label>
             </div>
             <div class="form-group">
+              <input
+                type="text"
+                name="discord"
+                id="discordField"
+                placeholder=" "
+                required
+              /><label><i class="fab fa-discord"></i> Discord Username</label>
+            </div>
+            <div class="form-group">
               <textarea
                 name="message"
                 id="messageField"
@@ -1936,12 +1945,23 @@
         const usernameInput = document
           .getElementById("usernameField")
           .value.trim();
+        const discordInput = document
+          .getElementById("discordField")
+          .value.trim();
         if (!nameInput) {
           showPopup("Please enter your name.", "warning", "Missing Info");
           return;
         }
+        if (!discordInput) {
+          showPopup(
+            "Please enter your Discord username so we can add you to the wheel.",
+            "warning",
+            "Discord Required",
+          );
+          return;
+        }
 
-        const wheelEntry = usernameInput || nameInput;
+        const wheelEntry = discordInput;
 
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
