@@ -1947,6 +1947,26 @@
             // --------------------------------------------------------------
             const allRows = [];
 
+            // ----- Per-firm restricted countries -----
+            // Source: propfirmmatch.com per-firm pages (verified by Mike, Apr 2026).
+            // Country names match the country-dropdown picker; firms without an
+            // explicit list fall back to OFAC_RESTRICTED defined later.
+            const RESTRICTED_APEX = [
+              "Afghanistan","Algeria","Azerbaijan","Bahrain","Bangladesh","Belarus","Benin","Burkina Faso","Burundi","Cameroon","Central African Republic","China","Cuba","Cyprus","Egypt","Grenada","Haiti","Iran","Iraq","Jamaica","Jordan","Kazakhstan","Kenya","Kuwait","Latvia","Lebanon","Lesotho","Liberia","Libya","Madagascar","Maldives","Mauritania","Mauritius","Mexico","Mongolia","Mozambique","Nepal","Nicaragua","Nigeria","North Korea","Oman","Pakistan","Palestinian Territories","Qatar","Russia","Saudi Arabia","Senegal","Serbia","Somalia","South Africa","Sri Lanka","Sudan","Syria","Tanzania","Trinidad and Tobago","Turkey","Uganda","Ukraine","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia"
+            ];
+            const RESTRICTED_TRADEIFY = [
+              "Afghanistan","Albania","Algeria","Andorra","Angola","Bahamas","Barbados","Belarus","Bosnia and Herzegovina","Botswana","Bulgaria","Burundi","Cambodia","Central African Republic","Cote d'Ivoire (Ivory Coast)","Crimea (Region of Ukraine)","Cuba","Democratic Republic of the Congo (Congo Free State)","Ecuador","Ethiopia","Ghana","Iceland","Indonesia","Iran","Iraq","Israel","Jamaica","Kosovo","Laos","Lebanon","Liberia","Libya","Malaysia","Mauritius","Mongolia","Montenegro","Morocco","Myanmar (Burma)","Nicaragua","North Korea","Pakistan","Panama","Papua New Guinea","Russia","Somalia","South Sudan","Sri Lanka","Sudan","Syria","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine","Venezuela","Vietnam","Yemen","Zimbabwe"
+            ];
+            const RESTRICTED_LUCID = [
+              "Afghanistan","Albania","Algeria","Angola","Bahamas","Barbados","Belarus","Bosnia and Herzegovina","Botswana","Bulgaria","Burkina Faso","Burundi","Cambodia","Central African Republic","Congo (Kinshasa)","Cote d'Ivoire (Ivory Coast)","Crimea (Region of Ukraine)","Cuba","Ecuador","Ethiopia","Ghana","Guinea","Haiti","Iceland","Indonesia","Iran","Iraq","Jamaica","Kenya","Kherson (Russia-occupied areas of Ukraine)","Kosovo","Laos","Lebanon","Liberia","Libya","Lithuania","Mali","Mauritius","Mongolia","Montenegro","Morocco","Mozambique","Myanmar (Burma)","Namibia","Nicaragua","Nigeria","North Korea","North Macedonia","Pakistan","Panama","Papua New Guinea","Philippines","Republic of the Congo (Congo Brazzaville)","Russia","Senegal","Serbia","Slovenia","Somalia","South Africa","South Sudan","Sri Lanka","Sudan","Syria","Tanzania","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine","Venezuela","Vietnam","Yemen","Zimbabwe"
+            ];
+            const RESTRICTED_MFFU = [
+              "Afghanistan","Albania","Algeria","Angola","Bahamas","Barbados","Belarus","Bosnia and Herzegovina","Botswana","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Central African Republic","China","Cote d'Ivoire (Ivory Coast)","Crimea (Region of Ukraine)","Croatia","Cuba","Democratic Republic of the Congo (Congo Free State)","Ecuador","Ethiopia","Ghana","Gibraltar","Haiti","Hong Kong","Iceland","Indonesia","Iran","Iraq","Jamaica","Jordan","Kenya","Kosovo","Laos","Lebanon","Liberia","Libya","Macedonia","Malaysia","Mali","Malta","Mauritius","Mexico","Mongolia","Montenegro","Mozambique","Myanmar (Burma)","Namibia","Nicaragua","Nigeria","North Korea","Pakistan","Panama","Papua New Guinea","Philippines","Qatar","Romania","Russia","Senegal","Serbia","Slovenia","Somalia","South Africa","South Sudan","Sri Lanka","Sudan","Syria","Taiwan","Tanzania","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine","United Arab Emirates","Venezuela","Vietnam","Yemen","Zimbabwe"
+            ];
+            const RESTRICTED_ALPHA = [
+              "Afghanistan","Albania","Belarus","Bosnia and Herzegovina","Bulgaria","Burkina Faso","Chad","Cote d'Ivoire (Ivory Coast)","Croatia","Cuba","Darfur","Democratic Republic of the Congo (Congo Free State)","Djibouti","Ethiopia","Guinea-Bissau","Haiti","Iran","Iraq","Jamaica","Jordan","Kenya","Kosovo","Laos","Lebanon","Lesotho","Libya","Malawi","Malaysia","Mali","Montenegro","Mozambique","Myanmar (Burma)","Namibia","Nigeria","North Korea","North Macedonia","Pakistan","Palestinian Territory","Philippines","Romania","Russia","Rwanda","Senegal","Serbia","Sierra Leone","Slovenia","Somalia","South Sudan","Sudan","Syria","Tajikistan","Tanzania","Timor-Leste (East Timor)","Turkey","Ukraine","Venezuela","Vietnam","Yemen","Zimbabwe"
+            ];
+
             // ----- Apex Trader Funding -----
             // Verified from apextraderfunding.com — 90% off sale active (code BRO).
             // 4 account sizes (25K, 50K, 100K, 150K), each in 2 drawdown variants (Trail / EOD).
@@ -1982,6 +2002,7 @@
                 firmpage: "../Firms/ApexFunding.html",
                 website:
                   "https://apextraderfunding.com/member/aff/go/buurtie",
+                restrictedCountries: RESTRICTED_APEX,
               });
 
             // Tradeify
@@ -2053,6 +2074,7 @@
                     maxaccounts: 5,
                     firmpage: "../Firms/TradeifyTrader.html",
                     website: "https://tradeify.co/?ref=BFYQ2HKM",
+                    restrictedCountries: RESTRICTED_TRADEIFY,
                   });
 
             // MyFundedFutures
@@ -2103,6 +2125,7 @@
                   maxaccounts: 5,
                   firmpage: "../Firms/MyFundedFuture.html",
                   website: "https://myfundedfutures.com/challenge?ref=5117",
+                  restrictedCountries: RESTRICTED_MFFU,
                 });
 
             // Lucid Trading
@@ -2153,6 +2176,7 @@
                   maxaccounts: 5,
                   firmpage: "../Firms/Lucid Trading.html",
                   website: "https://lucidtrading.com/ref/brotrading/",
+                  restrictedCountries: RESTRICTED_LUCID,
                 });
 
             // Day Traders
@@ -2262,6 +2286,7 @@
                 maxaccounts: 5,
                 firmpage: "../Firms/AlphaFutures.html",
                 website: "https://alphafutures.com",
+                restrictedCountries: RESTRICTED_ALPHA,
               });
 
             // NexGen Pro Trader
