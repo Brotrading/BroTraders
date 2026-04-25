@@ -37,10 +37,10 @@
             </a>
 
             <a
-              href="https://apextraderfunding.com/?keyword=&c=&gclid=&gad_source="
+              href="https://apextraderfunding.com/member/aff/go/buurtie"
               target="_blank"
             >
-              ✅ Apex Trader Funding is 40% Off & No Fee! Use Code: BRO
+              ✅ Apex Trader Funding is 90% Off! Use Code: BRO
             </a>
 
             <a
@@ -56,7 +56,7 @@
 
             <!-- duplicate for smooth loop -->
             <a
-              href="https://daytraders.com/?keyword=&c=TWCEMMNK&gclid=&gad_source="
+              href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
               target="_blank"
             >
               DayTraders.com is 50% Off All Accounts! Use Code: BROTRADING
@@ -1907,82 +1907,35 @@
             const allRows = [];
 
             // ----- Apex Trader Funding -----
-            const apexPlatforms = ["Tradovate", "Rithmic", "WealthCharts"];
-            const apexAccounts = [
-              "25K",
-              "50K",
-              "75K",
-              "100K",
-              "150K",
-              "250K",
-              "300K",
-              "50K Static",
+            // Verified from apextraderfunding.com — 90% off sale active (code BRO).
+            // 4 account sizes (25K, 50K, 100K, 150K), each in 2 drawdown variants (Trail / EOD).
+            // Same prices across platforms (Rithmic, Tradovate, WealthCharts).
+            const apexPlatforms = ["Rithmic", "Tradovate", "WealthCharts"];
+            const apexVariants = [
+              { size: "25K Trail",  goal: 1500, dd: 1000, ddt: "Trailing", evalReg: 199, evalSale: 19.90,  activation: 89,  truecost: 109 },
+              { size: "50K Trail",  goal: 3000, dd: 2000, ddt: "Trailing", evalReg: 249, evalSale: 24.90,  activation: 69,  truecost: 94 },
+              { size: "100K Trail", goal: 6000, dd: 3000, ddt: "Trailing", evalReg: 399, evalSale: 39.90,  activation: 119, truecost: 159 },
+              { size: "150K Trail", goal: 9000, dd: 4000, ddt: "Trailing", evalReg: 599, evalSale: 59.90,  activation: 139, truecost: 199 },
+              { size: "25K EOD",    goal: 1500, dd: 1000, ddt: "Static",   evalReg: 299, evalSale: 29.90,  activation: 109, truecost: 139 },
+              { size: "50K EOD",    goal: 3000, dd: 2000, ddt: "Static",   evalReg: 349, evalSale: 34.90,  activation: 119, truecost: 154 },
+              { size: "100K EOD",   goal: 6000, dd: 3000, ddt: "Static",   evalReg: 599, evalSale: 59.90,  activation: 139, truecost: 199 },
+              { size: "150K EOD",   goal: 9000, dd: 4000, ddt: "Static",   evalReg: 799, evalSale: 79.90,  activation: 159, truecost: 239 },
             ];
-            const apexGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "75K": 4500,
-              "100K": 6000,
-              "150K": 9000,
-              "250K": 15000,
-              "300K": 20000,
-              "50K Static": 3000,
-            };
-            const apexDD = {
-              "25K": 1500,
-              "50K": 2500,
-              "75K": 3500,
-              "100K": 3000,
-              "150K": 5000,
-              "250K": 6500,
-              "300K": 7500,
-              "50K Static": 2500,
-            };
-            const apexEval = {
-              "25K": 147,
-              "50K": 167,
-              "75K": 187,
-              "100K": 207,
-              "150K": 297,
-              "250K": 517,
-              "300K": 657,
-              "50K Static": 167,
-            };
-            const apexTrue = {
-              "25K": 109,
-              "50K": 163,
-              "75K": 179,
-              "100K": 191,
-              "150K": 279,
-              "250K": 343,
-              "300K": 391,
-              "50K Static": 163,
-            };
-            const apexDisc = {
-              "25K": "90%",
-              "50K": "90%",
-              "75K": "85%",
-              "100K": "80%",
-              "150K": "80%",
-              "250K": "80%",
-              "300K": "80%",
-              "50K Static": "80%",
-            };
             for (let plat of apexPlatforms)
-              for (let acc of apexAccounts)
+              for (let v of apexVariants)
                 allRows.push({
                   firm: "Apex Trader Funding",
                   logo: "../Photos/firms/apex.png",
-                  account: acc,
-                  goal: apexGoals[acc],
-                  profitTarget: apexGoals[acc],
-                  ddt: acc === "50K Static" ? "Static" : "EOD Trailing",
-                  dd: apexDD[acc],
-                  mindays: 7,
-                  eval: apexEval[acc],
-                  activation: 99,
-                  truecost: apexTrue[acc],
-                  discount: apexDisc[acc],
+                  account: v.size,
+                  goal: v.goal,
+                  profitTarget: v.goal,
+                  ddt: v.ddt,
+                  dd: v.dd,
+                  mindays: 1,
+                  eval: v.evalSale,
+                  activation: v.activation,
+                  truecost: v.truecost,
+                  discount: "90%",
                   code: "BRO",
                   platform: plat,
                   country: "USA",
