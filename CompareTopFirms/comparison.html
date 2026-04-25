@@ -1519,6 +1519,27 @@
             text-align: center;
           }
 
+          #zx-table th.sortable {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s, color 0.15s;
+          }
+          #zx-table th.sortable:hover {
+            background: #14264d;
+            color: #ffffff;
+          }
+          #zx-table th.sortable .sort-arrow {
+            display: inline-block;
+            margin-left: 4px;
+            opacity: 0.35;
+            font-size: 0.85em;
+          }
+          #zx-table th.sortable.sort-asc .sort-arrow,
+          #zx-table th.sortable.sort-desc .sort-arrow {
+            opacity: 1;
+            color: #2c9eff;
+          }
+
           #zx-table td {
             padding: 10px 5px;
             text-align: center;
@@ -1757,8 +1778,8 @@
         <section class="zx-comparison-section">
           <h2 class="ff-title">Prop Firms Comparison</h2>
           <p class="ff-subtitle">
-            Compare funding plans · Sorted by true cost (lowest to highest) ·
-            Advanced filters for firms, platforms, discounts, and account limits
+            Compare funding plans · Click any column header to sort · Filter by
+            firm, account size, drawdown type, platform, country & more
           </p>
 
           <div class="zx-filter-panel">
@@ -1771,6 +1792,36 @@
                 <div class="dropdown-content" id="firm-options"></div>
               </div>
               <div class="selected-hint" id="firm-hint"></div>
+            </div>
+            <div class="zx-filter">
+              <label>ACCOUNT SIZE</label>
+              <div class="dropdown-checkbox" id="account-dropdown">
+                <div class="select-btn">
+                  Sizes <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="account-options"></div>
+              </div>
+              <div class="selected-hint" id="account-hint"></div>
+            </div>
+            <div class="zx-filter">
+              <label>DD TYPE</label>
+              <div class="dropdown-checkbox" id="ddtype-dropdown">
+                <div class="select-btn">
+                  DD Type <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="ddtype-options"></div>
+              </div>
+              <div class="selected-hint" id="ddtype-hint"></div>
+            </div>
+            <div class="zx-filter">
+              <label>YOUR COUNTRY</label>
+              <div class="dropdown-checkbox" id="country-dropdown">
+                <div class="select-btn">
+                  Pick country <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-content" id="country-options"></div>
+              </div>
+              <div class="selected-hint" id="country-hint"></div>
             </div>
             <div class="zx-filter">
               <label>PLATFORM</label>
@@ -1803,16 +1854,6 @@
               <div class="selected-hint" id="max-hint"></div>
             </div>
             <div class="zx-filter">
-              <label>GOAL AMOUNT</label>
-              <div class="dropdown-checkbox" id="goal-dropdown">
-                <div class="select-btn">
-                  Goal ≤ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="goal-options"></div>
-              </div>
-              <div class="selected-hint" id="goal-hint"></div>
-            </div>
-            <div class="zx-filter">
               <label>TRUE COST</label>
               <div class="dropdown-checkbox" id="cost-dropdown">
                 <div class="select-btn">
@@ -1834,8 +1875,8 @@
                   <th class="sticky-col firm-col">
                     <i class="fas fa-building"></i> Firm
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-chart-line"></i> Account
+                  <th draggable="true" class="sortable" data-sort-key="account">
+                    <i class="fas fa-chart-line"></i> Account <span class="sort-arrow">⇅</span>
                   </th>
                   <th draggable="true">
                     <i class="fas fa-desktop"></i> Platform
@@ -1843,33 +1884,33 @@
                   <th draggable="true">
                     <i class="fas fa-map-marker-alt"></i> Country
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-layer-group"></i> Max Acc
+                  <th draggable="true" class="sortable" data-sort-key="maxaccounts">
+                    <i class="fas fa-layer-group"></i> Max Acc <span class="sort-arrow">⇅</span>
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-dollar-sign"></i> Eval Fee
+                  <th draggable="true" class="sortable" data-sort-key="eval">
+                    <i class="fas fa-dollar-sign"></i> Eval Fee <span class="sort-arrow">⇅</span>
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-rocket"></i> Activation
+                  <th draggable="true" class="sortable" data-sort-key="activation">
+                    <i class="fas fa-rocket"></i> Activation <span class="sort-arrow">⇅</span>
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-bullseye"></i> Profit Target
+                  <th draggable="true" class="sortable" data-sort-key="profitTarget">
+                    <i class="fas fa-bullseye"></i> Profit Target <span class="sort-arrow">⇅</span>
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-coins"></i> True Cost
+                  <th draggable="true" class="sortable sort-asc" data-sort-key="truecost">
+                    <i class="fas fa-coins"></i> True Cost <span class="sort-arrow">▲</span>
                   </th>
-                  <th draggable="true"><i class="fas fa-tag"></i> Discount</th>
+                  <th draggable="true" class="sortable" data-sort-key="discount"><i class="fas fa-tag"></i> Discount <span class="sort-arrow">⇅</span></th>
                   <th draggable="true">
                     <i class="fas fa-flag-checkered"></i> Goal
                   </th>
                   <th draggable="true">
                     <i class="fas fa-chart-simple"></i> DD Type
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-arrow-trend-down"></i> Drawdown
+                  <th draggable="true" class="sortable" data-sort-key="dd">
+                    <i class="fas fa-arrow-trend-down"></i> Drawdown <span class="sort-arrow">⇅</span>
                   </th>
-                  <th draggable="true">
-                    <i class="fas fa-calendar-day"></i> Min Days
+                  <th draggable="true" class="sortable" data-sort-key="mindays">
+                    <i class="fas fa-calendar-day"></i> Min Days <span class="sort-arrow">⇅</span>
                   </th>
                   <th><i class="fas fa-key"></i> Code</th>
                   <th><i class="fas fa-folder-open"></i> Firm Page</th>
@@ -2340,7 +2381,36 @@
               website: "https://yrmprop.com",
             });
 
-            const firms = allRows.sort((a, b) => a.truecost - b.truecost);
+            const firms = allRows.slice();
+            let sortState = { key: "truecost", dir: "asc" };
+            function sortRows(rows) {
+              const { key, dir } = sortState;
+              if (!key) return rows;
+              const mult = dir === "asc" ? 1 : -1;
+              const numFromAccount = (s) => {
+                const m = String(s).match(/(\d+)/);
+                return m ? parseInt(m[1]) : 0;
+              };
+              const numFromDiscount = (s) => {
+                const n = parseInt(s);
+                return isNaN(n) ? -1 : n;
+              };
+              return rows.slice().sort((a, b) => {
+                let av = a[key];
+                let bv = b[key];
+                if (key === "account") {
+                  av = numFromAccount(av);
+                  bv = numFromAccount(bv);
+                } else if (key === "discount") {
+                  av = numFromDiscount(av);
+                  bv = numFromDiscount(bv);
+                }
+                if (typeof av === "string" || typeof bv === "string") {
+                  return mult * String(av).localeCompare(String(bv));
+                }
+                return mult * (av - bv);
+              });
+            }
             const toK = (v) =>
               typeof v === "string"
                 ? v
@@ -2362,6 +2432,80 @@
 
             // Filter building
             const firmVals = [...new Set(firms.map((f) => f.firm))].sort();
+            const accountSizeOf = (a) => {
+              const m = String(a).match(/(\d+)\s*K/i);
+              return m ? m[1] + "K" : String(a);
+            };
+            const accountVals = [
+              ...new Set(firms.map((f) => accountSizeOf(f.account))),
+            ].sort((a, b) => parseInt(a) - parseInt(b));
+            const ddtypeVals = [
+              ...new Set(firms.map((f) => f.ddt).filter(Boolean)),
+            ].sort();
+            // OFAC-sanctioned countries — all US-based prop firms restrict these by default.
+            // Per-firm overrides via firm.restrictedCountries[]; null/undefined falls back to this list.
+            const OFAC_RESTRICTED = [
+              "Cuba",
+              "Iran",
+              "North Korea",
+              "Syria",
+              "Russia",
+              "Belarus",
+            ];
+            const getRestrictedFor = (f) =>
+              Array.isArray(f.restrictedCountries)
+                ? f.restrictedCountries
+                : OFAC_RESTRICTED;
+            // Curated country list — most common trader nationalities.
+            const countryVals = [
+              "United States",
+              "United Kingdom",
+              "Netherlands",
+              "Germany",
+              "France",
+              "Spain",
+              "Italy",
+              "Belgium",
+              "Sweden",
+              "Norway",
+              "Denmark",
+              "Switzerland",
+              "Austria",
+              "Ireland",
+              "Portugal",
+              "Poland",
+              "Canada",
+              "Mexico",
+              "Brazil",
+              "Argentina",
+              "Australia",
+              "New Zealand",
+              "South Africa",
+              "Japan",
+              "South Korea",
+              "Singapore",
+              "Hong Kong",
+              "India",
+              "Pakistan",
+              "Indonesia",
+              "Philippines",
+              "Vietnam",
+              "Thailand",
+              "Malaysia",
+              "United Arab Emirates",
+              "Saudi Arabia",
+              "Turkey",
+              "Israel",
+              "Egypt",
+              "Nigeria",
+              "Kenya",
+              "Cuba",
+              "Iran",
+              "North Korea",
+              "Syria",
+              "Russia",
+              "Belarus",
+            ];
             const platformVals = [
               ...new Set(
                 firms.flatMap((f) =>
@@ -2391,10 +2535,12 @@
               });
             }
             buildDropdown("firm-options", firmVals);
+            buildDropdown("account-options", accountVals);
+            buildDropdown("ddtype-options", ddtypeVals);
+            buildDropdown("country-options", countryVals);
             buildDropdown("platform-options", platformVals);
             buildDropdown("discount-options", discountVals);
             buildDropdown("max-options", maxVals, true, "≤ ");
-            buildDropdown("goal-options", goalPresets, true, "≤ ");
             buildDropdown("cost-options", costPresets, true, "≤ ");
 
             function attachDropdowns() {
@@ -2436,6 +2582,12 @@
               ).length
                 ? getSelected("firm-options").join(", ").slice(0, 24) + "…"
                 : "All";
+              document.getElementById("account-hint").innerText =
+                getSelected("account-options").join(", ").slice(0, 22) || "All";
+              document.getElementById("ddtype-hint").innerText =
+                getSelected("ddtype-options").join(", ").slice(0, 22) || "All";
+              document.getElementById("country-hint").innerText =
+                getSelected("country-options").join(", ").slice(0, 22) || "All";
               document.getElementById("platform-hint").innerText = getSelected(
                 "platform-options",
               ).length
@@ -2448,10 +2600,6 @@
                   .map((v) => "≤ " + v)
                   .join(",")
                   .slice(0, 22) || "All";
-              document.getElementById("goal-hint").innerText =
-                getSelected("goal-options")
-                  .map((v) => "≤ " + v)
-                  .join(",") || "All";
               document.getElementById("cost-hint").innerText =
                 getSelected("cost-options")
                   .map((v) => "≤ " + v)
@@ -2459,13 +2607,27 @@
             }
             function applyFilters() {
               const firmSel = getSelected("firm-options"),
+                accountSel = getSelected("account-options"),
+                ddtypeSel = getSelected("ddtype-options"),
+                countrySel = getSelected("country-options"),
                 platSel = getSelected("platform-options"),
                 discSel = getSelected("discount-options"),
                 maxSel = getSelected("max-options").map((v) => parseInt(v)),
-                goalSel = getSelected("goal-options").map((v) => parseInt(v)),
                 costSel = getSelected("cost-options").map((v) => parseInt(v));
               const filtered = firms.filter((f) => {
                 if (firmSel.length && !firmSel.includes(f.firm)) return false;
+                if (
+                  accountSel.length &&
+                  !accountSel.includes(accountSizeOf(f.account))
+                )
+                  return false;
+                if (ddtypeSel.length && !ddtypeSel.includes(f.ddt))
+                  return false;
+                if (countrySel.length) {
+                  const restricted = getRestrictedFor(f);
+                  if (countrySel.some((c) => restricted.includes(c)))
+                    return false;
+                }
                 if (platSel.length) {
                   const plats = f.platform.split(",").map((p) => p.trim());
                   if (!platSel.some((p) => plats.includes(p))) return false;
@@ -2483,8 +2645,6 @@
                 }
                 if (maxSel.length && f.maxaccounts > Math.min(...maxSel))
                   return false;
-                if (goalSel.length && f.goal > Math.min(...goalSel))
-                  return false;
                 if (costSel.length && f.truecost > Math.min(...costSel))
                   return false;
                 return true;
@@ -2495,7 +2655,8 @@
             function render(data) {
               const tbody = document.querySelector("#zx-table tbody");
               tbody.innerHTML = "";
-              data.forEach((f) => {
+              const sorted = sortRows(data);
+              sorted.forEach((f) => {
                 const flagHtml = `<span class="country-flag">${getCountryFlag(f.country)} ${f.country}</span>`;
                 const row = document.createElement("tr");
                 row.innerHTML = `<td class="sticky-col logo-col"><img src="${f.logo}" class="zx-logo" alt="logo" onerror="this.src='https://placehold.co/58x33?text=logo'"><\/td><td class="sticky-col firm-col">${f.firm}<\/td><td>${f.account}<\/td><td>${f.platform}<\/td><td>${flagHtml}<\/td><td>${f.maxaccounts}<\/td><td>$${toK(f.eval)}<\/td><td>$${toK(f.activation)}<\/td><td style="font-weight:700; color:#facc15;">$${toK(f.profitTarget)}<\/td><td style="color:#4ade80; font-weight:700;">$${f.truecost}<\/td><td>${f.discount}<\/td><td>$${toK(f.goal)}<\/td><td>${f.ddt}<\/td><td>$${toK(f.dd)}<\/td><td>${f.mindays}<\/td><td><button class="zx-code">${f.code}<\/button><\/td><td><a href="${f.firmpage}" class="zx-firm-btn">Open<\/a><\/td><td><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit<\/a><\/td>`;
@@ -2528,8 +2689,10 @@
               "platform-options",
               "discount-options",
               "max-options",
-              "goal-options",
               "cost-options",
+              "account-options",
+              "ddtype-options",
+              "country-options",
             ].forEach((id) => addListeners(id));
             document.addEventListener("click", (e) => {
               if (e.target.classList.contains("zx-code")) {
@@ -2559,6 +2722,33 @@
                         row.children[dropIndex],
                       );
                   });
+                });
+              });
+            document
+              .querySelectorAll("#zx-table th.sortable")
+              .forEach((th) => {
+                th.addEventListener("click", function (e) {
+                  const key = this.getAttribute("data-sort-key");
+                  if (!key) return;
+                  if (sortState.key === key) {
+                    sortState.dir = sortState.dir === "asc" ? "desc" : "asc";
+                  } else {
+                    sortState = { key, dir: "asc" };
+                  }
+                  document
+                    .querySelectorAll("#zx-table th.sortable")
+                    .forEach((h) => {
+                      h.classList.remove("sort-asc", "sort-desc");
+                      const arr = h.querySelector(".sort-arrow");
+                      if (arr) arr.textContent = "⇅";
+                    });
+                  this.classList.add(
+                    sortState.dir === "asc" ? "sort-asc" : "sort-desc",
+                  );
+                  const arr = this.querySelector(".sort-arrow");
+                  if (arr)
+                    arr.textContent = sortState.dir === "asc" ? "▲" : "▼";
+                  applyFilters();
                 });
               });
             render(firms);
