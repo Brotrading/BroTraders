@@ -2580,1331 +2580,743 @@
 
           body {
             background: #030712;
-            font-family:
-              "Inter",
-              system-ui,
-              -apple-system,
-              "Segoe UI",
-              sans-serif;
-            overflow-x: hidden;
+            font-family: "DM Sans", sans-serif;
           }
 
-          /* MAIN SECTION — fully responsive with fluid spacing */
+          /* MAIN SECTION — FULLY RESPONSIVE */
           .zx-comparison-section {
-            padding: clamp(18px, 4vw, 60px) clamp(14px, 5vw, 100px);
+            padding: 70px 150px;
             background:
-              radial-gradient(circle at 20% 0%, #1e3a8a, transparent 65%),
-              linear-gradient(145deg, #0a1a2f 0%, #030712 100%);
+              radial-gradient(
+                circle at top center,
+                #1e40af 0%,
+                transparent 60%
+              ),
+              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
             color: white;
+            font-family: "DM Sans", sans-serif;
             width: 100%;
+            transition: all 0.3s ease;
           }
 
           .ff-title {
-            font-size: clamp(28px, 7vw, 48px);
-            font-weight: 800;
             text-align: center;
-            margin-bottom: 8px;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff, #94a3ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
           }
 
           .ff-subtitle {
             text-align: center;
             opacity: 0.85;
-            max-width: 780px;
-            margin: 0 auto 24px auto;
-            font-size: clamp(0.85rem, 2.8vw, 1rem);
-            font-weight: 400;
-            padding: 0 6px;
+            max-width: 750px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+            font-size: 1.1rem;
           }
 
-          /* FILTER PANEL — compact, all dropdowns front layer */
-          .zx-filter-panel {
+          /* FILTER BAR — FLEX WRAP RESPONSIVE */
+          .zx-controls {
             display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
-            align-items: flex-end;
-            gap: 8px 12px;
-            margin-bottom: 20px;
-            background: rgba(7, 19, 39, 0.92);
-            backdrop-filter: blur(12px);
-            padding: 12px 18px;
-            border-radius: 24px;
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            justify-content: space-between;
-            position: relative;
-            z-index: 30;
-          }
-
-          .zx-filter {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            min-width: 125px;
-            flex: 1 1 115px;
-            position: relative;
-            z-index: 35;
-          }
-
-          .zx-filter label {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            font-weight: 700;
-            opacity: 0.7;
-          }
-
-          /* dropdown styles - HIGH Z-INDEX to prevent being behind */
-          .dropdown-checkbox {
-            position: relative;
-            width: 100%;
-            z-index: 40;
-          }
-
-          .dropdown-checkbox .select-btn {
-            background: #0f1e38;
-            border: 1px solid #2e5480;
-            color: rgba(255, 255, 255, 0.9);
-            padding: 6px 12px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: all 0.2s;
-            white-space: nowrap;
           }
 
-          .dropdown-checkbox .select-btn i {
-            font-size: 0.7rem;
-            color: #60a5fa;
-          }
-
-          .dropdown-checkbox .dropdown-content {
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 0;
-            width: 260px;
-            max-width: 82vw;
-            max-height: 280px;
-            overflow-y: auto;
-            background: #0e1d3a;
-            border: 1px solid #3b82f6;
-            border-radius: 20px;
-            z-index: 9999;
-            padding: 10px;
-            display: none;
-            box-shadow: 0 20px 30px -8px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-          }
-
-          .dropdown-checkbox .dropdown-content.show {
-            display: block;
-          }
-
-          .dropdown-checkbox .dropdown-content label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 8px;
-            font-size: 0.75rem;
-            font-weight: 400;
+          .zx-controls input,
+          .zx-controls select {
+            padding: 12px 16px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
             border-radius: 12px;
-            color: #eef4ff;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-family: "DM Sans", sans-serif;
+            transition: all 0.2s ease;
             cursor: pointer;
+            flex: 1 1 180px;
           }
 
-          .dropdown-checkbox .dropdown-content label:hover {
-            background: #1f3b66;
+          .zx-controls input:focus,
+          .zx-controls select:focus {
+            outline: none;
+            border-color: #00c2ff;
+            box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.2);
           }
 
-          .dropdown-checkbox .dropdown-content input {
-            accent-color: #3b82f6;
-            width: 14px;
-            height: 14px;
+          .zx-controls input::placeholder {
+            color: #94a3b8;
           }
 
-          .selected-hint {
-            font-size: 0.55rem;
-            opacity: 0.65;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-          }
-
-          /* TABLE WRAPPER — smooth scrolling, no sticky website column */
+          /* TABLE WRAPPER — smooth overflow & responsive */
           .zx-table-wrapper {
             overflow-x: auto;
-            overflow-y: auto;
-            max-height: 72vh;
-            border-radius: 18px;
-            border: 1px solid #2b4a7a;
-            background: #071327;
-            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.6);
-            position: relative;
-            scroll-behavior: smooth;
+            border-radius: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #568bff #0b1a2a;
             -webkit-overflow-scrolling: touch;
           }
 
           .zx-table-wrapper::-webkit-scrollbar {
             height: 8px;
             width: 8px;
-            background: #0f1e3a;
+          }
+
+          .zx-table-wrapper::-webkit-scrollbar-track {
+            background: #0b1a2a;
             border-radius: 10px;
           }
 
           .zx-table-wrapper::-webkit-scrollbar-thumb {
-            background: #3b82f6;
+            background: #28a3fb;
             border-radius: 10px;
           }
 
+          /* TABLE STYLES — PRESERVE EXACT ORIGINAL STYLE + BETTER RESPONSIVE */
           #zx-table {
             width: 100%;
-            min-width: 1100px;
+            min-width: 1300px;
             border-collapse: separate;
             border-spacing: 0;
             background: #071327;
-            color: #f0f4fe;
-            font-size: 0.76rem;
-          }
-
-          /* responsive font scaling on small devices */
-          @media (max-width: 680px) {
-            #zx-table {
-              font-size: 0.68rem;
-              min-width: 1050px;
-            }
-            .zx-code {
-              font-size: 0.6rem;
-              padding: 3px 8px;
-            }
-            .zx-firm-btn,
-            .zx-visit-btn {
-              padding: 4px 8px;
-              font-size: 0.58rem;
-            }
-            .zx-logo {
-              width: 48px;
-              max-height: 28px;
-            }
+            border-radius: 16px;
+            overflow: hidden;
+            color: white;
+            font-family: "Roboto", sans-serif;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
           }
 
           #zx-table th {
-            background: #0f1e3c;
-            padding: 12px 14px;
+            background: #0f172a;
+            padding: 14px 10px;
             font-weight: 600;
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            color: #bfd6ff;
+            text-align: center !important;
+            font-size: 14px;
             position: sticky;
             top: 0;
-            z-index: 20;
+            z-index: 10;
+            backdrop-filter: blur(2px);
             white-space: nowrap;
-            border-bottom: 2px solid #3b6cb0;
-            text-align: center;
+          }
+
+          #zx-table th[data-key] {
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+          }
+
+          #zx-table th[data-key]:hover {
+            background: #1e2a4a;
           }
 
           #zx-table td {
-            padding: 10px 5px;
+            padding: 17px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             text-align: center;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            white-space: nowrap;
-            background: #071327;
-            transition: background 0.12s;
+            font-size: 16px;
+            vertical-align: middle;
           }
 
-          #zx-table tr:hover td {
-            background: #0f1e3a;
-          }
-
-          /* platform cell can wrap a bit */
-          #zx-table td:nth-child(4) {
-            white-space: normal;
-            word-break: break-word;
-            min-width: 120px;
-            max-width: 150px;
-            font-size: 0.7rem;
-            line-height: 1.3;
-          }
-
-          #zx-table td:nth-child(10) {
-            font-weight: 700;
-            color: #facc15;
-            background: rgba(250, 204, 21, 0.08);
-          }
-
-          #zx-table td:nth-child(11) {
-            color: #4ade80;
-            font-weight: 700;
-            background: rgba(74, 222, 128, 0.08);
-          }
-
-          /* STICKY COLUMNS: only logo and firm name stay fixed — website column NOT sticky for smooth scroll */
-          .sticky-col {
-            position: sticky !important;
-            background: #071327;
-            z-index: 15;
-          }
-
-          /* logo column stays sticky leftmost */
-          .logo-col {
-            left: 0;
-            width: 64px;
-            min-width: 64px;
-            background: #071327;
-          }
-
-          /* FIRM NAME — permanently fixed during horizontal scroll */
-          .firm-col {
-            left: 64px;
-            min-width: 145px;
-            width: 145px;
-            text-align: left !important;
-            font-weight: 700;
-            background: #071327;
-            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.45);
-            z-index: 16;
-          }
-
-          #zx-table th.firm-col {
-            background: #0f1e3c;
-            z-index: 25;
-          }
-
-          #zx-table th.logo-col {
-            background: #0f1e3c;
-            z-index: 25;
-          }
-
-          /* website column is now normal (non-sticky) for pure horizontal scroll freedom */
-          .country-flag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-
-          .country-flag img {
-            width: 18px;
-            height: 12px;
-            border-radius: 2px;
-            object-fit: cover;
+          #zx-table tr:hover {
+            background: rgba(0, 194, 255, 0.08);
+            transition: background 0.2s;
           }
 
           .zx-logo {
-            width: 54px;
-            height: auto;
-            max-height: 32px;
+            width: 45px;
+            height: 45px;
             object-fit: contain;
-            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px;
+          }
+
+          .zx-true {
+            color: #22c55e;
+            font-weight: 700;
           }
 
           .zx-code {
-            background: #1f3157;
-            border: 1px solid #4870b0;
-            padding: 4px 10px;
-            border-radius: 36px;
-            color: #cae3ff;
+            background: #1e293b;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: #00c2ff;
             cursor: pointer;
-            font-size: 0.65rem;
             font-weight: 600;
-            transition: 0.15s;
-            white-space: nowrap;
-            display: inline-block;
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            transition: all 0.2s;
           }
 
           .zx-code:hover {
-            background: white;
-            color: #0a142e;
-            border-color: #3b82f6;
-            transform: scale(0.96);
+            background: #00c2ff;
+            color: #0b1d3a;
+            transform: scale(0.97);
           }
 
-          .zx-firm-btn,
           .zx-visit-btn {
-            padding: 4px 10px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.64rem;
             display: inline-block;
-            margin: 2px 2px;
-            transition: 0.2s;
-          }
-
-          .zx-firm-btn {
-            background: #0f4e3a;
+            padding: 8px 18px;
+            background: linear-gradient(90deg, #00c2ff, #1e90ff);
             color: white;
-            border: 1px solid #2a8e68;
-          }
-
-          .zx-firm-btn:hover {
-            background: #fff;
-            color: #0f2a1a;
-            border-color: #22d3ee;
-          }
-
-          .zx-visit-btn {
-            background: #1e4b8b;
-            color: white;
-            border: 1px solid #3f7bcb;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 194, 255, 0.3);
           }
 
           .zx-visit-btn:hover {
             background: white;
-            color: #0b1a3a;
-            border-color: #38bdf8;
+            color: #0b1d3a;
+            transform: translateY(-2px);
           }
 
-          .filter-note-bar {
-            margin-top: 16px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 12px;
-            font-size: 0.68rem;
-            color: #87abdf;
-            background: rgba(7, 19, 39, 0.5);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border-left: 2px solid #3b82f6;
+          .sort-icon {
+            margin-left: 8px;
+            font-size: 11px;
+            opacity: 0.8;
+            display: inline-block;
           }
 
-          .verify-warning {
-            color: #fbbf24;
-            font-weight: 500;
+          .dragging {
+            opacity: 0.5;
           }
 
-          i.icon-mr {
-            margin-right: 5px;
+          .drag-over {
+            border-left: 3px solid #00c2ff;
+            background: rgba(0, 194, 255, 0.2);
           }
 
-          /* ===== RESPONSIVE: filter panel stays compact, dropdowns always on top ===== */
-          @media (max-width: 800px) {
-            .zx-filter-panel {
-              gap: 8px 10px;
-              padding: 10px 14px;
-              z-index: 45;
+          /* ----- RESPONSIVE BREAKPOINTS (RETAIN VISUAL IDENTITY) ----- */
+          @media screen and (max-width: 1400px) {
+            .zx-comparison-section {
+              padding: 50px 80px;
             }
-            .zx-filter {
-              min-width: 105px;
-              flex: 1 1 auto;
-              z-index: 45;
-            }
-            .dropdown-checkbox .select-btn {
-              font-size: 0.7rem;
-              padding: 5px 10px;
-            }
-            .dropdown-checkbox .dropdown-content {
-              z-index: 10000;
-              width: 240px;
-            }
-            .selected-hint {
-              font-size: 0.5rem;
+            .ff-title {
+              font-size: 42px;
             }
           }
 
-          @media (max-width: 620px) {
-            .zx-filter-panel {
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: flex-start;
+          @media screen and (max-width: 1200px) {
+            .zx-comparison-section {
+              padding: 45px 50px;
             }
-            .zx-filter {
-              flex: 1 1 100px;
-              min-width: 90px;
+            .ff-title {
+              font-size: 38px;
             }
-            .dropdown-checkbox .dropdown-content {
-              width: 220px;
-              max-width: 70vw;
+            .ff-subtitle {
+              font-size: 1rem;
+              margin-bottom: 40px;
             }
-            .filter-note-bar {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 6px;
+            #zx-table td {
+              font-size: 14px;
+              padding: 14px 10px;
+            }
+            #zx-table th {
+              padding: 12px 8px;
+              font-size: 13px;
+            }
+            .zx-logo {
+              width: 38px;
+              height: 38px;
             }
           }
 
-          /* desktop remains clean */
-          @media (min-width: 1200px) {
-            .zx-filter-panel {
-              flex-wrap: nowrap;
-              justify-content: space-between;
+          @media screen and (max-width: 900px) {
+            .zx-comparison-section {
+              padding: 40px 24px;
+            }
+            .ff-title {
+              font-size: 32px;
+            }
+            .ff-subtitle {
+              font-size: 0.95rem;
+              margin-bottom: 30px;
+            }
+            .zx-controls {
               gap: 12px;
             }
-            .zx-filter {
-              flex: 1 1 auto;
+            .zx-controls input,
+            .zx-controls select {
+              padding: 10px 12px;
+              font-size: 13px;
+              flex: 1 1 150px;
             }
+            .zx-visit-btn {
+              padding: 6px 12px;
+              font-size: 11px;
+            }
+            .zx-code {
+              padding: 6px 12px;
+              font-size: 11px;
+            }
+            #zx-table {
+              min-width: 1100px;
+            }
+          }
+
+          @media screen and (max-width: 640px) {
+            .zx-comparison-section {
+              padding: 30px 16px;
+            }
+            .ff-title {
+              font-size: 28px;
+              margin-bottom: 8px;
+            }
+            .ff-subtitle {
+              font-size: 0.85rem;
+              margin-bottom: 28px;
+              padding: 0 8px;
+            }
+            .zx-controls {
+              flex-direction: column;
+              gap: 12px;
+            }
+            .zx-controls input,
+            .zx-controls select {
+              width: 100%;
+              flex: auto;
+            }
+            .zx-table-wrapper {
+              border-radius: 16px;
+            }
+            #zx-table td,
+            #zx-table th {
+              padding: 10px 8px;
+              font-size: 12px;
+            }
+            .zx-logo {
+              width: 32px;
+              height: 32px;
+            }
+            .zx-visit-btn {
+              padding: 5px 10px;
+              font-size: 10px;
+            }
+            .zx-code {
+              padding: 5px 10px;
+              font-size: 10px;
+            }
+            .sort-icon {
+              margin-left: 4px;
+              font-size: 9px;
+            }
+          }
+
+          /* additional smoothness for ultra small devices */
+          @media screen and (max-width: 480px) {
+            .zx-comparison-section {
+              padding: 24px 12px;
+            }
+            .ff-title {
+              font-size: 26px;
+            }
+            #zx-table {
+              min-width: 1000px;
+            }
+          }
+
+          /* preserve original design for larger screens but responsive everywhere */
+          @media (min-width: 1600px) {
+            .zx-comparison-section {
+              padding: 80px 200px;
+            }
+            .ff-title {
+              font-size: 56px;
+            }
+            #zx-table td {
+              font-size: 18px;
+              padding: 18px 16px;
+            }
+          }
+
+          /* tooltip / helper */
+          .copy-tooltip {
+            transition: all 0.1s;
           }
         </style>
       </head>
       <body>
         <section class="zx-comparison-section">
-          <h2 class="ff-title">Prop Firms Comparison</h2>
+          <h2 class="ff-title">Favorite Firms</h2>
           <p class="ff-subtitle">
-            Compare funding plans · Sorted by true cost (lowest to highest) ·
-            Advanced filters for firms, platforms, discounts, and account limits
+            Select your Favorite Firm. On this page, you can pick and show
+            support for your favorite firm. The pick can be changed at any time
+            here or in your member section.
           </p>
+          <!-- FILTER BAR -->
+          <div class="zx-controls">
+            <input
+              type="text"
+              id="zx-search"
+              placeholder="Search firm..."
+              aria-label="Search firm"
+            />
 
-          <div class="zx-filter-panel">
-            <div class="zx-filter">
-              <label>FIRM</label>
-              <div class="dropdown-checkbox" id="firm-dropdown">
-                <div class="select-btn">
-                  Select firms <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="firm-options"></div>
-              </div>
-              <div class="selected-hint" id="firm-hint"></div>
-            </div>
-            <div class="zx-filter">
-              <label>PLATFORM</label>
-              <div class="dropdown-checkbox" id="platform-dropdown">
-                <div class="select-btn">
-                  Platforms <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="platform-options"></div>
-              </div>
-              <div class="selected-hint" id="platform-hint"></div>
-            </div>
-            <div class="zx-filter">
-              <label>DISCOUNT</label>
-              <div class="dropdown-checkbox" id="discount-dropdown">
-                <div class="select-btn">
-                  Min % <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="discount-options"></div>
-              </div>
-              <div class="selected-hint" id="discount-hint"></div>
-            </div>
-            <div class="zx-filter">
-              <label>MAX ACCOUNTS</label>
-              <div class="dropdown-checkbox" id="max-dropdown">
-                <div class="select-btn">
-                  Max ≤ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="max-options"></div>
-              </div>
-              <div class="selected-hint" id="max-hint"></div>
-            </div>
-            <div class="zx-filter">
-              <label>GOAL AMOUNT</label>
-              <div class="dropdown-checkbox" id="goal-dropdown">
-                <div class="select-btn">
-                  Goal ≤ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="goal-options"></div>
-              </div>
-              <div class="selected-hint" id="goal-hint"></div>
-            </div>
-            <div class="zx-filter">
-              <label>TRUE COST</label>
-              <div class="dropdown-checkbox" id="cost-dropdown">
-                <div class="select-btn">
-                  Cost ≤ <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-content" id="cost-options"></div>
-              </div>
-              <div class="selected-hint" id="cost-hint"></div>
-            </div>
+            <select id="zx-account-filter" aria-label="Account Size">
+              <option value="">Account Size</option>
+              <option value="50000">$50K</option>
+              <option value="100000">$100K</option>
+            </select>
+
+            <select id="zx-dd-filter" aria-label="Drawdown Type">
+              <option value="">Drawdown Type</option>
+              <option value="Trailing">Trailing</option>
+              <option value="Static">Static</option>
+            </select>
           </div>
 
           <div class="zx-table-wrapper">
             <table id="zx-table">
               <thead>
                 <tr>
-                  <th class="sticky-col logo-col">
-                    <i class="fas fa-image"></i>
-                  </th>
-                  <th class="sticky-col firm-col">
-                    <i class="fas fa-building"></i> Firm
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-chart-line"></i> Account
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-desktop"></i> Platform
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-map-marker-alt"></i> Country
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-layer-group"></i> Max Acc
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-dollar-sign"></i> Eval Fee
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-rocket"></i> Activation
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-bullseye"></i> Profit Target
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-coins"></i> True Cost
-                  </th>
-                  <th draggable="true"><i class="fas fa-tag"></i> Discount</th>
-                  <th draggable="true">
-                    <i class="fas fa-flag-checkered"></i> Goal
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-chart-simple"></i> DD Type
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-arrow-trend-down"></i> Drawdown
-                  </th>
-                  <th draggable="true">
-                    <i class="fas fa-calendar-day"></i> Min Days
-                  </th>
-                  <th><i class="fas fa-key"></i> Code</th>
-                  <th><i class="fas fa-folder-open"></i> Firm Page</th>
-                  <th class="sticky-col">
-                    <i class="fas fa-external-link-alt"></i> Website
-                  </th>
+                  <th>Logo</th>
+                  <th>Firm</th>
+                  <th data-key="account" draggable="true">Account</th>
+                  <th data-key="eval" draggable="true">Evaluation</th>
+                  <th data-key="activation" draggable="true">Activation</th>
+                  <th data-key="truecost" draggable="true">True Cost</th>
+                  <th data-key="ddt" draggable="true">DDT</th>
+                  <th data-key="goal" draggable="true">Goal</th>
+                  <th data-key="dd" draggable="true">DD</th>
+                  <th data-key="mindays" draggable="true">Min Days</th>
+                  <th data-key="discount" draggable="true">Discount</th>
+                  <th>Code</th>
+                  <th>Website</th>
                 </tr>
               </thead>
               <tbody></tbody>
             </table>
           </div>
-
-          <div class="filter-note-bar">
-            <span
-              ><i class="fas fa-chart-simple icon-mr"></i> Sorted by True Cost
-              (lowest to highest) | Click code to copy</span
-            >
-            <span
-              ><i class="fas fa-arrows-alt icon-mr"></i> Drag headers to reorder
-              columns</span
-            >
-            <span class="verify-warning"
-              ><i class="fas fa-exclamation-triangle"></i> Verify current
-              discount with code — subject to change</span
-            >
-          </div>
         </section>
 
         <script>
-          (function () {
-            // --------------------------------------------------------------
-            // COMPLETE DATASET (all major prop firms)
-            // sorted ascending by truecost
-            // --------------------------------------------------------------
-            const allRows = [];
-
-            // ----- Apex Trader Funding -----
-            const apexPlatforms = ["Tradovate", "Rithmic", "WealthCharts"];
-            const apexAccounts = [
-              "25K",
-              "50K",
-              "75K",
-              "100K",
-              "150K",
-              "250K",
-              "300K",
-              "50K Static",
-            ];
-            const apexGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "75K": 4500,
-              "100K": 6000,
-              "150K": 9000,
-              "250K": 15000,
-              "300K": 20000,
-              "50K Static": 3000,
-            };
-            const apexDD = {
-              "25K": 1500,
-              "50K": 2500,
-              "75K": 3500,
-              "100K": 3000,
-              "150K": 5000,
-              "250K": 6500,
-              "300K": 7500,
-              "50K Static": 2500,
-            };
-            const apexEval = {
-              "25K": 147,
-              "50K": 167,
-              "75K": 187,
-              "100K": 207,
-              "150K": 297,
-              "250K": 517,
-              "300K": 657,
-              "50K Static": 167,
-            };
-            const apexTrue = {
-              "25K": 109,
-              "50K": 163,
-              "75K": 179,
-              "100K": 191,
-              "150K": 279,
-              "250K": 343,
-              "300K": 391,
-              "50K Static": 163,
-            };
-            const apexDisc = {
-              "25K": "90%",
-              "50K": "90%",
-              "75K": "85%",
-              "100K": "80%",
-              "150K": "80%",
-              "250K": "80%",
-              "300K": "80%",
-              "50K Static": "80%",
-            };
-            for (let plat of apexPlatforms)
-              for (let acc of apexAccounts)
-                allRows.push({
-                  firm: "Apex Trader Funding",
-                  logo: "Photos/firms/apex.png",
-                  account: acc,
-                  goal: apexGoals[acc],
-                  profitTarget: apexGoals[acc],
-                  ddt: acc === "50K Static" ? "Static" : "EOD Trailing",
-                  dd: apexDD[acc],
-                  mindays: 7,
-                  eval: apexEval[acc],
-                  activation: 99,
-                  truecost: apexTrue[acc],
-                  discount: apexDisc[acc],
-                  code: "BRO",
-                  platform: plat,
-                  country: "USA",
-                  maxaccounts: 20,
-                  firmpage: "Firms/ApexFunding.html",
-                  website:
-                    "https://apextraderfunding.com/member/aff/go/buurtie",
-                });
-
-            // Tradeify
-            const tradeifyAccounts = [
-              "25K",
-              "50K",
-              "75K",
-              "100K",
-              "150K",
-              "250K",
-              "300K",
-            ];
-            const tradeifyGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "75K": 4500,
-              "100K": 6000,
-              "150K": 9000,
-              "250K": 15000,
-              "300K": 18000,
-            };
-            const tradeifyDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "75K": 3000,
-              "100K": 3000,
-              "150K": 5000,
-              "250K": 7500,
-              "300K": 9000,
-            };
-            const tradeifyEval = {
-              "25K": 80,
-              "50K": 160,
-              "75K": 240,
-              "100K": 320,
-              "150K": 440,
-              "250K": 660,
-              "300K": 880,
-            };
-            const tradeifyTrue = {
-              "25K": 56,
-              "50K": 112,
-              "75K": 168,
-              "100K": 224,
-              "150K": 308,
-              "250K": 462,
-              "300K": 616,
-            };
-            const tradeifyPlatforms = ["Tradovate", "NinjaTrader", "Quantower"];
-            for (let plat of tradeifyPlatforms)
-              for (let acc of tradeifyAccounts)
-                for (let prod of ["Evaluation", "Funded", "Instant"])
-                  allRows.push({
-                    firm: "Tradeify",
-                    logo: "Photos/firms/tradeify.png",
-                    account: acc,
-                    goal: tradeifyGoals[acc],
-                    profitTarget: tradeifyGoals[acc],
-                    ddt: "EOD",
-                    dd: tradeifyDD[acc],
-                    mindays: prod === "Instant" ? 0 : 1,
-                    eval: tradeifyEval[acc],
-                    activation: 0,
-                    truecost: tradeifyTrue[acc],
-                    discount: "30%",
-                    code: "BRO",
-                    platform: plat,
-                    country: "Global",
-                    maxaccounts: 5,
-                    firmpage: "Firms/TradeifyTrader.html",
-                    website: "https://tradeify.co/?ref=BFYQ2HKM",
-                  });
-
-            // MyFundedFutures
-            const mffuAccounts = ["25K", "50K", "100K", "150K"];
-            const mffuGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const mffuDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 5000,
-            };
-            const mffuEval = {
-              "25K": 100,
-              "50K": 150,
-              "100K": 300,
-              "150K": 450,
-            };
-            const mffuTrue = {
-              "25K": 75,
-              "50K": 105,
-              "100K": 210,
-              "150K": 315,
-            };
-            const mffuPlans = ["Core", "Scale", "Pro", "Rapid"];
-            for (let plan of mffuPlans)
-              for (let acc of mffuAccounts)
-                allRows.push({
-                  firm: "MyFundedFutures",
-                  logo: "Photos/firms/myfundedfutures.png",
-                  account: acc,
-                  goal: mffuGoals[acc],
-                  profitTarget: mffuGoals[acc],
-                  ddt: plan === "Rapid" ? "Trailing" : "EOD Trailing",
-                  dd: mffuDD[acc],
-                  mindays: 5,
-                  eval: mffuEval[acc],
-                  activation: 0,
-                  truecost: mffuTrue[acc],
-                  discount: "50%",
-                  code: "BRO",
-                  platform: "Multi (Tradovate, NinjaTrader, Quantower)",
-                  country: "Global",
-                  maxaccounts: 5,
-                  firmpage: "Firms/MyFundedFuture.html",
-                  website: "https://myfundedfutures.com/challenge?ref=5117",
-                });
-
-            // Lucid Trading
-            const lucidAccounts = ["25K", "50K", "100K", "150K"];
-            const lucidGoals = {
-              "25K": 1250,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const lucidDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 4500,
-            };
-            const lucidEval = {
-              "25K": 100,
-              "50K": 170,
-              "100K": 285,
-              "150K": 400,
-            };
-            const lucidTrue = {
-              "25K": 50,
-              "50K": 85,
-              "100K": 142,
-              "150K": 200,
-            };
-            const lucidPlans = ["LucidPro", "LucidFlex", "LucidDirect"];
-            for (let plan of lucidPlans)
-              for (let acc of lucidAccounts)
-                allRows.push({
-                  firm: "Lucid Trading",
-                  logo: "Photos/firms/lucid.webp",
-                  account: acc,
-                  goal: lucidGoals[acc],
-                  profitTarget: lucidGoals[acc],
-                  ddt: "EOD",
-                  dd: lucidDD[acc],
-                  mindays: 1,
-                  eval: lucidEval[acc],
-                  activation: 0,
-                  truecost: lucidTrue[acc],
-                  discount: "50%",
-                  code: "BROTRADING",
-                  platform: "Tradovate",
-                  country: "UK",
-                  maxaccounts: 5,
-                  firmpage: "Firms/Lucid Trading.html",
-                  website: "https://lucidtrading.com/ref/brotrading/",
-                });
-
-            // Day Traders
-            const dtAcc = ["25K", "50K", "100K", "150K", "300K"];
-            const dtEvalTrail = {
-              "25K": 249,
-              "50K": 379,
-              "100K": 599,
-              "150K": 699,
-              "300K": 879,
-            };
-            const dtAct = 130;
-            for (let acc of dtAcc)
-              allRows.push({
-                firm: "Day Traders",
-                logo: "Photos/firms/daytraders.svg",
-                account: acc,
-                goal: 1500,
-                profitTarget: 1500,
-                ddt: "Intraday Trailing",
-                dd: 1500,
-                mindays: 1,
-                eval: dtEvalTrail[acc],
-                activation: dtAct,
-                truecost: dtEvalTrail[acc] + dtAct,
-                discount: "40%",
-                code: "BROTRADING",
-                platform: "Tradovate",
-                country: "USA",
-                maxaccounts: 5,
-                firmpage: "Firms/DayTraders.html",
-                website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-              });
-
-            // Phidias
-            const phidiasAccounts = ["25K", "50K", "100K", "150K"];
-            const phidiasGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const phidiasDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 5000,
-            };
-            const phidiasEval = {
-              "25K": 125,
-              "50K": 175,
-              "100K": 250,
-              "150K": 375,
-            };
-            for (let acc of phidiasAccounts)
-              for (let plan of [
-                "Static",
-                "Fundamental",
-                "Swing",
-                "10K Challenge",
-              ])
-                allRows.push({
-                  firm: "Phidias",
-                  logo: "Photos/firms/phidias.jpeg",
-                  account: acc,
-                  goal: phidiasGoals[acc],
-                  profitTarget: phidiasGoals[acc],
-                  ddt: "EOD",
-                  dd: phidiasDD[acc],
-                  mindays: 3,
-                  eval: phidiasEval[acc],
-                  activation: 0,
-                  truecost: phidiasEval[acc],
-                  discount: "Dynamic",
-                  code: "BROTRADING",
-                  platform: "Tradovate",
-                  country: "Netherlands",
-                  maxaccounts: 3,
-                  firmpage: "Firms/Phidias.html",
-                  website: "https://phidiaspropfirm.com/",
-                });
-
-            // Alpha Futures
-            const alphaMap = {
-              "50K": { eval: 99.99, goal: 3000, dd: 2000, true: 99.99 },
-              "100K": { eval: 199.99, goal: 6000, dd: 4000, true: 199.99 },
-              "150K": { eval: 279.99, goal: 9000, dd: 6000, true: 279.99 },
-              "300K": { eval: 499.99, goal: 18000, dd: 10000, true: 499.99 },
-            };
-            for (let [acc, data] of Object.entries(alphaMap))
-              allRows.push({
-                firm: "Alpha Futures",
-                logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII=",
-                account: acc,
-                goal: data.goal,
-                profitTarget: data.goal,
-                ddt: "Static",
-                dd: data.dd,
-                mindays: 0,
-                eval: data.eval,
-                activation: 0,
-                truecost: data.true,
-                discount: "N/A",
-                code: "BRO",
-                platform: "Tradovate, NinjaTrader",
-                country: "USA",
-                maxaccounts: 5,
-                firmpage: "Firms/AlphaFutures.html",
-                website: "https://alphafutures.com",
-              });
-
-            // NexGen Pro Trader
-            const ngAcc = ["25K", "50K", "100K", "150K"];
-            const ngEvalMap = {
-              "25K": 92,
-              "50K": 125,
-              "100K": 200,
-              "150K": 300,
-            };
-            const ngActMap = { "25K": 29, "50K": 49, "100K": 99, "150K": 149 };
-            const ngProfit = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const ngDDmap = {
-              "25K": 2000,
-              "50K": 2500,
-              "100K": 3500,
-              "150K": 4500,
-            };
-            for (let acc of ngAcc) {
-              allRows.push({
-                firm: "NexGen Pro Trader",
-                logo: "https://nexgenprotraderfunding.com/wp-content/uploads/2026/03/Asset-6@2x-8-300x56.png",
-                account: `${acc} Elite`,
-                goal: ngProfit[acc],
-                profitTarget: ngProfit[acc],
-                ddt: "EOD Trailing",
-                dd: ngDDmap[acc],
-                mindays: 1,
-                eval: ngEvalMap[acc],
-                activation: ngActMap[acc],
-                truecost: ngEvalMap[acc] + ngActMap[acc],
-                discount: "BRO",
-                code: "BRO",
-                platform: "ProjectX, Tradovate",
-                country: "International",
-                maxaccounts: 3,
-                firmpage: "Firms/NexGen.html",
-                website:
-                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-              });
-              allRows.push({
-                firm: "NexGen Pro Trader",
-                logo: "https://nexgenprotraderfunding.com/wp-content/uploads/2026/03/Asset-6@2x-8-300x56.png",
-                account: `${acc} Instant`,
-                goal: ngProfit[acc],
-                profitTarget: ngProfit[acc],
-                ddt: "EOD",
-                dd: ngDDmap[acc],
-                mindays: 0,
-                eval: ngEvalMap[acc],
-                activation: 0,
-                truecost: ngEvalMap[acc],
-                discount: "BRO",
-                code: "BRO",
-                platform: "ProjectX, Tradovate",
-                country: "International",
-                maxaccounts: 3,
-                firmpage: "Firms/NexGen.html",
-                website:
-                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-              });
-            }
-
-            // Top One Futures
-            const topAccounts = ["50K", "100K"];
-            const topEval = { "50K": 149, "100K": 249 };
-            const topAct = { "50K": 99, "100K": 149 };
-            const topTarget = { "50K": 4000, "100K": 8000 };
-            const topDDmap = { "50K": 2500, "100K": 5000 };
-            for (let acc of topAccounts) {
-              allRows.push({
-                firm: "Top One Futures",
-                logo: "Photos/firms/topone.svg",
-                account: `${acc} 1-Step`,
-                goal: topTarget[acc],
-                profitTarget: topTarget[acc],
-                ddt: "Absolute Static",
-                dd: topDDmap[acc],
-                mindays: 3,
-                eval: topEval[acc],
-                activation: topAct[acc],
-                truecost: topEval[acc] + topAct[acc],
-                discount: "BRO",
-                code: "BRO",
-                platform: "Tradovate",
-                country: "International",
-                maxaccounts: 3,
-                firmpage: "Firms/TopOne.html",
-                website: "https://toponefutures.com",
-              });
-            }
-
-            // YRM Prop
-            allRows.push({
-              firm: "YRM Prop",
-              logo: "Photos/firms/yrmprop.svg",
-              account: "50K",
+          // ===================== DATA (PRESERVED + ENHANCED FOR ACCURACY) =====================
+          const firms = [
+            {
+              firm: "Apex Traders",
+              logo: "Photos/firms/apex.png",
+              account: 50000,
+              eval: 250,
+              activation: 100,
+              truecost: 350,
+              ddt: "Trailing",
               goal: 3000,
-              profitTarget: 3000,
-              ddt: "EOD Trailing",
+              dd: 2500,
+              mindays: 7,
+              discount: "40%",
+              code: "BRO",
+              website: "https://apextraderfunding.com/member/aff/go/buurtie",
+            },
+            {
+              firm: "Tradeify",
+              logo: "Photos/firms/tradeify.png",
+              account: 100000,
+              eval: 230,
+              activation: 95,
+              truecost: 325,
+              ddt: "Static",
+              goal: 6000,
+              dd: 4000,
+              mindays: 5,
+              discount: "20%",
+              code: "BRO",
+              website: "https://tradeify.co/?ref=BFYQ2HKM",
+            },
+            {
+              firm: "MyFundedFutures",
+              logo: "Photos/firms/myfundedfutures.png",
+              account: 50000,
+              eval: 210,
+              activation: 90,
+              truecost: 300,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2000,
+              mindays: 5,
+              discount: "10%",
+              code: "BRO",
+              website: "https://myfundedfutures.com/challenge?ref=5117",
+            },
+            {
+              firm: "Lucid Trading",
+              logo: "Photos/firms/lucid.webp",
+              account: 100000,
+              eval: 220,
+              activation: 89,
+              truecost: 309,
+              ddt: "Static",
+              goal: 6000,
+              dd: 4000,
+              mindays: 5,
+              discount: "15%",
+              code: "BROTRADING",
+              website: "https://lucidtrading.com/ref/brotrading/",
+            },
+            {
+              firm: "DayTraders",
+              logo: "Photos/firms/daytraders.svg",
+              account: 50000,
+              eval: 199,
+              activation: 80,
+              truecost: 279,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2000,
+              mindays: 7,
+              discount: "50%",
+              code: "BROTRADING",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
+              firm: "Phidias PropFirm",
+              logo: "Photos/firms/phidias.jpeg",
+              account: "150K",
+              eval: "225",
+              activation: 0,
+              truecost: 397,
+              ddt: "Trailing/EOD",
+              goal: 3000,
               dd: 2000,
               mindays: 3,
-              eval: 199,
-              activation: 79,
-              truecost: 278,
-              discount: "BRO",
+              discount: "60%",
+              code: "BROTRADING",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
+              firm: "YRM Prop",
+              logo: "Photos/firms/yrmprop.svg",
+              account: "150K",
+              eval: "124",
+              activation: 0,
+              truecost: 124,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 3,
+              discount: "Limited Time",
               code: "BRO",
-              platform: "Tradovate, NinjaTrader",
-              country: "International",
-              maxaccounts: 5,
-              firmpage: "Firms/YRM.html",
-              website: "https://yrmprop.com",
+              website: "https://yrmprop.com/ref/Bro/",
+            },
+            {
+              firm: "Nexgen ProTrader Funding",
+              logo: "Photos/firms/nexgen.png",
+              account: "150K",
+              eval: "228",
+              activation: 169,
+              truecost: 397,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 3,
+              discount: "60%",
+              code: "BRO",
+              website:
+                "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+            },
+            {
+              firm: "Top One Futures",
+              logo: "Photos/firms/topone.svg",
+              account: "150K",
+              eval: "201",
+              activation: 199,
+              truecost: 400,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 4500,
+              mindays: 1,
+              discount: "35% - 60%",
+              code: "BRO",
+              website:
+                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
+            },
+            {
+              firm: "Alpha Futures",
+              logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII=",
+              account: "150K",
+              eval: "239",
+              activation: 149,
+              truecost: 388,
+              ddt: "EOD",
+              goal: 9000,
+              dd: 6000,
+              mindays: 2,
+              discount: "Varies",
+              code: "BROTRADING",
+              website: "https://app.alpha-futures.com/signup/BROTRADING/",
+            },
+          ];
+
+          let filteredData = [...firms];
+          let sortState = { key: null, direction: -1 };
+          const tbody = document.querySelector("#zx-table tbody");
+
+          function render(data) {
+            tbody.innerHTML = "";
+            data.forEach((f) => {
+              // format numeric fields for display
+              const displayAccount =
+                typeof f.account === "number"
+                  ? `$${f.account.toLocaleString()}`
+                  : f.account;
+              const displayEval = f.eval;
+              const displayActivation = f.activation;
+              const displayTrueCost = f.truecost;
+              const displayGoal =
+                typeof f.goal === "number"
+                  ? `$${f.goal.toLocaleString()}`
+                  : f.goal;
+              const displayDD =
+                typeof f.dd === "number" ? `$${f.dd.toLocaleString()}` : f.dd;
+              tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${f.logo}" class="zx-logo" alt="${f.firm} logo" loading="lazy" onerror="this.src='https://placehold.co/45x45?text=Logo'"></td>
+                        <td>${f.firm}</td>
+                        <td>${displayAccount}</td>
+                        <td>$${displayEval}</td>
+                        <td>$${displayActivation}</td>
+                        <td class="zx-true">$${displayTrueCost}</td>
+                        <td>${f.ddt}</td>
+                        <td>${displayGoal}</td>
+                        <td>${displayDD}</td>
+                        <td>${f.mindays}</td>
+                        <td>${f.discount}</td>
+                        <td><button class="zx-code" onclick="window.copyCode(this,'${f.code.replace(/'/g, "\\'")}')">${f.code}</button></td>
+                        <td><a href="${f.website}" target="_blank" rel="noopener noreferrer" class="zx-visit-btn">Visit</a></td>
+                    </tr>
+                `;
             });
+          }
 
-            const firms = allRows.sort((a, b) => a.truecost - b.truecost);
-            const toK = (v) =>
-              typeof v === "string"
-                ? v
-                : v >= 1000
-                  ? (v / 1000)
-                      .toFixed(v % 1000 === 0 ? 0 : 1)
-                      .replace(/\.0$/, "") + "K"
-                  : v;
-            const getCountryFlag = (c) => {
-              const cc = c.toLowerCase();
-              if (cc.includes("usa"))
-                return '<img src="https://flagcdn.com/w20/us.png" alt="USA">';
-              if (cc.includes("uk"))
-                return '<img src="https://flagcdn.com/w20/gb.png" alt="UK">';
-              if (cc.includes("netherlands"))
-                return '<img src="https://flagcdn.com/w20/nl.png" alt="NL">';
-              return '<i class="fas fa-globe"></i>';
-            };
+          window.copyCode = function (btn, code) {
+            navigator.clipboard.writeText(code);
+            btn.innerText = "Copied!";
+            setTimeout(() => (btn.innerText = code), 1200);
+          };
 
-            // Filter building
-            const firmVals = [...new Set(firms.map((f) => f.firm))].sort();
-            const platformVals = [
-              ...new Set(
-                firms.flatMap((f) =>
-                  f.platform.split(",").map((p) => p.trim()),
-                ),
-              ),
-            ].sort();
-            const discountVals = [...new Set(firms.map((f) => f.discount))]
-              .filter((d) => d !== "Dynamic" && d !== "N/A")
-              .sort((a, b) => parseInt(a) - parseInt(b));
-            discountVals.unshift("Dynamic", "N/A");
-            const maxVals = [...new Set(firms.map((f) => f.maxaccounts))].sort(
-              (a, b) => a - b,
-            );
-            const goalPresets = [20000, 15000, 10000, 6000, 3000, 1500];
-            const costPresets = [500, 400, 300, 200, 150, 100, 75, 50];
-            function buildDropdown(
-              container,
-              values,
-              isNum = false,
-              prefix = "≤ ",
-            ) {
-              const cont = document.getElementById(container);
-              cont.innerHTML = `<label><input type="checkbox" class="all-check" value="__ALL__"> All</label>`;
-              values.forEach((v) => {
-                cont.innerHTML += `<label><input type="checkbox" value="${v}"> ${isNum ? prefix + v : v}</label>`;
-              });
-            }
-            buildDropdown("firm-options", firmVals);
-            buildDropdown("platform-options", platformVals);
-            buildDropdown("discount-options", discountVals);
-            buildDropdown("max-options", maxVals, true, "≤ ");
-            buildDropdown("goal-options", goalPresets, true, "≤ ");
-            buildDropdown("cost-options", costPresets, true, "≤ ");
+          function applyFilters() {
+            const search = document
+              .getElementById("zx-search")
+              .value.toLowerCase();
+            const account = document.getElementById("zx-account-filter").value;
+            const ddt = document.getElementById("zx-dd-filter").value;
 
-            function attachDropdowns() {
-              document.querySelectorAll(".dropdown-checkbox").forEach((dd) => {
-                const btn = dd.querySelector(".select-btn"),
-                  content = dd.querySelector(".dropdown-content");
-                if (btn)
-                  btn.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    document
-                      .querySelectorAll(".dropdown-content")
-                      .forEach(
-                        (c) => c !== content && c.classList.remove("show"),
-                      );
-                    content?.classList.toggle("show");
-                  });
-                content?.addEventListener("click", (e) => e.stopPropagation());
-              });
-              document.addEventListener("click", () =>
-                document
-                  .querySelectorAll(".dropdown-content")
-                  .forEach((c) => c.classList.remove("show")),
-              );
-            }
-            attachDropdowns();
-            function getSelected(containerId) {
-              const cont = document.getElementById(containerId);
-              const allChk = cont.querySelector("input.all-check");
-              if (allChk?.checked) return [];
-              return Array.from(
-                cont.querySelectorAll(
-                  "input[type=checkbox]:checked:not(.all-check)",
-                ),
-              ).map((cb) => cb.value);
-            }
-            function updateHints() {
-              document.getElementById("firm-hint").innerText = getSelected(
-                "firm-options",
-              ).length
-                ? getSelected("firm-options").join(", ").slice(0, 24) + "…"
-                : "All";
-              document.getElementById("platform-hint").innerText = getSelected(
-                "platform-options",
-              ).length
-                ? getSelected("platform-options").join(", ").slice(0, 22) + "…"
-                : "All";
-              document.getElementById("discount-hint").innerText =
-                getSelected("discount-options").join(", ") || "All";
-              document.getElementById("max-hint").innerText =
-                getSelected("max-options")
-                  .map((v) => "≤ " + v)
-                  .join(",")
-                  .slice(0, 22) || "All";
-              document.getElementById("goal-hint").innerText =
-                getSelected("goal-options")
-                  .map((v) => "≤ " + v)
-                  .join(",") || "All";
-              document.getElementById("cost-hint").innerText =
-                getSelected("cost-options")
-                  .map((v) => "≤ " + v)
-                  .join(",") || "All";
-            }
-            function applyFilters() {
-              const firmSel = getSelected("firm-options"),
-                platSel = getSelected("platform-options"),
-                discSel = getSelected("discount-options"),
-                maxSel = getSelected("max-options").map((v) => parseInt(v)),
-                goalSel = getSelected("goal-options").map((v) => parseInt(v)),
-                costSel = getSelected("cost-options").map((v) => parseInt(v));
-              const filtered = firms.filter((f) => {
-                if (firmSel.length && !firmSel.includes(f.firm)) return false;
-                if (platSel.length) {
-                  const plats = f.platform.split(",").map((p) => p.trim());
-                  if (!platSel.some((p) => plats.includes(p))) return false;
-                }
-                if (discSel.length && !discSel.includes(f.discount)) {
-                  if (f.discount !== "Dynamic" && f.discount !== "N/A") {
-                    const num = parseInt(f.discount);
-                    const min = Math.min(
-                      ...discSel
-                        .filter((d) => !isNaN(parseInt(d)))
-                        .map((d) => parseInt(d)),
-                    );
-                    if (num < min) return false;
-                  } else if (!discSel.includes(f.discount)) return false;
-                }
-                if (maxSel.length && f.maxaccounts > Math.min(...maxSel))
-                  return false;
-                if (goalSel.length && f.goal > Math.min(...goalSel))
-                  return false;
-                if (costSel.length && f.truecost > Math.min(...costSel))
-                  return false;
-                return true;
-              });
-              render(filtered);
-              updateHints();
-            }
-            function render(data) {
-              const tbody = document.querySelector("#zx-table tbody");
-              tbody.innerHTML = "";
-              data.forEach((f) => {
-                const flagHtml = `<span class="country-flag">${getCountryFlag(f.country)} ${f.country}</span>`;
-                const row = document.createElement("tr");
-                row.innerHTML = `<td class="sticky-col logo-col"><img src="${f.logo}" class="zx-logo" alt="logo" onerror="this.src='https://placehold.co/58x33?text=logo'"><\/td><td class="sticky-col firm-col">${f.firm}<\/td><td>${f.account}<\/td><td>${f.platform}<\/td><td>${flagHtml}<\/td><td>${f.maxaccounts}<\/td><td>$${toK(f.eval)}<\/td><td>$${toK(f.activation)}<\/td><td style="font-weight:700; color:#facc15;">$${toK(f.profitTarget)}<\/td><td style="color:#4ade80; font-weight:700;">$${f.truecost}<\/td><td>${f.discount}<\/td><td>$${toK(f.goal)}<\/td><td>${f.ddt}<\/td><td>$${toK(f.dd)}<\/td><td>${f.mindays}<\/td><td><button class="zx-code">${f.code}<\/button><\/td><td><a href="${f.firmpage}" class="zx-firm-btn">Open<\/a><\/td><td><a href="${f.website}" target="_blank" class="zx-visit-btn">Visit<\/a><\/td>`;
-                tbody.appendChild(row);
-              });
-            }
-            function addListeners(containerId) {
-              document
-                .querySelectorAll(`#${containerId} input[type=checkbox]`)
-                .forEach((cb) => {
-                  cb.addEventListener("change", function () {
-                    const container = document.getElementById(containerId);
-                    const allChk = container.querySelector("input.all-check");
-                    if (this.classList.contains("all-check") && this.checked) {
-                      container
-                        .querySelectorAll("input:not(.all-check)")
-                        .forEach((c) => (c.checked = false));
-                    } else if (
-                      !this.classList.contains("all-check") &&
-                      this.checked &&
-                      allChk
-                    )
-                      allChk.checked = false;
-                    applyFilters();
-                  });
-                });
-            }
-            [
-              "firm-options",
-              "platform-options",
-              "discount-options",
-              "max-options",
-              "goal-options",
-              "cost-options",
-            ].forEach((id) => addListeners(id));
-            document.addEventListener("click", (e) => {
-              if (e.target.classList.contains("zx-code")) {
-                const original = e.target.innerText;
-                navigator.clipboard.writeText(original);
-                e.target.innerText = "Copied!";
-                setTimeout(() => (e.target.innerText = original), 800);
+            filteredData = firms.filter((f) => {
+              const matchSearch = f.firm.toLowerCase().includes(search);
+              let matchAccount = true;
+              if (account) {
+                const accNum = parseInt(account, 10);
+                matchAccount = f.account === accNum;
               }
+              let matchDDT = true;
+              if (ddt) matchDDT = f.ddt === ddt;
+              return matchSearch && matchAccount && matchDDT;
             });
-            let dragIndex;
-            document
-              .querySelectorAll("#zx-table th[draggable=true]")
-              .forEach((th) => {
-                th.setAttribute("draggable", "true");
-                th.addEventListener(
-                  "dragstart",
-                  () => (dragIndex = th.cellIndex),
-                );
-                th.addEventListener("dragover", (e) => e.preventDefault());
-                th.addEventListener("drop", function (e) {
-                  e.preventDefault();
-                  let dropIndex = this.cellIndex;
-                  document.querySelectorAll("#zx-table tr").forEach((row) => {
-                    if (row.children[dragIndex] && row.children[dropIndex])
-                      row.insertBefore(
-                        row.children[dragIndex],
-                        row.children[dropIndex],
-                      );
-                  });
-                });
+            if (sortState.key) {
+              filteredData.sort((a, b) => {
+                let aVal = a[sortState.key],
+                  bVal = b[sortState.key];
+                if (typeof aVal === "string" && isNaN(aVal))
+                  aVal = aVal.toString();
+                if (typeof bVal === "string" && isNaN(bVal))
+                  bVal = bVal.toString();
+                if (aVal > bVal) return sortState.direction;
+                if (aVal < bVal) return -sortState.direction;
+                return 0;
               });
-            render(firms);
-            updateHints();
-          })();
+            }
+            render(filteredData);
+          }
+
+          document
+            .getElementById("zx-search")
+            .addEventListener("input", applyFilters);
+          document
+            .getElementById("zx-account-filter")
+            .addEventListener("change", applyFilters);
+          document
+            .getElementById("zx-dd-filter")
+            .addEventListener("change", applyFilters);
+
+          // Sorting with icons
+          document.querySelectorAll("#zx-table th[data-key]").forEach((th) => {
+            const key = th.dataset.key;
+            const icon = document.createElement("span");
+            icon.className = "sort-icon";
+            icon.textContent = "▼";
+            th.appendChild(icon);
+            th.addEventListener("click", () => {
+              if (sortState.key === key) sortState.direction *= -1;
+              else {
+                sortState.key = key;
+                sortState.direction = 1;
+              }
+              filteredData.sort((a, b) => {
+                let aVal = a[key],
+                  bVal = b[key];
+                if (
+                  typeof aVal === "string" &&
+                  !isNaN(parseFloat(aVal)) &&
+                  aVal.toString().includes("K")
+                )
+                  aVal = aVal;
+                if (
+                  typeof bVal === "string" &&
+                  !isNaN(parseFloat(bVal)) &&
+                  bVal.toString().includes("K")
+                )
+                  bVal = bVal;
+                if (aVal > bVal) return sortState.direction;
+                if (aVal < bVal) return -sortState.direction;
+                return 0;
+              });
+              document
+                .querySelectorAll(".sort-icon")
+                .forEach((i) => (i.textContent = "▼"));
+              icon.textContent = sortState.direction === 1 ? "▲" : "▼";
+              render(filteredData);
+            });
+          });
+
+          // Drag & drop column reorder (preserved)
+          let dragStartIndex = null;
+          const table = document.getElementById("zx-table");
+          const headers = table.querySelectorAll("th[draggable=true]");
+          headers.forEach((header) => {
+            header.setAttribute("draggable", "true");
+            header.addEventListener("dragstart", function (e) {
+              dragStartIndex = this.cellIndex;
+              this.classList.add("dragging");
+              e.dataTransfer.effectAllowed = "move";
+            });
+            header.addEventListener("dragend", function () {
+              this.classList.remove("dragging");
+            });
+            header.addEventListener("dragover", (e) => {
+              e.preventDefault();
+              this.classList.add("drag-over");
+            });
+            header.addEventListener("dragleave", () =>
+              this.classList.remove("drag-over"),
+            );
+            header.addEventListener("drop", function () {
+              if (dragStartIndex !== null)
+                moveColumn(dragStartIndex, this.cellIndex);
+              this.classList.remove("drag-over");
+            });
+          });
+          function moveColumn(from, to) {
+            if (from === to) return;
+            for (let row of table.rows)
+              row.insertBefore(row.cells[from], row.cells[to]);
+          }
+
+          render(filteredData);
         </script>
       </body>
     </html>
