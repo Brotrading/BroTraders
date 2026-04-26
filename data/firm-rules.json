@@ -1,0 +1,432 @@
+{
+  "_meta": {
+    "purpose": "Structured database of all prop firm rules for propfirmbro.com. Built incrementally as Mike supplies official data. Future use: AI assistant to answer trader questions, comparison logic, content generation.",
+    "last_updated": "2026-04-26",
+    "verified_sources": "Mike-supplied screenshots from each firm's official website (pricing, rules, account details).",
+    "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative — always verify on firm's own site.",
+    "schema_version": 1
+  },
+
+  "firms": {
+    "lucid_trading": {
+      "name": "Lucid Trading",
+      "country": "USA",
+      "founded": "2025-03",
+      "rating": "4.6/5 (27 reviews)",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://lucidtrading.com/ref/brotrading/",
+      "platforms": ["Tradovate", "NinjaTrader", "Sierra Chart", "Quantower", "Bookmap", "ATAS", "MotiveWave", "MultiCharts", "Lucid X", "Tradesea", "TradingView", "Jigsaw Daytradr", "R Trader Pro"],
+      "broker": ["Dorman", "NinjaTrader"],
+      "payout_methods": ["Crypto", "Plaid", "WorkMarket"],
+      "discount_text": "Up to 40% off (Pro/Flex), 30% off (Direct)",
+      "leverage": {
+        "25K": "2 minis / 20 micros",
+        "50K": "4 minis / 40 micros",
+        "100K": "6 minis / 60 micros",
+        "150K": "10 minis / 100 micros"
+      },
+      "rules_global": {
+        "inactivity_days": 30,
+        "hedging": "Strictly prohibited (incl across accounts and correlated assets)",
+        "hft": "Prohibited, automated detection enforced",
+        "micro_scalping": "Flagged if >50% profits from <5sec trades",
+        "max_accounts": 5
+      },
+      "plans": {
+        "LucidPro": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "consistency_funded": "40%",
+          "min_days_to_payout": 3,
+          "payout_split": "90/10",
+          "min_payout": 500,
+          "buffer_protection": true,
+          "sizes": {
+            "25K": { "eval_price_brotrading": 81, "eval_price_msrp": 135, "discount_pct": 40, "profit_target": 1250, "max_drawdown": 1000 },
+            "50K": { "eval_price_brotrading": 111, "eval_price_msrp": 185, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000, "verified_via_coupon_test": true },
+            "100K": { "eval_price_brotrading": 171, "eval_price_msrp": 285, "discount_pct": 40, "profit_target": 6000, "max_drawdown": 3000 },
+            "150K": { "eval_price_brotrading": 222, "eval_price_msrp": 370, "discount_pct": 40, "profit_target": 9000, "max_drawdown": 4500 }
+          }
+        },
+        "LucidFlex": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "min_days_to_payout": 5,
+          "payout_split": "90/10",
+          "min_payout": 500,
+          "structure": "5 winning days minimum, scaling plan",
+          "sizes": {
+            "25K": { "eval_price_brotrading": 60, "eval_price_msrp": 100, "discount_pct": 40, "min_winning_day_profit": 100 },
+            "50K": { "eval_price_brotrading": 84, "eval_price_msrp": 140, "discount_pct": 40, "min_winning_day_profit": 150, "verified_via_coupon_test": true },
+            "100K": { "eval_price_brotrading": 135, "eval_price_msrp": 225, "discount_pct": 40, "min_winning_day_profit": 200 },
+            "150K": { "eval_price_brotrading": 252, "eval_price_msrp": 420, "discount_pct": 40, "min_winning_day_profit": 250 }
+          }
+        },
+        "LucidDirect": {
+          "type": "Instant Funded (no eval)",
+          "drawdown_type": "EOD",
+          "consistency_funded": "20%",
+          "min_days_to_payout": 0,
+          "payout_split": "90/10",
+          "min_payout": 500,
+          "sizes": {
+            "25K": { "eval_price_brotrading": 238, "eval_price_msrp": 340, "discount_pct": 30 },
+            "50K": { "eval_price_brotrading": 364, "eval_price_msrp": 520, "discount_pct": 30 },
+            "100K": { "eval_price_brotrading": 490, "eval_price_msrp": 700, "discount_pct": 30 },
+            "150K": { "eval_price_brotrading": 588, "eval_price_msrp": 840, "discount_pct": 30 }
+          }
+        }
+      }
+    },
+
+    "tradeify": {
+      "name": "Tradeify",
+      "country": "USA",
+      "founded": "2024-06",
+      "rating": "4.7/5 (152 reviews)",
+      "code_default": "BRO",
+      "affiliate_url": "https://tradeify.co/?ref=BFYQ2HKM",
+      "platforms": ["Tradovate", "NinjaTrader", "Quantower", "Rithmic", "TradingView", "WealthCharts", "Tradesea TradingView"],
+      "broker": ["Tradovate"],
+      "payment_methods": ["Credit Card", "Crypto", "PayPal"],
+      "payout_methods": ["Plane", "Riseworks"],
+      "discount_text": "Up to 40% off w/ BRO",
+      "leverage": {
+        "_note": "For Growth, Select, and Lightning Funded — same leverage table",
+        "25K": "1 contract / 10 micros",
+        "50K": "4 contracts / 40 micros",
+        "100K": "8 contracts / 80 micros",
+        "150K": "12 contracts / 120 micros"
+      },
+      "rules_global": {
+        "max_eval_accounts": "Unlimited",
+        "max_funded_accounts_user": 5,
+        "max_funded_accounts_household": 5,
+        "min_trade_per_week_funded": 1,
+        "hedging": "100% prohibited (auto-detected)",
+        "micro_scalping": "Trades must be >10 sec; >50% must be longer than 10sec AND >50% profit from longer trades",
+        "bots_eas": "Allowed if sole-owner, exclusive, verified via live video. NO HFT bots",
+        "copy_trading_external": "Prohibited (own accounts only)",
+        "news_trading": "Allowed",
+        "market_close_auto_close": "Yes (trading day 6PM–5PM EST)"
+      },
+      "plans": {
+        "Growth": {
+          "type": "1-Step Evaluation (Funding in 1 day)",
+          "drawdown_type": "EOD",
+          "drawdown_mode_eval": "Trailing Max Drawdown (EOD)",
+          "drawdown_mode_funded": "EOD",
+          "consistency_eval": "None",
+          "consistency_funded": "35%",
+          "daily_loss_limit_eval": 600,
+          "daily_loss_limit_funded": 600,
+          "min_days_to_payout": 5,
+          "payout_split": "90/10",
+          "min_payout_25K": 250,
+          "min_payout_50K": 500,
+          "min_payout_100K": 1000,
+          "min_payout_150K": 1500,
+          "winning_day_threshold": { "25K": 100, "50K": 150, "100K": 200, "150K": 250 },
+          "balance_for_growth": { "25K": 26500, "50K": 53000, "100K": 104500, "150K": 156500 },
+          "sizes": {
+            "25K": { "eval_price_dash": 59, "eval_price_msrp": 99, "profit_target": 1500, "max_drawdown": 1000, "max_position": "1 mini / 10 micro", "reset_fee": 60 },
+            "50K": { "eval_price_dash": 87, "profit_target": 3000, "max_drawdown": 2000 },
+            "100K": { "eval_price_dash": 153, "profit_target": 4500, "max_drawdown": 3000 },
+            "150K": { "eval_price_dash": 221, "profit_target": 6500, "max_drawdown": 5000 }
+          }
+        },
+        "Select": {
+          "type": "1-Step Evaluation (Funding in 3 days)",
+          "drawdown_type": "EOD",
+          "drawdown_mode_eval": "Trailing Max Drawdown (EOD)",
+          "consistency_eval": "40%",
+          "consistency_funded": "None (both Daily and Flex paths)",
+          "daily_loss_limit_eval": "None",
+          "funded_paths": {
+            "Daily": {
+              "payout_frequency": "Daily",
+              "max_payout_25K": 600,
+              "max_payout_50K": 1000,
+              "max_payout_100K": 1500,
+              "max_payout_150K": 2500,
+              "daily_loss_limit_funded": 500,
+              "buffer": { "25K": 1100, "50K": 2100, "100K": 2600, "150K": 3600 }
+            },
+            "Flex": {
+              "payout_frequency": "5 days",
+              "max_payout_25K": 1250,
+              "max_payout_50K": 3000,
+              "max_payout_100K": 4000,
+              "max_payout_150K": 5000,
+              "daily_loss_limit_funded": "None",
+              "min_winning_day_profit": { "25K": 100, "50K": 150, "100K": 200, "150K": 250 }
+            }
+          },
+          "sizes": {
+            "25K": { "eval_price_dash": 65, "eval_price_msrp": 189, "profit_target": 1500, "max_drawdown": 1000, "max_position": "1 mini / 10 micro", "reset_fee": 65 },
+            "50K": { "eval_price_dash": 99, "profit_target": 3000, "max_drawdown": 2000 },
+            "100K": { "eval_price_dash": 159, "profit_target": 4500, "max_drawdown": 3000 },
+            "150K": { "eval_price_dash": 221, "profit_target": 6500, "max_drawdown": 5000 }
+          }
+        },
+        "Lightning": {
+          "type": "Instant Funded (no eval)",
+          "drawdown_type": "EOD",
+          "consistency_funded": "20% (1st payout), 25% (2nd), 30% (3rd+)",
+          "daily_loss_limit_funded": "None",
+          "min_days_to_payout": 5,
+          "payout_split": "90/10",
+          "min_payout": 1000,
+          "max_payout_tier_1_3": { "25K": 1000, "50K": 2000, "100K": 2500, "150K": 3000 },
+          "max_payout_tier_4plus": { "25K": 1000, "50K": 2500, "100K": 3000, "150K": 3500 },
+          "first_payout_pct": "6%",
+          "subsequent_pct": { "25K": 4, "50K": 4, "100K": 3.5, "150K": 3 },
+          "sizes": {
+            "25K": { "eval_price_dash": 207, "eval_price_msrp": 345, "max_drawdown": 1000, "max_position": "1 mini / 10 micro" },
+            "50K": { "eval_price_dash": 295, "max_drawdown": 2000 },
+            "100K": { "eval_price_dash": 396, "max_drawdown": 3000 },
+            "150K": { "eval_price_dash": 478, "max_drawdown": 5000 }
+          }
+        }
+      }
+    },
+
+    "myfundedfutures": {
+      "name": "MyFundedFutures (MFFU)",
+      "country": "USA",
+      "founded": "2023-11",
+      "rating": "4.6/5 (221 reviews)",
+      "code_default": "BRO",
+      "affiliate_url": "https://myfundedfutures.com/challenge?ref=5117",
+      "platforms": ["Tradovate", "NinjaTrader", "Quantower", "TradingView", "ATAS", "Volbook", "Volsys", "Volumetrica"],
+      "broker": ["DXFeed", "Tradovate"],
+      "payment_methods": ["Credit/Debit Card", "Crypto"],
+      "payout_methods": ["Riseworks"],
+      "discount_text": "Up to 50% off w/ BRO",
+      "leverage": {
+        "Flex": { "25K": "3 minis / 30 micros", "50K": "5 minis / 50 micros" },
+        "Pro": { "50K": "3 minis / 30 micros", "100K": "6 minis / 60 micros", "150K": "9 minis / 90 micros" },
+        "Rapid": { "25K": "3 minis / 30 micros", "50K": "5 minis / 50 micros", "100K": "10 minis / 100 micros", "150K": "15 minis / 150 micros" },
+        "Builder": { "50K": "4 minis / 40 micros" }
+      },
+      "rules_global": {
+        "max_eval_accounts": "10 accounts up to $1.5M",
+        "max_sim_funded": "5x 50K | 3x 100K | 3x 150K (up to $450K)",
+        "trading_hours": "18:00–16:10 EST (auto-close at 16:10)",
+        "inactivity_days": 7,
+        "automation": "Allowed (no exploit of sim fills); CME guidelines for live",
+        "copy_trading": "Allowed",
+        "news_trading_t1": "Pro/Rapid Sim funded prohibited ±2min; Flex unrestricted",
+        "price_limit_rule": "No trading within 2% of CME price limit",
+        "cross_instrument": "Single instrument only (e.g., max 2 NQ contracts)"
+      },
+      "plans": {
+        "Pro": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD (both eval and funded)",
+          "daily_drawdown": "None",
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "scaling_rule": "None on eval, position grows on funded",
+          "min_days_to_payout": 14,
+          "payout_split": "80/20",
+          "min_payout": 1000,
+          "max_total_sim": 100000,
+          "buffer": { "50K": 2100, "100K": 3100, "150K": 4600 },
+          "withdrawal_in_buffer_pct": 60,
+          "live_transition": "After 3 consecutive payouts or $20K profit milestone",
+          "sizes": {
+            "50K": { "eval_price_brotrading": 113.50, "eval_price_msrp": 227, "discount_pct": 50, "profit_target": 3000, "max_drawdown": 2000, "max_position_eval": "3 contracts", "max_position_funded": "5 contracts" },
+            "100K": { "eval_price_brotrading": 172, "eval_price_msrp": 344, "discount_pct": 50, "profit_target": 6000, "max_drawdown": 3000 },
+            "150K": { "eval_price_brotrading": 238.50, "eval_price_msrp": 477, "discount_pct": 50, "profit_target": 9000, "max_drawdown": 5000 }
+          }
+        },
+        "Rapid": {
+          "type": "1-Step Evaluation",
+          "drawdown_type_eval": "EOD",
+          "drawdown_type_funded": "RealTime (Trailing intraday)",
+          "daily_drawdown": "None",
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "scaling_rule": "None",
+          "min_days_to_payout": 1,
+          "payout_split": "90/10",
+          "min_payout": 500,
+          "max_total_sim": 100000,
+          "buffer": { "25K": 1100, "50K": 2100, "100K": 3100, "150K": 4600 },
+          "max_loss_lock_at": 100,
+          "sizes": {
+            "25K": { "eval_price_brotrading": 87.20, "eval_price_msrp": 109, "discount_pct": 20, "profit_target": 1500, "max_drawdown": 1000 },
+            "50K": { "eval_price_brotrading": 125.60, "eval_price_msrp": 157, "discount_pct": 20, "profit_target": 3000, "max_drawdown": 2000, "max_position": "5 contracts (10:1 micro)" },
+            "100K": { "eval_price_brotrading": 213.60, "eval_price_msrp": 267, "discount_pct": 20, "profit_target": 6000, "max_drawdown": 3000 },
+            "150K": { "eval_price_brotrading": 277.60, "eval_price_msrp": 347, "discount_pct": 20, "profit_target": 9000, "max_drawdown": 5000 }
+          }
+        },
+        "Flex": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD (both phases)",
+          "daily_drawdown": "None",
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "scaling_rule": "Yes (funded)",
+          "min_days_to_payout": 5,
+          "payout_split": "80/20",
+          "min_payout": 250,
+          "max_payout_request_pct": 50,
+          "max_payout_request": { "25K": 3000, "50K": 5000 },
+          "max_loss_after_first_payout": 100,
+          "winning_day_threshold": { "25K": 100, "50K": 150 },
+          "sizes": {
+            "25K": { "eval_price_brotrading": 49, "eval_price_msrp": 84, "discount_pct": 42, "profit_target": 1500, "max_drawdown": 1000, "max_position": "3 contracts (10:1 micro)" },
+            "50K": { "eval_price_brotrading": 107, "eval_price_msrp": null, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000 }
+          }
+        },
+        "Builder": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD (both phases)",
+          "daily_drawdown": 1000,
+          "consistency_eval": "None",
+          "consistency_funded": "50%",
+          "scaling_rule": "None",
+          "min_days_to_payout": 2,
+          "payout_split": "80/20",
+          "min_payout": 500,
+          "max_payout_request": 2000,
+          "buffer_first_payout": "MLL + $100 ($1600 or $2100 depending on MLL)",
+          "net_profit_required_first_payout": 500,
+          "sizes": {
+            "50K": { "eval_price_brotrading": 91.80, "eval_price_msrp": 153, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000, "max_position": "4 contracts (10:1 micro)" }
+          }
+        }
+      }
+    },
+
+    "alpha_futures": {
+      "name": "Alpha Futures",
+      "country": "UK",
+      "founded": "2024-07",
+      "rating": "4.6/5 (40 reviews)",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://app.alpha-futures.com/signup/BROTRADING/",
+      "platforms": ["Tradovate", "NinjaTrader", "TradingView"],
+      "broker": ["Tradovate"],
+      "payment_methods": ["Credit/Debit Card", "Crypto"],
+      "payout_methods": ["ACH", "Bank Wire", "Riseworks", "Swift", "Wise"],
+      "discount_text": "20% off w/ BROTRADING",
+      "pricing_model": "MONTHLY (subscription, not one-time)",
+      "rules_global": {
+        "automation": "Strictly prohibited (EAs, AI, bots) — across all account types",
+        "copy_trading": "Prohibited",
+        "all_or_nothing": "Withdrawing all profits after trailing-balance adjustment = account closure",
+        "tick_micro_scalping": "Prohibited (trades <10 ticks AND <2 minutes)",
+        "gambling_account_rolling": "Prohibited",
+        "price_limit_rule": "No trading within 2% of CME price limit",
+        "max_withdrawal_request": 15000,
+        "inactivity_trading_days": 10,
+        "overnight_holding": "Not allowed",
+        "weekend_holding": "Not allowed",
+        "payout_processing_time": "≤48 business hours"
+      },
+      "plans": {
+        "Standard": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "Trailing",
+          "min_days_eval": 2,
+          "min_days_funded": 3,
+          "consistency_eval": "50%",
+          "consistency_funded": "40%",
+          "scaling_plan": "Yes (to 5 contracts)",
+          "max_position_eval": "5 contracts",
+          "max_position_funded": "Scaling Plan to 5 contracts",
+          "daily_loss_guard_eval": "None",
+          "daily_loss_guard_funded": 1000,
+          "max_allocation": "3 accounts",
+          "payout_frequency": "Bi-weekly (every 14 days)",
+          "min_payout": 200,
+          "max_payout": 15000,
+          "payout_split": "Tiered: 70% (payouts 1-2), 80% (3-4), 90% (5+)",
+          "hold_through_news": "Yes (with restrictions on funded)",
+          "sizes": {
+            "50K": { "eval_price_brotrading": 63.20, "eval_price_msrp": 79, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000, "reset_fee": 59 },
+            "100K": { "eval_price_brotrading": 127.20, "eval_price_msrp": 159, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 },
+            "150K": { "eval_price_brotrading": 191.20, "eval_price_msrp": 239, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 }
+          }
+        },
+        "Zero": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "Trailing",
+          "min_days_eval": 1,
+          "min_days_funded": 5,
+          "consistency_eval": "None",
+          "consistency_funded": "40%",
+          "scaling_plan": "None",
+          "max_position": "3 contracts",
+          "daily_loss_guard": 1000,
+          "max_allocation": "5 accounts",
+          "payout_frequency": "Weekly (after 5 winning days $200+)",
+          "min_payout": 200,
+          "max_payout_50K": 1500,
+          "max_payout_100K": 3000,
+          "payout_split": "Flat 90%",
+          "activation_fee": 0,
+          "no_activation_fee_note": "NO ACTIVATION FEE ON ZERO ACCOUNTS",
+          "withdrawal_pct_until_30_days": 50,
+          "withdrawal_pct_after_30_days": 100,
+          "hold_through_news": "Yes (with restrictions on funded)",
+          "sizes": {
+            "25K": { "eval_price_brotrading": 63.20, "eval_price_msrp": 79, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000, "reset_fee_eval": 109, "reset_fee_funded": 499 },
+            "50K": { "eval_price_brotrading": 95.20, "eval_price_msrp": 119, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 },
+            "100K": { "eval_price_brotrading": 191.20, "eval_price_msrp": 239, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 }
+          }
+        },
+        "Advanced": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "Trailing",
+          "min_days_eval": 2,
+          "min_days_funded": 5,
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "scaling_plan": "None (5 contracts max)",
+          "max_position": "5 contracts",
+          "daily_loss_guard_eval": "None",
+          "daily_loss_guard_funded": "None",
+          "max_allocation": "3 accounts",
+          "payout_frequency": "Weekly (after 5 winning days $200+)",
+          "min_payout": 1000,
+          "max_payout": 15000,
+          "min_profit_required": 2000,
+          "payout_split": "Flat 90%",
+          "withdrawal_pct_until_30_days": 50,
+          "withdrawal_pct_after_30_days": 100,
+          "hold_through_news": "Yes (no restrictions)",
+          "sizes": {
+            "50K": { "eval_price_brotrading": 111.20, "eval_price_msrp": 139, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750, "reset_fee": 139 },
+            "100K": { "eval_price_brotrading": 223.20, "eval_price_msrp": 279, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750 },
+            "150K": { "eval_price_brotrading": 335.20, "eval_price_msrp": 419, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750 }
+          }
+        }
+      }
+    },
+
+    "top_one_futures": {
+      "_status": "Partial — full data pending. Sizes/prices collected from limited screenshots."
+    },
+    "apex_trader_funding": {
+      "_status": "Verified pricing only. Full rules pending Mike's data dump."
+    },
+    "phidias": {
+      "_status": "Pending Mike's data dump."
+    },
+    "daytraders": {
+      "_status": "Pending Mike's data dump."
+    },
+    "nexgen_pro_trader": {
+      "_status": "Pending Mike's data dump."
+    },
+    "yrm_prop": {
+      "_status": "Pending Mike's data dump."
+    }
+  }
+}

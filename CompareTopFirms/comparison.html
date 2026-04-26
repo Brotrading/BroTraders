@@ -2061,9 +2061,9 @@
               { plan: "Select Daily", size: "100K", eval: 159.00, ddt: "EOD",      mindays: 1 },
               { plan: "Select Flex",  size: "100K", eval: 159.00, ddt: "EOD",      mindays: 5 },
               { plan: "Select Flex",  size: "150K", eval: 221.40, ddt: "EOD",      mindays: 5 },
-              { plan: "Lightning",    size: "25K",  eval: 207.00, ddt: "Trailing", mindays: 0 },
-              { plan: "Lightning",    size: "50K",  eval: 295.20, ddt: "Trailing", mindays: 0 },
-              { plan: "Lightning",    size: "100K", eval: 396.00, ddt: "Trailing", mindays: 0 },
+              { plan: "Lightning",    size: "25K",  eval: 207.00, ddt: "EOD", mindays: 5 },
+              { plan: "Lightning",    size: "50K",  eval: 295.20, ddt: "EOD", mindays: 5 },
+              { plan: "Lightning",    size: "100K", eval: 396.00, ddt: "EOD", mindays: 5 },
             ];
             for (let v of tradeifyVariants)
               allRows.push({
@@ -2088,26 +2088,27 @@
                 restrictedCountries: RESTRICTED_TRADEIFY,
               });
 
-            // MyFundedFutures — verified Apr 2026 from Mike's data dump.
-            // 4 plans, NOT all sizes per plan. Pro=50%off, Rapid=20%off, Flex=40%off,
-            // Builder=40%off. Activation FREE. Rapid=Trailing, others=EOD Trailing.
+            // MyFundedFutures — verified Apr 2026 from Mike's screenshots.
+            // 4 plans. Activation FREE. Pro/Builder/Flex split=80%, Rapid split=90%.
+            // DD modes verified per plan: Pro=EOD both phases, Rapid=EOD eval/RealTime funded,
+            // Flex=EOD both, Builder=EOD with Daily DD $1K.
             const mffuGoals = { "25K": 1500, "50K": 3000, "100K": 6000, "150K": 9000 };
             const mffuDD    = { "25K": 1000, "50K": 2000, "100K": 3000, "150K": 5000 };
             const mffuVariants = [
-              // Pro: 50K/100K/150K (no 25K). 50% off w/ BROTRADING. EOD Trailing.
-              { plan: "Pro",     size: "50K",  eval: 113.50, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
-              { plan: "Pro",     size: "100K", eval: 172.00, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
-              { plan: "Pro",     size: "150K", eval: 238.50, ddt: "EOD Trailing", mindays: 5, discount: "50%" },
-              // Rapid: all 4 sizes. 20% off. Trailing (intraday).
-              { plan: "Rapid",   size: "25K",  eval: 87.20,  ddt: "Trailing",     mindays: 0, discount: "20%" },
-              { plan: "Rapid",   size: "50K",  eval: 125.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
-              { plan: "Rapid",   size: "100K", eval: 213.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
-              { plan: "Rapid",   size: "150K", eval: 277.60, ddt: "Trailing",     mindays: 0, discount: "20%" },
-              // Flex: 25K/50K only. ~40% off. EOD Trailing. 5 winning days.
-              { plan: "Flex",    size: "25K",  eval: 49.00,  ddt: "EOD Trailing", mindays: 5, discount: "40%" },
-              { plan: "Flex",    size: "50K",  eval: 107.00, ddt: "EOD Trailing", mindays: 5, discount: "40%" },
-              // Builder: 50K only. 40% off. EOD Trailing. Every 48h payouts.
-              { plan: "Builder", size: "50K",  eval: 91.80,  ddt: "EOD Trailing", mindays: 2, discount: "40%" },
+              // Pro: 50K/100K/150K (no 25K). 50% off. EOD both phases. 14 days payout. 80% split.
+              { plan: "Pro",     size: "50K",  eval: 113.50, ddt: "EOD",      mindays: 14, discount: "50%" },
+              { plan: "Pro",     size: "100K", eval: 172.00, ddt: "EOD",      mindays: 14, discount: "50%" },
+              { plan: "Pro",     size: "150K", eval: 238.50, ddt: "EOD",      mindays: 14, discount: "50%" },
+              // Rapid: all 4 sizes. 20% off. RealTime/Trailing on funded. 1 day payout. 90% split.
+              { plan: "Rapid",   size: "25K",  eval: 87.20,  ddt: "Trailing", mindays: 1,  discount: "20%" },
+              { plan: "Rapid",   size: "50K",  eval: 125.60, ddt: "Trailing", mindays: 1,  discount: "20%" },
+              { plan: "Rapid",   size: "100K", eval: 213.60, ddt: "Trailing", mindays: 1,  discount: "20%" },
+              { plan: "Rapid",   size: "150K", eval: 277.60, ddt: "Trailing", mindays: 1,  discount: "20%" },
+              // Flex: 25K/50K only. ~40% off. EOD both. 5 winning days. 80% split.
+              { plan: "Flex",    size: "25K",  eval: 49.00,  ddt: "EOD",      mindays: 5,  discount: "40%" },
+              { plan: "Flex",    size: "50K",  eval: 107.00, ddt: "EOD",      mindays: 5,  discount: "40%" },
+              // Builder: 50K only. 40% off. EOD with Daily DD $1K. Every 48h payouts. 80% split.
+              { plan: "Builder", size: "50K",  eval: 91.80,  ddt: "EOD",      mindays: 2,  discount: "40%" },
             ];
             for (let v of mffuVariants)
               allRows.push({
@@ -2251,35 +2252,37 @@
                   restrictedCountries: RESTRICTED_PHIDIAS,
                 });
 
-            // Alpha Futures — verified Apr 2026 from Mike's data dump.
-            // 3 plans (Standard, Zero, Advanced), all 20% off w/ BROTRADING. UK-based.
-            // EAs/bots/copy trading prohibited across all plans. Activation FREE.
-            const alphaGoals = { "25K": 1500, "50K": 3000, "100K": 6000, "150K": 9000 };
-            const alphaDD    = { "25K": 1000, "50K": 2000, "100K": 4000, "150K": 6000 };
+            // Alpha Futures — verified Apr 2026 from Mike's screenshots.
+            // 3 plans, all 20% off w/ BROTRADING. UK-based.
+            // Pricing on Alpha is MONTHLY (not one-time). EAs/bots/copy trading prohibited.
+            // DD and profit targets are FLAT per plan (not size-scaling).
+            // Zero: target $3K, DD $2K, 90% split, 5 funded min days
+            // Standard: target $3K, DD $2K, tiered 70-90% split, 3 funded min days, scaling plan
+            // Advanced: target $4K, DD $1.75K, 90% split, 5 funded min days, no scaling
             const alphaVariants = [
-              // Standard: 50K/100K/150K. Tiered split 70/80/90. Bi-weekly payouts.
-              { plan: "Standard", size: "50K",  eval: 63.20  },
-              { plan: "Standard", size: "100K", eval: 127.20 },
-              { plan: "Standard", size: "150K", eval: 191.20 },
-              // Zero: 25K/50K/100K. Flat 90% split. Weekly payouts.
-              { plan: "Zero",     size: "25K",  eval: 63.20  },
-              { plan: "Zero",     size: "50K",  eval: 95.20  },
-              { plan: "Zero",     size: "100K", eval: 191.20 },
-              // Advanced: 50K/100K/150K. Flat 90% split. Weekly payouts.
-              { plan: "Advanced", size: "50K",  eval: 111.20 },
-              { plan: "Advanced", size: "100K", eval: 223.20 },
-              { plan: "Advanced", size: "150K", eval: 335.20 },
+              // Standard: 50K/100K/150K. Eval 2 days, Funded 3 days. Scaling plan to 5 contracts.
+              { plan: "Standard", size: "50K",  eval: 63.20,  goal: 3000, dd: 2000, mindays: 3, maxacc: 3 },
+              { plan: "Standard", size: "100K", eval: 127.20, goal: 3000, dd: 2000, mindays: 3, maxacc: 3 },
+              { plan: "Standard", size: "150K", eval: 191.20, goal: 3000, dd: 2000, mindays: 3, maxacc: 3 },
+              // Zero: 25K/50K/100K. NO activation fee on Zero. Eval 1 day, Funded 5 days.
+              { plan: "Zero",     size: "25K",  eval: 63.20,  goal: 3000, dd: 2000, mindays: 5, maxacc: 5 },
+              { plan: "Zero",     size: "50K",  eval: 95.20,  goal: 3000, dd: 2000, mindays: 5, maxacc: 5 },
+              { plan: "Zero",     size: "100K", eval: 191.20, goal: 3000, dd: 2000, mindays: 5, maxacc: 5 },
+              // Advanced: 50K/100K/150K. Higher target ($4K), tighter DD ($1.75K), no scaling.
+              { plan: "Advanced", size: "50K",  eval: 111.20, goal: 4000, dd: 1750, mindays: 5, maxacc: 3 },
+              { plan: "Advanced", size: "100K", eval: 223.20, goal: 4000, dd: 1750, mindays: 5, maxacc: 3 },
+              { plan: "Advanced", size: "150K", eval: 335.20, goal: 4000, dd: 1750, mindays: 5, maxacc: 3 },
             ];
             for (let v of alphaVariants)
               allRows.push({
                 firm: "Alpha Futures",
                 logo: "../Photos/firms/alphafutures.png",
                 account: `${v.size} ${v.plan}`,
-                goal: alphaGoals[v.size],
-                profitTarget: alphaGoals[v.size],
+                goal: v.goal,
+                profitTarget: v.goal,
                 ddt: "Trailing",
-                dd: alphaDD[v.size],
-                mindays: 5,
+                dd: v.dd,
+                mindays: v.mindays,
                 eval: v.eval,
                 activation: 0,
                 truecost: v.eval,
@@ -2287,7 +2290,7 @@
                 code: "BROTRADING",
                 platform: "Tradovate, NinjaTrader, TradingView",
                 country: "UK",
-                maxaccounts: 5,
+                maxaccounts: v.maxacc,
                 firmpage: "../Firms/AlphaFutures.html",
                 website: "https://app.alpha-futures.com/signup/BROTRADING/",
                 restrictedCountries: RESTRICTED_ALPHA,
