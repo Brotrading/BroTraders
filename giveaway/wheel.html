@@ -931,7 +931,7 @@ window.addEventListener('message', (event) => {
 // ========= AUTO-FETCH FROM GOOGLE SHEET =========
 // Poll the Apps Script GET endpoint every 8 seconds and add any new entries.
 // Mike: replace APPS_SCRIPT_URL below with the URL from your Apps Script deployment.
-const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr_YsQAWv7r1618c3YMkob3J7QZrSR1yjJ4G7n8_iAMCPBsDby9nAqEc5Qxqkv0sVD5A/exec';
 
 async function fetchEntries() {
   if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) return;
