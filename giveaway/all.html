@@ -194,10 +194,49 @@
     color: var(--muted);
     text-align: center;
   }
+  .success-card {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(52, 211, 153, 0.05));
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    display: none;
+  }
+  .success-card.show { display: block; }
+  .success-card .checkmark {
+    width: 72px; height: 72px;
+    background: var(--success);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #052e23;
+    font-size: 36px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(52, 211, 153, 0.4);
+  }
+  .success-card h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--success);
+  }
+  .success-card p {
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .success-card .small {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 16px;
+  }
   @media (max-width: 480px) {
     h1 { font-size: 26px; }
     .wrap { padding: 24px 18px 40px; }
     form { padding: 22px 18px; }
+    .success-card { padding: 32px 20px; }
   }
 </style>
 </head>
@@ -245,6 +284,14 @@
     <div class="msg" id="msg"></div>
   </form>
 
+  <div class="success-card" id="successCard">
+    <div class="checkmark"><i class="fas fa-check"></i></div>
+    <h2>You're in!</h2>
+    <p>Your entry is locked in for tomorrow's giveaway.</p>
+    <p>Winner drawn live on stream — make sure you're watching!</p>
+    <p class="small">You can close this page now.</p>
+  </div>
+
   <div class="footer-note">
     Powered by Bro Trading · Winner drawn live on stream
   </div>
@@ -288,8 +335,10 @@
       const data = await res.json();
 
       if (data.ok) {
-        showMsg("✅ You're in! Good luck — winner drawn on stream.", 'success');
-        form.reset();
+        // Replace form with success card so user can't double-submit
+        form.style.display = 'none';
+        document.getElementById('successCard').classList.add('show');
+        return;
       } else if (data.error === 'duplicate') {
         showMsg('⚠️ This Discord username is already entered. One entry per person.', 'error');
       } else if (data.error === 'missing_field') {
