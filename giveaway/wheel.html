@@ -168,6 +168,56 @@
     font-size: 12px; font-style: italic;
   }
 
+  /* Past Winners panel */
+  .past-winners {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 207, 64, 0.15);
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+  .past-winners::-webkit-scrollbar { width: 6px; }
+  .past-winners::-webkit-scrollbar-thumb { background: rgba(255, 207, 64, 0.3); border-radius: 3px; }
+  .past-winners .panel-title { color: var(--gold); }
+  .past-winners .panel-title .badge {
+    background: rgba(255, 207, 64, 0.18);
+    color: var(--gold);
+  }
+  .pw-chips {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-top: 8px;
+  }
+  .pw-chip {
+    background: rgba(255, 207, 64, 0.08);
+    border: 1px solid rgba(255, 207, 64, 0.25);
+    color: var(--gold);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .pw-chip.repeat {
+    background: rgba(255, 207, 64, 0.18);
+    border-color: rgba(255, 207, 64, 0.55);
+    font-weight: 700;
+  }
+  .pw-chip:hover {
+    background: rgba(255, 207, 64, 0.25);
+    cursor: default;
+  }
+  /* Highlight current participant if they're a past winner */
+  .name-row.was-winner {
+    background: rgba(255, 207, 64, 0.10);
+    border-color: rgba(255, 207, 64, 0.4);
+  }
+  .name-row.was-winner .name::after {
+    content: ' 🏆';
+    font-size: 11px;
+  }
+
   .stage {
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -470,6 +520,14 @@
     <div class="names-list" id="namesList">
       <div class="empty">Add names above to start</div>
     </div>
+
+    <div class="past-winners">
+      <div class="panel-title">
+        🏆 Past Winners
+        <span class="badge" id="pwCount">0</span>
+      </div>
+      <div class="pw-chips" id="pwChips"></div>
+    </div>
   </aside>
 
   <main class="stage">
@@ -662,6 +720,42 @@ function drawWheel() {
 }
 
 // ========= LIST =========
+// ========= PAST WINNERS (Discord DM scrape, Apr 2026) =========
+// Each entry: { name, wins } — wins > 1 = repeat winner (gold, bold)
+const PAST_WINNERS = [
+  { name: 'Marky41', wins: 3 },
+  { name: 'GrabbenD', wins: 2 },
+  { name: 'Stephen', wins: 2 },
+  { name: 'strawberry22345', wins: 2 },
+  { name: 'cookl', wins: 1 },
+  { name: 'Terry cookin', wins: 1 },
+  { name: 'scirocco', wins: 1 },
+  { name: 'Peetrs', wins: 1 },
+  { name: 'Maelstrom (Mike H)', wins: 1 },
+  { name: 'Kairo', wins: 1 },
+  { name: 'Mr Grognon', wins: 1 },
+  { name: 'TradeWithVaghela', wins: 1 },
+  { name: 'YGxJONNY', wins: 1 },
+  { name: 'Abix.', wins: 1 },
+  { name: 'neskwe_.', wins: 1 },
+  { name: 'Deki97', wins: 1 },
+  { name: 'Meadston!', wins: 1 },
+  { name: 'ＩＣＴＣＲＴＫＩＮＧ', wins: 1 },
+];
+const PAST_WINNER_NAMES = new Set(PAST_WINNERS.map(w => w.name.toLowerCase().trim()));
+
+function isPastWinner(name) {
+  return PAST_WINNER_NAMES.has((name || '').toLowerCase().trim());
+}
+
+function renderPastWinners() {
+  const wrap = document.getElementById('pwChips');
+  document.getElementById('pwCount').textContent = PAST_WINNERS.length;
+  wrap.innerHTML = PAST_WINNERS
+    .map(w => `<span class="pw-chip${w.wins > 1 ? ' repeat' : ''}" title="${w.wins} win${w.wins > 1 ? 's' : ''}">${escapeHtml(w.name)}${w.wins > 1 ? ' ×' + w.wins : ''}</span>`)
+    .join('');
+}
+
 function renderList() {
   const list = document.getElementById('namesList');
   document.getElementById('badgeCount').textContent = state.names.length;
@@ -671,7 +765,7 @@ function renderList() {
     return;
   }
   list.innerHTML = state.names.map((name, i) => `
-    <div class="name-row">
+    <div class="name-row${isPastWinner(name) ? ' was-winner' : ''}">
       <span class="name">${escapeHtml(name)}</span>
       <button class="remove" data-i="${i}" title="Remove">✕</button>
     </div>
@@ -683,7 +777,7 @@ function renderList() {
     });
   });
 }
-function renderAll() { drawWheel(); renderList(); }
+function renderAll() { drawWheel(); renderList(); renderPastWinners(); }
 
 // ========= ADD =========
 document.getElementById('addBtn').addEventListener('click', () => {
