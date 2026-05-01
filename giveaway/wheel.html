@@ -1106,34 +1106,21 @@ let _highlightIdx = null;
 
 function spin() {
   spinning = true;
-  _highlightIdx = null;  // clear any previous highlight
+  _highlightIdx = null;  // clear previous highlight
   const hub = document.getElementById('spinBtn');
   hub.classList.add('spinning');
   getAudio();
 
-  // Pick winner by weight (uses current state.names + winCounts).
-  const stateIdx = pickWeightedIndex();
-  const winnerName = state.names[stateIdx];
-
-  // Snapshot the display arrangement RIGHT NOW and freeze it for the
-  // entire spin. This prevents auto-fetch / new entries / external state
-  // changes from shifting positions mid-animation, which is what caused
-  // the "wheel lands on X but announces Y" bug.
+  // Freeze the display so positions don't shift mid-spin (auto-fetch etc).
   _spinDisplay = spreadDuplicates(state.names);
-  const display = _spinDisplay;
 
-  // Find this winner's position in the frozen display.
-  const slots = display.reduce((acc, n, i) => (n === winnerName ? acc.concat(i) : acc), []);
-  const winnerIdx = slots[Math.floor(Math.random() * slots.length)];
-
-  const n = display.length;
-  const sliceAngle = (Math.PI * 2) / n;
-  const sliceCenter = winnerIdx * sliceAngle + sliceAngle / 2;
-  const spins = 6 + Math.random() * 3;
-  // The pointer is at angle -π/2 (top of canvas). After rotation by
-  // currentRotation, slice winnerIdx's center should land exactly there.
-  const targetRotation = (-Math.PI/2) - sliceCenter + Math.PI * 2 * spins;
-  const startRotation = currentRotation % (Math.PI * 2);
+  // PURE VISUAL RANDOM: spin a random amount and let the wheel decide.
+  // Whoever's slice is under the pointer when it stops = the winner.
+  // No pre-picking, no math gymnastics, no risk of slice mismatch.
+  const spins = 6 + Math.random() * 3;          // 6-9 full rotations
+  const extra = Math.random() * Math.PI * 2;    // random extra angle [0, 2π)
+  const startRotation = currentRotation;
+  const targetRotation = startRotation + Math.PI * 2 * spins + extra;
   const delta = targetRotation - startRotation;
   const duration = 5500;
   const startTime = performance.now();
@@ -1148,27 +1135,17 @@ function spin() {
     if (cur !== lastSlice) { playTick(); lastSlice = cur; }
     if (t < 1) requestAnimationFrame(animate);
     else {
-      // HARD SNAP: force exact final angle so slice center is mathematically
-      // exact on the pointer — kills any sub-pixel floating-point drift.
-      // Normalize to [0, 2π) for clean state across many spins.
-      const exact = ((-Math.PI/2 - sliceCenter) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
-      currentRotation = exact;
-
-      // Defensive: verify visual landing matches winner. If a sub-pixel
-      // edge case ever flips the slice, "what you see is what you get".
+      // Read the slice the pointer is actually on. That IS the winner.
       const landedIdx = sliceIndexAtPointer();
-      const landedName = display[landedIdx];
-      const finalWinner = (landedName === winnerName) ? winnerName : landedName;
+      const winnerName = _spinDisplay[landedIdx];
+      _highlightIdx = landedIdx;
 
-      // Highlight the slice the wheel landed on
-      _highlightIdx = (landedName === winnerName) ? winnerIdx : landedIdx;
-
-      // Release the freeze and redraw with highlight.
+      // Release freeze, redraw with highlight, announce winner.
       _spinDisplay = null;
       spinning = false;
       hub.classList.remove('spinning');
       drawWheel();
-      showWinner(finalWinner);
+      showWinner(winnerName);
     }
   }
   requestAnimationFrame(animate);
