@@ -761,6 +761,35 @@ function probabilities() {
   const total = weights.reduce((a,b)=>a+b, 0) || 1;
   return weights.map(w => w / total);
 }
+
+// Reorder names so duplicates are spread max distance apart.
+// (Pro-Bros submit /pro + /all back-to-back → same name lands adjacent on wheel.)
+// Insertion order is preserved in state.names; this is purely for visual display.
+function spreadDuplicates(names) {
+  if (names.length <= 1) return names.slice();
+  const counts = {};
+  names.forEach(n => counts[n] = (counts[n] || 0) + 1);
+  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  const N = names.length;
+  const result = new Array(N);
+  let pos = 0;
+  for (const [name, count] of sorted) {
+    for (let i = 0; i < count; i++) {
+      while (result[pos] !== undefined) pos = (pos + 1) % N;
+      result[pos] = name;
+      pos = (pos + 2) % N;
+    }
+  }
+  return result;
+}
+let _displayCache = null, _displayCacheKey = '';
+function displayNames() {
+  const key = state.names.join('|');
+  if (_displayCacheKey === key) return _displayCache;
+  _displayCache = spreadDuplicates(state.names);
+  _displayCacheKey = key;
+  return _displayCache;
+}
 function shade(hex, pct) {
   const n = parseInt(hex.replace('#',''), 16);
   let r = (n>>16) + Math.round(255*pct);
@@ -783,7 +812,8 @@ let currentRotation = 0;
 function drawWheel() {
   const W = canvas.width, H = canvas.height, cx = W/2, cy = H/2, r = W/2 - 10;
   ctx.clearRect(0, 0, W, H);
-  if (state.names.length === 0) {
+  const display = displayNames();
+  if (display.length === 0) {
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2);
     ctx.fillStyle = 'rgba(20, 24, 50, 0.5)'; ctx.fill();
     ctx.strokeStyle = 'rgba(44, 158, 255, 0.3)'; ctx.lineWidth = 4; ctx.stroke();
@@ -794,9 +824,9 @@ function drawWheel() {
     return;
   }
   // Visual slices are always equal — weighting is hidden
-  const sliceAngle = (Math.PI * 2) / state.names.length;
+  const sliceAngle = (Math.PI * 2) / display.length;
   let startAngle = currentRotation;
-  state.names.forEach((name, i) => {
+  display.forEach((name, i) => {
     const endAngle = startAngle + sliceAngle;
     ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, startAngle, endAngle); ctx.closePath();
     const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
@@ -872,7 +902,7 @@ function pickWeightedIndex() {
   return probs.length - 1;
 }
 function sliceIndexAtPointer() {
-  const n = state.names.length;
+  const n = displayNames().length;
   if (n === 0) return 0;
   const sliceAngle = (Math.PI * 2) / n;
   let target = ((-Math.PI / 2 - currentRotation) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
@@ -890,8 +920,14 @@ function spin() {
   const hub = document.getElementById('spinBtn');
   hub.classList.add('spinning');
   getAudio();
-  const winnerIdx = pickWeightedIndex();
-  const n = state.names.length;
+  // Pick winner by weight (state.names indexes), then map to display position.
+  // For names with multiple entries, we randomly pick one of their display slots.
+  const stateIdx = pickWeightedIndex();
+  const winnerName = state.names[stateIdx];
+  const display = displayNames();
+  const slots = display.reduce((acc, n, i) => (n === winnerName ? acc.concat(i) : acc), []);
+  const winnerIdx = slots[Math.floor(Math.random() * slots.length)];
+  const n = display.length;
   const sliceAngle = (Math.PI * 2) / n;
   const sliceCenter = winnerIdx * sliceAngle + sliceAngle / 2;
   const spins = 6 + Math.random() * 3;
@@ -912,7 +948,7 @@ function spin() {
     else {
       spinning = false;
       hub.classList.remove('spinning');
-      showWinner(state.names[winnerIdx]);
+      showWinner(winnerName);
     }
   }
   requestAnimationFrame(animate);
