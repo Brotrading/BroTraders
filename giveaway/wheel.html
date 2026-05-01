@@ -1003,6 +1003,40 @@ function drawWheel() {
   ctx.strokeStyle = 'rgba(44, 158, 255, 0.6)'; ctx.lineWidth = 6; ctx.stroke();
   ctx.beginPath(); ctx.arc(cx, cy, r - 12, 0, Math.PI*2);
   ctx.strokeStyle = 'rgba(255, 207, 64, 0.3)'; ctx.lineWidth = 1; ctx.stroke();
+
+  // Winning slice highlight (drawn AFTER all base slices so it's on top)
+  if (_highlightIdx !== null && _highlightIdx >= 0 && _highlightIdx < display.length) {
+    const hStart = currentRotation + _highlightIdx * sliceAngle;
+    const hEnd = hStart + sliceAngle;
+    // Slight bulge so the slice "pops" out
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r + 4, hStart, hEnd);
+    ctx.closePath();
+    // Gold glow fill
+    ctx.shadowColor = 'rgba(255, 207, 64, 0.95)';
+    ctx.shadowBlur = 30;
+    ctx.fillStyle = 'rgba(255, 207, 64, 0.25)';
+    ctx.fill();
+    // Gold borders along the two radial edges
+    ctx.shadowBlur = 0;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(hStart) * (r + 4), cy + Math.sin(hStart) * (r + 4));
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(hEnd) * (r + 4), cy + Math.sin(hEnd) * (r + 4));
+    ctx.strokeStyle = 'rgba(255, 207, 64, 0.95)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    // Bright arc on outer edge
+    ctx.beginPath();
+    ctx.arc(cx, cy, r + 2, hStart, hEnd);
+    ctx.strokeStyle = '#ffcf40';
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    ctx.restore();
+  }
 }
 
 // ========= LIST =========
@@ -1067,8 +1101,12 @@ document.getElementById('spinBtn').addEventListener('click', () => {
   spin();
 });
 
+// Track winning slice for visual highlight after spin ends.
+let _highlightIdx = null;
+
 function spin() {
   spinning = true;
+  _highlightIdx = null;  // clear any previous highlight
   const hub = document.getElementById('spinBtn');
   hub.classList.add('spinning');
   getAudio();
@@ -1092,6 +1130,8 @@ function spin() {
   const sliceAngle = (Math.PI * 2) / n;
   const sliceCenter = winnerIdx * sliceAngle + sliceAngle / 2;
   const spins = 6 + Math.random() * 3;
+  // The pointer is at angle -π/2 (top of canvas). After rotation by
+  // currentRotation, slice winnerIdx's center should land exactly there.
   const targetRotation = (-Math.PI/2) - sliceCenter + Math.PI * 2 * spins;
   const startRotation = currentRotation % (Math.PI * 2);
   const delta = targetRotation - startRotation;
@@ -1108,11 +1148,22 @@ function spin() {
     if (cur !== lastSlice) { playTick(); lastSlice = cur; }
     if (t < 1) requestAnimationFrame(animate);
     else {
-      // Verify visual landing matches the picked winner — defensive double-check.
+      // HARD SNAP: force exact final angle so slice center is mathematically
+      // exact on the pointer — kills any sub-pixel floating-point drift.
+      // Normalize to [0, 2π) for clean state across many spins.
+      const exact = ((-Math.PI/2 - sliceCenter) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
+      currentRotation = exact;
+
+      // Defensive: verify visual landing matches winner. If a sub-pixel
+      // edge case ever flips the slice, "what you see is what you get".
       const landedIdx = sliceIndexAtPointer();
       const landedName = display[landedIdx];
       const finalWinner = (landedName === winnerName) ? winnerName : landedName;
-      // Release the freeze and refresh the wheel with the live display.
+
+      // Highlight the slice the wheel landed on
+      _highlightIdx = (landedName === winnerName) ? winnerIdx : landedIdx;
+
+      // Release the freeze and redraw with highlight.
       _spinDisplay = null;
       spinning = false;
       hub.classList.remove('spinning');
