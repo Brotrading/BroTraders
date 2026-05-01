@@ -250,12 +250,16 @@
   .spin-sub { font-size: 9px; color: var(--muted); letter-spacing: 1.5px; margin-top: 2px; }
 
   .modal-bg {
-    position: fixed; inset: 0;
+    position: fixed;
+    /* Skip the 360px left sidebar so we center on the wheel, not viewport */
+    top: 0; right: 0; bottom: 0; left: 360px;
     background: transparent;
-    display: none; align-items: flex-start; justify-content: center;
-    padding-top: 4vh;
+    display: none; align-items: center; justify-content: center;
     z-index: 100;
     pointer-events: none;
+  }
+  @media (max-width: 1024px) {
+    .modal-bg { left: 0; }
   }
   .modal-bg.show { display: flex; animation: fadeIn 0.3s; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
