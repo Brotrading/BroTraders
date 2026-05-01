@@ -921,7 +921,14 @@ function spreadDuplicates(names) {
   return result;
 }
 let _displayCache = null, _displayCacheKey = '';
+// Frozen display used during a spin animation. Set at spin start, cleared
+// at end. While set, displayNames() returns this exact array so the wheel
+// stays aligned with the chosen winner — even if auto-fetch adds entries
+// to state.names mid-spin (which would otherwise shift positions and make
+// the wheel land on a different name than the announced winner).
+let _spinDisplay = null;
 function displayNames() {
+  if (_spinDisplay) return _spinDisplay;
   const key = state.names.join('|');
   if (_displayCacheKey === key) return _displayCache;
   _displayCache = spreadDuplicates(state.names);
@@ -1058,13 +1065,22 @@ function spin() {
   const hub = document.getElementById('spinBtn');
   hub.classList.add('spinning');
   getAudio();
-  // Pick winner by weight (state.names indexes), then map to display position.
-  // For names with multiple entries, we randomly pick one of their display slots.
+
+  // Pick winner by weight (uses current state.names + winCounts).
   const stateIdx = pickWeightedIndex();
   const winnerName = state.names[stateIdx];
-  const display = displayNames();
+
+  // Snapshot the display arrangement RIGHT NOW and freeze it for the
+  // entire spin. This prevents auto-fetch / new entries / external state
+  // changes from shifting positions mid-animation, which is what caused
+  // the "wheel lands on X but announces Y" bug.
+  _spinDisplay = spreadDuplicates(state.names);
+  const display = _spinDisplay;
+
+  // Find this winner's position in the frozen display.
   const slots = display.reduce((acc, n, i) => (n === winnerName ? acc.concat(i) : acc), []);
   const winnerIdx = slots[Math.floor(Math.random() * slots.length)];
+
   const n = display.length;
   const sliceAngle = (Math.PI * 2) / n;
   const sliceCenter = winnerIdx * sliceAngle + sliceAngle / 2;
@@ -1075,6 +1091,7 @@ function spin() {
   const duration = 5500;
   const startTime = performance.now();
   let lastSlice = sliceIndexAtPointer();
+
   function animate(now) {
     const elapsed = now - startTime;
     const t = Math.min(1, elapsed / duration);
@@ -1084,9 +1101,16 @@ function spin() {
     if (cur !== lastSlice) { playTick(); lastSlice = cur; }
     if (t < 1) requestAnimationFrame(animate);
     else {
+      // Verify visual landing matches the picked winner — defensive double-check.
+      const landedIdx = sliceIndexAtPointer();
+      const landedName = display[landedIdx];
+      const finalWinner = (landedName === winnerName) ? winnerName : landedName;
+      // Release the freeze and refresh the wheel with the live display.
+      _spinDisplay = null;
       spinning = false;
       hub.classList.remove('spinning');
-      showWinner(winnerName);
+      drawWheel();
+      showWinner(finalWinner);
     }
   }
   requestAnimationFrame(animate);
@@ -1271,10 +1295,15 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr_YsQAWv7r161
 
 async function fetchEntries() {
   if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) return;
+  // Don't mutate state.names during a spin — animation would desync from
+  // the chosen winner. Skip this poll cycle; next one runs in 8s.
+  if (spinning) return;
   try {
     const res = await fetch(APPS_SCRIPT_URL, { method: 'GET' });
     const data = await res.json();
     if (!data || !Array.isArray(data.entries)) return;
+    // Re-check after async fetch — spin may have started while waiting.
+    if (spinning) return;
     let added = 0;
     data.entries.forEach(entry => {
       const name = (entry.discord || '').trim();
