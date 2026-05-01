@@ -432,6 +432,78 @@
     transition: color 0.15s;
   }
   .row-remove:hover { color: var(--danger); }
+
+  /* ========= PASSWORD GATE ========= */
+  .pw-gate {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, var(--bg-1) 0%, var(--bg-0) 100%);
+    z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .pw-gate.hidden { display: none; }
+  .pw-card {
+    background: rgba(10, 28, 58, 0.85);
+    border: 1px solid rgba(255, 207, 64, 0.3);
+    border-radius: 24px;
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 80px rgba(255, 207, 64, 0.15);
+    backdrop-filter: blur(10px);
+  }
+  .pw-icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--gold), #e0a020);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #1a1305; font-size: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 40px rgba(255, 207, 64, 0.5);
+  }
+  .pw-title {
+    font-size: 22px; font-weight: 800;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .pw-subtitle {
+    color: var(--muted); font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .pw-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(2, 6, 23, 0.8);
+    border: 1px solid rgba(44, 158, 255, 0.3);
+    border-radius: 12px;
+    color: var(--text); font-size: 16px;
+    font-family: inherit;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+  }
+  .pw-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(255, 207, 64, 0.15);
+  }
+  .pw-input::placeholder { color: var(--muted); letter-spacing: 1px; }
+  .pw-submit {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--gold), #e0a020);
+    color: #1a1305;
+    border: none; border-radius: 12px;
+    font-size: 15px; font-weight: 800;
+    margin-top: 12px; cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .pw-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(255, 207, 64, 0.4); }
+  .pw-error {
+    color: var(--danger); font-size: 13px;
+    margin-top: 12px; min-height: 18px;
+  }
   .empty-table { color: var(--muted); font-style: italic; padding: 24px; text-align: center; }
 
   @media (max-width: 900px) {
@@ -442,6 +514,17 @@
 </style>
 </head>
 <body>
+
+<div class="pw-gate" id="pwGate">
+  <div class="pw-card">
+    <div class="pw-icon">🔒</div>
+    <div class="pw-title">Bro Trading Wheel</div>
+    <div class="pw-subtitle">Enter the access code to continue</div>
+    <input type="password" class="pw-input" id="pwInput" placeholder="Access code" autofocus />
+    <button class="pw-submit" id="pwSubmit">Unlock</button>
+    <div class="pw-error" id="pwError"></div>
+  </div>
+</div>
 
 <div class="app">
   <aside class="sidebar">
@@ -529,6 +612,43 @@ Andrea, 3"></textarea>
 <canvas class="confetti-canvas" id="confetti"></canvas>
 
 <script>
+// ========= PASSWORD GATE =========
+// Casual access protection — anyone with the URL needs this code to use the wheel.
+// Forms (/giveaway/all + /giveaway/pro) stay open so people can enter freely.
+// Note: client-side only, not cryptographically secure. Goal = deter casual sharing.
+const WHEEL_PASSWORD = 'spin2026';
+const UNLOCK_KEY = 'bro-wheel-unlock';
+
+(function() {
+  const gate = document.getElementById('pwGate');
+  const input = document.getElementById('pwInput');
+  const submit = document.getElementById('pwSubmit');
+  const err = document.getElementById('pwError');
+
+  // Already unlocked in this browser?
+  if (localStorage.getItem(UNLOCK_KEY) === '1') {
+    gate.classList.add('hidden');
+    return;
+  }
+
+  function tryUnlock() {
+    const val = input.value.trim();
+    if (val === WHEEL_PASSWORD) {
+      localStorage.setItem(UNLOCK_KEY, '1');
+      gate.classList.add('hidden');
+    } else {
+      err.textContent = 'Incorrect code — try again';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  submit.addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') tryUnlock();
+  });
+})();
+
 // ========= AUDIO =========
 let audioCtx = null;
 function getAudio() {
@@ -580,30 +700,34 @@ function playWinSound() {
 
 // ========= STATE =========
 const STORAGE_KEY = 'bro-wheel-v1';
-// Past winners seeded from Discord DM scrape (Apr 2026). Each entry's
-// chance is halved per win (1 win = 50%, 2 = 25%, 3 = 12.5%).
+// Past winners seeded from Discord DM scrape + Mike's manual edits (May 2026).
+// Each entry's chance is halved per win (1 win = 50%, 2 = 25%, 3 = 12.5%).
 // Stored in state.winCounts so the existing admin panel shows + edits them.
 const PAST_WINNERS_SEED = {
-  'Marky41': 3,
-  'GrabbenD': 2,
-  'Stephen': 2,
+  // 2 wins → 25% chance
+  '22xpepe': 2,
+  'Maelstrom (Mike H)': 2,
+  'Marky41': 2,
   'strawberry22345': 2,
+  // 1 win → 50% chance
+  'Abix.': 1,
   'cookl': 1,
-  'Terry cookin': 1,
-  'scirocco': 1,
-  'Peetrs': 1,
-  'Maelstrom (Mike H)': 1,
+  'Deki97': 1,
+  'dick': 1,
+  'GrabbenD': 1,
+  'ＩＣＴＣＲＴＫＩＮＧ': 1,
   'Kairo': 1,
+  'Meadston!': 1,
   'Mr Grognon': 1,
+  'neskwe_.': 1,
+  'Peetrs': 1,
+  'scirocco': 1,
+  'Stephen': 1,
+  'Terry cookin': 1,
   'TradeWithVaghela': 1,
   'YGxJONNY': 1,
-  'Abix.': 1,
-  'neskwe_.': 1,
-  'Deki97': 1,
-  'Meadston!': 1,
-  'ＩＣＴＣＲＴＫＩＮＧ': 1,
 };
-const SEED_FLAG = 'bro-wheel-seed-v1';
+const SEED_FLAG = 'bro-wheel-seed-v2';
 
 let state = loadState();
 seedPastWinners();
