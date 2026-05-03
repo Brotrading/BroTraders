@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
 <style>
   :root {
     --bg-0: #020617;
@@ -220,21 +222,104 @@
     border-bottom: 1px dotted var(--blue);
   }
   .msg.bot a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-  .msg.bot strong { color: var(--gold); }
+  .msg.bot strong { color: var(--gold); font-weight: 700; }
+  .msg.bot em { color: var(--text); font-style: italic; }
   .msg.bot code {
     background: rgba(2, 6, 23, 0.7);
     padding: 1px 6px;
     border-radius: 4px;
-    font-family: "DM Mono", monospace;
+    font-family: "DM Mono", "SF Mono", Consolas, monospace;
     font-size: 13px;
     color: var(--blue);
   }
+  .msg.bot pre {
+    background: rgba(2, 6, 23, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+  }
+  .msg.bot pre code {
+    background: none;
+    padding: 0;
+    color: var(--text);
+  }
   .msg.bot ul, .msg.bot ol {
     padding-left: 22px;
-    margin: 6px 0;
+    margin: 8px 0;
   }
-  .msg.bot li { margin: 3px 0; }
-  .msg.bot p + p { margin-top: 8px; }
+  .msg.bot li { margin: 4px 0; }
+  .msg.bot li::marker { color: var(--blue); }
+  .msg.bot p { margin: 6px 0; }
+  .msg.bot p:first-child { margin-top: 0; }
+  .msg.bot p:last-child { margin-bottom: 0; }
+  .msg.bot h1, .msg.bot h2, .msg.bot h3, .msg.bot h4 {
+    margin: 14px 0 6px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+  }
+  .msg.bot h1 { font-size: 18px; color: var(--blue); }
+  .msg.bot h2 { font-size: 17px; color: var(--blue); }
+  .msg.bot h3 {
+    font-size: 15px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .msg.bot h4 { font-size: 14px; color: var(--text); }
+  .msg.bot h1:first-child, .msg.bot h2:first-child, .msg.bot h3:first-child {
+    margin-top: 0;
+  }
+  .msg.bot hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  .msg.bot blockquote {
+    border-left: 3px solid var(--blue);
+    padding: 4px 0 4px 12px;
+    margin: 8px 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .msg.bot table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 13px;
+    background: rgba(2, 6, 23, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+    display: block;
+    overflow-x: auto;
+  }
+  .msg.bot table thead {
+    background: rgba(44, 158, 255, 0.15);
+  }
+  .msg.bot table th {
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .msg.bot table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid rgba(44, 158, 255, 0.08);
+  }
+  .msg.bot table tr:last-child td {
+    border-bottom: none;
+  }
+  .msg.bot table tr:hover {
+    background: rgba(44, 158, 255, 0.05);
+  }
   .msg.bot .cursor {
     display: inline-block;
     width: 7px;
@@ -533,49 +618,29 @@
       : '<i class="fas fa-paper-plane"></i>';
   }
 
-  // Lightweight markdown renderer (handles bold, links, lists, line breaks, code)
+  // Configure marked.js for clean rendering
+  marked.setOptions({
+    gfm: true,        // GitHub Flavored Markdown (tables, strikethrough, etc.)
+    breaks: true,     // Single newlines → <br>
+    headerIds: false,
+    mangle: false,
+  });
+
+  // Open all links in a new tab
+  const renderer = new marked.Renderer();
+  const origLink = renderer.link.bind(renderer);
+  renderer.link = (href, title, text) => {
+    const link = origLink(href, title, text);
+    return link.replace('<a ', '<a target="_blank" rel="noopener" ');
+  };
+  marked.use({ renderer });
+
   function formatMarkdown(text) {
-    // Escape HTML first
-    let html = text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
-
-    // Inline code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-    // Bold
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-    // Links [text](url)
-    html = html.replace(
-      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener">$1</a>'
-    );
-
-    // Bare URLs
-    html = html.replace(
-      /(^|[\s])(https?:\/\/[^\s<]+)/g,
-      '$1<a href="$2" target="_blank" rel="noopener">$2</a>'
-    );
-
-    // Lists (group consecutive - or * lines)
-    html = html.replace(/(^|\n)(?:[-*] .+(?:\n[-*] .+)*)/g, (block) => {
-      const items = block
-        .trim()
-        .split('\n')
-        .map(line => '<li>' + line.replace(/^[-*]\s+/, '') + '</li>')
-        .join('');
-      return '\n<ul>' + items + '</ul>';
+    const rawHtml = marked.parse(text);
+    // Sanitize to block any HTML/script injection from model output
+    return DOMPurify.sanitize(rawHtml, {
+      ADD_ATTR: ['target', 'rel'],
     });
-
-    // Paragraphs (double newlines)
-    html = html
-      .split(/\n\n+/)
-      .map(p => p.trim().startsWith('<ul>') ? p : '<p>' + p.replace(/\n/g, '<br>') + '</p>')
-      .join('');
-
-    return html;
   }
 </script>
 </body>
