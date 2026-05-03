@@ -1,12 +1,12 @@
 {
   "_meta": {
     "purpose": "Structured database of all prop firm rules for propfirmbro.com. Built incrementally as Mike supplies official data. Future use: AI assistant to answer trader questions, comparison logic, content generation.",
-    "last_updated": "2026-04-26",
+    "last_updated": "2026-05-03",
     "verified_sources": "Mike-supplied screenshots from each firm's official website (pricing, rules, account details).",
-    "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative — always verify on firm's own site.",
-    "schema_version": 1
+    "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative \u2014 always verify on firm's own site.",
+    "schema_version": 1,
+    "scraper_run": "Auto-merged from data/propfirm-rules-scraped.json"
   },
-
   "firms": {
     "lucid_trading": {
       "name": "Lucid Trading",
@@ -15,9 +15,30 @@
       "rating": "4.6/5 (27 reviews)",
       "code_default": "BROTRADING",
       "affiliate_url": "https://lucidtrading.com/ref/brotrading/",
-      "platforms": ["Tradovate", "NinjaTrader", "Sierra Chart", "Quantower", "Bookmap", "ATAS", "MotiveWave", "MultiCharts", "Lucid X", "Tradesea", "TradingView", "Jigsaw Daytradr", "R Trader Pro"],
-      "broker": ["Dorman", "NinjaTrader"],
-      "payout_methods": ["Crypto", "Plaid", "WorkMarket"],
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Sierra Chart",
+        "Quantower",
+        "Bookmap",
+        "ATAS",
+        "MotiveWave",
+        "MultiCharts",
+        "Lucid X",
+        "Tradesea",
+        "TradingView",
+        "Jigsaw Daytradr",
+        "R Trader Pro"
+      ],
+      "broker": [
+        "Dorman",
+        "NinjaTrader"
+      ],
+      "payout_methods": [
+        "Crypto",
+        "Plaid",
+        "WorkMarket"
+      ],
       "discount_text": "Up to 40% off (Pro/Flex), 30% off (Direct)",
       "leverage": {
         "25K": "2 minis / 20 micros",
@@ -42,10 +63,35 @@
           "min_payout": 500,
           "buffer_protection": true,
           "sizes": {
-            "25K": { "eval_price_brotrading": 81, "eval_price_msrp": 135, "discount_pct": 40, "profit_target": 1250, "max_drawdown": 1000 },
-            "50K": { "eval_price_brotrading": 111, "eval_price_msrp": 185, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000, "verified_via_coupon_test": true },
-            "100K": { "eval_price_brotrading": 171, "eval_price_msrp": 285, "discount_pct": 40, "profit_target": 6000, "max_drawdown": 3000 },
-            "150K": { "eval_price_brotrading": 222, "eval_price_msrp": 370, "discount_pct": 40, "profit_target": 9000, "max_drawdown": 4500 }
+            "25K": {
+              "eval_price_brotrading": 81,
+              "eval_price_msrp": 135,
+              "discount_pct": 40,
+              "profit_target": 1250,
+              "max_drawdown": 1000
+            },
+            "50K": {
+              "eval_price_brotrading": 111,
+              "eval_price_msrp": 185,
+              "discount_pct": 40,
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "verified_via_coupon_test": true
+            },
+            "100K": {
+              "eval_price_brotrading": 171,
+              "eval_price_msrp": 285,
+              "discount_pct": 40,
+              "profit_target": 6000,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_brotrading": 222,
+              "eval_price_msrp": 370,
+              "discount_pct": 40,
+              "profit_target": 9000,
+              "max_drawdown": 4500
+            }
           }
         },
         "LucidFlex": {
@@ -58,10 +104,31 @@
           "min_payout": 500,
           "structure": "5 winning days minimum, scaling plan",
           "sizes": {
-            "25K": { "eval_price_brotrading": 60, "eval_price_msrp": 100, "discount_pct": 40, "min_winning_day_profit": 100 },
-            "50K": { "eval_price_brotrading": 84, "eval_price_msrp": 140, "discount_pct": 40, "min_winning_day_profit": 150, "verified_via_coupon_test": true },
-            "100K": { "eval_price_brotrading": 135, "eval_price_msrp": 225, "discount_pct": 40, "min_winning_day_profit": 200 },
-            "150K": { "eval_price_brotrading": 252, "eval_price_msrp": 420, "discount_pct": 40, "min_winning_day_profit": 250 }
+            "25K": {
+              "eval_price_brotrading": 60,
+              "eval_price_msrp": 100,
+              "discount_pct": 40,
+              "min_winning_day_profit": 100
+            },
+            "50K": {
+              "eval_price_brotrading": 84,
+              "eval_price_msrp": 140,
+              "discount_pct": 40,
+              "min_winning_day_profit": 150,
+              "verified_via_coupon_test": true
+            },
+            "100K": {
+              "eval_price_brotrading": 135,
+              "eval_price_msrp": 225,
+              "discount_pct": 40,
+              "min_winning_day_profit": 200
+            },
+            "150K": {
+              "eval_price_brotrading": 252,
+              "eval_price_msrp": 420,
+              "discount_pct": 40,
+              "min_winning_day_profit": 250
+            }
           }
         },
         "LucidDirect": {
@@ -72,15 +139,30 @@
           "payout_split": "90/10",
           "min_payout": 500,
           "sizes": {
-            "25K": { "eval_price_brotrading": 238, "eval_price_msrp": 340, "discount_pct": 30 },
-            "50K": { "eval_price_brotrading": 364, "eval_price_msrp": 520, "discount_pct": 30 },
-            "100K": { "eval_price_brotrading": 490, "eval_price_msrp": 700, "discount_pct": 30 },
-            "150K": { "eval_price_brotrading": 588, "eval_price_msrp": 840, "discount_pct": 30 }
+            "25K": {
+              "eval_price_brotrading": 238,
+              "eval_price_msrp": 340,
+              "discount_pct": 30
+            },
+            "50K": {
+              "eval_price_brotrading": 364,
+              "eval_price_msrp": 520,
+              "discount_pct": 30
+            },
+            "100K": {
+              "eval_price_brotrading": 490,
+              "eval_price_msrp": 700,
+              "discount_pct": 30
+            },
+            "150K": {
+              "eval_price_brotrading": 588,
+              "eval_price_msrp": 840,
+              "discount_pct": 30
+            }
           }
         }
       }
     },
-
     "tradeify": {
       "name": "Tradeify",
       "country": "USA",
@@ -88,13 +170,30 @@
       "rating": "4.7/5 (152 reviews)",
       "code_default": "BRO",
       "affiliate_url": "https://tradeify.co/?ref=BFYQ2HKM",
-      "platforms": ["Tradovate", "NinjaTrader", "Quantower", "Rithmic", "TradingView", "WealthCharts", "Tradesea TradingView"],
-      "broker": ["Tradovate"],
-      "payment_methods": ["Credit Card", "Crypto", "PayPal"],
-      "payout_methods": ["Plane", "Riseworks"],
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Quantower",
+        "Rithmic",
+        "TradingView",
+        "WealthCharts",
+        "Tradesea TradingView"
+      ],
+      "broker": [
+        "Tradovate"
+      ],
+      "payment_methods": [
+        "Credit Card",
+        "Crypto",
+        "PayPal"
+      ],
+      "payout_methods": [
+        "Plane",
+        "Riseworks"
+      ],
       "discount_text": "Up to 40% off w/ BRO",
       "leverage": {
-        "_note": "For Growth, Select, and Lightning Funded — same leverage table",
+        "_note": "For Growth, Select, and Lightning Funded \u2014 same leverage table",
         "25K": "1 contract / 10 micros",
         "50K": "4 contracts / 40 micros",
         "100K": "8 contracts / 80 micros",
@@ -110,7 +209,7 @@
         "bots_eas": "Allowed if sole-owner, exclusive, verified via live video. NO HFT bots",
         "copy_trading_external": "Prohibited (own accounts only)",
         "news_trading": "Allowed",
-        "market_close_auto_close": "Yes (trading day 6PM–5PM EST)"
+        "market_close_auto_close": "Yes (trading day 6PM\u20135PM EST)"
       },
       "plans": {
         "Growth": {
@@ -128,13 +227,42 @@
           "min_payout_50K": 500,
           "min_payout_100K": 1000,
           "min_payout_150K": 1500,
-          "winning_day_threshold": { "25K": 100, "50K": 150, "100K": 200, "150K": 250 },
-          "balance_for_growth": { "25K": 26500, "50K": 53000, "100K": 104500, "150K": 156500 },
+          "winning_day_threshold": {
+            "25K": 100,
+            "50K": 150,
+            "100K": 200,
+            "150K": 250
+          },
+          "balance_for_growth": {
+            "25K": 26500,
+            "50K": 53000,
+            "100K": 104500,
+            "150K": 156500
+          },
           "sizes": {
-            "25K": { "eval_price_dash": 59, "eval_price_msrp": 99, "profit_target": 1500, "max_drawdown": 1000, "max_position": "1 mini / 10 micro", "reset_fee": 60 },
-            "50K": { "eval_price_dash": 87, "profit_target": 3000, "max_drawdown": 2000 },
-            "100K": { "eval_price_dash": 153, "profit_target": 4500, "max_drawdown": 3000 },
-            "150K": { "eval_price_dash": 221, "profit_target": 6500, "max_drawdown": 5000 }
+            "25K": {
+              "eval_price_dash": 59,
+              "eval_price_msrp": 99,
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "max_position": "1 mini / 10 micro",
+              "reset_fee": 60
+            },
+            "50K": {
+              "eval_price_dash": 87,
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_dash": 153,
+              "profit_target": 4500,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_dash": 221,
+              "profit_target": 6500,
+              "max_drawdown": 5000
+            }
           }
         },
         "Select": {
@@ -152,7 +280,12 @@
               "max_payout_100K": 1500,
               "max_payout_150K": 2500,
               "daily_loss_limit_funded": 500,
-              "buffer": { "25K": 1100, "50K": 2100, "100K": 2600, "150K": 3600 }
+              "buffer": {
+                "25K": 1100,
+                "50K": 2100,
+                "100K": 2600,
+                "150K": 3600
+              }
             },
             "Flex": {
               "payout_frequency": "5 days",
@@ -161,14 +294,38 @@
               "max_payout_100K": 4000,
               "max_payout_150K": 5000,
               "daily_loss_limit_funded": "None",
-              "min_winning_day_profit": { "25K": 100, "50K": 150, "100K": 200, "150K": 250 }
+              "min_winning_day_profit": {
+                "25K": 100,
+                "50K": 150,
+                "100K": 200,
+                "150K": 250
+              }
             }
           },
           "sizes": {
-            "25K": { "eval_price_dash": 65, "eval_price_msrp": 189, "profit_target": 1500, "max_drawdown": 1000, "max_position": "1 mini / 10 micro", "reset_fee": 65 },
-            "50K": { "eval_price_dash": 99, "profit_target": 3000, "max_drawdown": 2000 },
-            "100K": { "eval_price_dash": 159, "profit_target": 4500, "max_drawdown": 3000 },
-            "150K": { "eval_price_dash": 221, "profit_target": 6500, "max_drawdown": 5000 }
+            "25K": {
+              "eval_price_dash": 65,
+              "eval_price_msrp": 189,
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "max_position": "1 mini / 10 micro",
+              "reset_fee": 65
+            },
+            "50K": {
+              "eval_price_dash": 99,
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_dash": 159,
+              "profit_target": 4500,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_dash": 221,
+              "profit_target": 6500,
+              "max_drawdown": 5000
+            }
           }
         },
         "Lightning": {
@@ -179,20 +336,48 @@
           "min_days_to_payout": 5,
           "payout_split": "90/10",
           "min_payout": 1000,
-          "max_payout_tier_1_3": { "25K": 1000, "50K": 2000, "100K": 2500, "150K": 3000 },
-          "max_payout_tier_4plus": { "25K": 1000, "50K": 2500, "100K": 3000, "150K": 3500 },
+          "max_payout_tier_1_3": {
+            "25K": 1000,
+            "50K": 2000,
+            "100K": 2500,
+            "150K": 3000
+          },
+          "max_payout_tier_4plus": {
+            "25K": 1000,
+            "50K": 2500,
+            "100K": 3000,
+            "150K": 3500
+          },
           "first_payout_pct": "6%",
-          "subsequent_pct": { "25K": 4, "50K": 4, "100K": 3.5, "150K": 3 },
+          "subsequent_pct": {
+            "25K": 4,
+            "50K": 4,
+            "100K": 3.5,
+            "150K": 3
+          },
           "sizes": {
-            "25K": { "eval_price_dash": 207, "eval_price_msrp": 345, "max_drawdown": 1000, "max_position": "1 mini / 10 micro" },
-            "50K": { "eval_price_dash": 295, "max_drawdown": 2000 },
-            "100K": { "eval_price_dash": 396, "max_drawdown": 3000 },
-            "150K": { "eval_price_dash": 478, "max_drawdown": 5000 }
+            "25K": {
+              "eval_price_dash": 207,
+              "eval_price_msrp": 345,
+              "max_drawdown": 1000,
+              "max_position": "1 mini / 10 micro"
+            },
+            "50K": {
+              "eval_price_dash": 295,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_dash": 396,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_dash": 478,
+              "max_drawdown": 5000
+            }
           }
         }
       }
     },
-
     "myfundedfutures": {
       "name": "MyFundedFutures (MFFU)",
       "country": "USA",
@@ -200,25 +385,56 @@
       "rating": "4.6/5 (221 reviews)",
       "code_default": "BRO",
       "affiliate_url": "https://myfundedfutures.com/challenge?ref=5117",
-      "platforms": ["Tradovate", "NinjaTrader", "Quantower", "TradingView", "ATAS", "Volbook", "Volsys", "Volumetrica"],
-      "broker": ["DXFeed", "Tradovate"],
-      "payment_methods": ["Credit/Debit Card", "Crypto"],
-      "payout_methods": ["Riseworks"],
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Quantower",
+        "TradingView",
+        "ATAS",
+        "Volbook",
+        "Volsys",
+        "Volumetrica"
+      ],
+      "broker": [
+        "DXFeed",
+        "Tradovate"
+      ],
+      "payment_methods": [
+        "Credit/Debit Card",
+        "Crypto"
+      ],
+      "payout_methods": [
+        "Riseworks"
+      ],
       "discount_text": "Up to 50% off w/ BRO",
       "leverage": {
-        "Flex": { "25K": "3 minis / 30 micros", "50K": "5 minis / 50 micros" },
-        "Pro": { "50K": "3 minis / 30 micros", "100K": "6 minis / 60 micros", "150K": "9 minis / 90 micros" },
-        "Rapid": { "25K": "3 minis / 30 micros", "50K": "5 minis / 50 micros", "100K": "10 minis / 100 micros", "150K": "15 minis / 150 micros" },
-        "Builder": { "50K": "4 minis / 40 micros" }
+        "Flex": {
+          "25K": "3 minis / 30 micros",
+          "50K": "5 minis / 50 micros"
+        },
+        "Pro": {
+          "50K": "3 minis / 30 micros",
+          "100K": "6 minis / 60 micros",
+          "150K": "9 minis / 90 micros"
+        },
+        "Rapid": {
+          "25K": "3 minis / 30 micros",
+          "50K": "5 minis / 50 micros",
+          "100K": "10 minis / 100 micros",
+          "150K": "15 minis / 150 micros"
+        },
+        "Builder": {
+          "50K": "4 minis / 40 micros"
+        }
       },
       "rules_global": {
         "max_eval_accounts": "10 accounts up to $1.5M",
         "max_sim_funded": "5x 50K | 3x 100K | 3x 150K (up to $450K)",
-        "trading_hours": "18:00–16:10 EST (auto-close at 16:10)",
+        "trading_hours": "18:00\u201316:10 EST (auto-close at 16:10)",
         "inactivity_days": 7,
         "automation": "Allowed (no exploit of sim fills); CME guidelines for live",
         "copy_trading": "Allowed",
-        "news_trading_t1": "Pro/Rapid Sim funded prohibited ±2min; Flex unrestricted",
+        "news_trading_t1": "Pro/Rapid Sim funded prohibited \u00b12min; Flex unrestricted",
         "price_limit_rule": "No trading within 2% of CME price limit",
         "cross_instrument": "Single instrument only (e.g., max 2 NQ contracts)"
       },
@@ -234,13 +450,37 @@
           "payout_split": "80/20",
           "min_payout": 1000,
           "max_total_sim": 100000,
-          "buffer": { "50K": 2100, "100K": 3100, "150K": 4600 },
+          "buffer": {
+            "50K": 2100,
+            "100K": 3100,
+            "150K": 4600
+          },
           "withdrawal_in_buffer_pct": 60,
           "live_transition": "After 3 consecutive payouts or $20K profit milestone",
           "sizes": {
-            "50K": { "eval_price_brotrading": 113.50, "eval_price_msrp": 227, "discount_pct": 50, "profit_target": 3000, "max_drawdown": 2000, "max_position_eval": "3 contracts", "max_position_funded": "5 contracts" },
-            "100K": { "eval_price_brotrading": 172, "eval_price_msrp": 344, "discount_pct": 50, "profit_target": 6000, "max_drawdown": 3000 },
-            "150K": { "eval_price_brotrading": 238.50, "eval_price_msrp": 477, "discount_pct": 50, "profit_target": 9000, "max_drawdown": 5000 }
+            "50K": {
+              "eval_price_brotrading": 113.5,
+              "eval_price_msrp": 227,
+              "discount_pct": 50,
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "max_position_eval": "3 contracts",
+              "max_position_funded": "5 contracts"
+            },
+            "100K": {
+              "eval_price_brotrading": 172,
+              "eval_price_msrp": 344,
+              "discount_pct": 50,
+              "profit_target": 6000,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_brotrading": 238.5,
+              "eval_price_msrp": 477,
+              "discount_pct": 50,
+              "profit_target": 9000,
+              "max_drawdown": 5000
+            }
           }
         },
         "Rapid": {
@@ -255,13 +495,43 @@
           "payout_split": "90/10",
           "min_payout": 500,
           "max_total_sim": 100000,
-          "buffer": { "25K": 1100, "50K": 2100, "100K": 3100, "150K": 4600 },
+          "buffer": {
+            "25K": 1100,
+            "50K": 2100,
+            "100K": 3100,
+            "150K": 4600
+          },
           "max_loss_lock_at": 100,
           "sizes": {
-            "25K": { "eval_price_brotrading": 87.20, "eval_price_msrp": 109, "discount_pct": 20, "profit_target": 1500, "max_drawdown": 1000 },
-            "50K": { "eval_price_brotrading": 125.60, "eval_price_msrp": 157, "discount_pct": 20, "profit_target": 3000, "max_drawdown": 2000, "max_position": "5 contracts (10:1 micro)" },
-            "100K": { "eval_price_brotrading": 213.60, "eval_price_msrp": 267, "discount_pct": 20, "profit_target": 6000, "max_drawdown": 3000 },
-            "150K": { "eval_price_brotrading": 277.60, "eval_price_msrp": 347, "discount_pct": 20, "profit_target": 9000, "max_drawdown": 5000 }
+            "25K": {
+              "eval_price_brotrading": 87.2,
+              "eval_price_msrp": 109,
+              "discount_pct": 20,
+              "profit_target": 1500,
+              "max_drawdown": 1000
+            },
+            "50K": {
+              "eval_price_brotrading": 125.6,
+              "eval_price_msrp": 157,
+              "discount_pct": 20,
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "max_position": "5 contracts (10:1 micro)"
+            },
+            "100K": {
+              "eval_price_brotrading": 213.6,
+              "eval_price_msrp": 267,
+              "discount_pct": 20,
+              "profit_target": 6000,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_brotrading": 277.6,
+              "eval_price_msrp": 347,
+              "discount_pct": 20,
+              "profit_target": 9000,
+              "max_drawdown": 5000
+            }
           }
         },
         "Flex": {
@@ -275,12 +545,31 @@
           "payout_split": "80/20",
           "min_payout": 250,
           "max_payout_request_pct": 50,
-          "max_payout_request": { "25K": 3000, "50K": 5000 },
+          "max_payout_request": {
+            "25K": 3000,
+            "50K": 5000
+          },
           "max_loss_after_first_payout": 100,
-          "winning_day_threshold": { "25K": 100, "50K": 150 },
+          "winning_day_threshold": {
+            "25K": 100,
+            "50K": 150
+          },
           "sizes": {
-            "25K": { "eval_price_brotrading": 49, "eval_price_msrp": 84, "discount_pct": 42, "profit_target": 1500, "max_drawdown": 1000, "max_position": "3 contracts (10:1 micro)" },
-            "50K": { "eval_price_brotrading": 107, "eval_price_msrp": null, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000 }
+            "25K": {
+              "eval_price_brotrading": 49,
+              "eval_price_msrp": 84,
+              "discount_pct": 42,
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "max_position": "3 contracts (10:1 micro)"
+            },
+            "50K": {
+              "eval_price_brotrading": 107,
+              "eval_price_msrp": null,
+              "discount_pct": 40,
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            }
           }
         },
         "Builder": {
@@ -297,12 +586,18 @@
           "buffer_first_payout": "MLL + $100 ($1600 or $2100 depending on MLL)",
           "net_profit_required_first_payout": 500,
           "sizes": {
-            "50K": { "eval_price_brotrading": 91.80, "eval_price_msrp": 153, "discount_pct": 40, "profit_target": 3000, "max_drawdown": 2000, "max_position": "4 contracts (10:1 micro)" }
+            "50K": {
+              "eval_price_brotrading": 91.8,
+              "eval_price_msrp": 153,
+              "discount_pct": 40,
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "max_position": "4 contracts (10:1 micro)"
+            }
           }
         }
       }
     },
-
     "alpha_futures": {
       "name": "Alpha Futures",
       "country": "UK",
@@ -310,14 +605,29 @@
       "rating": "4.6/5 (40 reviews)",
       "code_default": "BROTRADING",
       "affiliate_url": "https://app.alpha-futures.com/signup/BROTRADING/",
-      "platforms": ["Tradovate", "NinjaTrader", "TradingView"],
-      "broker": ["Tradovate"],
-      "payment_methods": ["Credit/Debit Card", "Crypto"],
-      "payout_methods": ["ACH", "Bank Wire", "Riseworks", "Swift", "Wise"],
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView"
+      ],
+      "broker": [
+        "Tradovate"
+      ],
+      "payment_methods": [
+        "Credit/Debit Card",
+        "Crypto"
+      ],
+      "payout_methods": [
+        "ACH",
+        "Bank Wire",
+        "Riseworks",
+        "Swift",
+        "Wise"
+      ],
       "discount_text": "20% off w/ BROTRADING",
       "pricing_model": "MONTHLY (subscription, not one-time)",
       "rules_global": {
-        "automation": "Strictly prohibited (EAs, AI, bots) — across all account types",
+        "automation": "Strictly prohibited (EAs, AI, bots) \u2014 across all account types",
         "copy_trading": "Prohibited",
         "all_or_nothing": "Withdrawing all profits after trailing-balance adjustment = account closure",
         "tick_micro_scalping": "Prohibited (trades <10 ticks AND <2 minutes)",
@@ -327,7 +637,7 @@
         "inactivity_trading_days": 10,
         "overnight_holding": "Not allowed",
         "weekend_holding": "Not allowed",
-        "payout_processing_time": "≤48 business hours"
+        "payout_processing_time": "\u226448 business hours"
       },
       "plans": {
         "Standard": {
@@ -349,9 +659,31 @@
           "payout_split": "Tiered: 70% (payouts 1-2), 80% (3-4), 90% (5+)",
           "hold_through_news": "Yes (with restrictions on funded)",
           "sizes": {
-            "50K": { "eval_price_brotrading": 63.20, "eval_price_msrp": 79, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000, "reset_fee": 59 },
-            "100K": { "eval_price_brotrading": 127.20, "eval_price_msrp": 159, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 },
-            "150K": { "eval_price_brotrading": 191.20, "eval_price_msrp": 239, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 }
+            "50K": {
+              "eval_price_brotrading": 63.2,
+              "eval_price_msrp": 79,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "reset_fee": 59
+            },
+            "100K": {
+              "eval_price_brotrading": 127.2,
+              "eval_price_msrp": 159,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "150K": {
+              "eval_price_brotrading": 191.2,
+              "eval_price_msrp": 239,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            }
           }
         },
         "Zero": {
@@ -376,9 +708,32 @@
           "withdrawal_pct_after_30_days": 100,
           "hold_through_news": "Yes (with restrictions on funded)",
           "sizes": {
-            "25K": { "eval_price_brotrading": 63.20, "eval_price_msrp": 79, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000, "reset_fee_eval": 109, "reset_fee_funded": 499 },
-            "50K": { "eval_price_brotrading": 95.20, "eval_price_msrp": 119, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 },
-            "100K": { "eval_price_brotrading": 191.20, "eval_price_msrp": 239, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 3000, "max_drawdown": 2000 }
+            "25K": {
+              "eval_price_brotrading": 63.2,
+              "eval_price_msrp": 79,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "reset_fee_eval": 109,
+              "reset_fee_funded": 499
+            },
+            "50K": {
+              "eval_price_brotrading": 95.2,
+              "eval_price_msrp": 119,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_brotrading": 191.2,
+              "eval_price_msrp": 239,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            }
           }
         },
         "Advanced": {
@@ -402,31 +757,988 @@
           "withdrawal_pct_after_30_days": 100,
           "hold_through_news": "Yes (no restrictions)",
           "sizes": {
-            "50K": { "eval_price_brotrading": 111.20, "eval_price_msrp": 139, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750, "reset_fee": 139 },
-            "100K": { "eval_price_brotrading": 223.20, "eval_price_msrp": 279, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750 },
-            "150K": { "eval_price_brotrading": 335.20, "eval_price_msrp": 419, "discount_pct": 20, "pricing_basis": "monthly", "profit_target": 4000, "max_drawdown": 1750 }
+            "50K": {
+              "eval_price_brotrading": 111.2,
+              "eval_price_msrp": 139,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 4000,
+              "max_drawdown": 1750,
+              "reset_fee": 139
+            },
+            "100K": {
+              "eval_price_brotrading": 223.2,
+              "eval_price_msrp": 279,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 4000,
+              "max_drawdown": 1750
+            },
+            "150K": {
+              "eval_price_brotrading": 335.2,
+              "eval_price_msrp": 419,
+              "discount_pct": 20,
+              "pricing_basis": "monthly",
+              "profit_target": 4000,
+              "max_drawdown": 1750
+            }
           }
         }
       }
     },
-
     "top_one_futures": {
-      "_status": "Partial — full data pending. Sizes/prices collected from limited screenshots."
+      "name": "Top One Futures",
+      "code_default": "BRO",
+      "affiliate_url": "https://toponefutures.com/",
+      "platforms": [],
+      "discount_text": "Up to 50% OFF with code ANNIVERSARY",
+      "rules_global": {
+        "consistency": "Varies by plan: Elite 25% on funded, Elite Access 40% on funded (none on challenge), INSTANT Sim Funded 20%, S2F Sim PRO 20%, IGNITE 15%",
+        "min_trading_days": null,
+        "payout_split": "90/10",
+        "min_payout": null
+      },
+      "plans": {
+        "Elite": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": 625,
+              "eval_price_msrp": 69,
+              "eval_price_discounted": 41,
+              "activation_fee": 149,
+              "min_trading_days": 1
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 105,
+              "eval_price_discounted": 63,
+              "activation_fee": 149,
+              "min_trading_days": 1
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": 2500,
+              "eval_price_msrp": 209,
+              "eval_price_discounted": 125,
+              "activation_fee": 149,
+              "min_trading_days": 1
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "daily_drawdown": 3750,
+              "eval_price_msrp": 309,
+              "eval_price_discounted": 185,
+              "activation_fee": 149,
+              "min_trading_days": 1
+            }
+          }
+        },
+        "Elite Access": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 139,
+              "eval_price_discounted": 39,
+              "activation_fee": 139,
+              "min_trading_days": 1
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 189,
+              "eval_price_discounted": 39,
+              "activation_fee": 189,
+              "min_trading_days": 1
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 259,
+              "eval_price_discounted": 39,
+              "activation_fee": 259,
+              "min_trading_days": 1
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 359,
+              "eval_price_discounted": 39,
+              "activation_fee": 359,
+              "min_trading_days": 1
+            }
+          }
+        },
+        "INSTANT Sim Funded": {
+          "type": "Instant Funded",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": null,
+              "max_drawdown": 1000,
+              "daily_drawdown": 625,
+              "eval_price_msrp": 419,
+              "eval_price_discounted": 210,
+              "activation_fee": null,
+              "min_trading_days": null
+            },
+            "50K": {
+              "profit_target": null,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 679,
+              "eval_price_discounted": 340,
+              "activation_fee": null,
+              "min_trading_days": null
+            },
+            "100K": {
+              "profit_target": null,
+              "max_drawdown": 4000,
+              "daily_drawdown": 2500,
+              "eval_price_msrp": 821,
+              "eval_price_discounted": 411,
+              "activation_fee": null,
+              "min_trading_days": null
+            },
+            "150K": {
+              "profit_target": null,
+              "max_drawdown": 6000,
+              "daily_drawdown": 3750,
+              "eval_price_msrp": 939,
+              "eval_price_discounted": 470,
+              "activation_fee": null,
+              "min_trading_days": null
+            }
+          }
+        },
+        "S2F Sim PRO": {
+          "type": "Instant Funded",
+          "drawdown_type": "Intraday",
+          "sizes": {
+            "25K": {
+              "profit_target": null,
+              "max_drawdown": 1000,
+              "daily_drawdown": 500,
+              "eval_price_msrp": 257,
+              "eval_price_discounted": 154,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "50K": {
+              "profit_target": null,
+              "max_drawdown": 1625,
+              "daily_drawdown": 1000,
+              "eval_price_msrp": 421,
+              "eval_price_discounted": 253,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "100K": {
+              "profit_target": null,
+              "max_drawdown": 3250,
+              "daily_drawdown": 2000,
+              "eval_price_msrp": 632,
+              "eval_price_discounted": 379,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "150K": {
+              "profit_target": null,
+              "max_drawdown": 5000,
+              "daily_drawdown": 3000,
+              "eval_price_msrp": 727,
+              "eval_price_discounted": 436,
+              "activation_fee": null,
+              "min_trading_days": 10
+            }
+          }
+        },
+        "IGNITE Instant Funding": {
+          "type": "Instant Funded",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": null,
+              "max_drawdown": 1000,
+              "daily_drawdown": 500,
+              "eval_price_msrp": 218,
+              "eval_price_discounted": 131,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "50K": {
+              "profit_target": null,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1000,
+              "eval_price_msrp": 398,
+              "eval_price_discounted": 239,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "100K": {
+              "profit_target": null,
+              "max_drawdown": 4000,
+              "daily_drawdown": 2000,
+              "eval_price_msrp": 563,
+              "eval_price_discounted": 338,
+              "activation_fee": null,
+              "min_trading_days": 10
+            },
+            "150K": {
+              "profit_target": null,
+              "max_drawdown": 6000,
+              "daily_drawdown": 3000,
+              "eval_price_msrp": 799,
+              "eval_price_discounted": 479,
+              "activation_fee": null,
+              "min_trading_days": 10
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://toponefutures.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Discount code ANNIVERSARY: 50% off INSTANT Sim Funded, 40% off Elite/Elite Access/S2F/IGNITE. Elite plan is monthly subscription (price/mo); other plans are one-time fees. Elite Access activation fee equals MSRP per the table; reset fee is 'Only $35' on funded. Elite Access has no daily loss limit ('None!'). For INSTANT Sim Funded 100K/150K, two trailing drawdown values shown ($3,000/$4,000 and $4,500/$6,000) \u2014 used the higher value as max_drawdown. Same dual-value pattern for IGNITE 100K/150K. Platforms not specified in HTML. Min payout amount not specified; min trading days to payout: 5 (Elite Access), 10 (S2F, IGNITE). Payout split 90/10 from calculator section ('keep 90%')."
     },
     "apex_trader_funding": {
-      "_status": "Verified pricing only. Full rules pending Mike's data dump."
+      "name": "Apex Trader Funding",
+      "code_default": "BRO",
+      "affiliate_url": "https://apextraderfunding.com/member/aff/go/buurtie",
+      "platforms": [
+        "NinjaTrader",
+        "Rithmic",
+        "Tradovate",
+        "WealthCharts"
+      ],
+      "discount_text": "~90% off with Coupon Code (e.g. $199 \u2192 $19.90)",
+      "rules_global": {
+        "consistency": "50% (best trading day may not exceed 50% of total profit)",
+        "min_trading_days": 1,
+        "payout_split": "None - 100%",
+        "min_payout": null
+      },
+      "plans": {
+        "Intraday Trail": {
+          "type": "Evaluation",
+          "drawdown_type": "Trailing",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 199.0,
+              "eval_price_discounted": 19.9,
+              "activation_fee": 89,
+              "min_trading_days": 1
+            }
+          }
+        },
+        "EOD Trail": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": 500,
+              "eval_price_msrp": 299.0,
+              "eval_price_discounted": 29.9,
+              "activation_fee": 109,
+              "min_trading_days": 1
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": 1500,
+              "eval_price_msrp": 599.0,
+              "eval_price_discounted": 59.9,
+              "activation_fee": 139,
+              "min_trading_days": 1
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://apextraderfunding.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Only the rendered states for 25k Rithmic Intraday, 25k Rithmic EOD, and 100k Rithmic EOD were present in HTML. Sizes 50k and 150k are referenced in the picker/menus but their pricing/rules were not rendered in the provided HTML. Vendor variants (Tradovate, Wealthcharts) were not rendered with separate pricing \u2014 assumed identical via Rithmic data, but not confirmed. Discount appears as a 'with Coupon Code' price (~90% off MSRP); coupon code text not in HTML. Drawdown for Intraday Trail labeled 'Intraday Trail' tooltip='Intraday Trailing Drawdown' \u2014 coded as Trailing. Min payout amount not stated; payout frequency is every 5 trading days. This is the 'New' Apex product line (post March 1, 2026); legacy products excluded."
     },
     "phidias": {
-      "_status": "Pending Mike's data dump."
+      "name": "Phidias Prop Firm",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://member.phidiaspropfirm.com/aff/go/brotrading",
+      "platforms": [
+        "dxFeed",
+        "Rithmic"
+      ],
+      "discount_text": "80% off (price-y shown is 20% of price-x)",
+      "rules_global": {
+        "consistency": null,
+        "min_trading_days": 3,
+        "payout_split": null,
+        "min_payout": null
+      },
+      "plans": {
+        "Fundamental OTP (One-Time Payment)": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "50K": {
+              "profit_target": 4000,
+              "max_drawdown": 2500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 580,
+              "eval_price_discounted": 116,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 723,
+              "eval_price_discounted": 144.6,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 863,
+              "eval_price_discounted": 172.6,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            }
+          }
+        },
+        "Fundamental Evaluation (Monthly)": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "50K": {
+              "profit_target": 4000,
+              "max_drawdown": 2500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 164,
+              "eval_price_discounted": 65.6,
+              "activation_fee": 149,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 273,
+              "eval_price_discounted": 109.2,
+              "activation_fee": 149,
+              "min_trading_days": 3
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 420,
+              "eval_price_discounted": 168,
+              "activation_fee": 169,
+              "min_trading_days": 3
+            }
+          }
+        },
+        "Swing OTP (One-Time Payment)": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "50K": {
+              "profit_target": 4000,
+              "max_drawdown": 2500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 723,
+              "eval_price_discounted": 144.6,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 900,
+              "eval_price_discounted": 180,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 1123,
+              "eval_price_discounted": 224.6,
+              "activation_fee": 0,
+              "min_trading_days": 3
+            }
+          }
+        },
+        "Swing Evaluation (Monthly)": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "50K": {
+              "profit_target": 4000,
+              "max_drawdown": 2500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 329,
+              "eval_price_discounted": 131.6,
+              "activation_fee": 149,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 411,
+              "eval_price_discounted": 164.4,
+              "activation_fee": 149,
+              "min_trading_days": 3
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://phidiaspropfirm.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Pricing shown with two values: price-x (struck-through, full) and price-y (discounted, ~80% off for OTP and 60% off for Monthly Evaluation; ratios vary by plan \u2014 OTP 50K Fundamental: 580\u2192116 = 80% off, Monthly 50K Fundamental: 164\u219265.6 = 60% off). The exact discount code/text is not visible in HTML \u2014 discount_text is inferred from displayed prices. Daily loss limit is None for all plans. Account types are 'Fundamental' (intraday/futures) and 'Swing' (allows overnight/overweek). Reset fees apply only to monthly Evaluation plans ($40/$64/$104). Activation fees are waived ($0) for OTP plans, $149 (50K/100K) or $169 (150K) for monthly Evaluation. 150K Swing monthly plan was cut off in the HTML so not included. No payout/split/consistency rule data found in this section of HTML."
     },
     "daytraders": {
-      "_status": "Pending Mike's data dump."
+      "name": "DayTraders",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+      "platforms": [
+        "Rithmic",
+        "ONYX",
+        "TradingView"
+      ],
+      "discount_text": "85% OFF (widget); also a 90% off popup advertised",
+      "rules_global": {
+        "consistency": "50% during evaluation, 30% on Pro accounts; 20% on S2F; 25% on S2L evaluation, none on S2L Live",
+        "min_trading_days": 2,
+        "payout_split": "100% to trader on Pro/Eval accounts; 80/20 on S2L Live accounts",
+        "min_payout": null
+      },
+      "plans": {
+        "Trail": {
+          "type": "Evaluation",
+          "drawdown_type": "Trailing",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 249,
+              "eval_price_discounted": 37.35,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 379,
+              "eval_price_discounted": 56.85,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "150K": {
+              "profit_target": 8500,
+              "max_drawdown": 4500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 699,
+              "eval_price_discounted": 104.85,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "300K": {
+              "profit_target": 15000,
+              "max_drawdown": 7000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 879,
+              "eval_price_discounted": 131.85,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            }
+          }
+        },
+        "EOD": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": 800,
+              "eval_price_msrp": 309,
+              "eval_price_discounted": 46.35,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 469,
+              "eval_price_discounted": 70.35,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "150K": {
+              "profit_target": 8500,
+              "max_drawdown": 4000,
+              "daily_drawdown": 2000,
+              "eval_price_msrp": 899,
+              "eval_price_discounted": 134.85,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "300K": {
+              "profit_target": 15000,
+              "max_drawdown": 6500,
+              "daily_drawdown": 3250,
+              "eval_price_msrp": 1599,
+              "eval_price_discounted": 239.85,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            }
+          }
+        },
+        "Static": {
+          "type": "Evaluation",
+          "drawdown_type": "Static",
+          "sizes": {
+            "25K": {
+              "profit_target": 2500,
+              "max_drawdown": 750,
+              "daily_drawdown": null,
+              "eval_price_msrp": 150,
+              "eval_price_discounted": 30,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "50K": {
+              "profit_target": 3750,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 200,
+              "eval_price_discounted": 40,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "100K": {
+              "profit_target": 5750,
+              "max_drawdown": 1500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 325,
+              "eval_price_discounted": 65,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            },
+            "150K": {
+              "profit_target": 6750,
+              "max_drawdown": 1750,
+              "daily_drawdown": null,
+              "eval_price_msrp": 400,
+              "eval_price_discounted": 80,
+              "activation_fee": 130,
+              "min_trading_days": 2
+            }
+          }
+        },
+        "S2F (Straight to Funded)": {
+          "type": "Instant Funded",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": null,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 370,
+              "eval_price_discounted": 222,
+              "activation_fee": null,
+              "min_trading_days": null
+            },
+            "50K": {
+              "profit_target": null,
+              "max_drawdown": 2500,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 570,
+              "eval_price_discounted": 342,
+              "activation_fee": null,
+              "min_trading_days": null
+            },
+            "150K": {
+              "profit_target": null,
+              "max_drawdown": 6000,
+              "daily_drawdown": 3750,
+              "eval_price_msrp": 825,
+              "eval_price_discounted": 495,
+              "activation_fee": null,
+              "min_trading_days": null
+            }
+          }
+        },
+        "S2L Core (Straight to Live)": {
+          "type": "Evaluation",
+          "drawdown_type": "Trailing",
+          "sizes": {
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1000,
+              "eval_price_msrp": 329,
+              "eval_price_discounted": 229,
+              "activation_fee": 0,
+              "min_trading_days": 8
+            }
+          }
+        },
+        "S2L Edge (Straight to Live)": {
+          "type": "Evaluation",
+          "drawdown_type": "Trailing",
+          "sizes": {
+            "150K": {
+              "profit_target": 8500,
+              "max_drawdown": 4500,
+              "daily_drawdown": 1750,
+              "eval_price_msrp": 469,
+              "eval_price_discounted": 369,
+              "activation_fee": 0,
+              "min_trading_days": 8
+            }
+          }
+        },
+        "S2L Ultra (Straight to Live)": {
+          "type": "Evaluation",
+          "drawdown_type": "Trailing",
+          "sizes": {
+            "300K": {
+              "profit_target": 15000,
+              "max_drawdown": 7000,
+              "daily_drawdown": 3250,
+              "eval_price_msrp": 599,
+              "eval_price_discounted": 499,
+              "activation_fee": 0,
+              "min_trading_days": 8
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://daytraders.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Discount widget shows 85% OFF countdown banner; popup advertises 90% Off. Discounted prices in HTML imply roughly 85% off MSRP for Trail/EOD/Static evaluations and ~40% off for S2F, ~30% off for S2L plans (S2L Core: $329->$229; Edge: $469->$369; Ultra: $599->$499 \u2014 these may be flat $100 off promo). Pro account activation fee is $130 (one-time) on Pro upgrades for Trail/EOD/Static. S2L Live accounts have FREE activation. Profit split: 100% on funded Pro accounts (per marketing); 80/20 only on S2L Live accounts. Min payout amount not specified in HTML. Payout frequency: 8 qualifying days for Pro, 10 for S2F, daily on S2L Live. Platforms: Rithmic data feeds, ONYX (proprietary browser-based), TradingView charts. Consistency rules vary: 50% during eval, 30% Pro, 20% S2F, 25% S2L eval, none on S2L Live."
     },
     "nexgen_pro_trader": {
-      "_status": "Pending Mike's data dump."
+      "name": "NexGen Funding",
+      "code_default": "BRO",
+      "affiliate_url": "https://thenextgenfunding.com/",
+      "platforms": [],
+      "discount_text": "30% OFF 50K, 100K, & 200K CHALLENGES with code PASS30 (April Promotion, valid until 30/04)",
+      "rules_global": {
+        "consistency": null,
+        "min_trading_days": null,
+        "payout_split": "Up to 90%",
+        "min_payout": null
+      },
+      "plans": {
+        "Standard Challenge": {
+          "type": "2-Step Evaluation",
+          "drawdown_type": "Static",
+          "sizes": {
+            "5K": {
+              "profit_target": 500,
+              "max_drawdown": 500,
+              "daily_drawdown": 250,
+              "eval_price_msrp": 59,
+              "eval_price_discounted": 41,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "10K": {
+              "profit_target": 1000,
+              "max_drawdown": 1000,
+              "daily_drawdown": 500,
+              "eval_price_msrp": 129,
+              "eval_price_discounted": 90,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "25K": {
+              "profit_target": 2500,
+              "max_drawdown": 2500,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 199,
+              "eval_price_discounted": 179,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "50K": {
+              "profit_target": 5000,
+              "max_drawdown": 5000,
+              "daily_drawdown": 2500,
+              "eval_price_msrp": 369,
+              "eval_price_discounted": 329,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 10000,
+              "max_drawdown": 10000,
+              "daily_drawdown": 5000,
+              "eval_price_msrp": 589,
+              "eval_price_discounted": 529,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "200K": {
+              "profit_target": 20000,
+              "max_drawdown": 20000,
+              "daily_drawdown": 10000,
+              "eval_price_msrp": 1189,
+              "eval_price_discounted": 1069,
+              "activation_fee": null,
+              "min_trading_days": 3
+            }
+          }
+        },
+        "Rapid Challenge": {
+          "type": "2-Step Evaluation",
+          "drawdown_type": "Static",
+          "sizes": {
+            "5K": {
+              "profit_target": 400,
+              "max_drawdown": 400,
+              "daily_drawdown": 250,
+              "eval_price_msrp": 59,
+              "eval_price_discounted": 41,
+              "activation_fee": null,
+              "min_trading_days": 0
+            },
+            "10K": {
+              "profit_target": 800,
+              "max_drawdown": 800,
+              "daily_drawdown": 500,
+              "eval_price_msrp": 129,
+              "eval_price_discounted": 90,
+              "activation_fee": null,
+              "min_trading_days": 0
+            },
+            "25K": {
+              "profit_target": 2000,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1250,
+              "eval_price_msrp": 199,
+              "eval_price_discounted": 179,
+              "activation_fee": null,
+              "min_trading_days": 0
+            },
+            "50K": {
+              "profit_target": 4000,
+              "max_drawdown": 4000,
+              "daily_drawdown": 2500,
+              "eval_price_msrp": 369,
+              "eval_price_discounted": 329,
+              "activation_fee": null,
+              "min_trading_days": 0
+            },
+            "100K": {
+              "profit_target": 8000,
+              "max_drawdown": 8000,
+              "daily_drawdown": 5000,
+              "eval_price_msrp": 589,
+              "eval_price_discounted": 529,
+              "activation_fee": null,
+              "min_trading_days": 0
+            },
+            "200K": {
+              "profit_target": 16000,
+              "max_drawdown": 16000,
+              "daily_drawdown": 10000,
+              "eval_price_msrp": 1189,
+              "eval_price_discounted": 1069,
+              "activation_fee": null,
+              "min_trading_days": 0
+            }
+          }
+        },
+        "Ace Challenge": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "Static",
+          "sizes": {
+            "5K": {
+              "profit_target": 500,
+              "max_drawdown": 300,
+              "daily_drawdown": 150,
+              "eval_price_msrp": 65,
+              "eval_price_discounted": 46,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "10K": {
+              "profit_target": 1000,
+              "max_drawdown": 600,
+              "daily_drawdown": 300,
+              "eval_price_msrp": 139,
+              "eval_price_discounted": 100,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "25K": {
+              "profit_target": 2500,
+              "max_drawdown": 1500,
+              "daily_drawdown": 750,
+              "eval_price_msrp": 224,
+              "eval_price_discounted": 204,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "50K": {
+              "profit_target": 5000,
+              "max_drawdown": 3000,
+              "daily_drawdown": 1500,
+              "eval_price_msrp": 419,
+              "eval_price_discounted": 379,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "100K": {
+              "profit_target": 10000,
+              "max_drawdown": 6000,
+              "daily_drawdown": 3000,
+              "eval_price_msrp": 689,
+              "eval_price_discounted": 629,
+              "activation_fee": null,
+              "min_trading_days": 3
+            },
+            "200K": {
+              "profit_target": 20000,
+              "max_drawdown": 12000,
+              "daily_drawdown": 6000,
+              "eval_price_msrp": 1389,
+              "eval_price_discounted": 1269,
+              "activation_fee": null,
+              "min_trading_days": 3
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://thenextgenfunding.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Discount displayed in promo bar is 30% off 50K/100K/200K with code PASS30 (April promo); however table shows discounted prices already applied across all sizes (these may reflect a different/standing discount). Profit target for Standard and Rapid is two-phase: P1 then P2 (Standard P1:10%/P2:5%; Rapid P1:8%/P2:5%) \u2014 only P1 target stored in profit_target field. Drawdown is described as 'Balance Based Drawdown' (static/balance-based, not trailing). No trading platforms specified on this page (separate Trading Platforms page referenced). No min payout amount or consistency rule disclosed on this page. Fee is refundable with first payout. | POST-PROCESSING: percentage values (target/maxDD/dailyDD) converted to dollars using account_size \u00d7 pct / 100."
     },
     "yrm_prop": {
-      "_status": "Pending Mike's data dump."
+      "name": "YRM Prop",
+      "code_default": "BRO",
+      "affiliate_url": "https://yrmprop.com/ref/Bro/",
+      "platforms": [],
+      "discount_text": "40% off with code YRM40 (Instant Prime); Starter shows promotional pricing without explicit code",
+      "rules_global": {
+        "consistency": "50% (Starter Challenge); 20% (Instant Prime)",
+        "min_trading_days": 8,
+        "payout_split": "90/10",
+        "min_payout": null
+      },
+      "plans": {
+        "Starter": {
+          "type": "Evaluation",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 99,
+              "eval_price_discounted": 59,
+              "activation_fee": 0,
+              "min_trading_days": null
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 149,
+              "eval_price_discounted": 74,
+              "activation_fee": 0,
+              "min_trading_days": null
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 249,
+              "eval_price_discounted": 131,
+              "activation_fee": 0,
+              "min_trading_days": null
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "daily_drawdown": null,
+              "eval_price_msrp": 349,
+              "eval_price_discounted": 144,
+              "activation_fee": 0,
+              "min_trading_days": null
+            }
+          }
+        },
+        "Instant Prime": {
+          "type": "Instant Funded",
+          "drawdown_type": "EOD",
+          "sizes": {
+            "25K": {
+              "profit_target": null,
+              "max_drawdown": 1250,
+              "daily_drawdown": null,
+              "eval_price_msrp": 399,
+              "eval_price_discounted": 239.4,
+              "activation_fee": null,
+              "min_trading_days": 8
+            },
+            "50K": {
+              "profit_target": null,
+              "max_drawdown": 2000,
+              "daily_drawdown": 1500,
+              "eval_price_msrp": 599,
+              "eval_price_discounted": 359.4,
+              "activation_fee": null,
+              "min_trading_days": 8
+            },
+            "100K": {
+              "profit_target": null,
+              "max_drawdown": 4000,
+              "daily_drawdown": 3000,
+              "eval_price_msrp": 749,
+              "eval_price_discounted": 449.4,
+              "activation_fee": null,
+              "min_trading_days": 8
+            },
+            "150K": {
+              "profit_target": null,
+              "max_drawdown": 6000,
+              "daily_drawdown": 4500,
+              "eval_price_msrp": 899,
+              "eval_price_discounted": 539.4,
+              "activation_fee": null,
+              "min_trading_days": 8
+            }
+          }
+        }
+      },
+      "_status": "Auto-extracted from https://yrmprop.com/ on 2026-05-03. Verify before publishing.",
+      "_extraction_notes": "Platforms section in HTML is empty (logos rendered via CSS/images). Starter plan shows a 'reset price' separate from initial purchase price; reset prices: $49/$69/$125/$139 for 25K/50K/100K/150K respectively. Starter activation fee shown as $0 (was $99 struck-through). Instant Prime daily loss limits labeled 'Soft Breach' for 50K+; 25K shows 'None'. Min payout amount not stated. Profit split shown as 90% (90/10). Drawdown labeled 'Trailing Max Drawdown' but mode is 'End of Day' \u2014 represented as EOD. Discount code YRM40 explicitly visible on Instant Prime cards; Starter cards show promotional pricing without explicit code."
     }
   }
 }

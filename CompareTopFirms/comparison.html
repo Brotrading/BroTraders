@@ -2176,32 +2176,46 @@
                   restrictedCountries: RESTRICTED_LUCID,
                 });
 
-            // Day Traders
-            const dtAcc = ["25K", "50K", "100K", "150K", "300K"];
-            const dtEvalTrail = {
-              "25K": 249,
-              "50K": 379,
-              "100K": 599,
-              "150K": 699,
-              "300K": 879,
-            };
-            const dtAct = 130;
-            for (let acc of dtAcc)
+            // ----- DayTraders.com — auto-generated from firm-rules.json (verified May 2026) -----
+            // 7 plans: Trail (Trailing DD), EOD (EOD DD), Static (Static DD),
+            //          S2F (Straight-to-Funded), S2L Core/Edge/Ultra (Straight-to-Live).
+            // 85% off w/ BROTRADING. Activation $130 except S2L (FREE). Min 2 trading days.
+            const daytradersVariants = [
+              { size: "25K Trail",     goal: 1500,  dd: 1500, ddt: "Trailing", evalReg: 249,  evalSale: 37.35,  activation: 130, truecost: 167.35, mindays: 2 },
+              { size: "50K Trail",     goal: 3000,  dd: 2500, ddt: "Trailing", evalReg: 379,  evalSale: 56.85,  activation: 130, truecost: 186.85, mindays: 2 },
+              { size: "150K Trail",    goal: 8500,  dd: 4500, ddt: "Trailing", evalReg: 699,  evalSale: 104.85, activation: 130, truecost: 234.85, mindays: 2 },
+              { size: "300K Trail",    goal: 15000, dd: 7000, ddt: "Trailing", evalReg: 879,  evalSale: 131.85, activation: 130, truecost: 261.85, mindays: 2 },
+              { size: "25K EOD",       goal: 1500,  dd: 1000, ddt: "EOD",      evalReg: 309,  evalSale: 46.35,  activation: 130, truecost: 176.35, mindays: 2 },
+              { size: "50K EOD",       goal: 3000,  dd: 2000, ddt: "EOD",      evalReg: 469,  evalSale: 70.35,  activation: 130, truecost: 200.35, mindays: 2 },
+              { size: "150K EOD",      goal: 8500,  dd: 4000, ddt: "EOD",      evalReg: 899,  evalSale: 134.85, activation: 130, truecost: 264.85, mindays: 2 },
+              { size: "300K EOD",      goal: 15000, dd: 6500, ddt: "EOD",      evalReg: 1599, evalSale: 239.85, activation: 130, truecost: 369.85, mindays: 2 },
+              { size: "25K Static",    goal: 2500,  dd: 750,  ddt: "Static",   evalReg: 150,  evalSale: 30.00,  activation: 130, truecost: 160.00, mindays: 2 },
+              { size: "50K Static",    goal: 3750,  dd: 1000, ddt: "Static",   evalReg: 200,  evalSale: 40.00,  activation: 130, truecost: 170.00, mindays: 2 },
+              { size: "100K Static",   goal: 5750,  dd: 1500, ddt: "Static",   evalReg: 325,  evalSale: 65.00,  activation: 130, truecost: 195.00, mindays: 2 },
+              { size: "150K Static",   goal: 6750,  dd: 1750, ddt: "Static",   evalReg: 400,  evalSale: 80.00,  activation: 130, truecost: 210.00, mindays: 2 },
+              { size: "25K S2F",       goal: null,  dd: 1000, ddt: "EOD",      evalReg: 370,  evalSale: 222.00, activation: 0,   truecost: 222.00, mindays: 2 },
+              { size: "50K S2F",       goal: null,  dd: 2500, ddt: "EOD",      evalReg: 570,  evalSale: 342.00, activation: 0,   truecost: 342.00, mindays: 2 },
+              { size: "150K S2F",      goal: null,  dd: 6000, ddt: "EOD",      evalReg: 825,  evalSale: 495.00, activation: 0,   truecost: 495.00, mindays: 2 },
+              { size: "50K S2L Core",  goal: 3000,  dd: 2000, ddt: "Trailing", evalReg: 329,  evalSale: 229.00, activation: 0,   truecost: 229.00, mindays: 2 },
+              { size: "150K S2L Edge", goal: 8500,  dd: 4500, ddt: "Trailing", evalReg: 469,  evalSale: 369.00, activation: 0,   truecost: 369.00, mindays: 2 },
+              { size: "300K S2L Ultra",goal: 15000, dd: 7000, ddt: "Trailing", evalReg: 599,  evalSale: 499.00, activation: 0,   truecost: 499.00, mindays: 2 },
+            ];
+            for (let v of daytradersVariants)
               allRows.push({
                 firm: "Daytraders.com",
                 logo: "../Photos/firms/daytraders.svg",
-                account: acc,
-                goal: 1500,
-                profitTarget: 1500,
-                ddt: "Intraday Trailing",
-                dd: 1500,
-                mindays: 1,
-                eval: dtEvalTrail[acc],
-                activation: dtAct,
-                truecost: dtEvalTrail[acc] + dtAct,
-                discount: "40%",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: v.mindays,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "85%",
                 code: "BROTRADING",
-                platform: "Tradovate",
+                platform: "Rithmic, TradingView, ONYX",
                 country: "USA",
                 maxaccounts: 5,
                 firmpage: "../Firms/DayTraders.html",
@@ -2209,54 +2223,44 @@
                 restrictedCountries: RESTRICTED_DAYTRADERS,
               });
 
-            // Phidias
-            const phidiasAccounts = ["25K", "50K", "100K", "150K"];
-            const phidiasGoals = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const phidiasDD = {
-              "25K": 1000,
-              "50K": 2000,
-              "100K": 3000,
-              "150K": 5000,
-            };
-            const phidiasEval = {
-              "25K": 125,
-              "50K": 175,
-              "100K": 250,
-              "150K": 375,
-            };
-            for (let acc of phidiasAccounts)
-              for (let plan of [
-                "Static",
-                "Fundamental",
-                "Swing",
-                "10K Challenge",
-              ])
-                allRows.push({
-                  firm: "Phidias",
-                  logo: "../Photos/firms/phidias.jpeg",
-                  account: acc,
-                  goal: phidiasGoals[acc],
-                  profitTarget: phidiasGoals[acc],
-                  ddt: "EOD",
-                  dd: phidiasDD[acc],
-                  mindays: 3,
-                  eval: phidiasEval[acc],
-                  activation: 0,
-                  truecost: phidiasEval[acc],
-                  discount: "Dynamic",
-                  code: "BROTRADING",
-                  platform: "Tradovate",
-                  country: "Netherlands",
-                  maxaccounts: 3,
-                  firmpage: "../Firms/Phidias.html",
-                  website: "https://phidiaspropfirm.com/",
-                  restrictedCountries: RESTRICTED_PHIDIAS,
-                });
+            // ----- Phidias Prop Firm — auto-generated from firm-rules.json (verified May 2026) -----
+            // 4 plans (Fundamental OTP, Fundamental Monthly, Swing OTP, Swing Monthly), all EOD drawdown.
+            // 80% off w/ BROTRADING. OTP = one-time payment (no activation), Monthly = $149-$169 activation.
+            const phidiasVariants = [
+              { size: "50K Fundamental OTP",     goal: 4000, dd: 2500, ddt: "EOD", evalReg: 580,  evalSale: 116.00, activation: 0,   truecost: 116.00, mindays: 3 },
+              { size: "100K Fundamental OTP",    goal: 6000, dd: 3000, ddt: "EOD", evalReg: 723,  evalSale: 144.60, activation: 0,   truecost: 144.60, mindays: 3 },
+              { size: "150K Fundamental OTP",    goal: 9000, dd: 4500, ddt: "EOD", evalReg: 863,  evalSale: 172.60, activation: 0,   truecost: 172.60, mindays: 3 },
+              { size: "50K Fundamental Monthly", goal: 4000, dd: 2500, ddt: "EOD", evalReg: 164,  evalSale: 65.60,  activation: 149, truecost: 214.60, mindays: 3 },
+              { size: "100K Fundamental Monthly",goal: 6000, dd: 3000, ddt: "EOD", evalReg: 273,  evalSale: 109.20, activation: 149, truecost: 258.20, mindays: 3 },
+              { size: "150K Fundamental Monthly",goal: 9000, dd: 4500, ddt: "EOD", evalReg: 420,  evalSale: 168.00, activation: 169, truecost: 337.00, mindays: 3 },
+              { size: "50K Swing OTP",           goal: 4000, dd: 2500, ddt: "EOD", evalReg: 723,  evalSale: 144.60, activation: 0,   truecost: 144.60, mindays: 3 },
+              { size: "100K Swing OTP",          goal: 6000, dd: 3000, ddt: "EOD", evalReg: 900,  evalSale: 180.00, activation: 0,   truecost: 180.00, mindays: 3 },
+              { size: "150K Swing OTP",          goal: 9000, dd: 4500, ddt: "EOD", evalReg: 1123, evalSale: 224.60, activation: 0,   truecost: 224.60, mindays: 3 },
+              { size: "50K Swing Monthly",       goal: 4000, dd: 2500, ddt: "EOD", evalReg: 329,  evalSale: 131.60, activation: 149, truecost: 280.60, mindays: 3 },
+              { size: "100K Swing Monthly",      goal: 6000, dd: 3000, ddt: "EOD", evalReg: 411,  evalSale: 164.40, activation: 149, truecost: 313.40, mindays: 3 },
+            ];
+            for (let v of phidiasVariants)
+              allRows.push({
+                firm: "Phidias",
+                logo: "../Photos/firms/phidias.jpeg",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: v.mindays,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "80%",
+                code: "BROTRADING",
+                platform: "Tradovate, NinjaTrader, Quantower, TradingView, Rithmic",
+                country: "Netherlands",
+                maxaccounts: 3,
+                firmpage: "../Firms/PhidiasPropFirm.html",
+                website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
+                restrictedCountries: RESTRICTED_PHIDIAS,
+              });
 
             // Alpha Futures — verified Apr 2026 from Mike's screenshots.
             // 3 plans, all 20% off w/ BROTRADING. UK-based.
@@ -2302,73 +2306,52 @@
                 restrictedCountries: RESTRICTED_ALPHA,
               });
 
-            // NexGen Pro Trader
-            const ngAcc = ["25K", "50K", "100K", "150K"];
-            const ngEvalMap = {
-              "25K": 92,
-              "50K": 125,
-              "100K": 200,
-              "150K": 300,
-            };
-            const ngActMap = { "25K": 29, "50K": 49, "100K": 99, "150K": 149 };
-            const ngProfit = {
-              "25K": 1500,
-              "50K": 3000,
-              "100K": 6000,
-              "150K": 9000,
-            };
-            const ngDDmap = {
-              "25K": 2000,
-              "50K": 2500,
-              "100K": 3500,
-              "150K": 4500,
-            };
-            for (let acc of ngAcc) {
+            // ----- NexGen Funding (formerly NexGen Pro Trader) — auto-generated from firm-rules.json (verified May 2026) -----
+            // 3 plans: Standard Challenge (2-step, 10% target), Rapid Challenge (2-step, 8% target),
+            // Ace Challenge (1-step, 10% target). All Static drawdown.
+            // 30% off w/ PASS30 on 50K/100K/200K (April 2026 promo — verify still active).
+            const nexgenVariants = [
+              { size: "5K Standard",   goal: 500,    dd: 500,    ddt: "Static", evalReg: 59,    evalSale: 41,    activation: 0, truecost: 41,    mindays: 0 },
+              { size: "10K Standard",  goal: 1000,   dd: 1000,   ddt: "Static", evalReg: 129,   evalSale: 90,    activation: 0, truecost: 90,    mindays: 0 },
+              { size: "25K Standard",  goal: 2500,   dd: 2500,   ddt: "Static", evalReg: 199,   evalSale: 179,   activation: 0, truecost: 179,   mindays: 0 },
+              { size: "50K Standard",  goal: 5000,   dd: 5000,   ddt: "Static", evalReg: 369,   evalSale: 329,   activation: 0, truecost: 329,   mindays: 0 },
+              { size: "100K Standard", goal: 10000,  dd: 10000,  ddt: "Static", evalReg: 589,   evalSale: 529,   activation: 0, truecost: 529,   mindays: 0 },
+              { size: "200K Standard", goal: 20000,  dd: 20000,  ddt: "Static", evalReg: 1189,  evalSale: 1069,  activation: 0, truecost: 1069,  mindays: 0 },
+              { size: "5K Rapid",      goal: 400,    dd: 400,    ddt: "Static", evalReg: 59,    evalSale: 41,    activation: 0, truecost: 41,    mindays: 0 },
+              { size: "10K Rapid",     goal: 800,    dd: 800,    ddt: "Static", evalReg: 129,   evalSale: 90,    activation: 0, truecost: 90,    mindays: 0 },
+              { size: "25K Rapid",     goal: 2000,   dd: 2000,   ddt: "Static", evalReg: 199,   evalSale: 179,   activation: 0, truecost: 179,   mindays: 0 },
+              { size: "50K Rapid",     goal: 4000,   dd: 4000,   ddt: "Static", evalReg: 369,   evalSale: 329,   activation: 0, truecost: 329,   mindays: 0 },
+              { size: "100K Rapid",    goal: 8000,   dd: 8000,   ddt: "Static", evalReg: 589,   evalSale: 529,   activation: 0, truecost: 529,   mindays: 0 },
+              { size: "200K Rapid",    goal: 16000,  dd: 16000,  ddt: "Static", evalReg: 1189,  evalSale: 1069,  activation: 0, truecost: 1069,  mindays: 0 },
+              { size: "5K Ace",        goal: 500,    dd: 300,    ddt: "Static", evalReg: 65,    evalSale: 46,    activation: 0, truecost: 46,    mindays: 0 },
+              { size: "10K Ace",       goal: 1000,   dd: 600,    ddt: "Static", evalReg: 139,   evalSale: 100,   activation: 0, truecost: 100,   mindays: 0 },
+              { size: "25K Ace",       goal: 2500,   dd: 1500,   ddt: "Static", evalReg: 224,   evalSale: 204,   activation: 0, truecost: 204,   mindays: 0 },
+              { size: "50K Ace",       goal: 5000,   dd: 3000,   ddt: "Static", evalReg: 419,   evalSale: 379,   activation: 0, truecost: 379,   mindays: 0 },
+              { size: "100K Ace",      goal: 10000,  dd: 6000,   ddt: "Static", evalReg: 689,   evalSale: 629,   activation: 0, truecost: 629,   mindays: 0 },
+              { size: "200K Ace",      goal: 20000,  dd: 12000,  ddt: "Static", evalReg: 1389,  evalSale: 1269,  activation: 0, truecost: 1269,  mindays: 0 },
+            ];
+            for (let v of nexgenVariants)
               allRows.push({
-                firm: "NexGen Pro Trader",
-                logo: "https://nexgenprotraderfunding.com/wp-content/uploads/2026/03/Asset-6@2x-8-300x56.png",
-                account: `${acc} Elite`,
-                goal: ngProfit[acc],
-                profitTarget: ngProfit[acc],
-                ddt: "EOD Trailing",
-                dd: ngDDmap[acc],
-                mindays: 1,
-                eval: ngEvalMap[acc],
-                activation: ngActMap[acc],
-                truecost: ngEvalMap[acc] + ngActMap[acc],
-                discount: "BRO",
-                code: "BRO",
+                firm: "NexGen Funding",
+                logo: "../Photos/firms/nexgen.png",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: v.mindays,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "30%",
+                code: "PASS30",
                 platform: "ProjectX, Tradovate",
                 country: "International",
                 maxaccounts: 3,
                 firmpage: "../Firms/NexGen.html",
-                website:
-                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+                website: "https://thenextgenfunding.com/",
                 restrictedCountries: RESTRICTED_NEXGEN,
               });
-              allRows.push({
-                firm: "NexGen Pro Trader",
-                logo: "https://nexgenprotraderfunding.com/wp-content/uploads/2026/03/Asset-6@2x-8-300x56.png",
-                account: `${acc} Instant`,
-                goal: ngProfit[acc],
-                profitTarget: ngProfit[acc],
-                ddt: "EOD",
-                dd: ngDDmap[acc],
-                mindays: 0,
-                eval: ngEvalMap[acc],
-                activation: 0,
-                truecost: ngEvalMap[acc],
-                discount: "BRO",
-                code: "BRO",
-                platform: "ProjectX, Tradovate",
-                country: "International",
-                maxaccounts: 3,
-                firmpage: "../Firms/NexGen.html",
-                website:
-                  "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-                restrictedCountries: RESTRICTED_NEXGEN,
-              });
-            }
 
             // Top One Futures — verified Apr 2026 from Mike's data dump.
             // 5 plans: Elite, Elite Access (flat $39!), Instant Sim Funded, S2F Sim Pro, Ignite.
@@ -2416,28 +2399,41 @@
                 restrictedCountries: RESTRICTED_TOPONE,
               });
 
-            // YRM Prop
-            allRows.push({
-              firm: "YRM Prop",
-              logo: "../Photos/firms/yrmprop.svg",
-              account: "50K",
-              goal: 3000,
-              profitTarget: 3000,
-              ddt: "EOD Trailing",
-              dd: 2000,
-              mindays: 3,
-              eval: 199,
-              activation: 79,
-              truecost: 278,
-              discount: "BRO",
-              code: "BRO",
-              platform: "Tradovate, NinjaTrader",
-              country: "International",
-              maxaccounts: 5,
-              firmpage: "../Firms/YRM.html",
-              website: "https://yrmprop.com",
-              restrictedCountries: RESTRICTED_YRM,
-            });
+            // ----- YRM Prop — auto-generated from firm-rules.json (verified May 2026) -----
+            // 2 plans: Starter (Evaluation, 4 sizes — 25K launched late April 2026), Instant Prime (no eval).
+            // 40% off Instant Prime w/ YRM40. Activation FREE on Starter.
+            const yrmVariants = [
+              { size: "25K Starter",       goal: 1500, dd: 1000, ddt: "EOD", evalReg: 99,  evalSale: 59,  activation: 0, truecost: 59,  mindays: 8 },
+              { size: "50K Starter",       goal: 3000, dd: 2000, ddt: "EOD", evalReg: 149, evalSale: 74,  activation: 0, truecost: 74,  mindays: 8 },
+              { size: "100K Starter",      goal: 6000, dd: 3000, ddt: "EOD", evalReg: 249, evalSale: 131, activation: 0, truecost: 131, mindays: 8 },
+              { size: "150K Starter",      goal: 9000, dd: 4500, ddt: "EOD", evalReg: 349, evalSale: 144, activation: 0, truecost: 144, mindays: 8 },
+              { size: "25K Instant Prime", goal: null, dd: 1250, ddt: "EOD", evalReg: 399, evalSale: 239, activation: 0, truecost: 239, mindays: 0 },
+              { size: "50K Instant Prime", goal: null, dd: 2000, ddt: "EOD", evalReg: 599, evalSale: 359, activation: 0, truecost: 359, mindays: 0 },
+              { size: "100K Instant Prime",goal: null, dd: 4000, ddt: "EOD", evalReg: 749, evalSale: 449, activation: 0, truecost: 449, mindays: 0 },
+              { size: "150K Instant Prime",goal: null, dd: 6000, ddt: "EOD", evalReg: 899, evalSale: 539, activation: 0, truecost: 539, mindays: 0 },
+            ];
+            for (let v of yrmVariants)
+              allRows.push({
+                firm: "YRM Prop",
+                logo: "../Photos/firms/yrmprop.svg",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: v.mindays,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "40%",
+                code: "YRM40",
+                platform: "Tradovate, NinjaTrader",
+                country: "International",
+                maxaccounts: 5,
+                firmpage: "../Firms/YRM.html",
+                website: "https://yrmprop.com/ref/Bro/",
+                restrictedCountries: RESTRICTED_YRM,
+              });
 
             const firms = allRows.slice();
             let sortState = { key: "truecost", dir: "asc" };
