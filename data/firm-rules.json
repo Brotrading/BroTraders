@@ -1031,47 +1031,92 @@
         "min_payout": null
       },
       "plans": {
-        "Intraday Trail": {
-          "type": "Evaluation",
+        "Trail (Trailing DD)": {
+          "type": "1-Step Evaluation",
           "drawdown_type": "Trailing",
           "sizes": {
             "25K": {
               "profit_target": 1500,
               "max_drawdown": 1000,
               "daily_drawdown": null,
-              "eval_price_msrp": 199.0,
+              "eval_price_msrp": 199,
               "eval_price_discounted": 19.9,
               "activation_fee": 89,
               "min_trading_days": 1
-            }
-          }
-        },
-        "EOD Trail": {
-          "type": "Evaluation",
-          "drawdown_type": "EOD",
-          "sizes": {
-            "25K": {
-              "profit_target": 1500,
-              "max_drawdown": 1000,
-              "daily_drawdown": 500,
-              "eval_price_msrp": 299.0,
-              "eval_price_discounted": 29.9,
-              "activation_fee": 109,
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 249,
+              "eval_price_discounted": 24.9,
+              "activation_fee": 69,
               "min_trading_days": 1
             },
             "100K": {
               "profit_target": 6000,
               "max_drawdown": 3000,
-              "daily_drawdown": 1500,
-              "eval_price_msrp": 599.0,
+              "daily_drawdown": null,
+              "eval_price_msrp": 399,
+              "eval_price_discounted": 39.9,
+              "activation_fee": 119,
+              "min_trading_days": 1
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 599,
               "eval_price_discounted": 59.9,
               "activation_fee": 139,
               "min_trading_days": 1
             }
           }
+        },
+        "EOD (Static DD)": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "Static",
+          "sizes": {
+            "25K": {
+              "profit_target": 1500,
+              "max_drawdown": 1000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 299,
+              "eval_price_discounted": 29.9,
+              "activation_fee": 109,
+              "min_trading_days": 1
+            },
+            "50K": {
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 349,
+              "eval_price_discounted": 34.9,
+              "activation_fee": 119,
+              "min_trading_days": 1
+            },
+            "100K": {
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 599,
+              "eval_price_discounted": 59.9,
+              "activation_fee": 139,
+              "min_trading_days": 1
+            },
+            "150K": {
+              "profit_target": 9000,
+              "max_drawdown": 4000,
+              "daily_drawdown": null,
+              "eval_price_msrp": 799,
+              "eval_price_discounted": 79.9,
+              "activation_fee": 159,
+              "min_trading_days": 1
+            }
+          }
         }
       },
-      "_status": "Auto-extracted from https://apextraderfunding.com/ on 2026-05-03. Verify before publishing.",
+      "_status": "Verified May 2026 from Mike's comparison.html canon (BRO 90% off promo).",
       "_extraction_notes": "Only the rendered states for 25k Rithmic Intraday, 25k Rithmic EOD, and 100k Rithmic EOD were present in HTML. Sizes 50k and 150k are referenced in the picker/menus but their pricing/rules were not rendered in the provided HTML. Vendor variants (Tradovate, Wealthcharts) were not rendered with separate pricing \u2014 assumed identical via Rithmic data, but not confirmed. Discount appears as a 'with Coupon Code' price (~90% off MSRP); coupon code text not in HTML. Drawdown for Intraday Trail labeled 'Intraday Trail' tooltip='Intraday Trailing Drawdown' \u2014 coded as Trailing. Min payout amount not stated; payout frequency is every 5 trading days. This is the 'New' Apex product line (post March 1, 2026); legacy products excluded."
     },
     "phidias": {
