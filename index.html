@@ -330,7 +330,7 @@
           </div>
 
           <a href="GiveAway.html" class="bt-link">GiveAways</a>
-          <a href="propai.html" class="bt-link">PropAI ✨</a>
+          <a href="propai.html" class="bt-link">Bro AI (beta) ✨</a>
 
           <!-- Mobile Subscribe Button (visible only on mobile) -->
           <a href="Subscribe.html" class="bt-mobile-cta">Subscribe</a>
@@ -5043,9 +5043,10 @@
             });
           }
 
-          // Exit-intent: show popup only when cursor leaves the page from the top.
-          // Once per browser session — won't keep popping up after closing.
+          // Exit-intent giveaway popup — DISABLED 2026-05-06 per Mike.
+          // Re-enable by removing the early return below.
           (function () {
+            return; // popup off
             const POPUP_KEY = "giveawayPopupShown";
             const popup = document.getElementById("giveawayPopup");
             if (!popup) return;
@@ -5056,12 +5057,10 @@
               sessionStorage.setItem(POPUP_KEY, "1");
             }
 
-            // Desktop: cursor leaves through top of viewport
             document.addEventListener("mouseleave", function (e) {
               if (e.clientY <= 0) showPopup();
             });
 
-            // Mobile fallback: show after 30 seconds OR on rapid scroll-up
             const isTouch =
               "ontouchstart" in window || navigator.maxTouchPoints > 0;
             if (isTouch) {
