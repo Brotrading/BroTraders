@@ -606,9 +606,11 @@
       "code_default": "BROTRADING",
       "affiliate_url": "https://app.alpha-futures.com/signup/BROTRADING/",
       "platforms": [
-        "Tradovate",
         "NinjaTrader",
-        "TradingView"
+        "Tradovate",
+        "DeepCharts",
+        "Quantower",
+        "CQG"
       ],
       "broker": [
         "Tradovate"
@@ -790,7 +792,11 @@
       "name": "Top One Futures",
       "code_default": "BRO",
       "affiliate_url": "https://toponefutures.com/",
-      "platforms": [],
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView"
+      ],
       "discount_text": "Up to 50% OFF with code ANNIVERSARY",
       "rules_global": {
         "consistency": "Varies by plan: Elite 25% on funded, Elite Access 40% on funded (none on challenge), INSTANT Sim Funded 20%, S2F Sim PRO 20%, IGNITE 15%",
@@ -1125,14 +1131,17 @@
       "code_default": "BROTRADING",
       "affiliate_url": "https://member.phidiaspropfirm.com/aff/go/brotrading",
       "platforms": [
-        "dxFeed",
-        "Rithmic"
+        "Rithmic",
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView",
+        "DeepCharts"
       ],
-      "discount_text": "80% off (price-y shown is 20% of price-x)",
+      "discount_text": "80% Off OTP & up to 60% Off Evaluations w/ BROTRADING",
       "rules_global": {
         "consistency": null,
         "min_trading_days": 3,
-        "payout_split": null,
+        "payout_split": "80/20 (Express to Live & Fundamental); progressive 75-100% (Premium)",
         "min_payout": null
       },
       "plans": {
