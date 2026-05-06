@@ -1075,7 +1075,7 @@
         },
         "EOD (Static DD)": {
           "type": "1-Step Evaluation",
-          "drawdown_type": "Static",
+          "drawdown_type": "EOD",
           "sizes": {
             "25K": {
               "profit_target": 1500,
