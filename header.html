@@ -1,3 +1,13 @@
+<style>
+  .bt-drop-label { display: block; padding: 6px 0 4px; color: #fff; font-size: 14px; font-weight: 700; cursor: default; pointer-events: none; }
+  .bt-nav-subscribe { display: none; }
+  @media (max-width: 1024px) {
+    .bt-nav-subscribe { display: block; }
+  }
+  /* Lock nav font so every page renders identically */
+  .bt-header .bt-link,
+  .bt-header .bt-drop-btn { font-size: 16px; font-family: "Roboto", sans-serif; font-weight: 500; }
+</style>
 <header class="bt-header">
   <div class="bt-container">
     <div class="bt-logo">
@@ -16,14 +26,14 @@
         <div class="bt-drop-menu" id="funding">
           <div class="bt-drop-grid">
             <div>
-              <a href="#"><strong>Firm Lists :</strong></a>
+              <strong class="bt-drop-label">Firm Lists :</strong>
               <a href="/CompareTopFirms/comparison.html">Prop Firm Comparison</a>
               <a href="/CompareTopFirms/Drawdown.html">Largest Drawdown</a>
               <a href="/CompareTopFirms/QuickFunding.html">Quickest Funding</a>
               <a href="/CompareTopFirms/bestDeals.html">Best Deals</a>
             </div>
             <div>
-              <a href="#"><strong>Top Firms :</strong></a>
+              <strong class="bt-drop-label">Top Firms :</strong>
               <a href="/Firms/ApexFunding.html">Apex Trader Funding</a>
               <a href="/Firms/TradeifyTrader.html">Tradeify</a>
               <a href="/Firms/Lucid Trading.html">Lucid Trading</a>
@@ -47,10 +57,10 @@
         </div>
       </div>
 
-      <a href="/GiveAway.html" class="bt-link">GiveAways</a>
+      <a href="/GiveAway.html" class="bt-link">Giveaway</a>
       <a href="/propai.html" class="bt-link">Bro AI (beta) ✨</a>
 
-      <a href="/Subscribe.html" class="bt-mobile-cta">Subscribe</a>
+      <a href="/Subscribe.html" class="bt-link bt-nav-subscribe">Subscribe</a>
     </nav>
 
     <a href="/Subscribe.html" class="bt-cta">Subscribe</a>
