@@ -1,9 +1,5 @@
 // header.js — shared nav loader
-// Fetches header.html and injects it into #header, then wires up
-// dropdown toggles, hamburger menu and scroll-shrink behaviour.
-
 (async () => {
-  // Compute path prefix so this works from any subdirectory depth
   const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
   const prefix = depth > 0 ? "../".repeat(depth) : "";
 
@@ -16,26 +12,38 @@
 
   const placeholder = document.getElementById("header");
   if (!placeholder) return;
-  placeholder.outerHTML = html;
 
-  // --- Dropdown toggle ---
+  // Parse fetched HTML into a temp container
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+
+  // Move the <style> to the END of <body> so it comes after all
+  // page-level inline styles and wins the cascade without !important
+  const style = tmp.querySelector("style");
+  if (style) {
+    tmp.removeChild(style);
+    document.body.appendChild(style);
+  }
+
+  // Inject the header markup where the placeholder was
+  placeholder.outerHTML = tmp.innerHTML;
+
+  // --- Dropdown toggle (sets .open on parent .bt-dropdown) ---
+  const closeAllDropdowns = () => {
+    document.querySelectorAll(".bt-dropdown.open").forEach((d) => d.classList.remove("open"));
+  };
+
   document.querySelectorAll("[data-dropdown]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const id = btn.dataset.dropdown;
-      const menu = document.getElementById(id);
-      if (!menu) return;
-      const isOpen = menu.classList.contains("open");
-      // Close all open menus first
-      document.querySelectorAll(".bt-drop-menu.open").forEach((m) => m.classList.remove("open"));
-      if (!isOpen) menu.classList.add("open");
+      const dropdown = btn.closest(".bt-dropdown");
+      const isOpen = dropdown?.classList.contains("open");
+      closeAllDropdowns();
+      if (!isOpen) dropdown?.classList.add("open");
     });
   });
 
-  // Close dropdowns when clicking outside
-  document.addEventListener("click", () => {
-    document.querySelectorAll(".bt-drop-menu.open").forEach((m) => m.classList.remove("open"));
-  });
+  document.addEventListener("click", closeAllDropdowns);
 
   // --- Mobile hamburger ---
   const hamburger = document.getElementById("hamburgerBtn");
