@@ -797,7 +797,7 @@
         "NinjaTrader",
         "TradingView"
       ],
-      "discount_text": "Up to 50% OFF with code ANNIVERSARY",
+      "discount_text": "60% OFF with affiliate code BRO",
       "rules_global": {
         "consistency": "Varies by plan: Elite 25% on funded, Elite Access 40% on funded (none on challenge), INSTANT Sim Funded 20%, S2F Sim PRO 20%, IGNITE 15%",
         "min_trading_days": null,
@@ -1503,7 +1503,7 @@
       "code_default": "BRO",
       "affiliate_url": "https://thenextgenfunding.com/",
       "platforms": [],
-      "discount_text": "30% OFF with code BRO",
+      "discount_text": "20% OFF with code PASS20 — affiliate code BRO",
       "rules_global": {
         "consistency": null,
         "min_trading_days": null,
