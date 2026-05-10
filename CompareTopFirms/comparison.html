@@ -2438,24 +2438,43 @@
                 restrictedCountries: RESTRICTED_YRM,
               });
 
-            // ----- FundedSeat — added May 2026 from official site scrape -----
-            // 3 plans: 1 Step Daily (Evaluation), Instant Funding Direct, Instant Funding Bolt.
-            // 60% off ALL accounts with affiliate code BRO. Activation FREE on Evaluation.
-            // No dedicated firm page yet — firmpage points to affiliate URL.
+            // ----- FundedSeat — verified May 2026 from official configurator screenshots (Mike-supplied) -----
+            // 6 plan variants × 3-4 sizes = 21 rows total:
+            //   1 Step Daily 35% consistency (4 sizes), 1 Step Daily 50% consistency (4 sizes),
+            //   1 Step Daily Pro (3 sizes, 40% consistency, tighter drawdown),
+            //   1 Step Sprint (4 sizes, has daily loss limit at 50K+),
+            //   Instant Funding Direct (3 sizes, 15% biggest-trade rule),
+            //   Instant Funding Bolt (3 sizes, 20% consistency on first payout).
+            // All "Drawdown Mode: EOD". 60% off ALL accounts with affiliate code BRO.
+            // Activation FREE on Eval. No dedicated firm page yet — firmpage points to affiliate URL.
             const fundedseatVariants = [
-              // 1 Step Daily (Evaluation, EOD drawdown)
-              { size: "25K Daily",          goal: 1500,  dd: 1000, ddt: "EOD", evalReg: 140,  evalSale: 56,   activation: 0, truecost: 56,   mindays: 0 },
-              { size: "50K Daily",          goal: 3000,  dd: 2000, ddt: "EOD", evalReg: 200,  evalSale: 80,   activation: 0, truecost: 80,   mindays: 0 },
-              { size: "100K Daily",         goal: 6000,  dd: 3000, ddt: "EOD", evalReg: 340,  evalSale: 136,  activation: 0, truecost: 136,  mindays: 0 },
-              { size: "150K Daily",         goal: 9000,  dd: 4500, ddt: "EOD", evalReg: 480,  evalSale: 192,  activation: 0, truecost: 192,  mindays: 0 },
-              // Instant Funding Direct (no profit target — already funded)
-              { size: "25K Direct",         goal: null,  dd: 1000, ddt: "EOD", evalReg: 400,  evalSale: 160,  activation: 0, truecost: 160,  mindays: 0 },
-              { size: "50K Direct",         goal: null,  dd: 2000, ddt: "EOD", evalReg: 600,  evalSale: 240,  activation: 0, truecost: 240,  mindays: 0 },
-              { size: "100K Direct",        goal: null,  dd: 3000, ddt: "EOD", evalReg: 900,  evalSale: 360,  activation: 0, truecost: 360,  mindays: 0 },
-              // Instant Funding Bolt (no profit target — already funded)
-              { size: "25K Bolt",           goal: null,  dd: 1000, ddt: "EOD", evalReg: 350,  evalSale: 140,  activation: 0, truecost: 140,  mindays: 0 },
-              { size: "50K Bolt",           goal: null,  dd: 2000, ddt: "EOD", evalReg: 520,  evalSale: 208,  activation: 0, truecost: 208,  mindays: 0 },
-              { size: "100K Bolt",          goal: null,  dd: 3000, ddt: "EOD", evalReg: 750,  evalSale: 300,  activation: 0, truecost: 300,  mindays: 0 },
+              // 1 Step - Daily (35% consistency)
+              { size: "25K Daily 35%",  goal: 1500, dd: 1000, ddt: "EOD", evalReg: 139.9, evalSale:  55.96, activation: 0, truecost:  55.96, mindays: 0 },
+              { size: "50K Daily 35%",  goal: 3000, dd: 2000, ddt: "EOD", evalReg: 199.9, evalSale:  79.96, activation: 0, truecost:  79.96, mindays: 0 },
+              { size: "100K Daily 35%", goal: 6000, dd: 3000, ddt: "EOD", evalReg: 339.9, evalSale: 135.96, activation: 0, truecost: 135.96, mindays: 0 },
+              { size: "150K Daily 35%", goal: 9000, dd: 4500, ddt: "EOD", evalReg: 479.9, evalSale: 191.96, activation: 0, truecost: 191.96, mindays: 0 },
+              // 1 Step - Daily (50% consistency — relaxed; same drawdowns, higher price)
+              { size: "25K Daily 50%",  goal: 1500, dd: 1000, ddt: "EOD", evalReg: 175.9, evalSale:  70.36, activation: 0, truecost:  70.36, mindays: 0 },
+              { size: "50K Daily 50%",  goal: 3000, dd: 2000, ddt: "EOD", evalReg: 269.9, evalSale: 107.96, activation: 0, truecost: 107.96, mindays: 0 },
+              { size: "100K Daily 50%", goal: 6000, dd: 3000, ddt: "EOD", evalReg: 399.9, evalSale: 159.96, activation: 0, truecost: 159.96, mindays: 0 },
+              { size: "150K Daily 50%", goal: 9000, dd: 4500, ddt: "EOD", evalReg: 579.9, evalSale: 231.96, activation: 0, truecost: 231.96, mindays: 0 },
+              // 1 Step - Daily Pro (40% consistency, tighter drawdown)
+              { size: "25K Daily Pro",  goal: 1500, dd: 750,  ddt: "EOD", evalReg: 159.9, evalSale:  63.96, activation: 0, truecost:  63.96, mindays: 0 },
+              { size: "50K Daily Pro",  goal: 3000, dd: 1500, ddt: "EOD", evalReg: 239.9, evalSale:  95.96, activation: 0, truecost:  95.96, mindays: 0 },
+              { size: "100K Daily Pro", goal: 6000, dd: 2500, ddt: "EOD", evalReg: 379.9, evalSale: 151.96, activation: 0, truecost: 151.96, mindays: 0 },
+              // 1 Step - Sprint (has daily loss limit at 50K+)
+              { size: "25K Sprint",     goal: 1500, dd: 1000, ddt: "EOD", evalReg: 149.9, evalSale:  59.96, activation: 0, truecost:  59.96, mindays: 0 },
+              { size: "50K Sprint",     goal: 3000, dd: 2000, ddt: "EOD", evalReg: 219.9, evalSale:  87.96, activation: 0, truecost:  87.96, mindays: 0 },
+              { size: "100K Sprint",    goal: 6000, dd: 3000, ddt: "EOD", evalReg: 329.9, evalSale: 131.96, activation: 0, truecost: 131.96, mindays: 0 },
+              { size: "150K Sprint",    goal: 9000, dd: 4500, ddt: "EOD", evalReg: 519.9, evalSale: 207.96, activation: 0, truecost: 207.96, mindays: 0 },
+              // Instant Funding - Direct (15% biggest-trade rule, daily payouts from day 1)
+              { size: "25K Direct",     goal: null, dd: 1000, ddt: "EOD", evalReg: 399.9, evalSale: 159.96, activation: 0, truecost: 159.96, mindays: 0 },
+              { size: "50K Direct",     goal: null, dd: 2000, ddt: "EOD", evalReg: 599.9, evalSale: 239.96, activation: 0, truecost: 239.96, mindays: 0 },
+              { size: "100K Direct",    goal: null, dd: 3000, ddt: "EOD", evalReg: 899.9, evalSale: 359.96, activation: 0, truecost: 359.96, mindays: 0 },
+              // Instant Funding - Bolt (20% consistency on first payout)
+              { size: "25K Bolt",       goal: null, dd: 1000, ddt: "EOD", evalReg: 349.9, evalSale: 139.96, activation: 0, truecost: 139.96, mindays: 0 },
+              { size: "50K Bolt",       goal: null, dd: 2000, ddt: "EOD", evalReg: 519.9, evalSale: 207.96, activation: 0, truecost: 207.96, mindays: 0 },
+              { size: "100K Bolt",      goal: null, dd: 3000, ddt: "EOD", evalReg: 749.9, evalSale: 299.96, activation: 0, truecost: 299.96, mindays: 0 },
             ];
             for (let v of fundedseatVariants)
               allRows.push({
@@ -2472,7 +2491,7 @@
                 truecost: v.truecost,
                 discount: "60%",
                 code: "BRO",
-                platform: "Rithmic, Quantower",
+                platform: "Rithmic, DX Feed, Volumetrica, DeepCharts, DeepDom, Quantower, ATAS, MotiveWave, Bookmap, Sierra Chart, Tradesea",
                 country: "Unknown",
                 maxaccounts: 3,
                 firmpage: "https://fundedseat.link/bro",
