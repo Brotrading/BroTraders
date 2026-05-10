@@ -1799,10 +1799,9 @@
     },
     "fundedseat": {
       "name": "FundedSeat",
-      "country": "Bulgaria",
+      "country": "USA",
       "legal_entities": [
-        {"name": "FT Imperium Ltd", "address": "Sofia 1000, 19 Lavele Str., Bulgaria", "registration_number": "206391579", "role": "primary"},
-        {"name": "Cygnus Software Solutions LLC", "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA", "role": "US payments / shell entity"}
+        {"name": "Cygnus Software Solutions LLC", "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA", "role": "primary"}
       ],
       "code_default": "BRO",
       "affiliate_url": "https://fundedseat.link/bro",
