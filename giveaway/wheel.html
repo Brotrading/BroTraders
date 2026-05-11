@@ -706,141 +706,10 @@ function playWinSound() {
 }
 
 // ========= INITIAL ENTRIES SNAPSHOT =========
-// Snapshot of all entries at deploy-time so a fresh browser sees them
-// instantly (no 8s wait for the auto-fetch). Auto-fetch still runs to
-// pick up entries submitted AFTER this snapshot.
-const INITIAL_NAMES_SEED = [
-  "Waleed",
-  "vvs",
-  "vvs",
-  "Waleed",
-  "gordan_00916",
-  "gordan_00916",
-  "Raizo777",
-  "danwells",
-  "danwells",
-  "Dries",
-  "Dries",
-  "Reddi82",
-  "Maelstrom (MikeH)",
-  "Ibrahim",
-  "Abix",
-  "Guorilla",
-  "Abix",
-  "Maelstrom (Mike H)",
-  "Guorilla",
-  "Lewis",
-  "Lewis",
-  "TradeWithVaghela",
-  "maxcrtking",
-  "shashinmayan",
-  "bOzmhikz14",
-  "faresatrading",
-  "VAGHELAFF",
-  "Spammer_hunt",
-  "pietrobUggae",
-  "chitrodatrader",
-  "thepromTrade",
-  "JigarVaghela-k5x",
-  "jhardan1986",
-  "kristellchablelucianokri",
-  "pandalok613",
-  "nurulhidahSalam",
-  "Tiffanybakerbutterworth",
-  "smwarman",
-  "legolastraders",
-  "shashivaghri",
-  "Marky41",
-  "IctqtCRTT",
-  "Marky41",
-  "Nuna",
-  "whyyoucomingfast",
-  "Sean",
-  "Sean",
-  "Mint (aymyint)",
-  "Ben",
-  "jesus3333",
-  "jesus3333",
-  "traderBroslo",
-  "traderBroski",
-  "jcps",
-  "donervin._33431",
-  "mjo_investments",
-  "mjo_investments",
-  "randomlq",
-  "Ibrahim",
-  "limitless",
-  "limitless",
-  "Martin",
-  "kumar572143",
-  "0xTommy",
-  "m27d1",
-  "kumar572143",
-  "fragfree",
-  "FragFree",
-  "daivat07",
-  "Tigertrades",
-  "d0ttss",
-  "Mundas",
-  "Mundas",
-  "wicktortsfx",
-  "ubheamar",
-  "Cholakov33",
-  "FishStick",
-  "Cholakov33",
-  "Nick",
-  "FishStick",
-  "Nick",
-  "thar_htwe_22181",
-  "strawberry22345",
-  "Peetrs",
-  "Peetrs",
-  "Ash_25",
-  "d3470",
-  "Rambo",
-  "Rambo",
-  "d3470",
-  "Devan37",
-  "dhanush6885",
-  "Devan37",
-  "banga008",
-  "carabou_",
-  "Adrii",
-  "adrii",
-  "JAKIR",
-  "mahinder7883",
-  "demon057876",
-  "Similidiar",
-  "deadpool001_hunter",
-  "tomtrus",
-  "Siva_trader",
-  "Netroxen",
-  "delfor_6",
-  "Reallyhimothy",
-  "cookl0",
-  "FERO78",
-  "george pol",
-  "ubheamar",
-  "chartscientistmd",
-  "szollosipeti54",
-  "Netroxen",
-  "whyyoucomingfast",
-  "cookl0",
-  "22xpepe",
-  "fred4545",
-  "Mr Grognon",
-  "22xpepe",
-  "Mr Grognon",
-  "Reallyhimothy",
-  "FERO78",
-  "Jeanliherd",
-  "fred4545",
-  "oyongr",
-  "anxietyh",
-  "jcps",
-  "Brisktrader",
-];
-// 129 entries snapshot
+// Names are sourced LIVE from the Apps Script API (see fetchEntries below).
+// No hardcoded snapshot — the API is the single source of truth so all PCs see the same data.
+const INITIAL_NAMES_SEED = [];
+// 0 entries snapshot — API-driven
 
 // ========= STATE =========
 const STORAGE_KEY = 'bro-wheel-v1';
@@ -877,12 +746,15 @@ let state = loadState();
 seedPastWinners();
 
 function loadState() {
+  // Names are sourced LIVE from the Apps Script API each poll cycle (see
+  // fetchEntries below). State only persists past-winner counts to localStorage
+  // — entry names are always fresh from the server so every PC sees the same list.
+  let saved = { winCounts: {} };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) saved = JSON.parse(raw);
   } catch(e) {}
-  // Fresh browser: seed with snapshot so wheel shows entries immediately
-  return { names: INITIAL_NAMES_SEED.slice(), winCounts: {} };
+  return { names: [], winCounts: saved.winCounts || {} };
 }
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
@@ -1337,34 +1209,28 @@ async function fetchEntries() {
     const res = await fetch(APPS_SCRIPT_URL, { method: 'GET' });
     const data = await res.json();
     if (!data || !Array.isArray(data.entries)) return;
-    // Re-check after async fetch — spin may have started while waiting.
     if (spinning) return;
-    let added = 0;
+    // REPLACE state.names with the API response — API is the source of truth.
+    // Each entry (discord, tier) becomes one row in the wheel. Pro-Bros who
+    // submitted BOTH /all and /pro forms naturally appear twice → 2× chance.
+    const newNames = [];
     data.entries.forEach(entry => {
       const name = (entry.discord || '').trim();
       if (!name) return;
-      // Pro-tier entries already get auto-doubled if they ALSO submit /all,
-      // so we only add each (discord, tier) pair once. Names show as raw discord.
-      const key = name + ' [' + entry.tier + ']';
-      if (!state.names.includes(name) || state.names.filter(n => n === name).length < entriesForUser(data.entries, name)) {
-        state.names.push(name);
-        added++;
-      }
+      newNames.push(name);
     });
-    if (added) {
+    // Only update + re-render if the list actually changed (avoid pointless redraws).
+    const changed = newNames.length !== state.names.length ||
+                    newNames.some((n, i) => n !== state.names[i]);
+    if (changed) {
+      state.names = newNames;
       saveState();
       renderAll();
-      console.log('[wheel] added', added, 'new entries — total', state.names.length);
+      console.log('[wheel] synced from API — total', state.names.length, 'entries');
     }
   } catch (e) {
     console.warn('[wheel] fetch failed', e);
   }
-}
-
-function entriesForUser(entries, discord) {
-  // Counts how many tier-distinct entries exist for this discord username.
-  // Pro-Bros who submitted both /all AND /pro = 2 entries.
-  return entries.filter(e => e.discord === discord).length;
 }
 
 // Initial fetch + poll every 8 seconds
