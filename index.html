@@ -1443,18 +1443,17 @@
           // (preserves all original entries and adds the 4 requested firms)
           // --------------------------------------------------------------
           const firms = [
-            // Carousel data — keep in sync with comparison.html canonical discounts.
-            {
-              firm: "Apex Trader Funding",
-              logo: "Photos/firms/apex.png",
-              discount: "90%",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            },
             {
               firm: "Tradeify",
               logo: "Photos/firms/tradeify.png",
               discount: "40%",
               website: "https://tradeify.co/?ref=BFYQ2HKM",
+            },
+            {
+              firm: "FundedSeat",
+              logo: "Photos/firms/fundedseat.png",
+              discount: "60% Off",
+              website: "https://fundedseat.link/bro",
             },
             {
               firm: "MyFunded <br/>Futures",
@@ -1463,16 +1462,35 @@
               website: "https://myfundedfutures.com/challenge?ref=5117",
             },
             {
+              firm: "Apex Trader Funding",
+              logo: "Photos/firms/apex.png",
+              discount: "90%",
+              website: "https://apextraderfunding.com/member/aff/go/buurtie",
+            },
+            {
               firm: "Lucid Trading",
               logo: "Photos/firms/lucid.png",
               discount: "40%",
               website: "https://lucidtrading.com/ref/brotrading/",
             },
             {
-              firm: "DayTraders",
-              logo: "Photos/firms/daytraders.svg",
-              discount: "85%",
-              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+              firm: "NexGen <br/>Funding",
+              logo: "Photos/firms/nexgen.png",
+              discount: "30% Off",
+              website: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
+            },
+            {
+              firm: "TopOne<br/> Futures",
+              logo: "Photos/firms/topone.png",
+              discount: "60% Off",
+              website:
+                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
+            },
+            {
+              firm: "Alpha <br/> Futures",
+              logo: "Photos/firms/alphafutures.png",
+              discount: "20% Off",
+              website: "https://app.alpha-futures.com/signup/BROTRADING/",
             },
             {
               firm: "Phidias<br/> Propfirm",
@@ -1482,47 +1500,29 @@
               website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
             },
             {
+              firm: "DayTraders",
+              logo: "Photos/firms/daytraders.svg",
+              discount: "85%",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
               firm: "YRM Prop",
               logo: "Photos/firms/yrmprop.png",
               discount: "40%",
               website: "https://yrmprop.com/ref/Bro/",
             },
+            // ========== Duplicate set for smooth carousel loop ==========
             {
-              firm: "NexGen <br/>Funding",
-              logo: "Photos/firms/nexgen.png",
-              discount: "30% Off",
-              website: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-            },
-            {
-              firm: "TopOne<br/> Futures",
-              logo: "Photos/firms/topone.png",
-              discount: "60% Off",
-              website:
-                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
-            },
-            {
-              firm: "Alpha <br/> Futures",
-              logo: "Photos/firms/alphafutures.png",
-              discount: "20% Off",
-              website: "https://app.alpha-futures.com/signup/BROTRADING/",
+              firm: "Tradeify",
+              logo: "Photos/firms/tradeify.png",
+              discount: "40%",
+              website: "https://tradeify.co/?ref=BFYQ2HKM",
             },
             {
               firm: "FundedSeat",
               logo: "Photos/firms/fundedseat.png",
               discount: "60% Off",
               website: "https://fundedseat.link/bro",
-            },
-            {
-              firm: "Apex Trader Funding",
-              logo: "Photos/firms/apex.png",
-              discount: "90%",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            },
-            {
-              firm: "Tradeify",
-              logo: "Photos/firms/tradeify.png",
-              discount: "40%",
-              website: "https://tradeify.co/?ref=BFYQ2HKM",
             },
             {
               firm: "MyFunded <br/>Futures",
@@ -1531,30 +1531,16 @@
               website: "https://myfundedfutures.com/challenge?ref=5117",
             },
             {
+              firm: "Apex Trader Funding",
+              logo: "Photos/firms/apex.png",
+              discount: "90%",
+              website: "https://apextraderfunding.com/member/aff/go/buurtie",
+            },
+            {
               firm: "Lucid Trading",
               logo: "Photos/firms/lucid.png",
               discount: "40%",
               website: "https://lucidtrading.com/ref/brotrading/",
-            },
-            {
-              firm: "DayTraders",
-              logo: "Photos/firms/daytraders.svg",
-              discount: "85%",
-              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            },
-            {
-              firm: "Phidias <br/>Propfirm",
-              logo: "Photos/firms/phidias.jpeg",
-              discount: "80% Off",
-              link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-            },
-            // ========== Duplicate set for smooth carousel loop ==========
-            {
-              firm: "YRM Prop",
-              logo: "Photos/firms/yrmprop.png",
-              discount: "40%",
-              website: "https://yrmprop.com/ref/Bro/",
             },
             {
               firm: "NexGen <br/>Funding",
@@ -1576,10 +1562,23 @@
               website: "https://app.alpha-futures.com/signup/BROTRADING/",
             },
             {
-              firm: "FundedSeat",
-              logo: "Photos/firms/fundedseat.png",
-              discount: "60% Off",
-              website: "https://fundedseat.link/bro",
+              firm: "Phidias<br/> Propfirm",
+              logo: "Photos/firms/phidias.jpeg",
+              discount: "80% Off",
+              link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
+              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
+            },
+            {
+              firm: "DayTraders",
+              logo: "Photos/firms/daytraders.svg",
+              discount: "85%",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            {
+              firm: "YRM Prop",
+              logo: "Photos/firms/yrmprop.png",
+              discount: "40%",
+              website: "https://yrmprop.com/ref/Bro/",
             },
           ];
 
@@ -2151,6 +2150,32 @@
             // original deals + 4 new firms (exactly as requested, preserving style & codes)
             const deals = [
               {
+                name: "Tradeify",
+                logo: "Photos/firms/tradeify.png",
+                discount: "30% Off",
+                details:
+                  "30% Off The 150K Select Plan.<br>Choose Day-1 or 3-Day Payouts!",
+                code: "BRO",
+                link: "https://tradeify.co/?ref=BFYQ2HKM",
+              },
+              {
+                name: "FundedSeat",
+                logo: "Photos/firms/fundedseat.png",
+                discount: "60% Off",
+                details:
+                  "60% off ALL accounts with code BRO.<br>1 Step Daily, Daily Pro, Sprint + Instant Funding plans.<br>11 platforms supported. 90/10 payout split.",
+                code: "BRO",
+                link: "https://fundedseat.link/bro",
+              },
+              {
+                name: "My Funded Futures",
+                logo: "Photos/firms/myfundedfutures.png",
+                discount: "Upto 50% Off",
+                details: "No Activation Fees + BOGO.",
+                code: "BRO",
+                link: "https://myfundedfutures.com/challenge?ref=5117",
+              },
+              {
                 name: "Apex Trader Funding",
                 logo: "Photos/firms/apex.png",
                 discount: "90% Off",
@@ -2166,50 +2191,6 @@
                 details: "No Activation Fees<br>Up to 40% Off Pro & Flex Plans.",
                 code: "BROTRADING",
                 link: "https://lucidtrading.com/ref/brotrading/",
-              },
-              {
-                name: "My Funded Futures",
-                logo: "Photos/firms/myfundedfutures.png",
-                discount: "Upto 50% Off",
-                details: "No Activation Fees + BOGO.",
-                code: "BRO",
-                link: "https://myfundedfutures.com/challenge?ref=5117",
-              },
-              {
-                name: "Tradeify",
-                logo: "Photos/firms/tradeify.png",
-                discount: "30% Off",
-                details:
-                  "30% Off The 150K Select Plan.<br>Choose Day-1 or 3-Day Payouts!",
-                code: "BRO",
-                link: "https://tradeify.co/?ref=BFYQ2HKM",
-              },
-              {
-                name: "Daytraders.com",
-                logo: "Photos/firms/daytraders.svg",
-                discount: "90% Off",
-                details:
-                  "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
-                code: "BROTRADING",
-                link: "https://daytraders.com/",
-              },
-              {
-                name: "Phidias Propfirm",
-                logo: "Photos/firms/phidias.jpeg",
-                discount: "60% Off",
-                details: "TRY Now<br>Same Day Approval!",
-                code: "BROTRADING",
-                link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-              },
-              // ========== 4 NEW FIRMS (exactly as per request, no style change) ==========
-              {
-                name: "YRM Prop",
-                logo: "Photos/firms/yrmprop.png",
-                discount: "90% Off",
-                details:
-                  "Use code BRO for special discount.<br>Trusted prop firm.",
-                code: "BRO",
-                link: "https://yrmprop.com/ref/Bro/",
               },
               {
                 name: "NexGen Funding",
@@ -2237,15 +2218,32 @@
                 link: "https://app.alpha-futures.com/signup/BROTRADING/",
               },
               {
-                name: "FundedSeat",
-                logo: "Photos/firms/fundedseat.png",
+                name: "Phidias Propfirm",
+                logo: "Photos/firms/phidias.jpeg",
                 discount: "60% Off",
-                details:
-                  "60% off ALL accounts with code BRO.<br>1 Step Daily, Daily Pro, Sprint + Instant Funding plans.<br>11 platforms supported. 90/10 payout split.",
-                code: "BRO",
-                link: "https://fundedseat.link/bro",
+                details: "TRY Now<br>Same Day Approval!",
+                code: "BROTRADING",
+                link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
               },
-            ];
+              {
+                name: "Daytraders.com",
+                logo: "Photos/firms/daytraders.svg",
+                discount: "90% Off",
+                details:
+                  "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
+                code: "BROTRADING",
+                link: "https://daytraders.com/",
+              },
+              {
+                name: "YRM Prop",
+                logo: "Photos/firms/yrmprop.png",
+                discount: "90% Off",
+                details:
+                  "Use code BRO for special discount.<br>Trusted prop firm.",
+                code: "BRO",
+                link: "https://yrmprop.com/ref/Bro/",
+              },
+          ];
 
             const track = document.getElementById("broCarouselTrack");
             if (!track) return;
@@ -3010,21 +3008,6 @@
           // Showcase plan per firm = the one most users buy.
           // Source: scripts/gen_homepage_rows.py — re-run to refresh.
           const firms = [
-            { // Apex Trail (Trailing DD)
-              firm: "Apex Trader Funding",
-              logo: "Photos/firms/apex.png",
-              account: 50000,
-              eval: 24.90,
-              activation: 69,
-              truecost: 93.90,
-              ddt: "Trailing",
-              goal: 3000,
-              dd: 2000,
-              mindays: 1,
-              discount: "90%",
-              code: "BRO",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            },
             { // Tradeify Growth
               firm: "Tradeify",
               logo: "Photos/firms/tradeify.png",
@@ -3039,6 +3022,21 @@
               discount: "40%",
               code: "BRO",
               website: "https://tradeify.co/?ref=BFYQ2HKM",
+            },
+            { // FundedSeat Daily 35% — comparable 1-Step Eval
+              firm: "FundedSeat",
+              logo: "Photos/firms/fundedseat.png",
+              account: 50000,
+              eval: 79.96,
+              activation: 0,
+              truecost: 79.96,
+              ddt: "EOD",
+              goal: 3000,
+              dd: 2000,
+              mindays: 0,
+              discount: "60%",
+              code: "BRO",
+              website: "https://fundedseat.link/bro",
             },
             { // MFFU Rapid
               firm: "MyFundedFutures",
@@ -3055,6 +3053,21 @@
               code: "BRO",
               website: "https://myfundedfutures.com/challenge?ref=5117",
             },
+            { // Apex Trail (Trailing DD)
+              firm: "Apex Trader Funding",
+              logo: "Photos/firms/apex.png",
+              account: 50000,
+              eval: 24.90,
+              activation: 69,
+              truecost: 93.90,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2000,
+              mindays: 1,
+              discount: "90%",
+              code: "BRO",
+              website: "https://apextraderfunding.com/member/aff/go/buurtie",
+            },
             { // LucidPro
               firm: "Lucid Trading",
               logo: "Photos/firms/lucid.png",
@@ -3069,51 +3082,6 @@
               discount: "40%",
               code: "BROTRADING",
               website: "https://lucidtrading.com/ref/brotrading/",
-            },
-            { // DayTraders Trail
-              firm: "Daytraders.com",
-              logo: "Photos/firms/daytraders.svg",
-              account: 50000,
-              eval: 56.85,
-              activation: 130,
-              truecost: 186.85,
-              ddt: "Trailing",
-              goal: 3000,
-              dd: 2500,
-              mindays: 2,
-              discount: "85%",
-              code: "BROTRADING",
-              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            },
-            { // Phidias Fundamental OTP
-              firm: "Phidias",
-              logo: "Photos/firms/phidias.jpeg",
-              account: 50000,
-              eval: 116,
-              activation: 0,
-              truecost: 116,
-              ddt: "EOD",
-              goal: 4000,
-              dd: 2500,
-              mindays: 3,
-              discount: "80%",
-              code: "BROTRADING",
-              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-            },
-            { // YRM Starter
-              firm: "YRM Prop",
-              logo: "Photos/firms/yrmprop.png",
-              account: 50000,
-              eval: 74,
-              activation: 0,
-              truecost: 74,
-              ddt: "EOD",
-              goal: 3000,
-              dd: 2000,
-              mindays: 8,
-              discount: "40%",
-              code: "BRO",
-              website: "https://yrmprop.com/ref/Bro/",
             },
             { // NexGen Ace (1-Step) — closest to comparable peers
               firm: "NexGen Funding",
@@ -3161,20 +3129,50 @@
               code: "BROTRADING",
               website: "https://app.alpha-futures.com/signup/BROTRADING/",
             },
-            { // FundedSeat Daily 35% — comparable 1-Step Eval
-              firm: "FundedSeat",
-              logo: "Photos/firms/fundedseat.png",
+            { // Phidias Fundamental OTP
+              firm: "Phidias",
+              logo: "Photos/firms/phidias.jpeg",
               account: 50000,
-              eval: 79.96,
+              eval: 116,
               activation: 0,
-              truecost: 79.96,
+              truecost: 116,
+              ddt: "EOD",
+              goal: 4000,
+              dd: 2500,
+              mindays: 3,
+              discount: "80%",
+              code: "BROTRADING",
+              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
+            },
+            { // DayTraders Trail
+              firm: "Daytraders.com",
+              logo: "Photos/firms/daytraders.svg",
+              account: 50000,
+              eval: 56.85,
+              activation: 130,
+              truecost: 186.85,
+              ddt: "Trailing",
+              goal: 3000,
+              dd: 2500,
+              mindays: 2,
+              discount: "85%",
+              code: "BROTRADING",
+              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+            },
+            { // YRM Starter
+              firm: "YRM Prop",
+              logo: "Photos/firms/yrmprop.png",
+              account: 50000,
+              eval: 74,
+              activation: 0,
+              truecost: 74,
               ddt: "EOD",
               goal: 3000,
               dd: 2000,
-              mindays: 0,
-              discount: "60%",
+              mindays: 8,
+              discount: "40%",
               code: "BRO",
-              website: "https://fundedseat.link/bro",
+              website: "https://yrmprop.com/ref/Bro/",
             },
           ];
 
