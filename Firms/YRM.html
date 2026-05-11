@@ -512,7 +512,7 @@
       }
     </style>
   </head>
-  <body>
+  <body data-firm-slug="yrm_prop">
     <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
     <div class="bt-topbar">
       <!-- SCROLLING SECTION -->
@@ -716,84 +716,8 @@
       }
     </style>
     <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
-    <!-- ================= BRO TRADING HEADER ================= -->
-    <header class="bt-header">
-      <div class="bt-container">
-        <!-- Logo -->
-        <div class="bt-logo">
-          <a href="../index.html">
-            <img
-              src="../Bro_Trading_logo-removebg-preview.png"
-              alt="Bro Trading"
-            />
-          </a>
-        </div>
-
-        <!-- Navigation -->
-        <nav class="bt-nav">
-          <!-- Mobile Close Button -->
-          <button class="bt-mobile-close" aria-label="Close menu">✕</button>
-
-          <a href="../index.html" class="bt-link">Home</a>
-
-          <!-- Funding Plans -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" data-dropdown="funding">
-              Funding Plans ▾
-            </button>
-            <div class="bt-drop-menu" id="funding">
-              <div class="bt-drop-grid">
-                <div>
-                  <a href="#"><strong>Firm Lists :</strong></a>
-                  <a href="../CompareTopFirms/comparison.html"
-                    >Prop Firm Comparison</a
-                  >
-                  <a href="../CompareTopFirms/Drawdown.html"
-                    >Largest Drawdown</a
-                  >
-                  <a href="../CompareTopFirms/QuickFunding.html"
-                    >Quickest Funding</a
-                  >
-                  <a href="../CompareTopFirms/bestDeals.html">Best Deals</a>
-                </div>
-                <div>
-                  <a href="#"><strong>Top Firms :</strong></a>
-                  <a href="ApexFunding.html">Apex Trader Funding</a>
-                  <a href="TradeifyTrader.html">Tradeify</a>
-                  <a href="Lucid Trading.html">Lucid Trading</a>
-                  <a href="MyFundedFuture.html">My Funded Future</a>
-                  <a href="DayTraders.html">Daytraders.com</a>
-                  <a href="PhidiasPropFirm.html">Phidias PropFirm</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Resources -->
-          <div class="bt-dropdown">
-            <button class="bt-drop-btn" data-dropdown="resources">
-              Resources ▾
-            </button>
-            <div class="bt-drop-menu small" id="resources">
-              <a href="../Resourses/TradingTools.html">Trading Tools</a>
-              <a href="../Resourses/MarketAnalysis.html">Market Analysis</a>
-            </div>
-          </div>
-
-          <a href="../GiveAway.html" class="bt-link">GiveAways</a>
-        </nav>
-
-        <!-- CTA -->
-        <a href="../Subscribe.html" class="bt-cta">Subscribe</a>
-
-        <!-- Hamburger -->
-        <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
+<div id="header"></div>
+    <script src="../header.js" defer></script>
 
     <!-- Overlay -->
     <div class="bt-overlay" id="overlay"></div>
@@ -2340,7 +2264,11 @@
           ><a href="Lucid Trading.html">Lucid Trading</a
           ><a href="MyFundedFuture.html">My Funded Futures</a
           ><a href="DayTraders.html">Day Trader</a
-          ><a href="PhidiasPropFirm.html">Phidias PropFirm</a>
+          ><a href="PhidiasPropFirm.html">Phidias PropFirm</a
+          ><a href="AlphaFutures.html">Alpha Futures</a
+          ><a href="NexGen.html">NexGen Funding</a
+          ><a href="TopOne.html">Top One Futures</a
+          ><a href="YRM.html">YRM Prop</a
         </div>
       </div>
       <div class="bt-footer-bottom">
@@ -2498,5 +2426,6 @@
         }
       }
     </style>
-  </body>
+    <script src="../assets/pricing.js" defer></script>
+</body>
 </html>

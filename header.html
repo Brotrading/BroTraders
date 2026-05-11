@@ -1,0 +1,267 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+  /* ================================================================
+     BT-HEADER  —  canonical CSS injected by header.js
+     Overrides every page's inline header styles (injected later in
+     the cascade, so equal-specificity rules here always win).
+     ================================================================ */
+
+  /* --- Labels (Firm Lists / Top Firms) --- */
+  .bt-drop-label { display: block; padding: 6px 0 4px; color: #fff; font-size: 14px; font-weight: 700; cursor: default; pointer-events: none; }
+
+  /* --- Mobile subscribe (hidden on desktop, plain link on mobile) --- */
+  .bt-nav-subscribe { display: none; }
+
+  /* ---- Desktop base ---- */
+  .bt-header {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    margin: 10px 15px;
+    margin-left: 180px;
+    border-radius: 15px;
+    width: 80%;
+    background: #00000073;
+    z-index: 1000;
+    transition: all 0.35s ease;
+  }
+  .bt-header.bt-scrolled {
+    top: 0;
+    background: rgba(10, 15, 30, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(0, 194, 255, 0.25);
+    width: 63%;
+    margin-left: 276px;
+  }
+  .bt-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: padding 0.3s ease;
+  }
+  .bt-header.bt-scrolled .bt-container { padding: 0 30px; }
+  .bt-logo img { height: 55px; transition: height 0.3s ease; display: block; }
+  .bt-header.bt-scrolled .bt-logo img { height: 50px; }
+
+  /* ---- Nav (desktop) ---- */
+  .bt-nav { display: flex; gap: 30px; align-items: center; }
+  .bt-dropdown { position: relative; }
+
+  /* ---- Nav links — locked font so every page is identical ---- */
+  .bt-header .bt-link,
+  .bt-header .bt-drop-btn {
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  .bt-header .bt-link:hover,
+  .bt-header .bt-drop-btn:hover { color: #00c2ff; }
+
+  /* ---- Dropdown menu ---- */
+  .bt-drop-menu {
+    position: absolute;
+    top: 170%;
+    left: 0;
+    min-width: 650px;
+    padding: 30px;
+    border-radius: 14px;
+    background: rgba(15, 20, 45, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 194, 255, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
+    z-index: 1001;
+  }
+  .bt-drop-menu.small { min-width: 260px; padding: 20px; }
+  .bt-drop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .bt-drop-menu a { display: block; color: #cbd5e1; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
+  .bt-drop-menu a:hover { color: #00c2ff; padding-left: 5px; }
+
+  /* Desktop: open on hover */
+  @media (min-width: 1025px) {
+    .bt-dropdown:hover .bt-drop-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  }
+
+  /* ---- CTA button ---- */
+  .bt-cta {
+    background: linear-gradient(135deg, #00c2ff, #1e90ff);
+    padding: 9px 22px;
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    white-space: nowrap;
+  }
+  .bt-cta:hover { transform: translateY(-3px); background: white; color: #0b0f2a; }
+
+  /* ---- Hamburger ---- */
+  .bt-hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; }
+  .bt-hamburger span { width: 26px; height: 3px; background: #fff; display: block; border-radius: 2px; }
+
+  /* ---- Mobile close button ---- */
+  .bt-mobile-close { display: none; position: absolute; top: 25px; right: 25px; font-size: 26px; color: #fff; cursor: pointer; z-index: 1003; background: none; border: none; }
+
+  /* ================================================================
+     TABLET / MOBILE  ≤ 1024 px
+     ================================================================ */
+  @media (max-width: 1024px) {
+    .bt-header { width: 90%; margin: 10px auto; left: 0; right: 0; top: 20px; }
+    .bt-header.bt-scrolled { width: 95%; margin-left: auto; margin-right: auto; top: 0; }
+    .bt-container { padding: 0 20px; }
+    .bt-logo img { height: 45px; }
+
+    /* Slide-out panel */
+    .bt-nav {
+      position: fixed; top: 0; right: -100%;
+      width: 85%; max-width: 380px; height: 100vh;
+      background: linear-gradient(135deg, #0a0f1e 0%, #0b0f2a 100%);
+      flex-direction: column; align-items: stretch;
+      padding: 80px 25px 40px; gap: 12px;
+      transition: 0.4s ease; z-index: 1002;
+      overflow-y: auto; box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+    }
+    .bt-nav.open { right: 0; }
+    .bt-nav-subscribe { display: block; }
+    .bt-hamburger { display: flex; }
+    .bt-cta { display: none; }
+    .bt-mobile-close { display: block; }
+
+    .bt-header .bt-link,
+    .bt-header .bt-drop-btn {
+      font-size: 18px; padding: 12px 0; width: 100%;
+      text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .bt-dropdown { width: 100%; }
+    .bt-drop-btn { display: flex; justify-content: space-between; align-items: center; }
+    .bt-drop-btn::after { content: "▾"; font-size: 16px; transition: transform 0.3s; }
+    .bt-dropdown.open .bt-drop-btn::after { transform: rotate(180deg); }
+
+    .bt-drop-menu {
+      position: static; min-width: 100%; padding: 0; margin-top: 0;
+      background: rgba(15, 20, 45, 0.6); backdrop-filter: blur(25px);
+      border: 1px solid rgba(0, 194, 255, 0.3); border-radius: 12px;
+      opacity: 0; visibility: hidden; transform: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
+      max-height: 0; overflow: hidden;
+    }
+    .bt-dropdown.open .bt-drop-menu { opacity: 1; visibility: visible; padding: 15px; max-height: 500px; margin-top: 8px; }
+    .bt-drop-menu.small { min-width: 100%; }
+    .bt-drop-grid { grid-template-columns: 1fr 1fr; gap: 12px 20px; }
+    .bt-drop-menu a { font-size: 14px; line-height: 1.5; margin-bottom: 8px; padding: 4px 0; }
+    .bt-drop-menu a:hover { padding-left: 8px; }
+    .bt-drop-menu strong { font-size: 15px; display: block; margin-bottom: 8px; }
+  }
+
+  /* ================================================================
+     SMALL MOBILE  ≤ 768 px
+     ================================================================ */
+  @media (max-width: 768px) {
+    .bt-header { width: 95%; margin: 8px auto; border-radius: 12px; }
+    .bt-header.bt-scrolled { width: 98%; border-radius: 0 0 12px 12px; }
+    .bt-container { padding: 0 15px; }
+    .bt-logo img { height: 40px; }
+    .bt-nav { width: 85%; max-width: 340px; padding: 70px 20px 30px; gap: 8px; }
+    .bt-header .bt-link,
+    .bt-header .bt-drop-btn { font-size: 17px; padding: 10px 0; }
+    .bt-drop-grid { gap: 10px 15px; }
+    .bt-drop-menu a { font-size: 13px; margin-bottom: 6px; }
+    .bt-drop-menu strong { font-size: 14px; }
+    .bt-hamburger span { width: 24px; height: 2.5px; }
+    .bt-mobile-close { top: 20px; right: 20px; font-size: 24px; }
+  }
+
+  /* ================================================================
+     EXTRA SMALL  ≤ 480 px
+     ================================================================ */
+  @media (max-width: 480px) {
+    .bt-header { width: 96%; margin: 5px auto; border-radius: 10px; }
+    .bt-container { padding: 0 12px; }
+    .bt-logo img { height: 35px; }
+    .bt-nav { width: 100%; max-width: none; padding: 65px 18px 25px; }
+    .bt-header .bt-link,
+    .bt-header .bt-drop-btn { font-size: 16px; padding: 10px 0; }
+    .bt-drop-grid { gap: 8px; }
+    .bt-drop-menu a { font-size: 13px; margin-bottom: 8px; }
+    .bt-hamburger span { width: 22px; height: 2px; }
+    .bt-hamburger { gap: 5px; }
+    .bt-mobile-close { top: 18px; right: 18px; font-size: 22px; }
+  }
+</style>
+<header class="bt-header">
+  <div class="bt-container">
+    <div class="bt-logo">
+      <a href="/index.html">
+        <img src="/Bro_Trading_logo-removebg-preview.png" alt="Bro Trading" />
+      </a>
+    </div>
+
+    <nav class="bt-nav">
+      <button class="bt-mobile-close" aria-label="Close menu">✕</button>
+
+      <a href="/index.html" class="bt-link">Home</a>
+
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" data-dropdown="funding">Funding Plans ▾</button>
+        <div class="bt-drop-menu" id="funding">
+          <div class="bt-drop-grid">
+            <div>
+              <strong class="bt-drop-label">Firm Lists :</strong>
+              <a href="/CompareTopFirms/comparison.html">Prop Firm Comparison</a>
+              <a href="/CompareTopFirms/Drawdown.html">Largest Drawdown</a>
+              <a href="/CompareTopFirms/QuickFunding.html">Quickest Funding</a>
+              <a href="/CompareTopFirms/bestDeals.html">Best Deals</a>
+            </div>
+            <div>
+              <strong class="bt-drop-label">Top Firms :</strong>
+              <a href="/Firms/ApexFunding.html">Apex Trader Funding</a>
+              <a href="/Firms/TradeifyTrader.html">Tradeify</a>
+              <a href="/Firms/Lucid Trading.html">Lucid Trading</a>
+              <a href="/Firms/MyFundedFuture.html">My Funded Futures</a>
+              <a href="/Firms/DayTraders.html">Daytraders.com</a>
+              <a href="/Firms/PhidiasPropFirm.html">Phidias PropFirm</a>
+              <a href="/Firms/AlphaFutures.html">Alpha Futures</a>
+              <a href="/Firms/NexGen.html">NexGen Funding</a>
+              <a href="/Firms/TopOne.html">Top One Futures</a>
+              <a href="/Firms/YRM.html">YRM Prop</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bt-dropdown">
+        <button class="bt-drop-btn" data-dropdown="resources">Resources ▾</button>
+        <div class="bt-drop-menu small" id="resources">
+          <a href="/Resourses/TradingTools.html">Trading Tools</a>
+          <a href="/Resourses/MarketAnalysis.html">Market Analysis</a>
+        </div>
+      </div>
+
+      <a href="/GiveAway.html" class="bt-link">Giveaway</a>
+      <a href="/propai.html" class="bt-link">Bro AI (beta) ✨</a>
+
+      <a href="/Subscribe.html" class="bt-link bt-nav-subscribe">Subscribe</a>
+    </nav>
+
+    <a href="/Subscribe.html" class="bt-cta">Subscribe</a>
+
+    <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

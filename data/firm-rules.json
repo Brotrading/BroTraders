@@ -3,7 +3,7 @@
     "purpose": "Structured database of all prop firm rules for propfirmbro.com. Built incrementally as Mike supplies official data. Future use: AI assistant to answer trader questions, comparison logic, content generation.",
     "last_updated": "2026-05-03",
     "verified_sources": "Mike-supplied screenshots from each firm's official website (pricing, rules, account details).",
-    "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative \u2014 always verify on firm's own site.",
+    "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative — always verify on firm's own site.",
     "schema_version": 1,
     "scraper_run": "Auto-merged from data/propfirm-rules-scraped.json"
   },
@@ -161,6 +161,13 @@
             }
           }
         }
+      },
+      "best_deal": {
+        "badge_pct": 40,
+        "button_code": "BROTRADING",
+        "promo_code": null,
+        "description": "Up to 40% off (Pro/Flex) and 30% off (Direct) with exclusive code BROTRADING via Bro Trading.",
+        "_verified": "2026-05-09"
       }
     },
     "tradeify": {
@@ -193,7 +200,7 @@
       ],
       "discount_text": "Up to 40% off w/ BRO",
       "leverage": {
-        "_note": "For Growth, Select, and Lightning Funded \u2014 same leverage table",
+        "_note": "For Growth, Select, and Lightning Funded — same leverage table",
         "25K": "1 contract / 10 micros",
         "50K": "4 contracts / 40 micros",
         "100K": "8 contracts / 80 micros",
@@ -209,7 +216,7 @@
         "bots_eas": "Allowed if sole-owner, exclusive, verified via live video. NO HFT bots",
         "copy_trading_external": "Prohibited (own accounts only)",
         "news_trading": "Allowed",
-        "market_close_auto_close": "Yes (trading day 6PM\u20135PM EST)"
+        "market_close_auto_close": "Yes (trading day 6PM–5PM EST)"
       },
       "plans": {
         "Growth": {
@@ -376,6 +383,13 @@
             }
           }
         }
+      },
+      "best_deal": {
+        "badge_pct": 40,
+        "button_code": "BRO",
+        "promo_code": null,
+        "description": "40% off all evaluation plans with exclusive code BRO via Bro Trading.",
+        "_verified": "2026-05-09"
       }
     },
     "myfundedfutures": {
@@ -430,11 +444,11 @@
       "rules_global": {
         "max_eval_accounts": "10 accounts up to $1.5M",
         "max_sim_funded": "5x 50K | 3x 100K | 3x 150K (up to $450K)",
-        "trading_hours": "18:00\u201316:10 EST (auto-close at 16:10)",
+        "trading_hours": "18:00–16:10 EST (auto-close at 16:10)",
         "inactivity_days": 7,
         "automation": "Allowed (no exploit of sim fills); CME guidelines for live",
         "copy_trading": "Allowed",
-        "news_trading_t1": "Pro/Rapid Sim funded prohibited \u00b12min; Flex unrestricted",
+        "news_trading_t1": "Pro/Rapid Sim funded prohibited ±2min; Flex unrestricted",
         "price_limit_rule": "No trading within 2% of CME price limit",
         "cross_instrument": "Single instrument only (e.g., max 2 NQ contracts)"
       },
@@ -596,6 +610,13 @@
             }
           }
         }
+      },
+      "best_deal": {
+        "badge_pct": 50,
+        "button_code": "BRO",
+        "promo_code": null,
+        "description": "Up to 50% off with affiliate code BRO via Bro Trading (50% on Pro, 40% on Builder/Flex, 20% on Rapid).",
+        "_verified": "2026-05-09"
       }
     },
     "alpha_futures": {
@@ -629,7 +650,7 @@
       "discount_text": "20% off w/ BROTRADING",
       "pricing_model": "MONTHLY (subscription, not one-time)",
       "rules_global": {
-        "automation": "Strictly prohibited (EAs, AI, bots) \u2014 across all account types",
+        "automation": "Strictly prohibited (EAs, AI, bots) — across all account types",
         "copy_trading": "Prohibited",
         "all_or_nothing": "Withdrawing all profits after trailing-balance adjustment = account closure",
         "tick_micro_scalping": "Prohibited (trades <10 ticks AND <2 minutes)",
@@ -639,7 +660,7 @@
         "inactivity_trading_days": 10,
         "overnight_holding": "Not allowed",
         "weekend_holding": "Not allowed",
-        "payout_processing_time": "\u226448 business hours"
+        "payout_processing_time": "≤48 business hours"
       },
       "plans": {
         "Standard": {
@@ -786,6 +807,13 @@
             }
           }
         }
+      },
+      "best_deal": {
+        "badge_pct": 20,
+        "button_code": "BROTRADING",
+        "promo_code": null,
+        "description": "20% off all Alpha Futures plans with exclusive code BROTRADING via Bro Trading.",
+        "_verified": "2026-05-09"
       }
     },
     "top_one_futures": {
@@ -1017,7 +1045,14 @@
         }
       },
       "_status": "Auto-extracted from https://toponefutures.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Discount code ANNIVERSARY: 50% off INSTANT Sim Funded, 40% off Elite/Elite Access/S2F/IGNITE. Elite plan is monthly subscription (price/mo); other plans are one-time fees. Elite Access activation fee equals MSRP per the table; reset fee is 'Only $35' on funded. Elite Access has no daily loss limit ('None!'). For INSTANT Sim Funded 100K/150K, two trailing drawdown values shown ($3,000/$4,000 and $4,500/$6,000) \u2014 used the higher value as max_drawdown. Same dual-value pattern for IGNITE 100K/150K. Platforms not specified in HTML. Min payout amount not specified; min trading days to payout: 5 (Elite Access), 10 (S2F, IGNITE). Payout split 90/10 from calculator section ('keep 90%')."
+      "_extraction_notes": "Discount code ANNIVERSARY: 50% off INSTANT Sim Funded, 40% off Elite/Elite Access/S2F/IGNITE. Elite plan is monthly subscription (price/mo); other plans are one-time fees. Elite Access activation fee equals MSRP per the table; reset fee is 'Only $35' on funded. Elite Access has no daily loss limit ('None!'). For INSTANT Sim Funded 100K/150K, two trailing drawdown values shown ($3,000/$4,000 and $4,500/$6,000) — used the higher value as max_drawdown. Same dual-value pattern for IGNITE 100K/150K. Platforms not specified in HTML. Min payout amount not specified; min trading days to payout: 5 (Elite Access), 10 (S2F, IGNITE). Payout split 90/10 from calculator section ('keep 90%').",
+      "best_deal": {
+        "badge_pct": 50,
+        "button_code": "BRO",
+        "promo_code": "ANNIVERSARY",
+        "description": "Up to 50% off with promo code ANNIVERSARY (50% on Instant Sim Funded, 40% on most plans). Use affiliate code BRO via Bro Trading link.",
+        "_verified": "2026-05-09"
+      }
     },
     "apex_trader_funding": {
       "name": "Apex Trader Funding",
@@ -1029,7 +1064,7 @@
         "Tradovate",
         "WealthCharts"
       ],
-      "discount_text": "~90% off with Coupon Code (e.g. $199 \u2192 $19.90)",
+      "discount_text": "~90% off with Coupon Code (e.g. $199 → $19.90)",
       "rules_global": {
         "consistency": "50% (best trading day may not exceed 50% of total profit)",
         "min_trading_days": 1,
@@ -1123,7 +1158,15 @@
         }
       },
       "_status": "Verified May 2026 from Mike's comparison.html canon (BRO 90% off promo).",
-      "_extraction_notes": "Only the rendered states for 25k Rithmic Intraday, 25k Rithmic EOD, and 100k Rithmic EOD were present in HTML. Sizes 50k and 150k are referenced in the picker/menus but their pricing/rules were not rendered in the provided HTML. Vendor variants (Tradovate, Wealthcharts) were not rendered with separate pricing \u2014 assumed identical via Rithmic data, but not confirmed. Discount appears as a 'with Coupon Code' price (~90% off MSRP); coupon code text not in HTML. Drawdown for Intraday Trail labeled 'Intraday Trail' tooltip='Intraday Trailing Drawdown' \u2014 coded as Trailing. Min payout amount not stated; payout frequency is every 5 trading days. This is the 'New' Apex product line (post March 1, 2026); legacy products excluded."
+      "_extraction_notes": "Only the rendered states for 25k Rithmic Intraday, 25k Rithmic EOD, and 100k Rithmic EOD were present in HTML. Sizes 50k and 150k are referenced in the picker/menus but their pricing/rules were not rendered in the provided HTML. Vendor variants (Tradovate, Wealthcharts) were not rendered with separate pricing — assumed identical via Rithmic data, but not confirmed. Discount appears as a 'with Coupon Code' price (~90% off MSRP); coupon code text not in HTML. Drawdown for Intraday Trail labeled 'Intraday Trail' tooltip='Intraday Trailing Drawdown' — coded as Trailing. Min payout amount not stated; payout frequency is every 5 trading days. This is the 'New' Apex product line (post March 1, 2026); legacy products excluded.",
+      "best_deal": {
+        "badge_pct": 90,
+        "button_code": "BRO",
+        "promo_code": null,
+        "description": "Up to 90% off via Bro Trading affiliate code BRO ? Apex runs frequent promos, verify current rate on their site.",
+        "_verified": "2026-05-09",
+        "_needs_mike_verify": true
+      }
     },
     "phidias": {
       "name": "Phidias Prop Firm",
@@ -1270,7 +1313,14 @@
         }
       },
       "_status": "Auto-extracted from https://phidiaspropfirm.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Pricing shown with two values: price-x (struck-through, full) and price-y (discounted, ~80% off for OTP and 60% off for Monthly Evaluation; ratios vary by plan \u2014 OTP 50K Fundamental: 580\u2192116 = 80% off, Monthly 50K Fundamental: 164\u219265.6 = 60% off). The exact discount code/text is not visible in HTML \u2014 discount_text is inferred from displayed prices. Daily loss limit is None for all plans. Account types are 'Fundamental' (intraday/futures) and 'Swing' (allows overnight/overweek). Reset fees apply only to monthly Evaluation plans ($40/$64/$104). Activation fees are waived ($0) for OTP plans, $149 (50K/100K) or $169 (150K) for monthly Evaluation. 150K Swing monthly plan was cut off in the HTML so not included. No payout/split/consistency rule data found in this section of HTML."
+      "_extraction_notes": "Pricing shown with two values: price-x (struck-through, full) and price-y (discounted, ~80% off for OTP and 60% off for Monthly Evaluation; ratios vary by plan — OTP 50K Fundamental: 580→116 = 80% off, Monthly 50K Fundamental: 164→65.6 = 60% off). The exact discount code/text is not visible in HTML — discount_text is inferred from displayed prices. Daily loss limit is None for all plans. Account types are 'Fundamental' (intraday/futures) and 'Swing' (allows overnight/overweek). Reset fees apply only to monthly Evaluation plans ($40/$64/$104). Activation fees are waived ($0) for OTP plans, $149 (50K/100K) or $169 (150K) for monthly Evaluation. 150K Swing monthly plan was cut off in the HTML so not included. No payout/split/consistency rule data found in this section of HTML.",
+      "best_deal": {
+        "badge_pct": 80,
+        "button_code": "BROTRADING",
+        "promo_code": null,
+        "description": "80% off all Phidias evaluation plans with exclusive code BROTRADING via Bro Trading.",
+        "_verified": "2026-05-09"
+      }
     },
     "daytraders": {
       "name": "DayTraders",
@@ -1495,7 +1545,14 @@
         }
       },
       "_status": "Auto-extracted from https://daytraders.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Discount widget shows 85% OFF countdown banner; popup advertises 90% Off. Discounted prices in HTML imply roughly 85% off MSRP for Trail/EOD/Static evaluations and ~40% off for S2F, ~30% off for S2L plans (S2L Core: $329->$229; Edge: $469->$369; Ultra: $599->$499 \u2014 these may be flat $100 off promo). Pro account activation fee is $130 (one-time) on Pro upgrades for Trail/EOD/Static. S2L Live accounts have FREE activation. Profit split: 100% on funded Pro accounts (per marketing); 80/20 only on S2L Live accounts. Min payout amount not specified in HTML. Payout frequency: 8 qualifying days for Pro, 10 for S2F, daily on S2L Live. Platforms: Rithmic data feeds, ONYX (proprietary browser-based), TradingView charts. Consistency rules vary: 50% during eval, 30% Pro, 20% S2F, 25% S2L eval, none on S2L Live."
+      "_extraction_notes": "Discount widget shows 85% OFF countdown banner; popup advertises 90% Off. Discounted prices in HTML imply roughly 85% off MSRP for Trail/EOD/Static evaluations and ~40% off for S2F, ~30% off for S2L plans (S2L Core: $329->$229; Edge: $469->$369; Ultra: $599->$499 — these may be flat $100 off promo). Pro account activation fee is $130 (one-time) on Pro upgrades for Trail/EOD/Static. S2L Live accounts have FREE activation. Profit split: 100% on funded Pro accounts (per marketing); 80/20 only on S2L Live accounts. Min payout amount not specified in HTML. Payout frequency: 8 qualifying days for Pro, 10 for S2F, daily on S2L Live. Platforms: Rithmic data feeds, ONYX (proprietary browser-based), TradingView charts. Consistency rules vary: 50% during eval, 30% Pro, 20% S2F, 25% S2L eval, none on S2L Live.",
+      "best_deal": {
+        "badge_pct": 85,
+        "button_code": "BROTRADING",
+        "promo_code": null,
+        "description": "85% off all DayTraders evaluation plans with exclusive code BROTRADING via Bro Trading.",
+        "_verified": "2026-05-09"
+      }
     },
     "nexgen_pro_trader": {
       "name": "NexGen Funding",
@@ -1693,7 +1750,15 @@
         }
       },
       "_status": "Auto-extracted from https://thenextgenfunding.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Discount displayed in promo bar is 30% off 50K/100K/200K with code PASS30 (April promo); however table shows discounted prices already applied across all sizes (these may reflect a different/standing discount). Profit target for Standard and Rapid is two-phase: P1 then P2 (Standard P1:10%/P2:5%; Rapid P1:8%/P2:5%) \u2014 only P1 target stored in profit_target field. Drawdown is described as 'Balance Based Drawdown' (static/balance-based, not trailing). No trading platforms specified on this page (separate Trading Platforms page referenced). No min payout amount or consistency rule disclosed on this page. Fee is refundable with first payout. | POST-PROCESSING: percentage values (target/maxDD/dailyDD) converted to dollars using account_size \u00d7 pct / 100."
+      "_extraction_notes": "Discount displayed in promo bar is 30% off 50K/100K/200K with code PASS30 (April promo); however table shows discounted prices already applied across all sizes (these may reflect a different/standing discount). Profit target for Standard and Rapid is two-phase: P1 then P2 (Standard P1:10%/P2:5%; Rapid P1:8%/P2:5%) — only P1 target stored in profit_target field. Drawdown is described as 'Balance Based Drawdown' (static/balance-based, not trailing). No trading platforms specified on this page (separate Trading Platforms page referenced). No min payout amount or consistency rule disclosed on this page. Fee is refundable with first payout. | POST-PROCESSING: percentage values (target/maxDD/dailyDD) converted to dollars using account_size × pct / 100.",
+      "best_deal": {
+        "badge_pct": 20,
+        "button_code": "BRO",
+        "promo_code": "PASS20",
+        "description": "20% off with promo code PASS20. Use affiliate code BRO via Bro Trading link for the exclusive Bro Trading rate.",
+        "_verified": "2026-05-09",
+        "_needs_mike_verify": true
+      }
     },
     "yrm_prop": {
       "name": "YRM Prop",
@@ -1795,7 +1860,14 @@
         }
       },
       "_status": "Auto-extracted from https://yrmprop.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Platforms section in HTML is empty (logos rendered via CSS/images). Starter plan shows a 'reset price' separate from initial purchase price; reset prices: $49/$69/$125/$139 for 25K/50K/100K/150K respectively. Starter activation fee shown as $0 (was $99 struck-through). Instant Prime daily loss limits labeled 'Soft Breach' for 50K+; 25K shows 'None'. Min payout amount not stated. Profit split shown as 90% (90/10). Drawdown labeled 'Trailing Max Drawdown' but mode is 'End of Day' \u2014 represented as EOD. Discount code YRM40 explicitly visible on Instant Prime cards; Starter cards show promotional pricing without explicit code."
+      "_extraction_notes": "Platforms section in HTML is empty (logos rendered via CSS/images). Starter plan shows a 'reset price' separate from initial purchase price; reset prices: $49/$69/$125/$139 for 25K/50K/100K/150K respectively. Starter activation fee shown as $0 (was $99 struck-through). Instant Prime daily loss limits labeled 'Soft Breach' for 50K+; 25K shows 'None'. Min payout amount not stated. Profit split shown as 90% (90/10). Drawdown labeled 'Trailing Max Drawdown' but mode is 'End of Day' \u2014 represented as EOD. Discount code YRM40 explicitly visible on Instant Prime cards; Starter cards show promotional pricing without explicit code.",
+      "best_deal": {
+        "badge_pct": 40,
+        "button_code": "BRO",
+        "promo_code": null,
+        "description": "40% off Instant Prime accounts with exclusive Bro Trading affiliate code BRO.",
+        "_verified": "2026-05-09"
+      }
     },
     "fundedseat": {
       "name": "FundedSeat",
