@@ -2013,6 +2013,10 @@
             const RESTRICTED_YRM = [
               "Iran","North Korea","Syria","Cuba","Russia","Belarus","Venezuela","Crimea (Region of Ukraine)","Donetsk","Luhansk","Palestinian Territory"
             ];
+            // FundedSeat: official restricted list not yet published — using OFAC minimum.
+            const RESTRICTED_FUNDEDSEAT = [
+              "Iran","North Korea","Syria","Cuba","Russia","Belarus","Venezuela","Crimea (Region of Ukraine)","Donetsk","Luhansk","Palestinian Territory"
+            ];
 
             // ----- Apex Trader Funding -----
             // Verified from apextraderfunding.com — 90% off sale active (code BRO).
@@ -2155,7 +2159,7 @@
               for (let acc of lucidAccounts)
                 allRows.push({
                   firm: "Lucid Trading",
-                  logo: "../Photos/firms/lucid.webp",
+                  logo: "../Photos/firms/lucid.png",
                   account: `${acc} ${plan.replace("Lucid", "")}`,
                   goal: lucidGoals[acc],
                   profitTarget: lucidGoals[acc],
@@ -2378,7 +2382,7 @@
             for (let v of topVariants)
               allRows.push({
                 firm: "Top One Futures",
-                logo: "../Photos/firms/topone.svg",
+                logo: "../Photos/firms/topone.png",
                 account: `${v.size} ${v.plan}`,
                 goal: topGoals[v.size],
                 profitTarget: topGoals[v.size],
@@ -2414,7 +2418,7 @@
             for (let v of yrmVariants)
               allRows.push({
                 firm: "YRM Prop",
-                logo: "../Photos/firms/yrmprop.svg",
+                logo: "../Photos/firms/yrmprop.png",
                 account: v.size,
                 goal: v.goal,
                 profitTarget: v.goal,
@@ -2434,9 +2438,95 @@
                 restrictedCountries: RESTRICTED_YRM,
               });
 
+            // ----- FundedSeat — verified May 2026 from official configurator screenshots (Mike-supplied) -----
+            // 6 plan variants × 3-4 sizes = 21 rows total:
+            //   1 Step Daily 35% consistency (4 sizes), 1 Step Daily 50% consistency (4 sizes),
+            //   1 Step Daily Pro (3 sizes, 40% consistency, tighter drawdown),
+            //   1 Step Sprint (4 sizes, has daily loss limit at 50K+),
+            //   Instant Funding Direct (3 sizes, 15% biggest-trade rule),
+            //   Instant Funding Bolt (3 sizes, 20% consistency on first payout).
+            // All "Drawdown Mode: EOD". 60% off ALL accounts with affiliate code BRO.
+            // Activation FREE on Eval. No dedicated firm page yet — firmpage points to affiliate URL.
+            const fundedseatVariants = [
+              // 1 Step - Daily (35% consistency)
+              { size: "25K Daily 35%",  goal: 1500, dd: 1000, ddt: "EOD", evalReg: 139.9, evalSale:  55.96, activation: 0, truecost:  55.96, mindays: 0 },
+              { size: "50K Daily 35%",  goal: 3000, dd: 2000, ddt: "EOD", evalReg: 199.9, evalSale:  79.96, activation: 0, truecost:  79.96, mindays: 0 },
+              { size: "100K Daily 35%", goal: 6000, dd: 3000, ddt: "EOD", evalReg: 339.9, evalSale: 135.96, activation: 0, truecost: 135.96, mindays: 0 },
+              { size: "150K Daily 35%", goal: 9000, dd: 4500, ddt: "EOD", evalReg: 479.9, evalSale: 191.96, activation: 0, truecost: 191.96, mindays: 0 },
+              // 1 Step - Daily (50% consistency — relaxed; same drawdowns, higher price)
+              { size: "25K Daily 50%",  goal: 1500, dd: 1000, ddt: "EOD", evalReg: 175.9, evalSale:  70.36, activation: 0, truecost:  70.36, mindays: 0 },
+              { size: "50K Daily 50%",  goal: 3000, dd: 2000, ddt: "EOD", evalReg: 269.9, evalSale: 107.96, activation: 0, truecost: 107.96, mindays: 0 },
+              { size: "100K Daily 50%", goal: 6000, dd: 3000, ddt: "EOD", evalReg: 399.9, evalSale: 159.96, activation: 0, truecost: 159.96, mindays: 0 },
+              { size: "150K Daily 50%", goal: 9000, dd: 4500, ddt: "EOD", evalReg: 579.9, evalSale: 231.96, activation: 0, truecost: 231.96, mindays: 0 },
+              // 1 Step - Daily Pro (40% consistency, tighter drawdown)
+              { size: "25K Daily Pro",  goal: 1500, dd: 750,  ddt: "EOD", evalReg: 159.9, evalSale:  63.96, activation: 0, truecost:  63.96, mindays: 0 },
+              { size: "50K Daily Pro",  goal: 3000, dd: 1500, ddt: "EOD", evalReg: 239.9, evalSale:  95.96, activation: 0, truecost:  95.96, mindays: 0 },
+              { size: "100K Daily Pro", goal: 6000, dd: 2500, ddt: "EOD", evalReg: 379.9, evalSale: 151.96, activation: 0, truecost: 151.96, mindays: 0 },
+              // 1 Step - Sprint (has daily loss limit at 50K+)
+              { size: "25K Sprint",     goal: 1500, dd: 1000, ddt: "EOD", evalReg: 149.9, evalSale:  59.96, activation: 0, truecost:  59.96, mindays: 0 },
+              { size: "50K Sprint",     goal: 3000, dd: 2000, ddt: "EOD", evalReg: 219.9, evalSale:  87.96, activation: 0, truecost:  87.96, mindays: 0 },
+              { size: "100K Sprint",    goal: 6000, dd: 3000, ddt: "EOD", evalReg: 329.9, evalSale: 131.96, activation: 0, truecost: 131.96, mindays: 0 },
+              { size: "150K Sprint",    goal: 9000, dd: 4500, ddt: "EOD", evalReg: 519.9, evalSale: 207.96, activation: 0, truecost: 207.96, mindays: 0 },
+              // Instant Funding - Direct (15% biggest-trade rule, daily payouts from day 1)
+              { size: "25K Direct",     goal: null, dd: 1000, ddt: "EOD", evalReg: 399.9, evalSale: 159.96, activation: 0, truecost: 159.96, mindays: 0 },
+              { size: "50K Direct",     goal: null, dd: 2000, ddt: "EOD", evalReg: 599.9, evalSale: 239.96, activation: 0, truecost: 239.96, mindays: 0 },
+              { size: "100K Direct",    goal: null, dd: 3000, ddt: "EOD", evalReg: 899.9, evalSale: 359.96, activation: 0, truecost: 359.96, mindays: 0 },
+              // Instant Funding - Bolt (20% consistency on first payout)
+              { size: "25K Bolt",       goal: null, dd: 1000, ddt: "EOD", evalReg: 349.9, evalSale: 139.96, activation: 0, truecost: 139.96, mindays: 0 },
+              { size: "50K Bolt",       goal: null, dd: 2000, ddt: "EOD", evalReg: 519.9, evalSale: 207.96, activation: 0, truecost: 207.96, mindays: 0 },
+              { size: "100K Bolt",      goal: null, dd: 3000, ddt: "EOD", evalReg: 749.9, evalSale: 299.96, activation: 0, truecost: 299.96, mindays: 0 },
+            ];
+            for (let v of fundedseatVariants)
+              allRows.push({
+                firm: "FundedSeat",
+                logo: "../Photos/firms/fundedseat.png",
+                account: v.size,
+                goal: v.goal,
+                profitTarget: v.goal,
+                ddt: v.ddt,
+                dd: v.dd,
+                mindays: v.mindays,
+                eval: v.evalSale,
+                activation: v.activation,
+                truecost: v.truecost,
+                discount: "60%",
+                code: "BRO",
+                platform: "Rithmic, DX Feed, Volumetrica, DeepCharts, DeepDom, Quantower, ATAS, MotiveWave, Bookmap, Sierra Chart, Tradesea",
+                country: "USA",
+                maxaccounts: 3,
+                firmpage: "https://fundedseat.link/bro",
+                website: "https://fundedseat.link/bro",
+                restrictedCountries: RESTRICTED_FUNDEDSEAT,
+              });
+
+            // Showcase 50K — one comparable 50K Eval per firm for the default view.
+            // When users sort by any column the showcase grouping disappears.
+            const SHOWCASE_50K = [
+              ["Apex Trader Funding", "50K Trail"],
+              ["Tradeify",            "50K Growth"],
+              ["Lucid Trading",       "50K Flex"],
+              ["MyFundedFutures",     "50K Rapid"],
+              ["Daytraders.com",      "50K Trail"],
+              ["Phidias",             "50K Fundamental OTP"],
+              ["Top One Futures",     "50K S2F Sim Pro"],
+              ["Alpha Futures",       "50K Standard"],
+              ["NexGen Funding",      "50K Ace"],
+              ["YRM Prop",            "50K Starter"],
+              ["FundedSeat",          "50K Daily 35%"],
+            ];
+            const _showcaseSet = new Set(SHOWCASE_50K.map(([f, a]) => `${f}|${a}`));
+            allRows.forEach(r => { r.showcase = _showcaseSet.has(`${r.firm}|${r.account}`); });
+
             const firms = allRows.slice();
-            let sortState = { key: "truecost", dir: "asc" };
+            let sortState = { key: "truecost", dir: "asc", initial: true };
             function sortRows(rows) {
+              // Default/initial view: showcase 50K rows first, then everything else.
+              if (sortState.initial) {
+                return rows.slice().sort((a, b) => {
+                  if (a.showcase !== b.showcase) return a.showcase ? -1 : 1;
+                  return (a.truecost ?? 0) - (b.truecost ?? 0);
+                });
+              }
               const { key, dir } = sortState;
               if (!key) return rows;
               const mult = dir === "asc" ? 1 : -1;
