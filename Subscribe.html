@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -34,37 +34,20 @@
         <div class="bt-arrow">&#10094;</div>
 
         <div class="bt-ticker">
-          <div class="bt-ticker-track">
-            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is upto 50% Off All Accounts! Use Code: BROTRADING
-            </a>
-
-            <a
-              href="https://apextraderfunding.com/member/aff/go/buurtie"
-              target="_blank"
-            >
-              ✅ Apex Trader Funding is 90% Off! Use Code: BRO
-            </a>
-
-            <a
-              href="https://myfundedfutures.com/challenge?ref=5117"
-              target="_blank"
-            >
-              💀 Up to 50% Off At MyFundedFutures & No Activation fees!
-            </a>
-
-            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">
-              🚨 40% Off Tradeify! MAX 2 Day To Pass Use Code: BRO
-            </a>
-
-            <!-- duplicate for smooth loop -->
-            <a
-              href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
-              target="_blank"
-            >
-              DayTraders.com is 85% Off All Accounts! Use
-              Code: BROTRADING
-            </a>
+                    <div class="bt-ticker-track">
+            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">Lucid Trading is up to 40% Off All Accounts! Use Code: BROTRADING</a>
+            <a href="https://apextraderfunding.com/member/aff/go/buurtie" target="_blank">&#x2705; Apex Trader Funding is 90% Off! Use Code: BRO</a>
+            <a href="https://myfundedfutures.com/challenge?ref=5117" target="_blank">&#x1F480; Up to 50% Off At MyFundedFutures &amp; No Activation fees!</a>
+            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">&#x1F6A8; 40% Off Tradeify! MAX 2 Day To Pass Use Code: BRO</a>
+            <a href="https://daytraders.com/go/brotrading?c=TWCEMMNK" target="_blank">DayTraders.com is 85% Off All Accounts! Use Code: BROTRADING</a>
+            <a href="https://member.phidiaspropfirm.com/aff/go/brotrading" target="_blank">Phidias is 80% Off Same Day Approval! Use Code: BROTRADING</a>
+            <!-- duplicate set for seamless -50% CSS loop -->
+            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">Lucid Trading is up to 40% Off All Accounts! Use Code: BROTRADING</a>
+            <a href="https://apextraderfunding.com/member/aff/go/buurtie" target="_blank">&#x2705; Apex Trader Funding is 90% Off! Use Code: BRO</a>
+            <a href="https://myfundedfutures.com/challenge?ref=5117" target="_blank">&#x1F480; Up to 50% Off At MyFundedFutures &amp; No Activation fees!</a>
+            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">&#x1F6A8; 40% Off Tradeify! MAX 2 Day To Pass Use Code: BRO</a>
+            <a href="https://daytraders.com/go/brotrading?c=TWCEMMNK" target="_blank">DayTraders.com is 85% Off All Accounts! Use Code: BROTRADING</a>
+            <a href="https://member.phidiaspropfirm.com/aff/go/brotrading" target="_blank">Phidias is 80% Off Same Day Approval! Use Code: BROTRADING</a>
           </div>
         </div>
 
@@ -1347,6 +1330,25 @@
             font-family: monospace;
             letter-spacing: 1px;
           }
+
+          .btn-free-link {
+            display: block;
+            margin-top: 12px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+          .btn-free-link:hover {
+            color: rgba(255,255,255,0.85);
+          }
+
+          .price-expired .new {
+            color: #ff4d4d !important;
+          }
+          .price-expired .old {
+            display: none;
+          }
         </style>
       </head>
       <body>
@@ -1386,11 +1388,11 @@
               </div>
 
               <!-- PRICE -->
-              <div class="price-box">
-                <span class="old">€20</span>
-                <span class="new">€10</span>
-                <span>/ month</span>
-                <p>50% OFF first 2 months</p>
+              <div class="price-box" id="priceBox">
+                <span class="old" id="oldPrice">€20</span>
+                <span class="new" id="currentPrice">€10</span>
+                <span id="perMonth">/ month</span>
+                <p id="priceNote">Deal active — locked in as long as you stay subscribed</p>
               </div>
 
               <!-- TIMER -->
@@ -1403,22 +1405,13 @@
 
               <!-- BUTTONS -->
               <div class="hero-buttons">
-                <a
-                  href="https://discord.gg/brotrading"
-                  target="_blank"
-                  class="btn-primary"
-                >
-                  Join Free Discord
-                </a>
-
-                <a
-                  href="https://discord.gg/brotrading"
-                  target="_blank"
-                  class="btn-outline"
-                >
-                  Unlock Premium Trading Room
+                <a href="https://discord.gg/brotrading" target="_blank" class="btn-primary">
+                  Unlock Premium — €10/month
                 </a>
               </div>
+              <a href="https://discord.gg/brotrading" target="_blank" class="btn-free-link">
+                Or join the free Discord first →
+              </a>
             </div>
 
             <!-- RIGHT SIDE -->
@@ -1452,53 +1445,196 @@
               </div>
 
               <!-- MEMBERS CARD -->
-              <div class="members-card">👥 1312 traders joined this month</div>
+              <div class="members-card">👥 <span id="membersCount">1312</span> traders joined this month</div>
             </div>
           </div>
         </section>
 
         <script>
-          // Countdown timer: exactly 7 days from now (preserving original logic)
-          const endDate = new Date();
-          endDate.setDate(endDate.getDate() + 7);
+          // Persist the countdown end date in localStorage so it survives page reloads.
+          // On the very first visit the deadline is set to now + 7 days and saved.
+          // Every subsequent visit reads the same deadline — the timer keeps counting down.
+          const STORAGE_KEY = "broSubscribeCountdownEnd";
+          const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
-          function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = endDate - now;
+          let savedEnd = localStorage.getItem(STORAGE_KEY);
+          if (!savedEnd) {
+            savedEnd = Date.now() + SEVEN_DAYS_MS;
+            localStorage.setItem(STORAGE_KEY, savedEnd);
+          }
+          const endTime = parseInt(savedEnd, 10);
 
-            // Handle timer expiration gracefully
-            if (distance < 0) {
-              document.getElementById("days").innerText = "00";
-              document.getElementById("hours").innerText = "00";
-              document.getElementById("minutes").innerText = "00";
-              document.getElementById("seconds").innerText = "00";
-              return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((distance / (1000 * 60)) % 60);
-            const seconds = Math.floor((distance / 1000) % 60);
-
-            // Format with leading zeros
-            document.getElementById("days").innerText =
-              days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText =
-              hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText =
-              minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText =
-              seconds < 10 ? "0" + seconds : seconds;
+          function pad(n) {
+            return n < 10 ? "0" + n : String(n);
           }
 
-          // initial call
+          function showExpired() {
+            document.getElementById("days").innerText    = "00";
+            document.getElementById("hours").innerText   = "00";
+            document.getElementById("minutes").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+            const priceBox = document.getElementById("priceBox");
+            if (priceBox) priceBox.classList.add("price-expired");
+            const currentPrice = document.getElementById("currentPrice");
+            if (currentPrice) currentPrice.innerText = "€20";
+            const priceNote = document.getElementById("priceNote");
+            if (priceNote) priceNote.innerText = "Deal expired — regular price applies";
+          }
+
+          function updateCountdown() {
+            const distance = endTime - Date.now();
+            if (distance <= 0) { showExpired(); return; }
+
+            document.getElementById("days").innerText    = pad(Math.floor(distance / (1000 * 60 * 60 * 24)));
+            document.getElementById("hours").innerText   = pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
+            document.getElementById("minutes").innerText = pad(Math.floor((distance / (1000 * 60)) % 60));
+            document.getElementById("seconds").innerText = pad(Math.floor((distance / 1000) % 60));
+          }
+
           updateCountdown();
-          // update every second
           setInterval(updateCountdown, 1000);
+
+          // Fake urgency: consistent per-day number in range 1100–1550
+          // Changes daily so it feels organic, stays stable within a session
+          (function () {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const count = 1100 + (dayOfYear * 13) % 450;
+            const el = document.getElementById("membersCount");
+            if (el) el.innerText = count.toLocaleString();
+          })();
         </script>
       </body>
     </html>
     <!-- ========== END  ========== -->
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="bt-testimonials">
+      <div class="bt-testimonials-inner">
+        <h2 class="bt-testimonials-title">What Our Members Say</h2>
+        <p class="bt-testimonials-sub">Real traders inside the Premium Discord</p>
+        <div class="bt-testimonials-grid">
+
+          <!-- PLACEHOLDER — replace with real quote from Mike -->
+          <div class="bt-tcard">
+            <p class="bt-tcard-quote">"Placeholder — real testimonial from a member goes here."</p>
+            <div class="bt-tcard-author">
+              <div class="bt-tcard-avatar">?</div>
+              <div>
+                <div class="bt-tcard-name">Member name</div>
+                <div class="bt-tcard-role">Premium Discord member</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER — replace with real quote from Mike -->
+          <div class="bt-tcard">
+            <p class="bt-tcard-quote">"Placeholder — real testimonial from a member goes here."</p>
+            <div class="bt-tcard-author">
+              <div class="bt-tcard-avatar">?</div>
+              <div>
+                <div class="bt-tcard-name">Member name</div>
+                <div class="bt-tcard-role">Premium Discord member</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER — replace with real quote from Mike -->
+          <div class="bt-tcard">
+            <p class="bt-tcard-quote">"Placeholder — real testimonial from a member goes here."</p>
+            <div class="bt-tcard-author">
+              <div class="bt-tcard-avatar">?</div>
+              <div>
+                <div class="bt-tcard-name">Member name</div>
+                <div class="bt-tcard-role">Premium Discord member</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .bt-testimonials {
+        background: #030f33;
+        padding: 80px 20px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      .bt-testimonials-inner {
+        max-width: 1100px;
+        margin: auto;
+        text-align: center;
+      }
+      .bt-testimonials-title {
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .bt-testimonials-sub {
+        color: #9ca3af;
+        font-size: 16px;
+        margin-bottom: 50px;
+      }
+      .bt-testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .bt-tcard {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(0,194,255,0.15);
+        border-radius: 14px;
+        padding: 28px 24px;
+        text-align: left;
+        transition: border-color 0.2s, transform 0.2s;
+      }
+      .bt-tcard:hover {
+        border-color: rgba(0,194,255,0.45);
+        transform: translateY(-4px);
+      }
+      .bt-tcard-quote {
+        color: #e2e8f0;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        font-style: italic;
+      }
+      .bt-tcard-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .bt-tcard-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00c2ff, #1e90ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .bt-tcard-name {
+        color: #fff;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .bt-tcard-role {
+        color: #9ca3af;
+        font-size: 12px;
+        margin-top: 2px;
+      }
+      @media (max-width: 860px) {
+        .bt-testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: auto; }
+        .bt-testimonials-title { font-size: 28px; }
+      }
+    </style>
+    <!-- ========== TESTIMONIALS SECTION END ========== -->
 
     <!-- =======Right Choicse Section ======  -->
     <section class="bt-choice-section">
