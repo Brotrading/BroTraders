@@ -981,6 +981,7 @@
             color: #9ca3af;
             font-size: 13px;
             margin-top: 25px;
+            text-align: center;
           }
 
           /* ========= RESPONSIVE (no style changes, only arrow positions + slider padding) ========= */
@@ -3526,9 +3527,11 @@
 
       .ctf-compare-header {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
+        gap: 16px;
         margin-bottom: 50px;
+        text-align: center;
       }
 
       .ctf-compare-header h2 {
@@ -3585,11 +3588,6 @@
 
       /* ================= MOBILE ONLY ================= */
       @media (max-width: 900px) {
-        .ctf-compare-header {
-          justify-content: center;
-          gap: 20px;
-        }
-
         .ctf-compare-header h2 {
           font-size: 26px;
         }
