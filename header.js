@@ -1,4 +1,5 @@
 // header.js — shared nav loader
+
 (async () => {
   const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
   const prefix = depth > 0 ? "../".repeat(depth) : "";

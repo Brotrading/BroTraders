@@ -16,7 +16,7 @@
   /* ---- Desktop base ---- */
   .bt-header {
     position: fixed;
-    top: 40px;
+    top: 10px;
     left: 0;
     margin: 10px 15px;
     margin-left: 180px;
@@ -92,7 +92,7 @@
   .bt-drop-menu a:hover { color: #00c2ff; padding-left: 5px; }
 
   /* Desktop: open on hover */
-  @media (min-width: 1025px) {
+  @media (min-width: 1281px) {
     .bt-dropdown:hover .bt-drop-menu { opacity: 1; visibility: visible; transform: translateY(0); }
   }
 
@@ -112,16 +112,19 @@
 
   /* ---- Hamburger ---- */
   .bt-hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; }
-  .bt-hamburger span { width: 26px; height: 3px; background: #fff; display: block; border-radius: 2px; }
+  .bt-hamburger span { width: 26px; height: 3px; background: #fff; display: block; border-radius: 2px; transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  .bt-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .bt-hamburger.open span:nth-child(2) { opacity: 0; transform: scale(0); }
+  .bt-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-  /* ---- Mobile close button ---- */
-  .bt-mobile-close { display: none; position: absolute; top: 25px; right: 25px; font-size: 26px; color: #fff; cursor: pointer; z-index: 1003; background: none; border: none; }
+  /* ---- Mobile close button — hidden, hamburger-as-X replaces it ---- */
+  .bt-mobile-close { display: none !important; }
 
   /* ================================================================
-     TABLET / MOBILE  ≤ 1024 px
+     TABLET / MOBILE  ≤ 1280 px
      ================================================================ */
-  @media (max-width: 1024px) {
-    .bt-header { width: 90%; margin: 10px auto; left: 0; right: 0; top: 20px; }
+  @media (max-width: 1280px) {
+    .bt-header { width: 90%; margin: 10px auto; left: 0; right: 0; top: 10px; }
     .bt-header.bt-scrolled { width: 95%; margin-left: auto; margin-right: auto; top: 0; }
     .bt-container { padding: 0 20px; }
     .bt-logo img { height: 45px; }
@@ -139,8 +142,7 @@
     .bt-nav.open { right: 0; }
     .bt-nav-subscribe { display: block; }
     .bt-hamburger { display: flex; }
-    .bt-cta { display: none; }
-    .bt-mobile-close { display: block; }
+    .bt-cta { display: inline-block; }
 
     .bt-header .bt-link,
     .bt-header .bt-drop-btn {
@@ -169,9 +171,9 @@
   }
 
   /* ================================================================
-     SMALL MOBILE  ≤ 768 px
+     SMALL MOBILE  ≤ 767 px
      ================================================================ */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .bt-header { width: 95%; margin: 8px auto; border-radius: 12px; }
     .bt-header.bt-scrolled { width: 98%; border-radius: 0 0 12px 12px; }
     .bt-container { padding: 0 15px; }

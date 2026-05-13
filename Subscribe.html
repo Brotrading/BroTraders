@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,210 +27,6 @@
     </style>
   </head>
   <body>
-    <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-    <div class="bt-topbar">
-      <!-- SCROLLING SECTION -->
-      <div class="bt-ticker-wrapper">
-        <div class="bt-arrow">&#10094;</div>
-
-        <div class="bt-ticker">
-          <div class="bt-ticker-track">
-            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is upto 50% Off All Accounts! Use Code: BROTRADING
-            </a>
-
-            <a
-              href="https://apextraderfunding.com/member/aff/go/buurtie"
-              target="_blank"
-            >
-              ✅ Apex Trader Funding is 90% Off! Use Code: BRO
-            </a>
-
-            <a
-              href="https://myfundedfutures.com/challenge?ref=5117"
-              target="_blank"
-            >
-              💀 Up to 50% Off At MyFundedFutures & No Activation fees!
-            </a>
-
-            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">
-              🚨 40% Off Tradeify! MAX 2 Day To Pass Use Code: BRO
-            </a>
-
-            <!-- duplicate for smooth loop -->
-            <a
-              href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
-              target="_blank"
-            >
-              DayTraders.com is 85% Off All Accounts! Use
-              Code: BROTRADING
-            </a>
-          </div>
-        </div>
-
-        <div class="bt-arrow">&#10095;</div>
-      </div>
-
-      </div>
-
-    <style>
-      /* ================= TOP BAR ================= */
-
-      .bt-topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #000;
-        height: 42px;
-        font-size: 14px;
-        overflow: hidden;
-        position: relative;
-        z-index: 99999;
-      }
-
-      /* ================= TICKER ================= */
-
-      .bt-ticker-wrapper {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        background: #ffa239;
-        overflow: hidden;
-      }
-
-      .bt-arrow {
-        padding: 0 12px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #000;
-        cursor: pointer;
-      }
-
-      .bt-ticker {
-        overflow: hidden;
-        white-space: nowrap;
-        flex: 1;
-      }
-
-      .bt-ticker-track {
-        display: inline-block;
-        animation: scrollTicker 30s linear infinite;
-      }
-
-      .bt-ticker-track a {
-        display: inline-block;
-        margin-right: 60px;
-        color: #000;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .bt-ticker-track a:hover {
-        text-decoration: underline;
-      }
-
-      /* Smooth infinite scroll */
-      @keyframes scrollTicker {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* ================= RIGHT SIDE ================= */
-
-      .bt-right-links {
-        display: flex;
-        align-items: center;
-        background: #f3f3f3;
-      }
-
-      .bt-right-links a {
-        padding: 0 16px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        color: #000;
-        text-decoration: none;
-        border-left: 1px solid #ddd;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .bt-right-links a:hover {
-        background: #e5e5e5;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      /* ====== Tablet ====== */
-      @media (max-width: 1024px) {
-        .bt-topbar {
-          height: 40px;
-          font-size: 13px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 25s linear infinite;
-        }
-
-        .bt-right-links a {
-          padding: 0 12px;
-          font-size: 13px;
-        }
-      }
-
-      /* ====== Small Tablet ====== */
-      @media (max-width: 900px) {
-        .bt-right-links {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        .bt-right-links a {
-          flex: 0 0 auto;
-        }
-      }
-
-      /* ====== Mobile ====== */
-      @media (max-width: 600px) {
-        .bt-topbar {
-          flex-direction: column;
-          height: auto;
-        }
-
-        .bt-ticker-wrapper {
-          width: 100%;
-        }
-
-        .bt-right-links {
-          width: 100%;
-          justify-content: center;
-          background: #111;
-        }
-
-        .bt-right-links a {
-          border-left: none;
-          border-right: 1px solid #222;
-          color: #fff;
-          font-size: 12px;
-          padding: 6px 10px;
-          height: auto;
-        }
-
-        .bt-arrow {
-          font-size: 16px;
-          padding: 0 8px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 20s linear infinite;
-        }
-      }
-    </style>
-    <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
 
 <div id="header"></div>
     <script src="header.js" defer></script>
@@ -242,7 +38,7 @@
       /* ================= HEADER ================= */
       .bt-header {
         position: fixed;
-        top: 40px;
+        top: 10px;
         left: 0;
         margin: 10px 15px;
         margin-left: 180px;
@@ -816,7 +612,7 @@
           }
 
           .premium-hero {
-            padding: 120px 8%;
+            padding: 130px 8% 80px;
             background: linear-gradient(180deg, #020b25, #030f33);
             color: white;
             width: 100%;
@@ -827,7 +623,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 70px;
+            gap: 50px;
             max-width: 1300px;
             margin: auto;
           }
@@ -850,9 +646,9 @@
           }
 
           .hero-left h1 {
-            font-size: 50px;
+            font-size: 44px;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             font-weight: 700;
           }
 
@@ -862,29 +658,49 @@
 
           .hero-sub {
             opacity: 0.9;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
             font-size: 1.05rem;
             line-height: 1.5;
+          }
+
+          /* PRICE + TIMER ROW */
+          .price-timer-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+          }
+          .price-timer-row .price-box {
+            margin: 0;
+            flex: 0 0 auto;
+          }
+          .countdown-wrap {
+            flex: 1;
+          }
+          .timer-label {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-bottom: 8px;
           }
 
           /* VALUE CARDS */
           .value-cards {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-top: 20px;
+            margin-bottom: 0;
           }
 
           .value-card {
-            background: rgba(255, 255, 255, 0.07);
-            padding: 14px 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            letter-spacing: 1.2px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            letter-spacing: 0.3px;
             font-weight: 500;
-            transition:
-              transform 0.2s ease,
-              background 0.2s;
+            cursor: default;
+            user-select: none;
           }
 
           .value-card span {
@@ -898,11 +714,12 @@
           }
 
           .highlight {
-            border-left: 4px solid red;
-            background: rgba(255, 0, 0, 0.08);
+            border-left: 3px solid #00c2ff;
+            background: rgba(0, 194, 255, 0.06);
           }
           .effect {
-            border-left: 4px solid rgb(0, 217, 255);
+            border-left: 3px solid rgba(0, 194, 255, 0.4);
+            background: rgba(255, 255, 255, 0.03);
           }
 
           /* PRICE */
@@ -910,7 +727,7 @@
             font-size: 22px;
             background: #2c2c2e;
             padding: 10px 10px;
-            margin: 0px 92px 21px 0px;
+            margin: 0px 92px 14px 0px;
             border-radius: 14px;
             text-align: center;
             border: 3px solid #ffffff26;
@@ -941,22 +758,22 @@
           /* TIMER */
           .countdown {
             display: flex;
-            gap: 14px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
           }
 
           .countdown div {
             background: rgba(255, 255, 255, 0.08);
-            padding: 12px 16px;
+            padding: 9px 10px;
             border-radius: 10px;
             text-align: center;
-            min-width: 70px;
+            min-width: 56px;
             backdrop-filter: blur(4px);
           }
 
           .countdown span {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             display: block;
             line-height: 1;
@@ -964,10 +781,10 @@
           }
 
           .countdown small {
-            font-size: 12px;
+            font-size: 11px;
             opacity: 0.7;
             display: block;
-            margin-top: 5px;
+            margin-top: 4px;
           }
 
           /* BUTTONS */
@@ -1020,49 +837,77 @@
 
           /* RIGHT SIDE */
           .hero-right {
-            position: relative;
             flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
             min-width: 280px;
           }
 
-          .trading-image {
-            width: 520px;
-            max-width: 100%;
-            border-radius: 18px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-            margin-top: -84px;
-            object-fit: cover;
-            display: block;
+          .hero-testi-heading {
+            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
           }
 
-          /* YOUTUBE PREVIEW */
-          .youtube-preview {
-            position: absolute;
-            bottom: -140px;
-            right: -43px;
-            width: 356px;
-            max-width: 80%;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-            background: #000;
-            transition: transform 0.2s;
+          .hero-tcard {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 194, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px 18px;
+            transition: border-color 0.2s;
           }
 
-          .youtube-preview iframe {
-            width: 100%;
-            height: 220px;
-            display: block;
-            aspect-ratio: 16 / 9;
+          .hero-tcard:hover {
+            border-color: rgba(0, 194, 255, 0.4);
+          }
+
+          .hero-tcard-quote {
+            color: #e2e8f0;
+            font-size: 14px;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 12px;
+          }
+
+          .hero-tcard-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+
+          .hero-tcard-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c2ff, #1e90ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #fff;
+            flex-shrink: 0;
+          }
+
+          .hero-tcard-name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+          }
+
+          .hero-tcard-role {
+            color: #9ca3af;
+            font-size: 11px;
+            margin-top: 1px;
           }
 
           /* MEMBERS CARD */
           .members-card {
-            position: absolute;
-            top: -79px;
-            left: -30px;
             background: rgb(0 0 0 / 74%);
             backdrop-filter: blur(8px);
             padding: 10px 14px;
@@ -1073,6 +918,7 @@
             white-space: nowrap;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(0, 194, 255, 0.3);
+            align-self: flex-start;
           }
 
           /* RESPONSIVE DESIGN - full style preservation + perfect mobile/tablet adaptation */
@@ -1160,60 +1006,17 @@
 
             .hero-right {
               width: 100%;
-              margin-top: 20px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              position: relative;
-            }
-
-            .trading-image {
-              width: 90%;
+              align-items: stretch;
               max-width: 520px;
-              margin-top: 0;
-              margin-bottom: 30px;
+              margin: 0 auto;
             }
 
-            /* reposition overlapping elements for tablet/mobile - but keep original design logic intact */
-            .youtube-preview {
-              position: relative;
-              bottom: auto;
-              right: auto;
-              margin-top: 20px;
-              width: 90%;
-              max-width: 450px;
-              margin-left: auto;
-              margin-right: auto;
+            .price-timer-row {
+              justify-content: center;
             }
 
             .members-card {
-              position: relative;
-              top: auto;
-              left: auto;
-              margin-top: 20px;
-              margin-bottom: 10px;
-              display: inline-block;
-              white-space: nowrap;
-              width: auto;
               align-self: center;
-            }
-
-            /* reorder members card to appear after trading image or before? maintain visual flow */
-            .hero-right {
-              flex-direction: column;
-            }
-            /* make members card appear like a badge below main image, but style untouched */
-            .members-card {
-              order: 2;
-              margin-top: 20px;
-              background: rgba(0, 0, 0, 0.8);
-            }
-            .trading-image {
-              order: 1;
-            }
-            .youtube-preview {
-              order: 3;
-              margin-bottom: 0;
             }
           }
 
@@ -1271,18 +1074,9 @@
               padding: 14px 20px;
             }
 
-            .trading-image {
-              width: 100%;
-              border-radius: 20px;
-            }
-
-            .youtube-preview {
+            .youtube-main {
               width: 100%;
               max-width: 100%;
-            }
-            .youtube-preview iframe {
-              height: auto;
-              aspect-ratio: 16 / 9;
             }
 
             .members-card {
@@ -1316,26 +1110,7 @@
             }
           }
 
-          /* additional micro-fixes to preserve original style while responsive */
-          @media (min-width: 901px) and (max-width: 1150px) {
-            .hero-right {
-              transform: scale(0.95);
-            }
-            .youtube-preview {
-              right: -20px;
-              bottom: -110px;
-            }
-            .members-card {
-              left: -15px;
-              top: -60px;
-            }
-          }
 
-          /* optional hover & smoothness */
-          .value-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateX(4px);
-          }
 
           .btn-primary,
           .btn-outline {
@@ -1346,6 +1121,25 @@
           .countdown span {
             font-family: monospace;
             letter-spacing: 1px;
+          }
+
+          .btn-free-link {
+            display: block;
+            margin-top: 12px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+          .btn-free-link:hover {
+            color: rgba(255,255,255,0.85);
+          }
+
+          .price-expired .new {
+            color: #ff4d4d !important;
+          }
+          .price-expired .old {
+            display: none;
           }
         </style>
       </head>
@@ -1367,138 +1161,148 @@
                 trade setups and exclusive strategy channels.
               </p>
 
-              <!-- VALUE CARDS -->
+              <!-- PRICE + TIMER side by side -->
+              <div class="price-timer-row">
+                <div class="price-box" id="priceBox">
+                  <span class="old" id="oldPrice">€20</span>
+                  <span class="new" id="currentPrice">€10</span>
+                  <span id="perMonth">/ month</span>
+                  <p id="priceNote">Deal active — locked in as long as you stay subscribed</p>
+                </div>
+                <div class="countdown-wrap">
+                  <p class="timer-label">⏳ Deal expires in:</p>
+                  <div class="countdown">
+                    <div><span id="days">00</span><small>Days</small></div>
+                    <div><span id="hours">00</span><small>Hours</small></div>
+                    <div><span id="minutes">00</span><small>Min</small></div>
+                    <div><span id="seconds">00</span><small>Sec</small></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUTTONS -->
+              <div class="hero-buttons">
+                <a href="https://whop.com/joined/bro-trading/" target="_blank" class="btn-primary">
+                  Unlock Premium — €10/month
+                </a>
+              </div>
+              <a href="https://discord.gg/brotrading" target="_blank" class="btn-free-link">
+                Or join the free Discord first →
+              </a>
+
+              <!-- VALUE CARDS — ondersteunend, onder de CTA -->
               <div class="value-cards">
                 <div class="value-card highlight">
                   🟢 Live Trading Sessions
                   <span>Watch real trades happening live</span>
                 </div>
-
                 <div class="value-card effect">
                   💬 Premium Channels
                   <span>Strategies, breakdowns & analysis</span>
                 </div>
-
                 <div class="value-card effect">
                   📈 Real Trade Setups
                   <span>See how trades are executed</span>
                 </div>
               </div>
-
-              <!-- PRICE -->
-              <div class="price-box">
-                <span class="old">€20</span>
-                <span class="new">€10</span>
-                <span>/ month</span>
-                <p>50% OFF first 2 months</p>
-              </div>
-
-              <!-- TIMER -->
-              <div class="countdown">
-                <div><span id="days">00</span><small>Days</small></div>
-                <div><span id="hours">00</span><small>Hours</small></div>
-                <div><span id="minutes">00</span><small>Min</small></div>
-                <div><span id="seconds">00</span><small>Sec</small></div>
-              </div>
-
-              <!-- BUTTONS -->
-              <div class="hero-buttons">
-                <a
-                  href="https://discord.gg/brotrading"
-                  target="_blank"
-                  class="btn-primary"
-                >
-                  Join Free Discord
-                </a>
-
-                <a
-                  href="https://discord.gg/brotrading"
-                  target="_blank"
-                  class="btn-outline"
-                >
-                  Unlock Premium Trading Room
-                </a>
-              </div>
             </div>
 
-            <!-- RIGHT SIDE -->
+            <!-- RIGHT SIDE — Testimonials direct zichtbaar -->
             <div class="hero-right">
-              <!-- LIVE TRADING IMAGE -->
-              <img
-                class="trading-image"
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Live Trading Dashboard"
-              />
+              <p class="hero-testi-heading">What our members say</p>
 
-              <!-- YOUTUBE LIVE PREVIEW -->
-              <div class="youtube-preview">
-                <iframe
-                  width="100%"
-                  height="220"
-                  src="https://www.youtube.com/embed/poLTzNhpfb8"
-                  title="Live Trading Session"
-                  frameborder="0"
-                  allow="
-                    accelerometer;
-                    autoplay;
-                    clipboard-write;
-                    encrypted-media;
-                    gyroscope;
-                    picture-in-picture;
-                  "
-                  allowfullscreen
-                >
-                </iframe>
+              <div class="hero-tcard">
+                <p class="hero-tcard-quote">"The community is on fire — it's not just some random Discord, it actually feels like a real squad. Everyone's active, sharing ideas, helping each other out. And the giveaway was next level... I still can't believe I won the 25k prop firm account."</p>
+                <div class="hero-tcard-author">
+                  <div class="hero-tcard-avatar">J</div>
+                  <div>
+                    <div class="hero-tcard-name">J. — Discord Member</div>
+                    <div class="hero-tcard-role">Giveaway Winner · April 2026</div>
+                  </div>
+                </div>
               </div>
 
-              <!-- MEMBERS CARD -->
-              <div class="members-card">👥 1312 traders joined this month</div>
+              <div class="hero-tcard">
+                <p class="hero-tcard-quote">"I was funded a few times but never reached a payout — always struggled with entries due to fear. Seeing the shared screens with the big trades indicator was the missing piece for my entries. 11 days in and already seeing results. Slowly is the fastest way to get where you want to be!"</p>
+                <div class="hero-tcard-author">
+                  <div class="hero-tcard-avatar">M</div>
+                  <div>
+                    <div class="hero-tcard-name">M. — Discord Member</div>
+                    <div class="hero-tcard-role">Pro-Bro Member · April 2026</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="members-card">👥 Be part of <span id="membersCount">2,400+</span> traders growing together</div>
             </div>
           </div>
         </section>
 
         <script>
-          // Countdown timer: exactly 7 days from now (preserving original logic)
-          const endDate = new Date();
-          endDate.setDate(endDate.getDate() + 7);
+          // Persist the countdown end date in localStorage so it survives page reloads.
+          // On the very first visit the deadline is set to now + 7 days and saved.
+          // Every subsequent visit reads the same deadline — the timer keeps counting down.
+          const STORAGE_KEY = "broSubscribeCountdownEnd";
+          const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
-          function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = endDate - now;
+          let savedEnd = localStorage.getItem(STORAGE_KEY);
+          if (!savedEnd) {
+            savedEnd = Date.now() + SEVEN_DAYS_MS;
+            localStorage.setItem(STORAGE_KEY, savedEnd);
+          }
+          const endTime = parseInt(savedEnd, 10);
 
-            // Handle timer expiration gracefully
-            if (distance < 0) {
-              document.getElementById("days").innerText = "00";
-              document.getElementById("hours").innerText = "00";
-              document.getElementById("minutes").innerText = "00";
-              document.getElementById("seconds").innerText = "00";
-              return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((distance / (1000 * 60)) % 60);
-            const seconds = Math.floor((distance / 1000) % 60);
-
-            // Format with leading zeros
-            document.getElementById("days").innerText =
-              days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText =
-              hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText =
-              minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText =
-              seconds < 10 ? "0" + seconds : seconds;
+          function pad(n) {
+            return n < 10 ? "0" + n : String(n);
           }
 
-          // initial call
+          function showExpired() {
+            document.getElementById("days").innerText    = "00";
+            document.getElementById("hours").innerText   = "00";
+            document.getElementById("minutes").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+            const priceBox = document.getElementById("priceBox");
+            if (priceBox) priceBox.classList.add("price-expired");
+            const currentPrice = document.getElementById("currentPrice");
+            if (currentPrice) currentPrice.innerText = "€20";
+            const priceNote = document.getElementById("priceNote");
+            if (priceNote) priceNote.innerText = "Deal expired — regular price applies";
+          }
+
+          function updateCountdown() {
+            const distance = endTime - Date.now();
+            if (distance <= 0) { showExpired(); return; }
+
+            document.getElementById("days").innerText    = pad(Math.floor(distance / (1000 * 60 * 60 * 24)));
+            document.getElementById("hours").innerText   = pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
+            document.getElementById("minutes").innerText = pad(Math.floor((distance / (1000 * 60)) % 60));
+            document.getElementById("seconds").innerText = pad(Math.floor((distance / 1000) % 60));
+          }
+
           updateCountdown();
-          // update every second
           setInterval(updateCountdown, 1000);
+
+          // Fetch live member count from Discord invite API
+          (async function () {
+            const el = document.getElementById("membersCount");
+            if (!el) return;
+            try {
+              const data = await fetch(
+                "https://discord.com/api/v9/invites/brotrading?with_counts=true"
+              ).then((r) => r.json());
+              const count = data?.approximate_member_count;
+              if (count && count > 0) {
+                el.innerText = count.toLocaleString();
+              }
+            } catch {
+              // fallback: keep the static placeholder value
+            }
+          })();
         </script>
       </body>
     </html>
     <!-- ========== END  ========== -->
+
 
     <!-- =======Right Choicse Section ======  -->
     <section class="bt-choice-section">
@@ -1688,6 +1492,8 @@
         line-height: 1.7;
         margin-bottom: 35px;
         max-width: 520px;
+        text-align: justify;
+        text-align-last: left;
       }
 
       /* STEPS */
@@ -1747,6 +1553,8 @@
         color: #94a3b8;
         line-height: 1.7;
         max-width: 520px;
+        text-align: justify;
+        text-align-last: left;
       }
 
       /* MOBILE */
@@ -2064,6 +1872,7 @@
       /* LEFT SIDE */
 
       .yt-content {
+        text-align: center;
         flex: 1;
         max-width: 550px;
       }
@@ -2194,7 +2003,7 @@
           />
           <p class="bt-footer-text">
             Bro Trading is a premium trading resource platform helping traders
-            compare Bro Tradings, improve skills, and scale profitably.
+            compare prop firms, improve skills, and scale profitably.
           </p>
 
           <!-- Social Icons -->
@@ -2282,6 +2091,8 @@
         font-size: 14px;
         line-height: 1.8;
         margin-bottom: 25px;
+        text-align: justify;
+        text-align-last: left;
       }
 
       /* Social Icons */

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -57,213 +57,6 @@
     </style>
   </head>
   <body>
-    <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-    <div class="bt-topbar">
-      <!-- SCROLLING SECTION -->
-      <div class="bt-ticker-wrapper">
-        <div class="bt-arrow">&#10094;</div>
-
-        <div class="bt-ticker">
-          <div class="bt-ticker-track">
-            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is up to 40% Off All Accounts! Use Code: BROTRADING
-            </a>
-
-            <a
-              href="https://apextraderfunding.com/member/aff/go/buurtie"
-              target="_blank"
-            >
-              ✅ Apex Trader Funding is 90% Off! Use Code: BRO
-            </a>
-
-            <a
-              href="https://myfundedfutures.com/challenge?ref=5117"
-              target="_blank"
-            >
-              💀 Up to 50% Off At MyFundedFutures & No Activation fees!
-            </a>
-
-            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">
-              🚨 40% Off Tradeify! MAX 2 Day To Pass Use Code: BRO
-            </a>
-
-            <!-- duplicate for smooth loop -->
-            <a
-              href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
-              target="_blank"
-            >
-              DayTraders.com is 85% Off All Accounts! Use Code: BROTRADING
-            </a>
-
-            <a href="https://member.phidiaspropfirm.com/aff/go/brotrading" target="_blank">
-              Phidias is 80% Off Same Day Approval! Use Code: BROTRADING
-            </a>
-          </div>
-        </div>
-
-        <div class="bt-arrow">&#10095;</div>
-      </div>
-
-    </div>
-
-    <style>
-      /* ================= TOP BAR ================= */
-
-      .bt-topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #000;
-        height: 42px;
-        font-size: 14px;
-        overflow: hidden;
-        position: relative;
-        z-index: 99999;
-      }
-
-      /* ================= TICKER ================= */
-
-      .bt-ticker-wrapper {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        background: #ffa239;
-        overflow: hidden;
-      }
-
-      .bt-arrow {
-        padding: 0 12px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #000;
-        cursor: pointer;
-      }
-
-      .bt-ticker {
-        overflow: hidden;
-        white-space: nowrap;
-        flex: 1;
-      }
-
-      .bt-ticker-track {
-        display: inline-block;
-        animation: scrollTicker 30s linear infinite;
-      }
-
-      .bt-ticker-track a {
-        display: inline-block;
-        margin-right: 60px;
-        color: #000;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .bt-ticker-track a:hover {
-        text-decoration: underline;
-      }
-
-      /* Smooth infinite scroll */
-      @keyframes scrollTicker {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* ================= RIGHT SIDE ================= */
-
-      .bt-right-links {
-        display: flex;
-        align-items: center;
-        background: #f3f3f3;
-      }
-
-      .bt-right-links a {
-        padding: 0 16px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        color: #000;
-        text-decoration: none;
-        border-left: 1px solid #ddd;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .bt-right-links a:hover {
-        background: #e5e5e5;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      /* ====== Tablet ====== */
-      @media (max-width: 1024px) {
-        .bt-topbar {
-          height: 40px;
-          font-size: 13px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 25s linear infinite;
-        }
-
-        .bt-right-links a {
-          padding: 0 12px;
-          font-size: 13px;
-        }
-      }
-
-      /* ====== Small Tablet ====== */
-      @media (max-width: 900px) {
-        .bt-right-links {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        .bt-right-links a {
-          flex: 0 0 auto;
-        }
-      }
-
-      /* ====== Mobile ====== */
-      @media (max-width: 600px) {
-        .bt-topbar {
-          flex-direction: column;
-          height: auto;
-        }
-
-        .bt-ticker-wrapper {
-          width: 100%;
-        }
-
-        .bt-right-links {
-          width: 100%;
-          justify-content: center;
-          background: #111;
-        }
-
-        .bt-right-links a {
-          border-left: none;
-          border-right: 1px solid #222;
-          color: #fff;
-          font-size: 12px;
-          padding: 6px 10px;
-          height: auto;
-        }
-
-        .bt-arrow {
-          font-size: 16px;
-          padding: 0 8px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 20s linear infinite;
-        }
-      }
-    </style>
-    <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
 
 <div id="header"></div>
     <script src="header.js" defer></script>
@@ -276,7 +69,7 @@
 
       .bt-header {
         position: fixed;
-        top: 40px;
+        top: 10px;
         left: 0;
         margin: 10px 15px;
         margin-left: 180px;
@@ -956,6 +749,7 @@
           .pfirms-head p {
             color: #9ca3af;
             margin-top: 10px;
+            text-align: center;
           }
 
           /* STATS */
@@ -1187,6 +981,7 @@
             color: #9ca3af;
             font-size: 13px;
             margin-top: 25px;
+            text-align: center;
           }
 
           /* ========= RESPONSIVE (no style changes, only arrow positions + slider padding) ========= */
@@ -1290,7 +1085,7 @@
         <section class="pfirms-section">
           <div class="pfirms-head">
             <h2>Compare the Best Futures Firms <br /><span>of 2026</span></h2>
-            <p>
+            <p style="text-align: center;">
               Compare challenge rules, profit splits, and drawdown limits to
               find the best prop firm for your trading strategy.
             </p>
@@ -1352,7 +1147,7 @@
                 Join Discord
               </a>
             </div>
-            <p class="pfirms-mini">
+            <p class="pfirms-mini" style="text-align: center;">
               Top-Rated Prop Firms • Transparent Rules • Fast Evaluation Models
             </p>
           </div>
@@ -1368,42 +1163,49 @@
               firm: "Tradeify",
               logo: "Photos/firms/tradeify.png",
               discount: "40%",
+              rating: "4.6",
               website: "https://tradeify.co/?ref=BFYQ2HKM",
             },
             {
               firm: "FundedSeat",
               logo: "Photos/firms/fundedseat.png",
               discount: "60% Off",
+              rating: "4.1",
               website: "https://fundedseat.link/bro",
             },
             {
               firm: "MyFunded <br/>Futures",
               logo: "Photos/firms/myfundedfutures.png",
               discount: "20%",
+              rating: "4.9",
               website: "https://myfundedfutures.com/challenge?ref=5117",
             },
             {
               firm: "Apex Trader Funding",
               logo: "Photos/firms/apex.png",
               discount: "90%",
+              rating: "4.3",
               website: "https://apextraderfunding.com/member/aff/go/buurtie",
             },
             {
               firm: "Lucid Trading",
               logo: "Photos/firms/lucid.png",
               discount: "40%",
+              rating: "4.8",
               website: "https://lucidtrading.com/ref/brotrading/",
             },
             {
               firm: "NexGen <br/>Funding",
               logo: "Photos/firms/nexgen.png",
               discount: "30% Off",
+              rating: "4.6",
               website: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
             },
             {
               firm: "TopOne<br/> Futures",
               logo: "Photos/firms/topone.png",
               discount: "60% Off",
+              rating: "4.8",
               website:
                 "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
             },
@@ -1411,12 +1213,14 @@
               firm: "Alpha <br/> Futures",
               logo: "Photos/firms/alphafutures.png",
               discount: "20% Off",
+              rating: "4.9",
               website: "https://app.alpha-futures.com/signup/BROTRADING/",
             },
             {
               firm: "Phidias<br/> Propfirm",
               logo: "Photos/firms/phidias.jpeg",
               discount: "80% Off",
+              rating: "3.8",
               link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
               website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
             },
@@ -1424,81 +1228,14 @@
               firm: "DayTraders",
               logo: "Photos/firms/daytraders.svg",
               discount: "85%",
+              rating: "4.6",
               website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
             },
             {
               firm: "YRM Prop",
               logo: "Photos/firms/yrmprop.png",
               discount: "40%",
-              website: "https://yrmprop.com/ref/Bro/",
-            },
-            // ========== Duplicate set for smooth carousel loop ==========
-            {
-              firm: "Tradeify",
-              logo: "Photos/firms/tradeify.png",
-              discount: "40%",
-              website: "https://tradeify.co/?ref=BFYQ2HKM",
-            },
-            {
-              firm: "FundedSeat",
-              logo: "Photos/firms/fundedseat.png",
-              discount: "60% Off",
-              website: "https://fundedseat.link/bro",
-            },
-            {
-              firm: "MyFunded <br/>Futures",
-              logo: "Photos/firms/myfundedfutures.png",
-              discount: "20%",
-              website: "https://myfundedfutures.com/challenge?ref=5117",
-            },
-            {
-              firm: "Apex Trader Funding",
-              logo: "Photos/firms/apex.png",
-              discount: "90%",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            },
-            {
-              firm: "Lucid Trading",
-              logo: "Photos/firms/lucid.png",
-              discount: "40%",
-              website: "https://lucidtrading.com/ref/brotrading/",
-            },
-            {
-              firm: "NexGen <br/>Funding",
-              logo: "Photos/firms/nexgen.png",
-              discount: "30% Off",
-              website: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-            },
-            {
-              firm: "TopOne<br/> Futures",
-              logo: "Photos/firms/topone.png",
-              discount: "60% Off",
-              website:
-                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
-            },
-            {
-              firm: "Alpha <br/> Futures",
-              logo: "Photos/firms/alphafutures.png",
-              discount: "20% Off",
-              website: "https://app.alpha-futures.com/signup/BROTRADING/",
-            },
-            {
-              firm: "Phidias<br/> Propfirm",
-              logo: "Photos/firms/phidias.jpeg",
-              discount: "80% Off",
-              link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-            },
-            {
-              firm: "DayTraders",
-              logo: "Photos/firms/daytraders.svg",
-              discount: "85%",
-              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            },
-            {
-              firm: "YRM Prop",
-              logo: "Photos/firms/yrmprop.png",
-              discount: "40%",
+              rating: "4.6",
               website: "https://yrmprop.com/ref/Bro/",
             },
           ];
@@ -1542,7 +1279,7 @@
           <img src="${f.logo}" class="pfirms-logo" alt="${f.firm.replace("<br/>", " ")}" onerror="this.src='https://placehold.co/54x60?text=Logo'">
           <div>
             <div class="pfirms-name">${f.firm}</div>
-            <div class="pfirms-rating">⭐ 4.5 Rating ${payoutExtra}</div>
+            <div class="pfirms-rating">⭐ ${f.rating} Rating ${payoutExtra}</div>
             ${detailNoteHtml}
           </div>
         </div>
@@ -1553,38 +1290,56 @@
             track.appendChild(card);
           });
 
-          // SMOOTH SCROLL with left/right arrows (no scroller override, using native scrollBy smooth)
-          function scrollPFirms(direction) {
-            if (!sliderElement) return;
-            const firstCard = track.querySelector(".pfirms-card");
-            if (!firstCard) return;
-            const cardWidth = firstCard.offsetWidth;
-            const gap = 20; // from .pfirms-track gap
-            const scrollAmount = cardWidth + gap;
-            sliderElement.scrollBy({
-              left: direction * scrollAmount,
-              behavior: "smooth",
-            });
+          // Clone-based infinite carousel using CSS transform (no scrollTo)
+          // Track layout: [c9,c10,c11 | r1..r11 | c1,c2,c3]
+          // pos = index of leftmost visible card in the full (cloned) track
+          const CLONES = 3;
+          const realCards = Array.from(track.children);
+          const total = realCards.length; // 11
+
+          // Prepend clones of last 3 real cards (order: c9, c10, c11)
+          const preFrag = document.createDocumentFragment();
+          for (let i = total - CLONES; i < total; i++) {
+            preFrag.appendChild(realCards[i].cloneNode(true));
+          }
+          track.insertBefore(preFrag, track.firstChild);
+
+          // Append clones of first 3 real cards (order: c1, c2, c3)
+          for (let i = 0; i < CLONES; i++) {
+            track.appendChild(realCards[i].cloneNode(true));
           }
 
-          // attach event listeners to arrow buttons (clean, avoid inline onclick conflicts)
+          let pos = CLONES; // start at first real card (r1)
+          let animating = false;
+
+          function stepWidth() {
+            const c = track.querySelector(".pfirms-card");
+            return c ? c.offsetWidth + 20 : 320;
+          }
+
+          function applyPos(animate) {
+            track.style.transition = animate ? "transform 0.45s ease" : "none";
+            track.style.transform = "translateX(-" + pos * stepWidth() + "px)";
+          }
+
+          applyPos(false);
+
+          function slide(dir) {
+            if (animating) return;
+            animating = true;
+            pos += dir;
+            applyPos(true);
+            setTimeout(function () {
+              if (pos <= CLONES - 1) { pos += total; applyPos(false); }
+              else if (pos >= CLONES + total) { pos -= total; applyPos(false); }
+              animating = false;
+            }, 460);
+          }
+
           const leftBtn = document.getElementById("scrollLeftBtn");
           const rightBtn = document.getElementById("scrollRightBtn");
-          if (leftBtn)
-            leftBtn.addEventListener("click", () => scrollPFirms(-1));
-          if (rightBtn)
-            rightBtn.addEventListener("click", () => scrollPFirms(1));
-
-          // Optional: support touch & responsiveness: ensures that cards remain visible after any resize (no change)
-          // also ensures that any missing link fallback works.
-
-          // small fix: if any card link is missing website but has link property, already handled.
-          // for firms that originally had 'link' only but we mapped, we use getWebsiteLink
-
-          // Additional: Add fallback for missing logos, and prevent any layout shift
-          console.log(
-            "Prop firms slider ready — 4 new firms integrated with payout split details and discounts.",
-          );
+          if (leftBtn) leftBtn.addEventListener("click", () => slide(-1));
+          if (rightBtn) rightBtn.addEventListener("click", () => slide(1));
         </script>
       </body>
     </html>
@@ -2468,6 +2223,22 @@
                 if (!isMobile()) updateDesktop(false);
                 else syncMobileActiveFromScroll();
               });
+
+              // Pause autoplay when the browser tab is hidden, resume when visible again
+              document.addEventListener("visibilitychange", () => {
+                if (document.hidden) {
+                  stopAutoplay();
+                } else {
+                  startAutoplay();
+                }
+              });
+
+              // Pause autoplay while the cursor is over the carousel
+              const carousel = document.querySelector(".bro-carousel");
+              if (carousel) {
+                carousel.addEventListener("mouseenter", stopAutoplay);
+                carousel.addEventListener("mouseleave", startAutoplay);
+              }
             }
 
             init();
@@ -2872,7 +2643,7 @@
       <body>
         <section class="zx-comparison-section">
           <h2 class="ff-title">Favorite Firms</h2>
-          <p class="ff-subtitle">
+          <p class="ff-subtitle" style="text-align: center;">
             Select your Favorite Firm. On this page, you can pick and show
             support for your favorite firm. The pick can be changed at any time
             here or in your member section.
@@ -3273,7 +3044,7 @@
     <!-- ===================== Marketing Section ===================== -->
     <section class="market-section">
       <h1>Prepare for the Markets</h1>
-      <p class="subtitle">
+      <p class="subtitle" style="text-align: center;">
         Start your trading day prepared with our economic calendar, breaking
         news, market sentiment, and real-time charts.
       </p>
@@ -3449,6 +3220,7 @@
         margin: 20px auto 60px;
         color: #bbb;
         font-family: "Roboto", sans-serif;
+        text-align: center;
       }
 
       /* DASHBOARD */
@@ -3755,9 +3527,11 @@
 
       .ctf-compare-header {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
+        gap: 16px;
         margin-bottom: 50px;
+        text-align: center;
       }
 
       .ctf-compare-header h2 {
@@ -3814,11 +3588,6 @@
 
       /* ================= MOBILE ONLY ================= */
       @media (max-width: 900px) {
-        .ctf-compare-header {
-          justify-content: center;
-          gap: 20px;
-        }
-
         .ctf-compare-header h2 {
           font-size: 26px;
         }
@@ -3942,6 +3711,7 @@
       /* LEFT SIDE */
 
       .yt-content {
+        text-align: center;
         flex: 1;
         max-width: 550px;
       }
@@ -4227,7 +3997,7 @@
           />
           <p class="bt-footer-text">
             Bro Trading is a premium trading resource platform helping traders
-            compare Bro Tradings, improve skills, and scale profitably.
+            compare prop firms, improve skills, and scale profitably.
           </p>
 
           <!-- Social Icons -->
@@ -4315,6 +4085,8 @@
         font-size: 14px;
         line-height: 1.8;
         margin-bottom: 25px;
+        text-align: justify;
+        text-align-last: left;
       }
 
       /* Social Icons */

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,209 +21,6 @@
     </style>
   </head>
   <body data-firm-slug="daytraders">
-    <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-    <div class="bt-topbar">
-      <!-- SCROLLING SECTION -->
-      <div class="bt-ticker-wrapper">
-        <div class="bt-arrow">&#10094;</div>
-
-        <div class="bt-ticker">
-          <div class="bt-ticker-track">
-            <a href="https://lucidtrading.com/ref/brotrading/" target="_blank">
-              Lucid Trading is up to 40% Off All Accounts! Use Code: BROTRADING
-            </a>
-
-            <a
-              href="https://apextraderfunding.com/member/aff/go/buurtie"
-              target="_blank"
-            >
-              ✅ Apex Trader Funding is 90% Off! Use Code: BRO
-            </a>
-
-            <a
-              href="https://myfundedfutures.com/challenge?ref=5117"
-              target="_blank"
-            >
-              💀 20% Off At MyFundedFutures!
-            </a>
-
-            <a href="https://tradeify.co/?ref=BFYQ2HKM" target="_blank">
-              🚨 40% Off Tradeify! 1 Day To Pass Use Code: BRO
-            </a>
-
-            <!-- duplicate for smooth loop -->
-            <a
-              href="https://daytraders.com/go/brotrading?c=TWCEMMNK"
-              target="_blank"
-            >
-              DayTraders.com is 85% Off All Accounts! Use Code: BROTRADING
-            </a>
-          </div>
-        </div>
-
-        <div class="bt-arrow">&#10095;</div>
-      </div>
-
-      </div>
-
-    <style>
-      /* ================= TOP BAR ================= */
-
-      .bt-topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: #000;
-        height: 42px;
-        font-size: 14px;
-        overflow: hidden;
-        position: relative;
-        z-index: 99999;
-      }
-
-      /* ================= TICKER ================= */
-
-      .bt-ticker-wrapper {
-        display: flex;
-        align-items: center;
-        flex: 1;
-        background: #ffa239;
-        overflow: hidden;
-      }
-
-      .bt-arrow {
-        padding: 0 12px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #000;
-        cursor: pointer;
-      }
-
-      .bt-ticker {
-        overflow: hidden;
-        white-space: nowrap;
-        flex: 1;
-      }
-
-      .bt-ticker-track {
-        display: inline-block;
-        animation: scrollTicker 30s linear infinite;
-      }
-
-      .bt-ticker-track a {
-        display: inline-block;
-        margin-right: 60px;
-        color: #000;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .bt-ticker-track a:hover {
-        text-decoration: underline;
-      }
-
-      /* Smooth infinite scroll */
-      @keyframes scrollTicker {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* ================= RIGHT SIDE ================= */
-
-      .bt-right-links {
-        display: flex;
-        align-items: center;
-        background: #f3f3f3;
-      }
-
-      .bt-right-links a {
-        padding: 0 16px;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        color: #000;
-        text-decoration: none;
-        border-left: 1px solid #ddd;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .bt-right-links a:hover {
-        background: #e5e5e5;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      /* ====== Tablet ====== */
-      @media (max-width: 1024px) {
-        .bt-topbar {
-          height: 40px;
-          font-size: 13px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 25s linear infinite;
-        }
-
-        .bt-right-links a {
-          padding: 0 12px;
-          font-size: 13px;
-        }
-      }
-
-      /* ====== Small Tablet ====== */
-      @media (max-width: 900px) {
-        .bt-right-links {
-          overflow-x: auto;
-          white-space: nowrap;
-        }
-
-        .bt-right-links a {
-          flex: 0 0 auto;
-        }
-      }
-
-      /* ====== Mobile ====== */
-      @media (max-width: 600px) {
-        .bt-topbar {
-          flex-direction: column;
-          height: auto;
-        }
-
-        .bt-ticker-wrapper {
-          width: 100%;
-        }
-
-        .bt-right-links {
-          width: 100%;
-          justify-content: center;
-          background: #111;
-        }
-
-        .bt-right-links a {
-          border-left: none;
-          border-right: 1px solid #222;
-          color: #fff;
-          font-size: 12px;
-          padding: 6px 10px;
-          height: auto;
-        }
-
-        .bt-arrow {
-          font-size: 16px;
-          padding: 0 8px;
-        }
-
-        .bt-ticker-track {
-          animation: scrollTicker 20s linear infinite;
-        }
-      }
-    </style>
-    <!-- ================= TOP ANNOUNCEMENT BAR END================= -->
 <div id="header"></div>
     <script src="../header.js" defer></script>
 
@@ -234,7 +31,7 @@
       /* ================= HEADER ================= */
       .bt-header {
         position: fixed;
-        top: 40px;
+        top: 10px;
         left: 0;
         margin: 10px 15px;
         margin-left: 180px;
@@ -1815,6 +1612,7 @@
       /* LEFT SIDE */
 
       .yt-content {
+        text-align: center;
         flex: 1;
         max-width: 550px;
       }
@@ -2337,7 +2135,7 @@
           />
           <p class="bt-footer-text">
             Bro Trading is a premium trading resource platform helping traders
-            compare Bro Tradings, improve skills, and scale profitably.
+            compare prop firms, improve skills, and scale profitably.
           </p>
 
           <!-- Social Icons -->
@@ -2425,6 +2223,8 @@
         font-size: 14px;
         line-height: 1.8;
         margin-bottom: 25px;
+        text-align: justify;
+        text-align-last: left;
       }
 
       /* Social Icons */
