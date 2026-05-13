@@ -12,7 +12,7 @@
       "name": "Lucid Trading",
       "country": "USA",
       "founded": "2025-03",
-      "rating": "4.6/5 (27 reviews)",
+      "rating": "4.8/5 (Trustpilot)",
       "code_default": "BROTRADING",
       "affiliate_url": "https://lucidtrading.com/ref/brotrading/",
       "platforms": [
@@ -174,7 +174,7 @@
       "name": "Tradeify",
       "country": "USA",
       "founded": "2024-06",
-      "rating": "4.7/5 (152 reviews)",
+      "rating": "4.6/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://tradeify.co/?ref=BFYQ2HKM",
       "platforms": [
@@ -396,7 +396,7 @@
       "name": "MyFundedFutures (MFFU)",
       "country": "USA",
       "founded": "2023-11",
-      "rating": "4.6/5 (221 reviews)",
+      "rating": "4.9/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://myfundedfutures.com/challenge?ref=5117",
       "platforms": [
@@ -818,6 +818,7 @@
     },
     "top_one_futures": {
       "name": "Top One Futures",
+      "rating": "4.8/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://toponefutures.com/",
       "platforms": [
@@ -1056,6 +1057,7 @@
     },
     "apex_trader_funding": {
       "name": "Apex Trader Funding",
+      "rating": "4.3/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://apextraderfunding.com/member/aff/go/buurtie",
       "platforms": [
@@ -1324,6 +1326,7 @@
     },
     "daytraders": {
       "name": "DayTraders",
+      "rating": "4.6/5 (Trustpilot)",
       "code_default": "BROTRADING",
       "affiliate_url": "https://daytraders.com/go/brotrading?c=TWCEMMNK",
       "platforms": [
@@ -1557,6 +1560,7 @@
     "nexgen_pro_trader": {
       "name": "NexGen Funding",
       "country": "Cyprus",
+      "rating": "4.6/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://thenextgenfunding.com/",
       "platforms": [],
@@ -1763,6 +1767,7 @@
     "yrm_prop": {
       "name": "YRM Prop",
       "country": "USA",
+      "rating": "4.6/5 (Trustpilot)",
       "code_default": "BRO",
       "affiliate_url": "https://yrmprop.com/ref/Bro/",
       "platforms": [],
@@ -1872,6 +1877,7 @@
     "fundedseat": {
       "name": "FundedSeat",
       "country": "USA",
+      "rating": "4.1/5 (Trustpilot)",
       "legal_entities": [
         {"name": "Cygnus Software Solutions LLC", "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA", "role": "primary"}
       ],
