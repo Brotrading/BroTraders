@@ -1,14 +1,5 @@
 // header.js — shared nav loader
 
-// Inject global typography: justify body text on all pages
-// Appended to body end so it wins over all inline <style> blocks
-(function () {
-  const s = document.createElement("style");
-  s.textContent = "p { text-align: justify; text-align-last: left; }";
-  if (document.body) document.body.appendChild(s);
-  else document.head.appendChild(s);
-})();
-
 (async () => {
   const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
   const prefix = depth > 0 ? "../".repeat(depth) : "";
