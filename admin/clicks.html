@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BroTrading · Click Analytics</title>
+<style>
+  :root {
+    --bg: #0a0b12;
+    --panel: #131626;
+    --panel-2: #1a1f2e;
+    --border: #232a3d;
+    --text: #ffffff;
+    --text-2: #94a3b8;
+    --accent: #2c9eff;
+    --accent-2: #00c2ff;
+    --green: #22c55e;
+    --orange: #ff6b00;
+    --red: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 14px/1.5 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  .gate {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: var(--bg); z-index: 1000;
+  }
+  .gate-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px 28px; max-width: 360px; width: 100%;
+  }
+  .gate h1 { margin: 0 0 4px; font-size: 20px; }
+  .gate p { margin: 0 0 18px; color: var(--text-2); font-size: 13px; }
+  .gate input {
+    width: 100%; padding: 10px 12px; border-radius: 8px;
+    background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+    font: inherit;
+  }
+  .gate button {
+    margin-top: 10px; width: 100%; padding: 10px 12px; border-radius: 8px;
+    background: var(--accent); color: white; border: 0; font: inherit; font-weight: 600;
+    cursor: pointer;
+  }
+  .gate .err { color: var(--red); font-size: 12px; margin-top: 8px; min-height: 16px; }
+
+  header {
+    padding: 24px 32px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 { margin: 0; font-size: 18px; font-weight: 700; }
+  header .sub { color: var(--text-2); font-size: 12px; margin-top: 2px; }
+
+  .range {
+    display: flex; gap: 4px; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 3px;
+  }
+  .range button {
+    padding: 6px 12px; border: 0; background: transparent; color: var(--text-2);
+    border-radius: 6px; cursor: pointer; font: inherit; font-size: 12px;
+  }
+  .range button.active { background: var(--accent); color: white; }
+
+  main {
+    padding: 24px 32px;
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px; min-height: 80px;
+  }
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--text-2); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; font-weight: 600; margin-bottom: 8px;
+  }
+
+  .kpi { font-size: 32px; font-weight: 800; line-height: 1; }
+  .kpi-sub { color: var(--text-2); font-size: 12px; margin-top: 4px; }
+
+  .span-2 { grid-column: span 2; }
+  .span-4 { grid-column: span 4; }
+
+  .bar-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px; }
+  .bar-row .name { width: 110px; color: var(--text); font-weight: 500; text-transform: capitalize; }
+  .bar-row .bar-wrap { flex: 1; height: 10px; background: var(--panel-2); border-radius: 5px; overflow: hidden; }
+  .bar-row .bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 5px; }
+  .bar-row .num { width: 70px; text-align: right; color: var(--text-2); font-variant-numeric: tabular-nums; }
+  .bar-row .num strong { color: var(--text); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table th, table td { padding: 8px 6px; text-align: left; border-bottom: 1px solid var(--border); }
+  table th { color: var(--text-2); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
+  table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table tr:last-child td { border-bottom: 0; }
+  table .truncate { max-width: 360px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* daily timeseries — pure-CSS bars */
+  .ts { display: flex; align-items: flex-end; gap: 4px; height: 140px; padding: 0 4px; }
+  .ts-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+  .ts-bar { width: 100%; background: linear-gradient(180deg, var(--accent), var(--accent-2)); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .ts-label { font-size: 10px; color: var(--text-2); }
+
+  .empty { color: var(--text-2); font-size: 13px; text-align: center; padding: 24px; }
+  .err { color: var(--red); padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px; }
+
+  @media (max-width: 1000px) {
+    main { grid-template-columns: repeat(2, 1fr); }
+    .span-4 { grid-column: span 2; }
+  }
+  @media (max-width: 640px) {
+    main { grid-template-columns: 1fr; padding: 16px; }
+    header { padding: 16px; }
+    .span-2, .span-4 { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<div id="pwGate" class="gate">
+  <form class="gate-card" onsubmit="event.preventDefault(); unlock();">
+    <h1>📊 Click Analytics</h1>
+    <p>Enter your STATS_TOKEN to access the dashboard.</p>
+    <input id="pwInput" type="password" placeholder="STATS_TOKEN…" autofocus />
+    <button type="submit">Unlock</button>
+    <div id="pwError" class="err"></div>
+  </form>
+</div>
+
+<header>
+  <div>
+    <h1>Click Analytics</h1>
+    <div class="sub">Live data from D1 · last updated <span id="lastUpdated">—</span></div>
+  </div>
+  <div class="range" id="rangeBtns">
+    <button data-days="1">1d</button>
+    <button data-days="7" class="active">7d</button>
+    <button data-days="30">30d</button>
+    <button data-days="90">90d</button>
+  </div>
+</header>
+
+<main id="dash" style="display:none">
+  <div class="card">
+    <div class="card-header"><span>Total Clicks</span></div>
+    <div class="kpi" id="kpiTotal">—</div>
+    <div class="kpi-sub" id="kpiRange">last 7 days</div>
+  </div>
+  <div class="card">
+    <div class="card-header"><span>Unique Firms</span></div>
+    <div class="kpi" id="kpiFirms">—</div>
+    <div class="kpi-sub">clicked at least once</div>
+  </div>
+  <div class="card">
+    <div class="card-header"><span>Top Firm</span></div>
+    <div class="kpi" id="kpiTopFirm" style="font-size:22px">—</div>
+    <div class="kpi-sub" id="kpiTopFirmCount">—</div>
+  </div>
+  <div class="card">
+    <div class="card-header"><span>Daily Avg</span></div>
+    <div class="kpi" id="kpiAvg">—</div>
+    <div class="kpi-sub">clicks per day</div>
+  </div>
+
+  <div class="card span-2">
+    <div class="card-header"><span>Clicks per Firm</span></div>
+    <div id="firmBars"></div>
+  </div>
+
+  <div class="card span-2">
+    <div class="card-header"><span>Daily Trend</span></div>
+    <div class="ts" id="dailyChart"></div>
+  </div>
+
+  <div class="card span-2">
+    <div class="card-header"><span>Top Source Pages</span></div>
+    <table id="referrerTable">
+      <thead><tr><th>Page</th><th class="num">Clicks</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="card span-2">
+    <div class="card-header"><span>Top Countries</span></div>
+    <table id="countryTable">
+      <thead><tr><th>Country</th><th class="num">Clicks</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="card span-4" id="conversionCard" style="display:none">
+    <div class="card-header">
+      <span>Conversion Snapshot</span>
+      <span style="color:var(--text-2); text-transform:none; letter-spacing:0; font-size:11px;" id="convSource"></span>
+    </div>
+    <table id="conversionTable">
+      <thead>
+        <tr>
+          <th>Firm</th>
+          <th class="num">Clicks (range)</th>
+          <th class="num">Total Referrals</th>
+          <th class="num">Total Commission</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+const STORAGE_KEY = 'bro-stats-token';
+let token = localStorage.getItem(STORAGE_KEY) || '';
+let currentDays = 7;
+
+function unlock() {
+  const val = document.getElementById('pwInput').value.trim();
+  if (!val) return;
+  token = val;
+  localStorage.setItem(STORAGE_KEY, token);
+  load();
+}
+
+async function load() {
+  document.getElementById('pwError').textContent = '';
+  try {
+    const [statsRes, affRes] = await Promise.all([
+      fetch(`/api/click-stats?token=${encodeURIComponent(token)}&days=${currentDays}`, { cache: 'no-store' }),
+      fetch('/data/affiliate-summary.json', { cache: 'no-store' }).catch(() => null),
+    ]);
+    if (statsRes.status === 401) {
+      document.getElementById('pwError').textContent = 'Invalid token.';
+      localStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+    if (!statsRes.ok) {
+      document.getElementById('pwError').textContent = `Error ${statsRes.status}`;
+      return;
+    }
+    const stats = await statsRes.json();
+    const aff = affRes && affRes.ok ? await affRes.json() : null;
+
+    document.getElementById('pwGate').style.display = 'none';
+    document.getElementById('dash').style.display = 'grid';
+    render(stats, aff);
+  } catch (e) {
+    document.getElementById('pwError').textContent = e.message || 'Failed to load';
+  }
+}
+
+function fmtNum(n) { return (n || 0).toLocaleString(); }
+function fmtCurrency(n, cur) {
+  const sym = cur === 'EUR' ? '€' : cur === 'USD' ? '$' : '';
+  return sym + (n || 0).toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+function render(stats, aff) {
+  const totalClicks = stats.total_clicks || 0;
+  const byFirm = stats.by_firm || [];
+  const byDay = stats.by_day || [];
+  const byReferrer = stats.by_referrer || [];
+  const byCountry = stats.by_country || [];
+
+  document.getElementById('kpiTotal').textContent = fmtNum(totalClicks);
+  document.getElementById('kpiRange').textContent = `last ${currentDays} day${currentDays === 1 ? '' : 's'}`;
+  document.getElementById('kpiFirms').textContent = byFirm.length;
+  if (byFirm[0]) {
+    document.getElementById('kpiTopFirm').textContent = byFirm[0].firm;
+    document.getElementById('kpiTopFirmCount').textContent = `${fmtNum(byFirm[0].clicks)} clicks`;
+  } else {
+    document.getElementById('kpiTopFirm').textContent = '—';
+    document.getElementById('kpiTopFirmCount').textContent = '';
+  }
+  document.getElementById('kpiAvg').textContent = fmtNum(Math.round(totalClicks / currentDays));
+  document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+
+  // Per-firm bars
+  const maxFirmClicks = Math.max(1, ...byFirm.map(f => f.clicks));
+  document.getElementById('firmBars').innerHTML = byFirm.length === 0
+    ? '<div class="empty">No clicks yet in this range.</div>'
+    : byFirm.map(f => `
+        <div class="bar-row">
+          <span class="name">${f.firm}</span>
+          <span class="bar-wrap"><span class="bar" style="width:${(f.clicks / maxFirmClicks) * 100}%"></span></span>
+          <span class="num"><strong>${fmtNum(f.clicks)}</strong></span>
+        </div>
+      `).join('');
+
+  // Daily timeseries
+  const maxDay = Math.max(1, ...byDay.map(d => d.clicks));
+  document.getElementById('dailyChart').innerHTML = byDay.length === 0
+    ? '<div class="empty">No daily data yet.</div>'
+    : byDay.map(d => {
+        const h = Math.max(2, (d.clicks / maxDay) * 120);
+        const dayLabel = d.day.slice(5);
+        return `<div class="ts-col" title="${d.day}: ${d.clicks} clicks">
+          <div class="ts-bar" style="height:${h}px"></div>
+          <div class="ts-label">${dayLabel}</div>
+        </div>`;
+      }).join('');
+
+  // Top referrers
+  document.querySelector('#referrerTable tbody').innerHTML = byReferrer.length === 0
+    ? `<tr><td colspan="2" class="empty">—</td></tr>`
+    : byReferrer.slice(0, 10).map(r => `
+        <tr>
+          <td class="truncate" title="${r.referrer}">${shortRef(r.referrer)}</td>
+          <td class="num">${fmtNum(r.clicks)}</td>
+        </tr>
+      `).join('');
+
+  // Top countries
+  document.querySelector('#countryTable tbody').innerHTML = byCountry.length === 0
+    ? `<tr><td colspan="2" class="empty">—</td></tr>`
+    : byCountry.slice(0, 10).map(c => `
+        <tr>
+          <td>${c.country}</td>
+          <td class="num">${fmtNum(c.clicks)}</td>
+        </tr>
+      `).join('');
+
+  // Conversion section (combines clicks with affiliate totals)
+  if (aff && aff.firms) {
+    document.getElementById('conversionCard').style.display = 'block';
+    document.getElementById('convSource').textContent = `affiliate totals as of ${aff.updated_at || 'unknown'}`;
+    const firmsLookup = Object.fromEntries(byFirm.map(f => [f.firm, f.clicks]));
+    const rows = Object.entries(aff.firms).map(([slug, data]) => ({
+      firm: slug,
+      clicks: firmsLookup[slug] || 0,
+      referrals: data.referrals || 0,
+      commission: data.commission || 0,
+      currency: data.currency || 'USD',
+    })).sort((a, b) => b.commission - a.commission);
+    document.querySelector('#conversionTable tbody').innerHTML = rows.map(r => `
+      <tr>
+        <td style="text-transform:capitalize">${r.firm}</td>
+        <td class="num">${fmtNum(r.clicks)}</td>
+        <td class="num">${fmtNum(r.referrals)}</td>
+        <td class="num">${fmtCurrency(r.commission, r.currency)} ${r.currency}</td>
+      </tr>
+    `).join('');
+  }
+}
+
+function shortRef(url) {
+  try {
+    const u = new URL(url);
+    return u.host + u.pathname.replace(/\/$/, '');
+  } catch { return url; }
+}
+
+document.querySelectorAll('#rangeBtns button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#rangeBtns button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDays = parseInt(btn.dataset.days, 10);
+    if (token) load();
+  });
+});
+
+if (token) load();
+</script>
+</body>
+</html>
