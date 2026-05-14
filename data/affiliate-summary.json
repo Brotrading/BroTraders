@@ -1,0 +1,60 @@
+{
+  "updated_at": "2026-05-14",
+  "firms": {
+    "apex": {
+      "date": "2026-05-14",
+      "referrals": 1514,
+      "commission": 8773.24,
+      "currency": "USD"
+    },
+    "lucid": {
+      "date": "2026-05-14",
+      "referrals": 0,
+      "commission": 4654.98,
+      "currency": "USD"
+    },
+    "tradeify": {
+      "date": "2026-05-14",
+      "referrals": 223,
+      "commission": 3701.44,
+      "currency": "USD"
+    },
+    "phidias": {
+      "date": "2026-05-13",
+      "referrals": 94,
+      "commission": 455.59,
+      "currency": "USD"
+    },
+    "mffu": {
+      "date": "2026-05-14",
+      "referrals": 69,
+      "commission": 1212.24,
+      "currency": "USD"
+    },
+    "yrm": {
+      "date": "2026-05-14",
+      "referrals": 22,
+      "commission": 306.98,
+      "currency": "USD"
+    },
+    "menthorq": {
+      "date": "2026-04-29",
+      "referrals": 18,
+      "commission": 196.4,
+      "currency": "USD"
+    },
+    "nexgen": {
+      "date": "2026-05-09",
+      "referrals": 3,
+      "commission": 32.86,
+      "currency": "USD"
+    },
+    "fundedseat": {
+      "date": "2026-05-13",
+      "referrals": 1,
+      "commission": 14.99,
+      "currency": "USD"
+    }
+  },
+  "_generated_at": "2026-05-14T18:14:25.745320+00:00"
+}
