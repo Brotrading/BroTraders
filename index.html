@@ -65,748 +65,7 @@
     <div class="bt-overlay" onclick="closeMobileMenu()"></div>
 
 
-    <!-- ===== PROP FIRMS HERO SECTION ===== -->
 
-    <!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, user-scalable=yes"
-        />
-        <title>Prop Firms Comparison | Futures Funding 2026</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-        <style>
-          /* ----- GLOBAL RESET / BASE (preserve all original styles, only add responsive touch) ----- */
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            background: #030712;
-          }
-
-          .pfirms-section {
-            padding: 100px 20px;
-            padding-top: 153px;
-            background:
-              radial-gradient(
-                circle at top center,
-                #1e40af 0%,
-                transparent 60%
-              ),
-              linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
-            color: white;
-            font-family: Roboto, sans-serif;
-          }
-
-          /* HEAD */
-          .pfirms-head {
-            text-align: center;
-            max-width: 960px;
-            margin: auto;
-          }
-
-          .pfirms-head h2 {
-            font-size: 60px;
-            font-weight: 700;
-          }
-
-          .pfirms-head h2 span {
-            font-size: 50px;
-            font-weight: 400;
-          }
-
-          .pfirms-head p {
-            color: #9ca3af;
-            margin-top: 10px;
-            text-align: center;
-          }
-
-          /* STATS */
-          .pfirms-stats {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 28px;
-            flex-wrap: wrap;
-          }
-
-          .pfirms-stat {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 18px;
-            background: #111827;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 400;
-            font-family: "DM Mono", monospace;
-          }
-          .pfirms-stats strong {
-            font-size: 17px;
-            font-weight: 800;
-          }
-
-          .pfirms-stat img {
-            width: 20px;
-          }
-
-          /* SLIDER */
-          .pfirms-slider-wrap {
-            position: relative;
-            max-width: 952px;
-            margin: 35px auto;
-          }
-
-          .pfirms-slider {
-            display: flex;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            padding: 20px 5px;
-            scrollbar-width: thin;
-            scrollbar-color: #00c2ff #1f2a44;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          .pfirms-slider::-webkit-scrollbar {
-            height: 6px;
-          }
-          .pfirms-slider::-webkit-scrollbar-track {
-            background: #1f2a44;
-            border-radius: 10px;
-          }
-          .pfirms-slider::-webkit-scrollbar-thumb {
-            background: #00c2ff;
-            border-radius: 10px;
-          }
-
-          .pfirms-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-          }
-
-          /* CARD */
-          .pfirms-card {
-            flex: 0 0 300px;
-            background: #0f172a;
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-            transition: 0.25s;
-          }
-
-          .pfirms-card:hover {
-            border: 1px solid #00c2ff;
-            transform: translateY(-6px) scale(1.02);
-          }
-
-          /* CARD TOP */
-          .pfirms-card-top {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-          }
-
-          .pfirms-logo {
-            width: 54px;
-            height: 60px;
-            object-fit: contain;
-            background: transparent;
-          }
-
-          .pfirms-name {
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 1.3;
-          }
-
-          .pfirms-rating {
-            font-size: 13px;
-            color: #9ca3af;
-            margin-top: 4px;
-          }
-
-          /* DISCOUNT */
-          .pfirms-discount {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            background: #00c2ff20;
-            color: #00c2ff;
-            padding: 5px 6px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-          }
-
-          .pfirms-discount img {
-            width: 22px;
-          }
-
-          /* BUTTON */
-          .pfirms-card-btn {
-            margin-top: 34px;
-            display: block;
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #00c2ff, #1e90ff);
-            color: white;
-            text-decoration: none;
-            border: 3px solid transparent;
-            font-weight: 500;
-            transition: 0.2s;
-          }
-
-          .pfirms-card-btn:hover {
-            transform: translateY(-4px);
-            background: white;
-            color: #0b0f2a;
-            border: 3px solid #00c2ff;
-          }
-
-          /* ARROWS */
-          .pfirms-arrow {
-            position: absolute;
-            top: 40%;
-            background: #111827;
-            border: none;
-            color: white;
-            font-size: 24px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-          }
-          .pfirms-arrow:hover {
-            background: #1e293b;
-            color: #00c2ff;
-          }
-          .pfirms-left {
-            left: -48px;
-          }
-          .pfirms-right {
-            right: -48px;
-          }
-
-          /* CTA */
-          .pfirms-bottom {
-            text-align: center;
-          }
-
-          .pfirms-cta {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-          }
-
-          .pfirms-btn-primary {
-            padding: 14px 30px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #00c2ff, #1e90ff);
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            border: 3px solid transparent;
-            transition: 0.2s;
-          }
-
-          .pfirms-btn-primary:hover {
-            transform: translateY(-4px);
-            background: white;
-            color: #0b0f2a;
-            border: 3px solid #00c2ff;
-          }
-
-          .pfirms-btn-outline {
-            padding: 14px 30px;
-            border-radius: 10px;
-            border: 3px solid #555;
-            text-decoration: none;
-            color: white;
-            transition: 0.2s;
-          }
-
-          .pfirms-btn-outline:hover {
-            transform: translateY(-4px);
-            background: white;
-            color: black;
-            border: 3px solid #00c2ff;
-          }
-
-          .pfirms-mini {
-            color: #9ca3af;
-            font-size: 13px;
-            margin-top: 25px;
-            text-align: center;
-          }
-
-          /* ========= RESPONSIVE (no style changes, only arrow positions + slider padding) ========= */
-          @media (max-width: 1100px) {
-            .pfirms-slider-wrap {
-              max-width: 780px;
-            }
-            .pfirms-left {
-              left: -20px;
-            }
-            .pfirms-right {
-              right: -20px;
-            }
-          }
-
-          @media (max-width: 860px) {
-            .pfirms-slider-wrap {
-              max-width: 92%;
-            }
-            .pfirms-left {
-              left: -12px;
-            }
-            .pfirms-right {
-              right: -12px;
-            }
-            .pfirms-arrow {
-              width: 36px;
-              height: 36px;
-              font-size: 22px;
-            }
-            .pfirms-head h2 {
-              font-size: 44px;
-            }
-            .pfirms-head h2 span {
-              font-size: 38px;
-            }
-          }
-
-          @media (max-width: 680px) {
-            .pfirms-section {
-              padding: 100px 16px;
-              padding-top: 120px;
-            }
-            .pfirms-head h2 {
-              font-size: 36px !important;
-            }
-            .pfirms-head h2 span {
-              font-size: 32px;
-            }
-            .pfirms-stat {
-              padding: 6px 14px;
-              font-size: 12px;
-            }
-            .pfirms-arrow {
-              top: 38%;
-              width: 32px;
-              height: 32px;
-              font-size: 20px;
-            }
-            .pfirms-left {
-              left: -8px;
-            }
-            .pfirms-right {
-              right: -8px;
-            }
-          }
-
-          @media (max-width: 520px) {
-            .pfirms-card {
-              flex: 0 0 280px;
-            }
-            .pfirms-arrow {
-              top: 42%;
-            }
-            .pfirms-left {
-              left: -5px;
-            }
-            .pfirms-right {
-              right: -5px;
-            }
-            .pfirms-slider {
-              padding: 16px 2px;
-            }
-            .pfirms-discount {
-              font-size: 13px;
-              padding: 3px 6px;
-            }
-            .pfirms-name {
-              font-size: 16px;
-            }
-          }
-
-          /* smooth scroll + hide default scroll arrows in some browsers but keep functional */
-          .pfirms-slider {
-            scrollbar-width: thin;
-          }
-        </style>
-      </head>
-      <body>
-        <!-- ===== PROP FIRMS HERO SECTION ===== -->
-        <section class="pfirms-section">
-          <div class="pfirms-head">
-            <h2>Compare the Best Futures Firms <br /><span>of 2026</span></h2>
-            <p style="text-align: center;">
-              Compare challenge rules, profit splits, and drawdown limits to
-              find the best prop firm for your trading strategy.
-            </p>
-            <div class="pfirms-stats">
-              <div class="pfirms-stat">
-                <img
-                  src="https://img.icons8.com/?size=96&id=98A4yZTt9abw&format=png"
-                  alt="Stats"
-                />
-                <span><strong>5</strong> Top-Rated Prop Firms</span>
-              </div>
-              <div class="pfirms-stat">
-                <img
-                  src="https://img.icons8.com/?size=96&id=fMgiawjCzfuj&format=png"
-                  alt="Stats"
-                />
-                <span><strong>50+</strong> Challenges</span>
-              </div>
-              <div class="pfirms-stat">
-                <img
-                  src="https://img.icons8.com/?size=160&id=CaMxgXUAlbAW&format=png"
-                  alt="Stats"
-                />
-                <span>Biggest chance on <strong>Giveaways</strong> </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="pfirms-slider-wrap">
-            <button
-              class="pfirms-arrow pfirms-left"
-              id="scrollLeftBtn"
-              aria-label="Scroll left"
-            >
-              ‹
-            </button>
-            <div class="pfirms-slider" id="pfirmsSlider">
-              <div class="pfirms-track" id="pfirmsTrack"></div>
-            </div>
-            <button
-              class="pfirms-arrow pfirms-right"
-              id="scrollRightBtn"
-              aria-label="Scroll right"
-            >
-              ›
-            </button>
-          </div>
-
-          <div class="pfirms-bottom">
-            <div class="pfirms-cta">
-              <a href="#FavoriteFirmsSection" class="pfirms-btn-primary">
-                Compare Firms
-              </a>
-              <a
-                href="https://discord.gg/brotrading"
-                target="_blank"
-                class="pfirms-btn-outline"
-              >
-                Join Discord
-              </a>
-            </div>
-            <p class="pfirms-mini" style="text-align: center;">
-              Top-Rated Prop Firms • Transparent Rules • Fast Evaluation Models
-            </p>
-          </div>
-        </section>
-
-        <script>
-          // --------------------------------------------------------------
-          // ENHANCED FIRMS ARRAY: existing + 4 NEW firms with payout split details
-          // (preserves all original entries and adds the 4 requested firms)
-          // --------------------------------------------------------------
-          const firms = [
-            {
-              firm: "Tradeify",
-              logo: "Photos/firms/tradeify.png",
-              discount: "40%",
-              rating: "4.6",
-              website: "https://tradeify.co/?ref=BFYQ2HKM",
-            },
-            {
-              firm: "FundedSeat",
-              logo: "Photos/firms/fundedseat.png",
-              discount: "60% Off",
-              rating: "4.1",
-              website: "https://fundedseat.link/bro",
-            },
-            {
-              firm: "MyFunded <br/>Futures",
-              logo: "Photos/firms/myfundedfutures.png",
-              discount: "20%",
-              rating: "4.9",
-              website: "https://myfundedfutures.com/challenge?ref=5117",
-            },
-            {
-              firm: "Apex Trader Funding",
-              logo: "Photos/firms/apex.png",
-              discount: "90%",
-              rating: "4.3",
-              website: "https://apextraderfunding.com/member/aff/go/buurtie",
-            },
-            {
-              firm: "Lucid Trading",
-              logo: "Photos/firms/lucid.png",
-              discount: "40%",
-              rating: "4.8",
-              website: "https://lucidtrading.com/ref/brotrading/",
-            },
-            {
-              firm: "NexGen <br/>Funding",
-              logo: "Photos/firms/nexgen.png",
-              discount: "30% Off",
-              rating: "4.6",
-              website: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
-            },
-            {
-              firm: "TopOne<br/> Futures",
-              logo: "Photos/firms/topone.png",
-              discount: "60% Off",
-              rating: "4.8",
-              website:
-                "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
-            },
-            {
-              firm: "Alpha <br/> Futures",
-              logo: "Photos/firms/alphafutures.png",
-              discount: "20% Off",
-              rating: "4.9",
-              website: "https://app.alpha-futures.com/signup/BROTRADING/",
-            },
-            {
-              firm: "Phidias<br/> Propfirm",
-              logo: "Photos/firms/phidias.jpeg",
-              discount: "80% Off",
-              rating: "3.8",
-              link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-              website: "https://member.phidiaspropfirm.com/aff/go/brotrading",
-            },
-            {
-              firm: "DayTraders",
-              logo: "Photos/firms/daytraders.svg",
-              discount: "85%",
-              rating: "4.6",
-              website: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            },
-            {
-              firm: "YRM Prop",
-              logo: "Photos/firms/yrmprop.png",
-              discount: "40%",
-              rating: "4.6",
-              website: "https://yrmprop.com/ref/Bro/",
-            },
-          ];
-
-          const track = document.getElementById("pfirmsTrack");
-          const sliderElement = document.getElementById("pfirmsSlider");
-
-          // Helper: safely get website url
-          function getWebsiteLink(f) {
-            return f.website || f.link || "#";
-          }
-
-          // Build payout badge or description inside rating line (keep original rating + payout split hint)
-          firms.forEach((f) => {
-            const card = document.createElement("div");
-            card.className = "pfirms-card";
-
-            // Add payout split info inside rating line (not altering original structure but enhancing)
-            let payoutExtra = "";
-            if (f.payoutSplit) {
-              payoutExtra = `<span style="display:inline-block; background:#00c2ff20; margin-left:6px; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:500; color:#00c2ff;">💸 ${f.payoutSplit}</span>`;
-            }
-
-            // optional details note as micro text (subtle but visible)
-            let detailNoteHtml = "";
-            if (f.detailsNote) {
-              detailNoteHtml = `<div style="font-size:11px; color:#8ba0c0; margin-top:6px; line-height:1.3;">${f.detailsNote}</div>`;
-            }
-
-            // discount badge: handle both "Off" or plain %
-            let discountLabel = f.discount;
-            if (!discountLabel.includes("Off") && !discountLabel.includes("%"))
-              discountLabel = discountLabel + " Off";
-
-            card.innerHTML = `
-        <div class="pfirms-discount">
-          <img src="https://cdn-icons-png.flaticon.com/128/3936/3936991.png" alt="discount">
-          ${discountLabel}
-        </div>
-        <div class="pfirms-card-top">
-          <img src="${f.logo}" class="pfirms-logo" alt="${f.firm.replace("<br/>", " ")}" onerror="this.src='https://placehold.co/54x60?text=Logo'">
-          <div>
-            <div class="pfirms-name">${f.firm}</div>
-            <div class="pfirms-rating">⭐ ${f.rating} Rating ${payoutExtra}</div>
-            ${detailNoteHtml}
-          </div>
-        </div>
-        <a href="${getWebsiteLink(f)}" target="_blank" class="pfirms-card-btn">
-          View Firm
-        </a>
-      `;
-            track.appendChild(card);
-          });
-
-          // Clone-based infinite carousel using CSS transform (no scrollTo)
-          // Track layout: [c9,c10,c11 | r1..r11 | c1,c2,c3]
-          // pos = index of leftmost visible card in the full (cloned) track
-          const CLONES = 3;
-          const realCards = Array.from(track.children);
-          const total = realCards.length; // 11
-
-          // Prepend clones of last 3 real cards (order: c9, c10, c11)
-          const preFrag = document.createDocumentFragment();
-          for (let i = total - CLONES; i < total; i++) {
-            preFrag.appendChild(realCards[i].cloneNode(true));
-          }
-          track.insertBefore(preFrag, track.firstChild);
-
-          // Append clones of first 3 real cards (order: c1, c2, c3)
-          for (let i = 0; i < CLONES; i++) {
-            track.appendChild(realCards[i].cloneNode(true));
-          }
-
-          let pos = CLONES; // start at first real card (r1)
-          let animating = false;
-
-          function stepWidth() {
-            const c = track.querySelector(".pfirms-card");
-            return c ? c.offsetWidth + 20 : 320;
-          }
-
-          function applyPos(animate) {
-            track.style.transition = animate ? "transform 0.45s ease" : "none";
-            track.style.transform = "translateX(-" + pos * stepWidth() + "px)";
-          }
-
-          applyPos(false);
-
-          function slide(dir) {
-            if (animating) return;
-            animating = true;
-            pos += dir;
-            applyPos(true);
-            setTimeout(function () {
-              if (pos <= CLONES - 1) { pos += total; applyPos(false); }
-              else if (pos >= CLONES + total) { pos -= total; applyPos(false); }
-              animating = false;
-            }, 460);
-          }
-
-          const leftBtn = document.getElementById("scrollLeftBtn");
-          const rightBtn = document.getElementById("scrollRightBtn");
-          if (leftBtn) leftBtn.addEventListener("click", () => slide(-1));
-          if (rightBtn) rightBtn.addEventListener("click", () => slide(1));
-        </script>
-      </body>
-    </html>
-
-    <!-- ===== PROP FIRMS hero SECTION END ===== -->
-
-    <!-- ================= Ticker Tape Section ================= -->
-    <section class="market-ticker-section">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
-          async
-        >
-          {
-            "symbols": [
-              {"proName": "FOREXCOM:SPXUSD", "title": "S&P 500"},
-              {"proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100"},
-              {"proName": "FOREXCOM:DJI", "title": "Dow 30"},
-              {"proName": "FX:EURUSD", "title": "EUR/USD"},
-              {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
-              {"proName": "BITSTAMP:ETHUSD", "title": "Ethereum"},
-              {"proName": "OANDA:XAUUSD", "title": "Gold"},
-              {"proName": "NSE:NIFTY", "title": "NIFTY"},
-              {"proName": "CME_MINI:MNQ1!", "title": "MNQ1!"}
-            ],
-            "showSymbolLogo": true,
-            "colorTheme": "dark",
-            "isTransparent": false,
-            "displayMode": "adaptive",
-            "locale": "en"
-          }
-        </script>
-      </div>
-    </section>
-
-    <style>
-      .market-ticker-section {
-        width: 100%;
-        height: 66px;
-        background: linear-gradient(90deg, #000814, #06142b);
-        padding: 8px 0;
-        border-top: 1px solid rgba(37, 99, 235, 0.25);
-        border-bottom: 1px solid rgba(37, 99, 235, 0.25);
-        overflow: hidden;
-      }
-
-      .tradingview-widget-container {
-        width: 100%;
-      }
-
-      .tradingview-widget-container__widget {
-        width: 100%;
-      }
-
-      /* ===== Tablet ===== */
-
-      @media (max-width: 1024px) {
-        .market-ticker-section {
-          padding: 10px 0;
-        }
-      }
-
-      /* ===== Mobile ===== */
-
-      @media (max-width: 768px) {
-        .market-ticker-section {
-          padding: 8px 0;
-        }
-
-        .tradingview-widget-container iframe {
-          min-height: 48px !important;
-        }
-      }
-
-      /* ===== Small Phones ===== */
-
-      @media (max-width: 480px) {
-        .market-ticker-section {
-          padding: 6px 0;
-          margin: 2px 0px;
-        }
-
-        .tradingview-widget-container iframe {
-          min-height: 44px !important;
-        }
-      }
-    </style>
-    <!-- ================= Ticker Tape Section ENDS ================= -->
 
     <!doctype html>
     <html lang="en">
@@ -957,6 +216,12 @@
             font-size: 20px;
             font-weight: 700;
             line-height: 1.3;
+          }
+
+          .bro-card-rating {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-top: 6px;
           }
 
           /* vertical divider (desktop) */
@@ -1206,6 +471,7 @@
                 name: "Tradeify",
                 logo: "Photos/firms/tradeify.png",
                 discount: "30% Off",
+                rating: "4.6",
                 details:
                   "30% Off The 150K Select Plan.<br>Choose Day-1 or 3-Day Payouts!",
                 code: "BRO",
@@ -1215,6 +481,7 @@
                 name: "FundedSeat",
                 logo: "Photos/firms/fundedseat.png",
                 discount: "60% Off",
+                rating: "4.1",
                 details:
                   "60% off ALL accounts with code BRO.<br>1 Step Daily, Daily Pro, Sprint + Instant Funding plans.<br>11 platforms supported. 90/10 payout split.",
                 code: "BRO",
@@ -1224,6 +491,7 @@
                 name: "My Funded Futures",
                 logo: "Photos/firms/myfundedfutures.png",
                 discount: "Upto 50% Off",
+                rating: "4.9",
                 details: "No Activation Fees + BOGO.",
                 code: "BRO",
                 link: "https://myfundedfutures.com/challenge?ref=5117",
@@ -1232,6 +500,7 @@
                 name: "Apex Trader Funding",
                 logo: "Photos/firms/apex.png",
                 discount: "90% Off",
+                rating: "4.3",
                 details:
                   "Limited time: 90% Off ALL Evals (25K, 50K, 100K, 150K)!<br>Trail or End-of-Day drawdown.<br>1 day to pass.",
                 code: "BRO",
@@ -1241,6 +510,7 @@
                 name: "Lucid Trading",
                 logo: "Photos/firms/lucid.png",
                 discount: "30%-40% Off",
+                rating: "4.8",
                 details: "No Activation Fees<br>Up to 40% Off Pro & Flex Plans.",
                 code: "BROTRADING",
                 link: "https://lucidtrading.com/ref/brotrading/",
@@ -1249,6 +519,7 @@
                 name: "NexGen Funding",
                 logo: "Photos/firms/nexgen.png",
                 discount: "Upto 95% Off",
+                rating: "4.6",
                 details: "Exclusive funding plans.<br>Use code BRO for bonus.",
                 code: "BRO",
                 link: "https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding",
@@ -1257,14 +528,16 @@
                 name: "TopOne Futures",
                 logo: "Photos/firms/topone.png",
                 discount: "90% Off",
+                rating: "4.8",
                 details: "Fund your future.<br>Promo code: BRO",
                 code: "BRO",
                 link: "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
               },
               {
                 name: "Alpha Futures",
-                logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGeSURBVHgBvZU7SwNBFIXvYsQyES3EV1Si1jZWFgr+ARuRiIUW9ikkWCgpbWwFEdMrFqKCIAgiKAEFe0ECFioi+MIXqNezZIPDSTbP3XxwMmTu3HMym1wiUgGq2gaFpFYgLAktSy1AUK9meIb6xG8Qcqz/7IifICCquYyIH8C4AUrnCTyDAuI1MI2pOzPiJTDsgN4LBN57OiYwW6cAeyw2aW9JvABGETK+cW7cCX0Z+6/qxZjAJEWBMaOWoNq+VAMMJjWXJqMegh6pPiyVovnHYJHOzFL9QioBjXOaH/tGLXT2lM5MSzmgIQzdqTtrdH6U6g9QYzmBSTLYgl5ob5B6dqmeKDWsH/o1Gm+hLmieDI+orxv6MOpvUE8pgYdkvODsB6FLqkWpl8dku1jYFDWkoXrxC80dg3HxC5jHC31HXmE5YWEs51CzUYtYlnVlfKABLEHnbcBRlm9H4lK3ScHvKWu2QrdbNU9q5ldaLYmsmf1vYI7BtR1AgQdaPZ9Qq212QoU4hY2pd+xZeJmgZ72BZ61G4BCWdnGnDvqREvkDspIAmxjMDUkAAAAASUVORK5CYII=",
-                discount: "70% Off",
+                logo: "Photos/firms/alphafutures.png",
+                discount: "20% Off",
+                rating: "4.9",
                 details:
                   "Sign up with BROTRADING code.<br>Fast scaling & payouts.",
                 code: "BROTRADING",
@@ -1273,7 +546,8 @@
               {
                 name: "Phidias Propfirm",
                 logo: "Photos/firms/phidias.jpeg",
-                discount: "60% Off",
+                discount: "80% Off",
+                rating: "3.8",
                 details: "TRY Now<br>Same Day Approval!",
                 code: "BROTRADING",
                 link: "https://member.phidiaspropfirm.com/aff/go/brotrading",
@@ -1281,16 +555,18 @@
               {
                 name: "Daytraders.com",
                 logo: "Photos/firms/daytraders.svg",
-                discount: "90% Off",
+                discount: "85% Off",
+                rating: "4.6",
                 details:
                   "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
                 code: "BROTRADING",
-                link: "https://daytraders.com/",
+                link: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
               },
               {
                 name: "YRM Prop",
                 logo: "Photos/firms/yrmprop.png",
-                discount: "90% Off",
+                discount: "40% Off",
+                rating: "4.6",
                 details:
                   "Use code BRO for special discount.<br>Trusted prop firm.",
                 code: "BRO",
@@ -1306,10 +582,14 @@
               const card = document.createElement("div");
               card.className = "bro-card";
               // sanitize HTML content but preserve <br> tags safely
+              const ratingHtml = deal.rating
+                ? `<div class="bro-card-rating">⭐ ${escapeHtml(deal.rating)} Rating</div>`
+                : "";
               card.innerHTML = `
           <div class="bro-card-left">
             <img src="${deal.logo}" class="bro-card-logo" alt="${deal.name} logo" loading="lazy" onerror="this.src='https://placehold.co/200x80?text=Logo'">
             <h3>${escapeHtml(deal.name)}</h3>
+            ${ratingHtml}
           </div>
           <div class="bro-card-divider"></div>
           <div class="bro-card-right">
