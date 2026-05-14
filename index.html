@@ -957,13 +957,10 @@
                 if (index >= cards.length - 1) index = cards.length - 2;
                 if (index <= 0) index = 1;
                 setActive(index);
-                // optional: scroll active into view
-                if (cards[index]) {
-                  cards[index].scrollIntoView({
-                    block: "nearest",
-                    inline: "center",
-                  });
-                }
+                // NOTE: scrollIntoView removed here — it was scrolling the
+                // whole PAGE back to the carousel whenever mobile address bar
+                // toggled (which fires resize events). Active card sync is
+                // handled by IntersectionObserver instead.
                 // attach scroll listener
                 track.addEventListener("scroll", onMobileScroll);
                 // re-trigger active sync after layout
@@ -995,7 +992,13 @@
                 setTimeout(() => syncMobileActiveFromScroll(), 100);
               }
               startAutoplay();
+              // Only handle resize when WIDTH changes — mobile browsers
+              // fire resize events on address-bar toggle (height change only)
+              // which would otherwise re-run handleResize on every scroll.
+              let lastWidth = window.innerWidth;
               window.addEventListener("resize", () => {
+                if (window.innerWidth === lastWidth) return;
+                lastWidth = window.innerWidth;
                 stopAutoplay();
                 handleResize();
               });
