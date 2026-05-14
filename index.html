@@ -1439,28 +1439,6 @@
             support for your favorite firm. The pick can be changed at any time
             here or in your member section.
           </p>
-          <!-- FILTER BAR -->
-          <div class="zx-controls">
-            <input
-              type="text"
-              id="zx-search"
-              placeholder="Search firm..."
-              aria-label="Search firm"
-            />
-
-            <select id="zx-account-filter" aria-label="Account Size">
-              <option value="">Account Size</option>
-              <option value="50000">$50K</option>
-              <option value="100000">$100K</option>
-            </select>
-
-            <select id="zx-dd-filter" aria-label="Drawdown Type">
-              <option value="">Drawdown Type</option>
-              <option value="Trailing">Trailing</option>
-              <option value="Static">Static</option>
-            </select>
-          </div>
-
           <div class="zx-table-wrapper">
             <table id="zx-table">
               <thead>
@@ -2226,11 +2204,6 @@
     <section class="ctf-compare-vault" id="Compare-Top-firms-Section">
       <div class="ctf-compare-header">
         <h2>Compare Top Firms</h2>
-
-        <div class="ctf-compare-nav">
-          <button class="ctf-nav-btn ctf-prev" id="ctfPrev">&#10094;</button>
-          <button class="ctf-nav-btn ctf-next" id="ctfNext">&#10095;</button>
-        </div>
       </div>
 
       <div class="ctf-slider-shell" id="ctfSlider">
@@ -2406,29 +2379,8 @@
     </style>
 
     <script>
-      const shell = document.getElementById("ctfSlider");
-      const prevBtn = document.getElementById("ctfPrev");
-      const nextBtn = document.getElementById("ctfNext");
-
-      function updateButtons() {
-        const maxScroll = shell.scrollWidth - shell.clientWidth;
-
-        prevBtn.classList.toggle("disabled", shell.scrollLeft <= 5);
-        nextBtn.classList.toggle("disabled", shell.scrollLeft >= maxScroll - 5);
-      }
-
-      nextBtn.addEventListener("click", () => {
-        shell.scrollBy({ left: shell.clientWidth, behavior: "smooth" });
-      });
-
-      prevBtn.addEventListener("click", () => {
-        shell.scrollBy({ left: -shell.clientWidth, behavior: "smooth" });
-      });
-
-      shell.addEventListener("scroll", updateButtons);
-      window.addEventListener("resize", updateButtons);
-
-      updateButtons();
+      // Compare Top Firms slider — manual prev/next arrows were removed.
+      // Slider still scrolls via touch/trackpad/scrollbar.
     </script>
     <!-- ==================CTF Compare Top Firm Section END ================== -->
 
