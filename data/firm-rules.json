@@ -14,7 +14,7 @@
       "founded": "2025-03",
       "rating": "4.8/5 (Trustpilot)",
       "code_default": "BROTRADING",
-      "affiliate_url": "https://lucidtrading.com/ref/brotrading/",
+      "affiliate_url": "https://propfirmbro.com/go/lucid",
       "platforms": [
         "Tradovate",
         "NinjaTrader",
@@ -176,7 +176,7 @@
       "founded": "2024-06",
       "rating": "4.6/5 (Trustpilot)",
       "code_default": "BRO",
-      "affiliate_url": "https://tradeify.co/?ref=BFYQ2HKM",
+      "affiliate_url": "https://propfirmbro.com/go/tradeify",
       "platforms": [
         "Tradovate",
         "NinjaTrader",
@@ -398,7 +398,7 @@
       "founded": "2023-11",
       "rating": "4.9/5 (Trustpilot)",
       "code_default": "BRO",
-      "affiliate_url": "https://myfundedfutures.com/challenge?ref=5117",
+      "affiliate_url": "https://propfirmbro.com/go/mffu",
       "platforms": [
         "Tradovate",
         "NinjaTrader",
@@ -625,7 +625,7 @@
       "founded": "2024-07",
       "rating": "4.6/5 (40 reviews)",
       "code_default": "BROTRADING",
-      "affiliate_url": "https://app.alpha-futures.com/signup/BROTRADING/",
+      "affiliate_url": "https://propfirmbro.com/go/alpha",
       "platforms": [
         "NinjaTrader",
         "Tradovate",
@@ -1059,7 +1059,7 @@
       "name": "Apex Trader Funding",
       "rating": "4.3/5 (Trustpilot)",
       "code_default": "BRO",
-      "affiliate_url": "https://apextraderfunding.com/member/aff/go/buurtie",
+      "affiliate_url": "https://propfirmbro.com/go/apex",
       "platforms": [
         "NinjaTrader",
         "Rithmic",
@@ -1174,7 +1174,7 @@
       "name": "Phidias Prop Firm",
       "country": "France",
       "code_default": "BROTRADING",
-      "affiliate_url": "https://member.phidiaspropfirm.com/aff/go/brotrading",
+      "affiliate_url": "https://propfirmbro.com/go/phidias",
       "platforms": [
         "Rithmic",
         "Tradovate",
@@ -1328,7 +1328,7 @@
       "name": "DayTraders",
       "rating": "4.6/5 (Trustpilot)",
       "code_default": "BROTRADING",
-      "affiliate_url": "https://daytraders.com/go/brotrading?c=TWCEMMNK",
+      "affiliate_url": "https://propfirmbro.com/go/daytraders",
       "platforms": [
         "Rithmic",
         "ONYX",
@@ -1769,7 +1769,7 @@
       "country": "USA",
       "rating": "4.6/5 (Trustpilot)",
       "code_default": "BRO",
-      "affiliate_url": "https://yrmprop.com/ref/Bro/",
+      "affiliate_url": "https://propfirmbro.com/go/yrm",
       "platforms": [],
       "discount_text": "40% off with code BRO (Instant Prime); Starter shows promotional pricing without explicit code",
       "rules_global": {
@@ -1882,7 +1882,7 @@
         {"name": "Cygnus Software Solutions LLC", "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA", "role": "primary"}
       ],
       "code_default": "BRO",
-      "affiliate_url": "https://fundedseat.link/bro",
+      "affiliate_url": "https://propfirmbro.com/go/fundedseat",
       "platforms": [
         "Rithmic",
         "DX Feed",
