@@ -372,64 +372,8 @@
       </div>
 
       <script>
-        const firmData = [
-          {
-            name: "Apex Trader Funding",
-            link: "https://apextraderfunding.com/member/aff/go/buurtie",
-            logo: "../Photos/firms/apex.png",
-            cost: 94,
-            platforms: "Rithmic, Tradovate, WealthCharts",
-            discount: 90,
-            code: "BRO",
-            rating: 5,
-          },
-
-          {
-            name: "Tradeify",
-            link: "https://tradeify.co/?ref=BFYQ2HKM",
-            logo: "../Photos/firms/tradeify.png",
-            cost: 289,
-            platforms: "Tradovate, NinjaTrader, Quantower",
-            discount: 30,
-            code: "BRO",
-            rating: 5,
-          },
-
-          {
-            name: "MyFundedFutures",
-            link: "https://myfundedfutures.com/challenge?ref=5117",
-            logo: "../Photos/firms/myfundedfutures.png",
-            cost: 273,
-            platforms: "Quantower, NinjaTrader",
-            discount: 50,
-            code: "BRO",
-            rating: 5,
-          },
-
-          {
-            name: "LUCID",
-            link: "https://lucidtrading.com/ref/brotrading/",
-            logo: "../Photos/firms/lucid.webp",
-            cost: 255,
-            platforms: "Tradovate",
-            discount: 50,
-            code: "BROTRADING",
-            rating: 5,
-          },
-
-          {
-            name: "DayTraders",
-            link: "https://daytraders.com/go/brotrading?c=TWCEMMNK",
-            logo: "../Photos/firms/daytraders.svg",
-            cost: 294,
-            platforms: "Rithmic, Project X",
-            discount: 90,
-            code: "BROTRADING",
-            rating: 5,
-          },
-        ];
-
-        let filteredData = [...firmData];
+        let allFirms = [];
+        let filteredData = [];
         let sortState = { key: null, direction: -1 };
 
         const tbody = document.getElementById("zx-table-body");
@@ -472,8 +416,6 @@ Visit
           });
         }
 
-        render(filteredData);
-
         /* SORT */
 
         document.querySelectorAll("#zx-table th[data-key]").forEach((th) => {
@@ -512,7 +454,7 @@ Visit
         const costFilter = document.getElementById("costFilter");
 
         function applyFilters() {
-          filteredData = firmData.filter((f) => {
+          filteredData = allFirms.filter((f) => {
             let discountCheck = true;
             let costCheck = true;
 
@@ -532,6 +474,15 @@ Visit
 
         discountFilter.addEventListener("change", applyFilters);
         costFilter.addEventListener("change", applyFilters);
+
+        /* LOAD DATA */
+        fetch("../data/startcost-firms.json")
+          .then((r) => r.json())
+          .then((firms) => {
+            allFirms = firms;
+            filteredData = [...firms];
+            render(filteredData);
+          });
 
         /* COPY CODE */
 
