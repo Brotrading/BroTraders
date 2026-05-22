@@ -54,6 +54,11 @@
     <div class="rw-stat"><div class="label">Lifetime earned</div><div class="value" id="totEarned">—</div></div>
   </div>
 
+  <section style="margin-bottom:24px;">
+    <h2 class="rw-h2" style="margin-top:0;">Pending cashback claims</h2>
+    <div id="pendingClaims"></div>
+  </section>
+
   <div class="grid-two">
     <section>
       <h2 class="rw-h2" style="margin-top:0;">Pending redemptions</h2>
@@ -110,8 +115,56 @@
     document.getElementById("totOut").textContent = fmt(data.totals.points_outstanding);
     document.getElementById("totEarned").textContent = fmt(data.totals.lifetime_earned);
 
+    renderPendingClaims(data.pending_claims || []);
     renderPendingRedemptions(data.pending_redemptions);
     renderPendingReviews(data.pending_reviews);
+  }
+
+  function renderPendingClaims(rows) {
+    const root = document.getElementById("pendingClaims");
+    if (!rows.length) {
+      root.innerHTML = `<p class="rw-muted">No pending cashback claims.</p>`;
+      return;
+    }
+    root.innerHTML = rows.map((c) => {
+      const isPro = c.is_pro_bro ? 1 : 0;
+      const rate = isPro ? 0.0375 : 0.025;
+      const pts = Math.round(c.amount_eur * rate * 1000);
+      return `
+        <div class="rw-panel" style="margin-bottom:10px;">
+          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+            <div>
+              <strong>${c.firm_slug}</strong>
+              &mdash; <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
+              &mdash; <span class="rw-muted">+${fmt(pts)} pts ${isPro ? "(Pro)" : ""}</span>
+              <div class="rw-muted rw-small" style="margin-top:3px;">
+                ${c.display_name || ""} · ${c.email} · ${fmtDate(c.created_at)}
+                ${c.order_ref ? `· ref: <code>${c.order_ref}</code>` : "· <em>no order ref</em>"}
+              </div>
+            </div>
+            <div style="display:flex; gap:8px; flex-shrink:0;">
+              <button class="rw-btn" data-claim-action="approve" data-id="${c.id}">Approve +${fmt(pts)} pts</button>
+              <button class="rw-btn ghost" data-claim-action="reject" data-id="${c.id}">Reject</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    root.querySelectorAll("button[data-claim-action]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const id = parseInt(btn.dataset.id, 10);
+        const action = btn.dataset.claimAction;
+        if (action === "approve") {
+          const note = prompt("Optional note (internal, not shown to user):") || "";
+          await api("POST", { action: "approve_claim", claim_id: id, note });
+        } else {
+          const note = prompt("Rejection reason (internal only):") || "";
+          await api("POST", { action: "reject_claim", claim_id: id, note });
+        }
+        loadOverview();
+      });
+    });
   }
 
   function renderPendingRedemptions(rows) {

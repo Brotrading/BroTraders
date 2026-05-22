@@ -25,6 +25,13 @@
     return null;
   }
 
+  // Store the last-clicked firm so cashback-prompt.js can show a claim banner on return.
+  function storeLastClick(slug) {
+    try {
+      localStorage.setItem("bro_last_click", JSON.stringify({ firm: slug, at: Date.now() }));
+    } catch (e) {}
+  }
+
   function attribute() {
     const uid = getUserId();
     if (!uid) return;
@@ -35,6 +42,12 @@
         if (u.searchParams.has("u")) return;
         u.searchParams.set("u", uid);
         a.href = u.toString();
+        // Tag once so repeated attribute() calls don't stack listeners.
+        if (!a.dataset.broAttrib) {
+          a.dataset.broAttrib = "1";
+          const slug = u.pathname.replace("/go/", "").toLowerCase();
+          a.addEventListener("click", () => storeLastClick(slug), { once: true });
+        }
       } catch (e) {}
     });
   }

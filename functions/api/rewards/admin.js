@@ -10,9 +10,11 @@
 //   - cancel_redemption  { redemption_id, reason? }             → refunds points to user
 //   - approve_review     { review_id }                          → marks approved + awards review points
 //   - reject_review      { review_id, reason? }                 → marks rejected (no points)
+//   - approve_claim      { claim_id, note? }                    → awards cashback points, marks approved
+//   - reject_claim       { claim_id, note? }                    → marks rejected, no points
 //   - list_pending       (no body)                              → pending redemptions + pending reviews
 //
-// GET: returns recent activity summary for the admin dashboard.
+// GET: returns recent activity summary for the admin dashboard (incl. pending claims).
 
 import {
   jsonResponse,
@@ -21,6 +23,9 @@ import {
   rateFor,
   EARN_RATES,
   getUserRow,
+  CASHBACK_RATE,
+  POINTS_PER_EUR,
+  PRO_MULTIPLIER,
 } from "./_lib.js";
 
 function checkAdmin(request, env) {
@@ -60,6 +65,18 @@ export async function onRequestGet(context) {
     )
     .all();
 
+  const pendingClaims = await env.DB
+    .prepare(
+      `SELECT c.id, c.user_id, c.firm_slug, c.order_ref, c.amount_eur,
+              c.status, c.created_at,
+              u.email, u.display_name, u.is_pro_bro
+       FROM purchase_claims c
+       JOIN users u ON u.id = c.user_id
+       WHERE c.status = 'pending'
+       ORDER BY c.created_at ASC`
+    )
+    .all();
+
   const totals = await env.DB
     .prepare(
       `SELECT
@@ -74,6 +91,7 @@ export async function onRequestGet(context) {
     totals,
     pending_redemptions: pendingRedemptions.results || [],
     pending_reviews: pendingReviews.results || [],
+    pending_claims: pendingClaims.results || [],
   });
 }
 
@@ -98,6 +116,8 @@ export async function onRequestPost(context) {
     case "cancel_redemption": return cancelRedemption(env, body);
     case "approve_review":   return approveReview(env, body);
     case "reject_review":    return rejectReview(env, body);
+    case "approve_claim":    return approveClaim(env, body);
+    case "reject_claim":     return rejectClaim(env, body);
     default:                 return jsonError("unknown_action", 400, { action });
   }
 }
@@ -258,4 +278,58 @@ async function rejectReview(env, { review_id, reason }) {
   if (!r) return jsonError("review_not_found_or_approved", 404);
   await env.DB.prepare(`DELETE FROM firm_reviews WHERE id = ?`).bind(review_id).run();
   return jsonResponse({ ok: true, reason: reason || null });
+}
+
+async function approveClaim(env, { claim_id, note }) {
+  if (!claim_id) return jsonError("missing_claim_id", 400);
+  const c = await env.DB
+    .prepare(`SELECT * FROM purchase_claims WHERE id = ?`)
+    .bind(claim_id)
+    .first();
+  if (!c) return jsonError("claim_not_found", 404);
+  if (c.status !== "pending") return jsonError("not_pending", 409, { current_status: c.status });
+
+  const u = await getUserRow(env, c.user_id);
+  const isPro = !!(u && u.is_pro_bro);
+  const rate = isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE;
+  const points = Math.round(c.amount_eur * rate * POINTS_PER_EUR);
+
+  await postLedger(env, {
+    user_id: c.user_id,
+    amount: points,
+    reason: "purchase_cashback",
+    ref_id: String(c.id),
+    note: `${c.firm_slug} · €${c.amount_eur} · ${isPro ? "Pro" : "Free"} rate`,
+  });
+
+  const now = new Date().toISOString();
+  await env.DB
+    .prepare(
+      `UPDATE purchase_claims
+       SET status = 'approved', points_awarded = ?, note = ?, reviewed_at = ?
+       WHERE id = ?`
+    )
+    .bind(points, (note || "").slice(0, 200) || null, now, claim_id)
+    .run();
+
+  return jsonResponse({ ok: true, points_awarded: points });
+}
+
+async function rejectClaim(env, { claim_id, note }) {
+  if (!claim_id) return jsonError("missing_claim_id", 400);
+  const c = await env.DB
+    .prepare(`SELECT id FROM purchase_claims WHERE id = ? AND status = 'pending'`)
+    .bind(claim_id)
+    .first();
+  if (!c) return jsonError("claim_not_found_or_not_pending", 404);
+
+  const now = new Date().toISOString();
+  await env.DB
+    .prepare(
+      `UPDATE purchase_claims SET status = 'rejected', note = ?, reviewed_at = ? WHERE id = ?`
+    )
+    .bind((note || "").slice(0, 200) || null, now, claim_id)
+    .run();
+
+  return jsonResponse({ ok: true });
 }

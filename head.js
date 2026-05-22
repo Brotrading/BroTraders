@@ -23,4 +23,6 @@
 
   // Rewrites /go/* links to ?u=<user_id> when the visitor is signed in.
   script(prefix + "js/click-attribution.js");
+  // Shows cashback claim banner when a logged-in user returns after clicking a /go/ link.
+  script(prefix + "js/cashback-prompt.js");
 })();

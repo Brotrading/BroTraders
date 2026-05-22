@@ -9,6 +9,16 @@
 // Earn rates live in EARN_RATES below — single source of truth.
 // IMPORTANT: confirm with Mike before public launch.
 
+// Purchase cashback: 2.5% of purchase amount in points (1000 pts = €1).
+// Pro Bro rate is base × PRO_MULTIPLIER (1.5×) = effectively 3.75%.
+export const CASHBACK_RATE = 0.025;
+export const POINTS_PER_EUR = 1000;
+
+export function calcCashback(amountEur, isPro) {
+  const base = Math.round(amountEur * CASHBACK_RATE * POINTS_PER_EUR);
+  return isPro ? Math.round(base * PRO_MULTIPLIER) : base;
+}
+
 export const EARN_RATES = {
   signup_free: 5000,
   signup_pro: 7500,
