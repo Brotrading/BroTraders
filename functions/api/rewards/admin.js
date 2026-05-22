@@ -20,6 +20,7 @@ import {
   jsonResponse,
   jsonError,
   postLedger,
+  awardOnce,
   rateFor,
   EARN_RATES,
   getUserRow,
@@ -311,6 +312,28 @@ async function approveClaim(env, { claim_id, note }) {
     )
     .bind(points, (note || "").slice(0, 200) || null, now, claim_id)
     .run();
+
+  // If this is the buyer's first approved purchase, pay the referrer a bonus.
+  const prevApproved = await env.DB
+    .prepare(
+      `SELECT COUNT(*) AS cnt FROM purchase_claims
+       WHERE user_id = ? AND status = 'approved' AND id != ?`
+    )
+    .bind(c.user_id, claim_id)
+    .first();
+
+  if ((prevApproved?.cnt || 0) === 0 && u?.referred_by) {
+    const referrer = await getUserRow(env, u.referred_by);
+    if (referrer) {
+      await awardOnce(env, {
+        user_id: u.referred_by,
+        amount: rateFor("referral_purchase", !!referrer.is_pro_bro),
+        reason: "referral_purchase",
+        ref_id: c.user_id,
+        note: `${u.email} made their first purchase`,
+      });
+    }
+  }
 
   return jsonResponse({ ok: true, points_awarded: points });
 }

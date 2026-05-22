@@ -20,20 +20,26 @@ export function calcCashback(amountEur, isPro) {
 }
 
 export const EARN_RATES = {
-  signup_free: 5000,
-  signup_pro: 7500,
-  profile_complete_free: 2000,
-  profile_complete_pro: 3000,
-  pro_bro_welcome: 25000, // one-time bonus when user becomes Pro Bro
-  daily_login_free: 100,
-  daily_login_pro: 150,
-  review_submitted_free: 500,
-  review_submitted_pro: 750,
-  referral_signup_free: 10000,
-  referral_signup_pro: 15000,
+  signup_free: 500,
+  signup_pro: 750,
+  profile_complete_free: 500,
+  profile_complete_pro: 750,
+  pro_bro_welcome: 2500,         // one-time bonus when user becomes Pro Bro
+  daily_login_free: 10,
+  daily_login_pro: 15,
+  review_submitted_free: 250,
+  review_submitted_pro: 375,
+  referral_signup_free: 500,     // referral signed up (no purchase yet)
+  referral_signup_pro: 750,
+  referral_purchase_free: 2500,  // referral made their first purchase
+  referral_purchase_pro: 3750,
 };
 
 export const PRO_MULTIPLIER = 1.5;
+
+// Minimum purchase_cashback points a user must have earned before redeeming any Bro Pack.
+// Equivalent to ~€200 in purchases at 2.5% cashback (≈ 3 challenges at discounted prices).
+export const REDEMPTION_GATE_PTS = 5000;
 
 // Pick the right rate for an action based on Pro Bro status.
 export function rateFor(action, isPro) {

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bro Packages · BroTrading Rewards</title>
+<title>Bro Packs · BroTrading Rewards</title>
 <script src="../head.js"></script>
 <link rel="stylesheet" href="./_styles.css" />
 </head>
@@ -15,8 +15,8 @@
 
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
     <div>
-      <h1 class="rw-h1">Bro Packages</h1>
-      <p class="rw-muted">Redeem your points for funded accounts and Pro Bro perks. 1000 pts ≈ €1.</p>
+      <h1 class="rw-h1">Bro Packs</h1>
+      <p class="rw-muted">Redeem your points for funded accounts and Pro Bro perks. Unlock by earning 5,000 pts from purchases first. 1000 pts ≈ €1.</p>
     </div>
     <div class="rw-stat" style="min-width: 200px;">
       <div class="label">Your balance</div>
@@ -31,9 +31,9 @@
 
   <h2 class="rw-h2">How it works</h2>
   <div class="rw-panel">
-    <p class="rw-muted" style="margin:0 0 8px;">1. Browse our partner prop firms via Bro Trading and use code BRO / BROTRADING at checkout.</p>
-    <p class="rw-muted" style="margin:0 0 8px;">2. Earn points for account creation, profile completion, daily logins, firm reviews, and referrals. Pro Bros earn 1.5× on everything plus a 25,000 pt welcome bonus.</p>
-    <p class="rw-muted" style="margin:0;">3. Redeem points for the Bro Packages above. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
+    <p class="rw-muted" style="margin:0 0 8px;">1. Browse partner prop firms via Bro Trading and purchase a challenge using code <strong>BRO</strong> or <strong>BROTRADING</strong> at checkout. Then submit your cashback claim on your account page to earn 2.5% of your purchase in points (Pro Bros earn 3.75%).</p>
+    <p class="rw-muted" style="margin:0 0 8px;">2. Bonus points for signing up, completing your profile, daily logins, writing firm reviews, and referring friends — but purchase cashback is where the real earning happens.</p>
+    <p class="rw-muted" style="margin:0;">3. Once you've earned 5,000 pts from purchases, Bro Packs unlock. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
   </div>
 
 </main>
@@ -95,7 +95,7 @@
     const ok = document.getElementById("redeemMsg");
     const err = document.getElementById("redeemErr");
     ok.textContent = ""; err.textContent = "";
-    if (!confirm("Confirm: spend points on this Bro Package?")) return;
+    if (!confirm("Confirm: spend points on this Bro Pack?")) return;
     btn.disabled = true;
     btn.textContent = "Redeeming…";
     const res = await BroAuth.authedFetch("/api/rewards/redeem", {
@@ -107,6 +107,8 @@
     if (!res.ok) {
       err.textContent = data.error === "insufficient_points"
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`
+        : data.error === "redemption_gate_not_met"
+        ? `Bro Packs unlock after earning 5,000 pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a cashback claim on your account page after buying a challenge.`
         : `Could not redeem: ${data.error}`;
       btn.disabled = false;
       btn.textContent = "Redeem";

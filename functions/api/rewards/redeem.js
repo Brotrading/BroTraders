@@ -12,6 +12,7 @@ import {
   verifySupabaseToken,
   postLedger,
   getUserRow,
+  REDEMPTION_GATE_PTS,
 } from "./_lib.js";
 
 export async function onRequestPost(context) {
@@ -42,6 +43,24 @@ export async function onRequestPost(context) {
 
   const row = await getUserRow(env, user.id);
   if (!row) return jsonError("user_not_synced", 404);
+
+  // Redemption gate: must have earned minimum purchase_cashback points first.
+  const purchaseEarned = await env.DB
+    .prepare(
+      `SELECT COALESCE(SUM(amount), 0) AS total
+       FROM points_ledger
+       WHERE user_id = ? AND reason = 'purchase_cashback'`
+    )
+    .bind(user.id)
+    .first();
+  const purchasePts = purchaseEarned?.total || 0;
+  if (purchasePts < REDEMPTION_GATE_PTS) {
+    return jsonError("redemption_gate_not_met", 403, {
+      purchase_pts_earned: purchasePts,
+      purchase_pts_required: REDEMPTION_GATE_PTS,
+      message: `Earn ${REDEMPTION_GATE_PTS - purchasePts} more points via purchases to unlock Bro Packs.`,
+    });
+  }
 
   if (row.points_balance < pkg.points_cost) {
     return jsonError("insufficient_points", 409, {

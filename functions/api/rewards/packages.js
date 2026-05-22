@@ -1,4 +1,4 @@
-// GET /api/rewards/packages — public list of redeemable Bro Packages.
+// GET /api/rewards/packages — public list of redeemable Bro Packs.
 //
 // No auth required (the catalog is browseable).
 

@@ -65,7 +65,7 @@
     </table>
   </div>
 
-  <h2 class="rw-h2">Your Bro Package redemptions</h2>
+  <h2 class="rw-h2">Your Bro Pack redemptions</h2>
   <div class="rw-panel" style="padding:0; overflow:hidden;">
     <table class="rw-table" id="redemptionsTable">
       <thead><tr><th>Package</th><th>Cost</th><th>Status</th><th>Requested</th></tr></thead>
@@ -100,7 +100,7 @@
     purchase_cashback: "Purchase cashback",
     manual_bonus: "Bonus from team",
     admin_adjust: "Admin adjustment",
-    redemption: "Bro Package redeemed",
+    redemption: "Bro Pack redeemed",
   };
 
   const FIRM_NAMES = {
@@ -172,7 +172,7 @@
 
     const rbody = document.querySelector("#redemptionsTable tbody");
     if (!redemptions.length) {
-      rbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--rw-text-2);">No redemptions yet — <a href="./catalog.html" style="color:var(--rw-accent-2);">browse Bro Packages</a></td></tr>`;
+      rbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--rw-text-2);">No redemptions yet — <a href="./catalog.html" style="color:var(--rw-accent-2);">browse Bro Packs</a></td></tr>`;
     } else {
       rbody.innerHTML = redemptions.map((row) => `
         <tr>
