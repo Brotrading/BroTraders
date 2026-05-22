@@ -73,6 +73,15 @@
     </table>
   </div>
 
+  <h2 class="rw-h2">Cashback claims</h2>
+  <p class="rw-muted rw-small" style="margin:-8px 0 12px;">Purchases made via BRO affiliate links. Approved within 24 hours.</p>
+  <div class="rw-panel" style="padding:0; overflow:hidden;">
+    <table class="rw-table" id="claimsTable">
+      <thead><tr><th>Date</th><th>Firm</th><th>Amount</th><th>Order ref</th><th>Status</th><th style="text-align:right;">Points</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
 </main>
 
 <div id="loadingShell" class="rw-auth-shell"><p class="rw-muted">Loading…</p></div>
@@ -88,9 +97,23 @@
     review_submitted: "Firm review approved",
     referral_signup: "Referral signup",
     pro_bro_welcome: "Pro Bro welcome bonus",
+    purchase_cashback: "Purchase cashback",
     manual_bonus: "Bonus from team",
     admin_adjust: "Admin adjustment",
     redemption: "Bro Package redeemed",
+  };
+
+  const FIRM_NAMES = {
+    apex: "Apex Trader Funding", alpha: "Alpha Futures", daytraders: "Daytraders.com",
+    fundedseat: "FundedSeat", lucid: "Lucid Trading", phidias: "Phidias PropFirm",
+    mffu: "My Funded Futures", nexgen: "NexGen Funding", topone: "Top One Futures",
+    tradeify: "Tradeify", yrm: "YRM Prop",
+  };
+
+  const CLAIM_STATUS = {
+    pending:  { label: "Pending review", color: "var(--rw-accent)" },
+    approved: { label: "Approved",       color: "var(--rw-green)" },
+    rejected: { label: "Rejected",       color: "var(--rw-red)"   },
   };
 
   function fmt(n) {
@@ -112,7 +135,7 @@
     return data;
   }
 
-  function render({ user, ledger, redemptions }) {
+  function render({ user, ledger, redemptions, claims }) {
     document.getElementById("email").textContent = user.email;
     document.getElementById("balance").textContent = fmt(user.points_balance);
     document.getElementById("earned").textContent = fmt(user.points_earned);
@@ -159,6 +182,33 @@
           <td>${fmtDate(row.created_at)}</td>
         </tr>
       `).join("");
+    }
+
+    const cbody = document.querySelector("#claimsTable tbody");
+    if (!claims || !claims.length) {
+      cbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--rw-text-2);">No cashback claims yet — buy through a BRO affiliate link and claim your points.</td></tr>`;
+    } else {
+      cbody.innerHTML = claims.map((c) => {
+        const st = CLAIM_STATUS[c.status] || { label: c.status, color: "var(--rw-text-2)" };
+        const isPro = user.is_pro_bro;
+        const rate = isPro ? 0.0375 : 0.025;
+        const ptsPending = Math.round(c.amount_eur * rate * 1000);
+        const ptsDisplay = c.status === "approved"
+          ? `<span style="color:var(--rw-green);">+${fmt(c.points_awarded)}</span>`
+          : c.status === "pending"
+            ? `<span style="color:var(--rw-text-2);">~${fmt(ptsPending)}</span>`
+            : `<span style="color:var(--rw-red);">—</span>`;
+        return `
+          <tr>
+            <td>${fmtDate(c.created_at)}</td>
+            <td>${FIRM_NAMES[c.firm_slug] || c.firm_slug}</td>
+            <td>€${Number(c.amount_eur).toFixed(2)}</td>
+            <td class="rw-muted">${c.order_ref || "—"}</td>
+            <td><span style="color:${st.color}; font-weight:600; font-size:12px;">${st.label}</span></td>
+            <td style="text-align:right;">${ptsDisplay}</td>
+          </tr>
+        `;
+      }).join("");
     }
   }
 

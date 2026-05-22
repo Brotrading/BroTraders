@@ -1,7 +1,7 @@
 // GET /api/rewards/me — current user state + recent ledger.
 //
 // Returns:
-//   { user: {...}, ledger: [...20 most recent], redemptions: [...10 most recent] }
+//   { user: {...}, ledger: [...20 most recent], redemptions: [...10 most recent], claims: [...10 most recent] }
 
 import { jsonResponse, jsonError, verifySupabaseToken, getUserRow } from "./_lib.js";
 
@@ -39,6 +39,17 @@ export async function onRequestGet(context) {
     .bind(user.id)
     .all();
 
+  const claims = await env.DB
+    .prepare(
+      `SELECT id, firm_slug, order_ref, amount_eur, status, points_awarded, created_at, reviewed_at
+       FROM purchase_claims
+       WHERE user_id = ?
+       ORDER BY created_at DESC
+       LIMIT 10`
+    )
+    .bind(user.id)
+    .all();
+
   return jsonResponse({
     user: {
       id: row.id,
@@ -53,5 +64,6 @@ export async function onRequestGet(context) {
     },
     ledger: ledger.results || [],
     redemptions: redemptions.results || [],
+    claims: claims.results || [],
   });
 }
