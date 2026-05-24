@@ -25,7 +25,6 @@
     <div class="rw-stat">
       <div class="label">Points balance</div>
       <div class="value" id="balance">—</div>
-      <div class="sub">1000 pts ≈ €1</div>
     </div>
     <div class="rw-stat">
       <div class="label">Lifetime earned</div>
@@ -44,6 +43,7 @@
 
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 24px;">
     <a class="rw-btn" href="./catalog.html">Redeem points →</a>
+    <a class="rw-btn ghost" href="./claim.html">Submit cashback claim</a>
     <a class="rw-btn ghost" href="./review.html">Write a review · Earn points</a>
     <button class="rw-btn ghost" id="copyRefBtn">Copy referral link</button>
   </div>
@@ -153,8 +153,12 @@
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;
-    document.getElementById("copyRefBtn").onclick = () => {
-      navigator.clipboard.writeText(refUrl);
+    const copyBtn = document.getElementById("copyRefBtn");
+    copyBtn.onclick = () => {
+      navigator.clipboard.writeText(refUrl).then(() => {
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => { copyBtn.textContent = "Copy referral link"; }, 2000);
+      });
     };
 
     const lbody = document.querySelector("#ledgerTable tbody");

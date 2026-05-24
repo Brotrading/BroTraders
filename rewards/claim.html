@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submit Cashback Claim · BroTrading Rewards</title>
+<script src="../head.js"></script>
+<link rel="stylesheet" href="./_styles.css" />
+<style>
+  .cl-info {
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--rw-text-2);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .cl-info strong { color: var(--rw-accent); }
+</style>
+</head>
+<body class="rw-body">
+
+<div id="header"></div>
+
+<main class="rw-main" id="main" style="display:none;">
+
+  <div style="margin-bottom: 24px;">
+    <a href="./account.html" style="color: var(--rw-text-2); font-size: 13px; text-decoration: none;">← Back to your account</a>
+  </div>
+
+  <h1 class="rw-h1">Submit a cashback claim</h1>
+  <p class="rw-muted" style="margin: 6px 0 20px;">Bought a challenge via a BRO affiliate link? Submit your claim and earn points on your purchase.</p>
+
+  <div class="cl-info">
+    Earn <strong id="rateNote">2.5%</strong> of your purchase amount in points. Claims are reviewed within 24 hours. Only purchases made via <strong>BRO affiliate links</strong> on this site qualify — maximum one pending claim per firm at a time.
+  </div>
+
+  <div id="formWrap" class="rw-panel">
+    <form id="claimForm">
+
+      <label class="rw-label" for="firmSelect">Prop firm <em style="color:var(--rw-red);">*</em></label>
+      <select class="rw-input" id="firmSelect" required style="appearance:none; background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer;">
+        <option value="">— Select a firm —</option>
+        <option value="apex">Apex Trader Funding</option>
+        <option value="alpha">Alpha Futures</option>
+        <option value="daytraders">Daytraders.com</option>
+        <option value="fundedseat">FundedSeat</option>
+        <option value="lucid">Lucid Trading</option>
+        <option value="phidias">Phidias PropFirm</option>
+        <option value="mffu">My Funded Futures</option>
+        <option value="nexgen">NexGen Funding</option>
+        <option value="topone">Top One Futures</option>
+        <option value="tradeify">Tradeify</option>
+        <option value="yrm">YRM Prop</option>
+      </select>
+
+      <label class="rw-label" for="amountEur" style="margin-top: 20px;">Purchase amount (€) <em style="color:var(--rw-red);">*</em></label>
+      <input class="rw-input" type="number" id="amountEur" min="1" max="50000" step="0.01" placeholder="e.g. 149.00" required />
+      <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
+
+      <label class="rw-label" for="orderRef" style="margin-top: 20px;">Order reference <em style="color:var(--rw-text-2);">(optional)</em></label>
+      <input class="rw-input" type="text" id="orderRef" maxlength="200" placeholder="Order ID or confirmation number from the prop firm" />
+
+      <div id="formErr" class="rw-err"></div>
+      <button class="rw-btn" type="submit" id="submitBtn" style="margin-top: 20px; min-width: 160px;">Submit claim</button>
+
+    </form>
+
+    <div id="successMsg" style="display:none; text-align:center; padding: 32px 0;">
+      <div style="font-size:48px; margin-bottom:16px;">✅</div>
+      <h2 style="margin:0 0 10px; font-size:22px;">Claim submitted!</h2>
+      <p style="color:var(--rw-text-2); font-size:15px; margin:0 0 8px;">Your claim is pending review — usually approved within 24 hours.</p>
+      <p id="ptsMessage" style="color:var(--rw-accent); font-weight:700; font-size:15px; margin:0 0 24px;"></p>
+      <a class="rw-btn ghost" href="./account.html" style="text-decoration:none;">Back to your account</a>
+    </div>
+  </div>
+
+</main>
+
+<div id="loadingShell" class="rw-auth-shell"><p class="rw-muted">Loading…</p></div>
+
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../header.js"></script>
+<script>
+  const FREE_RATE = 0.025;
+  const PRO_RATE  = 0.0375;
+  let isPro = false;
+
+  function estimatePts(eur) {
+    const rate = isPro ? PRO_RATE : FREE_RATE;
+    return Math.round(eur * rate * 1000);
+  }
+
+  // Live points estimate.
+  document.getElementById("amountEur").addEventListener("input", (e) => {
+    const eur = parseFloat(e.target.value);
+    const el = document.getElementById("ptsEstimate");
+    if (eur > 0) {
+      el.textContent = `≈ ${estimatePts(eur).toLocaleString("en-US")} pts`;
+    } else {
+      el.textContent = "";
+    }
+  });
+
+  document.getElementById("claimForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = document.getElementById("formErr");
+    err.textContent = "";
+
+    const firmSlug = document.getElementById("firmSelect").value;
+    const amountEur = parseFloat(document.getElementById("amountEur").value);
+    const orderRef = document.getElementById("orderRef").value.trim();
+
+    if (!firmSlug)              { err.textContent = "Please select a firm."; return; }
+    if (!amountEur || amountEur <= 0) { err.textContent = "Please enter a valid purchase amount."; return; }
+
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.textContent = "Submitting…";
+
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firm_slug: firmSlug, amount_eur: amountEur, order_ref: orderRef || undefined }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        err.textContent =
+          data.error === "claim_already_pending"
+            ? "You already have a pending claim for this firm. Wait for it to be reviewed before submitting another."
+            : data.error === "invalid_firm_slug" ? "Invalid firm selected."
+            : data.error === "invalid_amount_eur" ? "Please enter a valid amount between €1 and €50,000."
+            : `Submission failed: ${data.error}`;
+        btn.disabled = false;
+        btn.textContent = "Submit claim";
+        return;
+      }
+
+      const pts = data.claim?.points_pending || estimatePts(amountEur);
+      document.getElementById("ptsMessage").textContent = `~${pts.toLocaleString("en-US")} pts will be awarded once approved.`;
+      document.getElementById("claimForm").style.display = "none";
+      document.getElementById("successMsg").style.display = "block";
+    } catch {
+      err.textContent = "Something went wrong. Please try again.";
+      btn.disabled = false;
+      btn.textContent = "Submit claim";
+    }
+  });
+
+  BroAuth.ready.then(async () => {
+    if (!BroAuth.getSession()) {
+      window.location.href = "./login.html?next=" + encodeURIComponent("/rewards/claim.html");
+      return;
+    }
+    document.getElementById("loadingShell").style.display = "none";
+    document.getElementById("main").style.display = "block";
+
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/me");
+      if (res.ok) {
+        const { user } = await res.json();
+        isPro = !!user?.is_pro_bro;
+        const rate = isPro ? "3.75%" : "2.5%";
+        document.getElementById("rateNote").textContent = rate;
+      }
+    } catch (_) {}
+  });
+</script>
+
+</body>
+</html>
