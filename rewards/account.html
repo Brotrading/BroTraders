@@ -38,12 +38,13 @@
     <div class="rw-stat">
       <div class="label">Referral link</div>
       <div class="value" style="font-size:14px; word-break:break-all;" id="refLink">—</div>
-      <div class="sub">Share to earn <span id="refReward">10,000</span> pts per signup</div>
+      <div class="sub">Share to earn <span id="refReward">500 pts on signup · 2,500 pts when they buy</span></div>
     </div>
   </div>
 
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 24px;">
     <a class="rw-btn" href="./catalog.html">Redeem points →</a>
+    <a class="rw-btn ghost" href="./review.html">Write a review · Earn points</a>
     <button class="rw-btn ghost" id="copyRefBtn">Copy referral link</button>
   </div>
 
@@ -146,7 +147,9 @@
     const proPill = document.getElementById("proPill");
     proPill.className = "rw-pill " + (user.is_pro_bro ? "pro" : "");
     proPill.textContent = user.is_pro_bro ? "Pro Bro · 1.5× points" : "Free Bro";
-    document.getElementById("refReward").textContent = user.is_pro_bro ? "15,000" : "10,000";
+    document.getElementById("refReward").textContent = user.is_pro_bro
+      ? "750 pts on signup · 3,750 pts when they buy"
+      : "500 pts on signup · 2,500 pts when they buy";
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Write a Review · BroTrading Rewards</title>
+<script src="../head.js"></script>
+<link rel="stylesheet" href="./_styles.css" />
+<style>
+  .rv-firm-select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--rw-panel-2);
+    border: 1px solid var(--rw-border);
+    color: var(--rw-text);
+    font: inherit;
+    font-size: 15px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+  }
+  .rv-firm-select:focus { outline: none; border-color: var(--rw-accent); }
+
+  .rv-stars {
+    display: flex;
+    gap: 6px;
+    margin: 4px 0 0;
+  }
+  .rv-star {
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--rw-border);
+    transition: color 0.1s, transform 0.1s;
+    user-select: none;
+    line-height: 1;
+  }
+  .rv-star.lit { color: #f59e0b; }
+  .rv-star:hover { transform: scale(1.15); }
+
+  .rv-counter {
+    font-size: 12px;
+    color: var(--rw-text-2);
+    text-align: right;
+    margin-top: 4px;
+  }
+  .rv-counter.warn { color: var(--rw-accent); }
+  .rv-counter.error { color: var(--rw-red); }
+
+  .rv-reward-note {
+    background: rgba(255,107,0,0.08);
+    border: 1px solid rgba(255,107,0,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--rw-text-2);
+    margin-bottom: 24px;
+  }
+  .rv-reward-note strong { color: var(--rw-accent); }
+
+  .rv-success {
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .rv-success .icon { font-size: 52px; margin-bottom: 16px; }
+  .rv-success h2 { margin: 0 0 10px; font-size: 22px; }
+  .rv-success p { color: var(--rw-text-2); margin: 0 0 24px; font-size: 15px; }
+</style>
+</head>
+<body class="rw-body">
+
+<div id="header"></div>
+
+<main class="rw-main" id="main" style="display:none;">
+
+  <div style="margin-bottom: 24px;">
+    <a href="./account.html" style="color: var(--rw-text-2); font-size: 13px; text-decoration: none;">← Back to your account</a>
+  </div>
+
+  <h1 class="rw-h1">Write a firm review</h1>
+  <p class="rw-muted" style="margin: 6px 0 20px;">Share your experience with a prop firm you've used. Points are awarded once an admin approves your review.</p>
+
+  <div class="rv-reward-note" id="rewardNote">
+    Earn <strong id="rewardAmt">250 pts</strong> for an approved review. Be specific and honest — reviews that are vague or low-effort won't be approved.
+  </div>
+
+  <div id="formWrap" class="rw-panel">
+    <form id="reviewForm">
+
+      <label class="rw-label" for="firmSelect">Prop firm <em style="color:var(--rw-red);">*</em></label>
+      <select class="rv-firm-select" id="firmSelect" required>
+        <option value="">— Select a firm —</option>
+        <option value="apex">Apex Trader Funding</option>
+        <option value="alpha">Alpha Futures</option>
+        <option value="daytraders">Daytraders.com</option>
+        <option value="fundedseat">FundedSeat</option>
+        <option value="lucid">Lucid Trading</option>
+        <option value="phidias">Phidias PropFirm</option>
+        <option value="mffu">My Funded Futures</option>
+        <option value="nexgen">NexGen Funding</option>
+        <option value="topone">Top One Futures</option>
+        <option value="tradeify">Tradeify</option>
+        <option value="yrm">YRM Prop</option>
+      </select>
+
+      <label class="rw-label" style="margin-top: 20px;">Your rating <em style="color:var(--rw-red);">*</em></label>
+      <div class="rv-stars" id="stars" role="radiogroup" aria-label="Rating">
+        <span class="rv-star" data-v="1" role="radio" tabindex="0" aria-label="1 star">★</span>
+        <span class="rv-star" data-v="2" role="radio" tabindex="0" aria-label="2 stars">★</span>
+        <span class="rv-star" data-v="3" role="radio" tabindex="0" aria-label="3 stars">★</span>
+        <span class="rv-star" data-v="4" role="radio" tabindex="0" aria-label="4 stars">★</span>
+        <span class="rv-star" data-v="5" role="radio" tabindex="0" aria-label="5 stars">★</span>
+      </div>
+      <input type="hidden" id="ratingVal" value="0" />
+
+      <label class="rw-label" for="reviewTitle" style="margin-top: 20px;">Title <em style="color:var(--rw-text-2);">(optional)</em></label>
+      <input
+        class="rw-input"
+        type="text"
+        id="reviewTitle"
+        name="reviewTitle"
+        maxlength="120"
+        placeholder="e.g. Smooth payouts, great support"
+      />
+
+      <label class="rw-label" for="reviewBody" style="margin-top: 20px;">Your review <em style="color:var(--rw-red);">*</em></label>
+      <textarea
+        class="rw-input rw-textarea"
+        id="reviewBody"
+        name="reviewBody"
+        maxlength="4000"
+        placeholder="Describe your experience — payouts, support, trading rules, what went well or didn't. Minimum 40 characters."
+        style="min-height: 160px;"
+      ></textarea>
+      <div class="rv-counter" id="bodyCounter">0 / 4000</div>
+
+      <div id="formErr" class="rw-err"></div>
+
+      <button class="rw-btn" type="submit" id="submitBtn" style="margin-top: 20px; min-width: 160px;">Submit review</button>
+
+    </form>
+
+    <div id="successMsg" class="rv-success" style="display:none;">
+      <div class="icon">✅</div>
+      <h2>Review submitted!</h2>
+      <p>Your review is pending admin approval. Once approved, your points will be credited automatically.</p>
+      <a class="rw-btn ghost" href="./account.html">Back to your account</a>
+    </div>
+  </div>
+
+</main>
+
+<div id="loadingShell" class="rw-auth-shell"><p class="rw-muted">Loading…</p></div>
+
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../header.js"></script>
+<script>
+  const EARN_FREE = 250;
+  const EARN_PRO  = 375;
+
+  // --- Star rating ---
+  let rating = 0;
+  const stars = document.querySelectorAll(".rv-star");
+
+  function setRating(v) {
+    rating = v;
+    document.getElementById("ratingVal").value = v;
+    stars.forEach((s) => s.classList.toggle("lit", Number(s.dataset.v) <= v));
+  }
+
+  stars.forEach((s) => {
+    s.addEventListener("click", () => setRating(Number(s.dataset.v)));
+    s.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setRating(Number(s.dataset.v)); }
+    });
+    s.addEventListener("mouseenter", () => {
+      stars.forEach((x) => x.classList.toggle("lit", Number(x.dataset.v) <= Number(s.dataset.v)));
+    });
+  });
+  document.getElementById("stars").addEventListener("mouseleave", () => setRating(rating));
+
+  // --- Character counter ---
+  const bodyEl = document.getElementById("reviewBody");
+  const counter = document.getElementById("bodyCounter");
+
+  bodyEl.addEventListener("input", () => {
+    const len = bodyEl.value.length;
+    counter.textContent = `${len} / 4000`;
+    counter.className = "rv-counter" + (len < 40 && len > 0 ? " warn" : len >= 3800 ? " warn" : "");
+  });
+
+  // --- Submit ---
+  document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const err = document.getElementById("formErr");
+    err.textContent = "";
+
+    const firmSlug  = document.getElementById("firmSelect").value;
+    const title     = document.getElementById("reviewTitle").value.trim();
+    const body      = bodyEl.value.trim();
+    const ratingVal = rating;
+
+    if (!firmSlug)        { err.textContent = "Please select a firm."; return; }
+    if (!ratingVal)       { err.textContent = "Please select a star rating."; return; }
+    if (body.length < 40) { err.textContent = `Review is too short — minimum 40 characters (${body.length} so far).`; return; }
+
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.textContent = "Submitting…";
+
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/review", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firm_slug: firmSlug, rating: ratingVal, title: title || undefined, body }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        const msg = data.error === "already_reviewed_firm"
+          ? "You've already submitted a review for this firm. Only one review per firm is allowed."
+          : data.error === "body_too_short"
+          ? "Your review is too short — please write at least 40 characters."
+          : data.error === "body_too_long"
+          ? "Your review exceeds the 4,000 character limit."
+          : data.error === "invalid_firm_slug"
+          ? "Invalid firm selected."
+          : data.error === "user_not_synced"
+          ? "Account not found — try signing out and back in."
+          : `Submission failed: ${data.error}`;
+        err.textContent = msg;
+        btn.disabled = false;
+        btn.textContent = "Submit review";
+        return;
+      }
+
+      // Show success.
+      document.getElementById("reviewForm").style.display = "none";
+      document.getElementById("successMsg").style.display = "block";
+    } catch (ex) {
+      err.textContent = "Something went wrong. Please try again.";
+      btn.disabled = false;
+      btn.textContent = "Submit review";
+    }
+  });
+
+  // --- Auth gate + load pro status ---
+  BroAuth.ready.then(async () => {
+    if (!BroAuth.getSession()) {
+      window.location.href = "./login.html?next=" + encodeURIComponent("/rewards/review.html");
+      return;
+    }
+    document.getElementById("loadingShell").style.display = "none";
+    document.getElementById("main").style.display = "block";
+
+    // Fetch pro status from D1 (source of truth for is_pro_bro).
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/me");
+      if (res.ok) {
+        const { user } = await res.json();
+        const isPro = !!user?.is_pro_bro;
+        document.getElementById("rewardAmt").textContent = isPro ? `${EARN_PRO} pts` : `${EARN_FREE} pts`;
+      }
+    } catch (_) {}
+  });
+</script>
+
+</body>
+</html>
