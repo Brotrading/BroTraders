@@ -151,3 +151,19 @@ body.rw-body {
 .rw-auth-card .sub { color: var(--rw-text-2); font-size: 14px; text-align: center; margin-bottom: 20px; }
 .rw-auth-card .switch { text-align: center; margin-top: 16px; color: var(--rw-text-2); font-size: 13px; }
 .rw-auth-card .switch a { color: var(--rw-accent-2); text-decoration: none; }
+
+/* Password field with visibility toggle */
+.rw-pw-wrap { position: relative; }
+.rw-pw-wrap .rw-input { padding-right: 44px; box-sizing: border-box; width: 100%; }
+.rw-pw-toggle {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; padding: 4px; cursor: pointer;
+  color: var(--rw-text-2); line-height: 0; border-radius: 4px;
+}
+.rw-pw-toggle:hover { color: var(--rw-text); }
+
+/* Live password requirements checklist */
+.rw-pw-reqs { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.rw-pw-reqs li { font-size: 12px; color: var(--rw-text-2); display: flex; align-items: center; gap: 7px; transition: color 0.2s; }
+.rw-pw-reqs li.met { color: var(--rw-green); }
+.rw-pw-reqs li .req-dot { width: 10px; text-align: center; }
