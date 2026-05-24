@@ -66,6 +66,7 @@ body.rw-body {
   border: 1px solid var(--rw-border);
   color: var(--rw-text);
   font: inherit;
+  box-sizing: border-box;
 }
 .rw-textarea { min-height: 120px; resize: vertical; }
 .rw-label { display: block; margin: 10px 0 6px; font-size: 13px; color: var(--rw-text-2); }
