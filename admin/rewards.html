@@ -17,10 +17,20 @@
   details { background: var(--rw-panel-2); border:1px solid var(--rw-border); border-radius:10px; padding: 12px 14px; margin-top:8px; }
   details summary { cursor:pointer; color: var(--rw-text-2); font-size: 13px; }
   pre { background: #0a0b12; border: 1px solid var(--rw-border); border-radius:8px; padding: 10px; overflow:auto; font-size:12px; }
+  /* Modal */
+  #modal { position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:200; display:none; align-items:center; justify-content:center; padding:16px; }
+  #modal.open { display:flex; }
+  .modal-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:14px; padding:24px 28px; max-width:480px; width:100%; box-shadow:0 8px 48px rgba(0,0,0,0.5); }
+  .modal-card h3 { margin:0 0 6px; font-size:16px; color:var(--rw-text); }
+  .modal-desc { margin:0 0 16px; }
+  .modal-footer { display:flex; gap:10px; justify-content:flex-end; margin-top:20px; }
+  .modal-field { margin-bottom:14px; }
+  .modal-field:last-child { margin-bottom:0; }
 </style>
 </head>
 <body class="rw-body">
 
+<!-- Gate -->
 <div id="gate" class="gate">
   <div class="gate-card">
     <h1 style="margin:0 0 4px;">Admin access</h1>
@@ -28,6 +38,19 @@
     <input id="gateToken" class="rw-input" type="password" placeholder="Token" />
     <button id="gateBtn" class="rw-btn full" style="margin-top:10px;">Enter</button>
     <div id="gateErr" class="rw-err"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal">
+  <div class="modal-card">
+    <h3 id="mdTitle"></h3>
+    <p id="mdDesc" class="rw-muted rw-small modal-desc" style="display:none;"></p>
+    <div id="mdBody"></div>
+    <div class="modal-footer">
+      <button id="mdCancel" class="rw-btn ghost">Cancel</button>
+      <button id="mdConfirm" class="rw-btn">Confirm</button>
+    </div>
   </div>
 </div>
 
@@ -88,6 +111,111 @@
   const TOKEN_KEY = "bro_admin_token";
   let token = localStorage.getItem(TOKEN_KEY) || "";
 
+  // ── Modal ──────────────────────────────────────────────────────────────
+  // modal({ title, desc, options, fields, confirmLabel, danger })
+  //   options: string[] → shows a <select>; last option is "Other (custom)…" → reveals textarea
+  //   fields:  [{label, type, placeholder}] → shown below the select (or standalone)
+  //   Returns: { confirmed, option?, values: string[] }
+  let _mdResolve = null;
+
+  function modal({ title, desc = "", options = [], fields = [], confirmLabel = "Confirm", danger = false }) {
+    return new Promise(resolve => {
+      _mdResolve = resolve;
+
+      document.getElementById("mdTitle").textContent = title;
+      const descEl = document.getElementById("mdDesc");
+      descEl.textContent = desc;
+      descEl.style.display = desc ? "block" : "none";
+
+      const body = document.getElementById("mdBody");
+      body.innerHTML = "";
+
+      if (options.length) {
+        const wrap = document.createElement("div");
+        wrap.className = "modal-field";
+
+        const lbl = document.createElement("label");
+        lbl.className = "rw-label";
+        lbl.textContent = "Reason";
+        wrap.appendChild(lbl);
+
+        const sel = document.createElement("select");
+        sel.className = "rw-input md-select";
+        sel.style.marginTop = "6px";
+        sel.innerHTML = options.map(o => `<option value="${o}">${o}</option>`).join("") +
+          `<option value="">Other (custom)…</option>`;
+
+        const customWrap = document.createElement("div");
+        customWrap.style.cssText = "display:none; margin-top:8px;";
+        const customTa = document.createElement("textarea");
+        customTa.className = "rw-input md-custom";
+        customTa.rows = 2;
+        customTa.placeholder = "Enter reason…";
+        customTa.style.resize = "vertical";
+        customWrap.appendChild(customTa);
+
+        sel.onchange = () => { customWrap.style.display = sel.value === "" ? "block" : "none"; };
+
+        wrap.appendChild(sel);
+        wrap.appendChild(customWrap);
+        body.appendChild(wrap);
+      }
+
+      fields.forEach(({ label, type = "text", placeholder = "" }) => {
+        const wrap = document.createElement("div");
+        wrap.className = "modal-field";
+        if (label) {
+          const lbl = document.createElement("label");
+          lbl.className = "rw-label";
+          lbl.textContent = label;
+          wrap.appendChild(lbl);
+        }
+        let inp;
+        if (type === "textarea") {
+          inp = document.createElement("textarea");
+          inp.rows = 2;
+          inp.style.resize = "vertical";
+        } else {
+          inp = document.createElement("input");
+          inp.type = type;
+        }
+        inp.className = "rw-input md-field";
+        inp.placeholder = placeholder;
+        inp.style.marginTop = label ? "6px" : "0";
+        wrap.appendChild(inp);
+        body.appendChild(wrap);
+      });
+
+      const btn = document.getElementById("mdConfirm");
+      btn.textContent = confirmLabel;
+      btn.className = "rw-btn" + (danger ? " danger" : "");
+
+      document.getElementById("modal").classList.add("open");
+      const first = body.querySelector("input[type='number'], textarea");
+      if (first) setTimeout(() => first.focus(), 30);
+    });
+  }
+
+  function _mdCollect(confirmed) {
+    const body = document.getElementById("mdBody");
+    const sel = body.querySelector(".md-select");
+    const customTa = body.querySelector(".md-custom");
+    const fieldEls = [...body.querySelectorAll(".md-field")];
+    const option = sel
+      ? (sel.value === "" ? (customTa?.value.trim() || "") : sel.value)
+      : undefined;
+    const values = fieldEls.map(f => f.value.trim());
+    document.getElementById("modal").classList.remove("open");
+    if (_mdResolve) { _mdResolve({ confirmed, option, values }); _mdResolve = null; }
+  }
+
+  document.getElementById("mdConfirm").addEventListener("click", () => _mdCollect(true));
+  document.getElementById("mdCancel").addEventListener("click", () => _mdCollect(false));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && document.getElementById("modal").classList.contains("open")) _mdCollect(false);
+  });
+
+  // ── API helper ─────────────────────────────────────────────────────────
   async function api(method, body) {
     const opts = {
       method,
@@ -114,11 +242,18 @@
     document.getElementById("totPro").textContent = fmt(data.totals.pro_count);
     document.getElementById("totOut").textContent = fmt(data.totals.points_outstanding);
     document.getElementById("totEarned").textContent = fmt(data.totals.lifetime_earned);
-
     renderPendingClaims(data.pending_claims || []);
     renderPendingRedemptions(data.pending_redemptions);
     renderPendingReviews(data.pending_reviews);
   }
+
+  const CLAIM_REJECT_REASONS = [
+    "Not purchased via BRO affiliate link",
+    "Order reference not found",
+    "Duplicate claim",
+    "Amount doesn't match our records",
+    "Purchase older than 30 days",
+  ];
 
   function renderPendingClaims(rows) {
     const root = document.getElementById("pendingClaims");
@@ -127,8 +262,7 @@
       return;
     }
     root.innerHTML = rows.map((c) => {
-      const isPro = c.is_pro_bro ? 1 : 0;
-      const rate = isPro ? 0.0375 : 0.025;
+      const rate = c.is_pro_bro ? 0.0375 : 0.025;
       const pts = Math.round(c.amount_eur * rate * 1000);
       return `
         <div class="rw-panel" style="margin-bottom:10px;">
@@ -136,15 +270,26 @@
             <div>
               <strong>${c.firm_slug}</strong>
               &mdash; <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
-              &mdash; <span class="rw-muted">+${fmt(pts)} pts ${isPro ? "(Pro)" : ""}</span>
+              &mdash; <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
               <div class="rw-muted rw-small" style="margin-top:3px;">
                 ${c.display_name || ""} · ${c.email} · ${fmtDate(c.created_at)}
                 ${c.order_ref ? `· ref: <code>${c.order_ref}</code>` : "· <em>no order ref</em>"}
               </div>
             </div>
             <div style="display:flex; gap:8px; flex-shrink:0;">
-              <button class="rw-btn" data-claim-action="approve" data-id="${c.id}">Approve +${fmt(pts)} pts</button>
-              <button class="rw-btn ghost" data-claim-action="reject" data-id="${c.id}">Reject</button>
+              <button class="rw-btn"
+                data-claim-action="approve"
+                data-id="${c.id}"
+                data-pts="${pts}"
+                data-email="${c.email}"
+                data-firm="${c.firm_slug}"
+                data-amount="${c.amount_eur}">Approve +${fmt(pts)} pts</button>
+              <button class="rw-btn ghost"
+                data-claim-action="reject"
+                data-id="${c.id}"
+                data-email="${c.email}"
+                data-firm="${c.firm_slug}"
+                data-amount="${c.amount_eur}">Reject</button>
             </div>
           </div>
         </div>
@@ -155,12 +300,27 @@
       btn.addEventListener("click", async () => {
         const id = parseInt(btn.dataset.id, 10);
         const action = btn.dataset.claimAction;
+        const desc = `${btn.dataset.email} — ${btn.dataset.firm} €${Number(btn.dataset.amount).toFixed(2)}`;
+
         if (action === "approve") {
-          const note = prompt("Optional note (internal, not shown to user):") || "";
-          await api("POST", { action: "approve_claim", claim_id: id, note });
+          const { confirmed, values } = await modal({
+            title: `Approve +${fmt(parseInt(btn.dataset.pts, 10))} pts`,
+            desc,
+            fields: [{ label: "Internal note (optional, not shown to user)", type: "textarea", placeholder: "e.g. verified in affiliate dashboard" }],
+            confirmLabel: "Approve",
+          });
+          if (!confirmed) return;
+          await api("POST", { action: "approve_claim", claim_id: id, note: values[0] || "" });
         } else {
-          const note = prompt("Rejection reason (internal only):") || "";
-          await api("POST", { action: "reject_claim", claim_id: id, note });
+          const { confirmed, option } = await modal({
+            title: "Reject cashback claim",
+            desc,
+            options: CLAIM_REJECT_REASONS,
+            confirmLabel: "Reject",
+            danger: true,
+          });
+          if (!confirmed) return;
+          await api("POST", { action: "reject_claim", claim_id: id, note: option || "" });
         }
         loadOverview();
       });
@@ -181,8 +341,17 @@
             <div class="rw-muted rw-small">${r.display_name || ""} · ${r.email} · ${fmtDate(r.created_at)}</div>
           </div>
           <div style="display:flex; gap:8px;">
-            <button class="rw-btn" data-action="fulfill" data-id="${r.id}">Mark fulfilled</button>
-            <button class="rw-btn ghost" data-action="cancel" data-id="${r.id}">Cancel + refund</button>
+            <button class="rw-btn"
+              data-action="fulfill"
+              data-id="${r.id}"
+              data-title="${r.title}"
+              data-email="${r.email}">Mark fulfilled</button>
+            <button class="rw-btn ghost"
+              data-action="cancel"
+              data-id="${r.id}"
+              data-title="${r.title}"
+              data-email="${r.email}"
+              data-pts="${r.points_cost}">Cancel + refund</button>
           </div>
         </div>
         ${r.fulfillment_data ? `<details><summary>Fulfillment data</summary><pre>${JSON.stringify(JSON.parse(r.fulfillment_data), null, 2)}</pre></details>` : ""}
@@ -193,12 +362,27 @@
       btn.addEventListener("click", async () => {
         const id = parseInt(btn.dataset.id, 10);
         const action = btn.dataset.action;
+        const desc = `${btn.dataset.title} · ${btn.dataset.email}`;
+
         if (action === "fulfill") {
-          const notes = prompt("Optional fulfillment notes:") || "";
-          await api("POST", { action: "fulfill_redemption", redemption_id: id, fulfillment_notes: notes });
+          const { confirmed, values } = await modal({
+            title: "Mark as fulfilled",
+            desc,
+            fields: [{ label: "Fulfillment notes (optional)", type: "textarea", placeholder: "e.g. account credentials sent via email" }],
+            confirmLabel: "Mark fulfilled",
+          });
+          if (!confirmed) return;
+          await api("POST", { action: "fulfill_redemption", redemption_id: id, fulfillment_notes: values[0] || "" });
         } else {
-          const reason = prompt("Cancellation reason (will refund points):") || "";
-          await api("POST", { action: "cancel_redemption", redemption_id: id, reason });
+          const { confirmed, values } = await modal({
+            title: "Cancel redemption + refund points",
+            desc: `${desc} — ${fmt(parseInt(btn.dataset.pts, 10))} pts will be refunded.`,
+            fields: [{ label: "Reason (optional)", type: "textarea", placeholder: "e.g. out of stock, user request" }],
+            confirmLabel: "Cancel + refund",
+            danger: true,
+          });
+          if (!confirmed) return;
+          await api("POST", { action: "cancel_redemption", redemption_id: id, reason: values[0] || "" });
         }
         loadOverview();
       });
@@ -220,7 +404,7 @@
         <p style="margin:8px 0; color: var(--rw-text);">${r.body.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</p>
         <div style="display:flex; gap:8px;">
           <button class="rw-btn" data-rev-action="approve" data-id="${r.id}">Approve + award pts</button>
-          <button class="rw-btn danger" data-rev-action="reject" data-id="${r.id}">Reject</button>
+          <button class="rw-btn danger" data-rev-action="reject" data-id="${r.id}" data-email="${r.email}" data-firm="${r.firm_slug}">Reject</button>
         </div>
       </div>
     `).join("");
@@ -229,11 +413,19 @@
       btn.addEventListener("click", async () => {
         const id = parseInt(btn.dataset.id, 10);
         const action = btn.dataset.revAction;
+
         if (action === "approve") {
           await api("POST", { action: "approve_review", review_id: id });
         } else {
-          const reason = prompt("Rejection reason (optional, internal only):") || "";
-          await api("POST", { action: "reject_review", review_id: id, reason });
+          const { confirmed, values } = await modal({
+            title: "Reject review",
+            desc: `${btn.dataset.firm} · ${btn.dataset.email}`,
+            fields: [{ label: "Reason (optional, internal only)", type: "textarea", placeholder: "e.g. spam, promotional content, insufficient detail" }],
+            confirmLabel: "Reject",
+            danger: true,
+          });
+          if (!confirmed) return;
+          await api("POST", { action: "reject_review", review_id: id, reason: values[0] || "" });
         }
         loadOverview();
       });
@@ -305,25 +497,50 @@
     `;
 
     document.getElementById("awardBtn").addEventListener("click", async () => {
-      const amt = parseInt(prompt("How many points to award?") || "0", 10);
-      if (!amt) return;
-      const note = prompt("Note (visible to user):") || "";
-      await api("POST", { action: "award_points", user_id: user.id, amount: amt, note });
+      const { confirmed, values } = await modal({
+        title: `Award points to ${user.email}`,
+        fields: [
+          { label: "Amount (points)", type: "number", placeholder: "500" },
+          { label: "Note (visible to user)", type: "textarea", placeholder: "e.g. welcome bonus, promo code BRO10" },
+        ],
+        confirmLabel: "Award",
+      });
+      if (!confirmed) return;
+      const amt = parseInt(values[0], 10);
+      if (!amt || amt <= 0) return;
+      await api("POST", { action: "award_points", user_id: user.id, amount: amt, note: values[1] || "" });
       const refresh = await api("POST", { action: "lookup_user", email: user.email });
       renderLookup(refresh);
       loadOverview();
     });
+
     document.getElementById("adjustBtn").addEventListener("click", async () => {
-      const amt = parseInt(prompt("How many points to subtract? (positive number)") || "0", 10);
-      if (!amt) return;
-      const note = prompt("Reason (visible to user):") || "";
-      await api("POST", { action: "award_points", user_id: user.id, amount: -Math.abs(amt), note });
+      const { confirmed, values } = await modal({
+        title: `Subtract points from ${user.email}`,
+        fields: [
+          { label: "Amount to subtract (points)", type: "number", placeholder: "100" },
+          { label: "Reason (visible to user)", type: "textarea", placeholder: "e.g. points correction" },
+        ],
+        confirmLabel: "Subtract",
+        danger: true,
+      });
+      if (!confirmed) return;
+      const amt = parseInt(values[0], 10);
+      if (!amt || amt <= 0) return;
+      await api("POST", { action: "award_points", user_id: user.id, amount: -Math.abs(amt), note: values[1] || "" });
       const refresh = await api("POST", { action: "lookup_user", email: user.email });
       renderLookup(refresh);
       loadOverview();
     });
+
     document.getElementById("proBtn").addEventListener("click", async () => {
-      if (!confirm(`${user.is_pro_bro ? "Remove Pro Bro from" : "Make Pro Bro:"} ${user.email}?`)) return;
+      const { confirmed } = await modal({
+        title: user.is_pro_bro ? "Remove Pro Bro" : "Grant Pro Bro",
+        desc: user.email,
+        confirmLabel: user.is_pro_bro ? "Remove Pro Bro" : "Grant Pro Bro",
+        danger: user.is_pro_bro,
+      });
+      if (!confirmed) return;
       await api("POST", { action: "set_pro_bro", user_id: user.id, is_pro_bro: user.is_pro_bro ? 0 : 1 });
       const refresh = await api("POST", { action: "lookup_user", email: user.email });
       renderLookup(refresh);

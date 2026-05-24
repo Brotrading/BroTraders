@@ -78,7 +78,7 @@
             ${stockNote}
           </div>
           <p>${p.description || ""}</p>
-          <div class="cost">${fmt(p.points_cost)} pts <small>≈ €${(p.points_cost / 1000).toFixed(0)} value</small></div>
+          <div class="cost">${fmt(p.points_cost)} pts</div>
           <button class="rw-btn full" data-slug="${p.slug}" ${canAfford && (p.stock === null || p.stock > 0) ? "" : "disabled"}>
             ${!canAfford ? "Not enough points" : (p.stock !== null && p.stock <= 0 ? "Out of stock" : "Redeem")}
           </button>
