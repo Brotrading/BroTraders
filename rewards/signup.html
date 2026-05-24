@@ -40,12 +40,18 @@
         <label class="rw-label">Referral code</label>
         <input class="rw-input" id="refField" disabled />
       </div>
-      <button class="rw-btn full" type="submit" style="margin-top:16px;">Create account</button>
+      <button class="rw-btn full" type="submit" id="submitBtn" style="margin-top:16px;">Create account</button>
       <div id="err" class="rw-err"></div>
-      <div id="ok" class="rw-ok"></div>
     </form>
 
-    <p class="switch">
+    <div id="successState" style="display:none; text-align:center; padding: 8px 0;">
+      <div style="font-size:40px; margin-bottom:12px;">📧</div>
+      <h2 style="margin:0 0 10px; font-size:20px;">Check your inbox</h2>
+      <p style="color:var(--rw-text-2); font-size:14px; margin:0 0 20px;">We've sent a verification link to <strong id="confirmedEmail" style="color:var(--rw-text);"></strong>. Click the link in that email to activate your account.</p>
+      <a class="rw-btn ghost full" href="./login.html" style="display:flex;">Go to login</a>
+    </div>
+
+    <p class="switch" id="switchLink">
       Already have an account? <a href="./login.html">Log in</a>
     </p>
   </div>
@@ -75,21 +81,31 @@
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     err.textContent = "";
-    ok.textContent = "";
     const email = form.email.value.trim();
     const password = form.password.value;
     const displayName = form.displayName.value.trim();
 
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.textContent = "Creating account…";
+
     const { data, error } = await BroAuth.signUp({ email, password, displayName });
     if (error) {
       err.textContent = error.message || "Sign-up failed.";
+      btn.disabled = false;
+      btn.textContent = "Create account";
       return;
     }
     // If Supabase requires email confirmation, session will be null.
     if (data?.session) {
       window.location.href = "./account.html";
     } else {
-      ok.textContent = "Check your email to confirm your account, then log in.";
+      document.getElementById("confirmedEmail").textContent = email;
+      form.style.display = "none";
+      document.getElementById("googleBtn").style.display = "none";
+      document.querySelector(".rw-divider").style.display = "none";
+      document.getElementById("switchLink").style.display = "none";
+      document.getElementById("successState").style.display = "block";
     }
   });
 
