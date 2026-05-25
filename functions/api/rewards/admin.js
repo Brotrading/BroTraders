@@ -69,7 +69,9 @@ export async function onRequestGet(context) {
   const pendingClaims = await env.DB
     .prepare(
       `SELECT c.id, c.user_id, c.firm_slug, c.order_ref, c.amount_eur,
+              c.purchase_date, c.used_bro_code, c.is_suspicious, c.risk_level,
               c.status, c.created_at,
+              CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
               u.email, u.display_name, u.is_pro_bro
        FROM purchase_claims c
        JOIN users u ON u.id = c.user_id
@@ -119,11 +121,23 @@ export async function onRequestPost(context) {
     case "reject_review":    return rejectReview(env, body);
     case "approve_claim":    return approveClaim(env, body);
     case "reject_claim":     return rejectClaim(env, body);
+    case "view_proof":       return viewProof(env, body);
     default:                 return jsonError("unknown_action", 400, { action });
   }
 }
 
 // ── Actions ─────────────────────────────────────────────────────────────
+
+async function viewProof(env, { claim_id }) {
+  if (!claim_id) return jsonError("missing_claim_id", 400);
+  const row = await env.DB
+    .prepare(`SELECT proof_data, proof_mime FROM purchase_claims WHERE id = ?`)
+    .bind(claim_id)
+    .first();
+  if (!row) return jsonError("claim_not_found", 404);
+  if (!row.proof_data) return jsonError("no_proof", 404);
+  return jsonResponse({ proof_data: row.proof_data, proof_mime: row.proof_mime || "image/jpeg" });
+}
 
 async function lookupUser(env, { email }) {
   if (!email) return jsonError("missing_email", 400);

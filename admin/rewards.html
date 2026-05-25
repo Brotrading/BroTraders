@@ -54,6 +54,19 @@
   </div>
 </div>
 
+<!-- Proof viewer modal -->
+<div id="proofModal" style="position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:300; display:none; align-items:center; justify-content:center; padding:16px;">
+  <div style="background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:14px; padding:20px 24px; max-width:680px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <h3 id="proofModalTitle" style="margin:0; font-size:15px;">Proof of purchase</h3>
+      <button id="proofModalClose" class="rw-btn ghost" style="padding:4px 10px; font-size:12px;">✕ Close</button>
+    </div>
+    <div id="proofModalBody" style="text-align:center;">
+      <p class="rw-muted">Loading…</p>
+    </div>
+  </div>
+</div>
+
 <div id="app" style="display:none;">
 
 <div class="topbar">
@@ -79,6 +92,14 @@
 
   <section style="margin-bottom:24px;">
     <h2 class="rw-h2" style="margin-top:0;">Pending cashback claims</h2>
+    <div id="claimFilters" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; align-items:center;">
+      <span style="font-size:13px; color:var(--rw-text-2);">Filter:</span>
+      <button class="rw-btn ghost claim-filter active" data-filter="all" style="padding:4px 12px; font-size:12px;">All</button>
+      <button class="rw-btn ghost claim-filter" data-filter="low" style="padding:4px 12px; font-size:12px; color:#4ade80;">Low risk</button>
+      <button class="rw-btn ghost claim-filter" data-filter="medium" style="padding:4px 12px; font-size:12px; color:#facc15;">Medium risk</button>
+      <button class="rw-btn ghost claim-filter" data-filter="high" style="padding:4px 12px; font-size:12px; color:#f87171;">High risk</button>
+      <button class="rw-btn ghost claim-filter" data-filter="suspicious" style="padding:4px 12px; font-size:12px;">⚠️ No click</button>
+    </div>
     <div id="pendingClaims"></div>
   </section>
 
@@ -253,43 +274,102 @@
     "Duplicate claim",
     "Amount doesn't match our records",
     "Purchase older than 30 days",
+    "Purchase date predates account registration",
   ];
 
+  // Risk badge styling
+  const RISK_STYLE = {
+    low:    { label: "Low",    color: "#4ade80", bg: "rgba(74,222,128,0.1)",  border: "rgba(74,222,128,0.3)"  },
+    medium: { label: "Medium", color: "#facc15", bg: "rgba(250,204,21,0.1)",  border: "rgba(250,204,21,0.3)"  },
+    high:   { label: "High",   color: "#f87171", bg: "rgba(248,113,113,0.1)", border: "rgba(248,113,113,0.3)" },
+  };
+
+  function riskBadge(level) {
+    const s = RISK_STYLE[level] || RISK_STYLE.medium;
+    return `<span style="font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px;
+      color:${s.color}; background:${s.bg}; border:1px solid ${s.border};">${s.label} risk</span>`;
+  }
+
+  let _allClaims = [];
+  let _activeFilter = "all";
+
+  function applyClaimFilter(rows, filter) {
+    if (filter === "all")       return rows;
+    if (filter === "suspicious") return rows.filter(c => c.is_suspicious);
+    return rows.filter(c => c.risk_level === filter);
+  }
+
   function renderPendingClaims(rows) {
+    _allClaims = rows;
+
+    // Filter button active state
+    document.querySelectorAll(".claim-filter").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.filter === _activeFilter);
+      btn.style.fontWeight = btn.dataset.filter === _activeFilter ? "700" : "";
+    });
+
+    const filtered = applyClaimFilter(rows, _activeFilter);
     const root = document.getElementById("pendingClaims");
-    if (!rows.length) {
-      root.innerHTML = `<p class="rw-muted">No pending cashback claims.</p>`;
+
+    if (!filtered.length) {
+      root.innerHTML = `<p class="rw-muted">${rows.length ? "No claims match this filter." : "No pending cashback claims."}</p>`;
       return;
     }
-    root.innerHTML = rows.map((c) => {
+
+    root.innerHTML = filtered.map((c) => {
       const rate = c.is_pro_bro ? 0.0375 : 0.025;
-      const pts = Math.round(c.amount_eur * rate * 1000);
+      const pts  = Math.round(c.amount_eur * rate * 1000);
+      const risk = RISK_STYLE[c.risk_level] || RISK_STYLE.medium;
+
+      const suspiciousBadge = c.is_suspicious
+        ? `<span style="font-size:11px; padding:2px 7px; border-radius:4px; color:#facc15; background:rgba(250,204,21,0.1); border:1px solid rgba(250,204,21,0.3);">⚠️ No click recorded</span>`
+        : `<span style="font-size:11px; padding:2px 7px; border-radius:4px; color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click verified</span>`;
+
+      const broBadge = c.used_bro_code
+        ? `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#94a3b8; background:rgba(148,163,184,0.1); border:1px solid rgba(148,163,184,0.2);">BRO ✓</span>`
+        : `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.2);">BRO ✗</span>`;
+
+      const proofBtn = c.has_proof
+        ? `<button class="rw-btn ghost" data-claim-action="proof" data-id="${c.id}" style="padding:4px 10px; font-size:12px;">🖼 View proof</button>`
+        : `<span style="font-size:11px; color:var(--rw-red);">No proof</span>`;
+
       return `
-        <div class="rw-panel" style="margin-bottom:10px;">
+        <div class="rw-panel" style="margin-bottom:10px; border-left:3px solid ${risk.color};">
           <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
-            <div>
-              <strong>${c.firm_slug}</strong>
-              &mdash; <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
-              &mdash; <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
-              <div class="rw-muted rw-small" style="margin-top:3px;">
-                ${c.display_name || ""} · ${c.email} · ${fmtDate(c.created_at)}
-                ${c.order_ref ? `· ref: <code>${c.order_ref}</code>` : "· <em>no order ref</em>"}
+            <div style="flex:1; min-width:0;">
+              <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
+                <strong>${c.firm_slug}</strong>
+                <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
+                <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
+                ${riskBadge(c.risk_level)}
+                ${suspiciousBadge}
+                ${broBadge}
+              </div>
+              <div class="rw-muted rw-small" style="line-height:1.7;">
+                <span>${c.display_name || "—"} · ${c.email}</span><br>
+                <span>Submitted: ${fmtDate(c.created_at)}</span>
+                ${c.purchase_date ? `· <span>Purchase date: <strong>${c.purchase_date}</strong></span>` : ""}
+                <br>
+                ${c.order_ref ? `Ref: <code>${c.order_ref}</code>` : `<em style="color:var(--rw-red);">No order ref</em>`}
               </div>
             </div>
-            <div style="display:flex; gap:8px; flex-shrink:0;">
-              <button class="rw-btn"
-                data-claim-action="approve"
-                data-id="${c.id}"
-                data-pts="${pts}"
-                data-email="${c.email}"
-                data-firm="${c.firm_slug}"
-                data-amount="${c.amount_eur}">Approve +${fmt(pts)} pts</button>
-              <button class="rw-btn ghost"
-                data-claim-action="reject"
-                data-id="${c.id}"
-                data-email="${c.email}"
-                data-firm="${c.firm_slug}"
-                data-amount="${c.amount_eur}">Reject</button>
+            <div style="display:flex; flex-direction:column; gap:6px; flex-shrink:0; align-items:flex-end;">
+              <div style="display:flex; gap:8px;">
+                <button class="rw-btn"
+                  data-claim-action="approve"
+                  data-id="${c.id}"
+                  data-pts="${pts}"
+                  data-email="${c.email}"
+                  data-firm="${c.firm_slug}"
+                  data-amount="${c.amount_eur}">Approve +${fmt(pts)} pts</button>
+                <button class="rw-btn ghost"
+                  data-claim-action="reject"
+                  data-id="${c.id}"
+                  data-email="${c.email}"
+                  data-firm="${c.firm_slug}"
+                  data-amount="${c.amount_eur}">Reject</button>
+              </div>
+              ${proofBtn}
             </div>
           </div>
         </div>
@@ -298,11 +378,13 @@
 
     root.querySelectorAll("button[data-claim-action]").forEach((btn) => {
       btn.addEventListener("click", async () => {
-        const id = parseInt(btn.dataset.id, 10);
+        const id     = parseInt(btn.dataset.id, 10);
         const action = btn.dataset.claimAction;
-        const desc = `${btn.dataset.email} — ${btn.dataset.firm} €${Number(btn.dataset.amount).toFixed(2)}`;
+        const desc   = `${btn.dataset.email} — ${btn.dataset.firm} €${Number(btn.dataset.amount || 0).toFixed(2)}`;
 
-        if (action === "approve") {
+        if (action === "proof") {
+          await showProof(id);
+        } else if (action === "approve") {
           const { confirmed, values } = await modal({
             title: `Approve +${fmt(parseInt(btn.dataset.pts, 10))} pts`,
             desc,
@@ -311,6 +393,7 @@
           });
           if (!confirmed) return;
           await api("POST", { action: "approve_claim", claim_id: id, note: values[0] || "" });
+          loadOverview();
         } else {
           const { confirmed, option } = await modal({
             title: "Reject cashback claim",
@@ -321,11 +404,55 @@
           });
           if (!confirmed) return;
           await api("POST", { action: "reject_claim", claim_id: id, note: option || "" });
+          loadOverview();
         }
-        loadOverview();
       });
     });
   }
+
+  // ── Proof viewer ───────────────────────────────────────────────────────
+  async function showProof(claimId) {
+    const pm   = document.getElementById("proofModal");
+    const body = document.getElementById("proofModalBody");
+    const title = document.getElementById("proofModalTitle");
+    title.textContent = `Proof of purchase — claim #${claimId}`;
+    body.innerHTML = `<p class="rw-muted">Loading…</p>`;
+    pm.style.display = "flex";
+
+    try {
+      const data = await api("POST", { action: "view_proof", claim_id: claimId });
+      const dataUrl = `data:${data.proof_mime};base64,${data.proof_data}`;
+
+      if (data.proof_mime === "application/pdf") {
+        body.innerHTML = `
+          <p class="rw-muted" style="margin-bottom:12px;">PDF proof attached.</p>
+          <a href="${dataUrl}" download="proof-claim-${claimId}.pdf" class="rw-btn" style="text-decoration:none;">⬇ Download PDF</a>`;
+      } else {
+        body.innerHTML = `
+          <img src="${dataUrl}" alt="Proof" style="max-width:100%; max-height:60vh; border-radius:8px; border:1px solid var(--rw-border);" />`;
+      }
+    } catch (e) {
+      body.innerHTML = `<p class="rw-err">${e.message}</p>`;
+    }
+  }
+
+  document.getElementById("proofModalClose").addEventListener("click", () => {
+    document.getElementById("proofModal").style.display = "none";
+    document.getElementById("proofModalBody").innerHTML = "";
+  });
+  document.getElementById("proofModal").addEventListener("click", (e) => {
+    if (e.target === document.getElementById("proofModal")) {
+      document.getElementById("proofModal").style.display = "none";
+    }
+  });
+
+  // ── Claim filter buttons ───────────────────────────────────────────────
+  document.querySelectorAll(".claim-filter").forEach(btn => {
+    btn.addEventListener("click", () => {
+      _activeFilter = btn.dataset.filter;
+      renderPendingClaims(_allClaims);
+    });
+  });
 
   function renderPendingRedemptions(rows) {
     const root = document.getElementById("pendingRedemptions");

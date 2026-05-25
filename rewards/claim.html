@@ -15,9 +15,91 @@
     font-size: 13px;
     color: var(--rw-text-2);
     margin-bottom: 24px;
-    line-height: 1.6;
+    line-height: 1.7;
   }
   .cl-info strong { color: var(--rw-accent); }
+  .cl-info ul { margin: 8px 0 0 0; padding-left: 18px; }
+  .cl-info li { margin-bottom: 3px; }
+
+  .cl-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .cl-checkbox input[type="checkbox"] {
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--rw-accent);
+  }
+  .cl-checkbox span {
+    font-size: 13px;
+    color: var(--rw-text-2);
+    line-height: 1.5;
+  }
+  .cl-checkbox span strong { color: var(--rw-text); }
+
+  .proof-upload-area {
+    border: 2px dashed var(--rw-border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .proof-upload-area:hover,
+  .proof-upload-area.dragover {
+    border-color: var(--rw-accent);
+    background: rgba(255,107,0,0.05);
+  }
+  .proof-upload-area input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .proof-upload-area .upload-icon { font-size: 28px; margin-bottom: 6px; }
+  .proof-upload-area .upload-hint { font-size: 12px; color: var(--rw-text-2); margin-top: 4px; }
+
+  .proof-preview {
+    display: none;
+    margin-top: 12px;
+    border: 1px solid var(--rw-border);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .proof-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    display: block;
+    object-fit: contain;
+    background: #0a0b12;
+  }
+  .proof-preview .proof-file-info {
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--rw-text-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .proof-clear {
+    background: none;
+    border: none;
+    color: var(--rw-red);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+  }
+  .proof-clear:hover { text-decoration: underline; }
 </style>
 </head>
 <body class="rw-body">
@@ -34,7 +116,14 @@
   <p class="rw-muted" style="margin: 6px 0 20px;">Bought a challenge via a BRO affiliate link? Submit your claim and earn points on your purchase.</p>
 
   <div class="cl-info">
-    Earn <strong id="rateNote">2.5%</strong> of your purchase amount in points. Claims are reviewed within 24 hours. Only purchases made via <strong>BRO affiliate links</strong> on this site qualify — maximum one pending claim per firm at a time.
+    Earn <strong id="rateNote">2.5%</strong> of your purchase amount in points. Claims are reviewed within 24 hours.
+    <ul>
+      <li>Only purchases made via <strong>BRO affiliate links</strong> on this site qualify.</li>
+      <li>Purchase date must be <strong>within the last 30 days</strong>.</li>
+      <li>Purchase date must be <strong>on or after your account registration date</strong> — purchases made before creating your account are not eligible.</li>
+      <li>Maximum <strong>5 claims per 30 days</strong>.</li>
+      <li>Maximum <strong>one pending claim per firm</strong> at a time.</li>
+    </ul>
   </div>
 
   <div id="formWrap" class="rw-panel">
@@ -60,10 +149,36 @@
       <input class="rw-input" type="number" id="amountEur" min="1" max="50000" step="0.01" placeholder="e.g. 149.00" required />
       <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
 
-      <label class="rw-label" for="orderRef" style="margin-top: 20px;">Order reference <em style="color:var(--rw-text-2);">(optional)</em></label>
-      <input class="rw-input" type="text" id="orderRef" maxlength="200" placeholder="Order ID or confirmation number from the prop firm" />
+      <label class="rw-label" for="purchaseDate" style="margin-top: 20px;">Purchase date <em style="color:var(--rw-red);">*</em></label>
+      <input class="rw-input" type="date" id="purchaseDate" required />
+      <div id="dateHint" style="font-size:12px; color:var(--rw-text-2); margin-top:5px;"></div>
 
-      <div id="formErr" class="rw-err"></div>
+      <label class="rw-label" for="orderRef" style="margin-top: 20px;">Order reference <em style="color:var(--rw-red);">*</em></label>
+      <input class="rw-input" type="text" id="orderRef" maxlength="200" placeholder="Order ID or confirmation number from the prop firm" required />
+      <div style="font-size:12px; color:var(--rw-text-2); margin-top:5px;">Found in your order confirmation email from the prop firm.</div>
+
+      <label class="rw-label" style="margin-top: 20px;">Proof of purchase <em style="color:var(--rw-red);">*</em></label>
+      <div class="proof-upload-area" id="uploadArea">
+        <input type="file" id="proofFile" accept="image/jpeg,image/png,image/webp,application/pdf" />
+        <div class="upload-icon">📎</div>
+        <div style="font-size:14px; color:var(--rw-text);">Click to upload or drag & drop</div>
+        <div class="upload-hint">Screenshot of your order confirmation — JPEG, PNG, WebP or PDF · max 500 KB</div>
+      </div>
+      <div class="proof-preview" id="proofPreview">
+        <img id="previewImg" src="" alt="Proof preview" style="display:none;" />
+        <div id="previewPdf" style="display:none; padding:14px; text-align:center; font-size:13px; color:var(--rw-text-2);">📄 PDF selected</div>
+        <div class="proof-file-info">
+          <span id="previewName"></span>
+          <button type="button" class="proof-clear" id="clearProof">Remove</button>
+        </div>
+      </div>
+
+      <label class="cl-checkbox" id="broCodeLabel">
+        <input type="checkbox" id="usedBroCode" required />
+        <span>I confirm that I purchased via a <strong>BRO affiliate link</strong> on this site (via one of the firm links or the /go/ redirect). Purchases made directly on the prop firm's website without using a BRO link are not eligible.</span>
+      </label>
+
+      <div id="formErr" class="rw-err" style="margin-top:16px;"></div>
       <button class="rw-btn" type="submit" id="submitBtn" style="margin-top: 20px; min-width: 160px;">Submit claim</button>
 
     </form>
@@ -87,35 +202,140 @@
 <script>
   const FREE_RATE = 0.025;
   const PRO_RATE  = 0.0375;
+  const MAX_PROOF_BYTES = 500 * 1024; // 500 KB
+
   let isPro = false;
+  let accountCreatedDate = null; // "YYYY-MM-DD" string from /api/rewards/me
+  let proofBase64 = null;
+  let proofMime   = null;
 
   function estimatePts(eur) {
-    const rate = isPro ? PRO_RATE : FREE_RATE;
-    return Math.round(eur * rate * 1000);
+    return Math.round(eur * (isPro ? PRO_RATE : FREE_RATE) * 1000);
   }
 
-  // Live points estimate.
+  // ── Date picker bounds ─────────────────────────────────────────────────
+  function initDateBounds() {
+    const today = new Date();
+    const todayStr = today.toISOString().split("T")[0];
+    const minDate  = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const minStr   = minDate.toISOString().split("T")[0];
+
+    const pickerMin = accountCreatedDate && accountCreatedDate > minStr
+      ? accountCreatedDate
+      : minStr;
+
+    const pd = document.getElementById("purchaseDate");
+    pd.max = todayStr;
+    pd.min = pickerMin;
+
+    const hint = document.getElementById("dateHint");
+    if (accountCreatedDate) {
+      hint.textContent = `Only purchases on or after ${accountCreatedDate} (your registration date) are eligible.`;
+    } else {
+      hint.textContent = `Only purchases within the last 30 days are eligible.`;
+    }
+  }
+
+  // ── Points estimate ────────────────────────────────────────────────────
   document.getElementById("amountEur").addEventListener("input", (e) => {
     const eur = parseFloat(e.target.value);
     const el = document.getElementById("ptsEstimate");
-    if (eur > 0) {
-      el.textContent = `≈ ${estimatePts(eur).toLocaleString("en-US")} pts`;
-    } else {
-      el.textContent = "";
-    }
+    el.textContent = eur > 0 ? `≈ ${estimatePts(eur).toLocaleString("en-US")} pts` : "";
   });
 
+  // ── Proof upload ───────────────────────────────────────────────────────
+  const uploadArea  = document.getElementById("uploadArea");
+  const proofFileEl = document.getElementById("proofFile");
+  const proofPreview = document.getElementById("proofPreview");
+
+  ["dragover", "dragenter"].forEach(ev =>
+    uploadArea.addEventListener(ev, (e) => { e.preventDefault(); uploadArea.classList.add("dragover"); })
+  );
+  ["dragleave", "drop"].forEach(ev =>
+    uploadArea.addEventListener(ev, () => uploadArea.classList.remove("dragover"))
+  );
+
+  proofFileEl.addEventListener("change", () => handleFile(proofFileEl.files[0]));
+
+  uploadArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer?.files[0];
+    if (file) handleFile(file);
+  });
+
+  function handleFile(file) {
+    if (!file) return;
+    const err = document.getElementById("formErr");
+
+    const allowed = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+    if (!allowed.includes(file.type)) {
+      err.textContent = "Proof must be a JPEG, PNG, WebP image or a PDF.";
+      return;
+    }
+    if (file.size > MAX_PROOF_BYTES) {
+      err.textContent = `Proof file is too large (${(file.size / 1024).toFixed(0)} KB). Maximum is 500 KB.`;
+      clearProof();
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const dataUrl = ev.target.result;
+      // dataUrl = "data:<mime>;base64,<data>"
+      proofBase64 = dataUrl.split(",")[1];
+      proofMime   = file.type;
+
+      // Show preview
+      const img    = document.getElementById("previewImg");
+      const pdfDiv = document.getElementById("previewPdf");
+      const nameEl = document.getElementById("previewName");
+      nameEl.textContent = `${file.name} · ${(file.size / 1024).toFixed(1)} KB`;
+
+      if (file.type.startsWith("image/")) {
+        img.src = dataUrl;
+        img.style.display = "block";
+        pdfDiv.style.display = "none";
+      } else {
+        img.style.display = "none";
+        pdfDiv.style.display = "block";
+      }
+
+      uploadArea.style.display = "none";
+      proofPreview.style.display = "block";
+      err.textContent = "";
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearProof() {
+    proofBase64 = null;
+    proofMime   = null;
+    proofFileEl.value = "";
+    uploadArea.style.display = "";
+    proofPreview.style.display = "none";
+    document.getElementById("previewImg").src = "";
+  }
+
+  document.getElementById("clearProof").addEventListener("click", clearProof);
+
+  // ── Submit ─────────────────────────────────────────────────────────────
   document.getElementById("claimForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const err = document.getElementById("formErr");
     err.textContent = "";
 
-    const firmSlug = document.getElementById("firmSelect").value;
-    const amountEur = parseFloat(document.getElementById("amountEur").value);
-    const orderRef = document.getElementById("orderRef").value.trim();
+    const firmSlug    = document.getElementById("firmSelect").value;
+    const amountEur   = parseFloat(document.getElementById("amountEur").value);
+    const purchaseDate = document.getElementById("purchaseDate").value;
+    const orderRef    = document.getElementById("orderRef").value.trim();
+    const usedBroCode = document.getElementById("usedBroCode").checked;
 
-    if (!firmSlug)              { err.textContent = "Please select a firm."; return; }
-    if (!amountEur || amountEur <= 0) { err.textContent = "Please enter a valid purchase amount."; return; }
+    if (!firmSlug)                   { err.textContent = "Please select a firm."; return; }
+    if (!amountEur || amountEur <= 0){ err.textContent = "Please enter a valid purchase amount."; return; }
+    if (!purchaseDate)               { err.textContent = "Please enter your purchase date."; return; }
+    if (!orderRef)                   { err.textContent = "Please enter your order reference number from the prop firm."; return; }
+    if (!proofBase64)                { err.textContent = "Please upload a proof of purchase (screenshot of your order confirmation)."; return; }
+    if (!usedBroCode)                { err.textContent = "Please confirm that you purchased via a BRO affiliate link."; return; }
 
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
@@ -125,17 +345,35 @@
       const res = await BroAuth.authedFetch("/api/rewards/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firm_slug: firmSlug, amount_eur: amountEur, order_ref: orderRef || undefined }),
+        body: JSON.stringify({
+          firm_slug:     firmSlug,
+          amount_eur:    amountEur,
+          purchase_date: purchaseDate,
+          order_ref:     orderRef,
+          proof_data:    proofBase64,
+          proof_mime:    proofMime,
+          used_bro_code: true,
+        }),
       });
       const data = await res.json();
 
       if (!res.ok) {
-        err.textContent =
-          data.error === "claim_already_pending"
-            ? "You already have a pending claim for this firm. Wait for it to be reviewed before submitting another."
-            : data.error === "invalid_firm_slug" ? "Invalid firm selected."
-            : data.error === "invalid_amount_eur" ? "Please enter a valid amount between €1 and €50,000."
-            : `Submission failed: ${data.error}`;
+        const msgs = {
+          claim_already_pending:  "You already have a pending claim for this firm. Wait for it to be reviewed before submitting another.",
+          order_ref_required:     "Please enter your order reference number from the prop firm.",
+          purchase_date_required: "Please enter your purchase date.",
+          purchase_date_future:   "Purchase date cannot be in the future.",
+          purchase_too_old:       "Purchase date is older than 30 days. Claims must be submitted within 30 days of purchase.",
+          purchase_before_account:"Your purchase date is before your account registration date. Only purchases made after creating your account are eligible.",
+          proof_required:         "Please upload a proof of purchase.",
+          proof_invalid_type:     "Proof must be a JPEG, PNG, WebP or PDF file.",
+          proof_too_large:        "Proof file is too large. Maximum is 500 KB.",
+          bro_code_required:      "Please confirm that you used a BRO affiliate link.",
+          monthly_cap_exceeded:   "You've reached the maximum of 5 claims per 30 days. Please wait before submitting another claim.",
+          invalid_firm_slug:      "Invalid firm selected.",
+          invalid_amount_eur:     "Please enter a valid amount between €1 and €50,000.",
+        };
+        err.textContent = msgs[data.error] || `Submission failed: ${data.error}`;
         btn.disabled = false;
         btn.textContent = "Submit claim";
         return;
@@ -152,6 +390,7 @@
     }
   });
 
+  // ── Auth & init ────────────────────────────────────────────────────────
   BroAuth.ready.then(async () => {
     if (!BroAuth.getSession()) {
       window.location.href = "./login.html?next=" + encodeURIComponent("/rewards/claim.html");
@@ -165,10 +404,14 @@
       if (res.ok) {
         const { user } = await res.json();
         isPro = !!user?.is_pro_bro;
-        const rate = isPro ? "3.75%" : "2.5%";
-        document.getElementById("rateNote").textContent = rate;
+        document.getElementById("rateNote").textContent = isPro ? "3.75%" : "2.5%";
+        if (user?.created_at) {
+          accountCreatedDate = user.created_at.slice(0, 10); // "YYYY-MM-DD"
+        }
       }
     } catch (_) {}
+
+    initDateBounds();
   });
 </script>
 
