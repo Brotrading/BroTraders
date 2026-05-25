@@ -89,21 +89,9 @@ export async function onRequestPost(context) {
       note: "Account creation bonus",
     });
 
-    // Pay the referrer.
-    if (referredBy) {
-      const referrer = await env.DB
-        .prepare(`SELECT is_pro_bro FROM users WHERE id = ?`)
-        .bind(referredBy)
-        .first();
-      const isPro = !!(referrer && referrer.is_pro_bro);
-      await postLedger(env, {
-        user_id: referredBy,
-        amount: rateFor("referral_signup", isPro),
-        reason: "referral_signup",
-        ref_id: user.id,
-        note: `Referred ${email}`,
-      });
-    }
+    // Referral signup bonus intentionally removed — referrer is paid only when the referred
+    // user's first purchase claim is approved (see admin.js approveClaim). This prevents
+    // fake-account abuse where someone creates many accounts just to harvest referral points.
 
     row = await getUserRow(env, user.id);
   } else {
