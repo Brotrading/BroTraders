@@ -76,17 +76,23 @@
 
   // --- Auth-aware header UI (login button + rewards link) ---
   function updateHeaderAuth(signedIn) {
-    const rewardsLink   = document.getElementById("btRewardsLink");
-    const authBtn       = document.getElementById("btAuthBtn");
-    const authBtnMobile = document.getElementById("btAuthLinkMobile");
+    const rewardsLink     = document.getElementById("btRewardsLink");
+    const authBtn         = document.getElementById("btAuthBtn");
+    const authBtnMobile   = document.getElementById("btAuthLinkMobile");
+    const signupBtn       = document.getElementById("btSignupBtn");
+    const signupBtnMobile = document.getElementById("btSignupLinkMobile");
 
     if (signedIn) {
-      if (rewardsLink)   { rewardsLink.setAttribute("href", "/rewards/account.html"); rewardsLink.textContent = "My Rewards"; }
-      if (authBtn)       { authBtn.setAttribute("href", "/rewards/account.html"); authBtn.textContent = "My Account"; authBtn.classList.add("signed-in"); }
-      if (authBtnMobile) { authBtnMobile.setAttribute("href", "/rewards/account.html"); authBtnMobile.textContent = "My Account"; }
+      if (rewardsLink)     { rewardsLink.setAttribute("href", "/rewards/account.html"); rewardsLink.textContent = "My Rewards"; }
+      if (authBtn)         { authBtn.setAttribute("href", "/rewards/account.html"); authBtn.textContent = "My Account"; authBtn.classList.add("signed-in"); }
+      if (authBtnMobile)   { authBtnMobile.setAttribute("href", "/rewards/account.html"); authBtnMobile.textContent = "My Account"; }
+      if (signupBtn)       { signupBtn.style.display = "none"; }
+      if (signupBtnMobile) { signupBtnMobile.style.display = "none"; }
     } else {
-      if (authBtn)       { authBtn.setAttribute("href", "/rewards/login.html"); authBtn.textContent = "Login"; }
-      if (authBtnMobile) { authBtnMobile.setAttribute("href", "/rewards/login.html"); authBtnMobile.textContent = "Login"; }
+      if (authBtn)         { authBtn.setAttribute("href", "/rewards/login.html"); authBtn.textContent = "Login"; authBtn.classList.remove("signed-in"); }
+      if (authBtnMobile)   { authBtnMobile.setAttribute("href", "/rewards/login.html"); authBtnMobile.textContent = "Login"; }
+      if (signupBtn)       { signupBtn.style.display = ""; }
+      if (signupBtnMobile) { signupBtnMobile.style.display = ""; }
     }
   }
 

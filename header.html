@@ -118,6 +118,21 @@
   .bt-auth-btn.signed-in { color: #00c2ff; border-color: rgba(0, 194, 255, 0.35); }
   .bt-auth-btn.signed-in:hover { color: #fff; border-color: rgba(0, 194, 255, 0.6); }
 
+  /* ---- Sign up button ---- */
+  .bt-signup-btn {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #00c2ff;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+    padding: 7px 16px;
+    border: 1px solid rgba(0, 194, 255, 0.4);
+    border-radius: 8px;
+  }
+  .bt-signup-btn:hover { color: #fff; border-color: rgba(0, 194, 255, 0.7); background: rgba(0, 194, 255, 0.08); }
+
   /* ---- CTA button (Subscribe) ---- */
   .bt-cta {
     background: linear-gradient(135deg, #00c2ff, #1e90ff);
@@ -264,13 +279,15 @@
 
       <!-- Mobile-only links (hidden on desktop via .bt-nav-subscribe) -->
       <a href="/rewards/login.html" class="bt-link bt-nav-subscribe" id="btAuthLinkMobile">Login</a>
+      <a href="/rewards/signup.html" class="bt-link bt-nav-subscribe" id="btSignupLinkMobile">Sign up</a>
       <a href="/Subscribe.html" class="bt-link bt-nav-subscribe">Subscribe</a>
     </nav>
 
     <!-- Desktop right-side actions -->
     <div class="bt-right-actions">
-      <a href="/Subscribe.html" class="bt-cta">Subscribe</a>
       <a href="/rewards/login.html" class="bt-auth-btn" id="btAuthBtn">Login</a>
+      <a href="/rewards/signup.html" class="bt-signup-btn" id="btSignupBtn">Sign up</a>
+      <a href="/Subscribe.html" class="bt-cta">Subscribe</a>
     </div>
 
     <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
