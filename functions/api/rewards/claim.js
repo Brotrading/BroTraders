@@ -183,9 +183,15 @@ export async function onRequestGet(context) {
               c.purchase_date, c.used_bro_code, c.is_suspicious, c.risk_level,
               c.status, c.points_awarded, c.note, c.created_at, c.reviewed_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
-              u.email, u.display_name, u.is_pro_bro
+              u.email, u.display_name, u.is_pro_bro,
+              lc.last_click_at
        FROM purchase_claims c
        JOIN users u ON u.id = c.user_id
+       LEFT JOIN (
+         SELECT user_id, firm, MAX(created_at) AS last_click_at
+         FROM clicks
+         GROUP BY user_id, firm
+       ) lc ON lc.user_id = c.user_id AND lc.firm = c.firm_slug
        WHERE c.status = ?
        ORDER BY c.created_at ASC
        LIMIT 200`

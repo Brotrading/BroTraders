@@ -290,12 +290,32 @@
       color:${s.color}; background:${s.bg}; border:1px solid ${s.border};">${s.label} risk</span>`;
   }
 
+  function clickBadge(lastClickAt) {
+    if (!lastClickAt) {
+      return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
+        color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ No click</span>`;
+    }
+    const days = Math.floor((Date.now() - new Date(lastClickAt).getTime()) / 86_400_000);
+    const label = days === 0 ? "today" : days === 1 ? "1d ago" : `${days}d ago`;
+    if (days <= 7)  return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
+      color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click ${label}</span>`;
+    if (days <= 30) return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
+      color:#60a5fa; background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.3);">✓ Click ${label}</span>`;
+    if (days <= 60) return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
+      color:#fb923c; background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.3);">⚠ Click ${label}</span>`;
+    return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
+      color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ Click ${label}</span>`;
+  }
+
   let _allClaims = [];
   let _activeFilter = "all";
 
   function applyClaimFilter(rows, filter) {
-    if (filter === "all")       return rows;
-    if (filter === "suspicious") return rows.filter(c => c.is_suspicious);
+    if (filter === "all")        return rows;
+    if (filter === "suspicious") return rows.filter(c => {
+      if (!c.last_click_at) return true;
+      return Math.floor((Date.now() - new Date(c.last_click_at).getTime()) / 86_400_000) > 60;
+    });
     return rows.filter(c => c.risk_level === filter);
   }
 
@@ -321,9 +341,7 @@
       const pts  = Math.round(c.amount_eur * rate * 1000);
       const risk = RISK_STYLE[c.risk_level] || RISK_STYLE.medium;
 
-      const suspiciousBadge = c.is_suspicious
-        ? `<span style="font-size:11px; padding:2px 7px; border-radius:4px; color:#facc15; background:rgba(250,204,21,0.1); border:1px solid rgba(250,204,21,0.3);">⚠️ No click recorded</span>`
-        : `<span style="font-size:11px; padding:2px 7px; border-radius:4px; color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click verified</span>`;
+      const suspiciousBadge = clickBadge(c.last_click_at);
 
       const broBadge = c.used_bro_code
         ? `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#94a3b8; background:rgba(148,163,184,0.1); border:1px solid rgba(148,163,184,0.2);">BRO ✓</span>`
