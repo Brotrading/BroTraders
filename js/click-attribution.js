@@ -12,6 +12,14 @@
 
   function getUserId() {
     try {
+      // Fast path: auth.js writes this key as soon as the session loads.
+      // Works even before the async Supabase SDK import completes.
+      const cached = localStorage.getItem("bro_uid");
+      if (cached && UUID_RE.test(cached)) return cached;
+    } catch (e) {}
+
+    // Fallback: parse the Supabase auth token directly from localStorage.
+    try {
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
         if (!k || !/^sb-.+-auth-token$/.test(k)) continue;
@@ -22,6 +30,7 @@
         if (id && UUID_RE.test(id)) return id;
       }
     } catch (e) {}
+
     return null;
   }
 
