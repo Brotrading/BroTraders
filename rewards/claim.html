@@ -121,7 +121,6 @@
       <li>Only purchases made via <strong>BRO affiliate links</strong> on this site qualify.</li>
       <li>Purchase date must be <strong>within the last 30 days</strong>.</li>
       <li>Purchase date must be <strong>on or after your account registration date</strong> — purchases made before creating your account are not eligible.</li>
-      <li>Maximum <strong>5 claims per 30 days</strong>.</li>
       <li>Maximum <strong>one pending claim per firm</strong> at a time.</li>
     </ul>
   </div>
@@ -212,6 +211,11 @@
   function estimatePts(eur) {
     return Math.round(eur * (isPro ? PRO_RATE : FREE_RATE) * 1000);
   }
+  function estimatePtsBoth(eur) {
+    const free = Math.round(eur * FREE_RATE * 1000);
+    const pro  = Math.round(eur * PRO_RATE  * 1000);
+    return { free, pro };
+  }
 
   // ── Date picker bounds ─────────────────────────────────────────────────
   function initDateBounds() {
@@ -240,7 +244,16 @@
   document.getElementById("amountEur").addEventListener("input", (e) => {
     const eur = parseFloat(e.target.value);
     const el = document.getElementById("ptsEstimate");
-    el.textContent = eur > 0 ? `${estimatePts(eur).toLocaleString("en-US")} pts if approved` : "";
+    if (eur > 0) {
+      const { free, pro } = estimatePtsBoth(eur);
+      if (isPro) {
+        el.innerHTML = `<span style="color:var(--rw-accent);font-weight:600;">${pro.toLocaleString("en-US")} pts if approved</span> <span style="color:var(--rw-text-2);">(Pro Bro rate)</span>`;
+      } else {
+        el.innerHTML = `${free.toLocaleString("en-US")} pts if approved &nbsp;·&nbsp; <span style="color:var(--rw-accent);">${pro.toLocaleString("en-US")} pts as Pro Bro</span>`;
+      }
+    } else {
+      el.textContent = "";
+    }
   });
 
   // ── Proof upload ───────────────────────────────────────────────────────

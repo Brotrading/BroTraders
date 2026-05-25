@@ -74,28 +74,52 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // --- Rewards link auth-aware swap ---
-  // If a Supabase session exists in localStorage, point "Rewards" at the account
-  // dashboard and rename it. Reads localStorage directly so we don't have to
-  // bundle supabase-js on every page just for this.
-  const rewardsLink = document.getElementById("btRewardsLink");
-  if (rewardsLink) {
+  // --- Auth-aware header UI (login button + rewards link) ---
+  function updateHeaderAuth(signedIn) {
+    const rewardsLink   = document.getElementById("btRewardsLink");
+    const authBtn       = document.getElementById("btAuthBtn");
+    const authBtnMobile = document.getElementById("btAuthLinkMobile");
+
+    if (signedIn) {
+      if (rewardsLink)   { rewardsLink.setAttribute("href", "/rewards/account.html"); rewardsLink.textContent = "My Rewards"; }
+      if (authBtn)       { authBtn.setAttribute("href", "/rewards/account.html"); authBtn.textContent = "My Account"; authBtn.classList.add("signed-in"); }
+      if (authBtnMobile) { authBtnMobile.setAttribute("href", "/rewards/account.html"); authBtnMobile.textContent = "My Account"; }
+    } else {
+      if (authBtn)       { authBtn.setAttribute("href", "/rewards/login.html"); authBtn.textContent = "Login"; }
+      if (authBtnMobile) { authBtnMobile.setAttribute("href", "/rewards/login.html"); authBtnMobile.textContent = "Login"; }
+    }
+  }
+
+  // Fast path: read localStorage immediately to avoid flash of unauthenticated state.
+  (function quickCheck() {
     try {
-      let signedIn = false;
       for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
         if (!k || !/^sb-.+-auth-token$/.test(k)) continue;
-        const raw = localStorage.getItem(k);
-        const obj = raw ? JSON.parse(raw) : null;
-        if (obj?.user?.id || obj?.currentSession?.user?.id) {
-          signedIn = true;
-          break;
-        }
-      }
-      if (signedIn) {
-        rewardsLink.setAttribute("href", "/rewards/account.html");
-        rewardsLink.textContent = "My Rewards";
+        const obj = JSON.parse(localStorage.getItem(k) || "null");
+        if (obj?.user?.id || obj?.currentSession?.user?.id) { updateHeaderAuth(true); return; }
       }
     } catch (e) {}
+  })();
+
+  // Accurate path: re-update when BroAuth resolves (handles session expiry, sign-out, etc.).
+  function bindBroAuth() {
+    if (window.BroAuth) {
+      BroAuth.ready.then(() => updateHeaderAuth(!!BroAuth.getSession()));
+      BroAuth.onChange(() => updateHeaderAuth(!!BroAuth.getSession()));
+      return;
+    }
+    // Poll until BroAuth is available (loaded asynchronously by head.js).
+    const start = Date.now();
+    const t = setInterval(() => {
+      if (window.BroAuth) {
+        clearInterval(t);
+        BroAuth.ready.then(() => updateHeaderAuth(!!BroAuth.getSession()));
+        BroAuth.onChange(() => updateHeaderAuth(!!BroAuth.getSession()));
+      } else if (Date.now() - start > 5000) {
+        clearInterval(t);
+      }
+    }, 100);
   }
+  bindBroAuth();
 })();

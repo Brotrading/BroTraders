@@ -70,6 +70,14 @@
     const obs = new MutationObserver(() => attribute());
     obs.observe(document.body, { childList: true, subtree: true });
     setTimeout(() => obs.disconnect(), 8000);
+
+    // Hook into BroAuth so attribution re-runs once the session resolves.
+    // BroAuth.ready resolves after the Supabase SDK loads and the session is read,
+    // which sets bro_uid in localStorage — the key getUserId() reads from.
+    if (window.BroAuth) {
+      BroAuth.ready.then(() => attribute());
+      BroAuth.onChange(() => attribute());
+    }
   }
 
   if (document.readyState === "loading") {

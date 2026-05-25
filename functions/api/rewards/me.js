@@ -50,6 +50,14 @@ export async function onRequestGet(context) {
     .bind(user.id)
     .all();
 
+  // Streak eligibility checks
+  const today         = new Date().toISOString().slice(0, 10);
+  const yesterday     = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+  const dayBefore     = new Date(Date.now() - 2 * 86_400_000).toISOString().slice(0, 10);
+  const lastClaimed   = row.streak_claimed_date || null;
+  const claimedToday  = lastClaimed === today;
+  const canRestore    = !claimedToday && lastClaimed === dayBefore;
+
   return jsonResponse({
     user: {
       id: row.id,
@@ -61,6 +69,11 @@ export async function onRequestGet(context) {
       profile_complete: !!row.profile_complete,
       referral_code: row.referral_code,
       created_at: row.created_at,
+      login_streak: row.login_streak || 0,
+      streak_claimed_date: lastClaimed,
+      streak_best: row.streak_best || 0,
+      claimed_today: claimedToday,
+      can_restore: canRestore,
     },
     ledger: ledger.results || [],
     redemptions: redemptions.results || [],

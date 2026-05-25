@@ -96,6 +96,22 @@
     .bt-dropdown:hover .bt-drop-menu { opacity: 1; visibility: visible; transform: translateY(0); }
   }
 
+  /* ---- Auth button (Login / My Account) ---- */
+  .bt-auth-btn {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.25s, border-color 0.25s;
+    white-space: nowrap;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+  }
+  .bt-auth-btn:hover { color: #00c2ff; border-color: rgba(0,194,255,0.4); }
+  .bt-auth-btn.signed-in { color: #00c2ff; border-color: rgba(0,194,255,0.3); }
+
   /* ---- CTA button ---- */
   .bt-cta {
     background: linear-gradient(135deg, #00c2ff, #1e90ff);
@@ -249,9 +265,11 @@
       <a href="/rewards/login.html" class="bt-link" id="btRewardsLink">Rewards</a>
       <a href="/propai.html" class="bt-link">Bro AI (beta) ✨</a>
 
+      <a href="/rewards/login.html" class="bt-link bt-nav-subscribe" id="btAuthLinkMobile">Login</a>
       <a href="/Subscribe.html" class="bt-link bt-nav-subscribe">Subscribe</a>
     </nav>
 
+    <a href="/rewards/login.html" class="bt-auth-btn" id="btAuthBtn">Login</a>
     <a href="/Subscribe.html" class="bt-cta">Subscribe</a>
 
     <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">

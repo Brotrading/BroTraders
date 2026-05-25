@@ -17,7 +17,6 @@ import {
   rateFor,
   EARN_RATES,
   postLedger,
-  awardOnce,
   getUserRow,
 } from "./_lib.js";
 
@@ -108,16 +107,9 @@ export async function onRequestPost(context) {
 
     row = await getUserRow(env, user.id);
   } else {
-    // ── Existing user: daily-login bonus ────────────────────────────────
+    // Update last_login_at for tracking purposes (daily bonus is now claimed manually via /api/rewards/daily).
     const lastDay = (row.last_login_at || "").slice(0, 10);
     if (lastDay !== today) {
-      await postLedger(env, {
-        user_id: user.id,
-        amount: rateFor("daily_login", !!row.is_pro_bro),
-        reason: "daily_login",
-        ref_id: today,
-        note: "Daily login bonus",
-      });
       await env.DB
         .prepare(`UPDATE users SET last_login_at = ? WHERE id = ?`)
         .bind(now, user.id)

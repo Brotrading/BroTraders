@@ -14,6 +14,8 @@
 // Discord OAuth and future providers are added by calling .signInWithProvider("discord").
 
 (() => {
+  if (window.BroAuth) return; // Already initialized — guard against double-loading via head.js
+
   const CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
   async function loadSupabase() {

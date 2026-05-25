@@ -41,7 +41,31 @@
     </div>
   </div>
 
-  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 24px;">
+  <!-- Daily login streak card -->
+  <div class="rw-panel" id="streakCard" style="margin-top: 22px; margin-bottom: 0;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <div>
+        <div style="font-size:22px; font-weight:700;" id="streakTitle">🔥 0-day streak</div>
+        <div style="font-size:13px; color:var(--rw-text-2); margin-top:4px;" id="streakSub">Claim today's bonus to start your streak!</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="rw-btn" id="claimDailyBtn">Claim today's bonus</button>
+        <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −50 pts</button>
+      </div>
+    </div>
+    <div id="streakProgress" style="margin-top:14px; display:none;">
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:5px;">
+        <span id="streakProgressLabel">Progress to 7-day milestone</span>
+        <span id="streakProgressPct"></span>
+      </div>
+      <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:8px; overflow:hidden;">
+        <div id="streakProgressBar" style="height:100%; background:linear-gradient(90deg,#f97316,#fb923c); border-radius:6px; transition:width 0.4s;"></div>
+      </div>
+    </div>
+    <div id="streakMsg" style="font-size:13px; color:var(--rw-green); margin-top:10px; display:none;"></div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; margin-bottom: 24px;">
     <a class="rw-btn" href="./catalog.html">Redeem points →</a>
     <a class="rw-btn ghost" href="./claim.html">Submit cashback claim</a>
     <a class="rw-btn ghost" href="./review.html">Write a review · Earn points</a>
@@ -95,6 +119,9 @@
     signup: "Account creation bonus",
     profile_complete: "Profile completed",
     daily_login: "Daily login bonus",
+    streak_restore: "Streak restore",
+    streak_milestone_7: "7-day streak milestone",
+    streak_milestone_30: "30-day streak milestone",
     review_submitted: "Firm review approved",
     referral_signup: "Referral signup",
     pro_bro_welcome: "Pro Bro welcome bonus",
@@ -136,7 +163,62 @@
     return data;
   }
 
+  function renderStreak(user) {
+    const streak    = user.login_streak || 0;
+    const best      = user.streak_best || 0;
+    const claimed   = user.claimed_today;
+    const canRestore = user.can_restore;
+
+    const titleEl    = document.getElementById("streakTitle");
+    const subEl      = document.getElementById("streakSub");
+    const claimBtn   = document.getElementById("claimDailyBtn");
+    const restoreBtn = document.getElementById("restoreStreakBtn");
+    const progressEl = document.getElementById("streakProgress");
+    const barEl      = document.getElementById("streakProgressBar");
+    const pctEl      = document.getElementById("streakProgressPct");
+    const labelEl    = document.getElementById("streakProgressLabel");
+
+    titleEl.textContent = streak > 0 ? `🔥 ${streak}-day streak` : "🔥 No active streak";
+    if (best > 0 && best !== streak) {
+      subEl.textContent = `Best: ${best} days · ${claimed ? "Claimed today ✓" : "Claim today to continue your streak!"}`;
+    } else if (claimed) {
+      subEl.textContent = "Claimed today ✓ — come back tomorrow!";
+    } else if (streak > 0) {
+      subEl.textContent = "Claim today's bonus to keep your streak going!";
+    } else {
+      subEl.textContent = "Claim your daily bonus to start a streak!";
+    }
+
+    if (claimed) {
+      claimBtn.disabled = true;
+      claimBtn.textContent = "Claimed today ✓";
+    } else {
+      claimBtn.disabled = false;
+      claimBtn.textContent = "Claim today's bonus";
+    }
+
+    restoreBtn.style.display = canRestore ? "" : "none";
+
+    // Progress bar to next milestone
+    if (streak < 30) {
+      const nextMilestone = streak < 7 ? 7 : 30;
+      const prevMilestone = streak < 7 ? 0 : 7;
+      const pct = Math.round(((streak - prevMilestone) / (nextMilestone - prevMilestone)) * 100);
+      barEl.style.width = pct + "%";
+      pctEl.textContent = `${streak}/${nextMilestone}`;
+      labelEl.textContent = `Progress to ${nextMilestone}-day milestone (+${nextMilestone === 7 ? "500" : "2,000"} pts)`;
+      progressEl.style.display = "";
+    } else {
+      // 30-day milestone reached
+      barEl.style.width = "100%";
+      pctEl.textContent = "30/30";
+      labelEl.textContent = "🏆 30-day milestone reached!";
+      progressEl.style.display = "";
+    }
+  }
+
   function render({ user, ledger, redemptions, claims }) {
+    renderStreak(user);
     document.getElementById("email").textContent = user.email;
     document.getElementById("balance").textContent = fmt(user.points_balance);
     document.getElementById("earned").textContent = fmt(user.points_earned);
@@ -218,6 +300,76 @@
       }).join("");
     }
   }
+
+  // ── Daily streak claim ─────────────────────────────────────────────────
+  document.getElementById("claimDailyBtn").addEventListener("click", async () => {
+    const btn = document.getElementById("claimDailyBtn");
+    const msg = document.getElementById("streakMsg");
+    btn.disabled = true;
+    btn.textContent = "Claiming…";
+    msg.style.display = "none";
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/daily", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+      const data = await res.json();
+      if (res.ok) {
+        let text = `+${data.daily_pts} pts awarded! You're on a ${data.new_streak}-day streak.`;
+        if (data.milestone_bonus > 0) text += ` 🎉 ${data.milestone_day}-day milestone bonus: +${data.milestone_bonus} pts!`;
+        msg.textContent = text;
+        msg.style.display = "";
+        await refresh();
+      } else {
+        const msgs = { daily_already_claimed: "You already claimed today's bonus. Come back tomorrow!" };
+        msg.textContent = msgs[data.error] || `Error: ${data.error}`;
+        msg.style.color = "var(--rw-red)";
+        msg.style.display = "";
+        btn.disabled = false;
+        btn.textContent = "Claim today's bonus";
+      }
+    } catch {
+      msg.textContent = "Something went wrong. Please try again.";
+      msg.style.color = "var(--rw-red)";
+      msg.style.display = "";
+      btn.disabled = false;
+      btn.textContent = "Claim today's bonus";
+    }
+  });
+
+  // ── Streak restore ─────────────────────────────────────────────────────
+  document.getElementById("restoreStreakBtn").addEventListener("click", async () => {
+    const btn = document.getElementById("restoreStreakBtn");
+    const msg = document.getElementById("streakMsg");
+    if (!confirm("Restore your streak for 50 pts?")) return;
+    btn.disabled = true;
+    msg.style.display = "none";
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/daily", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "restore" }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        msg.textContent = `Streak restored to ${data.new_streak} days (−50 pts). Claim today's bonus now!`;
+        msg.style.color = "var(--rw-green)";
+        msg.style.display = "";
+        await refresh();
+      } else {
+        const msgs = {
+          restore_not_eligible: "Restore is only available if you missed exactly one day.",
+          insufficient_points: "You need at least 50 pts to restore your streak.",
+        };
+        msg.textContent = msgs[data.error] || `Error: ${data.error}`;
+        msg.style.color = "var(--rw-red)";
+        msg.style.display = "";
+        btn.disabled = false;
+      }
+    } catch {
+      msg.textContent = "Something went wrong. Please try again.";
+      msg.style.color = "var(--rw-red)";
+      msg.style.display = "";
+      btn.disabled = false;
+    }
+  });
 
   document.getElementById("signOutBtn").addEventListener("click", async () => {
     await BroAuth.signOut();
