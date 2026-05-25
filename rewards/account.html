@@ -43,26 +43,53 @@
 
   <!-- Daily login streak card -->
   <div class="rw-panel" id="streakCard" style="margin-top: 22px; margin-bottom: 0;">
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-      <div>
-        <div style="font-size:22px; font-weight:700;" id="streakTitle">🔥 0-day streak</div>
-        <div style="font-size:13px; color:var(--rw-text-2); margin-top:4px;" id="streakSub">Claim today's bonus to start your streak!</div>
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+
+      <!-- Left: big flame number + text -->
+      <div style="display:flex; align-items:center; gap:20px;">
+        <div style="text-align:center; line-height:1; flex-shrink:0;">
+          <div style="font-size:32px; line-height:1;">🔥</div>
+          <div style="font-size:44px; font-weight:800; line-height:1; color:#f97316;" id="streakNum">0</div>
+          <div style="font-size:11px; color:var(--rw-text-2); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">days</div>
+        </div>
+        <div>
+          <div style="font-size:18px; font-weight:700;" id="streakTitle">No active streak</div>
+          <div style="font-size:13px; color:var(--rw-text-2); margin-top:3px;" id="streakSub">Claim your daily bonus to start a streak!</div>
+          <div style="font-size:12px; color:var(--rw-text-2); margin-top:4px;" id="streakBest"></div>
+        </div>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+      <!-- Right: action buttons -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
         <button class="rw-btn" id="claimDailyBtn">Claim today's bonus</button>
         <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −50 pts</button>
       </div>
     </div>
-    <div id="streakProgress" style="margin-top:14px; display:none;">
-      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:5px;">
-        <span id="streakProgressLabel">Progress to 7-day milestone</span>
-        <span id="streakProgressPct"></span>
+
+    <!-- Progress bar: continuous 0→30 with checkpoint at day 7 -->
+    <div id="streakProgress" style="margin-top:20px; display:none;">
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:8px;">
+        <span id="streakProgressLabel">Progress to 7-day milestone · +500 pts</span>
+        <span id="streakProgressPct" style="font-weight:600; color:var(--rw-text);">0/30</span>
       </div>
-      <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:8px; overflow:hidden;">
-        <div id="streakProgressBar" style="height:100%; background:linear-gradient(90deg,#f97316,#fb923c); border-radius:6px; transition:width 0.4s;"></div>
+      <!-- Bar wrapper (position:relative so checkpoint can overlay) -->
+      <div style="position:relative;">
+        <!-- Track + fill (overflow:hidden clips the fill) -->
+        <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:10px; overflow:hidden;">
+          <div id="streakBarFill" style="height:100%; width:0%; background:linear-gradient(90deg,#f59e0b,#f97316); border-radius:6px; transition:width 0.5s ease;"></div>
+        </div>
+        <!-- Checkpoint dot at day 7 (7/30 = 23.33%) — overlays the track -->
+        <div id="streakCheckpoint7" style="position:absolute; left:23.33%; top:50%; transform:translate(-50%,-50%); width:20px; height:20px; border-radius:50%; background:var(--rw-panel); border:2px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:var(--rw-text-2); transition:all 0.4s; z-index:2;">7</div>
+      </div>
+      <!-- Milestone labels below bar -->
+      <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--rw-text-2); margin-top:6px; position:relative;">
+        <span>Day 1</span>
+        <span style="position:absolute; left:23.33%; transform:translateX(-50%);">🎯 Day 7</span>
+        <span>🏆 Day 30</span>
       </div>
     </div>
-    <div id="streakMsg" style="font-size:13px; color:var(--rw-green); margin-top:10px; display:none;"></div>
+
+    <div id="streakMsg" style="font-size:13px; color:var(--rw-green); margin-top:12px; display:none;"></div>
   </div>
 
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; margin-bottom: 24px;">
@@ -168,57 +195,74 @@
   }
 
   function renderStreak(user) {
-    const streak    = user.login_streak || 0;
-    const best      = user.streak_best || 0;
-    const claimed   = user.claimed_today;
+    const streak     = user.login_streak || 0;
+    const best       = user.streak_best  || 0;
+    const claimed    = user.claimed_today;
     const canRestore = user.can_restore;
 
-    const titleEl    = document.getElementById("streakTitle");
-    const subEl      = document.getElementById("streakSub");
-    const claimBtn   = document.getElementById("claimDailyBtn");
-    const restoreBtn = document.getElementById("restoreStreakBtn");
-    const progressEl = document.getElementById("streakProgress");
-    const barEl      = document.getElementById("streakProgressBar");
-    const pctEl      = document.getElementById("streakProgressPct");
-    const labelEl    = document.getElementById("streakProgressLabel");
+    // Big number
+    document.getElementById("streakNum").textContent = streak;
 
-    titleEl.textContent = streak > 0 ? `🔥 ${streak}-day streak` : "🔥 No active streak";
-    if (best > 0 && best !== streak) {
-      subEl.textContent = `Best: ${best} days · ${claimed ? "Claimed today ✓" : "Claim today to continue your streak!"}`;
-    } else if (claimed) {
+    // Title
+    document.getElementById("streakTitle").textContent =
+      streak > 0 ? `${streak}-day streak` : "No active streak";
+
+    // Subtitle
+    const subEl = document.getElementById("streakSub");
+    if (claimed) {
       subEl.textContent = "Claimed today ✓ — come back tomorrow!";
     } else if (streak > 0) {
-      subEl.textContent = "Claim today's bonus to keep your streak going!";
+      subEl.textContent = "Claim today's bonus to keep your streak alive!";
     } else {
       subEl.textContent = "Claim your daily bonus to start a streak!";
     }
 
-    if (claimed) {
-      claimBtn.disabled = true;
-      claimBtn.textContent = "Claimed today ✓";
+    // Personal best
+    const bestEl = document.getElementById("streakBest");
+    bestEl.textContent = best > 0 ? `Personal best: ${best} day${best !== 1 ? "s" : ""}` : "";
+
+    // Claim button
+    const claimBtn = document.getElementById("claimDailyBtn");
+    claimBtn.disabled   = claimed;
+    claimBtn.textContent = claimed ? "Claimed today ✓" : "Claim today's bonus";
+
+    // Restore button
+    document.getElementById("restoreStreakBtn").style.display = canRestore ? "" : "none";
+
+    // Progress bar — continuous 0→30, bar never resets
+    const progressEl  = document.getElementById("streakProgress");
+    const barFill     = document.getElementById("streakBarFill");
+    const checkpoint  = document.getElementById("streakCheckpoint7");
+    const labelEl     = document.getElementById("streakProgressLabel");
+    const pctEl       = document.getElementById("streakProgressPct");
+
+    const pct = Math.min((streak / 30) * 100, 100);
+    barFill.style.width = pct + "%";
+
+    // Checkpoint dot turns gold once day 7 is reached
+    if (streak >= 7) {
+      checkpoint.style.background    = "#f59e0b";
+      checkpoint.style.borderColor   = "#f59e0b";
+      checkpoint.style.color         = "#fff";
     } else {
-      claimBtn.disabled = false;
-      claimBtn.textContent = "Claim today's bonus";
+      checkpoint.style.background    = "var(--rw-panel)";
+      checkpoint.style.borderColor   = "rgba(255,255,255,0.15)";
+      checkpoint.style.color         = "var(--rw-text-2)";
     }
 
-    restoreBtn.style.display = canRestore ? "" : "none";
-
-    // Progress bar to next milestone
-    if (streak < 30) {
-      const nextMilestone = streak < 7 ? 7 : 30;
-      const prevMilestone = streak < 7 ? 0 : 7;
-      const pct = Math.round(((streak - prevMilestone) / (nextMilestone - prevMilestone)) * 100);
-      barEl.style.width = pct + "%";
-      pctEl.textContent = `${streak}/${nextMilestone}`;
-      labelEl.textContent = `Progress to ${nextMilestone}-day milestone (+${nextMilestone === 7 ? "500" : "2,000"} pts)`;
-      progressEl.style.display = "";
+    // Label
+    if (streak >= 30) {
+      labelEl.textContent = "🏆 Both milestones reached! Keep your streak going!";
+      pctEl.textContent   = "30/30";
+    } else if (streak >= 7) {
+      labelEl.textContent = "Progress to 30-day milestone · +2,000 pts";
+      pctEl.textContent   = `${streak}/30`;
     } else {
-      // 30-day milestone reached
-      barEl.style.width = "100%";
-      pctEl.textContent = "30/30";
-      labelEl.textContent = "🏆 30-day milestone reached!";
-      progressEl.style.display = "";
+      labelEl.textContent = "Progress to 7-day milestone · +500 pts";
+      pctEl.textContent   = `${streak}/30`;
     }
+
+    progressEl.style.display = "";
   }
 
   function render({ user, ledger, redemptions, claims }) {
