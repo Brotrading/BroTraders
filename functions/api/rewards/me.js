@@ -57,6 +57,12 @@ export async function onRequestGet(context) {
   const lastClaimed   = row.streak_claimed_date || null;
   const claimedToday  = lastClaimed === today;
   const canRestore    = !claimedToday && lastClaimed === dayBefore;
+  // Streak is "broken" when the user had an active streak but missed 2+ days
+  // (not claimed today, not claimable to continue from yesterday, not restorable from day-before).
+  const streakBroken  = !claimedToday
+    && (row.login_streak || 0) > 0
+    && lastClaimed !== yesterday
+    && lastClaimed !== dayBefore;
 
   return jsonResponse({
     user: {
@@ -74,6 +80,7 @@ export async function onRequestGet(context) {
       streak_best: row.streak_best || 0,
       claimed_today: claimedToday,
       can_restore: canRestore,
+      streak_broken: streakBroken,
     },
     ledger: ledger.results || [],
     redemptions: redemptions.results || [],
