@@ -98,10 +98,10 @@ export async function onRequestPost(context) {
   // Base daily pts
   const dailyPts = rateFor("daily_login", isPro);
 
-  // Milestone bonus
+  // Milestone bonus — day 7 once, then every 30 days (30, 60, 90, …) indefinitely
   let milestonePts = 0;
-  if (newStreak === 7)  milestonePts = STREAK_MILESTONE_7;
-  if (newStreak === 30) milestonePts = STREAK_MILESTONE_30;
+  if (newStreak === 7)                          milestonePts = STREAK_MILESTONE_7;
+  else if (newStreak > 0 && newStreak % 30 === 0) milestonePts = STREAK_MILESTONE_30;
 
   const totalAwarded = dailyPts + milestonePts;
 
