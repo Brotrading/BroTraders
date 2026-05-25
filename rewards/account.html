@@ -66,26 +66,18 @@
       </div>
     </div>
 
-    <!-- Progress bar: continuous 0→30 with checkpoint at day 7 -->
+    <!-- Progress bar: next milestone always at right end, achieved milestone as gold left anchor -->
     <div id="streakProgress" style="margin-top:20px; display:none;">
       <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:8px;">
-        <span id="streakProgressLabel">Progress to 7-day milestone · +500 pts</span>
-        <span id="streakProgressPct" style="font-weight:600; color:var(--rw-text);">0/30</span>
+        <span id="streakProgressLabel">Progress to 7-day streak · +500 pts</span>
+        <span id="streakProgressPct" style="font-weight:600; color:var(--rw-text);">0/7</span>
       </div>
-      <!-- Bar wrapper (position:relative so checkpoint can overlay) -->
-      <div style="position:relative;">
-        <!-- Track + fill (overflow:hidden clips the fill) -->
-        <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:10px; overflow:hidden;">
-          <div id="streakBarFill" style="height:100%; width:0%; background:linear-gradient(90deg,#f59e0b,#f97316); border-radius:6px; transition:width 0.5s ease;"></div>
-        </div>
-        <!-- Checkpoint dot at day 7 (7/30 = 23.33%) — overlays the track -->
-        <div id="streakCheckpoint7" style="position:absolute; left:23.33%; top:50%; transform:translate(-50%,-50%); width:14px; height:14px; border-radius:50%; background:var(--rw-panel); border:2px solid rgba(255,255,255,0.15); transition:all 0.4s; z-index:2;"></div>
+      <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:10px; overflow:hidden;">
+        <div id="streakBarFill" style="height:100%; width:0%; background:linear-gradient(90deg,#f59e0b,#f97316); border-radius:6px; transition:width 0.5s ease;"></div>
       </div>
-      <!-- Milestone labels below bar -->
-      <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--rw-text-2); margin-top:6px; position:relative;" id="streakBarLabels">
-        <span id="streakBarLabelStart">Day 1</span>
-        <span style="position:absolute; left:23.33%; transform:translateX(-50%);" id="streakCheckpointLabel">🎯 Day 7</span>
-        <span id="streakBarLabelEnd">🏆 Day 30</span>
+      <div style="display:flex; justify-content:space-between; font-size:11px; margin-top:6px;">
+        <span id="streakBarLabelStart" style="color:var(--rw-text-2);">Day 1</span>
+        <span id="streakBarLabelEnd" style="color:var(--rw-text-2);">🏆 Day 7</span>
       </div>
     </div>
 
@@ -210,12 +202,12 @@
     const restoreBtn = document.getElementById("restoreStreakBtn");
     const progressEl = document.getElementById("streakProgress");
     const barFill    = document.getElementById("streakBarFill");
-    const checkpoint = document.getElementById("streakCheckpoint7");
     const labelEl    = document.getElementById("streakProgressLabel");
     const pctEl      = document.getElementById("streakProgressPct");
+    const labelStart = document.getElementById("streakBarLabelStart");
+    const labelEnd   = document.getElementById("streakBarLabelEnd");
 
     if (streakBroken) {
-      // ── Broken streak state ─────────────────────────────────────────────
       flameEl.style.filter  = "grayscale(1)";
       numEl.style.color     = "var(--rw-text-2)";
       numEl.textContent     = streak;
@@ -229,7 +221,6 @@
       return;
     }
 
-    // ── Normal state ────────────────────────────────────────────────────
     flameEl.style.filter = "";
     numEl.style.color    = "#f97316";
     numEl.textContent    = streak;
@@ -248,49 +239,43 @@
     claimBtn.textContent = claimed ? "Claimed today ✓" : "Claim today's bonus";
     restoreBtn.style.display = canRestore ? "" : "none";
 
-    // ── Progress bar ────────────────────────────────────────────────────
-    // First cycle (days 1–30): continuous bar with day-7 checkpoint.
-    // Subsequent cycles (31+): cyclic bar resetting every 30 days — big number is the anchor.
     progressEl.style.display = "";
 
-    const labelStart      = document.getElementById("streakBarLabelStart");
-    const labelEnd        = document.getElementById("streakBarLabelEnd");
-    const checkpointLabel = document.getElementById("streakCheckpointLabel");
+    // ── Progress bar ────────────────────────────────────────────────────
+    // Next milestone is always at the RIGHT end of the bar.
+    // The achieved milestone (if any) stays visible as a gold label on the LEFT.
+    // Phase 1 (0–6):  Day 1 → 🏆 Day 7   (+500 pts)
+    // Phase 2 (7–29): ✓ Day 7 → 🏆 Day 30 (+2,000 pts)
+    // Phase 3+ (30+): ✓ Day N → 🏆 Day N+30 (+2,000 pts), cyclic every 30 days
 
-    if (streak < 30) {
-      // First cycle: fill 0→30 with day-7 checkpoint
-      barFill.style.width           = `${(streak / 30) * 100}%`;
-      checkpoint.style.display      = "";
-      checkpointLabel.style.display = "";
-      if (streak >= 7) {
-        checkpoint.style.background  = "#f59e0b";
-        checkpoint.style.borderColor = "#f59e0b";
-        checkpoint.style.color       = "#fff";
-      } else {
-        checkpoint.style.background  = "var(--rw-panel)";
-        checkpoint.style.borderColor = "rgba(255,255,255,0.15)";
-        checkpoint.style.color       = "var(--rw-text-2)";
-      }
-      labelEl.textContent  = streak >= 7
-        ? "Progress to 30-day milestone · +2,000 pts"
-        : "Progress to 7-day milestone · +500 pts";
-      pctEl.textContent    = `${streak}/30`;
+    let barPct;
+
+    if (streak < 7) {
+      barPct = (streak / 7) * 100;
+      labelEl.textContent    = "Progress to 7-day streak · +500 pts";
+      pctEl.textContent      = `${streak}/7`;
       labelStart.textContent = "Day 1";
+      labelStart.style.color = "var(--rw-text-2)";
+      labelEnd.textContent   = "🏆 Day 7";
+    } else if (streak < 30) {
+      barPct = ((streak - 7) / 23) * 100;
+      labelEl.textContent    = "Progress to 30-day streak · +2,000 pts";
+      pctEl.textContent      = `${streak}/30`;
+      labelStart.textContent = "✓ Day 7";
+      labelStart.style.color = "#f59e0b";
       labelEnd.textContent   = "🏆 Day 30";
-
     } else {
-      // Cyclic: every 30 days is a new goal (+2,000 pts each time)
-      const cycleStart      = Math.floor(streak / 30) * 30;
-      const nextMilestone   = cycleStart + 30;
-      const cycleProgress   = streak - cycleStart;
-      barFill.style.width           = `${(cycleProgress / 30) * 100}%`;
-      checkpoint.style.display      = "none";
-      checkpointLabel.style.display = "none";
-      labelEl.textContent           = `Progress to day-${nextMilestone} milestone · +2,000 pts`;
-      pctEl.textContent             = `${streak}/${nextMilestone}`;
-      labelStart.textContent        = `Day ${cycleStart + 1}`;
-      labelEnd.textContent          = `🏆 Day ${nextMilestone}`;
+      const cycleStart    = Math.floor(streak / 30) * 30;
+      const nextMilestone = cycleStart + 30;
+      barPct = ((streak - cycleStart) / 30) * 100;
+      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · +2,000 pts`;
+      pctEl.textContent      = `${streak}/${nextMilestone}`;
+      labelStart.textContent = `✓ Day ${cycleStart}`;
+      labelStart.style.color = "#f59e0b";
+      labelEnd.textContent   = `🏆 Day ${nextMilestone}`;
     }
+
+    barFill.style.width = `${barPct}%`;
   }
 
   function render({ user, ledger, redemptions, claims }) {
