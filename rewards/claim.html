@@ -240,7 +240,7 @@
   document.getElementById("amountEur").addEventListener("input", (e) => {
     const eur = parseFloat(e.target.value);
     const el = document.getElementById("ptsEstimate");
-    el.textContent = eur > 0 ? `≈ ${estimatePts(eur).toLocaleString("en-US")} pts` : "";
+    el.textContent = eur > 0 ? `${estimatePts(eur).toLocaleString("en-US")} pts if approved` : "";
   });
 
   // ── Proof upload ───────────────────────────────────────────────────────
@@ -380,7 +380,7 @@
       }
 
       const pts = data.claim?.points_pending || estimatePts(amountEur);
-      document.getElementById("ptsMessage").textContent = `~${pts.toLocaleString("en-US")} pts will be awarded once approved.`;
+      document.getElementById("ptsMessage").textContent = `${pts.toLocaleString("en-US")} pts pending approval.`;
       document.getElementById("claimForm").style.display = "none";
       document.getElementById("successMsg").style.display = "block";
     } catch {
