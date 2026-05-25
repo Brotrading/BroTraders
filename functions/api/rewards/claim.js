@@ -43,7 +43,7 @@ const FIRM_NAMES = {
 const VALID_SLUGS     = new Set(Object.keys(FIRM_NAMES));
 const ALLOWED_MIME    = new Set(["image/jpeg", "image/png", "image/webp", "application/pdf"]);
 const MAX_PROOF_B64   = 700_000;   // ~500 KB raw file → ~680 KB base64
-const MAX_CLAIMS_MONTH = 5;        // max pending+approved claims per rolling 30 days per user
+// MAX_CLAIMS_MONTH intentionally removed — to be decided with Mike before enabling.
 
 // Low  : ≤€100 + click recorded
 // Medium: ≤€100 + no click  OR  €100–€500 + click
@@ -105,19 +105,6 @@ export async function onRequestPost(context) {
   // Purchase date must not be before account creation date
   const accountCreatedDateStr = userRow.created_at.slice(0, 10);
   if (purchaseDateStr < accountCreatedDateStr) return jsonError("purchase_before_account", 400);
-
-  // ── Monthly cap ────────────────────────────────────────────────────────
-  const thirtyDaysAgoISO = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-  const monthlyCount = await env.DB
-    .prepare(
-      `SELECT COUNT(*) AS cnt FROM purchase_claims
-       WHERE user_id = ? AND created_at > ? AND status != 'rejected'`
-    )
-    .bind(user.id, thirtyDaysAgoISO)
-    .first();
-  if ((monthlyCount?.cnt || 0) >= MAX_CLAIMS_MONTH) {
-    return jsonError("monthly_cap_exceeded", 429);
-  }
 
   // ── Max 1 pending claim per firm per user ──────────────────────────────
   const existing = await env.DB
