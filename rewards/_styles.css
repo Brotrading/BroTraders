@@ -81,7 +81,7 @@ body.rw-body {
 .rw-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .rw-btn.ghost { background: var(--rw-panel-2); border: 1px solid var(--rw-border); }
 .rw-btn.danger { background: var(--rw-red); }
-.rw-btn.full { width: 100%; }
+.rw-btn.full { width: 100%; box-sizing: border-box; }
 
 .rw-google-btn {
   width: 100%;
