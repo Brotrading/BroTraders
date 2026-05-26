@@ -98,7 +98,10 @@
       <button class="rw-btn ghost claim-filter" data-filter="low" style="padding:4px 12px; font-size:12px; color:#4ade80;">Low risk</button>
       <button class="rw-btn ghost claim-filter" data-filter="medium" style="padding:4px 12px; font-size:12px; color:#facc15;">Medium risk</button>
       <button class="rw-btn ghost claim-filter" data-filter="high" style="padding:4px 12px; font-size:12px; color:#f87171;">High risk</button>
-      <button class="rw-btn ghost claim-filter" data-filter="suspicious" style="padding:4px 12px; font-size:12px;">⚠️ No click</button>
+      <button class="rw-btn ghost claim-filter" data-filter="suspicious" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ No click</button>
+      <button class="rw-btn ghost claim-filter" data-filter="click_7" style="padding:4px 12px; font-size:12px; color:#4ade80;">✓ Click ≤7d</button>
+      <button class="rw-btn ghost claim-filter" data-filter="click_30" style="padding:4px 12px; font-size:12px; color:#fb923c;">⚠ Click 8-30d</button>
+      <button class="rw-btn ghost claim-filter" data-filter="click_old" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ Click 31d+</button>
     </div>
     <div id="pendingClaims"></div>
   </section>
@@ -300,8 +303,6 @@
     if (days <= 7)  return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
       color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click ${label}</span>`;
     if (days <= 30) return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
-      color:#60a5fa; background:rgba(96,165,250,0.1); border:1px solid rgba(96,165,250,0.3);">✓ Click ${label}</span>`;
-    if (days <= 60) return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
       color:#fb923c; background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.3);">⚠ Click ${label}</span>`;
     return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
       color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ Click ${label}</span>`;
@@ -310,12 +311,17 @@
   let _allClaims = [];
   let _activeFilter = "all";
 
+  function _clickDays(c) {
+    if (!c.last_click_at) return null;
+    return Math.floor((Date.now() - new Date(c.last_click_at).getTime()) / 86_400_000);
+  }
+
   function applyClaimFilter(rows, filter) {
     if (filter === "all")        return rows;
-    if (filter === "suspicious") return rows.filter(c => {
-      if (!c.last_click_at) return true;
-      return Math.floor((Date.now() - new Date(c.last_click_at).getTime()) / 86_400_000) > 60;
-    });
+    if (filter === "suspicious") return rows.filter(c => !c.last_click_at);
+    if (filter === "click_7")    return rows.filter(c => { const d = _clickDays(c); return d !== null && d <= 7; });
+    if (filter === "click_30")   return rows.filter(c => { const d = _clickDays(c); return d !== null && d > 7 && d <= 30; });
+    if (filter === "click_old")  return rows.filter(c => { const d = _clickDays(c); return d === null || d > 30; });
     return rows.filter(c => c.risk_level === filter);
   }
 

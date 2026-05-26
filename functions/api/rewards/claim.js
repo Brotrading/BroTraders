@@ -45,12 +45,13 @@ const ALLOWED_MIME    = new Set(["image/jpeg", "image/png", "image/webp", "appli
 const MAX_PROOF_B64   = 700_000;   // ~500 KB raw file → ~680 KB base64
 // MAX_CLAIMS_MONTH intentionally removed — to be decided with Mike before enabling.
 
-// Low  : ≤€100 + click recorded
-// Medium: ≤€100 + no click  OR  €100–€500 + click
-// High : >€500  OR  (>€100 + no click)
-function computeRiskLevel(amountEur, isSuspicious) {
-  if (amountEur > 500 || (isSuspicious && amountEur > 100)) return "high";
-  if (amountEur > 100 || isSuspicious)                      return "medium";
+// Low   : click ≤7 days ago + amount ≤ €500
+// Medium: click 8–30 days ago + amount ≤ €500
+// High  : no click | click > 30 days | amount > €500
+function computeRiskLevel(amountEur, daysSinceClick) {
+  if (amountEur > 500)                                    return "high";
+  if (daysSinceClick === null || daysSinceClick > 30)     return "high";
+  if (daysSinceClick > 7)                                 return "medium";
   return "low";
 }
 
@@ -116,18 +117,22 @@ export async function onRequestPost(context) {
     .first();
   if (existing) return jsonError("claim_already_pending", 409);
 
-  // ── Click correlation — flag if no attributed click in past 60 days ────
+  // ── Click correlation ──────────────────────────────────────────────────
   const clickCheck = await env.DB
     .prepare(
-      `SELECT COUNT(*) AS cnt FROM clicks
-       WHERE user_id = ? AND firm = ? AND created_at > datetime('now', '-60 days')`
+      `SELECT MAX(created_at) AS last_click FROM clicks
+       WHERE user_id = ? AND firm = ?`
     )
     .bind(user.id, firmSlug)
     .first();
-  const isSuspicious = (clickCheck?.cnt || 0) === 0 ? 1 : 0;
+  const lastClick = clickCheck?.last_click ?? null;
+  const daysSinceClick = lastClick
+    ? Math.floor((Date.now() - new Date(lastClick).getTime()) / 86_400_000)
+    : null;
+  const isSuspicious = (daysSinceClick === null || daysSinceClick > 30) ? 1 : 0;
 
   // ── Risk level ─────────────────────────────────────────────────────────
-  const riskLevel = computeRiskLevel(amountEur, isSuspicious === 1);
+  const riskLevel = computeRiskLevel(amountEur, daysSinceClick);
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
