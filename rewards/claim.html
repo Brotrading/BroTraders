@@ -100,6 +100,27 @@
     padding: 0;
   }
   .proof-clear:hover { text-decoration: underline; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #1a1d2e;
+    border: 1px solid var(--rw-border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+  }
 </style>
 </head>
 <body class="rw-body">
@@ -144,6 +165,17 @@
         <option value="tradeify">Tradeify</option>
         <option value="yrm">YRM Prop</option>
       </select>
+
+      <div id="firmLinkedWarning" style="display:none; margin-top:12px;">
+        <div style="background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.35); border-radius:8px; padding:14px 16px;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="font-size:16px;">⚠</span>
+            <strong style="color:#fb923c; font-size:14px;">Account Not Linked</strong>
+          </div>
+          <p id="firmLinkedMsg" style="margin:0 0 14px; font-size:13px; color:var(--rw-text-2); line-height:1.5;"></p>
+          <button type="button" class="rw-btn" id="openLinkEmailBtn" style="font-size:13px;">✉ Link your account</button>
+        </div>
+      </div>
 
       <label class="rw-label" for="amountEur" style="margin-top: 20px;">Purchase amount (€) <em style="color:var(--rw-red);">*</em></label>
       <input class="rw-input" type="number" id="amountEur" min="1" max="50000" step="0.01" placeholder="e.g. 149.00" required />
@@ -191,6 +223,18 @@
       <a class="rw-btn ghost" href="./account.html" style="text-decoration:none;">Back to your account</a>
     </div>
   </div>
+
+<div class="modal-overlay" id="linkEmailModal">
+  <div class="modal-box">
+    <button type="button" id="closeLinkEmailBtn" style="position:absolute; top:14px; right:16px; background:none; border:none; color:var(--rw-text-2); font-size:20px; cursor:pointer; line-height:1;">✕</button>
+    <h3 style="margin:0 0 8px; font-size:18px;">Link your account</h3>
+    <p id="linkEmailModalDesc" style="font-size:13px; color:var(--rw-text-2); margin:0 0 20px; line-height:1.5;"></p>
+    <label class="rw-label" for="linkEmailInput">Email address</label>
+    <input class="rw-input" type="email" id="linkEmailInput" placeholder="your@email.com" autocomplete="email" />
+    <div id="linkEmailErr" style="font-size:12px; color:var(--rw-red); min-height:16px; margin-top:6px;"></div>
+    <button type="button" class="rw-btn" id="saveLinkEmailBtn" style="margin-top:16px; width:100%;">Save email</button>
+  </div>
+</div>
 
 </main>
 
@@ -373,23 +417,8 @@
 
       if (!res.ok) {
         if (data.error === "firm_email_not_set") {
-          const sel      = document.getElementById("firmSelect");
-          const firmName = sel.options[sel.selectedIndex]?.text || firmSlug;
-          err.innerHTML = `
-            <div style="background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.35); border-radius:8px; padding:14px 16px;">
-              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                <span style="font-size:16px;">⚠</span>
-                <strong style="color:#fb923c; font-size:14px;">Account Not Linked</strong>
-              </div>
-              <p style="margin:0 0 14px; font-size:13px; color:var(--rw-text-2); line-height:1.5;">
-                You need to add your <strong style="color:var(--rw-text);">${firmName}</strong> email address before you can submit a claim.
-                This is how we match your purchase to your account.
-              </p>
-              <a href="./account.html#firm-emails" class="rw-btn" style="display:inline-flex; align-items:center; gap:6px; font-size:13px;">
-                ✉ Link your account
-              </a>
-            </div>
-          `;
+          checkFirmLink(firmSlug);
+          openLinkEmailModal();
           btn.disabled = false;
           btn.textContent = "Submit claim";
           return;
@@ -427,6 +456,105 @@
     }
   });
 
+  // ── Firm email linking ─────────────────────────────────────────────────
+  let _linkedEmails = {};
+
+  async function loadLinkedEmails() {
+    try {
+      const res = await BroAuth.authedFetch("/api/rewards/firm-email");
+      if (!res.ok) return;
+      const data = await res.json();
+      _linkedEmails = {};
+      (data.firm_emails || []).forEach(r => { _linkedEmails[r.firm_slug] = r; });
+    } catch {}
+  }
+
+  function checkFirmLink(slug) {
+    const warning   = document.getElementById("firmLinkedWarning");
+    const submitBtn = document.getElementById("submitBtn");
+    if (!slug) { warning.style.display = "none"; submitBtn.disabled = false; return; }
+    if (_linkedEmails[slug]) {
+      warning.style.display = "none";
+      submitBtn.disabled = false;
+    } else {
+      const sel      = document.getElementById("firmSelect");
+      const firmName = sel.options[sel.selectedIndex]?.text || slug;
+      document.getElementById("firmLinkedMsg").innerHTML =
+        `You need to add your <strong style="color:var(--rw-text);">${firmName}</strong> email address before you can submit a claim. This is how we match your purchase to your account.`;
+      warning.style.display = "";
+      submitBtn.disabled = true;
+    }
+  }
+
+  function openLinkEmailModal() {
+    const slug     = document.getElementById("firmSelect").value;
+    const sel      = document.getElementById("firmSelect");
+    const firmName = sel.options[sel.selectedIndex]?.text || slug;
+    document.getElementById("linkEmailModalDesc").innerHTML =
+      `Enter the email address you used to register at <strong>${firmName}</strong>. This is used to verify your purchase.`;
+    document.getElementById("linkEmailInput").value = "";
+    document.getElementById("linkEmailErr").textContent = "";
+    document.getElementById("saveLinkEmailBtn").disabled = false;
+    document.getElementById("saveLinkEmailBtn").textContent = "Save email";
+    document.getElementById("linkEmailModal").classList.add("open");
+    setTimeout(() => document.getElementById("linkEmailInput").focus(), 50);
+  }
+
+  document.getElementById("firmSelect").addEventListener("change", () => {
+    checkFirmLink(document.getElementById("firmSelect").value);
+  });
+
+  document.getElementById("openLinkEmailBtn").addEventListener("click", openLinkEmailModal);
+
+  document.getElementById("closeLinkEmailBtn").addEventListener("click", () => {
+    document.getElementById("linkEmailModal").classList.remove("open");
+  });
+
+  document.getElementById("linkEmailModal").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) document.getElementById("linkEmailModal").classList.remove("open");
+  });
+
+  document.getElementById("saveLinkEmailBtn").addEventListener("click", async () => {
+    const slug    = document.getElementById("firmSelect").value;
+    const email   = document.getElementById("linkEmailInput").value.trim().toLowerCase();
+    const errEl   = document.getElementById("linkEmailErr");
+    const saveBtn = document.getElementById("saveLinkEmailBtn");
+    errEl.textContent = "";
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = "Enter a valid email address.";
+      return;
+    }
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving…";
+
+    try {
+      const res  = await BroAuth.authedFetch("/api/rewards/firm-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firm_slug: slug, email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        _linkedEmails[slug] = { email, locked: 0 };
+        document.getElementById("linkEmailModal").classList.remove("open");
+        checkFirmLink(slug);
+      } else {
+        const errs = {
+          invalid_email:     "Enter a valid email address.",
+          firm_email_locked: "This email is locked and cannot be changed.",
+        };
+        errEl.textContent = errs[data.error] || `Error: ${data.error}`;
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save email";
+      }
+    } catch {
+      errEl.textContent = "Something went wrong. Please try again.";
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Save email";
+    }
+  });
+
   // ── Auth & init ────────────────────────────────────────────────────────
   BroAuth.ready.then(async () => {
     if (!BroAuth.getSession()) {
@@ -435,6 +563,8 @@
     }
     document.getElementById("loadingShell").style.display = "none";
     document.getElementById("main").style.display = "block";
+
+    await loadLinkedEmails();
 
     try {
       const res = await BroAuth.authedFetch("/api/rewards/me");
