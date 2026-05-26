@@ -336,7 +336,7 @@
   document.getElementById("claimForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const err = document.getElementById("formErr");
-    err.textContent = "";
+    err.innerHTML = "";
 
     const firmSlug    = document.getElementById("firmSelect").value;
     const amountEur   = parseFloat(document.getElementById("amountEur").value);
@@ -372,6 +372,29 @@
       const data = await res.json();
 
       if (!res.ok) {
+        if (data.error === "firm_email_not_set") {
+          const sel      = document.getElementById("firmSelect");
+          const firmName = sel.options[sel.selectedIndex]?.text || firmSlug;
+          err.innerHTML = `
+            <div style="background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.35); border-radius:8px; padding:14px 16px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:16px;">⚠</span>
+                <strong style="color:#fb923c; font-size:14px;">Account Not Linked</strong>
+              </div>
+              <p style="margin:0 0 14px; font-size:13px; color:var(--rw-text-2); line-height:1.5;">
+                You need to add your <strong style="color:var(--rw-text);">${firmName}</strong> email address before you can submit a claim.
+                This is how we match your purchase to your account.
+              </p>
+              <a href="./account.html#firm-emails" class="rw-btn" style="display:inline-flex; align-items:center; gap:6px; font-size:13px;">
+                ✉ Link your account
+              </a>
+            </div>
+          `;
+          btn.disabled = false;
+          btn.textContent = "Submit claim";
+          return;
+        }
+
         const msgs = {
           claim_already_pending:  "You already have a pending claim for this firm. Wait for it to be reviewed before submitting another.",
           order_ref_required:     "Please enter your order reference number from the prop firm.",
