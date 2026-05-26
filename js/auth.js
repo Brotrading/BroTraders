@@ -73,45 +73,49 @@
   }
 
   async function init() {
-    const createClient = await loadSupabase();
-    client = createClient(cfg.url, cfg.anonKey, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true,
-      },
-    });
+    try {
+      const createClient = await loadSupabase();
+      client = createClient(cfg.url, cfg.anonKey, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+        },
+      });
 
-    const { data } = await client.auth.getSession();
-    currentSession = data.session || null;
+      const { data } = await client.auth.getSession();
+      currentSession = data?.session || null;
 
-    // Store user ID in a simple key so click-attribution.js can read it without
-    // having to parse the Supabase token format (which varies across SDK versions).
-    if (currentSession?.user?.id) {
-      localStorage.setItem("bro_uid", currentSession.user.id);
-    }
-
-    client.auth.onAuthStateChange(async (event, session) => {
-      currentSession = session || null;
+      // Store user ID in a simple key so click-attribution.js can read it without
+      // having to parse the Supabase token format (which varies across SDK versions).
       if (currentSession?.user?.id) {
         localStorage.setItem("bro_uid", currentSession.user.id);
-      } else if (event === "SIGNED_OUT") {
-        localStorage.removeItem("bro_uid");
       }
-      // Sync on first sign-in or token refresh.
-      if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
+
+      client.auth.onAuthStateChange(async (event, session) => {
+        currentSession = session || null;
+        if (currentSession?.user?.id) {
+          localStorage.setItem("bro_uid", currentSession.user.id);
+        } else if (event === "SIGNED_OUT") {
+          localStorage.removeItem("bro_uid");
+        }
+        // Sync on first sign-in or token refresh.
+        if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
+          await syncToD1();
+        }
+        notify();
+      });
+
+      // Fire initial sync if already signed in.
+      if (currentSession) {
         await syncToD1();
       }
+    } catch (e) {
+      console.error("[auth] init failed:", e);
+    } finally {
+      resolveReady();
       notify();
-    });
-
-    // Fire initial sync if already signed in.
-    if (currentSession) {
-      await syncToD1();
     }
-
-    resolveReady();
-    notify();
   }
 
   function captureReferralFromURL() {
