@@ -383,7 +383,10 @@
                 ${c.order_ref ? `Ref: <code>${c.order_ref}</code>` : `<em style="color:var(--rw-red);">No order ref</em>`}
                 <br>
                 ${c.firm_email
-                  ? `Firm email: <strong>${c.firm_email}</strong>${c.firm_email_locked ? ` <span style="color:#4ade80; font-size:10px;">✓ locked</span>` : ` <span style="color:#facc15; font-size:10px;">⚠ not yet locked</span>`}`
+                  ? `Firm email: <strong>${c.firm_email}</strong>
+                     ${c.firm_email_verified  ? `<span style="color:#4ade80; font-size:10px; margin-left:4px;">✓ verified</span>` : `<span style="color:#f87171; font-size:10px; margin-left:4px;">⚠ unverified</span>`}
+                     ${c.firm_email_locked    ? `<span style="color:#4ade80; font-size:10px; margin-left:4px;">✓ locked</span>` : ""}
+                     ${c.shared_email_count > 0 ? `<span style="color:#f87171; font-weight:700; font-size:11px; margin-left:6px;">⚠ used by ${c.shared_email_count} other account${c.shared_email_count > 1 ? "s" : ""}!</span>` : ""}`
                   : `<span style="color:#f87171;">No firm email set</span>`}
               </div>
             </div>

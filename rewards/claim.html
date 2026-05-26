@@ -227,12 +227,30 @@
 <div class="modal-overlay" id="linkEmailModal">
   <div class="modal-box">
     <button type="button" id="closeLinkEmailBtn" style="position:absolute; top:14px; right:16px; background:none; border:none; color:var(--rw-text-2); font-size:20px; cursor:pointer; line-height:1;">✕</button>
-    <h3 style="margin:0 0 8px; font-size:18px;">Link your account</h3>
-    <p id="linkEmailModalDesc" style="font-size:13px; color:var(--rw-text-2); margin:0 0 20px; line-height:1.5;"></p>
-    <label class="rw-label" for="linkEmailInput">Email address</label>
-    <input class="rw-input" type="email" id="linkEmailInput" placeholder="your@email.com" autocomplete="email" />
-    <div id="linkEmailErr" style="font-size:12px; color:var(--rw-red); min-height:16px; margin-top:6px;"></div>
-    <button type="button" class="rw-btn" id="saveLinkEmailBtn" style="margin-top:16px; width:100%;">Save email</button>
+
+    <!-- Step 1: enter email -->
+    <div id="linkStep1">
+      <h3 style="margin:0 0 8px; font-size:18px;">Link your account</h3>
+      <p id="linkEmailModalDesc" style="font-size:13px; color:var(--rw-text-2); margin:0 0 20px; line-height:1.5;"></p>
+      <label class="rw-label" for="linkEmailInput">Email address at this firm</label>
+      <input class="rw-input" type="email" id="linkEmailInput" placeholder="your@email.com" autocomplete="email" />
+      <div id="linkEmailErr" style="font-size:12px; color:var(--rw-red); min-height:16px; margin-top:6px;"></div>
+      <button type="button" class="rw-btn" id="saveLinkEmailBtn" style="margin-top:16px; width:100%;">Save email</button>
+    </div>
+
+    <!-- Step 2: enter verification code -->
+    <div id="linkStep2" style="display:none;">
+      <h3 style="margin:0 0 8px; font-size:18px;">Verify your email</h3>
+      <p id="linkCodeDesc" style="font-size:13px; color:var(--rw-text-2); margin:0 0 20px; line-height:1.5;"></p>
+      <label class="rw-label" for="linkCodeInput">6-digit verification code</label>
+      <input class="rw-input" type="text" id="linkCodeInput" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code" style="letter-spacing:6px; font-size:22px; text-align:center;" />
+      <div id="linkCodeErr" style="font-size:12px; color:var(--rw-red); min-height:16px; margin-top:6px;"></div>
+      <button type="button" class="rw-btn" id="verifyCodeBtn" style="margin-top:16px; width:100%;">Verify</button>
+      <div style="display:flex; justify-content:space-between; margin-top:12px; font-size:12px;">
+        <button type="button" id="changeEmailBtn" style="background:none; border:none; color:var(--rw-text-2); cursor:pointer; padding:0; text-decoration:underline;">Change email</button>
+        <button type="button" id="resendCodeBtn" style="background:none; border:none; color:var(--rw-text-2); cursor:pointer; padding:0; text-decoration:underline;">Resend code</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -416,7 +434,7 @@
       const data = await res.json();
 
       if (!res.ok) {
-        if (data.error === "firm_email_not_set") {
+        if (data.error === "firm_email_not_set" || data.error === "firm_email_not_verified") {
           checkFirmLink(firmSlug);
           openLinkEmailModal();
           btn.disabled = false;
@@ -457,7 +475,7 @@
   });
 
   // ── Firm email linking ─────────────────────────────────────────────────
-  let _linkedEmails = {};
+  let _linkedEmails = {}; // { firm_slug: { email, verified, locked } }
 
   async function loadLinkedEmails() {
     try {
@@ -469,16 +487,27 @@
     } catch {}
   }
 
+  function getFirmName() {
+    const sel = document.getElementById("firmSelect");
+    return sel.options[sel.selectedIndex]?.text || document.getElementById("firmSelect").value;
+  }
+
   function checkFirmLink(slug) {
     const warning   = document.getElementById("firmLinkedWarning");
     const submitBtn = document.getElementById("submitBtn");
     if (!slug) { warning.style.display = "none"; submitBtn.disabled = false; return; }
-    if (_linkedEmails[slug]) {
+    const linked = _linkedEmails[slug];
+    if (linked?.verified) {
       warning.style.display = "none";
       submitBtn.disabled = false;
+    } else if (linked && !linked.verified) {
+      const firmName = getFirmName();
+      document.getElementById("firmLinkedMsg").innerHTML =
+        `Your <strong style="color:var(--rw-text);">${firmName}</strong> email address is not yet verified. Check your inbox for the verification code.`;
+      warning.style.display = "";
+      submitBtn.disabled = true;
     } else {
-      const sel      = document.getElementById("firmSelect");
-      const firmName = sel.options[sel.selectedIndex]?.text || slug;
+      const firmName = getFirmName();
       document.getElementById("firmLinkedMsg").innerHTML =
         `You need to add your <strong style="color:var(--rw-text);">${firmName}</strong> email address before you can submit a claim. This is how we match your purchase to your account.`;
       warning.style.display = "";
@@ -486,32 +515,67 @@
     }
   }
 
-  function openLinkEmailModal() {
+  function showModalStep(step) {
+    document.getElementById("linkStep1").style.display = step === 1 ? "" : "none";
+    document.getElementById("linkStep2").style.display = step === 2 ? "" : "none";
+  }
+
+  function openLinkEmailModal(forceStep) {
     const slug     = document.getElementById("firmSelect").value;
-    const sel      = document.getElementById("firmSelect");
-    const firmName = sel.options[sel.selectedIndex]?.text || slug;
+    const firmName = getFirmName();
+    const linked   = _linkedEmails[slug];
+
     document.getElementById("linkEmailModalDesc").innerHTML =
       `Enter the email address you used to register at <strong>${firmName}</strong>. This is used to verify your purchase.`;
-    document.getElementById("linkEmailInput").value = "";
     document.getElementById("linkEmailErr").textContent = "";
     document.getElementById("saveLinkEmailBtn").disabled = false;
     document.getElementById("saveLinkEmailBtn").textContent = "Save email";
+
+    if (forceStep === 2 || (!forceStep && linked && !linked.verified)) {
+      document.getElementById("linkCodeDesc").innerHTML =
+        `We sent a 6-digit code to <strong>${linked?.email || ""}</strong>. Enter it below to verify.`;
+      document.getElementById("linkCodeInput").value = "";
+      document.getElementById("linkCodeErr").textContent = "";
+      document.getElementById("verifyCodeBtn").disabled = false;
+      document.getElementById("verifyCodeBtn").textContent = "Verify";
+      showModalStep(2);
+      setTimeout(() => document.getElementById("linkCodeInput").focus(), 50);
+    } else {
+      document.getElementById("linkEmailInput").value = linked?.email || "";
+      showModalStep(1);
+      setTimeout(() => document.getElementById("linkEmailInput").focus(), 50);
+    }
     document.getElementById("linkEmailModal").classList.add("open");
-    setTimeout(() => document.getElementById("linkEmailInput").focus(), 50);
   }
 
   document.getElementById("firmSelect").addEventListener("change", () => {
     checkFirmLink(document.getElementById("firmSelect").value);
   });
 
-  document.getElementById("openLinkEmailBtn").addEventListener("click", openLinkEmailModal);
-
+  document.getElementById("openLinkEmailBtn").addEventListener("click", () => openLinkEmailModal());
   document.getElementById("closeLinkEmailBtn").addEventListener("click", () => {
     document.getElementById("linkEmailModal").classList.remove("open");
   });
-
   document.getElementById("linkEmailModal").addEventListener("click", (e) => {
     if (e.target === e.currentTarget) document.getElementById("linkEmailModal").classList.remove("open");
+  });
+  document.getElementById("changeEmailBtn").addEventListener("click", () => openLinkEmailModal(1));
+
+  document.getElementById("resendCodeBtn").addEventListener("click", async () => {
+    const slug = document.getElementById("firmSelect").value;
+    const btn  = document.getElementById("resendCodeBtn");
+    btn.textContent = "Sending…";
+    btn.disabled    = true;
+    try {
+      await BroAuth.authedFetch("/api/rewards/firm-email", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firm_slug: slug, action: "resend" }),
+      });
+      btn.textContent = "Sent!";
+      setTimeout(() => { btn.textContent = "Resend code"; btn.disabled = false; }, 3000);
+    } catch {
+      btn.textContent = "Resend code"; btn.disabled = false;
+    }
   });
 
   document.getElementById("saveLinkEmailBtn").addEventListener("click", async () => {
@@ -530,19 +594,31 @@
 
     try {
       const res  = await BroAuth.authedFetch("/api/rewards/firm-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ firm_slug: slug, email }),
       });
       const data = await res.json();
       if (res.ok) {
-        _linkedEmails[slug] = { email, locked: 0 };
-        document.getElementById("linkEmailModal").classList.remove("open");
-        checkFirmLink(slug);
+        _linkedEmails[slug] = { email, verified: data.verified ? 1 : 0, locked: 0 };
+        if (data.auto_verified) {
+          document.getElementById("linkEmailModal").classList.remove("open");
+          checkFirmLink(slug);
+        } else {
+          // transition to code step
+          document.getElementById("linkCodeDesc").innerHTML =
+            `We sent a 6-digit code to <strong>${email}</strong>. Enter it below to verify.`;
+          document.getElementById("linkCodeInput").value = "";
+          document.getElementById("linkCodeErr").textContent = "";
+          document.getElementById("verifyCodeBtn").disabled = false;
+          document.getElementById("verifyCodeBtn").textContent = "Verify";
+          showModalStep(2);
+          setTimeout(() => document.getElementById("linkCodeInput").focus(), 50);
+        }
       } else {
         const errs = {
-          invalid_email:     "Enter a valid email address.",
-          firm_email_locked: "This email is locked and cannot be changed.",
+          invalid_email:      "Enter a valid email address.",
+          firm_email_locked:  "This email is locked and cannot be changed.",
+          email_send_failed:  "Could not send verification email. Please try again later.",
         };
         errEl.textContent = errs[data.error] || `Error: ${data.error}`;
         saveBtn.disabled = false;
@@ -552,6 +628,44 @@
       errEl.textContent = "Something went wrong. Please try again.";
       saveBtn.disabled = false;
       saveBtn.textContent = "Save email";
+    }
+  });
+
+  document.getElementById("verifyCodeBtn").addEventListener("click", async () => {
+    const slug    = document.getElementById("firmSelect").value;
+    const code    = document.getElementById("linkCodeInput").value.trim();
+    const errEl   = document.getElementById("linkCodeErr");
+    const verBtn  = document.getElementById("verifyCodeBtn");
+    errEl.textContent = "";
+
+    if (!code || code.length !== 6) { errEl.textContent = "Enter the 6-digit code from your email."; return; }
+    verBtn.disabled = true;
+    verBtn.textContent = "Verifying…";
+
+    try {
+      const res  = await BroAuth.authedFetch("/api/rewards/firm-email", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firm_slug: slug, action: "verify", code }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        _linkedEmails[slug] = { ..._linkedEmails[slug], verified: 1 };
+        document.getElementById("linkEmailModal").classList.remove("open");
+        checkFirmLink(slug);
+      } else {
+        const errs = {
+          invalid_code:           "Incorrect code. Please try again.",
+          code_expired:           "This code has expired. Click "Resend code" to get a new one.",
+          no_pending_verification:"No pending verification found. Please save your email again.",
+        };
+        errEl.textContent = errs[data.error] || `Error: ${data.error}`;
+        verBtn.disabled = false;
+        verBtn.textContent = "Verify";
+      }
+    } catch {
+      errEl.textContent = "Something went wrong. Please try again.";
+      verBtn.disabled = false;
+      verBtn.textContent = "Verify";
     }
   });
 

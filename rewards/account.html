@@ -467,42 +467,61 @@
 
   async function loadFirmEmails() {
     const panel = document.getElementById("firmEmailsPanel");
-    const res = await BroAuth.authedFetch("/api/rewards/firm-email");
-    const data = res.ok ? await res.json() : { firm_emails: [] };
+    const res   = await BroAuth.authedFetch("/api/rewards/firm-email");
+    const data  = res.ok ? await res.json() : { firm_emails: [] };
     const emailMap = {};
     (data.firm_emails || []).forEach(r => { emailMap[r.firm_slug] = r; });
+    renderFirmEmails(emailMap);
+  }
 
+  function renderFirmEmails(emailMap) {
+    const panel = document.getElementById("firmEmailsPanel");
     panel.innerHTML = `
-      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;">
         ${FIRM_SLUGS.map(slug => {
-          const row    = emailMap[slug];
-          const locked = row?.locked === 1;
-          const val    = row?.email || "";
+          const row      = emailMap[slug];
+          const locked   = row?.locked   === 1;
+          const verified = row?.verified === 1;
+          const val      = row?.email    || "";
+          const needsVerification = row && !verified && !locked;
+
           return `
-            <div style="display:flex; flex-direction:column; gap:6px;">
-              <label class="rw-label" style="margin-bottom:0;">${FIRM_NAMES[slug]}</label>
+            <div style="display:flex; flex-direction:column; gap:6px;" id="fe-block-${slug}">
+              <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                <label class="rw-label" style="margin-bottom:0;">${FIRM_NAMES[slug]}</label>
+                ${verified ? `<span style="font-size:11px; color:#4ade80; font-weight:600;">✓ Verified</span>` : ""}
+                ${locked   ? `<span style="font-size:11px; color:#94a3b8;">· Locked</span>` : ""}
+              </div>
               <div style="display:flex; gap:6px; align-items:center;">
-                <input
-                  class="rw-input"
-                  id="fe-${slug}"
-                  type="email"
-                  placeholder="your@email.com"
+                <input class="rw-input" id="fe-${slug}" type="email" placeholder="your@email.com"
                   value="${val}"
                   ${locked ? "disabled" : ""}
-                  style="flex:1; font-size:13px; padding:6px 10px;${locked ? " opacity:0.5; cursor:not-allowed;" : ""}"
-                />
-                ${locked
-                  ? `<span style="font-size:11px; color:#4ade80; white-space:nowrap;">✓ Locked</span>`
-                  : `<button class="rw-btn ghost" data-fe-save="${slug}" style="padding:5px 12px; font-size:12px; white-space:nowrap;">Save</button>`
-                }
+                  style="flex:1; font-size:13px; padding:6px 10px;${locked ? " opacity:0.5; cursor:not-allowed;" : ""}"/>
+                ${locked ? "" : `<button class="rw-btn ghost" data-fe-save="${slug}" style="padding:5px 12px; font-size:12px; white-space:nowrap;">Save</button>`}
               </div>
-              <div id="fe-msg-${slug}" style="font-size:12px; min-height:16px;"></div>
+              ${needsVerification ? `
+                <div style="background:rgba(251,146,60,0.08); border:1px solid rgba(251,146,60,0.25); border-radius:6px; padding:10px 12px; margin-top:2px;">
+                  <div style="font-size:12px; color:#fb923c; font-weight:600; margin-bottom:6px;">⚠ Verification required</div>
+                  <div style="display:flex; gap:6px; align-items:center;">
+                    <input class="rw-input" id="fe-code-${slug}" type="text" placeholder="6-digit code"
+                      maxlength="6" inputmode="numeric"
+                      style="font-size:16px; letter-spacing:4px; text-align:center; padding:6px 10px; flex:1;" />
+                    <button class="rw-btn ghost" data-fe-verify="${slug}" style="padding:5px 12px; font-size:12px; white-space:nowrap;">Verify</button>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:12px; color:var(--rw-text-2);">
+                    <span>Check your inbox at <strong>${val}</strong></span>
+                    <button type="button" data-fe-resend="${slug}" style="background:none; border:none; color:var(--rw-text-2); cursor:pointer; padding:0; font-size:12px; text-decoration:underline;">Resend</button>
+                  </div>
+                </div>
+              ` : ""}
+              <div id="fe-msg-${slug}" style="font-size:12px; min-height:14px;"></div>
             </div>
           `;
         }).join("")}
       </div>
     `;
 
+    // Save handlers
     panel.querySelectorAll("button[data-fe-save]").forEach(btn => {
       btn.addEventListener("click", async () => {
         const slug  = btn.dataset.feSave;
@@ -514,18 +533,26 @@
         btn.disabled = true;
         try {
           const r = await BroAuth.authedFetch("/api/rewards/firm-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+            method: "POST", headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ firm_slug: slug, email }),
           });
           const d = await r.json();
           if (r.ok) {
-            msg.style.color = "var(--rw-green)";
-            msg.textContent = "Saved";
+            emailMap[slug] = { email, verified: d.auto_verified ? 1 : 0, locked: 0 };
+            if (d.auto_verified) {
+              msg.style.color = "var(--rw-green)";
+              msg.textContent = "✓ Verified";
+              renderFirmEmails(emailMap);
+            } else {
+              msg.style.color = "#fb923c";
+              msg.textContent = "Code sent — check your inbox.";
+              renderFirmEmails(emailMap);
+            }
           } else {
             const errs = {
-              invalid_email:      "Enter a valid email address.",
-              firm_email_locked:  "This email is locked and cannot be changed.",
+              invalid_email:     "Enter a valid email address.",
+              firm_email_locked: "This email is locked and cannot be changed.",
+              email_send_failed: "Could not send verification email. Please try again later.",
             };
             msg.style.color = "var(--rw-red)";
             msg.textContent = errs[d.error] || `Error: ${d.error}`;
@@ -535,6 +562,65 @@
           msg.style.color = "var(--rw-red)";
           msg.textContent = "Something went wrong. Please try again.";
           btn.disabled = false;
+        }
+      });
+    });
+
+    // Verify handlers
+    panel.querySelectorAll("button[data-fe-verify]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const slug    = btn.dataset.feVerify;
+        const codeEl  = document.getElementById(`fe-code-${slug}`);
+        const msg     = document.getElementById(`fe-msg-${slug}`);
+        const code    = (codeEl.value || "").trim();
+        msg.textContent = "";
+        if (!code || code.length !== 6) { msg.style.color = "var(--rw-red)"; msg.textContent = "Enter the 6-digit code."; return; }
+        btn.disabled = true;
+        btn.textContent = "Verifying…";
+        try {
+          const r = await BroAuth.authedFetch("/api/rewards/firm-email", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firm_slug: slug, action: "verify", code }),
+          });
+          const d = await r.json();
+          if (r.ok) {
+            emailMap[slug] = { ...emailMap[slug], verified: 1 };
+            renderFirmEmails(emailMap);
+          } else {
+            const errs = {
+              invalid_code:           "Incorrect code. Please try again.",
+              code_expired:           "Code expired — click Resend to get a new one.",
+              no_pending_verification:"No pending verification found. Please save your email again.",
+            };
+            msg.style.color = "var(--rw-red)";
+            msg.textContent = errs[d.error] || `Error: ${d.error}`;
+            btn.disabled = false;
+            btn.textContent = "Verify";
+          }
+        } catch {
+          msg.style.color = "var(--rw-red)";
+          msg.textContent = "Something went wrong. Please try again.";
+          btn.disabled = false;
+          btn.textContent = "Verify";
+        }
+      });
+    });
+
+    // Resend handlers
+    panel.querySelectorAll("button[data-fe-resend]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const slug = btn.dataset.feResend;
+        btn.textContent = "Sending…";
+        btn.disabled    = true;
+        try {
+          await BroAuth.authedFetch("/api/rewards/firm-email", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firm_slug: slug, action: "resend" }),
+          });
+          btn.textContent = "Sent!";
+          setTimeout(() => { btn.textContent = "Resend"; btn.disabled = false; }, 3000);
+        } catch {
+          btn.textContent = "Resend"; btn.disabled = false;
         }
       });
     });

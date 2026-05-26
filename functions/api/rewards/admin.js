@@ -75,8 +75,11 @@ export async function onRequestGet(context) {
               u.email, u.display_name, u.is_pro_bro,
               (SELECT MAX(cl.created_at) FROM clicks cl
                WHERE cl.user_id = c.user_id AND cl.firm = c.firm_slug) AS last_click_at,
-              fe.email  AS firm_email,
-              fe.locked AS firm_email_locked
+              fe.email    AS firm_email,
+              fe.locked   AS firm_email_locked,
+              fe.verified AS firm_email_verified,
+              (SELECT COUNT(DISTINCT ufe2.user_id) FROM user_firm_emails ufe2
+               WHERE ufe2.email = fe.email AND ufe2.verified = 1 AND ufe2.user_id != c.user_id) AS shared_email_count
        FROM purchase_claims c
        JOIN users u ON u.id = c.user_id
        LEFT JOIN user_firm_emails fe ON fe.user_id = c.user_id AND fe.firm_slug = c.firm_slug
