@@ -19,7 +19,11 @@
   const CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
   async function loadSupabase() {
-    const mod = await import(CDN);
+    // Bail out after 8 s so a slow/down CDN never hangs the whole page.
+    const timeout = new Promise((_, rej) =>
+      setTimeout(() => rej(new Error("[auth] Supabase CDN timeout")), 8000)
+    );
+    const mod = await Promise.race([import(CDN), timeout]);
     return mod.createClient;
   }
 
@@ -49,8 +53,11 @@
 
   async function syncToD1() {
     if (!currentSession) return null;
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 5000);
     try {
       const res = await fetch("/api/rewards/sync", {
+        signal: controller.signal,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,6 +67,7 @@
           referral_code: localStorage.getItem("bro_pending_referral") || null,
         }),
       });
+      clearTimeout(tid);
       if (res.ok) {
         // Referral code used — clear it.
         localStorage.removeItem("bro_pending_referral");
@@ -67,6 +75,7 @@
       }
       console.warn("[auth] /api/rewards/sync returned", res.status);
     } catch (e) {
+      clearTimeout(tid);
       console.error("[auth] sync failed:", e);
     }
     return null;
