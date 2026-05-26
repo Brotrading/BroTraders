@@ -74,9 +74,12 @@ export async function onRequestGet(context) {
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
               u.email, u.display_name, u.is_pro_bro,
               (SELECT MAX(cl.created_at) FROM clicks cl
-               WHERE cl.user_id = c.user_id AND cl.firm = c.firm_slug) AS last_click_at
+               WHERE cl.user_id = c.user_id AND cl.firm = c.firm_slug) AS last_click_at,
+              fe.email  AS firm_email,
+              fe.locked AS firm_email_locked
        FROM purchase_claims c
        JOIN users u ON u.id = c.user_id
+       LEFT JOIN user_firm_emails fe ON fe.user_id = c.user_id AND fe.firm_slug = c.firm_slug
        WHERE c.status = 'pending'
        ORDER BY c.created_at ASC`
     )
@@ -327,6 +330,12 @@ async function approveClaim(env, { claim_id, note }) {
        WHERE id = ?`
     )
     .bind(points, (note || "").slice(0, 200) || null, now, claim_id)
+    .run();
+
+  // Lock the firm email so it can no longer be changed.
+  await env.DB
+    .prepare(`UPDATE user_firm_emails SET locked = 1 WHERE user_id = ? AND firm_slug = ? AND locked = 0`)
+    .bind(c.user_id, c.firm_slug)
     .run();
 
   // If this is the buyer's first approved purchase, pay the referrer a bonus.

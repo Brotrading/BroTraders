@@ -381,6 +381,10 @@
                 ${c.purchase_date ? `· <span>Purchase date: <strong>${c.purchase_date}</strong></span>` : ""}
                 <br>
                 ${c.order_ref ? `Ref: <code>${c.order_ref}</code>` : `<em style="color:var(--rw-red);">No order ref</em>`}
+                <br>
+                ${c.firm_email
+                  ? `Firm email: <strong>${c.firm_email}</strong>${c.firm_email_locked ? ` <span style="color:#4ade80; font-size:10px;">✓ locked</span>` : ` <span style="color:#facc15; font-size:10px;">⚠ not yet locked</span>`}`
+                  : `<span style="color:#f87171;">No firm email set</span>`}
               </div>
             </div>
             <div style="display:flex; flex-direction:column; gap:6px; flex-shrink:0; align-items:flex-end;">

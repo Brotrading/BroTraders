@@ -126,6 +126,12 @@
     </table>
   </div>
 
+  <h2 class="rw-h2">Linked firm accounts</h2>
+  <p class="rw-muted rw-small" style="margin:-8px 0 16px;">
+    Add the email address you used to register at each prop firm. This is required before submitting a cashback claim and helps us verify your purchase. Once your first claim for a firm is approved, the email is locked and can no longer be changed.
+  </p>
+  <div id="firmEmailsPanel" class="rw-panel"></div>
+
   <p style="text-align:center; margin-top:40px; font-size:13px; color:var(--rw-text-2);">
     <a href="./terms.html" style="color:var(--rw-text-2); text-decoration:underline;">Bro Rewards program rules</a>
   </p>
@@ -456,6 +462,84 @@
     }
   });
 
+  // ── Firm email management ──────────────────────────────────────────────
+  const FIRM_SLUGS = Object.keys(FIRM_NAMES);
+
+  async function loadFirmEmails() {
+    const panel = document.getElementById("firmEmailsPanel");
+    const res = await BroAuth.authedFetch("/api/rewards/firm-email");
+    const data = res.ok ? await res.json() : { firm_emails: [] };
+    const emailMap = {};
+    (data.firm_emails || []).forEach(r => { emailMap[r.firm_slug] = r; });
+
+    panel.innerHTML = `
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px;">
+        ${FIRM_SLUGS.map(slug => {
+          const row    = emailMap[slug];
+          const locked = row?.locked === 1;
+          const val    = row?.email || "";
+          return `
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <label class="rw-label" style="margin-bottom:0;">${FIRM_NAMES[slug]}</label>
+              <div style="display:flex; gap:6px; align-items:center;">
+                <input
+                  class="rw-input"
+                  id="fe-${slug}"
+                  type="email"
+                  placeholder="your@email.com"
+                  value="${val}"
+                  ${locked ? "disabled" : ""}
+                  style="flex:1; font-size:13px; padding:6px 10px;${locked ? " opacity:0.5; cursor:not-allowed;" : ""}"
+                />
+                ${locked
+                  ? `<span style="font-size:11px; color:#4ade80; white-space:nowrap;">✓ Locked</span>`
+                  : `<button class="rw-btn ghost" data-fe-save="${slug}" style="padding:5px 12px; font-size:12px; white-space:nowrap;">Save</button>`
+                }
+              </div>
+              <div id="fe-msg-${slug}" style="font-size:12px; min-height:16px;"></div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    panel.querySelectorAll("button[data-fe-save]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const slug  = btn.dataset.feSave;
+        const input = document.getElementById(`fe-${slug}`);
+        const msg   = document.getElementById(`fe-msg-${slug}`);
+        const email = (input.value || "").trim().toLowerCase();
+        msg.style.color = "var(--rw-text-2)";
+        msg.textContent = "Saving…";
+        btn.disabled = true;
+        try {
+          const r = await BroAuth.authedFetch("/api/rewards/firm-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firm_slug: slug, email }),
+          });
+          const d = await r.json();
+          if (r.ok) {
+            msg.style.color = "var(--rw-green)";
+            msg.textContent = "Saved";
+          } else {
+            const errs = {
+              invalid_email:      "Enter a valid email address.",
+              firm_email_locked:  "This email is locked and cannot be changed.",
+            };
+            msg.style.color = "var(--rw-red)";
+            msg.textContent = errs[d.error] || `Error: ${d.error}`;
+            btn.disabled = false;
+          }
+        } catch {
+          msg.style.color = "var(--rw-red)";
+          msg.textContent = "Something went wrong. Please try again.";
+          btn.disabled = false;
+        }
+      });
+    });
+  }
+
   BroAuth.ready.then(async () => {
     if (!BroAuth.getSession()) {
       window.location.href = "./login.html";
@@ -463,7 +547,7 @@
     }
     document.getElementById("loadingShell").style.display = "none";
     document.getElementById("main").style.display = "block";
-    await refresh();
+    await Promise.all([refresh(), loadFirmEmails()]);
   });
 </script>
 

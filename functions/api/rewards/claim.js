@@ -110,6 +110,18 @@ export async function onRequestPost(context) {
   const accountCreatedDateStr = userRow.created_at.slice(0, 10);
   if (purchaseDateStr < accountCreatedDateStr) return jsonError("purchase_before_account", 400);
 
+  // ── Firm email check — required before claiming ───────────────────────
+  const firmEmailRow = await env.DB
+    .prepare(`SELECT email FROM user_firm_emails WHERE user_id = ? AND firm_slug = ?`)
+    .bind(user.id, firmSlug)
+    .first();
+  if (!firmEmailRow) {
+    return jsonError("firm_email_not_set", 400, {
+      firm_slug: firmSlug,
+      hint: `Go to your account settings and add your ${FIRM_NAMES[firmSlug]} email before claiming.`,
+    });
+  }
+
   // ── Max 1 pending claim per firm per user ──────────────────────────────
   const existing = await env.DB
     .prepare(
