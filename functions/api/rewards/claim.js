@@ -174,16 +174,24 @@ export async function onRequestPost(context) {
 
   // ── Insert ─────────────────────────────────────────────────────────────
   const now = new Date().toISOString();
-  const insert = await env.DB
-    .prepare(
-      `INSERT INTO purchase_claims
-         (user_id, firm_slug, order_ref, amount_eur, purchase_date,
-          proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?)`
-    )
-    .bind(user.id, firmSlug, orderRef, amountEur, purchaseDateStr,
-          proofData, proofMime, isSuspicious, riskLevel, now)
-    .run();
+  let insert;
+  try {
+    insert = await env.DB
+      .prepare(
+        `INSERT INTO purchase_claims
+           (user_id, firm_slug, order_ref, amount_eur, purchase_date,
+            proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?)`
+      )
+      .bind(user.id, firmSlug, orderRef, amountEur, purchaseDateStr,
+            proofData, proofMime, isSuspicious, riskLevel, now)
+      .run();
+  } catch (e) {
+    if (e?.message?.includes("UNIQUE constraint failed")) {
+      return jsonError("order_ref_duplicate", 409, { order_ref: orderRef });
+    }
+    throw e;
+  }
 
   return jsonResponse({
     ok: true,

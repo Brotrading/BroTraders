@@ -61,7 +61,7 @@ export async function onRequestGet(context) {
               u.email, u.display_name, u.is_pro_bro
        FROM firm_reviews fr
        JOIN users u ON u.id = fr.user_id
-       WHERE fr.is_approved = 0
+       WHERE fr.is_approved = 0 AND (fr.status IS NULL OR fr.status = 'pending')
        ORDER BY fr.created_at ASC`
     )
     .all();
@@ -285,7 +285,7 @@ async function approveReview(env, { review_id }) {
   });
   const now = new Date().toISOString();
   await env.DB
-    .prepare(`UPDATE firm_reviews SET is_approved = 1, approved_at = ? WHERE id = ?`)
+    .prepare(`UPDATE firm_reviews SET is_approved = 1, approved_at = ?, status = 'approved' WHERE id = ?`)
     .bind(now, review_id)
     .run();
   return jsonResponse({ ok: true });
@@ -293,13 +293,15 @@ async function approveReview(env, { review_id }) {
 
 async function rejectReview(env, { review_id, reason }) {
   if (!review_id) return jsonError("missing_review_id", 400);
-  // Simple rejection = delete the row. No points awarded, user can resubmit.
   const r = await env.DB
-    .prepare(`SELECT id FROM firm_reviews WHERE id = ? AND is_approved = 0`)
+    .prepare(`SELECT id FROM firm_reviews WHERE id = ? AND is_approved = 0 AND (status IS NULL OR status != 'rejected')`)
     .bind(review_id)
     .first();
   if (!r) return jsonError("review_not_found_or_approved", 404);
-  await env.DB.prepare(`DELETE FROM firm_reviews WHERE id = ?`).bind(review_id).run();
+  await env.DB
+    .prepare(`UPDATE firm_reviews SET status = 'rejected', rejection_reason = ? WHERE id = ?`)
+    .bind((reason || "").slice(0, 200) || null, review_id)
+    .run();
   return jsonResponse({ ok: true, reason: reason || null });
 }
 

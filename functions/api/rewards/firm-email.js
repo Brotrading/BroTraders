@@ -120,12 +120,13 @@ async function handleSave(env, user, firmSlug, rawEmail) {
 
   await env.DB
     .prepare(`
-      INSERT INTO user_firm_emails (user_id, firm_slug, email, verified, locked, verification_code, verification_expires_at, created_at)
-      VALUES (?, ?, ?, 0, 0, ?, ?, ?)
+      INSERT INTO user_firm_emails (user_id, firm_slug, email, verified, locked, verification_code, verification_expires_at, verification_attempts, created_at)
+      VALUES (?, ?, ?, 0, 0, ?, ?, 0, ?)
       ON CONFLICT(user_id, firm_slug) DO UPDATE SET
         email = excluded.email, verified = 0,
         verification_code = excluded.verification_code,
-        verification_expires_at = excluded.verification_expires_at
+        verification_expires_at = excluded.verification_expires_at,
+        verification_attempts = 0
     `)
     .bind(user.id, firmSlug, email, code, expires, now)
     .run();
@@ -136,21 +137,43 @@ async function handleSave(env, user, firmSlug, rawEmail) {
   return jsonResponse({ ok: true, firm_slug: firmSlug, email, verified: false, needs_verification: true });
 }
 
+const MAX_VERIFY_ATTEMPTS = 5;
+
 async function handleVerify(env, user, firmSlug, rawCode) {
   const code = (rawCode || "").trim();
   if (!code) return jsonError("code_required", 400);
 
   const row = await env.DB
-    .prepare(`SELECT verification_code, verification_expires_at FROM user_firm_emails WHERE user_id = ? AND firm_slug = ? AND verified = 0`)
+    .prepare(`SELECT verification_code, verification_expires_at, verification_attempts FROM user_firm_emails WHERE user_id = ? AND firm_slug = ? AND verified = 0`)
     .bind(user.id, firmSlug)
     .first();
 
-  if (!row)                                            return jsonError("no_pending_verification", 404);
-  if (row.verification_code !== code)                  return jsonError("invalid_code", 400);
+  if (!row) return jsonError("no_pending_verification", 404);
+
+  const attempts = row.verification_attempts || 0;
+  if (attempts >= MAX_VERIFY_ATTEMPTS) return jsonError("too_many_attempts", 429);
+
   if (new Date(row.verification_expires_at) < new Date()) return jsonError("code_expired", 400);
 
+  if (row.verification_code !== code) {
+    const newAttempts = attempts + 1;
+    if (newAttempts >= MAX_VERIFY_ATTEMPTS) {
+      // Invalidate code — user must request a new one via resend.
+      await env.DB
+        .prepare(`UPDATE user_firm_emails SET verification_attempts = ?, verification_code = NULL, verification_expires_at = NULL WHERE user_id = ? AND firm_slug = ?`)
+        .bind(newAttempts, user.id, firmSlug)
+        .run();
+      return jsonError("too_many_attempts", 429);
+    }
+    await env.DB
+      .prepare(`UPDATE user_firm_emails SET verification_attempts = ? WHERE user_id = ? AND firm_slug = ?`)
+      .bind(newAttempts, user.id, firmSlug)
+      .run();
+    return jsonError("invalid_code", 400, { attempts_remaining: MAX_VERIFY_ATTEMPTS - newAttempts });
+  }
+
   await env.DB
-    .prepare(`UPDATE user_firm_emails SET verified = 1, verification_code = NULL, verification_expires_at = NULL WHERE user_id = ? AND firm_slug = ?`)
+    .prepare(`UPDATE user_firm_emails SET verified = 1, verification_code = NULL, verification_expires_at = NULL, verification_attempts = 0 WHERE user_id = ? AND firm_slug = ?`)
     .bind(user.id, firmSlug)
     .run();
 
@@ -170,7 +193,7 @@ async function handleResend(env, user, firmSlug) {
   const expires = new Date(Date.now() + CODE_TTL_MS).toISOString();
 
   await env.DB
-    .prepare(`UPDATE user_firm_emails SET verification_code = ?, verification_expires_at = ? WHERE user_id = ? AND firm_slug = ?`)
+    .prepare(`UPDATE user_firm_emails SET verification_code = ?, verification_expires_at = ?, verification_attempts = 0 WHERE user_id = ? AND firm_slug = ?`)
     .bind(code, expires, user.id, firmSlug)
     .run();
 

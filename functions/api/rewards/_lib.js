@@ -121,6 +121,8 @@ export async function postLedger(env, { user_id, amount, reason, ref_id = null, 
 }
 
 // Awards a reason once. Returns true if awarded, false if already awarded for this user+reason+ref_id.
+// Application-level SELECT catches the common case; the DB-level UNIQUE index on
+// (user_id, reason, ref_id) WHERE ref_id IS NOT NULL is the safety net for concurrent requests.
 export async function awardOnce(env, { user_id, reason, amount, ref_id = null, note = null }) {
   const existing = await env.DB
     .prepare(
@@ -131,7 +133,12 @@ export async function awardOnce(env, { user_id, reason, amount, ref_id = null, n
     .bind(user_id, reason, ref_id, ref_id)
     .first();
   if (existing) return false;
-  await postLedger(env, { user_id, amount, reason, ref_id, note });
+  try {
+    await postLedger(env, { user_id, amount, reason, ref_id, note });
+  } catch (e) {
+    if (e?.message?.includes("UNIQUE constraint failed")) return false;
+    throw e;
+  }
   return true;
 }
 

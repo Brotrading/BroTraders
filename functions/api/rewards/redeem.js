@@ -37,10 +37,6 @@ export async function onRequestPost(context) {
     .first();
   if (!pkg) return jsonError("package_not_found", 404);
 
-  if (pkg.stock !== null && pkg.stock <= 0) {
-    return jsonError("out_of_stock", 409);
-  }
-
   const row = await getUserRow(env, user.id);
   if (!row) return jsonError("user_not_synced", 404);
 
@@ -69,6 +65,16 @@ export async function onRequestPost(context) {
     });
   }
 
+  // Atomic stock check-and-decrement. Doing this BEFORE inserting the redemption
+  // prevents a race where two concurrent requests both see stock=1 and both succeed.
+  if (pkg.stock !== null) {
+    const stockResult = await env.DB
+      .prepare(`UPDATE bro_packages SET stock = stock - 1 WHERE slug = ? AND stock > 0`)
+      .bind(pkg.slug)
+      .run();
+    if (stockResult.meta.changes === 0) return jsonError("out_of_stock", 409);
+  }
+
   const now = new Date().toISOString();
   const fulfillment_data = body.fulfillment_data ? JSON.stringify(body.fulfillment_data) : null;
 
@@ -90,14 +96,6 @@ export async function onRequestPost(context) {
     ref_id: String(redemptionId),
     note: pkg.title,
   });
-
-  // Decrement stock if applicable (non-atomic with the above; acceptable for MVP — rare race).
-  if (pkg.stock !== null) {
-    await env.DB
-      .prepare(`UPDATE bro_packages SET stock = stock - 1 WHERE slug = ? AND stock > 0`)
-      .bind(pkg.slug)
-      .run();
-  }
 
   const updated = await getUserRow(env, user.id);
 
