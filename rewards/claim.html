@@ -166,6 +166,18 @@
         <option value="yrm">YRM Prop</option>
       </select>
 
+      <!-- Shown when firm email is verified -->
+      <div id="firmEmailDisplay" style="display:none; margin-top:12px;">
+        <label class="rw-label" style="margin-bottom:6px; font-size:13px;">Linked account email</label>
+        <div style="display:flex; align-items:center; gap:10px; background:rgba(74,222,128,0.06); border:1px solid rgba(74,222,128,0.28); border-radius:8px; padding:11px 14px;">
+          <span style="font-size:15px;">✉</span>
+          <span id="firmEmailAddr" style="flex:1; font-size:14px; color:var(--rw-text);"></span>
+          <span style="color:#4ade80; font-size:18px; line-height:1;">✓</span>
+          <button type="button" id="changeFirmEmailBtn" style="background:none; border:none; color:var(--rw-text-2); font-size:12px; cursor:pointer; padding:0; text-decoration:underline; flex-shrink:0;">Change</button>
+        </div>
+      </div>
+
+      <!-- Shown when firm email is missing or unverified -->
       <div id="firmLinkedWarning" style="display:none; margin-top:12px;">
         <div style="background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.35); border-radius:8px; padding:14px 16px;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
@@ -493,20 +505,32 @@
   }
 
   function checkFirmLink(slug) {
-    const warning   = document.getElementById("firmLinkedWarning");
-    const submitBtn = document.getElementById("submitBtn");
-    if (!slug) { warning.style.display = "none"; submitBtn.disabled = false; return; }
+    const warning    = document.getElementById("firmLinkedWarning");
+    const emailDisp  = document.getElementById("firmEmailDisplay");
+    const submitBtn  = document.getElementById("submitBtn");
+
+    if (!slug) {
+      warning.style.display = "none";
+      emailDisp.style.display = "none";
+      submitBtn.disabled = false;
+      return;
+    }
+
     const linked = _linkedEmails[slug];
     if (linked?.verified) {
       warning.style.display = "none";
+      document.getElementById("firmEmailAddr").textContent = linked.email;
+      emailDisp.style.display = "";
       submitBtn.disabled = false;
     } else if (linked && !linked.verified) {
+      emailDisp.style.display = "none";
       const firmName = getFirmName();
       document.getElementById("firmLinkedMsg").innerHTML =
         `Your <strong style="color:var(--rw-text);">${firmName}</strong> email address is not yet verified. Check your inbox for the verification code.`;
       warning.style.display = "";
       submitBtn.disabled = true;
     } else {
+      emailDisp.style.display = "none";
       const firmName = getFirmName();
       document.getElementById("firmLinkedMsg").innerHTML =
         `You need to add your <strong style="color:var(--rw-text);">${firmName}</strong> email address before you can submit a claim. This is how we match your purchase to your account.`;
@@ -553,6 +577,7 @@
   });
 
   document.getElementById("openLinkEmailBtn").addEventListener("click", () => openLinkEmailModal());
+  document.getElementById("changeFirmEmailBtn").addEventListener("click", () => openLinkEmailModal(1));
   document.getElementById("closeLinkEmailBtn").addEventListener("click", () => {
     document.getElementById("linkEmailModal").classList.remove("open");
   });
