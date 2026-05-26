@@ -98,10 +98,9 @@
       <button class="rw-btn ghost claim-filter" data-filter="low" style="padding:4px 12px; font-size:12px; color:#4ade80;">Low risk</button>
       <button class="rw-btn ghost claim-filter" data-filter="medium" style="padding:4px 12px; font-size:12px; color:#facc15;">Medium risk</button>
       <button class="rw-btn ghost claim-filter" data-filter="high" style="padding:4px 12px; font-size:12px; color:#f87171;">High risk</button>
-      <button class="rw-btn ghost claim-filter" data-filter="suspicious" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ No click</button>
       <button class="rw-btn ghost claim-filter" data-filter="click_7" style="padding:4px 12px; font-size:12px; color:#4ade80;">✓ Click ≤7d</button>
       <button class="rw-btn ghost claim-filter" data-filter="click_30" style="padding:4px 12px; font-size:12px; color:#fb923c;">⚠ Click 8-30d</button>
-      <button class="rw-btn ghost claim-filter" data-filter="click_old" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ Click 31d+</button>
+      <button class="rw-btn ghost claim-filter" data-filter="click_high" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ No/old click</button>
     </div>
     <div id="pendingClaims"></div>
   </section>
@@ -316,13 +315,20 @@
     return Math.floor((Date.now() - new Date(c.last_click_at).getTime()) / 86_400_000);
   }
 
+  function liveRisk(c) {
+    const d = _clickDays(c);
+    if (c.amount_eur > 500)   return "high";
+    if (d === null || d > 30) return "high";
+    if (d > 7)                return "medium";
+    return "low";
+  }
+
   function applyClaimFilter(rows, filter) {
     if (filter === "all")        return rows;
-    if (filter === "suspicious") return rows.filter(c => !c.last_click_at);
     if (filter === "click_7")    return rows.filter(c => { const d = _clickDays(c); return d !== null && d <= 7; });
     if (filter === "click_30")   return rows.filter(c => { const d = _clickDays(c); return d !== null && d > 7 && d <= 30; });
-    if (filter === "click_old")  return rows.filter(c => { const d = _clickDays(c); return d === null || d > 30; });
-    return rows.filter(c => c.risk_level === filter);
+    if (filter === "click_high") return rows.filter(c => { const d = _clickDays(c); return d === null || d > 30; });
+    return rows.filter(c => liveRisk(c) === filter);
   }
 
   function renderPendingClaims(rows) {
@@ -345,7 +351,7 @@
     root.innerHTML = filtered.map((c) => {
       const rate = c.is_pro_bro ? 0.0375 : 0.025;
       const pts  = Math.round(c.amount_eur * rate * 1000);
-      const risk = RISK_STYLE[c.risk_level] || RISK_STYLE.medium;
+      const risk = RISK_STYLE[liveRisk(c)];
 
       const suspiciousBadge = clickBadge(c.last_click_at);
 
@@ -365,7 +371,7 @@
                 <strong>${c.firm_slug}</strong>
                 <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
                 <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
-                ${riskBadge(c.risk_level)}
+                ${riskBadge(liveRisk(c))}
                 ${suspiciousBadge}
                 ${broBadge}
               </div>
