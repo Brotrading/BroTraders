@@ -939,7 +939,7 @@ function renderAll() { drawWheel(); renderList(); }
 document.getElementById('addBtn').addEventListener('click', () => {
   const ta = document.getElementById('nameInput');
   const lines = ta.value.split('\n').map(s => s.trim()).filter(Boolean);
-  for (const name of lines) if (!state.names.includes(name)) state.names.push(name);
+  for (const name of lines) state.names.push(name);  // duplicates allowed — Pro Bro + All-Bros entries can both be added
   ta.value = ''; saveState(); renderAll();
 });
 document.getElementById('nameInput').addEventListener('keydown', e => {
@@ -1182,7 +1182,7 @@ window.addEventListener('message', (event) => {
 
   if (data.type === 'addName' && typeof data.name === 'string') {
     const name = data.name.trim();
-    if (name && !state.names.includes(name)) {
+    if (name) {  // duplicates allowed
       state.names.push(name);
       saveState();
       renderAll();
