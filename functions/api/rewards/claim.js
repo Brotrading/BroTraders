@@ -45,13 +45,16 @@ const ALLOWED_MIME    = new Set(["image/jpeg", "image/png", "image/webp", "appli
 const MAX_PROOF_B64   = 700_000;   // ~500 KB raw file → ~680 KB base64
 // MAX_CLAIMS_MONTH intentionally removed — to be decided with Mike before enabling.
 
-// Low   : click ≤7 days ago + amount ≤ €500
-// Medium: click 8–30 days ago + amount ≤ €500
-// High  : no click | click > 30 days | amount > €500
-function computeRiskLevel(amountEur, daysSinceClick) {
-  if (amountEur > 500)                                    return "high";
-  if (daysSinceClick === null || daysSinceClick > 30)     return "high";
-  if (daysSinceClick > 7)                                 return "medium";
+// Low   : click ≤7d + account ≥14d + not first claim + click before purchase + amount ≤€500
+// Medium: click 8–30d  OR  account <14d  OR  first claim  (and no high-risk condition)
+// High  : no click | click >30d | click after purchase date | amount >€500
+function computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaim, clickAfterPurchase }) {
+  if (amountEur > 500)                                return "high";
+  if (daysSinceClick === null || daysSinceClick > 30) return "high";
+  if (clickAfterPurchase)                             return "high";
+  if (daysSinceClick > 7)                             return "medium";
+  if (accountAgeDays < 14)                            return "medium";
+  if (isFirstClaim)                                   return "medium";
   return "low";
 }
 
@@ -117,6 +120,18 @@ export async function onRequestPost(context) {
     .first();
   if (existing) return jsonError("claim_already_pending", 409);
 
+  // ── Account age ────────────────────────────────────────────────────────
+  const accountAgeDays = Math.floor(
+    (Date.now() - new Date(userRow.created_at).getTime()) / 86_400_000
+  );
+
+  // ── First claim check ──────────────────────────────────────────────────
+  const prevApproved = await env.DB
+    .prepare(`SELECT COUNT(*) AS cnt FROM purchase_claims WHERE user_id = ? AND status = 'approved'`)
+    .bind(user.id)
+    .first();
+  const isFirstClaim = (prevApproved?.cnt || 0) === 0;
+
   // ── Click correlation ──────────────────────────────────────────────────
   const clickCheck = await env.DB
     .prepare(
@@ -129,10 +144,16 @@ export async function onRequestPost(context) {
   const daysSinceClick = lastClick
     ? Math.floor((Date.now() - new Date(lastClick).getTime()) / 86_400_000)
     : null;
-  const isSuspicious = (daysSinceClick === null || daysSinceClick > 30) ? 1 : 0;
+
+  // Click must be on or before the purchase date (click after purchase = attribution fraud signal)
+  const clickAfterPurchase = lastClick
+    ? new Date(lastClick) > new Date(purchaseDateStr + "T23:59:59Z")
+    : false;
+
+  const isSuspicious = (daysSinceClick === null || daysSinceClick > 30 || clickAfterPurchase) ? 1 : 0;
 
   // ── Risk level ─────────────────────────────────────────────────────────
-  const riskLevel = computeRiskLevel(amountEur, daysSinceClick);
+  const riskLevel = computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaim, clickAfterPurchase });
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
