@@ -18,8 +18,12 @@ document.querySelectorAll(".firm-btn[data-code]").forEach((btn) => {
     const code = this.dataset.code;
     navigator.clipboard.writeText(code).catch(() => {});
 
+    // Open the affiliate link (hero CTA on the same page) in a new tab.
+    const affiliateLink = document.querySelector(".apex-content .apex-btn:not(.copy-code)");
+    if (affiliateLink?.href) window.open(affiliateLink.href, "_blank", "noopener");
+
     const originalHTML = this.innerHTML;
-    this.innerHTML = '<i class="fas fa-check"></i> Copied ✓';
+    this.innerHTML = '<i class="fas fa-check"></i> Copied ✓ · Opening site…';
     setTimeout(() => {
       this.innerHTML = '<i class="fas fa-copy"></i> Code : ' + code;
     }, 2000);
@@ -33,8 +37,11 @@ document.querySelectorAll(".copy-code").forEach((btn) => {
     const code = this.dataset.code;
     navigator.clipboard.writeText(code).catch(() => {});
 
+    // Open affiliate link in new tab so the user lands at checkout with the code ready.
+    if (this.dataset.affiliateUrl) window.open(this.dataset.affiliateUrl, "_blank", "noopener");
+
     const original = this.innerText;
-    this.innerText = "Copied ✓";
+    this.innerText = "Copied ✓ · Opening…";
     setTimeout(() => { this.innerText = original; }, 2000);
   });
 });

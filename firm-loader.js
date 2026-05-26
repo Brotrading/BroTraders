@@ -86,7 +86,42 @@
   const copyBtn = document.querySelector(".apex-content .copy-code");
   if (copyBtn && p.code_default) {
     copyBtn.dataset.code = p.code_default;
+    copyBtn.dataset.affiliateUrl = p.affiliate_url;
     copyBtn.textContent = `Code : ${p.code_default}`;
+  }
+
+  // Cashback note — injected once below the hero buttons.
+  const buttonsEl = document.querySelector(".apex-buttons");
+  if (buttonsEl && !document.getElementById("bro-cashback-note")) {
+    const note = document.createElement("p");
+    note.id = "bro-cashback-note";
+    note.innerHTML =
+      `Koop via onze link &amp; verdien <strong>2,5% cashback</strong> in BRO&#8209;punten ` +
+      `<span class="bro-cb-eg">(bijv. 2.500 pts op een €100 aankoop)</span> ` +
+      `&mdash; <a href="/rewards/signup.html" class="bro-cb-link">activeer Bro Rewards</a>`;
+    buttonsEl.insertAdjacentElement("afterend", note);
+
+    if (!document.getElementById("bro-cashback-note-css")) {
+      const s = document.createElement("style");
+      s.id = "bro-cashback-note-css";
+      s.textContent = `
+        #bro-cashback-note {
+          margin: 12px 0 0;
+          font-size: 13px;
+          color: #94a3b8;
+          line-height: 1.5;
+        }
+        #bro-cashback-note strong { color: #ff6b00; }
+        #bro-cashback-note .bro-cb-eg { color: #64748b; }
+        #bro-cashback-note .bro-cb-link {
+          color: #00c2ff;
+          text-decoration: none;
+          white-space: nowrap;
+        }
+        #bro-cashback-note .bro-cb-link:hover { text-decoration: underline; }
+      `;
+      document.head.appendChild(s);
+    }
   }
 
   function buildMeta(profile) {
