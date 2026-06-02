@@ -292,19 +292,22 @@
       color:${s.color}; background:${s.bg}; border:1px solid ${s.border};">${s.label} risk</span>`;
   }
 
-  function clickBadge(lastClickAt) {
+  function clickBadge(lastClickAt, claimCreatedAt) {
     if (!lastClickAt) {
       return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
         color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ No click</span>`;
     }
     const days = Math.floor((Date.now() - new Date(lastClickAt).getTime()) / 86_400_000);
     const label = days === 0 ? "today" : days === 1 ? "1d ago" : `${days}d ago`;
+    // Warn if the click happened AFTER the claim was submitted (fraud signal).
+    const clickAfterClaim = claimCreatedAt && new Date(lastClickAt) > new Date(claimCreatedAt);
+    const afterNote = clickAfterClaim ? ` <span title="Click was AFTER claim submission" style="color:#f87171;">⚠ after claim</span>` : "";
     if (days <= 7)  return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
-      color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click ${label}</span>`;
+      color:#4ade80; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);">✓ Click ${label}</span>${afterNote}`;
     if (days <= 30) return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
-      color:#fb923c; background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.3);">⚠ Click ${label}</span>`;
+      color:#fb923c; background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.3);">⚠ Click ${label}</span>${afterNote}`;
     return `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600;
-      color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ Click ${label}</span>`;
+      color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">✗ Click ${label}</span>${afterNote}`;
   }
 
   let _allClaims = [];
@@ -351,9 +354,10 @@
     root.innerHTML = filtered.map((c) => {
       const rate = c.is_pro_bro ? 0.0375 : 0.025;
       const pts  = Math.round(c.amount_eur * rate * 1000);
-      const risk = RISK_STYLE[liveRisk(c)];
+      // Use stored risk_level (computed at submission time) — not live-recalculated.
+      const risk = RISK_STYLE[c.risk_level] || RISK_STYLE.medium;
 
-      const suspiciousBadge = clickBadge(c.last_click_at);
+      const suspiciousBadge = clickBadge(c.last_click_at, c.created_at);
 
       const broBadge = c.used_bro_code
         ? `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#94a3b8; background:rgba(148,163,184,0.1); border:1px solid rgba(148,163,184,0.2);">BRO ✓</span>`
@@ -371,7 +375,7 @@
                 <strong>${c.firm_slug}</strong>
                 <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
                 <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
-                ${riskBadge(liveRisk(c))}
+                ${riskBadge(c.risk_level || 'medium')}
                 ${suspiciousBadge}
                 ${broBadge}
               </div>
