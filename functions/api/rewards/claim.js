@@ -244,7 +244,7 @@ export async function onRequestGet(context) {
   const expected = env.STATS_TOKEN || "";
   if (!expected) return jsonError("unauthorized", 401);
   const url = new URL(request.url);
-  const tok = request.headers.get("x-admin-token") || url.searchParams.get("token") || "";
+  const tok = request.headers.get("x-admin-token") || "";
   if (tok !== expected) return jsonError("unauthorized", 401);
 
   const status = url.searchParams.get("status") || "pending";

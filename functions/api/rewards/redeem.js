@@ -89,13 +89,26 @@ export async function onRequestPost(context) {
 
   const redemptionId = insert.meta.last_row_id;
 
-  await postLedger(env, {
-    user_id: user.id,
-    amount: -pkg.points_cost,
-    reason: "redemption",
-    ref_id: String(redemptionId),
-    note: pkg.title,
-  });
+  try {
+    await postLedger(env, {
+      user_id: user.id,
+      amount: -pkg.points_cost,
+      reason: "redemption",
+      ref_id: String(redemptionId),
+      note: pkg.title,
+      minBalance: 0,
+    });
+  } catch (e) {
+    if (e?.message?.includes("insufficient_balance")) {
+      // Race condition: another request spent the points between our check and deduction.
+      if (pkg.stock !== null) {
+        await env.DB.prepare(`UPDATE bro_packages SET stock = stock + 1 WHERE slug = ?`).bind(pkg.slug).run();
+      }
+      await env.DB.prepare(`UPDATE redemptions SET status = 'cancelled' WHERE id = ?`).bind(redemptionId).run();
+      return jsonError("insufficient_points", 409, { points_balance: row.points_balance, points_required: pkg.points_cost });
+    }
+    throw e;
+  }
 
   const updated = await getUserRow(env, user.id);
 

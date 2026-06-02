@@ -67,16 +67,29 @@ export async function onRequestPost(context) {
     const restoredStreak = currentStreak + 1;
     const newBest = Math.max(row.streak_best || 0, restoredStreak);
 
-    // Deduct points and set streak_claimed_date to yesterday (bridge the gap).
-    await postLedger(env, {
-      user_id: user.id,
-      amount:  -RESTORE_COST,
-      reason:  "streak_restore",
-      note:    `Streak restored to day ${restoredStreak}`,
-    });
-    await env.DB.prepare(
-      `UPDATE users SET login_streak = ?, streak_claimed_date = ?, streak_best = ? WHERE id = ?`
-    ).bind(restoredStreak, yesterday, newBest, user.id).run();
+    // Atomically deduct points and update streak. Rolls back if balance is insufficient.
+    const now = new Date().toISOString();
+    try {
+      await env.DB.batch([
+        env.DB.prepare(
+          `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+           VALUES (?, ?, 'streak_restore', ?, ?, ?)`
+        ).bind(user.id, -RESTORE_COST, today, `Streak restored to day ${restoredStreak}`, now),
+        env.DB.prepare(
+          `UPDATE users SET
+             points_balance    = points_balance - ?,
+             points_earned     = points_earned + 0,
+             login_streak      = ?,
+             streak_claimed_date = ?,
+             streak_best       = ?
+           WHERE id = ?
+             AND CASE WHEN points_balance >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
+        ).bind(RESTORE_COST, restoredStreak, yesterday, newBest, user.id, RESTORE_COST),
+      ]);
+    } catch (e) {
+      if (e?.message?.includes("insufficient_balance")) return jsonError("insufficient_points", 409);
+      throw e;
+    }
 
     return jsonResponse({
       ok: true,

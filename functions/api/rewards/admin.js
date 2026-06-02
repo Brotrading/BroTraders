@@ -33,9 +33,7 @@ function checkAdmin(request, env) {
   const expected = env.STATS_TOKEN || "";
   if (!expected) return false;
   const headerTok = request.headers.get("x-admin-token") || "";
-  const url = new URL(request.url);
-  const queryTok = url.searchParams.get("token") || "";
-  return headerTok === expected || queryTok === expected;
+  return headerTok === expected;
 }
 
 export async function onRequestGet(context) {

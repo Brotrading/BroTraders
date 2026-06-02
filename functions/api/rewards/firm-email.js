@@ -138,6 +138,7 @@ async function handleSave(env, user, firmSlug, rawEmail) {
 }
 
 const MAX_VERIFY_ATTEMPTS = 5;
+const RESEND_COOLDOWN_MS  = 60_000; // 60 seconds between resend requests
 
 async function handleVerify(env, user, firmSlug, rawCode) {
   const code = (rawCode || "").trim();
@@ -182,19 +183,28 @@ async function handleVerify(env, user, firmSlug, rawCode) {
 
 async function handleResend(env, user, firmSlug) {
   const row = await env.DB
-    .prepare(`SELECT email, locked FROM user_firm_emails WHERE user_id = ? AND firm_slug = ? AND verified = 0`)
+    .prepare(`SELECT email, locked, last_resend_at FROM user_firm_emails WHERE user_id = ? AND firm_slug = ? AND verified = 0`)
     .bind(user.id, firmSlug)
     .first();
 
-  if (!row)        return jsonError("no_pending_verification", 404);
-  if (row.locked)  return jsonError("firm_email_locked", 409);
+  if (!row)       return jsonError("no_pending_verification", 404);
+  if (row.locked) return jsonError("firm_email_locked", 409);
+
+  if (row.last_resend_at) {
+    const elapsed = Date.now() - new Date(row.last_resend_at).getTime();
+    if (elapsed < RESEND_COOLDOWN_MS) {
+      const secondsLeft = Math.ceil((RESEND_COOLDOWN_MS - elapsed) / 1000);
+      return jsonError("resend_too_soon", 429, { seconds_remaining: secondsLeft });
+    }
+  }
 
   const code    = generateCode();
   const expires = new Date(Date.now() + CODE_TTL_MS).toISOString();
+  const now     = new Date().toISOString();
 
   await env.DB
-    .prepare(`UPDATE user_firm_emails SET verification_code = ?, verification_expires_at = ?, verification_attempts = 0 WHERE user_id = ? AND firm_slug = ?`)
-    .bind(code, expires, user.id, firmSlug)
+    .prepare(`UPDATE user_firm_emails SET verification_code = ?, verification_expires_at = ?, verification_attempts = 0, last_resend_at = ? WHERE user_id = ? AND firm_slug = ?`)
+    .bind(code, expires, now, user.id, firmSlug)
     .run();
 
   const sent = await sendVerificationEmail(env, { to: row.email, firmName: FIRM_NAMES[firmSlug], code });

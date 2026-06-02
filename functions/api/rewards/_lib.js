@@ -77,12 +77,13 @@ export async function verifySupabaseToken(request, env) {
   }
 
   try {
+    const controller = new AbortController();
+    const tid = setTimeout(() => controller.abort(), 5000);
     const r = await fetch(`${supabaseUrl}/auth/v1/user`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        apikey: supabaseAnonKey,
-      },
+      headers: { Authorization: `Bearer ${token}`, apikey: supabaseAnonKey },
+      signal: controller.signal,
     });
+    clearTimeout(tid);
     if (!r.ok) return null;
     const user = await r.json();
     if (!user?.id) return null;
@@ -102,8 +103,15 @@ export function generateReferralCode(seed) {
 
 // Inserts a points_ledger row AND updates users.points_balance + users.points_earned atomically.
 // `amount` is signed (negative for spends — we still credit lifetime "earned" only when amount > 0).
-export async function postLedger(env, { user_id, amount, reason, ref_id = null, note = null }) {
+// `minBalance`: if set, the batch rolls back (RAISE ROLLBACK) if balance + amount < minBalance.
+//   Callers should catch errors containing "insufficient_balance" to detect this case.
+export async function postLedger(env, { user_id, amount, reason, ref_id = null, note = null, minBalance = null }) {
   const now = new Date().toISOString();
+  const guardClause = minBalance !== null
+    ? `AND CASE WHEN points_balance + ? >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
+    : "";
+  const guardBinds = minBalance !== null ? [amount, minBalance] : [];
+
   const statements = [
     env.DB.prepare(
       `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
@@ -113,8 +121,8 @@ export async function postLedger(env, { user_id, amount, reason, ref_id = null, 
       `UPDATE users
          SET points_balance = points_balance + ?,
              points_earned  = points_earned + CASE WHEN ? > 0 THEN ? ELSE 0 END
-         WHERE id = ?`
-    ).bind(amount, amount, amount, user_id),
+         WHERE id = ? ${guardClause}`
+    ).bind(amount, amount, amount, user_id, ...guardBinds),
   ];
   await env.DB.batch(statements);
   return { amount, reason, ref_id, note, created_at: now };
