@@ -1,0 +1,33 @@
+{
+  "_note": "Account types shown in the claim form dropdown. Verify sizes/plans with Mike before launch.",
+  "apex": [
+    "$25K — Trail", "$50K — Trail", "$100K — Trail", "$150K — Trail",
+    "$25K — EOD",   "$50K — EOD",   "$100K — EOD",   "$150K — EOD"
+  ],
+  "alpha": [
+    "$25K (Zero)", "$50K (Standard)", "$50K (Zero)", "$50K (Advanced)",
+    "$100K (Standard)", "$100K (Zero)", "$100K (Advanced)",
+    "$150K (Standard)", "$150K (Advanced)"
+  ],
+  "daytraders": ["$25K", "$50K", "$100K", "$150K"],
+  "fundedseat": ["$25K", "$50K", "$100K", "$150K"],
+  "lucid": [
+    "$25K (Pro/Flex)", "$50K (Pro/Flex)", "$100K (Pro/Flex)", "$150K (Pro/Flex)",
+    "$25K (Direct)",   "$50K (Direct)",   "$100K (Direct)",   "$150K (Direct)"
+  ],
+  "mffu": [
+    "$25K (Rapid/Flex)", "$50K (Pro)", "$50K (Rapid/Flex/Builder)",
+    "$100K (Pro)", "$100K (Rapid)", "$150K (Pro)", "$150K (Rapid)"
+  ],
+  "nexgen": ["$25K", "$50K", "$100K", "$150K"],
+  "phidias": ["$25K", "$50K", "$100K", "$150K"],
+  "topone": [
+    "$25K (Elite/Elite Access)", "$50K (Elite/Elite Access)", "$100K (Elite/Elite Access)", "$150K (Elite/Elite Access)",
+    "$25K (Instant/S2F/IGNITE)", "$50K (Instant/S2F/IGNITE)", "$100K (Instant/S2F/IGNITE)", "$150K (Instant/S2F/IGNITE)"
+  ],
+  "tradeify": [
+    "$25K (Growth/Select)", "$50K (Growth/Select)", "$100K (Growth/Select)", "$150K (Growth/Select)",
+    "$25K (Lightning)",     "$50K (Lightning)",     "$100K (Lightning)",     "$150K (Lightning)"
+  ],
+  "yrm": ["$25K", "$50K", "$100K", "$150K"]
+}

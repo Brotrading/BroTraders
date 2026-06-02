@@ -50,7 +50,7 @@ export async function onRequestPost(context) {
     .bind(user.id)
     .first();
   const purchasePts = purchaseEarned?.total || 0;
-  if (purchasePts < REDEMPTION_GATE_PTS) {
+  if (!pkg.gate_exempt && purchasePts < REDEMPTION_GATE_PTS) {
     return jsonError("redemption_gate_not_met", 403, {
       purchase_pts_earned: purchasePts,
       purchase_pts_required: REDEMPTION_GATE_PTS,

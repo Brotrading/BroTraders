@@ -45,16 +45,21 @@ const ALLOWED_MIME    = new Set(["image/jpeg", "image/png", "image/webp", "appli
 const MAX_PROOF_B64   = 700_000;   // ~500 KB raw file → ~680 KB base64
 // MAX_CLAIMS_MONTH intentionally removed — to be decided with Mike before enabling.
 
-// Low   : click ≤7d + account ≥14d + not first claim + click before purchase + amount ≤€500
-// Medium: click 8–30d  OR  account <14d  OR  first claim  (and no high-risk condition)
-// High  : no click | click >30d | click after purchase date | amount >€500
-function computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaim, clickAfterPurchase }) {
-  if (amountEur > 500)                                return "high";
-  if (daysSinceClick === null || daysSinceClick > 30) return "high";
-  if (clickAfterPurchase)                             return "high";
-  if (daysSinceClick > 7)                             return "medium";
-  if (accountAgeDays < 14)                            return "medium";
-  if (isFirstClaim)                                   return "medium";
+// High  : first claim for this firm | amount >€250 | no click | click >30d | click after purchase | shared firm email
+// Medium: account <30d | click 8–30d | amount €100–250 | click <30min before claim (S3)
+// Low   : none of the above
+function computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaimForFirm, clickAfterPurchase, sharedEmail, minutesSinceClick }) {
+  if (isFirstClaimForFirm)                                        return "high";
+  if (amountEur > 250)                                            return "high";
+  if (daysSinceClick === null || daysSinceClick > 30)             return "high";
+  if (clickAfterPurchase)                                         return "high";
+  if (sharedEmail)                                                return "high";
+
+  if (accountAgeDays < 30)                                        return "medium";
+  if (daysSinceClick > 7)                                         return "medium";
+  if (amountEur >= 100)                                           return "medium";
+  if (minutesSinceClick !== null && minutesSinceClick < 30)       return "medium";
+
   return "low";
 }
 
@@ -77,6 +82,10 @@ export async function onRequestPost(context) {
   if (!Number.isFinite(amountEur) || amountEur <= 0 || amountEur > 50000) {
     return jsonError("invalid_amount_eur", 400);
   }
+
+  // ── Account type — required ────────────────────────────────────────────
+  const accountType = (body.account_type || "").slice(0, 100).trim();
+  if (!accountType) return jsonError("account_type_required", 400);
 
   // ── Order reference — required ─────────────────────────────────────────
   const orderRef = (body.order_ref || "").slice(0, 200).trim();
@@ -137,12 +146,12 @@ export async function onRequestPost(context) {
     (Date.now() - new Date(userRow.created_at).getTime()) / 86_400_000
   );
 
-  // ── First claim check ──────────────────────────────────────────────────
-  const prevApproved = await env.DB
-    .prepare(`SELECT COUNT(*) AS cnt FROM purchase_claims WHERE user_id = ? AND status = 'approved'`)
-    .bind(user.id)
+  // ── First claim for this firm ──────────────────────────────────────────
+  const prevFirmApproved = await env.DB
+    .prepare(`SELECT COUNT(*) AS cnt FROM purchase_claims WHERE user_id = ? AND firm_slug = ? AND status = 'approved'`)
+    .bind(user.id, firmSlug)
     .first();
-  const isFirstClaim = (prevApproved?.cnt || 0) === 0;
+  const isFirstClaimForFirm = (prevFirmApproved?.cnt || 0) === 0;
 
   // ── Click correlation ──────────────────────────────────────────────────
   const clickCheck = await env.DB
@@ -156,16 +165,30 @@ export async function onRequestPost(context) {
   const daysSinceClick = lastClick
     ? Math.floor((Date.now() - new Date(lastClick).getTime()) / 86_400_000)
     : null;
+  // S3: click < 30 min before claim = suspicious (user likely clicked after buying to game tracking)
+  const minutesSinceClick = lastClick
+    ? Math.floor((Date.now() - new Date(lastClick).getTime()) / 60_000)
+    : null;
 
   // Click must be on or before the purchase date (click after purchase = attribution fraud signal)
   const clickAfterPurchase = lastClick
     ? new Date(lastClick) > new Date(purchaseDateStr + "T23:59:59Z")
     : false;
 
-  const isSuspicious = (daysSinceClick === null || daysSinceClick > 30 || clickAfterPurchase) ? 1 : 0;
+  // S2: shared firm email = another user already verified the same email for this firm
+  const sharedEmailCheck = await env.DB
+    .prepare(
+      `SELECT COUNT(DISTINCT user_id) AS cnt FROM user_firm_emails
+       WHERE email = ? AND firm_slug = ? AND verified = 1 AND user_id != ?`
+    )
+    .bind(firmEmailRow.email, firmSlug, user.id)
+    .first();
+  const sharedEmail = (sharedEmailCheck?.cnt || 0) > 0;
+
+  const isSuspicious = (daysSinceClick === null || daysSinceClick > 30 || clickAfterPurchase || sharedEmail) ? 1 : 0;
 
   // ── Risk level ─────────────────────────────────────────────────────────
-  const riskLevel = computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaim, clickAfterPurchase });
+  const riskLevel = computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaimForFirm, clickAfterPurchase, sharedEmail, minutesSinceClick });
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
@@ -179,12 +202,12 @@ export async function onRequestPost(context) {
     insert = await env.DB
       .prepare(
         `INSERT INTO purchase_claims
-           (user_id, firm_slug, order_ref, amount_eur, purchase_date,
+           (user_id, firm_slug, account_type, order_ref, amount_eur, purchase_date,
             proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at,
             last_click_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?, ?)`
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?, ?)`
       )
-      .bind(user.id, firmSlug, orderRef, amountEur, purchaseDateStr,
+      .bind(user.id, firmSlug, accountType, orderRef, amountEur, purchaseDateStr,
             proofData, proofMime, isSuspicious, riskLevel, now, lastClick)
       .run();
   } catch (e) {
@@ -200,6 +223,7 @@ export async function onRequestPost(context) {
       id:             insert.meta.last_row_id,
       firm_slug:      firmSlug,
       firm_name:      FIRM_NAMES[firmSlug],
+      account_type:   accountType,
       order_ref:      orderRef,
       purchase_date:  purchaseDateStr,
       amount_eur:     amountEur,
@@ -226,7 +250,7 @@ export async function onRequestGet(context) {
   const status = url.searchParams.get("status") || "pending";
   const rows = await env.DB
     .prepare(
-      `SELECT c.id, c.user_id, c.firm_slug, c.order_ref, c.amount_eur,
+      `SELECT c.id, c.user_id, c.firm_slug, c.account_type, c.order_ref, c.amount_eur,
               c.purchase_date, c.used_bro_code, c.is_suspicious, c.risk_level,
               c.status, c.points_awarded, c.note, c.created_at, c.reviewed_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,

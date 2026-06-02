@@ -68,7 +68,7 @@ export async function onRequestGet(context) {
 
   const pendingClaims = await env.DB
     .prepare(
-      `SELECT c.id, c.user_id, c.firm_slug, c.order_ref, c.amount_eur,
+      `SELECT c.id, c.user_id, c.firm_slug, c.account_type, c.order_ref, c.amount_eur,
               c.purchase_date, c.used_bro_code, c.is_suspicious, c.risk_level,
               c.status, c.created_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,

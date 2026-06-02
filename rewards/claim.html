@@ -166,6 +166,13 @@
         <option value="yrm">YRM Prop</option>
       </select>
 
+      <div id="accountTypeWrap" style="display:none; margin-top:20px;">
+        <label class="rw-label" for="accountTypeSelect">Account type <em style="color:var(--rw-red);">*</em></label>
+        <select class="rw-input" id="accountTypeSelect" required style="appearance:none; background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer;">
+          <option value="">— Select account type —</option>
+        </select>
+      </div>
+
       <!-- Shown when firm email is verified -->
       <div id="firmEmailDisplay" style="display:none; margin-top:12px;">
         <label class="rw-label" style="margin-bottom:6px; font-size:13px;">Linked account email</label>
@@ -413,12 +420,14 @@
     err.innerHTML = "";
 
     const firmSlug    = document.getElementById("firmSelect").value;
+    const accountType = document.getElementById("accountTypeSelect").value;
     const amountEur   = parseFloat(document.getElementById("amountEur").value);
     const purchaseDate = document.getElementById("purchaseDate").value;
     const orderRef    = document.getElementById("orderRef").value.trim();
     const usedBroCode = document.getElementById("usedBroCode").checked;
 
     if (!firmSlug)                   { err.textContent = "Please select a firm."; return; }
+    if (!accountType)                { err.textContent = "Please select the account type you purchased."; return; }
     if (!amountEur || amountEur <= 0){ err.textContent = "Please enter a valid purchase amount."; return; }
     if (!purchaseDate)               { err.textContent = "Please enter your purchase date."; return; }
     if (!orderRef)                   { err.textContent = "Please enter your order reference number from the prop firm."; return; }
@@ -435,6 +444,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firm_slug:     firmSlug,
+          account_type:  accountType,
           amount_eur:    amountEur,
           purchase_date: purchaseDate,
           order_ref:     orderRef,
@@ -572,8 +582,37 @@
     document.getElementById("linkEmailModal").classList.add("open");
   }
 
+  // ── Account type dropdown ──────────────────────────────────────────────
+  let _firmAccounts = null;
+  async function loadFirmAccounts() {
+    if (_firmAccounts) return _firmAccounts;
+    try {
+      const res = await fetch("../data/firm-accounts.json");
+      _firmAccounts = await res.json();
+    } catch { _firmAccounts = {}; }
+    return _firmAccounts;
+  }
+
+  async function updateAccountTypeDropdown(firmSlug) {
+    const wrap = document.getElementById("accountTypeWrap");
+    const sel  = document.getElementById("accountTypeSelect");
+    sel.innerHTML = '<option value="">— Select account type —</option>';
+    if (!firmSlug) { wrap.style.display = "none"; return; }
+    const accounts = await loadFirmAccounts();
+    const types = accounts[firmSlug];
+    if (!types || !types.length) { wrap.style.display = "none"; return; }
+    types.forEach(t => {
+      const opt = document.createElement("option");
+      opt.value = t; opt.textContent = t;
+      sel.appendChild(opt);
+    });
+    wrap.style.display = "block";
+  }
+
   document.getElementById("firmSelect").addEventListener("change", () => {
-    checkFirmLink(document.getElementById("firmSelect").value);
+    const slug = document.getElementById("firmSelect").value;
+    checkFirmLink(slug);
+    updateAccountTypeDropdown(slug);
   });
 
   document.getElementById("openLinkEmailBtn").addEventListener("click", () => openLinkEmailModal());
@@ -725,7 +764,8 @@
       const sel = document.getElementById("firmSelect");
       if ([...sel.options].some(o => o.value === firmParam)) {
         sel.value = firmParam;
-        sel.dispatchEvent(new Event("change"));
+        checkFirmLink(firmParam);
+        updateAccountTypeDropdown(firmParam);
       }
     }
   });
