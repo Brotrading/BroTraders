@@ -9,8 +9,20 @@
     "$100K (Standard)", "$100K (Zero)", "$100K (Advanced)",
     "$150K (Standard)", "$150K (Advanced)"
   ],
-  "daytraders": ["$25K", "$50K", "$100K", "$150K"],
-  "fundedseat": ["$25K", "$50K", "$100K", "$150K"],
+  "daytraders": [
+    "$25K — Trail",  "$50K — Trail",  "$100K — Trail",  "$150K — Trail",  "$200K — Trail",  "$300K — Trail",
+    "$25K — Static", "$50K — Static", "$100K — Static", "$150K — Static", "$200K — Static", "$300K — Static",
+    "$25K — S2F",    "$50K — S2F",    "$100K — S2F",    "$150K — S2F",
+    "$25K — S2L",    "$50K — S2L",    "$100K — S2L",    "$150K — S2L"
+  ],
+  "fundedseat": [
+    "$50K (1-Step Daily)",  "$100K (1-Step Daily)",  "$150K (1-Step Daily)",
+    "$50K (1-Step Edge)",   "$100K (1-Step Edge)",   "$150K (1-Step Edge)",
+    "$50K (1-Step Rapid)",  "$100K (1-Step Rapid)",  "$150K (1-Step Rapid)",
+    "$25K (Instant Bolt)",  "$50K (Instant Bolt)",   "$75K (Instant Bolt)",  "$100K (Instant Bolt)",
+    "$25K (Instant Edge)",  "$50K (Instant Edge)",   "$75K (Instant Edge)",  "$100K (Instant Edge)",
+    "$25K (Instant Direct)","$50K (Instant Direct)", "$75K (Instant Direct)","$100K (Instant Direct)"
+  ],
   "lucid": [
     "$25K (Pro/Flex)", "$50K (Pro/Flex)", "$100K (Pro/Flex)", "$150K (Pro/Flex)",
     "$25K (Direct)",   "$50K (Direct)",   "$100K (Direct)",   "$150K (Direct)"
@@ -19,8 +31,15 @@
     "$25K (Rapid/Flex)", "$50K (Pro)", "$50K (Rapid/Flex/Builder)",
     "$100K (Pro)", "$100K (Rapid)", "$150K (Pro)", "$150K (Rapid)"
   ],
-  "nexgen": ["$25K", "$50K", "$100K", "$150K"],
-  "phidias": ["$25K", "$50K", "$100K", "$150K"],
+  "nexgen": [
+    "$25K (Evaluation)", "$50K (Evaluation)", "$75K (Evaluation)", "$100K (Evaluation)", "$150K (Evaluation)",
+    "$25K (Instant)",    "$50K (Instant)",    "$75K (Instant)",    "$100K (Instant)",    "$150K (Instant)"
+  ],
+  "phidias": [
+    "$25K (Static)",
+    "$50K (Fundamental)", "$100K (Fundamental)", "$150K (Fundamental)",
+    "$50K (Swing)",       "$100K (Swing)",       "$150K (Swing)"
+  ],
   "topone": [
     "$25K (Elite/Elite Access)", "$50K (Elite/Elite Access)", "$100K (Elite/Elite Access)", "$150K (Elite/Elite Access)",
     "$25K (Instant/S2F/IGNITE)", "$50K (Instant/S2F/IGNITE)", "$100K (Instant/S2F/IGNITE)", "$150K (Instant/S2F/IGNITE)"
@@ -29,5 +48,8 @@
     "$25K (Growth/Select)", "$50K (Growth/Select)", "$100K (Growth/Select)", "$150K (Growth/Select)",
     "$25K (Lightning)",     "$50K (Lightning)",     "$100K (Lightning)",     "$150K (Lightning)"
   ],
-  "yrm": ["$25K", "$50K", "$100K", "$150K"]
+  "yrm": [
+    "$25K (Starter)", "$50K (Starter)", "$100K (Starter)", "$150K (Starter)",
+    "$25K (Instant Prime)", "$50K (Instant Prime)", "$100K (Instant Prime)", "$150K (Instant Prime)"
+  ]
 }
