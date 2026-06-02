@@ -171,6 +171,7 @@
         <select class="rw-input" id="accountTypeSelect" required style="appearance:none; background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer;">
           <option value="">— Select account type —</option>
         </select>
+        <div id="accountTypePriceHint" style="font-size:12px; color:var(--rw-text-2); margin-top:5px; min-height:16px;"></div>
       </div>
 
       <!-- Shown when firm email is verified -->
@@ -593,21 +594,36 @@
     return _firmAccounts;
   }
 
+  let _firmAccountsMap = {};
+
   async function updateAccountTypeDropdown(firmSlug) {
     const wrap = document.getElementById("accountTypeWrap");
     const sel  = document.getElementById("accountTypeSelect");
+    const hint = document.getElementById("accountTypePriceHint");
     sel.innerHTML = '<option value="">— Select account type —</option>';
+    hint.textContent = "";
     if (!firmSlug) { wrap.style.display = "none"; return; }
     const accounts = await loadFirmAccounts();
     const types = accounts[firmSlug];
     if (!types || !types.length) { wrap.style.display = "none"; return; }
+    _firmAccountsMap = {};
     types.forEach(t => {
+      const label = typeof t === "object" ? t.label : t;
       const opt = document.createElement("option");
-      opt.value = t; opt.textContent = t;
+      opt.value = label; opt.textContent = label;
       sel.appendChild(opt);
+      if (typeof t === "object") _firmAccountsMap[label] = t;
     });
     wrap.style.display = "block";
   }
+
+  document.getElementById("accountTypeSelect").addEventListener("change", function () {
+    const hint = document.getElementById("accountTypePriceHint");
+    const entry = _firmAccountsMap[this.value];
+    if (!entry || entry.price_usd == null) { hint.textContent = ""; return; }
+    const suffix = entry.monthly ? "/mo" : "";
+    hint.textContent = `Reference price (BRO rate): ~$${entry.price_usd}${suffix} — verify current price on firm's site.`;
+  });
 
   document.getElementById("firmSelect").addEventListener("change", () => {
     const slug = document.getElementById("firmSelect").value;
