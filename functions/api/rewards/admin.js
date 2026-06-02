@@ -73,8 +73,7 @@ export async function onRequestGet(context) {
               c.status, c.created_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
               u.email, u.display_name, u.is_pro_bro,
-              (SELECT MAX(cl.created_at) FROM clicks cl
-               WHERE cl.user_id = c.user_id AND cl.firm = c.firm_slug) AS last_click_at,
+              c.last_click_at,
               fe.email    AS firm_email,
               fe.locked   AS firm_email_locked,
               fe.verified AS firm_email_verified,

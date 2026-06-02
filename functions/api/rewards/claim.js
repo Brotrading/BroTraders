@@ -180,11 +180,12 @@ export async function onRequestPost(context) {
       .prepare(
         `INSERT INTO purchase_claims
            (user_id, firm_slug, order_ref, amount_eur, purchase_date,
-            proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?)`
+            proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at,
+            last_click_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?, ?)`
       )
       .bind(user.id, firmSlug, orderRef, amountEur, purchaseDateStr,
-            proofData, proofMime, isSuspicious, riskLevel, now)
+            proofData, proofMime, isSuspicious, riskLevel, now, lastClick)
       .run();
   } catch (e) {
     if (e?.message?.includes("UNIQUE constraint failed")) {
@@ -230,14 +231,9 @@ export async function onRequestGet(context) {
               c.status, c.points_awarded, c.note, c.created_at, c.reviewed_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
               u.email, u.display_name, u.is_pro_bro,
-              lc.last_click_at
+              c.last_click_at
        FROM purchase_claims c
        JOIN users u ON u.id = c.user_id
-       LEFT JOIN (
-         SELECT user_id, firm, MAX(created_at) AS last_click_at
-         FROM clicks
-         GROUP BY user_id, firm
-       ) lc ON lc.user_id = c.user_id AND lc.firm = c.firm_slug
        WHERE c.status = ?
        ORDER BY c.created_at ASC
        LIMIT 200`
