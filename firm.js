@@ -1,5 +1,43 @@
 /* firm.js — shared scripts for all firm profile pages */
 
+// ── Click attribution helpers ──────────────────────────────────────────────
+// Mirrors the logic in click-attribution.js so copy-code buttons also record
+// the user's click in localStorage and pass ?u=uid through /go/ redirects.
+const _UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+function _broGetUid() {
+  try {
+    const cached = localStorage.getItem("bro_uid");
+    if (cached && _UUID_RE.test(cached)) return cached;
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || !/^sb-.+-auth-token$/.test(k)) continue;
+      const obj = JSON.parse(localStorage.getItem(k) || "{}");
+      const id = obj?.user?.id || obj?.currentSession?.user?.id;
+      if (id && _UUID_RE.test(id)) return id;
+    }
+  } catch (e) {}
+  return null;
+}
+
+function _broAttribUrl(url) {
+  try {
+    const uid = _broGetUid();
+    if (!uid) return url;
+    const u = new URL(url, window.location.origin);
+    if (!u.pathname.startsWith("/go/")) return url;
+    if (!u.searchParams.has("u")) u.searchParams.set("u", uid);
+    return u.toString();
+  } catch (e) { return url; }
+}
+
+function _broStoreClick(url) {
+  try {
+    const slug = new URL(url, window.location.origin).pathname.replace(/^\/go\//, "").split("/")[0].toLowerCase();
+    if (slug) localStorage.setItem("bro_last_click", JSON.stringify({ firm: slug, at: Date.now() }));
+  } catch (e) {}
+}
+
 // Accordion
 document.querySelectorAll(".fps-title").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -18,9 +56,11 @@ document.querySelectorAll(".firm-btn[data-code]").forEach((btn) => {
     const code = this.dataset.code;
     navigator.clipboard.writeText(code).catch(() => {});
 
-    // Open the affiliate link (hero CTA on the same page) in a new tab.
     const affiliateLink = document.querySelector(".apex-content .apex-btn:not(.copy-code)");
-    if (affiliateLink?.href) window.open(affiliateLink.href, "_blank", "noopener");
+    if (affiliateLink?.href) {
+      _broStoreClick(affiliateLink.href);
+      window.open(_broAttribUrl(affiliateLink.href), "_blank", "noopener");
+    }
 
     const originalHTML = this.innerHTML;
     this.innerHTML = '<i class="fas fa-check"></i> Copied ✓ · Opening site…';
@@ -37,8 +77,10 @@ document.querySelectorAll(".copy-code").forEach((btn) => {
     const code = this.dataset.code;
     navigator.clipboard.writeText(code).catch(() => {});
 
-    // Open affiliate link in new tab so the user lands at checkout with the code ready.
-    if (this.dataset.affiliateUrl) window.open(this.dataset.affiliateUrl, "_blank", "noopener");
+    if (this.dataset.affiliateUrl) {
+      _broStoreClick(this.dataset.affiliateUrl);
+      window.open(_broAttribUrl(this.dataset.affiliateUrl), "_blank", "noopener");
+    }
 
     const original = this.innerText;
     this.innerText = "Copied ✓ · Opening…";

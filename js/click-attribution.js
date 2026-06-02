@@ -68,7 +68,8 @@
     setTimeout(attribute, 2500);
     // Observe future DOM mutations once — covers any late JS rendering.
     const obs = new MutationObserver(() => attribute());
-    obs.observe(document.body, { childList: true, subtree: true });
+    // attributes:true catches firm-loader.js overwriting href after initial attribution.
+    obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
     setTimeout(() => obs.disconnect(), 8000);
 
     // Hook into BroAuth so attribution re-runs once the session resolves.

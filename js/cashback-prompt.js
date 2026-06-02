@@ -143,8 +143,7 @@
     document.body.appendChild(banner);
 
     document.getElementById("bro-cb-claim").addEventListener("click", () => {
-      removeBanner();
-      showModal(firm, firmName);
+      window.location.href = `/rewards/claim.html?firm=${encodeURIComponent(firm)}`;
     });
     document.getElementById("bro-cb-dismiss").addEventListener("click", () => {
       clearLastClick();

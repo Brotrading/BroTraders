@@ -718,6 +718,16 @@
     } catch (_) {}
 
     initDateBounds();
+
+    // Pre-select firm from ?firm= URL param (e.g. when redirected from cashback banner).
+    const firmParam = new URLSearchParams(window.location.search).get("firm");
+    if (firmParam) {
+      const sel = document.getElementById("firmSelect");
+      if ([...sel.options].some(o => o.value === firmParam)) {
+        sel.value = firmParam;
+        sel.dispatchEvent(new Event("change"));
+      }
+    }
   });
 </script>
 

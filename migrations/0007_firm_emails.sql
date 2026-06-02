@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS user_firm_emails (
   user_id    TEXT NOT NULL,
   firm_slug  TEXT NOT NULL,
   email      TEXT NOT NULL,
-  locked     INTEGER DEFAULT 0,  -- 1 = locked after first approved claim
+  -- 1 = locked after first approved claim
+  locked     INTEGER DEFAULT 0,
   created_at TEXT NOT NULL,
   UNIQUE(user_id, firm_slug),
   FOREIGN KEY (user_id) REFERENCES users(id)
