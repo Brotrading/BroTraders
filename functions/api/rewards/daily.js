@@ -91,9 +91,8 @@ export async function onRequestPost(context) {
            streak_claimed_date = ?,
            streak_best         = ?,
            last_login_at       = ?
-         WHERE id = ?
-           AND CASE WHEN points_balance >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
-      ).bind(RESTORE_COST, dailyPts, dailyPts, todayStreak, today, newBest, now, user.id, RESTORE_COST),
+         WHERE id = ?`
+      ).bind(RESTORE_COST, dailyPts, dailyPts, todayStreak, today, newBest, now, user.id),
     ];
 
     if (milestonePts > 0) {
