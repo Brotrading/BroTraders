@@ -325,10 +325,16 @@
 
   // ── Points estimate ────────────────────────────────────────────────────
   document.getElementById("amountEur").addEventListener("input", (e) => {
-    const eur = parseFloat(e.target.value);
-    const el = document.getElementById("ptsEstimate");
-    if (eur > 0) {
-      const { free, pro } = estimatePtsBoth(eur);
+    const val = parseFloat(e.target.value);
+    const el  = document.getElementById("ptsEstimate");
+    if (val > 900) {
+      el.innerHTML = `<span style="color:var(--rw-red);">Maximum purchase amount is $900.</span>`;
+      e.target.setCustomValidity("Maximum purchase amount is $900.");
+      return;
+    }
+    e.target.setCustomValidity("");
+    if (val > 0) {
+      const { free, pro } = estimatePtsBoth(val);
       if (isPro) {
         el.innerHTML = `<span style="color:var(--rw-accent);font-weight:600;">${pro.toLocaleString("en-US")} pts if approved</span> <span style="color:var(--rw-text-2);">(Pro Bro rate)</span>`;
       } else {

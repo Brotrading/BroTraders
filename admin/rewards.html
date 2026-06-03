@@ -371,7 +371,7 @@
               <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
                 <strong>${c.firm_slug}</strong>
                 ${c.account_type ? `<span style="font-size:11px; color:var(--rw-text-2); background:rgba(148,163,184,0.1); border:1px solid rgba(148,163,184,0.2); border-radius:4px; padding:1px 6px;">${c.account_type}</span>` : ""}
-                <span style="color:var(--rw-green);">€${Number(c.amount_eur).toFixed(2)}</span>
+                <span style="color:var(--rw-green);">$${Number(c.amount_eur).toFixed(2)}</span>
                 <span class="rw-muted">+${fmt(pts)} pts${c.is_pro_bro ? " (Pro)" : ""}</span>
                 ${riskBadge(c.risk_level || 'medium')}
                 ${suspiciousBadge}
@@ -419,7 +419,7 @@
       btn.addEventListener("click", async () => {
         const id     = parseInt(btn.dataset.id, 10);
         const action = btn.dataset.claimAction;
-        const desc   = `${btn.dataset.email} — ${btn.dataset.firm} €${Number(btn.dataset.amount || 0).toFixed(2)}`;
+        const desc   = `${btn.dataset.email} — ${btn.dataset.firm} $${Number(btn.dataset.amount || 0).toFixed(2)}`;
 
         if (action === "proof") {
           await showProof(id);
