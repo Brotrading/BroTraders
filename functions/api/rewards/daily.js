@@ -114,7 +114,8 @@ export async function onRequestPost(context) {
     try {
       await env.DB.batch(statements);
     } catch (e) {
-      if (e?.message?.includes("insufficient_balance")) return jsonError("insufficient_points", 409);
+      if (String(e?.message || "").includes("insufficient_balance")) return jsonError("insufficient_points", 409);
+      if (String(e?.message || "").includes("UNIQUE")) return jsonError("daily_already_claimed", 409);
       throw e;
     }
 
@@ -181,7 +182,12 @@ export async function onRequestPost(context) {
     );
   }
 
-  await env.DB.batch(statements);
+  try {
+    await env.DB.batch(statements);
+  } catch (e) {
+    if (String(e?.message || "").includes("UNIQUE")) return jsonError("daily_already_claimed", 409);
+    throw e;
+  }
 
   // Compute restore eligibility for the response
   // (after claiming today, restore is never eligible for the current user state)
