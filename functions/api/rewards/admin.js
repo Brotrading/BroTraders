@@ -29,6 +29,44 @@ import {
   PRO_MULTIPLIER,
 } from "./_lib.js";
 
+const FIRM_NAMES_EMAIL = {
+  apex: "Apex Trader Funding", alpha: "Alpha Futures", daytraders: "Daytraders.com",
+  fundedseat: "FundedSeat", lucid: "Lucid Trading", phidias: "Phidias PropFirm",
+  mffu: "My Funded Futures", nexgen: "NexGen Funding", topone: "Top One Futures",
+  tradeify: "Tradeify", yrm: "YRM Prop",
+};
+
+async function sendEmail(env, { to, subject, html }) {
+  if (!env.RESEND_API_KEY) return;
+  try {
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: env.RESEND_FROM_EMAIL || "BroTrading <noreply@propfirmbro.com>",
+        to: [to],
+        subject,
+        html,
+      }),
+    });
+    if (!r.ok) console.error("[rewards] email send failed:", r.status, await r.text());
+  } catch (e) {
+    console.error("[rewards] email send error:", e?.message);
+  }
+}
+
+function approvalEmail(firmName, points) {
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">BroBros Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">✅ Cashback claim approved</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">Your cashback claim for <strong style="color:#f8fafc;">${firmName}</strong> has been approved.</p><div style="background:#0f1117;border-radius:8px;padding:16px 20px;margin:0 0 24px;"><p style="margin:0 0 4px;font-size:12px;color:#64748b;">Points credited</p><p style="margin:0;font-size:28px;font-weight:800;color:#ff6b00;">+${points.toLocaleString("en-US")} pts</p></div><a href="https://propfirmbro.com/rewards/account.html" style="display:inline-block;background:#ff6b00;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;">View your account →</a></td></tr></table></td></tr></table></body></html>`;
+}
+
+function rejectionEmail(firmName, note) {
+  const reasonLine = note ? `<p style="margin:0 0 16px;font-size:14px;color:#cbd5e1;"><strong style="color:#f8fafc;">Reason:</strong> ${note}</p>` : "";
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">BroBros Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">❌ Cashback claim not approved</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">Your cashback claim for <strong style="color:#f8fafc;">${firmName}</strong> could not be approved.</p>${reasonLine}<p style="margin:0;font-size:13px;color:#64748b;">Questions? Reply to this email or contact us at <a href="mailto:support@propfirmbro.com" style="color:#ff6b00;">support@propfirmbro.com</a>.</p></td></tr></table></td></tr></table></body></html>`;
+}
+
 function checkAdmin(request, env) {
   const expected = env.STATS_TOKEN || "";
   if (!expected) return false;
@@ -340,6 +378,13 @@ async function approveClaim(env, { claim_id, note }) {
     .bind(c.user_id, c.firm_slug)
     .run();
 
+  // Notify user by email (fire-and-forget — don't fail approve if email fails).
+  await sendEmail(env, {
+    to: u.email,
+    subject: `Your cashback claim was approved — +${points.toLocaleString("en-US")} pts`,
+    html: approvalEmail(FIRM_NAMES_EMAIL[c.firm_slug] || c.firm_slug, points),
+  });
+
   // If this is the buyer's first approved purchase, pay the referrer a bonus.
   const prevApproved = await env.DB
     .prepare(
@@ -368,7 +413,7 @@ async function approveClaim(env, { claim_id, note }) {
 async function rejectClaim(env, { claim_id, note }) {
   if (!claim_id) return jsonError("missing_claim_id", 400);
   const c = await env.DB
-    .prepare(`SELECT id FROM purchase_claims WHERE id = ? AND status = 'pending'`)
+    .prepare(`SELECT id, user_id, firm_slug FROM purchase_claims WHERE id = ? AND status = 'pending'`)
     .bind(claim_id)
     .first();
   if (!c) return jsonError("claim_not_found_or_not_pending", 404);
@@ -380,6 +425,16 @@ async function rejectClaim(env, { claim_id, note }) {
     )
     .bind((note || "").slice(0, 200) || null, now, claim_id)
     .run();
+
+  // Notify user by email (fire-and-forget).
+  const u = await getUserRow(env, c.user_id);
+  if (u?.email) {
+    await sendEmail(env, {
+      to: u.email,
+      subject: `Your cashback claim was not approved`,
+      html: rejectionEmail(FIRM_NAMES_EMAIL[c.firm_slug] || c.firm_slug, (note || "").slice(0, 200) || null),
+    });
+  }
 
   return jsonResponse({ ok: true });
 }
