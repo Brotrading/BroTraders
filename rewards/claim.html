@@ -26,6 +26,10 @@
   .flatpickr-day.flatpickr-disabled { opacity: 0.25 !important; }
   .flatpickr-months .flatpickr-prev-month:hover svg,
   .flatpickr-months .flatpickr-next-month:hover svg { fill: #ff6b00 !important; }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"] { -moz-appearance: textfield; }
 </style>
 <style>
   .cl-info {
@@ -655,11 +659,14 @@
   }
 
   document.getElementById("accountTypeSelect").addEventListener("change", function () {
-    const hint = document.getElementById("accountTypePriceHint");
-    const entry = _firmAccountsMap[this.value];
+    const hint    = document.getElementById("accountTypePriceHint");
+    const amtEl   = document.getElementById("amountEur");
+    const entry   = _firmAccountsMap[this.value];
     if (!entry || entry.price_usd == null) { hint.textContent = ""; return; }
-    const suffix = entry.monthly ? "/mo" : "";
+    const suffix  = entry.monthly ? "/mo" : "";
     hint.textContent = `Reference price (BRO rate): ~$${entry.price_usd}${suffix} — verify current price on firm's site.`;
+    amtEl.value = entry.price_usd;
+    amtEl.dispatchEvent(new Event("input"));
   });
 
   document.getElementById("firmSelect").addEventListener("change", () => {
