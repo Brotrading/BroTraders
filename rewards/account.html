@@ -222,7 +222,25 @@
       bestEl.textContent    = best > 0 ? `Personal best: ${best} day${best !== 1 ? "s" : ""}` : "";
       claimBtn.disabled     = false;
       claimBtn.textContent  = "Start a new streak";
+      claimBtn.className    = "rw-btn";
       restoreBtn.style.display = "none";
+      progressEl.style.display = "none";
+      return;
+    }
+
+    if (canRestore) {
+      flameEl.style.filter  = "sepia(1) saturate(2) hue-rotate(10deg)";
+      numEl.style.color     = "#f59e0b";
+      numEl.textContent     = streak;
+      titleEl.textContent   = `${streak}-day streak · at risk!`;
+      subEl.textContent     = "You missed yesterday. Continue your streak or start fresh.";
+      bestEl.textContent    = best > 0 ? `Personal best: ${best} day${best !== 1 ? "s" : ""}` : "";
+      claimBtn.disabled     = false;
+      claimBtn.textContent  = "Start fresh";
+      claimBtn.className    = "rw-btn ghost";
+      restoreBtn.style.display = "";
+      restoreBtn.textContent   = "Continue streak · −50 pts";
+      restoreBtn.className     = "rw-btn";
       progressEl.style.display = "none";
       return;
     }
@@ -243,7 +261,8 @@
     bestEl.textContent   = best > 0 ? `Personal best: ${best} day${best !== 1 ? "s" : ""}` : "";
     claimBtn.disabled    = claimed;
     claimBtn.textContent = claimed ? "Claimed today ✓" : "Claim today's bonus";
-    restoreBtn.style.display = canRestore ? "" : "none";
+    claimBtn.className   = "rw-btn";
+    restoreBtn.style.display = "none";
 
     progressEl.style.display = "";
 
@@ -372,6 +391,7 @@
   document.getElementById("claimDailyBtn").addEventListener("click", async () => {
     const btn = document.getElementById("claimDailyBtn");
     const msg = document.getElementById("streakMsg");
+    const originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = "Claiming…";
     msg.style.display = "none";
@@ -382,6 +402,7 @@
         let text = `+${data.daily_pts} pts awarded! You're on a ${data.new_streak}-day streak.`;
         if (data.milestone_bonus > 0) text += ` 🎉 ${data.milestone_day}-day milestone bonus: +${data.milestone_bonus} pts!`;
         msg.textContent = text;
+        msg.style.color = "var(--rw-green)";
         msg.style.display = "";
         await refresh();
       } else {
@@ -390,14 +411,14 @@
         msg.style.color = "var(--rw-red)";
         msg.style.display = "";
         btn.disabled = false;
-        btn.textContent = "Claim today's bonus";
+        btn.textContent = originalText;
       }
     } catch {
       msg.textContent = "Something went wrong. Please try again.";
       msg.style.color = "var(--rw-red)";
       msg.style.display = "";
       btn.disabled = false;
-      btn.textContent = "Claim today's bonus";
+      btn.textContent = originalText;
     }
   });
 
@@ -405,7 +426,6 @@
   document.getElementById("restoreStreakBtn").addEventListener("click", async () => {
     const btn = document.getElementById("restoreStreakBtn");
     const msg = document.getElementById("streakMsg");
-    if (!confirm("Restore your streak for 50 pts?")) return;
     btn.disabled = true;
     msg.style.display = "none";
     try {
