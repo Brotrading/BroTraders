@@ -37,7 +37,7 @@
     <div class="rw-stat">
       <div class="label">Referral link</div>
       <div class="value" style="font-size:14px; word-break:break-all;" id="refLink">—</div>
-      <div class="sub">Share to earn <span id="refReward">500 pts on signup · 2,500 pts when they buy</span></div>
+      <div class="sub">Share to earn <span id="refReward">2,500 pts when they make their first purchase</span></div>
     </div>
   </div>
 
@@ -297,8 +297,8 @@
     proPill.className = "rw-pill " + (user.is_pro_bro ? "pro" : "");
     proPill.textContent = user.is_pro_bro ? "Pro Bro · 1.5× points" : "Free Bro";
     document.getElementById("refReward").textContent = user.is_pro_bro
-      ? "750 pts on signup · 3,750 pts when they buy"
-      : "500 pts on signup · 2,500 pts when they buy";
+      ? "3,750 pts when they make their first purchase"
+      : "2,500 pts when they make their first purchase";
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;
@@ -358,7 +358,7 @@
           <tr>
             <td>${fmtDate(c.created_at)}</td>
             <td>${FIRM_NAMES[c.firm_slug] || c.firm_slug}</td>
-            <td>€${Number(c.amount_eur).toFixed(2)}</td>
+            <td>$${Number(c.amount_eur).toFixed(2)}</td>
             <td class="rw-muted">${c.order_ref || "—"}</td>
             <td><span style="color:${st.color}; font-weight:600; font-size:12px;">${st.label}</span></td>
             <td style="text-align:right;">${ptsDisplay}</td>
@@ -416,7 +416,9 @@
       });
       const data = await res.json();
       if (res.ok) {
-        msg.textContent = `Streak restored to ${data.new_streak} days (−50 pts). Claim today's bonus now!`;
+        let text = `Streak restored! −50 pts, +${data.daily_pts} pts today. You're on a ${data.new_streak}-day streak.`;
+        if (data.milestone_bonus > 0) text += ` 🎉 ${data.new_streak}-day milestone bonus: +${data.milestone_bonus} pts!`;
+        msg.textContent = text;
         msg.style.color = "var(--rw-green)";
         msg.style.display = "";
         await refresh();

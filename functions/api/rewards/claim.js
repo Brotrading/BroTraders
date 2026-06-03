@@ -78,8 +78,9 @@ export async function onRequestPost(context) {
   if (!VALID_SLUGS.has(firmSlug)) return jsonError("invalid_firm_slug", 400);
 
   // ── Amount ─────────────────────────────────────────────────────────────
+  // Field name kept as amount_eur for DB compat; value is now USD (confirmed: all accounts purchased in USD).
   const amountEur = parseFloat(body.amount_eur);
-  if (!Number.isFinite(amountEur) || amountEur <= 0 || amountEur > 50000) {
+  if (!Number.isFinite(amountEur) || amountEur <= 0 || amountEur > 900) {
     return jsonError("invalid_amount_eur", 400);
   }
 

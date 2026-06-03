@@ -63,29 +63,56 @@ export async function onRequestPost(context) {
     if (lastClaimed !== dayBefore)  return jsonError("restore_not_eligible", 409);
     if ((row.points_balance || 0) < RESTORE_COST) return jsonError("insufficient_points", 409);
 
-    const currentStreak = row.login_streak || 0;
-    const restoredStreak = currentStreak + 1;
-    const newBest = Math.max(row.streak_best || 0, restoredStreak);
+    const currentStreak  = row.login_streak || 0;
+    const restoredStreak = currentStreak + 1;  // yesterday re-claimed
+    const todayStreak    = restoredStreak + 1; // today claimed immediately after restore
+    const newBest = Math.max(row.streak_best || 0, todayStreak);
+    const dailyPts = rateFor("daily_login", isPro);
 
-    // Atomically deduct points and update streak. Rolls back if balance is insufficient.
+    let milestonePts = 0;
+    if (todayStreak === 7)                              milestonePts = STREAK_MILESTONE_7;
+    else if (todayStreak > 0 && todayStreak % 30 === 0) milestonePts = STREAK_MILESTONE_30;
+
     const now = new Date().toISOString();
-    try {
-      await env.DB.batch([
+    const statements = [
+      env.DB.prepare(
+        `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+         VALUES (?, ?, 'streak_restore', ?, ?, ?)`
+      ).bind(user.id, -RESTORE_COST, today, `Streak restored to day ${todayStreak}`, now),
+      env.DB.prepare(
+        `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+         VALUES (?, ?, 'daily_login', ?, ?, ?)`
+      ).bind(user.id, dailyPts, today, `Day ${todayStreak} login bonus`, now),
+      env.DB.prepare(
+        `UPDATE users SET
+           points_balance      = points_balance - ? + ?,
+           points_earned       = points_earned + ?,
+           login_streak        = ?,
+           streak_claimed_date = ?,
+           streak_best         = ?,
+           last_login_at       = ?
+         WHERE id = ?
+           AND CASE WHEN points_balance >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
+      ).bind(RESTORE_COST, dailyPts, dailyPts, todayStreak, today, newBest, now, user.id, RESTORE_COST),
+    ];
+
+    if (milestonePts > 0) {
+      const milestoneReason = `streak_milestone_${todayStreak}`;
+      statements.push(
         env.DB.prepare(
           `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
-           VALUES (?, ?, 'streak_restore', ?, ?, ?)`
-        ).bind(user.id, -RESTORE_COST, today, `Streak restored to day ${restoredStreak}`, now),
+           VALUES (?, ?, ?, ?, ?, ?)`
+        ).bind(user.id, milestonePts, milestoneReason, today, `${todayStreak}-day streak milestone!`, now)
+      );
+      statements.push(
         env.DB.prepare(
-          `UPDATE users SET
-             points_balance    = points_balance - ?,
-             points_earned     = points_earned + 0,
-             login_streak      = ?,
-             streak_claimed_date = ?,
-             streak_best       = ?
-           WHERE id = ?
-             AND CASE WHEN points_balance >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
-        ).bind(RESTORE_COST, restoredStreak, yesterday, newBest, user.id, RESTORE_COST),
-      ]);
+          `UPDATE users SET points_balance = points_balance + ?, points_earned = points_earned + ? WHERE id = ?`
+        ).bind(milestonePts, milestonePts, user.id)
+      );
+    }
+
+    try {
+      await env.DB.batch(statements);
     } catch (e) {
       if (e?.message?.includes("insufficient_balance")) return jsonError("insufficient_points", 409);
       throw e;
@@ -94,9 +121,11 @@ export async function onRequestPost(context) {
     return jsonResponse({
       ok: true,
       restored: true,
-      new_streak: restoredStreak,
+      new_streak: todayStreak,
       streak_best: newBest,
       cost_pts: RESTORE_COST,
+      daily_pts: dailyPts,
+      milestone_bonus: milestonePts,
     });
   }
 

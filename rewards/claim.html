@@ -197,8 +197,8 @@
         </div>
       </div>
 
-      <label class="rw-label" for="amountEur" style="margin-top: 20px;">Purchase amount (€) <em style="color:var(--rw-red);">*</em></label>
-      <input class="rw-input" type="number" id="amountEur" min="1" max="50000" step="0.01" placeholder="e.g. 149.00" required />
+      <label class="rw-label" for="amountEur" style="margin-top: 20px;">Purchase amount ($) <em style="color:var(--rw-red);">*</em></label>
+      <input class="rw-input" type="number" id="amountEur" min="1" max="900" step="0.01" placeholder="e.g. 149.00" required />
       <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
 
       <label class="rw-label" for="purchaseDate" style="margin-top: 20px;">Purchase date <em style="color:var(--rw-red);">*</em></label>
@@ -478,7 +478,7 @@
           bro_code_required:      "Please confirm that you used a BRO affiliate link.",
           monthly_cap_exceeded:   "You've reached the maximum of 5 claims per 30 days. Please wait before submitting another claim.",
           invalid_firm_slug:      "Invalid firm selected.",
-          invalid_amount_eur:     "Please enter a valid amount between €1 and €50,000.",
+          invalid_amount_eur:     "Please enter a valid amount between $1 and $900.",
         };
         err.textContent = msgs[data.error] || `Submission failed: ${data.error}`;
         btn.disabled = false;

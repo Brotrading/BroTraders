@@ -9,8 +9,9 @@
 // Earn rates live in EARN_RATES below — single source of truth.
 // IMPORTANT: confirm with Mike before public launch.
 
-// Purchase cashback: 2.5% of purchase amount in points (1000 pts = €1).
+// Purchase cashback: 2.5% of purchase amount in points (1000 pts = $1 USD).
 // Pro Bro rate is base × PRO_MULTIPLIER (1.5×) = effectively 3.75%.
+// Note: confirm with Mike whether rate/points-per-unit should stay in USD.
 export const CASHBACK_RATE = 0.025;
 export const POINTS_PER_EUR = 1000;
 
