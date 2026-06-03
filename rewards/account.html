@@ -436,8 +436,7 @@
       });
       const data = await res.json();
       if (res.ok) {
-        let text = `Streak restored! −50 pts, +${data.daily_pts} pts today. You're on a ${data.new_streak}-day streak.`;
-        if (data.milestone_bonus > 0) text += ` 🎉 ${data.new_streak}-day milestone bonus: +${data.milestone_bonus} pts!`;
+        const text = `Streak restored to day ${data.new_streak} (−${data.cost_pts} pts). Now claim today's bonus to continue!`;
         msg.textContent = text;
         msg.style.color = "var(--rw-green)";
         msg.style.display = "";
