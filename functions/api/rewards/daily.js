@@ -66,25 +66,50 @@ export async function onRequestPost(context) {
     const currentStreak  = row.login_streak || 0;
     const restoredStreak = currentStreak + 1;
     const newBest = Math.max(row.streak_best || 0, restoredStreak);
+    const dailyPts = rateFor("daily_login", isPro);
+
+    let milestonePts = 0;
+    if (restoredStreak === 7)                                milestonePts = STREAK_MILESTONE_7;
+    else if (restoredStreak > 0 && restoredStreak % 30 === 0) milestonePts = STREAK_MILESTONE_30;
 
     const now = new Date().toISOString();
     try {
-      await env.DB.batch([
+      const statements = [
         env.DB.prepare(
           `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
            VALUES (?, ?, 'streak_restore', ?, ?, ?)`
-        ).bind(user.id, -RESTORE_COST, today, `Streak restored to day ${restoredStreak}`, now),
+        ).bind(user.id, -RESTORE_COST, today, `Streak restore cost (day ${restoredStreak})`, now),
+        env.DB.prepare(
+          `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+           VALUES (?, ?, 'daily_login', ?, ?, ?)`
+        ).bind(user.id, dailyPts, today, `Day ${restoredStreak} login bonus`, now),
         env.DB.prepare(
           `UPDATE users SET
-             points_balance      = points_balance - ?,
+             points_balance      = points_balance - ? + ?,
+             points_earned       = points_earned + ?,
              login_streak        = ?,
              streak_claimed_date = ?,
-             streak_best         = ?
+             streak_best         = ?,
+             last_login_at       = ?
            WHERE id = ?`
-        ).bind(RESTORE_COST, restoredStreak, yesterday, newBest, user.id),
-      ]);
+        ).bind(RESTORE_COST, dailyPts, dailyPts, restoredStreak, today, newBest, now, user.id),
+      ];
+      if (milestonePts > 0) {
+        const milestoneReason = `streak_milestone_${restoredStreak}`;
+        statements.push(
+          env.DB.prepare(
+            `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+             VALUES (?, ?, ?, ?, ?, ?)`
+          ).bind(user.id, milestonePts, milestoneReason, today, `${restoredStreak}-day streak milestone!`, now)
+        );
+        statements.push(
+          env.DB.prepare(
+            `UPDATE users SET points_balance = points_balance + ?, points_earned = points_earned + ? WHERE id = ?`
+          ).bind(milestonePts, milestonePts, user.id)
+        );
+      }
+      await env.DB.batch(statements);
     } catch (e) {
-      if (String(e?.message || "").includes("insufficient_balance")) return jsonError("insufficient_points", 409);
       if (String(e?.message || "").includes("UNIQUE")) return jsonError("daily_already_claimed", 409);
       throw e;
     }
@@ -95,6 +120,8 @@ export async function onRequestPost(context) {
       new_streak: restoredStreak,
       streak_best: newBest,
       cost_pts: RESTORE_COST,
+      daily_pts: dailyPts,
+      milestone_bonus: milestonePts,
     });
   }
 
