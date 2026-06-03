@@ -6,7 +6,27 @@
 <title>Submit Cashback Claim · BroTrading Rewards</title>
 <script src="../head.js"></script>
 <link rel="stylesheet" href="./_styles.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css" />
 <style>
+  .flatpickr-calendar.dark {
+    background: #1a1d2e;
+    border: 1px solid #2d3248;
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    font-family: inherit;
+  }
+  .flatpickr-day.selected, .flatpickr-day.selected:hover,
+  .flatpickr-day.startRange, .flatpickr-day.endRange {
+    background: #ff6b00 !important;
+    border-color: #ff6b00 !important;
+  }
+  .flatpickr-day:hover, .flatpickr-day.prevMonthDay:hover,
+  .flatpickr-day.nextMonthDay:hover { background: rgba(255,107,0,0.15) !important; }
+  .flatpickr-day.today { border-color: #ff6b00 !important; }
+  .flatpickr-day.flatpickr-disabled { opacity: 0.25 !important; }
+  .flatpickr-months .flatpickr-prev-month:hover svg,
+  .flatpickr-months .flatpickr-next-month:hover svg { fill: #ff6b00 !important; }
+</style>
   .cl-info {
     background: rgba(255,107,0,0.08);
     border: 1px solid rgba(255,107,0,0.25);
@@ -202,7 +222,7 @@
       <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
 
       <label class="rw-label" for="purchaseDate" style="margin-top: 20px;">Purchase date <em style="color:var(--rw-red);">*</em></label>
-      <input class="rw-input" type="date" id="purchaseDate" required />
+      <input type="date" id="purchaseDate" />
       <div id="dateHint" style="font-size:12px; color:var(--rw-text-2); margin-top:5px;"></div>
 
       <label class="rw-label" for="orderRef" style="margin-top: 20px;">Order reference <em style="color:var(--rw-red);">*</em></label>
@@ -278,6 +298,7 @@
 
 <div id="loadingShell" class="rw-auth-shell"><p class="rw-muted">Loading…</p></div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="../js/supabase-config.js"></script>
 <script src="../js/auth.js"></script>
 <script src="../header.js"></script>
@@ -300,24 +321,33 @@
     return { free, pro };
   }
 
-  // ── Date picker bounds ─────────────────────────────────────────────────
+  // ── Date picker ────────────────────────────────────────────────────────
+  let _flatpickrInstance = null;
+
   function initDateBounds() {
-    const today = new Date();
-    const todayStr = today.toISOString().split("T")[0];
-    const minDate  = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-    const minStr   = minDate.toISOString().split("T")[0];
+    const minDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const minStr  = minDate.toISOString().split("T")[0];
 
     const pickerMin = accountCreatedDate && accountCreatedDate > minStr
       ? accountCreatedDate
       : minStr;
 
-    const pd = document.getElementById("purchaseDate");
-    pd.max = todayStr;
-    pd.min = pickerMin;
+    if (_flatpickrInstance) _flatpickrInstance.destroy();
+
+    _flatpickrInstance = flatpickr("#purchaseDate", {
+      dateFormat:    "Y-m-d",
+      altInput:      true,
+      altFormat:     "d/m/Y",
+      altInputClass: "rw-input",
+      allowInput:    true,
+      minDate:       pickerMin,
+      maxDate:       "today",
+    });
 
     const hint = document.getElementById("dateHint");
+    const minDisplay = pickerMin.split("-").reverse().join("/");
     if (accountCreatedDate) {
-      hint.textContent = `Only purchases on or after ${accountCreatedDate} (your registration date) are eligible.`;
+      hint.textContent = `Only purchases on or after ${minDisplay} (your registration date) are eligible.`;
     } else {
       hint.textContent = `Only purchases within the last 30 days are eligible.`;
     }
