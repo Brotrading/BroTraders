@@ -222,7 +222,7 @@
         </div>
       </div>
 
-      <div id="amountWrap" style="margin-top: 20px;">
+      <div id="amountWrap" style="margin-top: 20px; display:none;">
         <label class="rw-label" for="amountEur">Purchase amount ($) <em style="color:var(--rw-red);">*</em></label>
         <input class="rw-input" type="number" id="amountEur" min="1" max="900" step="0.01" placeholder="e.g. 149.00" />
       </div>
@@ -650,9 +650,7 @@
   async function updateAccountTypeDropdown(firmSlug) {
     const wrap = document.getElementById("accountTypeWrap");
     const sel  = document.getElementById("accountTypeSelect");
-    const hint = document.getElementById("accountTypePriceHint");
     sel.innerHTML = '<option value="">— Select account type —</option>';
-    hint.textContent = "";
     if (!firmSlug) { wrap.style.display = "none"; return; }
     const accounts = await loadFirmAccounts();
     const types = accounts[firmSlug];
@@ -678,7 +676,7 @@
     if (!entry || entry.price_usd == null) {
       ptsEl.textContent = "";
       _fixedPointsBase  = null;
-      amtWrap.style.display = "";
+      amtWrap.style.display = "none";
       return;
     }
 
@@ -706,7 +704,7 @@
     _fixedPointsBase = null;
     _currentEntry    = null;
     document.getElementById("ptsEstimate").textContent  = "";
-    document.getElementById("amountWrap").style.display = "";
+    document.getElementById("amountWrap").style.display = "none";
     checkFirmLink(slug);
     updateAccountTypeDropdown(slug);
   });
