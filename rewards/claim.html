@@ -471,16 +471,15 @@
 
     const firmSlug    = document.getElementById("firmSelect").value;
     const accountType = document.getElementById("accountTypeSelect").value;
-    const amountEur   = _fixedPointsBase !== null
-      ? (_currentEntry?.price_usd || 0)
-      : parseFloat(document.getElementById("amountEur").value);
+    const amountEur   = _currentEntry?.price_usd
+      || parseFloat(document.getElementById("amountEur").value)
+      || 1;
     const purchaseDate = document.getElementById("purchaseDate").value;
     const orderRef    = document.getElementById("orderRef").value.trim();
     const usedBroCode = document.getElementById("usedBroCode").checked;
 
     if (!firmSlug)                                   { err.textContent = "Please select a firm."; return; }
     if (!accountType)                                { err.textContent = "Please select the account type you purchased."; return; }
-    if (_fixedPointsBase === null && (!amountEur || amountEur <= 0)) { err.textContent = "Please enter a valid purchase amount."; return; }
     if (!purchaseDate)               { err.textContent = "Please enter your purchase date."; return; }
     if (!orderRef)                   { err.textContent = "Please enter your order reference number from the prop firm."; return; }
     if (!proofBase64)                { err.textContent = "Please upload a proof of purchase (screenshot of your order confirmation)."; return; }
@@ -691,11 +690,11 @@
         ptsEl.innerHTML = `${entry.points_base.toLocaleString("en-US")} Bro Points if approved &nbsp;·&nbsp; <span style="color:var(--rw-accent);">${proBase.toLocaleString("en-US")} pts as Pro Bro</span>`;
       }
     } else {
-      // Percentage-based firm: user enters their purchase amount.
+      // Non-fixed firm: hide amount field, silently use reference price.
       _fixedPointsBase      = null;
-      amtWrap.style.display = "";
-      amtEl.value = entry.price_usd;
-      amtEl.dispatchEvent(new Event("input"));
+      amtWrap.style.display = "none";
+      amtEl.value = entry.price_usd || 1;
+      ptsEl.textContent = "";
     }
   });
 
