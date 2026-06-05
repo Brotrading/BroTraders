@@ -685,9 +685,24 @@
       amtWrap.style.display = "none";
       const proBase = roundToNearest25(entry.points_base * 1.5);
       if (isPro) {
-        ptsEl.innerHTML = `<span style="color:var(--rw-accent);font-weight:600;">${proBase.toLocaleString("en-US")} Bro Points if approved</span> <span style="color:var(--rw-text-2);">(Pro Bro rate)</span>`;
+        ptsEl.innerHTML =
+          `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
+            `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${proBase.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
+            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">if approved &nbsp;·&nbsp; <span style="color:#fbbf24;">⭐ Pro Bro rate</span></div>` +
+          `</div>`;
       } else {
-        ptsEl.innerHTML = `${entry.points_base.toLocaleString("en-US")} Bro Points if approved &nbsp;·&nbsp; <span style="color:var(--rw-accent);">${proBase.toLocaleString("en-US")} pts as Pro Bro</span>`;
+        ptsEl.innerHTML =
+          `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
+            `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${entry.points_base.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
+            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">if approved</div>` +
+          `</div>` +
+          `<div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.35);border-radius:10px;padding:12px 18px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">` +
+            `<div>` +
+              `<div style="font-size:13px;font-weight:700;color:var(--rw-text);">⭐ Pro Bro earns <span style="color:#fbbf24;">${proBase.toLocaleString("en-US")} pts</span> on this claim</div>` +
+              `<div style="font-size:12px;color:var(--rw-text-2);margin-top:2px;">That's 1.5× more on every approved claim</div>` +
+            `</div>` +
+            `<a href="https://whop.com/joined/bro-trading/" target="_blank" style="background:#fbbf24;color:#000;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;">Upgrade to Pro Bro →</a>` +
+          `</div>`;
       }
     } else {
       // Non-fixed firm: hide amount field, silently use reference price.
