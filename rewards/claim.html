@@ -162,7 +162,7 @@
   <p class="rw-muted" style="margin: 6px 0 20px;">Bought a challenge via a BRO affiliate link? Submit your claim and earn Bro Points.</p>
 
   <div class="cl-info">
-    <span id="rateNote">Earn Bro Points on every purchase made via a BRO affiliate link. Claims are reviewed within 24 hours.</span>
+    <span id="rateNote">Earn Bro Points on every purchase made via a BRO affiliate link. Claims are reviewed manually. Most are processed within a few business days — you'll receive an email when done.</span>
     <ul>
       <li>Only purchases made via <strong>BRO affiliate links</strong> on this site qualify.</li>
       <li>Purchase date must be <strong>within the last 30 days</strong>.</li>
@@ -265,7 +265,7 @@
     <div id="successMsg" style="display:none; text-align:center; padding: 32px 0;">
       <div style="font-size:48px; margin-bottom:16px;">✅</div>
       <h2 style="margin:0 0 10px; font-size:22px;">Claim submitted!</h2>
-      <p style="color:var(--rw-text-2); font-size:15px; margin:0 0 8px;">Your claim is pending review — usually approved within 24 hours. We'll email you once it's been reviewed.</p>
+      <p style="color:var(--rw-text-2); font-size:15px; margin:0 0 8px;">Your claim is pending review. Most are processed within a few business days — you'll receive an email when done.</p>
       <p id="ptsMessage" style="color:var(--rw-accent); font-weight:700; font-size:15px; margin:0 0 24px;"></p>
       <a class="rw-btn ghost" href="./account.html" style="text-decoration:none;">Back to your account</a>
     </div>
@@ -688,13 +688,13 @@
         ptsEl.innerHTML =
           `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
             `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${proBase.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">if approved &nbsp;·&nbsp; <span style="color:#fbbf24;">⭐ Pro Bro rate</span></div>` +
+            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;"><span style="color:#fbbf24;">⭐ Pro Bro rate</span></div>` +
           `</div>`;
       } else {
         ptsEl.innerHTML =
           `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
             `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${entry.points_base.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">if approved</div>` +
+            `` +
           `</div>` +
           `<div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.35);border-radius:10px;padding:12px 18px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">` +
             `<div>` +

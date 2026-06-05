@@ -158,8 +158,7 @@
       <div id="bro-cashback-modal">
         <h3>Claim Bro Points — ${firmName}</h3>
         <p>
-          Enter your purchase details. We'll verify and credit your Bro Points
-          within 24 hours.
+          Enter your purchase details. Claims are reviewed manually — most are processed within a few business days. You'll receive an email when done.
         </p>
 
         <div class="bro-cb-field">
@@ -182,7 +181,7 @@
         <div id="bro-cb-success" style="display:none;">
           <div class="bro-cb-check">✅</div>
           <h3>Claim submitted!</h3>
-          <p>Your points will be added once we verify your purchase (usually within 24 hours).</p>
+          <p>Your claim is submitted. Most are processed within a few business days — you'll receive an email when done.</p>
         </div>
       </div>
     `;
