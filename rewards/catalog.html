@@ -3,9 +3,30 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bro Packs · Bro Rewards</title>
+<title>Bro Store · Bro Rewards</title>
 <script src="../head.js"></script>
 <link rel="stylesheet" href="./_styles.css" />
+<style>
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #1a1d2e;
+    border: 1px solid var(--rw-border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 420px;
+  }
+</style>
 </head>
 <body class="rw-body">
 
@@ -15,8 +36,8 @@
 
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
     <div>
-      <h1 class="rw-h1">Bro Packs</h1>
-      <p class="rw-muted">Redeem your points for funded accounts and Pro Bro perks. Unlock by earning 5,000 pts from purchases first.</p>
+      <h1 class="rw-h1">Bro Store</h1>
+      <p class="rw-muted">Exchange your Bro Points for exclusive rewards. Unlock the Bro Store by earning 5,000 pts from purchases.</p>
     </div>
     <div class="rw-stat" style="min-width: 200px;">
       <div class="label">Your balance</div>
@@ -33,10 +54,21 @@
   <div class="rw-panel">
     <p class="rw-muted" style="margin:0 0 8px;">1. Use one of our affiliate links to purchase a challenge at a partner prop firm. Apply code <strong>BRO</strong> or <strong>BROTRADING</strong> at checkout, then submit your claim to earn Bro Points.</p>
     <p class="rw-muted" style="margin:0 0 8px;">2. Bonus points for signing up, completing your profile, daily logins, writing firm reviews, and referring friends — but purchases via BRO links are where the real earning happens.</p>
-    <p class="rw-muted" style="margin:0;">3. Once you've earned 5,000 pts from purchases, Bro Packs unlock. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
+    <p class="rw-muted" style="margin:0;">3. Once you've earned 5,000 pts from purchases, the Bro Store unlocks. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
   </div>
 
 </main>
+
+<div class="modal-overlay" id="redeemConfirmModal">
+  <div class="modal-box">
+    <h3 style="margin:0 0 12px; font-size:18px;">Confirm redemption</h3>
+    <p id="redeemConfirmText" style="font-size:14px; color:var(--rw-text-2); margin:0 0 24px; line-height:1.5;"></p>
+    <div style="display:flex; gap:12px; justify-content:flex-end;">
+      <button id="redeemCancelBtn" class="rw-btn ghost">Cancel</button>
+      <button id="redeemConfirmBtn" class="rw-btn">Confirm</button>
+    </div>
+  </div>
+</div>
 
 <script src="../js/supabase-config.js"></script>
 <script src="../js/auth.js"></script>
@@ -79,7 +111,7 @@
           </div>
           <p>${p.description || ""}</p>
           <div class="cost">${fmt(p.points_cost)} pts</div>
-          <button class="rw-btn full" data-slug="${p.slug}" ${canAfford && (p.stock === null || p.stock > 0) ? "" : "disabled"}>
+          <button class="rw-btn full" data-slug="${p.slug}" data-title="${p.title.replace(/"/g, "&quot;")}" data-cost="${p.points_cost}" ${canAfford && (p.stock === null || p.stock > 0) ? "" : "disabled"}>
             ${!canAfford ? "Not enough points" : (p.stock !== null && p.stock <= 0 ? "Out of stock" : "Redeem")}
           </button>
         </article>
@@ -91,11 +123,25 @@
     });
   }
 
+  function confirmRedeem(title, cost) {
+    return new Promise((resolve) => {
+      document.getElementById("redeemConfirmText").textContent =
+        `Spend ${fmt(cost)} pts on "${title}"?`;
+      const modal = document.getElementById("redeemConfirmModal");
+      modal.classList.add("open");
+      document.getElementById("redeemConfirmBtn").onclick = () => { modal.classList.remove("open"); resolve(true); };
+      document.getElementById("redeemCancelBtn").onclick  = () => { modal.classList.remove("open"); resolve(false); };
+    });
+  }
+
   async function redeem(slug, btn) {
     const ok = document.getElementById("redeemMsg");
     const err = document.getElementById("redeemErr");
     ok.textContent = ""; err.textContent = "";
-    if (!confirm("Confirm: spend points on this Bro Pack?")) return;
+    const title = btn.dataset.title || "this Bro Pack";
+    const cost  = Number(btn.dataset.cost || 0);
+    const confirmed = await confirmRedeem(title, cost);
+    if (!confirmed) return;
     btn.disabled = true;
     btn.textContent = "Redeeming…";
     const res = await BroAuth.authedFetch("/api/rewards/redeem", {
@@ -108,7 +154,7 @@
       err.textContent = data.error === "insufficient_points"
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`
         : data.error === "redemption_gate_not_met"
-        ? `Bro Packs unlock after earning 5,000 pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`
+        ? `The Bro Store unlocks after earning 5,000 pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`
         : `Could not redeem: ${data.error}`;
       btn.disabled = false;
       btn.textContent = "Redeem";

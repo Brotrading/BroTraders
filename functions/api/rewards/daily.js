@@ -26,9 +26,9 @@ import {
   rateFor,
 } from "./_lib.js";
 
-const STREAK_MILESTONE_7  = 500;
-const STREAK_MILESTONE_30 = 2000;
-const RESTORE_COST        = 50;
+const STREAK_MILESTONE_7  = 5000;
+const STREAK_MILESTONE_30 = 20000;
+const RESTORE_COST        = 500;
 
 function todayUTC() {
   return new Date().toISOString().slice(0, 10);

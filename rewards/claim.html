@@ -215,7 +215,7 @@
         <div style="background:rgba(251,146,60,0.1); border:1px solid rgba(251,146,60,0.35); border-radius:8px; padding:14px 16px;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
             <span style="font-size:16px;">⚠</span>
-            <strong style="color:#fb923c; font-size:14px;">Account Not Linked</strong>
+            <strong style="color:#fb923c; font-size:14px;">Account not linked</strong>
           </div>
           <p id="firmLinkedMsg" style="margin:0 0 14px; font-size:13px; color:var(--rw-text-2); line-height:1.5;"></p>
           <button type="button" class="rw-btn" id="openLinkEmailBtn" style="font-size:13px;">✉ Link your account</button>
@@ -255,7 +255,7 @@
 
       <label class="cl-checkbox" id="broCodeLabel">
         <input type="checkbox" id="usedBroCode" required />
-        <span>I confirm that I purchased via a <strong>BRO affiliate link</strong> on this site (via one of the firm links or the /go/ redirect). Purchases made directly on the prop firm's website without using a BRO link are not eligible.</span>
+        <span>I confirm that I purchased via a <strong>BRO affiliate link</strong> on this site. Purchases made directly on the prop firm's website without using a BRO link are not eligible.</span>
       </label>
 
       <div id="formErr" class="rw-err" style="margin-top:16px;"></div>
@@ -311,8 +311,8 @@
 <script src="../js/auth.js"></script>
 <script src="../header.js"></script>
 <script>
-  const FREE_RATE = 0.025;
-  const PRO_RATE  = 0.0375;
+  const FREE_RATE = 0.25;
+  const PRO_RATE  = 0.375;
   const MAX_PROOF_BYTES = 500 * 1024; // 500 KB
 
   let isPro = false;
@@ -556,7 +556,7 @@
       }
 
       const pts = data.claim?.points_pending || estimatePts(amountEur);
-      document.getElementById("ptsMessage").textContent = `${pts.toLocaleString("en-US")} pts pending approval.`;
+      document.getElementById("ptsMessage").textContent = `${pts.toLocaleString("en-US")} Bro Points will be awarded once your claim is approved.`;
       document.getElementById("claimForm").style.display = "none";
       document.getElementById("successMsg").style.display = "block";
     } catch {

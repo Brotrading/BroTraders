@@ -62,7 +62,7 @@
       <!-- Right: action buttons -->
       <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
         <button class="rw-btn" id="claimDailyBtn">Claim today's bonus</button>
-        <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −50 pts</button>
+        <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −500 pts</button>
       </div>
     </div>
 
@@ -87,7 +87,7 @@
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; margin-bottom: 24px;">
     <a class="rw-btn" href="./catalog.html">Redeem points →</a>
     <a class="rw-btn ghost" href="./claim.html">Claim Bro Points</a>
-    <a class="rw-btn ghost" href="./review.html">Write a review · Earn points</a>
+    <a class="rw-btn ghost" href="./review.html">Write a Review</a>
     <button class="rw-btn ghost" id="copyRefBtn">Copy referral link</button>
   </div>
 
@@ -152,9 +152,9 @@
     streak_milestone_7: "7-day streak milestone",
     streak_milestone_30: "30-day streak milestone",
     review_submitted: "Firm review approved",
-    referral_signup: "Referral signup",
+    referral_signup: "Referral bonus — signup",
     pro_bro_welcome: "Pro Bro welcome bonus",
-    purchase_cashback: "Purchase claim",
+    purchase_cashback: "Bro Points earned",
     manual_bonus: "Bonus from team",
     admin_adjust: "Admin adjustment",
     redemption: "Bro Pack redeemed",
@@ -239,7 +239,7 @@
       claimBtn.textContent  = "Start fresh";
       claimBtn.className    = "rw-btn ghost";
       restoreBtn.style.display = "";
-      restoreBtn.textContent   = "Continue streak · −50 pts";
+      restoreBtn.textContent   = "Continue streak · −500 pts";
       restoreBtn.className     = "rw-btn";
       progressEl.style.display = "none";
       return;
@@ -277,14 +277,14 @@
 
     if (streak < 7) {
       barPct = (streak / 7) * 100;
-      labelEl.textContent    = "Progress to 7-day streak · +500 pts";
+      labelEl.textContent    = "Progress to 7-day streak · +5,000 pts";
       pctEl.textContent      = `${streak}/7`;
       labelStart.textContent = "Day 1";
       labelStart.style.color = "var(--rw-text-2)";
       labelEnd.textContent   = "🏆 Day 7";
     } else if (streak < 30) {
       barPct = ((streak - 7) / 23) * 100;
-      labelEl.textContent    = "Progress to 30-day streak · +2,000 pts";
+      labelEl.textContent    = "Progress to 30-day streak · +20,000 pts";
       pctEl.textContent      = `${streak}/30`;
       labelStart.textContent = "✓ Day 7";
       labelStart.style.color = "#f59e0b";
@@ -293,7 +293,7 @@
       const cycleStart    = Math.floor(streak / 30) * 30;
       const nextMilestone = cycleStart + 30;
       barPct = ((streak - cycleStart) / 30) * 100;
-      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · +2,000 pts`;
+      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · +20,000 pts`;
       pctEl.textContent      = `${streak}/${nextMilestone}`;
       labelStart.textContent = `✓ Day ${cycleStart}`;
       labelStart.style.color = "#f59e0b";
@@ -316,8 +316,8 @@
     proPill.className = "rw-pill " + (user.is_pro_bro ? "pro" : "");
     proPill.textContent = user.is_pro_bro ? "Pro Bro · 1.5× points" : "Free Bro";
     document.getElementById("refReward").textContent = user.is_pro_bro
-      ? "3,750 pts when they make their first purchase"
-      : "2,500 pts when they make their first purchase";
+      ? "37,500 pts when they make their first purchase"
+      : "25,000 pts when they make their first purchase";
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;
@@ -347,7 +347,7 @@
 
     const rbody = document.querySelector("#redemptionsTable tbody");
     if (!redemptions.length) {
-      rbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--rw-text-2);">No redemptions yet — <a href="./catalog.html" style="color:var(--rw-accent-2);">browse Bro Packs</a></td></tr>`;
+      rbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--rw-text-2);">No redemptions yet — <a href="./catalog.html" style="color:var(--rw-accent-2);">visit the Bro Store</a></td></tr>`;
     } else {
       rbody.innerHTML = redemptions.map((row) => `
         <tr>
@@ -366,7 +366,7 @@
       cbody.innerHTML = claims.map((c) => {
         const st = CLAIM_STATUS[c.status] || { label: c.status, color: "var(--rw-text-2)" };
         const isPro = user.is_pro_bro;
-        const rate = isPro ? 0.0375 : 0.025;
+        const rate = isPro ? 0.375 : 0.25;
         const ptsPending = Math.round(c.amount_eur * rate * 1000);
         const ptsDisplay = c.status === "approved"
           ? `<span style="color:var(--rw-green);">+${fmt(c.points_awarded)}</span>`
@@ -445,7 +445,7 @@
       } else {
         const msgs = {
           restore_not_eligible: "Restore is only available if you missed exactly one day.",
-          insufficient_points: "You need at least 50 pts to restore your streak.",
+          insufficient_points: "You need at least 500 pts to restore your streak.",
         };
         msg.textContent = msgs[data.error] || `Error: ${data.error}`;
         msg.style.color = "var(--rw-red)";
