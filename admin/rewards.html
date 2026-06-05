@@ -254,6 +254,59 @@
   }
 
   function fmt(n) { return Number(n || 0).toLocaleString("en-US"); }
+
+  const PRO_MULTIPLIER = 1.5;
+  const FIRM_POINTS = {
+    apex: {
+      "Intraday Trail | Standard | 25K | One Pack":              25,
+      "Intraday Trail | Standard | 25K | Five Pack":             125,
+      "Intraday Trail | Standard | 50K | One Pack":              25,
+      "Intraday Trail | Standard | 50K | Five Pack":             125,
+      "Intraday Trail | Standard | 100K | One Pack":             50,
+      "Intraday Trail | Standard | 100K | Five Pack":            250,
+      "Intraday Trail | Standard | 150K | One Pack":             50,
+      "Intraday Trail | Standard | 150K | Five Pack":            250,
+      "Intraday Trail | No Activation Fee | 25K | One Pack":     75,
+      "Intraday Trail | No Activation Fee | 25K | Five Pack":    375,
+      "Intraday Trail | No Activation Fee | 50K | One Pack":     75,
+      "Intraday Trail | No Activation Fee | 50K | Five Pack":    375,
+      "Intraday Trail | No Activation Fee | 100K | One Pack":    100,
+      "Intraday Trail | No Activation Fee | 100K | Five Pack":   500,
+      "Intraday Trail | No Activation Fee | 150K | One Pack":    175,
+      "Intraday Trail | No Activation Fee | 150K | Five Pack":   875,
+      "EOD Trail | Standard | 25K | One Pack":                   50,
+      "EOD Trail | Standard | 25K | Five Pack":                  250,
+      "EOD Trail | Standard | 50K | One Pack":                   50,
+      "EOD Trail | Standard | 50K | Five Pack":                  250,
+      "EOD Trail | Standard | 100K | One Pack":                  50,
+      "EOD Trail | Standard | 100K | Five Pack":                 250,
+      "EOD Trail | Standard | 150K | One Pack":                  100,
+      "EOD Trail | Standard | 150K | Five Pack":                 500,
+      "EOD Trail | No Activation Fee | 25K | One Pack":          100,
+      "EOD Trail | No Activation Fee | 25K | Five Pack":         500,
+      "EOD Trail | No Activation Fee | 50K | One Pack":          100,
+      "EOD Trail | No Activation Fee | 50K | Five Pack":         500,
+      "EOD Trail | No Activation Fee | 100K | One Pack":         150,
+      "EOD Trail | No Activation Fee | 150K | One Pack":         225,
+    },
+  };
+
+  function lookupFixedPoints(firmSlug, accountType, isPro) {
+    const firmData = FIRM_POINTS[firmSlug];
+    if (!firmData) return null;
+    const base = firmData[accountType];
+    if (base == null) return null;
+    if (!isPro) return base;
+    return Math.round((base * PRO_MULTIPLIER) / 25) * 25;
+  }
+
+  function calcPts(c) {
+    const isPro = !!c.is_pro_bro;
+    const fixed = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
+    if (fixed !== null) return fixed;
+    const rate = isPro ? 0.0375 : 0.025;
+    return Math.round(c.amount_eur * rate * 1000);
+  }
   function fmtDate(iso) {
     if (!iso) return "—";
     return new Date(iso).toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" });
@@ -349,8 +402,7 @@
     }
 
     root.innerHTML = filtered.map((c) => {
-      const rate = c.is_pro_bro ? 0.0375 : 0.025;
-      const pts  = Math.round(c.amount_eur * rate * 1000);
+      const pts  = calcPts(c);
       // Use stored risk_level (computed at submission time) — not live-recalculated.
       const risk = RISK_STYLE[c.risk_level] || RISK_STYLE.medium;
 
