@@ -170,6 +170,9 @@
     async signInWithGoogle() {
       return this.signInWithProvider("google");
     },
+    async signInWithDiscord() {
+      return this.signInWithProvider("discord");
+    },
     async signInWithProvider(provider) {
       await ready;
       return client.auth.signInWithOAuth({
