@@ -33,10 +33,10 @@ async function sendVerificationEmail(env, { to, firmName, code }) {
       body: JSON.stringify({
         from,
         to: [to],
-        subject: `Verify your ${firmName} email — BroTrading Rewards`,
+        subject: `Verify your ${firmName} email — Bro Rewards`,
         html: `
           <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;background:#0f1117;color:#e2e8f0;border-radius:12px;">
-            <h2 style="margin:0 0 16px;color:#ff6b00;">BroTrading Rewards</h2>
+            <h2 style="margin:0 0 16px;color:#ff6b00;">Bro Rewards</h2>
             <p style="margin:0 0 8px;color:#94a3b8;">Use the code below to verify your <strong style="color:#e2e8f0;">${firmName}</strong> email address.</p>
             <div style="background:#1a1d2e;border:1px solid #2d3748;border-radius:8px;padding:24px;text-align:center;margin:24px 0;">
               <span style="font-size:36px;font-weight:800;letter-spacing:8px;color:#ff6b00;">${code}</span>
