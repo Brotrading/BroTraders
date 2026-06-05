@@ -526,9 +526,10 @@
           proof_invalid_type:     "Proof must be a JPEG, PNG, WebP or PDF file.",
           proof_too_large:        "Proof file is too large. Maximum is 500 KB.",
           bro_code_required:      "Please confirm that you used a BRO affiliate link.",
-          monthly_cap_exceeded:   "You've reached the maximum of 5 claims per 30 days. Please wait before submitting another claim.",
+          monthly_cap_exceeded:   "You've reached the maximum number of claims per 30 days. Please wait before submitting another claim.",
           invalid_firm_slug:      "Invalid firm selected.",
           invalid_amount_eur:     "Please enter a valid amount between $1 and $900.",
+          invalid_account_type:   "Invalid account type for this firm. Please select a valid option from the dropdown.",
         };
         err.textContent = msgs[data.error] || `Submission failed: ${data.error}`;
         btn.disabled = false;
@@ -750,6 +751,24 @@
     }
   });
 
+  let _saveEmailCooldownTimer = null;
+
+  function startSaveEmailCooldown(saveBtn) {
+    let secs = 60;
+    saveBtn.disabled = true;
+    saveBtn.textContent = `Wait ${secs}s`;
+    _saveEmailCooldownTimer = setInterval(() => {
+      secs--;
+      if (secs <= 0) {
+        clearInterval(_saveEmailCooldownTimer);
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save email";
+      } else {
+        saveBtn.textContent = `Wait ${secs}s`;
+      }
+    }, 1000);
+  }
+
   document.getElementById("saveLinkEmailBtn").addEventListener("click", async () => {
     const slug    = document.getElementById("firmSelect").value;
     const email   = document.getElementById("linkEmailInput").value.trim().toLowerCase();
@@ -776,6 +795,7 @@
           document.getElementById("linkEmailModal").classList.remove("open");
           checkFirmLink(slug);
         } else {
+          startSaveEmailCooldown(saveBtn);
           // transition to code step
           document.getElementById("linkCodeDesc").innerHTML =
             `We sent a 6-digit code to <strong>${email}</strong>. Enter it below to verify.`;

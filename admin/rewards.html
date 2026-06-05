@@ -34,7 +34,7 @@
 <div id="gate" class="gate">
   <div class="gate-card">
     <h1 style="margin:0 0 4px;">Admin access</h1>
-    <p class="rw-muted rw-small" style="margin:0 0 14px;">Enter the stats token.</p>
+    <p class="rw-muted rw-small" style="margin:0 0 14px;">Enter the admin token (ADMIN_TOKEN env var).</p>
     <input id="gateToken" class="rw-input" type="password" placeholder="Token" />
     <button id="gateBtn" class="rw-btn full" style="margin-top:10px;">Enter</button>
     <div id="gateErr" class="rw-err"></div>
@@ -124,6 +124,14 @@
         <button class="rw-btn" type="submit">Lookup</button>
       </form>
       <div id="lookupResult" style="margin-top:16px;"></div>
+    </div>
+  </section>
+
+  <section style="margin-top:32px;">
+    <h2 class="rw-h2">Referrals</h2>
+    <div class="rw-panel">
+      <button class="rw-btn ghost" id="loadReferralsBtn" style="font-size:13px;">Load referral list</button>
+      <div id="referralsResult" style="margin-top:16px;"></div>
     </div>
   </section>
 
@@ -533,6 +541,10 @@
 
       const suspiciousBadge = clickBadge(c.last_click_at);
 
+      const dupProofBadge = c.is_duplicate_proof
+        ? `<span style="font-size:11px; padding:2px 7px; border-radius:4px; font-weight:600; color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3);">⚠ Duplicate proof</span>`
+        : "";
+
       const broBadge = c.used_bro_code
         ? `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#94a3b8; background:rgba(148,163,184,0.1); border:1px solid rgba(148,163,184,0.2);">BRO ✓</span>`
         : `<span style="font-size:11px; padding:2px 6px; border-radius:4px; color:#f87171; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.2);">BRO ✗</span>`;
@@ -551,6 +563,7 @@
                 <span class="rw-muted">+${fmt(pts)} pts</span>
                 ${riskBadge(c.risk_level || 'medium')}
                 ${suspiciousBadge}
+                ${dupProofBadge}
                 ${broBadge}
               </div>
               <div class="rw-muted rw-small" style="line-height:1.7;">
@@ -563,6 +576,7 @@
                 ${c.purchase_date ? `· <span>Purchase date: <strong>${c.purchase_date}</strong></span>` : ""}
                 <br>
                 ${c.order_ref ? `Ref: <code>${c.order_ref}</code>` : `<em style="color:var(--rw-red);">No order ref</em>`}
+                ${c.submitter_ip ? ` · IP: <code style="font-size:10px;">${c.submitter_ip}</code>` : ""}
                 <br>
                 ${c.firm_email
                   ? `Firm email: <strong>${c.firm_email}</strong>
@@ -893,6 +907,54 @@
       loadOverview();
     });
   }
+
+  // ── Referrals ─────────────────────────────────────────────────────────
+  document.getElementById("loadReferralsBtn").addEventListener("click", async () => {
+    const btn = document.getElementById("loadReferralsBtn");
+    const root = document.getElementById("referralsResult");
+    btn.disabled = true;
+    btn.textContent = "Loading…";
+    try {
+      const data = await api("POST", { action: "list_referrals" });
+      const refs = data.referrals || [];
+      if (!refs.length) {
+        root.innerHTML = `<p class="rw-muted">No referrals yet.</p>`;
+      } else {
+        root.innerHTML = `
+          <div style="font-size:12px; color:var(--rw-text-2); margin-bottom:8px;">${refs.length} referred user${refs.length === 1 ? "" : "s"}</div>
+          <div style="padding:0; overflow:hidden; border:1px solid var(--rw-border); border-radius:10px;">
+            <table class="rw-table">
+              <thead><tr><th>User</th><th>Referred by</th><th>Type</th><th>Approved claims</th><th>Joined</th></tr></thead>
+              <tbody>
+                ${refs.map(r => `
+                  <tr>
+                    <td>
+                      <div style="font-weight:600; font-size:13px;">${r.display_name || "—"}</div>
+                      <div style="font-size:11px; color:var(--rw-text-2);">${r.email}</div>
+                    </td>
+                    <td>
+                      <div style="font-size:13px;">${r.referrer_name || "—"}</div>
+                      <div style="font-size:11px; color:var(--rw-text-2);">${r.referrer_email}</div>
+                    </td>
+                    <td>${r.is_pro_bro
+                      ? `<span style="font-size:10px; font-weight:700; color:#fbbf24; background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.3); border-radius:4px; padding:1px 6px;">⭐ Pro</span>`
+                      : `<span style="font-size:10px; color:var(--rw-text-2); background:rgba(148,163,184,0.08); border:1px solid rgba(148,163,184,0.18); border-radius:4px; padding:1px 6px;">Free</span>`
+                    }</td>
+                    <td style="text-align:center;">${r.approved_claims}</td>
+                    <td style="font-size:12px;">${fmtDate(r.created_at)}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+    } catch (e) {
+      root.innerHTML = `<p class="rw-muted" style="color:var(--rw-red);">Failed to load referrals.</p>`;
+    }
+    btn.disabled = false;
+    btn.textContent = "Reload";
+  });
 
   document.getElementById("signOutLink").addEventListener("click", (e) => {
     e.preventDefault();

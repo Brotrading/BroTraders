@@ -69,7 +69,7 @@ function rejectionEmail(firmName, note) {
 }
 
 function checkAdmin(request, env) {
-  const expected = env.STATS_TOKEN || "";
+  const expected = env.ADMIN_TOKEN || "";
   if (!expected) return false;
   const headerTok = request.headers.get("x-admin-token") || "";
   return headerTok === expected;
@@ -110,7 +110,7 @@ export async function onRequestGet(context) {
               c.status, c.created_at,
               CASE WHEN c.proof_data IS NOT NULL THEN 1 ELSE 0 END AS has_proof,
               u.email, u.display_name, u.is_pro_bro,
-              c.last_click_at,
+              c.last_click_at, c.submitter_ip, c.is_duplicate_proof,
               fe.email    AS firm_email,
               fe.locked   AS firm_email_locked,
               fe.verified AS firm_email_verified,
@@ -121,6 +121,7 @@ export async function onRequestGet(context) {
        LEFT JOIN user_firm_emails fe ON fe.user_id = c.user_id AND fe.firm_slug = c.firm_slug
        WHERE c.status = 'pending'
        ORDER BY c.created_at ASC`
+    // Note: submitter_ip and is_duplicate_proof added in migration 0014
     )
     .all();
 
@@ -166,6 +167,7 @@ export async function onRequestPost(context) {
     case "approve_claim":    return approveClaim(env, body);
     case "reject_claim":     return rejectClaim(env, body);
     case "view_proof":       return viewProof(env, body);
+    case "list_referrals":   return listReferrals(env);
     default:                 return jsonError("unknown_action", 400, { action });
   }
 }
@@ -411,6 +413,22 @@ async function approveClaim(env, { claim_id, note }) {
   }
 
   return jsonResponse({ ok: true, points_awarded: points });
+}
+
+async function listReferrals(env) {
+  const rows = await env.DB
+    .prepare(
+      `SELECT u.id, u.email, u.display_name, u.referral_code, u.created_at, u.is_pro_bro,
+              r.email AS referrer_email, r.display_name AS referrer_name,
+              (SELECT COUNT(*) FROM purchase_claims pc
+               WHERE pc.user_id = u.id AND pc.status = 'approved') AS approved_claims
+       FROM users u
+       JOIN users r ON r.id = u.referred_by
+       ORDER BY u.created_at DESC
+       LIMIT 500`
+    )
+    .all();
+  return jsonResponse({ referrals: rows.results || [] });
 }
 
 async function rejectClaim(env, { claim_id, note }) {

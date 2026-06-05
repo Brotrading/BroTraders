@@ -5,7 +5,7 @@
 import { jsonResponse, jsonError } from "./_lib.js";
 
 function checkAdmin(request, env) {
-  const expected = env.STATS_TOKEN || "";
+  const expected = env.ADMIN_TOKEN || "";
   if (!expected) return false;
   const url = new URL(request.url);
   return (

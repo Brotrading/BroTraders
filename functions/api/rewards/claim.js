@@ -25,7 +25,13 @@ import {
   POINTS_PER_EUR,
   PRO_MULTIPLIER,
   lookupFixedPoints,
+  FIRM_POINTS,
 } from "./_lib.js";
+
+async function sha256hex(str) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
 
 const FIRM_NAMES = {
   apex:       "Apex Trader Funding",
@@ -85,9 +91,14 @@ export async function onRequestPost(context) {
     return jsonError("invalid_amount_eur", 400);
   }
 
-  // ── Account type — required ────────────────────────────────────────────
+  // ── Account type — required + validated ───────────────────────────────
   const accountType = (body.account_type || "").slice(0, 100).trim();
   if (!accountType) return jsonError("account_type_required", 400);
+  // Validate against FIRM_POINTS whitelist; skip for firms not yet in the list (alpha, yrm).
+  const firmPointsMap = FIRM_POINTS[firmSlug];
+  if (firmPointsMap && !(accountType in firmPointsMap)) {
+    return jsonError("invalid_account_type", 400);
+  }
 
   // ── Order reference — required ─────────────────────────────────────────
   const orderRef = (body.order_ref || "").slice(0, 200).trim();
@@ -105,6 +116,19 @@ export async function onRequestPost(context) {
   const thirtyDaysAgoStr = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   if (purchaseDateStr > todayStr)         return jsonError("purchase_date_future", 400);
   if (purchaseDateStr < thirtyDaysAgoStr) return jsonError("purchase_too_old", 400);
+
+  // ── Monthly claim cap (CLAIM_CAP_MONTH env var; 0 = disabled) ─────────
+  const capMonth = parseInt(env.CLAIM_CAP_MONTH || "0", 10);
+  if (capMonth > 0) {
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    const recentCount = await env.DB
+      .prepare(`SELECT COUNT(*) AS cnt FROM purchase_claims WHERE user_id = ? AND created_at >= ?`)
+      .bind(user.id, thirtyDaysAgo)
+      .first();
+    if ((recentCount?.cnt || 0) >= capMonth) {
+      return jsonError("monthly_cap_exceeded", 429, { cap: capMonth });
+    }
+  }
 
   // ── Proof — required ───────────────────────────────────────────────────
   const proofMime = (body.proof_mime || "image/jpeg").trim();
@@ -192,6 +216,17 @@ export async function onRequestPost(context) {
   // ── Risk level ─────────────────────────────────────────────────────────
   const riskLevel = computeRiskLevel({ amountEur, daysSinceClick, accountAgeDays, isFirstClaimForFirm, clickAfterPurchase, sharedEmail, minutesSinceClick });
 
+  // ── Submitter IP (punt 14) ─────────────────────────────────────────────
+  const submitterIp = request.headers.get("CF-Connecting-IP") || null;
+
+  // ── Proof hash + duplicate detection (punt 16) ─────────────────────────
+  const proofHash = await sha256hex(proofData);
+  const dupRow = await env.DB
+    .prepare(`SELECT 1 FROM purchase_claims WHERE proof_hash = ? LIMIT 1`)
+    .bind(proofHash)
+    .first();
+  const isDuplicateProof = dupRow ? 1 : 0;
+
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
   const fixedPending = lookupFixedPoints(firmSlug, accountType, isPro);
@@ -208,11 +243,12 @@ export async function onRequestPost(context) {
         `INSERT INTO purchase_claims
            (user_id, firm_slug, account_type, order_ref, amount_eur, purchase_date,
             proof_data, proof_mime, used_bro_code, is_suspicious, risk_level, status, created_at,
-            last_click_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?, ?)`
+            last_click_at, submitter_ip, proof_hash, is_duplicate_proof)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, 'pending', ?, ?, ?, ?, ?)`
       )
       .bind(user.id, firmSlug, accountType, orderRef, amountEur, purchaseDateStr,
-            proofData, proofMime, isSuspicious, riskLevel, now, lastClick)
+            proofData, proofMime, isSuspicious, riskLevel, now, lastClick,
+            submitterIp, proofHash, isDuplicateProof)
       .run();
   } catch (e) {
     if (e?.message?.includes("UNIQUE constraint failed")) {
@@ -245,7 +281,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   if (!env.DB) return jsonError("D1 binding missing", 500);
 
-  const expected = env.STATS_TOKEN || "";
+  const expected = env.ADMIN_TOKEN || "";
   if (!expected) return jsonError("unauthorized", 401);
   const url = new URL(request.url);
   const tok = request.headers.get("x-admin-token") || "";
