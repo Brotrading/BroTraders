@@ -24,6 +24,7 @@ import {
   CASHBACK_RATE,
   POINTS_PER_EUR,
   PRO_MULTIPLIER,
+  lookupFixedPoints,
 } from "./_lib.js";
 
 const FIRM_NAMES = {
@@ -193,8 +194,10 @@ export async function onRequestPost(context) {
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
-  const rate   = isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE;
-  const pointsPending = Math.round(amountEur * rate * POINTS_PER_EUR);
+  const fixedPending = lookupFixedPoints(firmSlug, accountType, isPro);
+  const pointsPending = fixedPending !== null
+    ? fixedPending
+    : Math.round(amountEur * (isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE) * POINTS_PER_EUR);
 
   // ── Insert ─────────────────────────────────────────────────────────────
   const now = new Date().toISOString();

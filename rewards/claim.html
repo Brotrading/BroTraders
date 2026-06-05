@@ -162,7 +162,7 @@
   <p class="rw-muted" style="margin: 6px 0 20px;">Bought a challenge via a BRO affiliate link? Submit your claim and earn points on your purchase.</p>
 
   <div class="cl-info">
-    Earn <strong id="rateNote">2.5%</strong> of your purchase amount in points. Claims are reviewed within 24 hours.
+    <span id="rateNote">Earn <strong>fixed Bro Points</strong> based on your account type, or <strong>2.5%</strong> of your purchase amount for other firms.</span> Claims are reviewed within 24 hours.
     <ul>
       <li>Only purchases made via <strong>BRO affiliate links</strong> on this site qualify.</li>
       <li>Purchase date must be <strong>within the last 30 days</strong>.</li>
@@ -317,6 +317,9 @@
   let accountCreatedDate = null; // "YYYY-MM-DD" string from /api/rewards/me
   let proofBase64 = null;
   let proofMime   = null;
+  let _fixedPointsBase = null; // set when selected account type has fixed points
+
+  function roundToNearest25(n) { return Math.round(n / 25) * 25; }
 
   function estimatePts(eur) {
     return Math.round(eur * (isPro ? PRO_RATE : FREE_RATE) * 1000);
@@ -361,6 +364,8 @@
 
   // ── Points estimate ────────────────────────────────────────────────────
   document.getElementById("amountEur").addEventListener("input", (e) => {
+    // Skip percentage estimate when account type has fixed points.
+    if (_fixedPointsBase !== null) return;
     const val = parseFloat(e.target.value);
     const el  = document.getElementById("ptsEstimate");
     if (val > 900) {
@@ -660,18 +665,43 @@
   }
 
   document.getElementById("accountTypeSelect").addEventListener("change", function () {
-    const hint    = document.getElementById("accountTypePriceHint");
-    const amtEl   = document.getElementById("amountEur");
-    const entry   = _firmAccountsMap[this.value];
-    if (!entry || entry.price_usd == null) { hint.textContent = ""; return; }
-    const suffix  = entry.monthly ? "/mo" : "";
-    hint.textContent = `Reference price (BRO rate): ~$${entry.price_usd}${suffix} — verify current price on firm's site.`;
+    const hint   = document.getElementById("accountTypePriceHint");
+    const ptsEl  = document.getElementById("ptsEstimate");
+    const amtEl  = document.getElementById("amountEur");
+    const entry  = _firmAccountsMap[this.value];
+
+    if (!entry || entry.price_usd == null) {
+      hint.textContent = "";
+      ptsEl.textContent = "";
+      _fixedPointsBase = null;
+      return;
+    }
+
     amtEl.value = entry.price_usd;
-    amtEl.dispatchEvent(new Event("input"));
+
+    if (entry.points_base != null) {
+      // Fixed-points firm: show the exact Bro Points for this account type.
+      _fixedPointsBase = entry.points_base;
+      const proBase = roundToNearest25(entry.points_base * 1.5);
+      hint.textContent = `Price with BRO code: $${entry.price_usd} — verify current price on firm's site.`;
+      if (isPro) {
+        ptsEl.innerHTML = `<span style="color:var(--rw-accent);font-weight:600;">${proBase.toLocaleString("en-US")} Bro Points if approved</span> <span style="color:var(--rw-text-2);">(Pro Bro rate)</span>`;
+      } else {
+        ptsEl.innerHTML = `${entry.points_base.toLocaleString("en-US")} Bro Points if approved &nbsp;·&nbsp; <span style="color:var(--rw-accent);">${proBase.toLocaleString("en-US")} pts as Pro Bro</span>`;
+      }
+    } else {
+      // Percentage-based firm: fall back to amount-based estimate.
+      _fixedPointsBase = null;
+      const suffix = entry.monthly ? "/mo" : "";
+      hint.textContent = `Reference price (BRO rate): ~$${entry.price_usd}${suffix} — verify current price on firm's site.`;
+      amtEl.dispatchEvent(new Event("input"));
+    }
   });
 
   document.getElementById("firmSelect").addEventListener("change", () => {
     const slug = document.getElementById("firmSelect").value;
+    _fixedPointsBase = null;
+    document.getElementById("ptsEstimate").textContent = "";
     checkFirmLink(slug);
     updateAccountTypeDropdown(slug);
   });
@@ -810,7 +840,9 @@
       if (res.ok) {
         const { user } = await res.json();
         isPro = !!user?.is_pro_bro;
-        document.getElementById("rateNote").textContent = isPro ? "3.75%" : "2.5%";
+        const rate = isPro ? "3.75%" : "2.5%";
+        document.getElementById("rateNote").innerHTML =
+          `Earn <strong>fixed Bro Points</strong> based on your account type, or <strong>${rate}</strong> of your purchase amount for other firms.`;
         if (user?.created_at) {
           accountCreatedDate = user.created_at.slice(0, 10); // "YYYY-MM-DD"
         }

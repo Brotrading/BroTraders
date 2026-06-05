@@ -158,3 +158,52 @@ export async function getUserRow(env, user_id) {
     .bind(user_id)
     .first();
 }
+
+// Fixed Bro Points per account type for firms using the lookup-based system.
+// Keys must match the `label` field in data/firm-accounts.json exactly.
+// Base points are for regular users; ProBro gets base × PRO_MULTIPLIER rounded to nearest 25.
+export const FIRM_POINTS = {
+  apex: {
+    "Intraday Trail | Standard | 25K | One Pack":              25,
+    "Intraday Trail | Standard | 25K | Five Pack":             125,
+    "Intraday Trail | Standard | 50K | One Pack":              25,
+    "Intraday Trail | Standard | 50K | Five Pack":             125,
+    "Intraday Trail | Standard | 100K | One Pack":             50,
+    "Intraday Trail | Standard | 100K | Five Pack":            250,
+    "Intraday Trail | Standard | 150K | One Pack":             50,
+    "Intraday Trail | Standard | 150K | Five Pack":            250,
+    "Intraday Trail | No Activation Fee | 25K | One Pack":     75,
+    "Intraday Trail | No Activation Fee | 25K | Five Pack":    375,
+    "Intraday Trail | No Activation Fee | 50K | One Pack":     75,
+    "Intraday Trail | No Activation Fee | 50K | Five Pack":    375,
+    "Intraday Trail | No Activation Fee | 100K | One Pack":    100,
+    "Intraday Trail | No Activation Fee | 100K | Five Pack":   500,
+    "Intraday Trail | No Activation Fee | 150K | One Pack":    175,
+    "Intraday Trail | No Activation Fee | 150K | Five Pack":   875,
+    "EOD Trail | Standard | 25K | One Pack":                   50,
+    "EOD Trail | Standard | 25K | Five Pack":                  250,
+    "EOD Trail | Standard | 50K | One Pack":                   50,
+    "EOD Trail | Standard | 50K | Five Pack":                  250,
+    "EOD Trail | Standard | 100K | One Pack":                  50,
+    "EOD Trail | Standard | 100K | Five Pack":                 250,
+    "EOD Trail | Standard | 150K | One Pack":                  100,
+    "EOD Trail | Standard | 150K | Five Pack":                 500,
+    "EOD Trail | No Activation Fee | 25K | One Pack":          100,
+    "EOD Trail | No Activation Fee | 25K | Five Pack":         500,
+    "EOD Trail | No Activation Fee | 50K | One Pack":          100,
+    "EOD Trail | No Activation Fee | 50K | Five Pack":         500,
+    "EOD Trail | No Activation Fee | 100K | One Pack":         150,
+    "EOD Trail | No Activation Fee | 150K | One Pack":         225,
+  },
+};
+
+// Returns fixed points for a firm+accountType combo, or null if the firm/type is not in the lookup.
+// isPro applies PRO_MULTIPLIER to the base, rounded to the nearest 25.
+export function lookupFixedPoints(firmSlug, accountType, isPro) {
+  const firmData = FIRM_POINTS[firmSlug];
+  if (!firmData) return null;
+  const base = firmData[accountType];
+  if (base == null) return null;
+  if (!isPro) return base;
+  return Math.round((base * PRO_MULTIPLIER) / 25) * 25;
+}

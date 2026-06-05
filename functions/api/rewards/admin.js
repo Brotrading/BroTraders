@@ -27,6 +27,7 @@ import {
   CASHBACK_RATE,
   POINTS_PER_EUR,
   PRO_MULTIPLIER,
+  lookupFixedPoints,
 } from "./_lib.js";
 
 const FIRM_NAMES_EMAIL = {
@@ -351,8 +352,10 @@ async function approveClaim(env, { claim_id, note }) {
 
   const u = await getUserRow(env, c.user_id);
   const isPro = !!(u && u.is_pro_bro);
-  const rate = isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE;
-  const points = Math.round(c.amount_eur * rate * POINTS_PER_EUR);
+  const fixedPoints = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
+  const points = fixedPoints !== null
+    ? fixedPoints
+    : Math.round(c.amount_eur * (isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE) * POINTS_PER_EUR);
 
   await postLedger(env, {
     user_id: c.user_id,
