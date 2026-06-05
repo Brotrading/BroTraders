@@ -96,8 +96,7 @@
     const note = document.createElement("p");
     note.id = "bro-cashback-note";
     note.innerHTML =
-      `Koop via onze link &amp; verdien <strong>2,5% cashback</strong> in BRO&#8209;punten ` +
-      `<span class="bro-cb-eg">(bijv. 2.500 pts op een €100 aankoop)</span> ` +
+      `Koop via onze link &amp; verdien <strong>Bro Points</strong> op je aankoop ` +
       `&mdash; <a href="/rewards/signup.html" class="bro-cb-link">activeer Bro Rewards</a>`;
     buttonsEl.insertAdjacentElement("afterend", note);
 

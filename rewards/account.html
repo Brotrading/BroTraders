@@ -86,7 +86,7 @@
 
   <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; margin-bottom: 24px;">
     <a class="rw-btn" href="./catalog.html">Redeem points →</a>
-    <a class="rw-btn ghost" href="./claim.html">Submit cashback claim</a>
+    <a class="rw-btn ghost" href="./claim.html">Claim Bro Points</a>
     <a class="rw-btn ghost" href="./review.html">Write a review · Earn points</a>
     <button class="rw-btn ghost" id="copyRefBtn">Copy referral link</button>
   </div>
@@ -117,7 +117,7 @@
     </table>
   </div>
 
-  <h2 class="rw-h2">Cashback claims</h2>
+  <h2 class="rw-h2">Purchase claims</h2>
   <p class="rw-muted rw-small" style="margin:-8px 0 12px;">Purchases made via BRO affiliate links. Approved within 24 hours.</p>
   <div class="rw-panel" style="padding:0; overflow:hidden;">
     <table class="rw-table" id="claimsTable">
@@ -128,7 +128,7 @@
 
   <h2 class="rw-h2" id="firm-emails">Linked firm accounts</h2>
   <p class="rw-muted rw-small" style="margin:-8px 0 16px;">
-    Add the email address you used to register at each prop firm. This is required before submitting a cashback claim and helps us verify your purchase. Once your first claim for a firm is approved, the email is locked and can no longer be changed.
+    Add the email address you used to register at each prop firm. This is required before submitting a claim and helps us verify your purchase. Once your first claim for a firm is approved, the email is locked and can no longer be changed.
   </p>
   <div id="firmEmailsPanel" class="rw-panel"></div>
 
@@ -154,7 +154,7 @@
     review_submitted: "Firm review approved",
     referral_signup: "Referral signup",
     pro_bro_welcome: "Pro Bro welcome bonus",
-    purchase_cashback: "Purchase cashback",
+    purchase_cashback: "Purchase claim",
     manual_bonus: "Bonus from team",
     admin_adjust: "Admin adjustment",
     redemption: "Bro Pack redeemed",
@@ -361,7 +361,7 @@
 
     const cbody = document.querySelector("#claimsTable tbody");
     if (!claims || !claims.length) {
-      cbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--rw-text-2);">No cashback claims yet — buy through a BRO affiliate link and claim your points.</td></tr>`;
+      cbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:24px; color:var(--rw-text-2);">No purchase claims yet — buy through a BRO affiliate link and claim your Bro Points.</td></tr>`;
     } else {
       cbody.innerHTML = claims.map((c) => {
         const st = CLAIM_STATUS[c.status] || { label: c.status, color: "var(--rw-text-2)" };

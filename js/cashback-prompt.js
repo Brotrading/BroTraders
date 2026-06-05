@@ -133,10 +133,10 @@
       <div class="bro-cb-icon">🎯</div>
       <div class="bro-cb-text">
         Did you buy at <strong>${firmName}</strong>?
-        <span>Claim your 2.5% cashback in BRO points</span>
+        <span>Earn Bro Points on this purchase</span>
       </div>
       <div class="bro-cb-actions">
-        <button class="bro-cb-btn primary" id="bro-cb-claim">Claim cashback →</button>
+        <button class="bro-cb-btn primary" id="bro-cb-claim">Claim Bro Points →</button>
         <button class="bro-cb-btn ghost" id="bro-cb-dismiss">Dismiss</button>
       </div>
     `;
@@ -156,10 +156,10 @@
     overlay.id = "bro-cashback-overlay";
     overlay.innerHTML = `
       <div id="bro-cashback-modal">
-        <h3>Claim cashback — ${firmName}</h3>
+        <h3>Claim Bro Points — ${firmName}</h3>
         <p>
-          Enter your purchase details. We'll verify and credit your BRO points
-          within 24 hours. Free members earn 2.5%, Pro Bros earn 3.75%.
+          Enter your purchase details. We'll verify and credit your Bro Points
+          within 24 hours.
         </p>
 
         <div class="bro-cb-field">
@@ -204,7 +204,7 @@
 
       const session = getSession();
       if (!session) {
-        errEl.textContent = "You need to be signed in to claim cashback.";
+        errEl.textContent = "You need to be signed in to claim Bro Points.";
         errEl.style.display = "block";
         return;
       }

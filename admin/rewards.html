@@ -91,7 +91,7 @@
   </div>
 
   <section style="margin-bottom:24px;">
-    <h2 class="rw-h2" style="margin-top:0;">Pending cashback claims</h2>
+    <h2 class="rw-h2" style="margin-top:0;">Pending purchase claims</h2>
     <div id="claimFilters" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; align-items:center;">
       <span style="font-size:13px; color:var(--rw-text-2);">Filter:</span>
       <button class="rw-btn ghost claim-filter active" data-filter="all" style="padding:4px 12px; font-size:12px;">All</button>
@@ -344,7 +344,7 @@
     const root = document.getElementById("pendingClaims");
 
     if (!filtered.length) {
-      root.innerHTML = `<p class="rw-muted">${rows.length ? "No claims match this filter." : "No pending cashback claims."}</p>`;
+      root.innerHTML = `<p class="rw-muted">${rows.length ? "No claims match this filter." : "No pending claims."}</p>`;
       return;
     }
 
@@ -435,7 +435,7 @@
           loadOverview();
         } else {
           const { confirmed, option } = await modal({
-            title: "Reject cashback claim",
+            title: "Reject claim",
             desc,
             options: CLAIM_REJECT_REASONS,
             confirmLabel: "Reject",
