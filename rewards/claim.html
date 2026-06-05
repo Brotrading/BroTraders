@@ -235,6 +235,7 @@
       <label class="rw-label" for="orderRef" style="margin-top: 20px;">Order reference <em style="color:var(--rw-red);">*</em></label>
       <input class="rw-input" type="text" id="orderRef" maxlength="200" placeholder="Order ID or confirmation number from the prop firm" required />
       <div style="font-size:12px; color:var(--rw-text-2); margin-top:5px;">Found in your order confirmation email from the prop firm.</div>
+      <div id="orderRefErr" style="font-size:12px; color:var(--rw-red); margin-top:5px; display:none;"></div>
 
       <label class="rw-label" style="margin-top: 20px;">Proof of purchase <em style="color:var(--rw-red);">*</em></label>
       <div class="proof-upload-area" id="uploadArea">
@@ -485,6 +486,13 @@
     if (!proofBase64)                { err.textContent = "Please upload a proof of purchase (screenshot of your order confirmation)."; return; }
     if (!usedBroCode)                { err.textContent = "Please confirm that you purchased via a BRO affiliate link."; return; }
 
+    // Clear field-level errors
+    const orderRefEl  = document.getElementById("orderRef");
+    const orderRefErr = document.getElementById("orderRefErr");
+    orderRefEl.style.borderColor = "";
+    orderRefErr.style.display = "none";
+    orderRefErr.textContent = "";
+
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
     btn.textContent = "Submitting…";
@@ -510,6 +518,16 @@
         if (data.error === "firm_email_not_set" || data.error === "firm_email_not_verified") {
           checkFirmLink(firmSlug);
           openLinkEmailModal();
+          btn.disabled = false;
+          btn.textContent = "Submit claim";
+          return;
+        }
+
+        if (data.error === "order_ref_duplicate") {
+          orderRefEl.style.borderColor = "var(--rw-red)";
+          orderRefErr.textContent = "This order reference has already been used for a previous claim.";
+          orderRefErr.style.display = "block";
+          orderRefEl.focus();
           btn.disabled = false;
           btn.textContent = "Submit claim";
           return;
@@ -712,6 +730,13 @@
       amtEl.value = entry.price_usd || 1;
       ptsEl.textContent = "";
     }
+  });
+
+  document.getElementById("orderRef").addEventListener("input", () => {
+    document.getElementById("orderRef").style.borderColor = "";
+    const el = document.getElementById("orderRefErr");
+    el.style.display = "none";
+    el.textContent = "";
   });
 
   document.getElementById("firmSelect").addEventListener("change", () => {
