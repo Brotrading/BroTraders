@@ -1,6 +1,17 @@
 // head.js — injects shared <head> resources (favicon, Google Fonts, Font Awesome)
 // and loads site-wide scripts (click attribution).
 (function () {
+  // OAuth callback fallback: Supabase lands on the Site URL when redirectTo isn't
+  // whitelisted. Detect the token fragment and forward to the account page so the
+  // Supabase client there can establish the session normally.
+  if (
+    window.location.hash.includes("access_token=") &&
+    !window.location.pathname.startsWith("/rewards/")
+  ) {
+    window.location.replace("/rewards/account.html" + window.location.hash);
+    return;
+  }
+
   const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
   const prefix = depth > 0 ? "../".repeat(depth) : "";
 
