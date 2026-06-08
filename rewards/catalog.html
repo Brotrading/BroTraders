@@ -114,6 +114,7 @@
           <button class="rw-btn full" data-slug="${p.slug}" data-title="${p.title.replace(/"/g, "&quot;")}" data-cost="${p.points_cost}" ${canAfford && (p.stock === null || p.stock > 0) ? "" : "disabled"}>
             ${!canAfford ? "Not enough points" : (p.stock !== null && p.stock <= 0 ? "Out of stock" : "Redeem")}
           </button>
+          ${!canAfford ? `<p style="font-size:12px; color:var(--rw-text-2); margin:6px 0 0; text-align:center;">${fmt(p.points_cost - balance)} more points needed</p>` : ""}
         </article>
       `;
     }).join("");

@@ -50,6 +50,15 @@ export async function onRequestGet(context) {
     .bind(user.id)
     .all();
 
+  const purchasePts = await env.DB
+    .prepare(
+      `SELECT COALESCE(SUM(amount), 0) AS total
+       FROM points_ledger
+       WHERE user_id = ? AND reason = 'purchase_cashback'`
+    )
+    .bind(user.id)
+    .first();
+
   // Streak eligibility checks
   const today         = new Date().toISOString().slice(0, 10);
   const yesterday     = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
@@ -81,6 +90,7 @@ export async function onRequestGet(context) {
       claimed_today: claimedToday,
       can_restore: canRestore,
       streak_broken: streakBroken,
+      purchase_pts_earned: purchasePts?.total || 0,
     },
     ledger: ledger.results || [],
     redemptions: redemptions.results || [],
