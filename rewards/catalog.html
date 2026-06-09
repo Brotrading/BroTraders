@@ -99,10 +99,21 @@
     }
     grid.innerHTML = pkgs.map((p) => {
       const canAfford = balance >= p.points_cost;
-      const stockNote =
-        p.stock === null ? "" :
-        p.stock <= 0 ? `<span class="rw-pill cancelled">Out of stock</span>` :
-        `<span class="rw-pill">${p.stock} left this month</span>`;
+      const noCodesLeft = p.uses_discount_codes && p.available_codes === 0;
+      const outOfStock = (p.stock !== null && p.stock <= 0) || noCodesLeft;
+      const canRedeem = canAfford && !outOfStock;
+
+      const stockNote = noCodesLeft
+        ? `<span class="rw-pill cancelled">Temporarily unavailable</span>`
+        : p.stock === null ? ""
+        : p.stock <= 0 ? `<span class="rw-pill cancelled">Out of stock</span>`
+        : `<span class="rw-pill">${p.stock} left this month</span>`;
+
+      const btnLabel = !canAfford ? "Not enough points"
+        : noCodesLeft ? "Temporarily unavailable"
+        : outOfStock  ? "Out of stock"
+        : "Redeem";
+
       return `
         <article class="rw-pkg">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
@@ -111,8 +122,8 @@
           </div>
           <p>${p.description || ""}</p>
           <div class="cost">${fmt(p.points_cost)} pts</div>
-          <button class="rw-btn full" data-slug="${p.slug}" data-title="${p.title.replace(/"/g, "&quot;")}" data-cost="${p.points_cost}" ${canAfford && (p.stock === null || p.stock > 0) ? "" : "disabled"}>
-            ${!canAfford ? "Not enough points" : (p.stock !== null && p.stock <= 0 ? "Out of stock" : "Redeem")}
+          <button class="rw-btn full" data-slug="${p.slug}" data-title="${p.title.replace(/"/g, "&quot;")}" data-cost="${p.points_cost}" ${canRedeem ? "" : "disabled"}>
+            ${btnLabel}
           </button>
           ${!canAfford ? `<p style="font-size:12px; color:var(--rw-text-2); margin:6px 0 0; text-align:center;">${fmt(p.points_cost - balance)} more points needed</p>` : ""}
         </article>

@@ -316,7 +316,7 @@
           <p class="rw-muted rw-small" style="margin:0 0 10px; min-height:18px;">${escHtml(p.description || "")}</p>
           <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--rw-text-2);">
             <span><strong style="color:var(--rw-text);">${fmt(p.points_cost)}</strong> pts</span>
-            ${stockLine}
+            <span id="stockline-${p.slug}">${stockLine}</span>
           </div>
           <div class="pkg-actions">
             <button class="rw-btn ghost" data-edit="${p.slug}">Edit</button>
@@ -438,22 +438,28 @@
     if (!r.ok) return;
     for (const p of (r.data.packages || [])) {
       const stats = p.code_stats || { total: 0, available: 0 };
-      // Update badge area
+      const isProBro = p.fulfillment === "pro_bro_extend";
       const card = document.getElementById(`card-${p.slug}`);
       if (!card) continue;
+
+      // Update badge area
       const badgeArea = card.querySelector("div:first-child");
       const activeBadge = p.is_active ? `<span class="badge badge-active">Active</span>` : `<span class="badge badge-inactive">Inactive</span>`;
+      const typeBadge = isProBro ? ` <span class="badge badge-probro">Pro Bro</span>` : "";
       let codeBadge = "";
-      if (p.fulfillment !== "pro_bro_extend" && p.uses_discount_codes) {
+      if (!isProBro && p.uses_discount_codes) {
         codeBadge = stats.available > 0
           ? `<span class="badge badge-codes">${stats.available} codes available</span>`
           : `<span class="badge badge-empty">No codes — out of stock</span>`;
       }
-      badgeArea.innerHTML = activeBadge + (p.fulfillment === "pro_bro_extend" ? ` <span class="badge badge-probro">Pro Bro</span>` : "") + " " + codeBadge;
+      badgeArea.innerHTML = activeBadge + typeBadge + " " + codeBadge;
+
       // Update stock line
-      const statsDiv = card.querySelector(".pkg-stats");
-      if (statsDiv && p.fulfillment !== "pro_bro_extend" && p.uses_discount_codes) {
-        statsDiv.innerHTML = `Stock: <strong style="color:var(--rw-text);">${stats.available} available / ${stats.total} total</strong>`;
+      const stockLine = document.getElementById(`stockline-${p.slug}`);
+      if (stockLine && !isProBro) {
+        stockLine.innerHTML = p.uses_discount_codes
+          ? `Stock: <strong style="color:var(--rw-text);">${stats.available} available / ${stats.total} total</strong>`
+          : `Stock: <strong style="color:var(--rw-text);">${p.stock === null ? "Unlimited" : p.stock}</strong>`;
       }
     }
   }
