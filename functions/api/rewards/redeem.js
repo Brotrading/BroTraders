@@ -234,7 +234,8 @@ export async function onRequestPost(context) {
       )
       .bind(now2, grabbedCode.code, redemptionId)
       .run();
-    await sendEmail(env, {
+    // Fire-and-forget — don't block the response on email delivery
+    sendEmail(env, {
       to: updated.email,
       subject: `🎉 Your Bro Pack is ready — here's your discount code`,
       html: discountCodeEmail(pkg.title, grabbedCode.code),

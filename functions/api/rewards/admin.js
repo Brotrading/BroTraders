@@ -181,6 +181,7 @@ export async function onRequestPost(context) {
     case "list_packages":    return listPackages(env);
     case "create_package":   return createPackage(env, body);
     case "update_package":   return updatePackage(env, body);
+    case "delete_package":   return deletePackage(env, body);
     case "add_codes":        return addCodes(env, body);
     case "list_codes":       return listCodes(env, body);
     default:                 return jsonError("unknown_action", 400, { action });
@@ -511,24 +512,49 @@ async function createPackage(env, { title, description, points_cost, fulfillment
     if (i === 20) return jsonError("could_not_generate_unique_slug", 500);
   }
 
-  await env.DB
-    .prepare(
-      `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    .bind(
-      slug,
-      String(title).slice(0, 200),
-      (description || "").slice(0, 500) || null,
-      cost,
-      String(fulfillment),
-      is_active ? 1 : 0,
-      uses_discount_codes ? 1 : 0,
-      stock === null || stock === undefined ? null : parseInt(stock, 10)
-    )
-    .run();
+  const now = new Date().toISOString();
+  try {
+    await env.DB
+      .prepare(
+        `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      )
+      .bind(
+        slug,
+        String(title).slice(0, 200),
+        (description || "").slice(0, 500) || null,
+        cost,
+        String(fulfillment),
+        is_active ? 1 : 0,
+        uses_discount_codes ? 1 : 0,
+        stock === null || stock === undefined ? null : parseInt(stock, 10),
+        now
+      )
+      .run();
+  } catch (e) {
+    console.error("[store] create_package error:", e?.message);
+    return jsonError(e?.message || "insert_failed", 500);
+  }
 
   return jsonResponse({ ok: true, slug });
+}
+
+async function deletePackage(env, { package_slug }) {
+  if (!package_slug) return jsonError("missing_package_slug", 400);
+
+  const redemptions = await env.DB
+    .prepare(`SELECT COUNT(*) AS cnt FROM redemptions WHERE package_slug = ? AND status IN ('pending','fulfilled')`)
+    .bind(package_slug)
+    .first();
+  if ((redemptions?.cnt || 0) > 0) {
+    return jsonError("has_redemptions", 409, {
+      message: `This package has ${redemptions.cnt} redemption(s). Deactivate it instead of deleting.`,
+    });
+  }
+
+  await env.DB.prepare(`DELETE FROM bro_pack_codes WHERE package_slug = ?`).bind(package_slug).run();
+  await env.DB.prepare(`DELETE FROM bro_packages WHERE slug = ?`).bind(package_slug).run();
+  return jsonResponse({ ok: true });
 }
 
 async function updatePackage(env, { package_slug, is_active, stock, title, description, points_cost, uses_discount_codes }) {

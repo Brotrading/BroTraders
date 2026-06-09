@@ -321,6 +321,7 @@
           <div class="pkg-actions">
             <button class="rw-btn ghost" data-edit="${p.slug}">Edit</button>
             ${showCodesPanel ? `<button class="rw-btn ghost" data-codes="${p.slug}">Manage codes</button>` : ""}
+            <button class="rw-btn ghost" data-delete="${p.slug}" style="color:#f87171; border-color:#f87171; margin-left:auto;">Delete</button>
           </div>
         </div>
         ${showCodesPanel ? `
@@ -375,6 +376,18 @@
     const isProBro = p.fulfillment === "pro_bro_extend";
 
     document.querySelector(`[data-edit="${p.slug}"]`).addEventListener("click", () => openEditModal(p));
+
+    document.querySelector(`[data-delete="${p.slug}"]`).addEventListener("click", async () => {
+      if (!confirm(`Delete "${p.title}"? This cannot be undone.\n\nPackages with existing redemptions cannot be deleted — deactivate them instead.`)) return;
+      const r = await api({ action: "delete_package", package_slug: p.slug });
+      if (r.ok) {
+        const pkgR = await api({ action: "list_packages" });
+        if (pkgR.ok) renderPackages(pkgR.data.packages || []);
+        showGlobalMsg("Package deleted.");
+      } else {
+        alert(r.data.message || r.data.error || "Could not delete package.");
+      }
+    });
 
     if (!isProBro) {
       const codesBtn = document.querySelector(`[data-codes="${p.slug}"]`);
