@@ -1,10 +1,9 @@
 // POST /api/rewards/redeem  body: { package_slug, fulfillment_data?: object }
 //
-// Validates user has enough points + package is active + stock available, then:
-//   1. Inserts redemption row (status='pending')
-//   2. Deducts points from balance via ledger (negative amount, reason='redemption', ref_id=redemption.id)
-//   3. Decrements bro_packages.stock if not NULL
-// Mike fulfills manually from /admin/rewards.html.
+// Auto-fulfillment:
+//   - fulfillment = 'pro_bro_extend'  → grants Pro Bro immediately
+//   - uses_discount_codes = 1         → assigns code from pool, emails user, marks fulfilled
+//   - otherwise                       → stays pending, Mike fulfills manually
 
 import {
   jsonResponse,
@@ -15,6 +14,32 @@ import {
   REDEMPTION_GATE_PTS,
   EARN_RATES,
 } from "./_lib.js";
+
+async function sendEmail(env, { to, subject, html }) {
+  if (!env.RESEND_API_KEY) return;
+  try {
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: env.RESEND_FROM_EMAIL || "BroTrading <noreply@propfirmbro.com>",
+        to: [to],
+        subject,
+        html,
+      }),
+    });
+    if (!r.ok) console.error("[redeem] email failed:", r.status, await r.text());
+  } catch (e) {
+    console.error("[redeem] email error:", e?.message);
+  }
+}
+
+function discountCodeEmail(packageTitle, code) {
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">Bro Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">🎉 Your Bro Pack is ready!</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">You successfully redeemed <strong style="color:#f8fafc;">${packageTitle}</strong>. Use the code below for 100% off at checkout:</p><div style="background:#0f1117;border-radius:8px;padding:20px 24px;margin:0 0 24px;text-align:center;border:1px dashed #ff6b00;"><p style="margin:0 0 6px;font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.1em;">Your discount code</p><p style="margin:0;font-size:30px;font-weight:800;color:#ff6b00;letter-spacing:0.08em;">${code}</p></div><p style="margin:0 0 24px;font-size:13px;color:#64748b;">Apply this code at checkout to get 100% off. Single-use only. Questions? <a href="mailto:support@propfirmbro.com" style="color:#ff6b00;">support@propfirmbro.com</a></p><a href="https://propfirmbro.com" style="display:inline-block;background:#ff6b00;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;">Back to propfirmbro.com →</a></td></tr></table></td></tr></table></body></html>`;
+}
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -66,8 +91,7 @@ export async function onRequestPost(context) {
     });
   }
 
-  // Atomic stock check-and-decrement. Doing this BEFORE inserting the redemption
-  // prevents a race where two concurrent requests both see stock=1 and both succeed.
+  // Atomic stock check-and-decrement (before code grab to keep rollback simple).
   if (pkg.stock !== null) {
     const stockResult = await env.DB
       .prepare(`UPDATE bro_packages SET stock = stock - 1 WHERE slug = ? AND stock > 0`)
@@ -76,10 +100,49 @@ export async function onRequestPost(context) {
     if (stockResult.meta.changes === 0) return jsonError("out_of_stock", 409);
   }
 
+  // For code-based packages: atomically grab a code before inserting the redemption
+  // so we never create orphaned pending rows when the pool is empty.
+  let grabbedCode = null;
+  if (pkg.uses_discount_codes) {
+    const codeRow = await env.DB
+      .prepare(
+        `SELECT id, code FROM bro_pack_codes
+         WHERE package_slug = ? AND assigned_to_user_id IS NULL
+         LIMIT 1`
+      )
+      .bind(pkg.slug)
+      .first();
+
+    if (!codeRow) {
+      if (pkg.stock !== null) {
+        await env.DB.prepare(`UPDATE bro_packages SET stock = stock + 1 WHERE slug = ?`).bind(pkg.slug).run();
+      }
+      return jsonError("no_codes_available", 409);
+    }
+
+    const now0 = new Date().toISOString();
+    const assigned = await env.DB
+      .prepare(
+        `UPDATE bro_pack_codes
+         SET assigned_to_user_id = ?, assigned_at = ?
+         WHERE id = ? AND assigned_to_user_id IS NULL`
+      )
+      .bind(user.id, now0, codeRow.id)
+      .run();
+
+    if (assigned.meta.changes === 0) {
+      // Race condition: another request grabbed the same code.
+      if (pkg.stock !== null) {
+        await env.DB.prepare(`UPDATE bro_packages SET stock = stock + 1 WHERE slug = ?`).bind(pkg.slug).run();
+      }
+      return jsonError("no_codes_available", 409);
+    }
+    grabbedCode = { id: codeRow.id, code: codeRow.code };
+  }
+
   const now = new Date().toISOString();
   const fulfillment_data = body.fulfillment_data ? JSON.stringify(body.fulfillment_data) : null;
 
-  // Insert the redemption row, then deduct points.
   const insert = await env.DB
     .prepare(
       `INSERT INTO redemptions (user_id, package_slug, points_cost, status, fulfillment_data, created_at)
@@ -101,19 +164,28 @@ export async function onRequestPost(context) {
     });
   } catch (e) {
     if (e?.message?.includes("insufficient_balance")) {
-      // Race condition: another request spent the points between our check and deduction.
+      // Race condition: another request spent points between our check and deduction.
       if (pkg.stock !== null) {
         await env.DB.prepare(`UPDATE bro_packages SET stock = stock + 1 WHERE slug = ?`).bind(pkg.slug).run();
       }
+      if (grabbedCode) {
+        await env.DB
+          .prepare(`UPDATE bro_pack_codes SET assigned_to_user_id = NULL, assigned_at = NULL WHERE id = ?`)
+          .bind(grabbedCode.id)
+          .run();
+      }
       await env.DB.prepare(`UPDATE redemptions SET status = 'cancelled' WHERE id = ?`).bind(redemptionId).run();
-      return jsonError("insufficient_points", 409, { points_balance: row.points_balance, points_required: pkg.points_cost });
+      return jsonError("insufficient_points", 409, {
+        points_balance: row.points_balance,
+        points_required: pkg.points_cost,
+      });
     }
     throw e;
   }
 
   const updated = await getUserRow(env, user.id);
 
-  // Auto-fulfill Pro Bro packs: grant is_pro_bro immediately, no admin action needed.
+  // ── Auto-fulfill: Pro Bro ────────────────────────────────────────────────
   if (pkg.fulfillment === "pro_bro_extend") {
     const now2 = new Date().toISOString();
     await env.DB
@@ -149,6 +221,41 @@ export async function onRequestPost(context) {
     });
   }
 
+  // ── Auto-fulfill: discount code ──────────────────────────────────────────
+  if (grabbedCode) {
+    const now2 = new Date().toISOString();
+    await env.DB
+      .prepare(`UPDATE bro_pack_codes SET redemption_id = ? WHERE id = ?`)
+      .bind(redemptionId, grabbedCode.id)
+      .run();
+    await env.DB
+      .prepare(
+        `UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ?, discount_code = ? WHERE id = ?`
+      )
+      .bind(now2, grabbedCode.code, redemptionId)
+      .run();
+    await sendEmail(env, {
+      to: updated.email,
+      subject: `🎉 Your Bro Pack is ready — here's your discount code`,
+      html: discountCodeEmail(pkg.title, grabbedCode.code),
+    });
+    return jsonResponse({
+      ok: true,
+      redemption: {
+        id: redemptionId,
+        package_slug: pkg.slug,
+        title: pkg.title,
+        points_cost: pkg.points_cost,
+        status: "fulfilled",
+        created_at: now,
+        discount_code: grabbedCode.code,
+      },
+      points_balance: updated.points_balance,
+      discount_code: grabbedCode.code,
+    });
+  }
+
+  // ── Manual fulfillment: Mike handles it via admin dashboard ─────────────
   return jsonResponse({
     ok: true,
     redemption: {

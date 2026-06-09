@@ -156,14 +156,30 @@
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`
         : data.error === "redemption_gate_not_met"
         ? `The Bro Store unlocks after earning 5,000 pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`
+        : data.error === "no_codes_available"
+        ? `This Bro Pack is currently out of stock — check back soon.`
         : `Could not redeem: ${data.error}`;
       btn.disabled = false;
       btn.textContent = "Redeem";
       return;
     }
-    ok.textContent = data.pro_bro_granted
-      ? `Pro Bro activated! Your account has been upgraded — refresh to see your new rate.`
-      : `Redeemed: ${data.redemption.title}. We'll fulfill it within 1–2 business days — check your account page.`;
+    if (data.discount_code) {
+      ok.innerHTML = "";
+      const p1 = document.createElement("p");
+      p1.textContent = `Redeemed! Your discount code:`;
+      p1.style.cssText = "margin:0 0 6px;";
+      const code = document.createElement("div");
+      code.textContent = data.discount_code;
+      code.style.cssText = "font-size:24px;font-weight:800;color:var(--rw-accent);letter-spacing:0.08em;margin:4px 0 8px;";
+      const p2 = document.createElement("p");
+      p2.textContent = "Apply at checkout for 100% off. Also sent to your email.";
+      p2.style.cssText = "font-size:13px;color:var(--rw-text-2);margin:0;";
+      ok.append(p1, code, p2);
+    } else {
+      ok.textContent = data.pro_bro_granted
+        ? `Pro Bro activated! Your account has been upgraded — refresh to see your new rate.`
+        : `Redeemed: ${data.redemption.title}. We'll fulfill it within 1–2 business days — check your account page.`;
+    }
     await loadAll();
   }
 

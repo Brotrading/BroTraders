@@ -178,6 +178,10 @@ export async function onRequestPost(context) {
     case "reject_claim":     return rejectClaim(env, body);
     case "view_proof":       return viewProof(env, body);
     case "list_referrals":   return listReferrals(env);
+    case "list_packages":    return listPackages(env);
+    case "update_package":   return updatePackage(env, body);
+    case "add_codes":        return addCodes(env, body);
+    case "list_codes":       return listCodes(env, body);
     default:                 return jsonError("unknown_action", 400, { action });
   }
 }
@@ -463,6 +467,102 @@ async function listReferrals(env) {
     )
     .all();
   return jsonResponse({ referrals: rows.results || [] });
+}
+
+// ── Bro Store management ─────────────────────────────────────────────────
+
+async function listPackages(env) {
+  const pkgs = await env.DB
+    .prepare(`SELECT * FROM bro_packages ORDER BY points_cost ASC`)
+    .all();
+  const counts = await env.DB
+    .prepare(
+      `SELECT package_slug,
+              COUNT(*) AS total,
+              SUM(CASE WHEN assigned_to_user_id IS NULL THEN 1 ELSE 0 END) AS available
+       FROM bro_pack_codes GROUP BY package_slug`
+    )
+    .all();
+  const statsMap = {};
+  for (const c of (counts.results || [])) {
+    statsMap[c.package_slug] = { total: c.total, available: c.available };
+  }
+  const packages = (pkgs.results || []).map(p => ({
+    ...p,
+    code_stats: statsMap[p.slug] || { total: 0, available: 0 },
+  }));
+  return jsonResponse({ packages });
+}
+
+async function updatePackage(env, { package_slug, is_active, stock, title, description, points_cost, uses_discount_codes }) {
+  if (!package_slug) return jsonError("missing_package_slug", 400);
+  const exists = await env.DB
+    .prepare(`SELECT slug FROM bro_packages WHERE slug = ?`)
+    .bind(package_slug)
+    .first();
+  if (!exists) return jsonError("package_not_found", 404);
+
+  const setClauses = [];
+  const binds = [];
+  if (is_active !== undefined)           { setClauses.push("is_active = ?");            binds.push(is_active ? 1 : 0); }
+  if (stock !== undefined)               { setClauses.push("stock = ?");                binds.push(stock === null ? null : parseInt(stock, 10)); }
+  if (title !== undefined)               { setClauses.push("title = ?");                binds.push(String(title).slice(0, 200)); }
+  if (description !== undefined)         { setClauses.push("description = ?");          binds.push(String(description).slice(0, 500)); }
+  if (points_cost !== undefined)         { setClauses.push("points_cost = ?");          binds.push(parseInt(points_cost, 10)); }
+  if (uses_discount_codes !== undefined) { setClauses.push("uses_discount_codes = ?"); binds.push(uses_discount_codes ? 1 : 0); }
+
+  if (!setClauses.length) return jsonError("nothing_to_update", 400);
+
+  await env.DB
+    .prepare(`UPDATE bro_packages SET ${setClauses.join(", ")} WHERE slug = ?`)
+    .bind(...binds, package_slug)
+    .run();
+  return jsonResponse({ ok: true });
+}
+
+async function addCodes(env, { package_slug, codes }) {
+  if (!package_slug) return jsonError("missing_package_slug", 400);
+  if (!Array.isArray(codes) || !codes.length) return jsonError("missing_codes", 400);
+
+  const clean = [...new Set(codes.map(c => String(c).trim()).filter(Boolean))];
+  if (!clean.length) return jsonError("no_valid_codes", 400);
+  if (clean.length > 500) return jsonError("too_many_codes_max_500", 400);
+
+  const exists = await env.DB
+    .prepare(`SELECT slug FROM bro_packages WHERE slug = ?`)
+    .bind(package_slug)
+    .first();
+  if (!exists) return jsonError("package_not_found", 404);
+
+  const now = new Date().toISOString();
+  let added = 0;
+  let skipped = 0;
+  for (const code of clean) {
+    try {
+      await env.DB
+        .prepare(`INSERT INTO bro_pack_codes (package_slug, code, created_at) VALUES (?, ?, ?)`)
+        .bind(package_slug, code, now)
+        .run();
+      added++;
+    } catch (e) {
+      if (e?.message?.includes("UNIQUE constraint")) skipped++;
+      else throw e;
+    }
+  }
+  return jsonResponse({ ok: true, added, skipped });
+}
+
+async function listCodes(env, { package_slug }) {
+  if (!package_slug) return jsonError("missing_package_slug", 400);
+  const rows = await env.DB
+    .prepare(
+      `SELECT id, code, assigned_to_user_id, assigned_at, redemption_id, created_at
+       FROM bro_pack_codes WHERE package_slug = ?
+       ORDER BY created_at DESC LIMIT 300`
+    )
+    .bind(package_slug)
+    .all();
+  return jsonResponse({ codes: rows.results || [] });
 }
 
 async function rejectClaim(env, { claim_id, note }) {
