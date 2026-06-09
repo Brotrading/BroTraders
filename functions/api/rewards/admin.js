@@ -183,6 +183,7 @@ export async function onRequestPost(context) {
     case "update_package":   return updatePackage(env, body);
     case "delete_package":   return deletePackage(env, body);
     case "add_codes":        return addCodes(env, body);
+    case "delete_code":      return deleteCode(env, body);
     case "list_codes":       return listCodes(env, body);
     default:                 return jsonError("unknown_action", 400, { action });
   }
@@ -613,6 +614,18 @@ async function addCodes(env, { package_slug, codes }) {
     }
   }
   return jsonResponse({ ok: true, added, skipped });
+}
+
+async function deleteCode(env, { code_id }) {
+  if (!code_id) return jsonError("missing_code_id", 400);
+  const row = await env.DB
+    .prepare(`SELECT assigned_to_user_id FROM bro_pack_codes WHERE id = ?`)
+    .bind(code_id)
+    .first();
+  if (!row) return jsonError("code_not_found", 404);
+  if (row.assigned_to_user_id) return jsonError("code_already_used", 409, { message: "This code was already assigned to a user and cannot be deleted." });
+  await env.DB.prepare(`DELETE FROM bro_pack_codes WHERE id = ?`).bind(code_id).run();
+  return jsonResponse({ ok: true });
 }
 
 async function listCodes(env, { package_slug }) {

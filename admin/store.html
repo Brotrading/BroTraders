@@ -357,15 +357,18 @@
       </div>
       <div style="max-height:260px; overflow-y:auto;">
         <table class="codes-table">
-          <thead><tr><th>Code</th><th>Status</th><th>Added</th></tr></thead>
+          <thead><tr><th>Code</th><th>Status</th><th>Added</th><th></th></tr></thead>
           <tbody>
             ${codes.map(c => `
-              <tr>
+              <tr id="coderow-${c.id}">
                 <td class="code-val">${escHtml(c.code)}</td>
                 <td>${c.assigned_to_user_id
                   ? `<span class="used-badge">Used ${c.assigned_at ? fmtDate(c.assigned_at) : ""}</span>`
                   : `<span class="avail-badge">Available</span>`}</td>
                 <td class="rw-muted" style="font-size:12px;">${fmtDate(c.created_at)}</td>
+                <td>${!c.assigned_to_user_id
+                  ? `<button class="rw-btn ghost" data-delcode="${c.id}" data-pkg="${c.package_slug || ""}" style="padding:2px 8px; font-size:12px; color:#f87171; border-color:#f87171;">×</button>`
+                  : ""}</td>
               </tr>`).join("")}
           </tbody>
         </table>
@@ -399,7 +402,7 @@
         if (open && !loaded) {
           loaded = true;
           const r = await api({ action: "list_codes", package_slug: p.slug });
-          if (r.ok) renderCodesList(p.slug, r.data.codes || []);
+          if (r.ok) { renderCodesList(p.slug, r.data.codes || []); wireDeleteCodeBtns(p.slug); }
         }
       });
 
@@ -422,7 +425,7 @@
             setTimeout(() => { msg.textContent = ""; }, 4000);
             loaded = false; // force reload
             const codesR = await api({ action: "list_codes", package_slug: p.slug });
-            if (codesR.ok) { renderCodesList(p.slug, codesR.data.codes || []); loaded = true; }
+            if (codesR.ok) { renderCodesList(p.slug, codesR.data.codes || []); loaded = true; wireDeleteCodeBtns(p.slug); }
             await refreshPackageBadges();
           } else {
             msg.style.color = "#f87171";
@@ -431,6 +434,25 @@
         });
       }
     }
+  }
+
+  function wireDeleteCodeBtns(slug) {
+    document.querySelectorAll(`[data-delcode]`).forEach(btn => {
+      if (btn.dataset.wired) return;
+      btn.dataset.wired = "1";
+      btn.addEventListener("click", async () => {
+        if (!confirm("Delete this unused code?")) return;
+        const codeId = btn.dataset.delcode;
+        const r = await api({ action: "delete_code", code_id: parseInt(codeId, 10) });
+        if (r.ok) {
+          const row = document.getElementById(`coderow-${codeId}`);
+          if (row) row.remove();
+          await refreshPackageBadges();
+        } else {
+          alert(r.data.message || r.data.error || "Could not delete code.");
+        }
+      });
+    });
   }
 
   async function refreshPackageBadges() {

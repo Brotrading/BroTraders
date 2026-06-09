@@ -232,12 +232,21 @@ export async function onRequestPost(context) {
       .prepare(`UPDATE bro_pack_codes SET redemption_id = ? WHERE id = ?`)
       .bind(redemptionId, grabbedCode.id)
       .run();
-    await env.DB
-      .prepare(
-        `UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ?, discount_code = ? WHERE id = ?`
-      )
-      .bind(now2, grabbedCode.code, redemptionId)
-      .run();
+    try {
+      await env.DB
+        .prepare(
+          `UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ?, discount_code = ? WHERE id = ?`
+        )
+        .bind(now2, grabbedCode.code, redemptionId)
+        .run();
+    } catch (e) {
+      // Fallback if discount_code column is missing (run migration 0016 statement 2)
+      console.error("[redeem] discount_code column missing:", e?.message);
+      await env.DB
+        .prepare(`UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ? WHERE id = ?`)
+        .bind(now2, redemptionId)
+        .run();
+    }
     // Fire-and-forget — don't block the response on email delivery
     sendEmail(env, {
       to: updated.email,

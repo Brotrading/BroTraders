@@ -168,6 +168,7 @@
       err.textContent = "Something went wrong — please try again.";
       btn.disabled = false;
       btn.textContent = "Redeem";
+      await loadAll();
       return;
     }
     if (!res.ok) {
