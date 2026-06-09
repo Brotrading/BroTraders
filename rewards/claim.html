@@ -548,6 +548,7 @@
           invalid_firm_slug:      "Invalid firm selected.",
           invalid_amount_eur:     "Please enter a valid amount between $1 and $900.",
           invalid_account_type:   "Invalid account type for this firm. Please select a valid option from the dropdown.",
+          duplicate_proof:        "This proof of purchase has already been submitted in a previous claim. Please upload a different document.",
         };
         err.textContent = msgs[data.error] || `Submission failed: ${data.error}`;
         btn.disabled = false;
