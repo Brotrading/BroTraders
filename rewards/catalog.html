@@ -26,6 +26,39 @@
     width: 100%;
     max-width: 420px;
   }
+  .code-display {
+    background: #0f1117;
+    border: 1px dashed var(--rw-accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .code-display .code-text {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--rw-accent);
+    letter-spacing: 0.08em;
+    word-break: break-all;
+  }
+  .copy-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid var(--rw-accent);
+    color: var(--rw-accent);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--rw-accent); color: #fff; }
+  .copy-btn.copied { background: #22c55e; border-color: #22c55e; color: #fff; }
 </style>
 </head>
 <body class="rw-body">
@@ -59,6 +92,7 @@
 
 </main>
 
+<!-- Confirm redemption modal -->
 <div class="modal-overlay" id="redeemConfirmModal">
   <div class="modal-box">
     <h3 style="margin:0 0 12px; font-size:18px;">Confirm redemption</h3>
@@ -67,6 +101,25 @@
       <button id="redeemCancelBtn" class="rw-btn ghost">Cancel</button>
       <button id="redeemConfirmBtn" class="rw-btn">Confirm</button>
     </div>
+  </div>
+</div>
+
+<!-- Discount code success modal -->
+<div class="modal-overlay" id="codeSuccessModal">
+  <div class="modal-box">
+    <p style="margin:0 0 4px; font-size:12px; color:var(--rw-text-2); text-transform:uppercase; letter-spacing:0.08em;">Bro Store</p>
+    <h3 style="margin:0 0 8px; font-size:20px;">Your Bro Pack is ready!</h3>
+    <p style="font-size:14px; color:var(--rw-text-2); margin:0 0 4px; line-height:1.5;">
+      Use the code below at checkout for <strong style="color:var(--rw-text);">100% off</strong>. Single-use only.
+    </p>
+    <div class="code-display">
+      <span class="code-text" id="codeSuccessValue"></span>
+      <button class="copy-btn" id="copyCodeBtn">Copy</button>
+    </div>
+    <p style="font-size:13px; color:var(--rw-text-2); margin:0 0 24px;">
+      Also sent to your email — check your inbox.
+    </p>
+    <button id="codeSuccessCloseBtn" class="rw-btn full">Done</button>
   </div>
 </div>
 
@@ -146,6 +199,33 @@
     });
   }
 
+  function showCodeModal(code) {
+    document.getElementById("codeSuccessValue").textContent = code;
+    const modal = document.getElementById("codeSuccessModal");
+    modal.classList.add("open");
+
+    const copyBtn = document.getElementById("copyCodeBtn");
+    copyBtn.textContent = "Copy";
+    copyBtn.classList.remove("copied");
+    copyBtn.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(code);
+        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add("copied");
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+          copyBtn.classList.remove("copied");
+        }, 2000);
+      } catch (e) {
+        copyBtn.textContent = "Copy failed";
+      }
+    };
+
+    document.getElementById("codeSuccessCloseBtn").onclick = () => {
+      modal.classList.remove("open");
+    };
+  }
+
   async function redeem(slug, btn) {
     const ok = document.getElementById("redeemMsg");
     const err = document.getElementById("redeemErr");
@@ -186,17 +266,7 @@
       return;
     }
     if (data.discount_code) {
-      ok.innerHTML = "";
-      const p1 = document.createElement("p");
-      p1.textContent = `Redeemed! Your discount code:`;
-      p1.style.cssText = "margin:0 0 6px;";
-      const code = document.createElement("div");
-      code.textContent = data.discount_code;
-      code.style.cssText = "font-size:24px;font-weight:800;color:var(--rw-accent);letter-spacing:0.08em;margin:4px 0 8px;";
-      const p2 = document.createElement("p");
-      p2.textContent = "Apply at checkout for 100% off. Also sent to your email.";
-      p2.style.cssText = "font-size:13px;color:var(--rw-text-2);margin:0;";
-      ok.append(p1, code, p2);
+      showCodeModal(data.discount_code);
     } else {
       ok.textContent = data.pro_bro_granted
         ? `Pro Bro activated! Your account has been upgraded — refresh to see your new rate.`
