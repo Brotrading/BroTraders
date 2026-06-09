@@ -13,22 +13,20 @@
   .gate { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:var(--rw-bg); z-index:100; }
   .gate-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:14px; padding:28px; max-width:380px; width:100%; }
 
-  /* Packages grid */
-  .pkg-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:24px; }
+  .pkg-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px; }
   @media (max-width:900px) { .pkg-grid { grid-template-columns:1fr; } }
   .pkg-wrap { display:flex; flex-direction:column; }
-  .pkg-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:12px 12px 0 0; padding:20px 22px; flex:1; }
-  .pkg-card.no-codes { border-radius:12px; }
+  .pkg-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:12px; padding:20px 22px; }
+  .pkg-card.has-codes-panel { border-radius:12px 12px 0 0; }
   .pkg-actions { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
 
-  /* Badges */
   .badge { display:inline-block; padding:2px 9px; border-radius:20px; font-size:12px; font-weight:600; }
   .badge-active   { background:rgba(34,197,94,0.15);  color:#4ade80; }
   .badge-inactive { background:rgba(100,116,139,0.15); color:#64748b; }
   .badge-codes    { background:rgba(255,107,0,0.15);  color:#ff6b00; }
   .badge-empty    { background:rgba(239,68,68,0.15);  color:#f87171; }
+  .badge-probro   { background:rgba(139,92,246,0.15); color:#a78bfa; }
 
-  /* Codes panel */
   .codes-panel { background:var(--rw-panel-2); border:1px solid var(--rw-border); border-top:none; border-radius:0 0 12px 12px; padding:18px 22px; display:none; }
   .codes-panel.open { display:block; }
   .codes-table { width:100%; border-collapse:collapse; font-size:13px; margin-top:10px; }
@@ -36,24 +34,26 @@
   .codes-table td { padding:7px 8px 7px 0; border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:middle; }
   .codes-table tr:last-child td { border-bottom:none; }
   .code-val { font-family:monospace; font-size:13px; color:var(--rw-text); }
-  .used-badge { background:rgba(100,116,139,0.15); color:#64748b; padding:1px 7px; border-radius:20px; font-size:11px; }
-  .avail-badge { background:rgba(34,197,94,0.15); color:#4ade80; padding:1px 7px; border-radius:20px; font-size:11px; }
+  .used-badge  { background:rgba(100,116,139,0.15); color:#64748b; padding:1px 7px; border-radius:20px; font-size:11px; }
+  .avail-badge { background:rgba(34,197,94,0.15);   color:#4ade80; padding:1px 7px; border-radius:20px; font-size:11px; }
 
-  /* Edit modal */
-  #modal { position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:200; display:none; align-items:center; justify-content:center; padding:16px; }
-  #modal.open { display:flex; }
-  .modal-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:14px; padding:24px 28px; max-width:480px; width:100%; box-shadow:0 8px 48px rgba(0,0,0,0.5); max-height:90vh; overflow-y:auto; }
+  /* Modals */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:200; display:none; align-items:center; justify-content:center; padding:16px; }
+  .modal-overlay.open { display:flex; }
+  .modal-card { background:var(--rw-panel); border:1px solid var(--rw-border); border-radius:14px; padding:24px 28px; max-width:520px; width:100%; box-shadow:0 8px 48px rgba(0,0,0,0.5); max-height:90vh; overflow-y:auto; }
   .modal-card h3 { margin:0 0 20px; font-size:17px; }
   .modal-field { margin-bottom:16px; }
-  .modal-field:last-child { margin-bottom:0; }
   .modal-field label { display:block; font-size:13px; color:var(--rw-text-2); margin-bottom:5px; }
   .modal-footer { display:flex; gap:10px; justify-content:flex-end; margin-top:22px; }
   .toggle-row { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--rw-panel-2); border:1px solid var(--rw-border); border-radius:8px; }
+  .toggle-row .toggle-label { flex:1; }
   .toggle-row label { font-size:14px; color:var(--rw-text); margin:0; }
   .toggle-row small { font-size:12px; color:var(--rw-text-2); display:block; margin-top:2px; }
-  input[type="checkbox"].toggle { width:20px; height:20px; cursor:pointer; accent-color:#ff6b00; }
+  input[type="checkbox"].toggle { width:18px; height:18px; cursor:pointer; accent-color:#ff6b00; flex-shrink:0; margin-left:12px; }
   .stock-row { display:flex; gap:10px; align-items:center; }
-  .stock-row input[type="number"] { width:100px; }
+  select.rw-input { cursor:pointer; }
+  .sep { border:none; border-top:1px solid var(--rw-border); margin:20px 0; }
+  .info-box { background:rgba(255,107,0,0.08); border:1px solid rgba(255,107,0,0.25); border-radius:8px; padding:10px 14px; font-size:13px; color:var(--rw-text-2); margin-bottom:16px; }
 </style>
 </head>
 <body class="rw-body">
@@ -70,52 +70,115 @@
 </div>
 
 <!-- Edit package modal -->
-<div id="modal">
+<div id="editModal" class="modal-overlay">
   <div class="modal-card">
-    <h3 id="mdTitle">Edit package</h3>
+    <h3 id="editTitle">Edit package</h3>
     <div class="modal-field">
       <label>Title</label>
-      <input id="mdTitle2" class="rw-input" type="text" maxlength="200" />
+      <input id="eTitle" class="rw-input" type="text" maxlength="200" />
     </div>
     <div class="modal-field">
       <label>Description</label>
-      <textarea id="mdDesc" class="rw-input" rows="2" style="resize:vertical;" maxlength="500"></textarea>
+      <textarea id="eDesc" class="rw-input" rows="2" style="resize:vertical;" maxlength="500"></textarea>
     </div>
     <div class="modal-field">
       <label>Points cost</label>
-      <input id="mdCost" class="rw-input" type="number" min="1" step="1000" />
+      <input id="eCost" class="rw-input" type="number" min="1" step="1000" />
     </div>
     <div class="modal-field">
       <div class="toggle-row">
-        <div>
-          <label>Active in Bro Store</label>
-          <small>Uncheck to hide this package from users</small>
-        </div>
-        <input id="mdActive" type="checkbox" class="toggle" />
+        <div class="toggle-label"><label>Active in Bro Store</label><small>Uncheck to hide this package from users</small></div>
+        <input id="eActive" type="checkbox" class="toggle" />
       </div>
     </div>
-    <div class="modal-field">
+    <div id="eCodesRow" class="modal-field">
       <div class="toggle-row">
-        <div>
-          <label>Auto-fulfill via discount codes</label>
-          <small>When enabled, users get a code from the pool immediately on redemption</small>
-        </div>
-        <input id="mdUseCodes" type="checkbox" class="toggle" />
+        <div class="toggle-label"><label>Auto-fulfill via discount codes</label><small>User gets a code from the pool immediately on redemption</small></div>
+        <input id="eUseCodes" type="checkbox" class="toggle" />
       </div>
     </div>
     <div class="modal-field">
-      <label>Stock limit</label>
+      <label>Stock limit (optional)</label>
       <div class="stock-row">
-        <input id="mdStockLimit" type="checkbox" class="toggle" />
-        <span class="rw-muted rw-small">Limit monthly stock</span>
-        <input id="mdStockVal" class="rw-input" type="number" min="0" placeholder="e.g. 5" style="width:90px;" />
+        <input id="eStockLimit" type="checkbox" class="toggle" />
+        <span class="rw-muted rw-small">Limit stock</span>
+        <input id="eStockVal" class="rw-input" type="number" min="0" placeholder="e.g. 5" style="width:90px;" disabled />
       </div>
     </div>
     <div class="modal-footer">
-      <button id="mdCancel" class="rw-btn ghost">Cancel</button>
-      <button id="mdSave" class="rw-btn">Save changes</button>
+      <button id="editCancel" class="rw-btn ghost">Cancel</button>
+      <button id="editSave" class="rw-btn">Save changes</button>
     </div>
-    <div id="mdErr" class="rw-err" style="margin-top:10px;"></div>
+    <div id="editErr" class="rw-err" style="margin-top:10px;"></div>
+  </div>
+</div>
+
+<!-- New package modal -->
+<div id="newModal" class="modal-overlay">
+  <div class="modal-card">
+    <h3>New Bro Pack</h3>
+
+    <div class="modal-field">
+      <label>Type</label>
+      <select id="nType" class="rw-input">
+        <option value="prop_firm_account">Prop Firm Account (discount code)</option>
+        <option value="pro_bro_extend">Pro Bro membership (auto-fulfilled)</option>
+        <option value="manual">Other (manual fulfillment by Mike)</option>
+      </select>
+    </div>
+
+    <!-- Firm + account type (shown for prop_firm_account only) -->
+    <div id="nFirmSection">
+      <div class="modal-field">
+        <label>Prop firm</label>
+        <select id="nFirm" class="rw-input">
+          <option value="">Select firm…</option>
+          <option value="apex">Apex Trader Funding</option>
+          <option value="alpha">Alpha Futures</option>
+          <option value="daytraders">Daytraders.com</option>
+          <option value="fundedseat">FundedSeat</option>
+          <option value="lucid">Lucid Trading</option>
+          <option value="mffu">My Funded Futures</option>
+          <option value="nexgen">NexGen Funding</option>
+          <option value="phidias">Phidias PropFirm</option>
+          <option value="topone">Top One Futures</option>
+          <option value="tradeify">Tradeify</option>
+          <option value="yrm">YRM Prop</option>
+        </select>
+      </div>
+      <div class="modal-field" id="nAccountTypeRow" style="display:none;">
+        <label>Account type</label>
+        <select id="nAccountType" class="rw-input">
+          <option value="">Select account type…</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="sep" />
+
+    <div class="modal-field">
+      <label>Title</label>
+      <input id="nTitle" class="rw-input" type="text" maxlength="200" placeholder="e.g. Bro Pack — FundedSeat $25K" />
+    </div>
+    <div class="modal-field">
+      <label>Description</label>
+      <textarea id="nDesc" class="rw-input" rows="2" style="resize:vertical;" maxlength="500" placeholder="Short description shown in the store"></textarea>
+    </div>
+    <div class="modal-field">
+      <label>Points cost</label>
+      <input id="nCost" class="rw-input" type="number" min="1" step="1000" />
+    </div>
+    <div class="modal-field">
+      <div class="toggle-row">
+        <div class="toggle-label"><label>Active immediately</label><small>Can be toggled later from the package card</small></div>
+        <input id="nActive" type="checkbox" class="toggle" checked />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="newCancel" class="rw-btn ghost">Cancel</button>
+      <button id="newSave" class="rw-btn">Create package</button>
+    </div>
+    <div id="newErr" class="rw-err" style="margin-top:10px;"></div>
   </div>
 </div>
 
@@ -133,11 +196,14 @@
   </div>
 
   <div style="max-width:1100px; margin:0 auto; padding:24px 24px 60px;">
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; flex-wrap:wrap; gap:8px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; flex-wrap:wrap; gap:10px;">
       <h2 class="rw-h2" style="margin:0;">Packages</h2>
-      <div id="globalMsg" class="rw-ok" style="font-size:13px;"></div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <div id="globalMsg" class="rw-ok" style="font-size:13px;"></div>
+        <button id="addPkgBtn" class="rw-btn">+ New Bro Pack</button>
+      </div>
     </div>
-    <p class="rw-muted rw-small" style="margin:0 0 20px;">Edit package details or manage the discount code inventory per package.</p>
+    <p class="rw-muted rw-small" style="margin:0 0 20px;">Click <strong>Edit</strong> to change details. Click <strong>Manage codes</strong> to add or view discount codes.</p>
     <div id="pkgGrid" class="pkg-grid"></div>
   </div>
 </div>
@@ -145,8 +211,16 @@
 <script>
   const API = "/api/rewards/admin";
   let tok = "";
+  let firmAccountsData = null;
 
   function fmt(n) { return Number(n || 0).toLocaleString("en-US"); }
+  function escHtml(s) {
+    return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  function fmtDate(iso) {
+    if (!iso) return "";
+    return new Date(iso).toLocaleDateString("en-GB", { day:"2-digit", month:"short", year:"numeric" });
+  }
 
   async function api(body) {
     const r = await fetch(API, {
@@ -160,9 +234,9 @@
   // ── Auth ──────────────────────────────────────────────────────────────────
 
   async function tryLogin(token) {
-    const r = await api({ action: "list_packages" });
-    if (r.status === 401) return false;
     tok = token;
+    const r = await api({ action: "list_packages" });
+    if (r.status === 401) { tok = ""; return false; }
     localStorage.setItem("adminToken", token);
     document.getElementById("gate").style.display = "none";
     document.getElementById("app").style.display = "";
@@ -173,12 +247,8 @@
   document.getElementById("gateBtn").addEventListener("click", async () => {
     const t = document.getElementById("gateToken").value.trim();
     if (!t) return;
-    tok = t;
     const ok = await tryLogin(t);
-    if (!ok) {
-      tok = "";
-      document.getElementById("gateErr").textContent = "Invalid token.";
-    }
+    if (!ok) document.getElementById("gateErr").textContent = "Invalid token.";
   });
   document.getElementById("gateToken").addEventListener("keydown", e => {
     if (e.key === "Enter") document.getElementById("gateBtn").click();
@@ -190,9 +260,9 @@
   });
 
   const saved = localStorage.getItem("adminToken");
-  if (saved) { tok = saved; tryLogin(saved); }
+  if (saved) tryLogin(saved);
 
-  // ── Packages render ───────────────────────────────────────────────────────
+  // ── Packages ──────────────────────────────────────────────────────────────
 
   let packagesData = [];
 
@@ -200,60 +270,81 @@
     packagesData = pkgs;
     const grid = document.getElementById("pkgGrid");
     if (!pkgs.length) {
-      grid.innerHTML = `<p class="rw-muted">No packages found.</p>`;
+      grid.innerHTML = `<p class="rw-muted">No packages yet. Click "+ New Bro Pack" to add one.</p>`;
       return;
     }
     grid.innerHTML = pkgs.map(p => renderPkgCard(p)).join("");
-    pkgs.forEach(p => wirePackage(p));
+    pkgs.forEach(p => wirePkg(p));
   }
 
   function renderPkgCard(p) {
+    const isProBro = p.fulfillment === "pro_bro_extend";
     const stats = p.code_stats || { total: 0, available: 0 };
+    const showCodesPanel = !isProBro;
+
     const activeBadge = p.is_active
       ? `<span class="badge badge-active">Active</span>`
       : `<span class="badge badge-inactive">Inactive</span>`;
+
+    let typeBadge = "";
+    if (isProBro) typeBadge = `<span class="badge badge-probro">Pro Bro</span>`;
+
     let codeBadge = "";
-    if (p.uses_discount_codes) {
+    if (!isProBro && p.uses_discount_codes) {
       codeBadge = stats.available > 0
         ? `<span class="badge badge-codes">${stats.available} codes available</span>`
         : `<span class="badge badge-empty">No codes — out of stock</span>`;
     }
-    const hasCodesPanel = p.uses_discount_codes || stats.total > 0;
+
+    // Stock display: for code-based packages show code count, otherwise show stock
+    let stockLine = "";
+    if (!isProBro) {
+      if (p.uses_discount_codes) {
+        stockLine = `<span>Stock: <strong style="color:var(--rw-text);">${stats.available} available / ${stats.total} total</strong></span>`;
+      } else {
+        stockLine = `<span>Stock: <strong style="color:var(--rw-text);">${p.stock === null ? "Unlimited" : p.stock}</strong></span>`;
+      }
+    }
 
     return `
       <div class="pkg-wrap" id="wrap-${p.slug}">
-        <div class="pkg-card ${hasCodesPanel ? "" : "no-codes"}" id="card-${p.slug}">
+        <div class="pkg-card ${showCodesPanel ? "has-codes-panel" : ""}" id="card-${p.slug}">
           <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-            ${activeBadge} ${codeBadge}
+            ${activeBadge} ${typeBadge} ${codeBadge}
           </div>
           <h3 style="margin:0 0 4px; font-size:16px;">${escHtml(p.title)}</h3>
-          <p class="rw-muted rw-small" style="margin:0 0 10px;">${escHtml(p.description || "")}</p>
-          <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--rw-text-2); margin-bottom:2px;">
+          <p class="rw-muted rw-small" style="margin:0 0 10px; min-height:18px;">${escHtml(p.description || "")}</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--rw-text-2);">
             <span><strong style="color:var(--rw-text);">${fmt(p.points_cost)}</strong> pts</span>
-            <span>Stock: <strong style="color:var(--rw-text);">${p.stock === null ? "Unlimited" : p.stock}</strong></span>
-            ${p.uses_discount_codes ? `<span>Codes total: <strong style="color:var(--rw-text);">${stats.total}</strong></span>` : ""}
+            ${stockLine}
           </div>
           <div class="pkg-actions">
-            <button class="rw-btn ghost" data-edit="${p.slug}">Edit package</button>
-            <button class="rw-btn ghost" data-codes="${p.slug}">Manage codes</button>
+            <button class="rw-btn ghost" data-edit="${p.slug}">Edit</button>
+            ${showCodesPanel ? `<button class="rw-btn ghost" data-codes="${p.slug}">Manage codes</button>` : ""}
           </div>
         </div>
+        ${showCodesPanel ? `
         <div class="codes-panel" id="codes-${p.slug}">
+          ${!p.uses_discount_codes ? `
+          <div class="info-box">
+            ⚠️ Discount codes are not enabled for this package. Enable "Auto-fulfill via discount codes" in Edit to use the code pool.
+          </div>` : ""}
           <div style="margin-bottom:14px;">
-            <label class="rw-small" style="display:block; color:var(--rw-text-2); margin-bottom:6px;">Add codes — one per line (paste from spreadsheet):</label>
+            <label class="rw-small" style="display:block; color:var(--rw-text-2); margin-bottom:6px;">Add codes — one per line (paste from spreadsheet or generate in bulk):</label>
             <textarea id="codesInput-${p.slug}" class="rw-input" rows="4" style="font-family:monospace; font-size:13px; resize:vertical;" placeholder="CODE123&#10;CODE456&#10;CODE789"></textarea>
             <button class="rw-btn" data-addcodes="${p.slug}" style="margin-top:8px;">Add codes</button>
-            <span id="codesMsg-${p.slug}" class="rw-small" style="margin-left:10px; color:var(--rw-text-2);"></span>
+            <span id="codesMsg-${p.slug}" class="rw-small" style="margin-left:10px;"></span>
           </div>
           <div id="codesList-${p.slug}">
-            <p class="rw-muted rw-small">Loading codes…</p>
+            <p class="rw-muted rw-small">Click "Manage codes" to load the code list.</p>
           </div>
-        </div>
+        </div>` : ""}
       </div>`;
   }
 
   function renderCodesList(slug, codes) {
     const el = document.getElementById(`codesList-${slug}`);
+    if (!el) return;
     if (!codes.length) {
       el.innerHTML = `<p class="rw-muted rw-small">No codes added yet.</p>`;
       return;
@@ -261,17 +352,11 @@
     const available = codes.filter(c => !c.assigned_to_user_id).length;
     el.innerHTML = `
       <div style="margin-bottom:8px; font-size:13px; color:var(--rw-text-2);">
-        Showing ${codes.length} codes — <strong style="color:var(--rw-text);">${available} available</strong>, ${codes.length - available} used
+        ${codes.length} codes total — <strong style="color:var(--rw-text);">${available} available</strong>, ${codes.length - available} used
       </div>
-      <div style="max-height:280px; overflow-y:auto;">
+      <div style="max-height:260px; overflow-y:auto;">
         <table class="codes-table">
-          <thead>
-            <tr>
-              <th>Code</th>
-              <th>Status</th>
-              <th>Added</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Code</th><th>Status</th><th>Added</th></tr></thead>
           <tbody>
             ${codes.map(c => `
               <tr>
@@ -286,167 +371,272 @@
       </div>`;
   }
 
-  function wirePackage(p) {
-    // Edit button
+  function wirePkg(p) {
+    const isProBro = p.fulfillment === "pro_bro_extend";
+
     document.querySelector(`[data-edit="${p.slug}"]`).addEventListener("click", () => openEditModal(p));
 
-    // Codes toggle
-    const codesBtn = document.querySelector(`[data-codes="${p.slug}"]`);
-    const panel = document.getElementById(`codes-${p.slug}`);
-    let codesLoaded = false;
-    codesBtn.addEventListener("click", async () => {
-      const isOpen = panel.classList.toggle("open");
-      codesBtn.textContent = isOpen ? "Hide codes" : "Manage codes";
-      if (isOpen && !codesLoaded) {
-        codesLoaded = true;
-        const r = await api({ action: "list_codes", package_slug: p.slug });
-        if (r.ok) renderCodesList(p.slug, r.data.codes || []);
-      }
-    });
-
-    // Add codes button
-    const addBtn = document.querySelector(`[data-addcodes="${p.slug}"]`);
-    if (addBtn) {
-      addBtn.addEventListener("click", async () => {
-        const raw = document.getElementById(`codesInput-${p.slug}`).value;
-        const codes = raw.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
-        if (!codes.length) return;
-        addBtn.disabled = true;
-        addBtn.textContent = "Adding…";
-        const r = await api({ action: "add_codes", package_slug: p.slug, codes });
-        addBtn.disabled = false;
-        addBtn.textContent = "Add codes";
-        const msg = document.getElementById(`codesMsg-${p.slug}`);
-        if (r.ok) {
-          document.getElementById(`codesInput-${p.slug}`).value = "";
-          msg.style.color = "#4ade80";
-          msg.textContent = `Added ${r.data.added}${r.data.skipped ? `, ${r.data.skipped} skipped (duplicate)` : ""}.`;
-          setTimeout(() => { msg.textContent = ""; }, 4000);
-          // Reload codes list and package data
-          const codesR = await api({ action: "list_codes", package_slug: p.slug });
-          if (codesR.ok) renderCodesList(p.slug, codesR.data.codes || []);
-          reloadPackages();
-        } else {
-          msg.style.color = "#f87171";
-          msg.textContent = r.data.error || "Failed.";
+    if (!isProBro) {
+      const codesBtn = document.querySelector(`[data-codes="${p.slug}"]`);
+      const panel = document.getElementById(`codes-${p.slug}`);
+      let loaded = false;
+      codesBtn.addEventListener("click", async () => {
+        const open = panel.classList.toggle("open");
+        codesBtn.textContent = open ? "Hide codes" : "Manage codes";
+        if (open && !loaded) {
+          loaded = true;
+          const r = await api({ action: "list_codes", package_slug: p.slug });
+          if (r.ok) renderCodesList(p.slug, r.data.codes || []);
         }
       });
-    }
-  }
 
-  async function reloadPackages() {
-    const r = await api({ action: "list_packages" });
-    if (r.ok) {
-      // Only update the badges/stats, not the full render (which would close panels)
-      for (const p of (r.data.packages || [])) {
-        updatePackageBadges(p);
+      const addBtn = document.querySelector(`[data-addcodes="${p.slug}"]`);
+      if (addBtn) {
+        addBtn.addEventListener("click", async () => {
+          const raw = document.getElementById(`codesInput-${p.slug}`).value;
+          const codes = raw.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
+          if (!codes.length) return;
+          addBtn.disabled = true;
+          addBtn.textContent = "Adding…";
+          const r = await api({ action: "add_codes", package_slug: p.slug, codes });
+          addBtn.disabled = false;
+          addBtn.textContent = "Add codes";
+          const msg = document.getElementById(`codesMsg-${p.slug}`);
+          if (r.ok) {
+            document.getElementById(`codesInput-${p.slug}`).value = "";
+            msg.style.color = "#4ade80";
+            msg.textContent = `Added ${r.data.added}${r.data.skipped ? `, ${r.data.skipped} skipped (duplicate)` : ""}.`;
+            setTimeout(() => { msg.textContent = ""; }, 4000);
+            loaded = false; // force reload
+            const codesR = await api({ action: "list_codes", package_slug: p.slug });
+            if (codesR.ok) { renderCodesList(p.slug, codesR.data.codes || []); loaded = true; }
+            await refreshPackageBadges();
+          } else {
+            msg.style.color = "#f87171";
+            msg.textContent = r.data.error || "Failed.";
+          }
+        });
       }
     }
   }
 
-  function updatePackageBadges(p) {
-    const stats = p.code_stats || { total: 0, available: 0 };
-    const card = document.getElementById(`card-${p.slug}`);
-    if (!card) return;
-    const badgeArea = card.querySelector("div:first-child");
-    const activeBadge = p.is_active
-      ? `<span class="badge badge-active">Active</span>`
-      : `<span class="badge badge-inactive">Inactive</span>`;
-    let codeBadge = "";
-    if (p.uses_discount_codes) {
-      codeBadge = stats.available > 0
-        ? `<span class="badge badge-codes">${stats.available} codes available</span>`
-        : `<span class="badge badge-empty">No codes — out of stock</span>`;
-    }
-    badgeArea.innerHTML = activeBadge + " " + codeBadge;
-    // Update stats row
-    const statsEl = card.querySelector(".pkg-stats");
-    if (statsEl && p.uses_discount_codes) {
-      statsEl.textContent = `Codes total: ${stats.total}`;
+  async function refreshPackageBadges() {
+    const r = await api({ action: "list_packages" });
+    if (!r.ok) return;
+    for (const p of (r.data.packages || [])) {
+      const stats = p.code_stats || { total: 0, available: 0 };
+      // Update badge area
+      const card = document.getElementById(`card-${p.slug}`);
+      if (!card) continue;
+      const badgeArea = card.querySelector("div:first-child");
+      const activeBadge = p.is_active ? `<span class="badge badge-active">Active</span>` : `<span class="badge badge-inactive">Inactive</span>`;
+      let codeBadge = "";
+      if (p.fulfillment !== "pro_bro_extend" && p.uses_discount_codes) {
+        codeBadge = stats.available > 0
+          ? `<span class="badge badge-codes">${stats.available} codes available</span>`
+          : `<span class="badge badge-empty">No codes — out of stock</span>`;
+      }
+      badgeArea.innerHTML = activeBadge + (p.fulfillment === "pro_bro_extend" ? ` <span class="badge badge-probro">Pro Bro</span>` : "") + " " + codeBadge;
+      // Update stock line
+      const statsDiv = card.querySelector(".pkg-stats");
+      if (statsDiv && p.fulfillment !== "pro_bro_extend" && p.uses_discount_codes) {
+        statsDiv.innerHTML = `Stock: <strong style="color:var(--rw-text);">${stats.available} available / ${stats.total} total</strong>`;
+      }
     }
   }
 
-  // ── Edit modal ────────────────────────────────────────────────────────────
+  // ── Edit modal ─────────────────────────────────────────────────────────────
 
   let editSlug = null;
 
   function openEditModal(p) {
     editSlug = p.slug;
-    document.getElementById("mdTitle").textContent = `Edit: ${p.title}`;
-    document.getElementById("mdTitle2").value = p.title || "";
-    document.getElementById("mdDesc").value = p.description || "";
-    document.getElementById("mdCost").value = p.points_cost || "";
-    document.getElementById("mdActive").checked = !!p.is_active;
-    document.getElementById("mdUseCodes").checked = !!p.uses_discount_codes;
+    document.getElementById("editTitle").textContent = `Edit: ${p.title}`;
+    document.getElementById("eTitle").value = p.title || "";
+    document.getElementById("eDesc").value = p.description || "";
+    document.getElementById("eCost").value = p.points_cost || "";
+    document.getElementById("eActive").checked = !!p.is_active;
+
+    // Hide codes toggle for Pro Bro
+    const codesRow = document.getElementById("eCodesRow");
+    if (p.fulfillment === "pro_bro_extend") {
+      codesRow.style.display = "none";
+    } else {
+      codesRow.style.display = "";
+      document.getElementById("eUseCodes").checked = !!p.uses_discount_codes;
+    }
+
     const hasStock = p.stock !== null;
-    document.getElementById("mdStockLimit").checked = hasStock;
-    document.getElementById("mdStockVal").value = hasStock ? p.stock : "";
-    document.getElementById("mdStockVal").disabled = !hasStock;
-    document.getElementById("mdErr").textContent = "";
-    document.getElementById("modal").classList.add("open");
+    document.getElementById("eStockLimit").checked = hasStock;
+    document.getElementById("eStockVal").value = hasStock ? p.stock : "";
+    document.getElementById("eStockVal").disabled = !hasStock;
+    document.getElementById("editErr").textContent = "";
+    document.getElementById("editModal").classList.add("open");
   }
 
-  document.getElementById("mdStockLimit").addEventListener("change", function() {
-    document.getElementById("mdStockVal").disabled = !this.checked;
-    if (!this.checked) document.getElementById("mdStockVal").value = "";
+  document.getElementById("eStockLimit").addEventListener("change", function() {
+    document.getElementById("eStockVal").disabled = !this.checked;
+    if (!this.checked) document.getElementById("eStockVal").value = "";
   });
 
-  document.getElementById("mdCancel").addEventListener("click", () => {
-    document.getElementById("modal").classList.remove("open");
+  document.getElementById("editCancel").addEventListener("click", () => {
+    document.getElementById("editModal").classList.remove("open");
+  });
+  document.getElementById("editModal").addEventListener("click", function(e) {
+    if (e.target === this) this.classList.remove("open");
   });
 
-  document.getElementById("mdSave").addEventListener("click", async () => {
+  document.getElementById("editSave").addEventListener("click", async () => {
     if (!editSlug) return;
-    const btn = document.getElementById("mdSave");
-    btn.disabled = true;
-    btn.textContent = "Saving…";
-    const stockLimit = document.getElementById("mdStockLimit").checked;
-    const stockVal = document.getElementById("mdStockVal").value;
+    const btn = document.getElementById("editSave");
+    btn.disabled = true; btn.textContent = "Saving…";
+
+    const currentPkg = packagesData.find(p => p.slug === editSlug) || {};
+    const isProBro = currentPkg.fulfillment === "pro_bro_extend";
+    const stockLimit = document.getElementById("eStockLimit").checked;
+
     const body = {
       action: "update_package",
       package_slug: editSlug,
-      title: document.getElementById("mdTitle2").value.trim(),
-      description: document.getElementById("mdDesc").value.trim(),
-      points_cost: parseInt(document.getElementById("mdCost").value, 10),
-      is_active: document.getElementById("mdActive").checked,
-      uses_discount_codes: document.getElementById("mdUseCodes").checked,
-      stock: stockLimit ? (parseInt(stockVal, 10) || 0) : null,
+      title: document.getElementById("eTitle").value.trim(),
+      description: document.getElementById("eDesc").value.trim(),
+      points_cost: parseInt(document.getElementById("eCost").value, 10),
+      is_active: document.getElementById("eActive").checked,
+      stock: stockLimit ? (parseInt(document.getElementById("eStockVal").value, 10) || 0) : null,
     };
+    if (!isProBro) body.uses_discount_codes = document.getElementById("eUseCodes").checked;
+
     const r = await api(body);
-    btn.disabled = false;
-    btn.textContent = "Save changes";
+    btn.disabled = false; btn.textContent = "Save changes";
     if (r.ok) {
-      document.getElementById("modal").classList.remove("open");
-      // Full reload to reflect title/description changes
+      document.getElementById("editModal").classList.remove("open");
       const pkgR = await api({ action: "list_packages" });
       if (pkgR.ok) renderPackages(pkgR.data.packages || []);
-      const msg = document.getElementById("globalMsg");
-      msg.textContent = "Package updated.";
-      setTimeout(() => { msg.textContent = ""; }, 3000);
+      showGlobalMsg("Package updated.");
     } else {
-      document.getElementById("mdErr").textContent = r.data.error || "Failed to save.";
+      document.getElementById("editErr").textContent = r.data.error || "Failed to save.";
     }
   });
 
-  // Close modal on backdrop click
-  document.getElementById("modal").addEventListener("click", function(e) {
+  // ── New package modal ──────────────────────────────────────────────────────
+
+  document.getElementById("addPkgBtn").addEventListener("click", () => {
+    document.getElementById("nType").value = "prop_firm_account";
+    document.getElementById("nFirm").value = "";
+    document.getElementById("nAccountType").innerHTML = `<option value="">Select account type…</option>`;
+    document.getElementById("nAccountTypeRow").style.display = "none";
+    document.getElementById("nTitle").value = "";
+    document.getElementById("nDesc").value = "";
+    document.getElementById("nCost").value = "";
+    document.getElementById("nActive").checked = true;
+    document.getElementById("newErr").textContent = "";
+    updateNewModalUI();
+    document.getElementById("newModal").classList.add("open");
+  });
+
+  document.getElementById("nType").addEventListener("change", updateNewModalUI);
+
+  function updateNewModalUI() {
+    const type = document.getElementById("nType").value;
+    document.getElementById("nFirmSection").style.display = type === "prop_firm_account" ? "" : "none";
+  }
+
+  document.getElementById("nFirm").addEventListener("change", async () => {
+    const firm = document.getElementById("nFirm").value;
+    const typeRow = document.getElementById("nAccountTypeRow");
+    const typeSelect = document.getElementById("nAccountType");
+    typeSelect.innerHTML = `<option value="">Select account type…</option>`;
+    if (!firm) { typeRow.style.display = "none"; return; }
+
+    if (!firmAccountsData) {
+      try {
+        const res = await fetch("/data/firm-accounts.json");
+        firmAccountsData = await res.json();
+      } catch (e) {
+        typeRow.style.display = "none";
+        return;
+      }
+    }
+    const accounts = firmAccountsData[firm] || [];
+    if (accounts.length) {
+      accounts.forEach(a => {
+        const opt = document.createElement("option");
+        opt.value = a.label;
+        opt.textContent = a.label;
+        if (a.points_base) opt.dataset.pts = a.points_base;
+        typeSelect.appendChild(opt);
+      });
+      typeRow.style.display = "";
+    }
+  });
+
+  document.getElementById("nAccountType").addEventListener("change", () => {
+    const sel = document.getElementById("nAccountType");
+    const opt = sel.options[sel.selectedIndex];
+    const firm = document.getElementById("nFirm").value;
+    const firmNames = {
+      apex:"Apex", alpha:"Alpha Futures", daytraders:"Daytraders.com",
+      fundedseat:"FundedSeat", lucid:"Lucid Trading", mffu:"My Funded Futures",
+      nexgen:"NexGen", phidias:"Phidias", topone:"Top One", tradeify:"Tradeify", yrm:"YRM Prop"
+    };
+    const firmName = firmNames[firm] || firm;
+    if (opt && opt.value) {
+      document.getElementById("nTitle").value = `Bro Pack — ${firmName} ${opt.value}`;
+      if (opt.dataset.pts) document.getElementById("nCost").value = opt.dataset.pts;
+      document.getElementById("nDesc").value = `A funded ${opt.value} account at ${firmName}, delivered via discount code at checkout.`;
+    }
+  });
+
+  document.getElementById("newCancel").addEventListener("click", () => {
+    document.getElementById("newModal").classList.remove("open");
+  });
+  document.getElementById("newModal").addEventListener("click", function(e) {
     if (e.target === this) this.classList.remove("open");
+  });
+
+  document.getElementById("newSave").addEventListener("click", async () => {
+    const btn = document.getElementById("newSave");
+    btn.disabled = true; btn.textContent = "Creating…";
+
+    const type = document.getElementById("nType").value;
+    const title = document.getElementById("nTitle").value.trim();
+    const desc  = document.getElementById("nDesc").value.trim();
+    const cost  = document.getElementById("nCost").value;
+
+    if (!title || !cost) {
+      document.getElementById("newErr").textContent = "Title and points cost are required.";
+      btn.disabled = false; btn.textContent = "Create package";
+      return;
+    }
+
+    const body = {
+      action: "create_package",
+      title,
+      description: desc,
+      points_cost: parseInt(cost, 10),
+      fulfillment: type === "pro_bro_extend" ? "pro_bro_extend" : "prop_firm_account",
+      is_active: document.getElementById("nActive").checked,
+      uses_discount_codes: type === "prop_firm_account",
+    };
+
+    const r = await api(body);
+    btn.disabled = false; btn.textContent = "Create package";
+    if (r.ok) {
+      document.getElementById("newModal").classList.remove("open");
+      const pkgR = await api({ action: "list_packages" });
+      if (pkgR.ok) renderPackages(pkgR.data.packages || []);
+      showGlobalMsg(`Package created (slug: ${r.data.slug}).`);
+    } else {
+      document.getElementById("newErr").textContent = r.data.error || "Failed to create.";
+    }
   });
 
   // ── Helpers ───────────────────────────────────────────────────────────────
 
-  function escHtml(s) {
-    return String(s || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function fmtDate(iso) {
-    if (!iso) return "";
-    const d = new Date(iso);
-    return d.toLocaleDateString("en-GB", { day:"2-digit", month:"short", year:"numeric" });
+  function showGlobalMsg(text) {
+    const el = document.getElementById("globalMsg");
+    el.textContent = text;
+    setTimeout(() => { el.textContent = ""; }, 4000);
   }
 </script>
 </body>

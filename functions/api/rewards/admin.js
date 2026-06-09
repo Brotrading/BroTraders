@@ -179,6 +179,7 @@ export async function onRequestPost(context) {
     case "view_proof":       return viewProof(env, body);
     case "list_referrals":   return listReferrals(env);
     case "list_packages":    return listPackages(env);
+    case "create_package":   return createPackage(env, body);
     case "update_package":   return updatePackage(env, body);
     case "add_codes":        return addCodes(env, body);
     case "list_codes":       return listCodes(env, body);
@@ -492,6 +493,42 @@ async function listPackages(env) {
     code_stats: statsMap[p.slug] || { total: 0, available: 0 },
   }));
   return jsonResponse({ packages });
+}
+
+async function createPackage(env, { title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock }) {
+  if (!title) return jsonError("missing_title", 400);
+  const cost = parseInt(points_cost, 10);
+  if (!cost || cost < 1) return jsonError("missing_points_cost", 400);
+  if (!fulfillment) return jsonError("missing_fulfillment", 400);
+
+  // Generate a unique slug from the title.
+  const base = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 50);
+  let slug = base;
+  for (let i = 1; i <= 20; i++) {
+    const exists = await env.DB.prepare(`SELECT slug FROM bro_packages WHERE slug = ?`).bind(slug).first();
+    if (!exists) break;
+    slug = `${base}-${i}`;
+    if (i === 20) return jsonError("could_not_generate_unique_slug", 500);
+  }
+
+  await env.DB
+    .prepare(
+      `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+    .bind(
+      slug,
+      String(title).slice(0, 200),
+      (description || "").slice(0, 500) || null,
+      cost,
+      String(fulfillment),
+      is_active ? 1 : 0,
+      uses_discount_codes ? 1 : 0,
+      stock === null || stock === undefined ? null : parseInt(stock, 10)
+    )
+    .run();
+
+  return jsonResponse({ ok: true, slug });
 }
 
 async function updatePackage(env, { package_slug, is_active, stock, title, description, points_cost, uses_discount_codes }) {
