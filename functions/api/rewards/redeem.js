@@ -43,6 +43,16 @@ function discountCodeEmail(packageTitle, code) {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+  try {
+    return await _handleRedeem(context);
+  } catch (e) {
+    console.error("[redeem] unhandled:", e?.message, e?.stack);
+    return jsonError("internal_error", 500, { detail: e?.message || String(e) });
+  }
+}
+
+async function _handleRedeem(context) {
+  const { request, env } = context;
   if (!env.DB) return jsonError("D1 binding missing", 500);
 
   const user = await verifySupabaseToken(request, env);
@@ -247,12 +257,12 @@ export async function onRequestPost(context) {
         .bind(now2, redemptionId)
         .run();
     }
-    // Fire-and-forget — don't block the response on email delivery
-    sendEmail(env, {
+    // Fire-and-forget — use waitUntil so the runtime keeps the promise alive
+    context.waitUntil(sendEmail(env, {
       to: updated.email,
       subject: `🎉 Your Bro Pack is ready — here's your discount code`,
       html: discountCodeEmail(pkg.title, grabbedCode.code),
-    });
+    }));
     return jsonResponse({
       ok: true,
       redemption: {

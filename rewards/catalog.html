@@ -178,6 +178,8 @@
         ? `The Bro Store unlocks after earning 5,000 pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`
         : data.error === "no_codes_available"
         ? `This Bro Pack is currently out of stock — check back soon.`
+        : data.error === "internal_error"
+        ? `Redeem failed: ${data.detail || "unknown error"} — please try again or contact support.`
         : `Could not redeem: ${data.error}`;
       btn.disabled = false;
       btn.textContent = "Redeem";
