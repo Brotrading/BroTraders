@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leaderboard · Bro Rewards</title>
+<script src="../head.js"></script>
+<link rel="stylesheet" href="./_styles.css" />
+</head>
+<body class="rw-body">
+
+<div id="header"></div>
+
+<main class="rw-main">
+
+  <h1 class="rw-h1">Leaderboard</h1>
+  <p class="rw-muted" style="margin:-8px 0 28px;">Top earners and top referrers in the Bro Rewards program. Names shown as display name or masked email.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+    <section>
+      <h2 class="rw-h2" style="margin-top:0;">🏆 Top earners</h2>
+      <div class="rw-panel" style="padding:0; overflow:hidden;">
+        <table class="rw-table" id="earnersTable">
+          <thead><tr><th style="width:40px;">#</th><th>Name</th><th style="text-align:right;">Pts earned</th></tr></thead>
+          <tbody><tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-text-2);">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="rw-h2" style="margin-top:0;">🔗 Top referrers</h2>
+      <div class="rw-panel" style="padding:0; overflow:hidden;">
+        <table class="rw-table" id="referrersTable">
+          <thead><tr><th style="width:40px;">#</th><th>Name</th><th style="text-align:right;">Referrals</th></tr></thead>
+          <tbody><tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-text-2);">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:13px; color:var(--rw-text-2);">
+    <a href="./account.html" style="color:var(--rw-text-2); text-decoration:underline;">← Back to my account</a>
+  </p>
+
+</main>
+
+<script src="../js/supabase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../header.js"></script>
+<script>
+  function fmt(n) { return Number(n || 0).toLocaleString("en-US"); }
+
+  const MEDAL = ["🥇", "🥈", "🥉"];
+
+  function proBadge(isPro) {
+    return isPro
+      ? `<span style="font-size:10px; font-weight:700; color:#fbbf24; background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.3); border-radius:4px; padding:1px 5px; margin-left:5px;">⭐ Pro</span>`
+      : "";
+  }
+
+  async function load() {
+    try {
+      const res = await fetch("/api/rewards/leaderboard");
+      if (!res.ok) throw new Error("Failed to load");
+      const { top_earners, top_referrers } = await res.json();
+
+      const etbody = document.querySelector("#earnersTable tbody");
+      if (!top_earners.length) {
+        etbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-text-2);">No data yet</td></tr>`;
+      } else {
+        etbody.innerHTML = top_earners.map(r => `
+          <tr>
+            <td style="font-weight:700; color:var(--rw-text-2);">${MEDAL[r.rank - 1] || r.rank}</td>
+            <td>${r.name}${proBadge(r.is_pro)}</td>
+            <td style="text-align:right; font-weight:600; color:var(--rw-accent);">${fmt(r.points_earned)}</td>
+          </tr>
+        `).join("");
+      }
+
+      const rtbody = document.querySelector("#referrersTable tbody");
+      if (!top_referrers.length) {
+        rtbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-text-2);">No referrals yet</td></tr>`;
+      } else {
+        rtbody.innerHTML = top_referrers.map(r => `
+          <tr>
+            <td style="font-weight:700; color:var(--rw-text-2);">${MEDAL[r.rank - 1] || r.rank}</td>
+            <td>${r.name}${proBadge(r.is_pro)}</td>
+            <td style="text-align:right; font-weight:600; color:var(--rw-accent);">${r.referred_approvals}</td>
+          </tr>
+        `).join("");
+      }
+    } catch (e) {
+      document.querySelector("#earnersTable tbody").innerHTML =
+        `<tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-red);">Failed to load</td></tr>`;
+      document.querySelector("#referrersTable tbody").innerHTML =
+        `<tr><td colspan="3" style="text-align:center; padding:24px; color:var(--rw-red);">Failed to load</td></tr>`;
+    }
+  }
+
+  load();
+</script>
+
+</body>
+</html>

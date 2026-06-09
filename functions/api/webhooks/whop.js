@@ -112,7 +112,14 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: true, skipped: "no_email" });
   }
 
-  if (!["membership.activated", "membership.deactivated"].includes(event)) {
+  const DEACTIVATION_EVENTS = new Set([
+    "membership.deactivated",
+    "membership.went_invalid",
+    "membership.expired",
+    "membership.cancelled",
+  ]);
+  const isActivation = event === "membership.activated";
+  if (!isActivation && !DEACTIVATION_EVENTS.has(event)) {
     return jsonResponse({ ok: true, skipped: "unhandled_event", event });
   }
 
@@ -128,8 +135,6 @@ export async function onRequestPost(context) {
     console.log(`[whop-webhook] ${event}: no BroBros account for ${email}`);
     return jsonResponse({ ok: true, skipped: "user_not_found" });
   }
-
-  const isActivation = event === "membership.activated";
   const now = new Date().toISOString();
 
   await env.DB

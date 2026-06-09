@@ -219,13 +219,14 @@ export async function onRequestPost(context) {
   // ── Submitter IP (punt 14) ─────────────────────────────────────────────
   const submitterIp = request.headers.get("CF-Connecting-IP") || null;
 
-  // ── Proof hash + duplicate detection (punt 16) ─────────────────────────
+  // ── Proof hash + duplicate detection (hard block) ─────────────────────
   const proofHash = await sha256hex(proofData);
   const dupRow = await env.DB
     .prepare(`SELECT 1 FROM purchase_claims WHERE proof_hash = ? LIMIT 1`)
     .bind(proofHash)
     .first();
-  const isDuplicateProof = dupRow ? 1 : 0;
+  if (dupRow) return jsonError("duplicate_proof", 409);
+  const isDuplicateProof = 0;
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);

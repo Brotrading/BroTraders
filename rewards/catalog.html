@@ -161,7 +161,9 @@
       btn.textContent = "Redeem";
       return;
     }
-    ok.textContent = `Redeemed: ${data.redemption.title}. We'll fulfill it within 1–2 business days — check your account page.`;
+    ok.textContent = data.pro_bro_granted
+      ? `Pro Bro activated! Your account has been upgraded — refresh to see your new rate.`
+      : `Redeemed: ${data.redemption.title}. We'll fulfill it within 1–2 business days — check your account page.`;
     await loadAll();
   }
 

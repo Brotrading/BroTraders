@@ -41,7 +41,8 @@ export async function onRequestGet(context) {
 
   const claims = await env.DB
     .prepare(
-      `SELECT id, firm_slug, order_ref, amount_eur, status, points_awarded, created_at, reviewed_at
+      `SELECT id, firm_slug, account_type, order_ref, amount_eur, purchase_date,
+              status, points_awarded, note, created_at, reviewed_at
        FROM purchase_claims
        WHERE user_id = ?
        ORDER BY created_at DESC

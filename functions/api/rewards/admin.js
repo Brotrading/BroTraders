@@ -68,6 +68,16 @@ function rejectionEmail(firmName, note) {
   return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">Bro Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">❌ Bro Points claim not approved</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">Your claim for <strong style="color:#f8fafc;">${firmName}</strong> could not be approved.</p>${reasonLine}<p style="margin:0;font-size:13px;color:#64748b;">Questions? Reply to this email or contact us at <a href="mailto:support@propfirmbro.com" style="color:#ff6b00;">support@propfirmbro.com</a>.</p></td></tr></table></td></tr></table></body></html>`;
 }
 
+function reviewApprovalEmail(firmSlug, points) {
+  const firmName = FIRM_NAMES_EMAIL[firmSlug] || firmSlug;
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">Bro Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">⭐ Your review is live!</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">Your review of <strong style="color:#f8fafc;">${firmName}</strong> has been approved and is now visible on the site.</p><div style="background:#0f1117;border-radius:8px;padding:16px 20px;margin:0 0 24px;"><p style="margin:0 0 4px;font-size:12px;color:#64748b;">Points credited</p><p style="margin:0;font-size:28px;font-weight:800;color:#ff6b00;">+${points.toLocaleString("en-US")} pts</p></div><a href="https://propfirmbro.com/rewards/account.html" style="display:inline-block;background:#ff6b00;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;">View your account →</a></td></tr></table></td></tr></table></body></html>`;
+}
+
+function nearThresholdEmail(packageTitle, currentBalance, packageCost) {
+  const ptsNeeded = packageCost - currentBalance;
+  return `<!DOCTYPE html><html><body style="margin:0;padding:0;background:#0f1117;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:40px 16px;"><table width="480" cellpadding="0" cellspacing="0" style="background:#1a1d2e;border-radius:12px;border:1px solid #2d3248;"><tr><td style="padding:32px 28px;"><p style="margin:0 0 8px;font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:0.08em;">Bro Rewards</p><h1 style="margin:0 0 20px;font-size:22px;font-weight:700;color:#f8fafc;">🔥 Almost there!</h1><p style="margin:0 0 16px;font-size:15px;color:#cbd5e1;">You're just <strong style="color:#ff6b00;">${ptsNeeded.toLocaleString("en-US")} pts</strong> away from unlocking <strong style="color:#f8fafc;">${packageTitle}</strong> in the Bro Store.</p><div style="background:#0f1117;border-radius:8px;padding:16px 20px;margin:0 0 8px;"><div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:12px;color:#64748b;">Your balance</span><span style="font-size:12px;color:#64748b;">Goal</span></div><p style="margin:0;font-size:18px;font-weight:700;color:#f8fafc;">${currentBalance.toLocaleString("en-US")} / ${packageCost.toLocaleString("en-US")} pts</p></div><div style="background:rgba(255,255,255,0.04);border-radius:6px;height:8px;overflow:hidden;margin:0 0 24px;"><div style="height:100%;width:${Math.round((currentBalance/packageCost)*100)}%;background:linear-gradient(90deg,#f59e0b,#ff6b00);border-radius:6px;"></div></div><a href="https://propfirmbro.com/rewards/catalog.html" style="display:inline-block;background:#ff6b00;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;">Visit Bro Store →</a></td></tr></table></td></tr></table></body></html>`;
+}
+
 function checkAdmin(request, env) {
   const expected = env.ADMIN_TOKEN || "";
   if (!expected) return false;
@@ -326,6 +336,14 @@ async function approveReview(env, { review_id }) {
     .prepare(`UPDATE firm_reviews SET is_approved = 1, approved_at = ?, status = 'approved' WHERE id = ?`)
     .bind(now, review_id)
     .run();
+  if (u?.email) {
+    const pts = rateFor("review_submitted", isPro);
+    await sendEmail(env, {
+      to: u.email,
+      subject: `Your review was approved — +${pts.toLocaleString("en-US")} pts`,
+      html: reviewApprovalEmail(r.firm_slug, pts),
+    });
+  }
   return jsonResponse({ ok: true });
 }
 
@@ -389,6 +407,22 @@ async function approveClaim(env, { claim_id, note }) {
     subject: `Your Bro Points claim was approved — +${points.toLocaleString("en-US")} pts`,
     html: approvalEmail(FIRM_NAMES_EMAIL[c.firm_slug] || c.firm_slug, points),
   });
+
+  // Near-threshold email: fires if user just got within 500 pts of a redeemable package.
+  const newBalance = (u?.points_balance || 0) + points;
+  const pkgRows = await env.DB
+    .prepare(`SELECT title, points_cost FROM bro_packages WHERE is_active = 1 ORDER BY points_cost ASC`)
+    .all();
+  for (const pkg of (pkgRows.results || [])) {
+    if (newBalance >= pkg.points_cost - 500 && newBalance < pkg.points_cost) {
+      sendEmail(env, {
+        to: u.email,
+        subject: `You're ${(pkg.points_cost - newBalance).toLocaleString("en-US")} pts away from ${pkg.title}`,
+        html: nearThresholdEmail(pkg.title, newBalance, pkg.points_cost),
+      });
+      break;
+    }
+  }
 
   // If this is the buyer's first approved purchase, pay the referrer a bonus.
   const prevApproved = await env.DB

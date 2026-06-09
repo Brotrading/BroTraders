@@ -137,7 +137,7 @@
   </div>
 
   <h2 class="rw-h2">Purchase claims</h2>
-  <p class="rw-muted rw-small" style="margin:-8px 0 12px;">Purchases made via BRO affiliate links. Reviewed manually — most processed within a few business days.</p>
+  <p class="rw-muted rw-small" style="margin:-8px 0 12px;">Purchases made via BRO affiliate links. Reviewed manually — most processed within a few business days. Click a row to see details.</p>
   <div class="rw-panel" style="padding:0; overflow:hidden;">
     <table class="rw-table" id="claimsTable">
       <thead><tr><th>Date</th><th>Firm</th><th>Amount</th><th>Order ref</th><th>Status</th><th style="text-align:right;">Points</th></tr></thead>
@@ -152,6 +152,8 @@
   <div id="firmEmailsPanel" class="rw-panel"></div>
 
   <p style="text-align:center; margin-top:40px; font-size:13px; color:var(--rw-text-2);">
+    <a href="./leaderboard.html" style="color:var(--rw-text-2); text-decoration:underline;">Leaderboard</a>
+    &nbsp;·&nbsp;
     <a href="./terms.html" style="color:var(--rw-text-2); text-decoration:underline;">Bro Rewards program rules</a>
   </p>
 
@@ -379,16 +381,23 @@
     if (!ledger.length) {
       lbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:24px; color:var(--rw-text-2);">No activity yet</td></tr>`;
     } else {
-      lbody.innerHTML = ledger.map((row) => `
-        <tr>
-          <td>${fmtDate(row.created_at)}</td>
-          <td>${REASON_LABELS[row.reason] || row.reason}</td>
-          <td class="rw-muted">${row.note || ""}</td>
-          <td class="amount ${row.amount >= 0 ? "pos" : "neg"}" style="text-align:right;">
-            ${row.amount >= 0 ? "+" : ""}${fmt(row.amount)}
-          </td>
-        </tr>
-      `).join("");
+      lbody.innerHTML = ledger.map((row) => {
+        const reason = row.reason;
+        const label = REASON_LABELS[reason]
+          || (reason.startsWith("streak_milestone_")
+            ? `${reason.replace("streak_milestone_", "")}-day streak milestone`
+            : reason);
+        return `
+          <tr>
+            <td>${fmtDate(row.created_at)}</td>
+            <td>${label}</td>
+            <td class="rw-muted">${row.note || ""}</td>
+            <td class="amount ${row.amount >= 0 ? "pos" : "neg"}" style="text-align:right;">
+              ${row.amount >= 0 ? "+" : ""}${fmt(row.amount)}
+            </td>
+          </tr>
+        `;
+      }).join("");
     }
 
     const rbody = document.querySelector("#redemptionsTable tbody");
@@ -419,8 +428,14 @@
           : c.status === "pending"
             ? `<span style="color:var(--rw-text-2);">~${fmt(ptsPending)}</span>`
             : `<span style="color:var(--rw-red);">—</span>`;
+        const detailId = `cd-${c.id}`;
+        const detailLines = [
+          c.account_type ? `Account type: <strong>${c.account_type}</strong>` : null,
+          c.purchase_date ? `Purchase date: <strong>${c.purchase_date}</strong>` : null,
+          c.status === "rejected" && c.note ? `<span style="color:var(--rw-red);">Reason: ${c.note}</span>` : null,
+        ].filter(Boolean).join(" &nbsp;·&nbsp; ");
         return `
-          <tr>
+          <tr style="cursor:pointer;" onclick="toggleDetail('${detailId}')">
             <td>${fmtDate(c.created_at)}</td>
             <td>${FIRM_NAMES[c.firm_slug] || c.firm_slug}</td>
             <td>$${Number(c.amount_eur).toFixed(2)}</td>
@@ -428,6 +443,12 @@
             <td><span style="color:${st.color}; font-weight:600; font-size:12px;">${st.label}</span></td>
             <td style="text-align:right;">${ptsDisplay}</td>
           </tr>
+          ${detailLines ? `
+          <tr id="${detailId}" style="display:none;">
+            <td colspan="6" style="padding:8px 16px 12px; background:rgba(255,255,255,0.02); font-size:12px; color:var(--rw-text-2); line-height:1.8;">
+              ${detailLines}
+            </td>
+          </tr>` : ""}
         `;
       }).join("");
     }
@@ -692,6 +713,11 @@
         }
       });
     });
+  }
+
+  function toggleDetail(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = el.style.display === "none" ? "" : "none";
   }
 
   BroAuth.ready.then(async () => {

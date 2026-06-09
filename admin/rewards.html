@@ -102,6 +102,14 @@
       <button class="rw-btn ghost claim-filter" data-filter="click_30" style="padding:4px 12px; font-size:12px; color:#fb923c;">⚠ Click 8-30d</button>
       <button class="rw-btn ghost claim-filter" data-filter="click_high" style="padding:4px 12px; font-size:12px; color:#f87171;">✗ No/old click</button>
     </div>
+    <!-- Bulk action bar -->
+    <div id="batchBar" style="background:var(--rw-panel-2); border:1px solid var(--rw-border); border-radius:8px; padding:10px 14px; margin-bottom:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span id="batchCount" style="font-size:13px; color:var(--rw-text-2); min-width:80px;">0 selected</span>
+      <button class="rw-btn ghost" id="selectAllLow" style="padding:4px 12px; font-size:12px;">Select all low risk</button>
+      <button class="rw-btn ghost" id="selectAllVisible" style="padding:4px 12px; font-size:12px;">Select all visible</button>
+      <button class="rw-btn" id="approveSelected" style="padding:4px 12px; font-size:12px;" disabled>Approve selected (0)</button>
+      <button class="rw-btn ghost" id="clearSelection" style="padding:4px 12px; font-size:12px;">Clear</button>
+    </div>
     <div id="pendingClaims"></div>
   </section>
 
@@ -554,8 +562,11 @@
         : `<span style="font-size:11px; color:var(--rw-red);">No proof</span>`;
 
       return `
-        <div class="rw-panel" style="margin-bottom:10px; border-left:3px solid ${risk.color};">
-          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+        <div class="rw-panel" style="margin-bottom:10px; border-left:3px solid ${risk.color}; position:relative;">
+          <label style="position:absolute; top:14px; right:14px; cursor:pointer; z-index:1;" title="Select for bulk approve">
+            <input type="checkbox" class="claim-cb" data-id="${c.id}" data-pts="${pts}" style="width:16px; height:16px; accent-color:#ff6b00; cursor:pointer;" />
+          </label>
+          <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start; padding-right:28px;">
             <div style="flex:1; min-width:0;">
               <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
                 <strong>${c.firm_slug}</strong>
@@ -685,6 +696,79 @@
       _activeFilter = btn.dataset.filter;
       renderPendingClaims(_allClaims);
     });
+  });
+
+  // ── Bulk approve ───────────────────────────────────────────────────────
+  function updateBatchBar() {
+    const checked = [...document.querySelectorAll(".claim-cb:checked")];
+    const count = checked.length;
+    document.getElementById("batchCount").textContent = `${count} selected`;
+    const btn = document.getElementById("approveSelected");
+    btn.textContent = `Approve selected (${count})`;
+    btn.disabled = count === 0;
+  }
+
+  document.getElementById("pendingClaims").addEventListener("change", (e) => {
+    if (e.target.classList.contains("claim-cb")) updateBatchBar();
+  });
+
+  document.getElementById("selectAllLow").addEventListener("click", () => {
+    document.querySelectorAll(".claim-cb").forEach(cb => {
+      const card = cb.closest(".rw-panel");
+      const riskEl = card?.querySelector("[data-risk]");
+      // Check via stored risk via data-claim-action approve button text colour
+      const approveBtn = card?.querySelector("[data-claim-action='approve']");
+      if (approveBtn) cb.checked = true;
+    });
+    // Select only low-risk via filter: match claim IDs in _allClaims with risk_level=low
+    const lowIds = new Set(_allClaims.filter(c => c.risk_level === "low").map(c => String(c.id)));
+    document.querySelectorAll(".claim-cb").forEach(cb => {
+      cb.checked = lowIds.has(cb.dataset.id);
+    });
+    updateBatchBar();
+  });
+
+  document.getElementById("selectAllVisible").addEventListener("click", () => {
+    document.querySelectorAll(".claim-cb").forEach(cb => { cb.checked = true; });
+    updateBatchBar();
+  });
+
+  document.getElementById("clearSelection").addEventListener("click", () => {
+    document.querySelectorAll(".claim-cb").forEach(cb => { cb.checked = false; });
+    updateBatchBar();
+  });
+
+  document.getElementById("approveSelected").addEventListener("click", async () => {
+    const checked = [...document.querySelectorAll(".claim-cb:checked")];
+    if (!checked.length) return;
+
+    const items = checked.map(cb => ({ id: parseInt(cb.dataset.id, 10), pts: parseInt(cb.dataset.pts, 10) }));
+    const totalPts = items.reduce((s, i) => s + i.pts, 0);
+
+    const { confirmed, values } = await modal({
+      title: `Approve ${items.length} claim${items.length > 1 ? "s" : ""} (+${fmt(totalPts)} pts total)`,
+      fields: [{ label: "Internal note (optional, applies to all)", type: "textarea", placeholder: "e.g. batch approve low-risk claims" }],
+      confirmLabel: `Approve ${items.length}`,
+    });
+    if (!confirmed) return;
+
+    const note = values[0] || "";
+    const btn = document.getElementById("approveSelected");
+    btn.disabled = true;
+    btn.textContent = "Approving…";
+
+    let done = 0;
+    for (const item of items) {
+      try {
+        await api("POST", { action: "approve_claim", claim_id: item.id, note });
+        done++;
+      } catch (e) {
+        console.error(`approve_claim ${item.id} failed:`, e.message);
+      }
+    }
+
+    btn.textContent = `Done (${done}/${items.length})`;
+    setTimeout(() => loadOverview(), 600);
   });
 
   function renderPendingRedemptions(rows) {

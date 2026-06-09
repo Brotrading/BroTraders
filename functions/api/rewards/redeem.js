@@ -13,6 +13,7 @@ import {
   postLedger,
   getUserRow,
   REDEMPTION_GATE_PTS,
+  EARN_RATES,
 } from "./_lib.js";
 
 export async function onRequestPost(context) {
@@ -111,6 +112,42 @@ export async function onRequestPost(context) {
   }
 
   const updated = await getUserRow(env, user.id);
+
+  // Auto-fulfill Pro Bro packs: grant is_pro_bro immediately, no admin action needed.
+  if (pkg.fulfillment === "pro_bro_extend") {
+    const now2 = new Date().toISOString();
+    await env.DB
+      .prepare(`UPDATE users SET is_pro_bro = 1, pro_bro_since = COALESCE(pro_bro_since, ?) WHERE id = ?`)
+      .bind(now2, user.id)
+      .run();
+    if (!updated.pro_bro_bonus_paid) {
+      await postLedger(env, {
+        user_id: user.id,
+        amount: EARN_RATES.pro_bro_welcome,
+        reason: "pro_bro_welcome",
+        note: "Pro Bro welcome bonus (store redemption)",
+      });
+      await env.DB.prepare(`UPDATE users SET pro_bro_bonus_paid = 1 WHERE id = ?`).bind(user.id).run();
+    }
+    await env.DB
+      .prepare(`UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ? WHERE id = ?`)
+      .bind(now2, redemptionId)
+      .run();
+    const finalRow = await getUserRow(env, user.id);
+    return jsonResponse({
+      ok: true,
+      redemption: {
+        id: redemptionId,
+        package_slug: pkg.slug,
+        title: pkg.title,
+        points_cost: pkg.points_cost,
+        status: "fulfilled",
+        created_at: now,
+      },
+      points_balance: finalRow.points_balance,
+      pro_bro_granted: true,
+    });
+  }
 
   return jsonResponse({
     ok: true,
