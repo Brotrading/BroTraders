@@ -102,30 +102,47 @@ export function generateReferralCode(seed) {
   return `bro-${part || "x"}${rand}`;
 }
 
-// Inserts a points_ledger row AND updates users.points_balance + users.points_earned atomically.
-// `amount` is signed (negative for spends — we still credit lifetime "earned" only when amount > 0).
-// `minBalance`: if set, the batch rolls back (RAISE ROLLBACK) if balance + amount < minBalance.
-//   Callers should catch errors containing "insufficient_balance" to detect this case.
+// Inserts a points_ledger row AND updates users.points_balance + users.points_earned.
+// `amount` is signed (negative for spends — lifetime "earned" only increments when amount > 0).
+// `minBalance`: if set, throws "insufficient_balance" when balance + amount < minBalance.
+//   The guard runs as a conditional WHERE so we never use RAISE() (not allowed outside triggers in D1).
 export async function postLedger(env, { user_id, amount, reason, ref_id = null, note = null, minBalance = null }) {
   const now = new Date().toISOString();
-  const guardClause = minBalance !== null
-    ? `AND CASE WHEN points_balance + ? >= ? THEN 1 ELSE RAISE(ROLLBACK, 'insufficient_balance') END = 1`
-    : "";
-  const guardBinds = minBalance !== null ? [amount, minBalance] : [];
 
-  const statements = [
-    env.DB.prepare(
-      `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
-       VALUES (?, ?, ?, ?, ?, ?)`
-    ).bind(user_id, amount, reason, ref_id, note, now),
-    env.DB.prepare(
-      `UPDATE users
-         SET points_balance = points_balance + ?,
-             points_earned  = points_earned + CASE WHEN ? > 0 THEN ? ELSE 0 END
-         WHERE id = ? ${guardClause}`
-    ).bind(amount, amount, amount, user_id, ...guardBinds),
-  ];
-  await env.DB.batch(statements);
+  if (minBalance !== null) {
+    // Run UPDATE first with WHERE balance guard; only insert ledger row if update succeeded.
+    const upd = await env.DB
+      .prepare(
+        `UPDATE users
+           SET points_balance = points_balance + ?,
+               points_earned  = points_earned + CASE WHEN ? > 0 THEN ? ELSE 0 END
+           WHERE id = ? AND (points_balance + ?) >= ?`
+      )
+      .bind(amount, amount, amount, user_id, amount, minBalance)
+      .run();
+    if (upd.meta.changes === 0) throw new Error("insufficient_balance");
+    await env.DB
+      .prepare(
+        `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+         VALUES (?, ?, ?, ?, ?, ?)`
+      )
+      .bind(user_id, amount, reason, ref_id, note, now)
+      .run();
+  } else {
+    await env.DB.batch([
+      env.DB.prepare(
+        `INSERT INTO points_ledger (user_id, amount, reason, ref_id, note, created_at)
+         VALUES (?, ?, ?, ?, ?, ?)`
+      ).bind(user_id, amount, reason, ref_id, note, now),
+      env.DB.prepare(
+        `UPDATE users
+           SET points_balance = points_balance + ?,
+               points_earned  = points_earned + CASE WHEN ? > 0 THEN ? ELSE 0 END
+           WHERE id = ?`
+      ).bind(amount, amount, amount, user_id),
+    ]);
+  }
+
   return { amount, reason, ref_id, note, created_at: now };
 }
 
