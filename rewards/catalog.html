@@ -145,12 +145,20 @@
     if (!confirmed) return;
     btn.disabled = true;
     btn.textContent = "Redeeming…";
-    const res = await BroAuth.authedFetch("/api/rewards/redeem", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ package_slug: slug }),
-    });
-    const data = await res.json();
+    let res, data;
+    try {
+      res  = await BroAuth.authedFetch("/api/rewards/redeem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ package_slug: slug }),
+      });
+      data = await res.json();
+    } catch (e) {
+      err.textContent = "Something went wrong — please try again.";
+      btn.disabled = false;
+      btn.textContent = "Redeem";
+      return;
+    }
     if (!res.ok) {
       err.textContent = data.error === "insufficient_points"
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`

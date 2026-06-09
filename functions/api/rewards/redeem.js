@@ -184,6 +184,10 @@ export async function onRequestPost(context) {
   }
 
   const updated = await getUserRow(env, user.id);
+  if (!updated) {
+    console.error("[redeem] user row missing after postLedger for", user.id);
+    return jsonError("user_not_found", 500);
+  }
 
   // ── Auto-fulfill: Pro Bro ────────────────────────────────────────────────
   if (pkg.fulfillment === "pro_bro_extend") {
