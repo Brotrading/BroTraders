@@ -24,9 +24,6 @@ import {
   rateFor,
   EARN_RATES,
   getUserRow,
-  CASHBACK_RATE,
-  POINTS_PER_EUR,
-  PRO_MULTIPLIER,
   lookupFixedPoints,
 } from "./_lib.js";
 
@@ -379,10 +376,7 @@ async function approveClaim(env, { claim_id, note }) {
 
   const u = await getUserRow(env, c.user_id);
   const isPro = !!(u && u.is_pro_bro);
-  const fixedPoints = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
-  const points = fixedPoints !== null
-    ? fixedPoints
-    : Math.round(c.amount_eur * (isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE) * POINTS_PER_EUR);
+  const points = lookupFixedPoints(c.firm_slug, c.account_type, isPro) ?? 0;
 
   await postLedger(env, {
     user_id: c.user_id,
@@ -431,7 +425,7 @@ async function approveClaim(env, { claim_id, note }) {
     }
   }
 
-  // If this is the buyer's first approved purchase, pay the referrer a bonus.
+  // First approved purchase: one-time bonus for the buyer + referral bonus for the referrer.
   const prevApproved = await env.DB
     .prepare(
       `SELECT COUNT(*) AS cnt FROM purchase_claims
@@ -440,16 +434,26 @@ async function approveClaim(env, { claim_id, note }) {
     .bind(c.user_id, claim_id)
     .first();
 
-  if ((prevApproved?.cnt || 0) === 0 && u?.referred_by) {
-    const referrer = await getUserRow(env, u.referred_by);
-    if (referrer) {
-      await awardOnce(env, {
-        user_id: u.referred_by,
-        amount: rateFor("referral_purchase", !!referrer.is_pro_bro),
-        reason: "referral_purchase",
-        ref_id: c.user_id,
-        note: `${u.email} made their first purchase`,
-      });
+  if ((prevApproved?.cnt || 0) === 0) {
+    await awardOnce(env, {
+      user_id: c.user_id,
+      amount: EARN_RATES.first_claim_bonus,
+      reason: "first_claim_bonus",
+      ref_id: c.user_id,
+      note: "First approved purchase claim bonus",
+    });
+
+    if (u?.referred_by) {
+      const referrer = await getUserRow(env, u.referred_by);
+      if (referrer) {
+        await awardOnce(env, {
+          user_id: u.referred_by,
+          amount: rateFor("referral_purchase", !!referrer.is_pro_bro),
+          reason: "referral_purchase",
+          ref_id: c.user_id,
+          note: `${u.email} made their first purchase`,
+        });
+      }
     }
   }
 

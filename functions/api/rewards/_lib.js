@@ -9,38 +9,35 @@
 // Earn rates live in EARN_RATES below — single source of truth.
 // IMPORTANT: confirm with Mike before public launch.
 
-// Purchase cashback: 25% of purchase amount in points (1000 pts = $1 USD).
-// Pro Bro rate is base × PRO_MULTIPLIER (1.5×) = effectively 37.5%.
-// Used as fallback for firms without fixed points (alpha, yrm).
-export const CASHBACK_RATE = 0.25;
-export const POINTS_PER_EUR = 1000;
-
-export function calcCashback(amountEur, isPro) {
-  const base = Math.round(amountEur * CASHBACK_RATE * POINTS_PER_EUR);
-  return isPro ? Math.round(base * PRO_MULTIPLIER) : base;
-}
-
 export const EARN_RATES = {
   signup_free: 5000,
   signup_pro: 7500,
-  profile_complete_free: 5000,
-  profile_complete_pro: 7500,
+  profile_complete_free: 1000,
+  profile_complete_pro: 1500,
   pro_bro_welcome: 25000,         // one-time bonus when user becomes Pro Bro
   daily_login_free: 100,
   daily_login_pro: 150,
   review_submitted_free: 2500,
   review_submitted_pro: 3750,
-  referral_signup_free: 5000,     // referral signed up (no purchase yet)
-  referral_signup_pro: 7500,
+  referral_signup_free: 1000,     // referral signed up (no purchase yet)
+  referral_signup_pro: 1500,
   referral_purchase_free: 25000,  // referral made their first purchase
   referral_purchase_pro: 37500,
+  first_claim_bonus: 500,         // one-time bonus on user's first approved purchase claim
 };
 
 export const PRO_MULTIPLIER = 1.5;
 
-// Minimum purchase_cashback points a user must have earned before redeeming from the Bro Store.
-// Points are calculated as Math.round(price_usd / 2.5) * 25 per account type.
-export const REDEMPTION_GATE_PTS = 5000;
+// Minimum purchase_cashback points a user must have earned before redeeming
+// non-exempt Bro Packs (i.e. packs with real cash cost to Mike, like the funded account).
+//
+// Financial model: FIRM_POINTS base = price_usd × 10 and 1,000 pts ≈ $1 of redemption
+// value, so purchase points represent ~1% cashback (1.5% for Pro Bro). At ~10% affiliate
+// commission, 90,000 purchase pts = $9,000 of purchase volume = ~$900 commission for Mike.
+// Giving away a ~$150 funded account then leaves Mike with ≥8.3% — within the 8.5–9% target
+// when combined with the 100,000 pts store price (engagement may fill the remaining 10%).
+// Zero-cost packs (Pro Bro, discount codes) bypass this via gate_exempt = 1.
+export const REDEMPTION_GATE_PTS = 90000;
 
 // Pick the right rate for an action based on Pro Bro status.
 export function rateFor(action, isPro) {

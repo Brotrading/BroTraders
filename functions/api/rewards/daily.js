@@ -7,13 +7,14 @@
 //   - Can only be claimed once per day (UTC).
 //   - If last claim was yesterday → streak continues (+1).
 //   - If last claim was 2+ days ago → streak resets to 1.
-//   - Milestones: day 7 → +500 pts bonus; day 30 → +2 000 pts bonus.
+//   - Milestones: day 7 → +5,000 pts (one-time); every 30 days (30, 60, 90, …)
+//     → random 2,000–5,000 pts (Duolingo-style chest, avg ~3,500).
 //   Returns: { ok, awarded, daily_pts, milestone_bonus, new_streak, streak_best, can_restore }
 //
 // Restore (action: "restore"):
 //   - Available only if last claim was exactly 2 days ago (missed exactly 1 day)
 //     AND today has not been claimed yet.
-//   - Costs 50 pts from the user's balance.
+//   - Costs 250 pts from the user's balance.
 //   - Sets streak_claimed_date to yesterday so next regular claim continues the streak.
 //   Returns: { ok, restored, new_streak, cost_pts }
 
@@ -27,8 +28,14 @@ import {
 } from "./_lib.js";
 
 const STREAK_MILESTONE_7  = 5000;
-const STREAK_MILESTONE_30 = 20000;
-const RESTORE_COST        = 500;
+const RESTORE_COST        = 250;
+
+// Every-30-days milestone: random "chest" between 2,000 and 5,000 pts in steps of 250
+// (avg ~3,500). Random reward keeps long streaks exciting (Duolingo-style) while the
+// redemption gate caps how much engagement points can contribute to cash-cost packs.
+function rollMilestone30() {
+  return 2000 + Math.floor(Math.random() * 13) * 250;
+}
 
 function todayUTC() {
   return new Date().toISOString().slice(0, 10);
@@ -70,7 +77,7 @@ export async function onRequestPost(context) {
 
     let milestonePts = 0;
     if (restoredStreak === 7)                                milestonePts = STREAK_MILESTONE_7;
-    else if (restoredStreak > 0 && restoredStreak % 30 === 0) milestonePts = STREAK_MILESTONE_30;
+    else if (restoredStreak > 0 && restoredStreak % 30 === 0) milestonePts = rollMilestone30();
 
     const now = new Date().toISOString();
     try {
@@ -136,10 +143,10 @@ export async function onRequestPost(context) {
   // Base daily pts
   const dailyPts = rateFor("daily_login", isPro);
 
-  // Milestone bonus — day 7 once, then every 30 days (30, 60, 90, …) indefinitely
+  // Milestone bonus — day 7 once, then every 30 days (30, 60, 90, …) a random chest
   let milestonePts = 0;
   if (newStreak === 7)                          milestonePts = STREAK_MILESTONE_7;
-  else if (newStreak > 0 && newStreak % 30 === 0) milestonePts = STREAK_MILESTONE_30;
+  else if (newStreak > 0 && newStreak % 30 === 0) milestonePts = rollMilestone30();
 
   const totalAwarded = dailyPts + milestonePts;
 

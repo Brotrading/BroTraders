@@ -21,9 +21,6 @@ import {
   jsonError,
   verifySupabaseToken,
   getUserRow,
-  CASHBACK_RATE,
-  POINTS_PER_EUR,
-  PRO_MULTIPLIER,
   lookupFixedPoints,
   FIRM_POINTS,
 } from "./_lib.js";
@@ -87,7 +84,7 @@ export async function onRequestPost(context) {
   // ── Amount ─────────────────────────────────────────────────────────────
   // Field name kept as amount_eur for DB compat; value is now USD (confirmed: all accounts purchased in USD).
   const amountEur = parseFloat(body.amount_eur);
-  if (!Number.isFinite(amountEur) || amountEur <= 0 || amountEur > 900) {
+  if (!Number.isFinite(amountEur) || amountEur <= 0) {
     return jsonError("invalid_amount_eur", 400);
   }
 
@@ -230,10 +227,7 @@ export async function onRequestPost(context) {
 
   // ── Points estimate ────────────────────────────────────────────────────
   const isPro  = !!(userRow && userRow.is_pro_bro);
-  const fixedPending = lookupFixedPoints(firmSlug, accountType, isPro);
-  const pointsPending = fixedPending !== null
-    ? fixedPending
-    : Math.round(amountEur * (isPro ? CASHBACK_RATE * PRO_MULTIPLIER : CASHBACK_RATE) * POINTS_PER_EUR);
+  const pointsPending = lookupFixedPoints(firmSlug, accountType, isPro) ?? 0;
 
   // ── Insert ─────────────────────────────────────────────────────────────
   const now = new Date().toISOString();

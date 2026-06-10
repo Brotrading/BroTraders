@@ -37,7 +37,7 @@
     <div class="rw-stat">
       <div class="label">Referral link</div>
       <div class="value" style="font-size:14px; word-break:break-all;" id="refLink">—</div>
-      <div class="sub">Share to earn <span id="refReward">2,500 pts when they make their first purchase</span></div>
+      <div class="sub">Share to earn <span id="refReward">25,000 pts when they make their first purchase</span></div>
     </div>
   </div>
 
@@ -62,14 +62,14 @@
       <!-- Right: action buttons -->
       <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
         <button class="rw-btn" id="claimDailyBtn">Claim today's bonus</button>
-        <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −500 pts</button>
+        <button class="rw-btn ghost" id="restoreStreakBtn" style="display:none;">Restore streak · −250 pts</button>
       </div>
     </div>
 
     <!-- Progress bar: next milestone always at right end, achieved milestone as gold left anchor -->
     <div id="streakProgress" style="margin-top:20px; display:none;">
       <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:8px;">
-        <span id="streakProgressLabel">Progress to 7-day streak · +500 pts</span>
+        <span id="streakProgressLabel">Progress to 7-day streak · +5,000 pts</span>
         <span id="streakProgressPct" style="font-weight:600; color:var(--rw-text);">0/7</span>
       </div>
       <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:10px; overflow:hidden;">
@@ -99,7 +99,7 @@
       </div>
       <div style="display:flex; justify-content:space-between; font-size:11px; margin-top:5px; color:var(--rw-text-2);">
         <span id="storeGateBarLeft">0 purchase pts</span>
-        <span>5,000 pts goal</span>
+        <span>90,000 pts goal</span>
       </div>
     </div>
   </div>
@@ -260,7 +260,7 @@
       claimBtn.textContent  = "Start fresh";
       claimBtn.className    = "rw-btn ghost";
       restoreBtn.style.display = "";
-      restoreBtn.textContent   = "Continue streak · −500 pts";
+      restoreBtn.textContent   = "Continue streak · −250 pts";
       restoreBtn.className     = "rw-btn";
       progressEl.style.display = "none";
       return;
@@ -290,9 +290,9 @@
     // ── Progress bar ────────────────────────────────────────────────────
     // Next milestone is always at the RIGHT end of the bar.
     // The achieved milestone (if any) stays visible as a gold label on the LEFT.
-    // Phase 1 (0–6):  Day 1 → 🏆 Day 7   (+500 pts)
-    // Phase 2 (7–29): ✓ Day 7 → 🏆 Day 30 (+2,000 pts)
-    // Phase 3+ (30+): ✓ Day N → 🏆 Day N+30 (+2,000 pts), cyclic every 30 days
+    // Phase 1 (0–6):  Day 1 → 🏆 Day 7   (+5,000 pts, one-time)
+    // Phase 2 (7–29): ✓ Day 7 → 🏆 Day 30 (mystery chest: 2,000–5,000 pts)
+    // Phase 3+ (30+): ✓ Day N → 🏆 Day N+30 (mystery chest), cyclic every 30 days
 
     let barPct;
 
@@ -305,7 +305,7 @@
       labelEnd.textContent   = "🏆 Day 7";
     } else if (streak < 30) {
       barPct = (streak / 30) * 100;
-      labelEl.textContent    = "Progress to 30-day streak · +20,000 pts";
+      labelEl.textContent    = "Progress to 30-day streak · mystery chest 🎁 2,000–5,000 pts";
       pctEl.textContent      = `${streak}/30`;
       labelStart.textContent = "✓ Day 7";
       labelStart.style.color = "#f59e0b";
@@ -314,7 +314,7 @@
       const cycleStart    = Math.floor(streak / 30) * 30;
       const nextMilestone = cycleStart + 30;
       barPct = ((streak - cycleStart) / 30) * 100;
-      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · +20,000 pts`;
+      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · mystery chest 🎁 2,000–5,000 pts`;
       pctEl.textContent      = `${streak}/${nextMilestone}`;
       labelStart.textContent = `✓ Day ${cycleStart}`;
       labelStart.style.color = "#f59e0b";
@@ -326,7 +326,7 @@
 
   function renderStoreGate(user) {
     const earned   = user.purchase_pts_earned || 0;
-    const gate     = 5000;
+    const gate     = 90000; // applies to cash-value packs only (e.g. funded account); Pro Bro is always available
     const unlocked = earned >= gate;
 
     const titleEl   = document.getElementById("storeGateTitle");
@@ -336,14 +336,14 @@
     const barLeft   = document.getElementById("storeGateBarLeft");
 
     if (unlocked) {
-      titleEl.textContent   = "Bro Store · Unlocked ✓";
+      titleEl.textContent   = "Funded Account · Unlocked ✓";
       titleEl.style.color   = "var(--rw-green)";
-      subEl.textContent     = "You've earned enough purchase points to redeem rewards.";
+      subEl.textContent     = "You've earned enough purchase points to redeem the funded account.";
       barWrap.style.display = "none";
     } else {
-      titleEl.textContent   = "Bro Store";
+      titleEl.textContent   = "Funded Account progress";
       titleEl.style.color   = "";
-      subEl.textContent     = `Earn ${fmt(gate - earned)} more purchase pts to unlock — ${fmt(earned)} / ${fmt(gate)} earned`;
+      subEl.textContent     = `Pro Bro rewards are always available. Earn ${fmt(gate - earned)} more purchase pts to unlock the funded account — ${fmt(earned)} / ${fmt(gate)} earned`;
       barWrap.style.display = "";
       barFill.style.width   = `${Math.min((earned / gate) * 100, 100)}%`;
       barLeft.textContent   = `${fmt(earned)} pts`;
@@ -512,7 +512,7 @@
       } else {
         const msgs = {
           restore_not_eligible: "Restore is only available if you missed exactly one day.",
-          insufficient_points: "You need at least 500 pts to restore your streak.",
+          insufficient_points: "You need at least 250 pts to restore your streak.",
         };
         msg.textContent = msgs[data.error] || `Error: ${data.error}`;
         msg.style.color = "var(--rw-red)";
