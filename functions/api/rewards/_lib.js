@@ -11,7 +11,6 @@
 
 export const EARN_RATES = {
   signup_free: 5000,
-  signup_pro: 7500,
   profile_complete_free: 1000,
   profile_complete_pro: 1500,
   pro_bro_welcome: 25000,         // one-time bonus when user becomes Pro Bro
@@ -19,11 +18,8 @@ export const EARN_RATES = {
   daily_login_pro: 150,
   review_submitted_free: 2500,
   review_submitted_pro: 3750,
-  referral_signup_free: 1000,     // referral signed up (no purchase yet)
-  referral_signup_pro: 1500,
-  referral_purchase_free: 25000,  // referral made their first purchase
-  referral_purchase_pro: 37500,
   first_claim_bonus: 500,         // one-time bonus on user's first approved purchase claim
+  // referral_purchase equals the referred user's purchase cashback points (proportional)
 };
 
 export const PRO_MULTIPLIER = 1.5;

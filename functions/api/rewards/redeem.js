@@ -242,21 +242,12 @@ async function _handleRedeem(context) {
       .prepare(`UPDATE bro_pack_codes SET redemption_id = ? WHERE id = ?`)
       .bind(redemptionId, grabbedCode.id)
       .run();
-    try {
-      await env.DB
-        .prepare(
-          `UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ?, discount_code = ? WHERE id = ?`
-        )
-        .bind(now2, grabbedCode.code, redemptionId)
-        .run();
-    } catch (e) {
-      // Fallback if discount_code column is missing (run migration 0016 statement 2)
-      console.error("[redeem] discount_code column missing:", e?.message);
-      await env.DB
-        .prepare(`UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ? WHERE id = ?`)
-        .bind(now2, redemptionId)
-        .run();
-    }
+    await env.DB
+      .prepare(
+        `UPDATE redemptions SET status = 'fulfilled', fulfilled_at = ?, discount_code = ? WHERE id = ?`
+      )
+      .bind(now2, grabbedCode.code, redemptionId)
+      .run();
     // Fire-and-forget — use waitUntil so the runtime keeps the promise alive
     context.waitUntil(sendEmail(env, {
       to: updated.email,

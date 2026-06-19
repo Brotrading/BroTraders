@@ -21,38 +21,6 @@ import { jsonResponse, jsonError, postLedger, getUserRow, EARN_RATES } from "../
 
 const STALE_THRESHOLD_SECONDS = 300; // reject webhooks older than 5 minutes
 
-async function verifySignature(webhookId, webhookTimestamp, rawBody, secret) {
-  try {
-    const ts = parseInt(webhookTimestamp, 10);
-    if (!ts || Math.abs(Date.now() / 1000 - ts) > STALE_THRESHOLD_SECONDS) return false;
-
-    // Accept both "whsec_<base64>" and plain base64 formats.
-    const base64Secret = secret.startsWith("whsec_") ? secret.slice(6) : secret;
-    const secretBytes = Uint8Array.from(atob(base64Secret), (c) => c.charCodeAt(0));
-
-    const key = await crypto.subtle.importKey(
-      "raw",
-      secretBytes,
-      { name: "HMAC", hash: "SHA-256" },
-      false,
-      ["sign"]
-    );
-
-    const toSign = `${webhookId}.${webhookTimestamp}.${rawBody}`;
-    const sigBytes = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(toSign));
-    const computed = btoa(String.fromCharCode(...new Uint8Array(sigBytes)));
-
-    // webhook-signature header can contain multiple sigs: "v1,sig1 v1,sig2"
-    const incoming = (webhookId && webhookTimestamp)
-      ? (arguments[4] || "")  // passed explicitly below
-      : "";
-    return incoming.split(" ").some((s) => s.replace(/^v\d+,/, "") === computed);
-  } catch (e) {
-    console.error("[whop-webhook] signature error:", e?.message);
-    return false;
-  }
-}
-
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -112,14 +80,8 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: true, skipped: "no_email" });
   }
 
-  const DEACTIVATION_EVENTS = new Set([
-    "membership.deactivated",
-    "membership.went_invalid",
-    "membership.expired",
-    "membership.cancelled",
-  ]);
   const isActivation = event === "membership.activated";
-  if (!isActivation && !DEACTIVATION_EVENTS.has(event)) {
+  if (!isActivation && event !== "membership.deactivated") {
     return jsonResponse({ ok: true, skipped: "unhandled_event", event });
   }
 

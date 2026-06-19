@@ -191,10 +191,6 @@ export async function onRequestPost(context) {
     throw e;
   }
 
-  // Compute restore eligibility for the response
-  // (after claiming today, restore is never eligible for the current user state)
-  const canRestore = false;
-
   return jsonResponse({
     ok: true,
     awarded: totalAwarded,
@@ -203,6 +199,6 @@ export async function onRequestPost(context) {
     milestone_day: milestonePts > 0 ? newStreak : null,
     new_streak: newStreak,
     streak_best: newBest,
-    can_restore: canRestore,
+    can_restore: false,
   });
 }

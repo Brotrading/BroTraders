@@ -448,10 +448,10 @@ async function approveClaim(env, { claim_id, note }) {
       if (referrer) {
         await awardOnce(env, {
           user_id: u.referred_by,
-          amount: rateFor("referral_purchase", !!referrer.is_pro_bro),
+          amount: points,
           reason: "referral_purchase",
           ref_id: c.user_id,
-          note: `${u.email} made their first purchase`,
+          note: `${u.email} first purchase (${c.firm_slug} · ${points} pts)`,
         });
       }
     }
