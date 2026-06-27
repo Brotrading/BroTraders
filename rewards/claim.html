@@ -674,6 +674,7 @@
     if (!types || !types.length) { wrap.style.display = "none"; return; }
     _firmAccountsMap = {};
     types.forEach(t => {
+      if (typeof t === "object" && t.monthly) return;
       const label = typeof t === "object" ? t.label : t;
       const opt = document.createElement("option");
       opt.value = label; opt.textContent = label;
