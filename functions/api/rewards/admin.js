@@ -383,7 +383,7 @@ async function approveClaim(env, { claim_id, note }) {
     amount: points,
     reason: "purchase_cashback",
     ref_id: String(c.id),
-    note: `${c.firm_slug} · €${c.amount_eur} · ${isPro ? "Pro" : "Free"} rate`,
+    note: `${c.firm_slug} · ${isPro ? "Pro" : "Free"} rate`,
   });
 
   const now = new Date().toISOString();

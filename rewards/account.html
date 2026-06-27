@@ -140,7 +140,7 @@
   <p class="rw-muted rw-small" style="margin:-8px 0 12px;">Purchases made via BRO affiliate links. Reviewed manually — most processed within a few business days. Click a row to see details.</p>
   <div class="rw-panel" style="padding:0; overflow:hidden;">
     <table class="rw-table" id="claimsTable">
-      <thead><tr><th>Date</th><th>Firm</th><th>Amount</th><th>Order ref</th><th>Status</th><th style="text-align:right;">Points</th></tr></thead>
+      <thead><tr><th>Date</th><th>Firm</th><th>Order ref</th><th>Status</th><th style="text-align:right;">Points</th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
@@ -439,7 +439,6 @@
           <tr style="cursor:pointer;" onclick="toggleDetail('${detailId}')">
             <td>${fmtDate(c.created_at)}</td>
             <td>${FIRM_NAMES[c.firm_slug] || c.firm_slug}</td>
-            <td>$${Number(c.amount_eur).toFixed(2)}</td>
             <td class="rw-muted">${c.order_ref || "—"}</td>
             <td><span style="color:${st.color}; font-weight:600; font-size:12px;">${st.label}</span></td>
             <td style="text-align:right;">${ptsDisplay}</td>
