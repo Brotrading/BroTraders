@@ -11,7 +11,7 @@ import {
   verifySupabaseToken,
   postLedger,
   getUserRow,
-  REDEMPTION_GATE_PTS,
+  gateForPackage,
   EARN_RATES,
 } from "./_lib.js";
 
@@ -86,11 +86,12 @@ async function _handleRedeem(context) {
     .bind(user.id)
     .first();
   const purchasePts = purchaseEarned?.total || 0;
-  if (!pkg.gate_exempt && purchasePts < REDEMPTION_GATE_PTS) {
+  const gatePts = gateForPackage(pkg);
+  if (purchasePts < gatePts) {
     return jsonError("redemption_gate_not_met", 403, {
       purchase_pts_earned: purchasePts,
-      purchase_pts_required: REDEMPTION_GATE_PTS,
-      message: `Earn ${REDEMPTION_GATE_PTS - purchasePts} more points via purchases to unlock Bro Packs.`,
+      purchase_pts_required: gatePts,
+      message: `Earn ${gatePts - purchasePts} more points via purchases to unlock this Bro Pack.`,
     });
   }
 

@@ -24,16 +24,24 @@ export const EARN_RATES = {
 
 export const PRO_MULTIPLIER = 1.5;
 
-// Minimum purchase_cashback points a user must have earned before redeeming
-// non-exempt Bro Packs (i.e. packs with real cash cost to Mike, like the funded account).
+// Purchase-points gate: before redeeming a non-exempt Bro Pack, a user must have
+// earned at least 90% of that pack's points cost from purchase_cashback specifically.
 //
 // Financial model: FIRM_POINTS base = price_usd × 10 and 1,000 pts ≈ $1 of redemption
 // value, so purchase points represent ~1% cashback (1.5% for Pro Bro). At ~10% affiliate
-// commission, 90,000 purchase pts = $9,000 of purchase volume = ~$900 commission for Mike.
-// Giving away a ~$150 funded account then leaves Mike with ≥8.3% — within the 8.5–9% target
-// when combined with the 100,000 pts store price (engagement may fill the remaining 10%).
-// Zero-cost packs (Pro Bro, discount codes) bypass this via gate_exempt = 1.
-export const REDEMPTION_GATE_PTS = 90000;
+// commission, a pack priced at 667 × prize_value pts requires ~60× the prize value in
+// purchase volume to unlock — Mike keeps ≥8.3% at every price level, within the 8.5–9%
+// target (engagement points may fill the remaining 10% of the pack price).
+// Example: 100,000 pts pack → 90,000 purchase pts → $9,000 volume → ~$900 commission.
+// Zero-cost packs (Pro Bro, sponsored discount codes) bypass this via gate_exempt = 1.
+export const REDEMPTION_GATE_RATIO = 0.9;
+
+// Purchase points required to unlock a pack (0 for gate-exempt packs).
+// Rounded to the nearest 500 so users see clean targets.
+export function gateForPackage(pkg) {
+  if (pkg.gate_exempt) return 0;
+  return Math.round((pkg.points_cost * REDEMPTION_GATE_RATIO) / 500) * 500;
+}
 
 // Pick the right rate for an action based on Pro Bro status.
 export function rateFor(action, isPro) {

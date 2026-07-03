@@ -327,7 +327,7 @@
 
   function renderStoreGate(user) {
     const earned   = user.purchase_pts_earned || 0;
-    const gate     = 90000; // applies to cash-value packs only (e.g. funded account); Pro Bro is always available
+    const gate     = 90000; // gate of the flagship 100,000-pts pack (90% of its price); cheaper packs unlock earlier, Pro Bro is always available
     const unlocked = earned >= gate;
 
     const titleEl   = document.getElementById("storeGateTitle");
@@ -337,14 +337,14 @@
     const barLeft   = document.getElementById("storeGateBarLeft");
 
     if (unlocked) {
-      titleEl.textContent   = "Funded Account · Unlocked ✓";
+      titleEl.textContent   = "Top Reward · Unlocked ✓";
       titleEl.style.color   = "var(--rw-green)";
-      subEl.textContent     = "You've earned enough purchase points to redeem the funded account.";
+      subEl.textContent     = "You've earned enough purchase points to redeem the top reward in the Bro Store.";
       barWrap.style.display = "none";
     } else {
-      titleEl.textContent   = "Funded Account progress";
+      titleEl.textContent   = "Top Reward progress";
       titleEl.style.color   = "";
-      subEl.textContent     = `Pro Bro rewards are always available. Earn ${fmt(gate - earned)} more purchase pts to unlock the funded account — ${fmt(earned)} / ${fmt(gate)} earned`;
+      subEl.textContent     = `Pro Bro rewards are always available and smaller account rewards unlock earlier. Earn ${fmt(gate - earned)} more purchase pts for the top reward — ${fmt(earned)} / ${fmt(gate)} earned`;
       barWrap.style.display = "";
       barFill.style.width   = `${Math.min((earned / gate) * 100, 100)}%`;
       barLeft.textContent   = `${fmt(earned)} pts`;
