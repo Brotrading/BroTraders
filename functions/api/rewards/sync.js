@@ -1,7 +1,7 @@
 // POST /api/rewards/sync — idempotent "make sure this user exists in D1" endpoint.
 //
 // Called by js/auth.js on every sign-in. Effects:
-//   • First call ever → INSERT into users + award signup bonus (5k free / 7.5k pro).
+//   • First call ever → INSERT into users + award signup bonus (2.5k, always free rate).
 //   • If profile complete and not yet rewarded → award profile_complete bonus.
 //   • If is_pro_bro and pro_bro_bonus_paid = 0 → award 25k welcome bonus.
 //   • If a body.referral_code is set AND not yet attributed → record referrer + pay referrer.

@@ -42,7 +42,7 @@ Bro Rewards is a loyalty programme for propfirmbro.com. Users earn Bro Points fo
 
 | Action | Free | Pro Bro |
 |---|---|---|
-| Signup bonus | 5,000 pts | 7,500 pts |
+| Signup bonus | 2,500 pts | 2,500 pts |
 | Complete profile | 1,000 pts | 1,500 pts |
 | First claim approved (once ever) | +500 pts | +500 pts |
 | Daily login | 100 pts | 150 pts |
@@ -218,7 +218,7 @@ This exchange rate was chosen to make the funded account prize financially safe 
 
 ### Why the gate is 90,000 purchase pts (not 0)
 
-Without the gate, a user could sign up, get 5,000 signup pts + 25,000 Pro Bro welcome bonus + a few streak pts, and try to redeem the funded account having spent almost nothing via BRO links. The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
+Without the gate, a user could sign up, get 2,500 signup pts + 25,000 Pro Bro welcome bonus + a few streak pts, and try to redeem the funded account having spent almost nothing via BRO links. The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
 
 ### Why ~1% cashback (not more)
 

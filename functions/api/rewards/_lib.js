@@ -10,7 +10,7 @@
 // IMPORTANT: confirm with Mike before public launch.
 
 export const EARN_RATES = {
-  signup_free: 5000,
+  signup_free: 2500,              // lowered from 5000 (Mike, 2026-07-03)
   profile_complete_free: 1000,
   profile_complete_pro: 1500,
   pro_bro_welcome: 25000,         // one-time bonus when user becomes Pro Bro
