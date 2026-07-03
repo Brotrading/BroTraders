@@ -19,8 +19,12 @@ export const EARN_RATES = {
   review_submitted_free: 2500,
   review_submitted_pro: 3750,
   first_claim_bonus: 500,         // one-time bonus on user's first approved purchase claim
-  // referral_purchase equals the referred user's purchase cashback points (proportional)
+  // referral_purchase = REFERRAL_PURCHASE_RATE × the referred user's purchase cashback points
 };
+
+// Referrer earns 10% of the points of their friend's first purchase (Mike, 2026-07-03).
+// Example: friend buys a $100 account (1,000 pts) → referrer gets 100 pts ($0.10).
+export const REFERRAL_PURCHASE_RATE = 0.10;
 
 export const PRO_MULTIPLIER = 1.5;
 

@@ -23,6 +23,7 @@ import {
   awardOnce,
   rateFor,
   EARN_RATES,
+  REFERRAL_PURCHASE_RATE,
   getUserRow,
   lookupFixedPoints,
 } from "./_lib.js";
@@ -446,12 +447,13 @@ async function approveClaim(env, { claim_id, note }) {
     if (u?.referred_by) {
       const referrer = await getUserRow(env, u.referred_by);
       if (referrer) {
+        const refBonus = Math.round(points * REFERRAL_PURCHASE_RATE);
         await awardOnce(env, {
           user_id: u.referred_by,
-          amount: points,
+          amount: refBonus,
           reason: "referral_purchase",
           ref_id: c.user_id,
-          note: `${u.email} first purchase (${c.firm_slug} · ${points} pts)`,
+          note: `${u.email} first purchase (${c.firm_slug} · ${points} pts × 10% = ${refBonus} pts)`,
         });
       }
     }

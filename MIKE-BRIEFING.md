@@ -50,7 +50,7 @@ Bro Rewards is a loyalty programme for propfirmbro.com. Users earn Bro Points fo
 | Every 30-day streak milestone | +2,500 pts (fixed) | Same |
 | Prop firm review approved | 2,500 pts | 3,750 pts |
 | Referral signup | 1,000 pts | 1,500 pts |
-| Referral first purchase | = same pts as friend's purchase | = 1.5× friend's pts |
+| Referral first purchase | 10% of friend's purchase pts | Same |
 | Pro Bro welcome bonus (once) | — | 5,000 pts |
 | Purchase cashback | ~price × 10 pts (~1%) | ~price × 15 pts (~1.5%) |
 

@@ -37,7 +37,7 @@
     <div class="rw-stat">
       <div class="label">Referral link</div>
       <div class="value" style="font-size:14px; word-break:break-all;" id="refLink">—</div>
-      <div class="sub">Share to earn <span id="refReward">the same points as their first purchase</span></div>
+      <div class="sub">Share to earn <span id="refReward">10% of the points of their first purchase</span></div>
     </div>
   </div>
 
@@ -364,9 +364,8 @@
     const proPill = document.getElementById("proPill");
     proPill.className = "rw-pill " + (user.is_pro_bro ? "pro" : "");
     proPill.textContent = user.is_pro_bro ? "Pro Bro · 1.5× points" : "Free Bro";
-    document.getElementById("refReward").textContent = user.is_pro_bro
-      ? "1.5× the points of their first purchase"
-      : "the same points as their first purchase";
+    document.getElementById("refReward").textContent =
+      "10% of the points of their first purchase";
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;
