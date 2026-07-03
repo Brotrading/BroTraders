@@ -315,6 +315,10 @@
     let typeBadge = "";
     if (isProBro) typeBadge = `<span class="badge badge-probro">Pro Bro</span>`;
 
+    // Firm link drives the unlock rule (10+ purchases at this firm OR 90k pts overall).
+    let firmBadge = "";
+    if (p.firm_slug) firmBadge = `<span class="badge badge-codes">${escHtml(p.firm_slug)}</span>`;
+
     let codeBadge = "";
     if (!isProBro && p.uses_discount_codes) {
       codeBadge = stats.available > 0
@@ -336,7 +340,7 @@
       <div class="pkg-wrap" id="wrap-${p.slug}">
         <div class="pkg-card ${showCodesPanel ? "has-codes-panel" : ""}" id="card-${p.slug}">
           <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
-            ${activeBadge} ${typeBadge} ${codeBadge}
+            ${activeBadge} ${typeBadge} ${firmBadge} ${codeBadge}
           </div>
           <h3 style="margin:0 0 4px; font-size:16px;">${escHtml(p.title)}</h3>
           <p class="rw-muted rw-small" style="margin:0 0 10px; min-height:18px;">${escHtml(p.description || "")}</p>
@@ -684,6 +688,9 @@
       fulfillment: type === "pro_bro_extend" ? "pro_bro_extend" : "prop_firm_account",
       is_active: document.getElementById("nActive").checked,
       uses_discount_codes: type === "prop_firm_account",
+      // Links the pack to a firm for the unlock rule: 10+ approved purchases at
+      // this firm OR 90,000 purchase pts overall. Empty = global rule only.
+      firm_slug: type === "prop_firm_account" ? (document.getElementById("nFirm").value || null) : null,
     };
 
     const r = await api(body);

@@ -24,24 +24,17 @@ export const EARN_RATES = {
 
 export const PRO_MULTIPLIER = 1.5;
 
-// Purchase-points gate: before redeeming a non-exempt Bro Pack, a user must have
-// earned at least 90% of that pack's points cost from purchase_cashback specifically.
-//
-// Financial model: FIRM_POINTS base = price_usd × 10 and 1,000 pts ≈ $1 of redemption
-// value, so purchase points represent ~1% cashback (1.5% for Pro Bro). At ~10% affiliate
-// commission, a pack priced at 667 × prize_value pts requires ~60× the prize value in
-// purchase volume to unlock — Mike keeps ≥8.3% at every price level, within the 8.5–9%
-// target (engagement points may fill the remaining 10% of the pack price).
-// Example: 100,000 pts pack → 90,000 purchase pts → $9,000 volume → ~$900 commission.
-// Zero-cost packs (Pro Bro, sponsored discount codes) bypass this via gate_exempt = 1.
-export const REDEMPTION_GATE_RATIO = 0.9;
-
-// Purchase points required to unlock a pack (0 for gate-exempt packs).
-// Rounded to the nearest 500 so users see clean targets.
-export function gateForPackage(pkg) {
-  if (pkg.gate_exempt) return 0;
-  return Math.round((pkg.points_cost * REDEMPTION_GATE_RATIO) / 500) * 500;
-}
+// Unlock rule for non-exempt Bro Packs (decided 2026-07-03): a firm-bound account
+// reward unlocks when the user has EITHER
+//   a) >= PER_FIRM_UNLOCK_CLAIMS approved purchase claims at that pack's firm, OR
+//   b) >= GLOBAL_UNLOCK_PURCHASE_PTS purchase_cashback points across all firms
+//      (~$9,000 spend at 1% cashback) — then ALL account rewards are unlocked.
+// This mirrors the deal pitched to firms: every free account goes to someone who
+// bought 10+ accounts at that firm, or is a proven high-volume buyer overall.
+// Packs without firm_slug use only rule (b). Zero-cost packs (Pro Bro, sponsored
+// codes Mike wants always available) bypass everything via gate_exempt = 1.
+export const GLOBAL_UNLOCK_PURCHASE_PTS = 90000;
+export const PER_FIRM_UNLOCK_CLAIMS = 10;
 
 // Pick the right rate for an action based on Pro Bro status.
 export function rateFor(action, isPro) {

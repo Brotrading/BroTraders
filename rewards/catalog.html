@@ -70,7 +70,7 @@
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
     <div>
       <h1 class="rw-h1">Bro Store</h1>
-      <p class="rw-muted">Exchange your Bro Points for exclusive rewards. Pro Bro is always available — account rewards unlock once you've earned 90% of their points price from purchases.</p>
+      <p class="rw-muted">Exchange your Bro Points for exclusive rewards. Pro Bro is always available — account rewards unlock after 10 approved purchases at that firm, or 90,000 purchase points overall.</p>
     </div>
     <div class="rw-stat" style="min-width: 200px;">
       <div class="label">Your balance</div>
@@ -87,7 +87,7 @@
   <div class="rw-panel">
     <p class="rw-muted" style="margin:0 0 8px;">1. Use one of our affiliate links to purchase a challenge at a partner prop firm. Apply code <strong>BRO</strong> or <strong>BROTRADING</strong> at checkout, then submit your claim to earn Bro Points.</p>
     <p class="rw-muted" style="margin:0 0 8px;">2. Bonus points for signing up, completing your profile, daily logins, writing firm reviews, and referring friends — but purchases via BRO links are where the real earning happens.</p>
-    <p class="rw-muted" style="margin:0;">3. Pro Bro rewards can be redeemed right away. Account rewards unlock once you've earned 90% of their points price from purchases. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
+    <p class="rw-muted" style="margin:0;">3. Pro Bro rewards can be redeemed right away. Account rewards unlock once you've had 10 purchases approved at that firm — or 90,000 purchase points across all firms, which unlocks everything. Redemptions are reviewed and fulfilled manually within 1–2 business days.</p>
   </div>
 
 </main>
@@ -255,7 +255,9 @@
       err.textContent = data.error === "insufficient_points"
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`
         : data.error === "redemption_gate_not_met"
-        ? `This reward unlocks after earning ${fmt(data.purchase_pts_required)} pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`
+        ? (data.firm_claims_required
+            ? `This reward unlocks after ${data.firm_claims_required} approved purchases at this firm (you have ${data.firm_claims}) — or ${fmt(data.purchase_pts_required)} purchase pts overall (you've earned ${fmt(data.purchase_pts_earned)}). Buy via a BRO link and submit a claim on your account page.`
+            : `This reward unlocks after earning ${fmt(data.purchase_pts_required)} pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`)
         : data.error === "no_codes_available"
         ? `This Bro Pack is currently out of stock — check back soon.`
         : data.error === "internal_error"

@@ -327,7 +327,7 @@
 
   function renderStoreGate(user) {
     const earned   = user.purchase_pts_earned || 0;
-    const gate     = 90000; // gate of the flagship 100,000-pts pack (90% of its price); cheaper packs unlock earlier, Pro Bro is always available
+    const gate     = 90000; // global unlock: at this many purchase pts ALL account rewards open up (10 approved purchases at one firm unlocks that firm earlier)
     const unlocked = earned >= gate;
 
     const titleEl   = document.getElementById("storeGateTitle");
@@ -337,14 +337,14 @@
     const barLeft   = document.getElementById("storeGateBarLeft");
 
     if (unlocked) {
-      titleEl.textContent   = "Top Reward · Unlocked ✓";
+      titleEl.textContent   = "All Rewards · Unlocked ✓";
       titleEl.style.color   = "var(--rw-green)";
-      subEl.textContent     = "You've earned enough purchase points to redeem the top reward in the Bro Store.";
+      subEl.textContent     = "You've earned enough purchase points to redeem any account reward in the Bro Store.";
       barWrap.style.display = "none";
     } else {
-      titleEl.textContent   = "Top Reward progress";
+      titleEl.textContent   = "Bro Store unlock progress";
       titleEl.style.color   = "";
-      subEl.textContent     = `Pro Bro rewards are always available and smaller account rewards unlock earlier. Earn ${fmt(gate - earned)} more purchase pts for the top reward — ${fmt(earned)} / ${fmt(gate)} earned`;
+      subEl.textContent     = `Pro Bro rewards are always available. Unlock a firm's account rewards with 10 approved purchases at that firm — or earn ${fmt(gate - earned)} more purchase pts to unlock everything (${fmt(earned)} / ${fmt(gate)})`;
       barWrap.style.display = "";
       barFill.style.width   = `${Math.min((earned / gate) * 100, 100)}%`;
       barLeft.textContent   = `${fmt(earned)} pts`;

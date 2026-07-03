@@ -501,7 +501,7 @@ async function listPackages(env) {
   return jsonResponse({ packages });
 }
 
-async function createPackage(env, { title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock }) {
+async function createPackage(env, { title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, firm_slug }) {
   if (!title) return jsonError("missing_title", 400);
   const cost = parseInt(points_cost, 10);
   if (!cost || cost < 1) return jsonError("missing_points_cost", 400);
@@ -521,8 +521,8 @@ async function createPackage(env, { title, description, points_cost, fulfillment
   try {
     await env.DB
       .prepare(
-        `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, firm_slug, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .bind(
         slug,
@@ -533,6 +533,7 @@ async function createPackage(env, { title, description, points_cost, fulfillment
         is_active ? 1 : 0,
         uses_discount_codes ? 1 : 0,
         stock === null || stock === undefined ? null : parseInt(stock, 10),
+        firm_slug ? String(firm_slug).toLowerCase().trim() : null,
         now
       )
       .run();
@@ -562,7 +563,7 @@ async function deletePackage(env, { package_slug }) {
   return jsonResponse({ ok: true });
 }
 
-async function updatePackage(env, { package_slug, is_active, stock, title, description, points_cost, uses_discount_codes }) {
+async function updatePackage(env, { package_slug, is_active, stock, title, description, points_cost, uses_discount_codes, firm_slug }) {
   if (!package_slug) return jsonError("missing_package_slug", 400);
   const exists = await env.DB
     .prepare(`SELECT slug FROM bro_packages WHERE slug = ?`)
@@ -578,6 +579,7 @@ async function updatePackage(env, { package_slug, is_active, stock, title, descr
   if (description !== undefined)         { setClauses.push("description = ?");          binds.push(String(description).slice(0, 500)); }
   if (points_cost !== undefined)         { setClauses.push("points_cost = ?");          binds.push(parseInt(points_cost, 10)); }
   if (uses_discount_codes !== undefined) { setClauses.push("uses_discount_codes = ?"); binds.push(uses_discount_codes ? 1 : 0); }
+  if (firm_slug !== undefined)           { setClauses.push("firm_slug = ?");            binds.push(firm_slug ? String(firm_slug).toLowerCase().trim() : null); }
 
   if (!setClauses.length) return jsonError("nothing_to_update", 400);
 

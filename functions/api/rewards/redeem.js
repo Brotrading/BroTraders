@@ -11,7 +11,8 @@ import {
   verifySupabaseToken,
   postLedger,
   getUserRow,
-  gateForPackage,
+  GLOBAL_UNLOCK_PURCHASE_PTS,
+  PER_FIRM_UNLOCK_CLAIMS,
   EARN_RATES,
 } from "./_lib.js";
 
@@ -76,23 +77,46 @@ async function _handleRedeem(context) {
   const row = await getUserRow(env, user.id);
   if (!row) return jsonError("user_not_synced", 404);
 
-  // Redemption gate: must have earned minimum purchase_cashback points first.
-  const purchaseEarned = await env.DB
-    .prepare(
-      `SELECT COALESCE(SUM(amount), 0) AS total
-       FROM points_ledger
-       WHERE user_id = ? AND reason = 'purchase_cashback'`
-    )
-    .bind(user.id)
-    .first();
-  const purchasePts = purchaseEarned?.total || 0;
-  const gatePts = gateForPackage(pkg);
-  if (purchasePts < gatePts) {
-    return jsonError("redemption_gate_not_met", 403, {
-      purchase_pts_earned: purchasePts,
-      purchase_pts_required: gatePts,
-      message: `Earn ${gatePts - purchasePts} more points via purchases to unlock this Bro Pack.`,
-    });
+  // Redemption gate (skipped for gate_exempt packs like Pro Bro):
+  // unlock via EITHER 10+ approved claims at this pack's firm,
+  // OR 90,000+ purchase points total across all firms.
+  if (!pkg.gate_exempt) {
+    const purchaseEarned = await env.DB
+      .prepare(
+        `SELECT COALESCE(SUM(amount), 0) AS total
+         FROM points_ledger
+         WHERE user_id = ? AND reason = 'purchase_cashback'`
+      )
+      .bind(user.id)
+      .first();
+    const purchasePts = purchaseEarned?.total || 0;
+
+    if (purchasePts < GLOBAL_UNLOCK_PURCHASE_PTS) {
+      let firmClaims = 0;
+      if (pkg.firm_slug) {
+        const claimCount = await env.DB
+          .prepare(
+            `SELECT COUNT(*) AS n FROM purchase_claims
+             WHERE user_id = ? AND firm_slug = ? AND status = 'approved'`
+          )
+          .bind(user.id, pkg.firm_slug)
+          .first();
+        firmClaims = claimCount?.n || 0;
+      }
+
+      if (firmClaims < PER_FIRM_UNLOCK_CLAIMS) {
+        return jsonError("redemption_gate_not_met", 403, {
+          purchase_pts_earned: purchasePts,
+          purchase_pts_required: GLOBAL_UNLOCK_PURCHASE_PTS,
+          firm_slug: pkg.firm_slug || null,
+          firm_claims: firmClaims,
+          firm_claims_required: pkg.firm_slug ? PER_FIRM_UNLOCK_CLAIMS : null,
+          message: pkg.firm_slug
+            ? `Unlock this reward with ${PER_FIRM_UNLOCK_CLAIMS} approved purchases at this firm (you have ${firmClaims}) or ${GLOBAL_UNLOCK_PURCHASE_PTS - purchasePts} more purchase points overall.`
+            : `Earn ${GLOBAL_UNLOCK_PURCHASE_PTS - purchasePts} more points via purchases to unlock this Bro Pack.`,
+        });
+      }
+    }
   }
 
   if (row.points_balance < pkg.points_cost) {
