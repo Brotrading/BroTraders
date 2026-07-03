@@ -37,7 +37,7 @@
     <div class="rw-stat">
       <div class="label">Referral link</div>
       <div class="value" style="font-size:14px; word-break:break-all;" id="refLink">—</div>
-      <div class="sub">Share to earn <span id="refReward">25,000 pts when they make their first purchase</span></div>
+      <div class="sub">Share to earn <span id="refReward">the same points as their first purchase</span></div>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
     <!-- Progress bar: next milestone always at right end, achieved milestone as gold left anchor -->
     <div id="streakProgress" style="margin-top:20px; display:none;">
       <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--rw-text-2); margin-bottom:8px;">
-        <span id="streakProgressLabel">Progress to 7-day streak · +5,000 pts</span>
+        <span id="streakProgressLabel">Progress to 7-day streak · +1,000 pts</span>
         <span id="streakProgressPct" style="font-weight:600; color:var(--rw-text);">0/7</span>
       </div>
       <div style="background:rgba(255,255,255,0.08); border-radius:6px; height:10px; overflow:hidden;">
@@ -291,22 +291,22 @@
     // ── Progress bar ────────────────────────────────────────────────────
     // Next milestone is always at the RIGHT end of the bar.
     // The achieved milestone (if any) stays visible as a gold label on the LEFT.
-    // Phase 1 (0–6):  Day 1 → 🏆 Day 7   (+5,000 pts, one-time)
-    // Phase 2 (7–29): ✓ Day 7 → 🏆 Day 30 (mystery chest: 2,000–5,000 pts)
-    // Phase 3+ (30+): ✓ Day N → 🏆 Day N+30 (mystery chest), cyclic every 30 days
+    // Phase 1 (0–6):  Day 1 → 🏆 Day 7   (+1,000 pts, one-time)
+    // Phase 2 (7–29): ✓ Day 7 → 🏆 Day 30 (+2,500 pts)
+    // Phase 3+ (30+): ✓ Day N → 🏆 Day N+30 (+2,500 pts), cyclic every 30 days
 
     let barPct;
 
     if (streak < 7) {
       barPct = (streak / 7) * 100;
-      labelEl.textContent    = "Progress to 7-day streak · +5,000 pts";
+      labelEl.textContent    = "Progress to 7-day streak · +1,000 pts";
       pctEl.textContent      = `${streak}/7`;
       labelStart.textContent = "Day 1";
       labelStart.style.color = "var(--rw-text-2)";
       labelEnd.textContent   = "🏆 Day 7";
     } else if (streak < 30) {
       barPct = (streak / 30) * 100;
-      labelEl.textContent    = "Progress to 30-day streak · mystery chest 🎁 2,000–5,000 pts";
+      labelEl.textContent    = "Progress to 30-day streak · +2,500 pts 🎁";
       pctEl.textContent      = `${streak}/30`;
       labelStart.textContent = "✓ Day 7";
       labelStart.style.color = "#f59e0b";
@@ -315,7 +315,7 @@
       const cycleStart    = Math.floor(streak / 30) * 30;
       const nextMilestone = cycleStart + 30;
       barPct = ((streak - cycleStart) / 30) * 100;
-      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · mystery chest 🎁 2,000–5,000 pts`;
+      labelEl.textContent    = `Progress to ${nextMilestone}-day streak · +2,500 pts 🎁`;
       pctEl.textContent      = `${streak}/${nextMilestone}`;
       labelStart.textContent = `✓ Day ${cycleStart}`;
       labelStart.style.color = "#f59e0b";
@@ -365,8 +365,8 @@
     proPill.className = "rw-pill " + (user.is_pro_bro ? "pro" : "");
     proPill.textContent = user.is_pro_bro ? "Pro Bro · 1.5× points" : "Free Bro";
     document.getElementById("refReward").textContent = user.is_pro_bro
-      ? "37,500 pts when they make their first purchase"
-      : "25,000 pts when they make their first purchase";
+      ? "1.5× the points of their first purchase"
+      : "the same points as their first purchase";
 
     const refUrl = `${window.location.origin}/rewards/signup.html?ref=${encodeURIComponent(user.referral_code)}`;
     document.getElementById("refLink").textContent = refUrl;

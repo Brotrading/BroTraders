@@ -27,14 +27,13 @@ import {
   rateFor,
 } from "./_lib.js";
 
-const STREAK_MILESTONE_7  = 5000;
+const STREAK_MILESTONE_7  = 1000;  // lowered from 5000 (Mike, 2026-07-03)
 const RESTORE_COST        = 250;
 
-// Every-30-days milestone: random "chest" between 2,000 and 5,000 pts in steps of 250
-// (avg ~3,500). Random reward keeps long streaks exciting (Duolingo-style) while the
-// redemption gate caps how much engagement points can contribute to cash-cost packs.
+// Every-30-days milestone: fixed 2,500 pts (was a random 2,000–5,000 chest;
+// simplified to a fixed amount by Mike, 2026-07-03).
 function rollMilestone30() {
-  return 2000 + Math.floor(Math.random() * 13) * 250;
+  return 2500;
 }
 
 function todayUTC() {

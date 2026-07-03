@@ -13,7 +13,7 @@ export const EARN_RATES = {
   signup_free: 2500,              // lowered from 5000 (Mike, 2026-07-03)
   profile_complete_free: 1000,
   profile_complete_pro: 1500,
-  pro_bro_welcome: 25000,         // one-time bonus when user becomes Pro Bro
+  pro_bro_welcome: 5000,          // one-time bonus when user becomes Pro Bro (lowered from 25000, Mike 2026-07-03)
   daily_login_free: 100,
   daily_login_pro: 150,
   review_submitted_free: 2500,
