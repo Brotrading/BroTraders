@@ -21,7 +21,6 @@ import {
   jsonError,
   verifySupabaseToken,
   getUserRow,
-  lookupFixedPoints,
   FIRM_POINTS,
 } from "./_lib.js";
 
@@ -227,12 +226,10 @@ export async function onRequestPost(context) {
 
   // ── Points estimate ────────────────────────────────────────────────────
   // Mirrors the approval calculation in admin.js: 1% of the amount actually
-  // paid (Pro Bro 1.5%), capped at the account type's fixed points.
+  // paid (Pro Bro 1.5%). Amount is verified manually against the proof.
   const isPro  = !!(userRow && userRow.is_pro_bro);
-  const fixedPts = lookupFixedPoints(firmSlug, accountType, isPro);
   let pointsPending = Math.round(amountEur * 10);
   if (isPro) pointsPending = Math.round((pointsPending * 1.5) / 25) * 25;
-  if (fixedPts != null) pointsPending = Math.min(pointsPending, fixedPts);
 
   // ── Insert ─────────────────────────────────────────────────────────────
   const now = new Date().toISOString();

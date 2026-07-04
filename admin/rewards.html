@@ -442,13 +442,11 @@
   }
 
   function calcPts(c) {
-    // Mirrors the backend: 1% of the amount actually paid (Pro Bro 1.5%),
-    // capped at the account type's fixed points.
+    // Mirrors the backend: 1% of the amount actually paid (Pro Bro 1.5%).
+    // No cap — the paid amount is verified manually against the proof.
     const isPro = !!c.is_pro_bro;
-    const fixed = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
     let pts = Math.round((Number(c.amount_eur) || 0) * 10);
     if (isPro) pts = Math.round((pts * 1.5) / 25) * 25;
-    if (fixed !== null) pts = Math.min(pts, fixed);
     return pts;
   }
   function fmtDate(iso) {

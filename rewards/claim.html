@@ -311,7 +311,7 @@
 <script src="../header.js"></script>
 <script>
   // Cashback: 1% of the amount actually paid, in points (1,000 pts = $1 → 10 pts per $).
-  // Pro Bro earns 1.5×. Capped at the account type's fixed points (anti-fraud ceiling).
+  // Pro Bro earns 1.5×. The amount is verified manually against the proof of purchase.
   const PTS_PER_DOLLAR = 10;
   const MAX_PROOF_BYTES = 500 * 1024; // 500 KB
 
@@ -319,18 +319,13 @@
   let accountCreatedDate = null; // "YYYY-MM-DD" string from /api/rewards/me
   let proofBase64 = null;
   let proofMime   = null;
-  let _fixedPointsBase = null; // set when selected account type has fixed points
   let _currentEntry    = null; // the full firm-accounts entry for the selected account type
 
   function roundToNearest25(n) { return Math.round(n / 25) * 25; }
 
   function estimatePtsBoth(usd) {
-    let free = Math.round(usd * PTS_PER_DOLLAR);
-    let pro  = roundToNearest25(free * 1.5);
-    if (_fixedPointsBase != null) {
-      free = Math.min(free, _fixedPointsBase);
-      pro  = Math.min(pro,  roundToNearest25(_fixedPointsBase * 1.5));
-    }
+    const free = Math.round(usd * PTS_PER_DOLLAR);
+    const pro  = roundToNearest25(free * 1.5);
     return { free, pro };
   }
   function estimatePts(usd) {
@@ -716,15 +711,13 @@
 
     if (!entry || entry.price_usd == null) {
       ptsEl.textContent = "";
-      _fixedPointsBase  = null;
       amtWrap.style.display = "none";
       return;
     }
 
     // Show the amount field, prefilled with the account type's list price.
     // The user corrects it to what they actually paid (promos/discounts);
-    // points = 1% of that amount, capped at the account type's fixed points.
-    _fixedPointsBase      = entry.points_base != null ? entry.points_base : null;
+    // points = 1% of that amount.
     amtWrap.style.display = "block";
     amtEl.value           = entry.price_usd || "";
     renderPtsEstimate(parseFloat(amtEl.value));
@@ -739,7 +732,6 @@
 
   document.getElementById("firmSelect").addEventListener("change", () => {
     const slug = document.getElementById("firmSelect").value;
-    _fixedPointsBase = null;
     _currentEntry    = null;
     document.getElementById("ptsEstimate").textContent  = "";
     document.getElementById("amountWrap").style.display = "none";
