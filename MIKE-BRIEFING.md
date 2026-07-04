@@ -9,7 +9,7 @@
 | Item | Value |
 |---|---|
 | Production site | `https://propfirmbro.com` (runs from `main` branch) |
-| Preview site | `https://9998d255.propfirmbro.pages.dev` (runs from `nick/rewards-system`) |
+| Preview site | `https://nick-rewards-system.propfirmbro.pages.dev` (always the latest push on `nick/rewards-system`; hash URLs like 9998d255.* are frozen snapshots of one deploy — do not use) |
 | Working branch | `nick/rewards-system` |
 | Admin dashboard | `/admin/rewards.html` |
 | Bro Store admin | `/admin/store.html` |
@@ -106,7 +106,7 @@ Supabase handles user login and registration. It stores user sessions and sends 
 - Google OAuth ✅
 - Discord OAuth ✅ (tested by Mike)
 - Site URL: `https://propfirmbro.com`
-- Redirect URLs: `https://propfirmbro.com/rewards/account.html` and `https://9998d255.propfirmbro.pages.dev/rewards/account.html`
+- Redirect URLs: `https://propfirmbro.com/rewards/account.html` and `https://nick-rewards-system.propfirmbro.pages.dev/rewards/account.html`
 - SMTP via Resend configured in Supabase for all auth emails (welcome, reset password, etc.)
 
 ### Resend (transactional email)
@@ -132,7 +132,7 @@ The job is set up on cron-job.org but is currently **disabled**. Enable it on la
 ### Item 1 — Fill the Bro Store ⚠️ REQUIRED
 
 The Bro Store is empty. Mike needs to add items via the admin UI at:
-`https://9998d255.propfirmbro.pages.dev/admin/store.html`
+`https://nick-rewards-system.propfirmbro.pages.dev/admin/store.html`
 
 Enter the admin token, click "+ New Bro Pack". The page has a full how-to guide at the top.
 
@@ -180,7 +180,7 @@ If Mike has prices: Claude will add them to `data/firm-accounts.json` and `funct
 ### Item 5 — Test the claim flow (5 minutes)
 
 Mike should try the full user experience before going live:
-1. Open `https://9998d255.propfirmbro.pages.dev/rewards/claim.html`
+1. Open `https://nick-rewards-system.propfirmbro.pages.dev/rewards/claim.html`
 2. Log in or create an account
 3. Select any firm, any account type, enter any date and order reference, upload any screenshot
 4. Submit the claim
@@ -333,7 +333,7 @@ A: In the admin dashboard, claims are listed with email addresses. You can also 
 A: They are completely separate SQLite databases in Cloudflare D1. Production (`propfirmbro-clicks`) holds real user data. Preview (`propfirmbro-clicks-preview`) is only used by the preview deployment and holds test data. Nick set this up specifically so testing never pollutes real data.
 
 **Q: Can I test on the preview site without affecting real users?**
-A: Yes, that's exactly what the preview site is for. Any accounts created on `9998d255.propfirmbro.pages.dev` are completely isolated from `propfirmbro.com`.
+A: Yes, that's exactly what the preview site is for. Any accounts created on `nick-rewards-system.propfirmbro.pages.dev` are completely isolated from `propfirmbro.com`.
 
 **Q: Why did we remove Alpha Futures and YRM Prop from the claim form?**
 A: Their current prices weren't confirmed at build time, so we can't set accurate fixed points for their accounts. Rather than use an unreliable estimate, Nick removed them and put them on the backlog. Once Mike provides current prices, they can be added in minutes.
