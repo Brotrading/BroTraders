@@ -526,8 +526,8 @@ async function createPackage(env, { title, description, points_cost, fulfillment
   try {
     await env.DB
       .prepare(
-        `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, firm_slug, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        `INSERT INTO bro_packages (slug, title, description, points_cost, fulfillment, is_active, uses_discount_codes, stock, firm_slug, gate_exempt, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       )
       .bind(
         slug,
@@ -539,6 +539,9 @@ async function createPackage(env, { title, description, points_cost, fulfillment
         uses_discount_codes ? 1 : 0,
         stock === null || stock === undefined ? null : parseInt(stock, 10),
         firm_slug ? String(firm_slug).toLowerCase().trim() : null,
+        // Explicit 0: never trust the column default — Pro Bro is the only
+        // gate-exempt pack and that flag is set manually via SQL, not here.
+        0,
         now
       )
       .run();
