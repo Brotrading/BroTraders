@@ -223,7 +223,7 @@
       <div id="amountWrap" style="margin-top: 20px; display:none;">
         <label class="rw-label" for="amountEur">Amount paid ($) <em style="color:var(--rw-red);">*</em></label>
         <input class="rw-input" type="number" id="amountEur" min="1" max="900" step="0.01" placeholder="e.g. 149.00" />
-        <div class="rw-muted rw-small" style="margin-top:6px;">The amount you actually paid, as shown on your payment confirmation — we check it against your proof. Your points are 1% of this amount (1.5% for Pro Bro).</div>
+        <div class="rw-muted rw-small" style="margin-top:6px;">The amount you actually paid, as shown on your payment confirmation — we check it against your proof.</div>
       </div>
       <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
 
@@ -342,13 +342,13 @@
       ptsEl.innerHTML =
         `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
           `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${pro.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;"><span style="color:#fbbf24;">⭐ Pro Bro rate</span> · 1.5% of what you paid</div>` +
+          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;"><span style="color:#fbbf24;">⭐ Pro Bro rate</span></div>` +
         `</div>`;
     } else {
       ptsEl.innerHTML =
         `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
           `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${free.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">1% of what you paid</div>` +
+          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">if this claim is approved</div>` +
         `</div>` +
         `<div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.35);border-radius:10px;padding:12px 18px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">` +
           `<div>` +
