@@ -377,7 +377,13 @@ async function approveClaim(env, { claim_id, note }) {
 
   const u = await getUserRow(env, c.user_id);
   const isPro = !!(u && u.is_pro_bro);
-  const points = lookupFixedPoints(c.firm_slug, c.account_type, isPro) ?? 0;
+  // 1% of the amount actually paid (Pro Bro 1.5%), capped at the account type's
+  // fixed points so an inflated amount can never over-award (Mike, 2026-07-04).
+  // Mike verifies the entered amount against the proof screenshot on approval.
+  const fixed = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
+  let points  = Math.round((Number(c.amount_eur) || 0) * 10);
+  if (isPro) points = Math.round((points * 1.5) / 25) * 25;
+  if (fixed != null) points = Math.min(points, fixed);
 
   await postLedger(env, {
     user_id: c.user_id,

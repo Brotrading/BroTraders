@@ -226,8 +226,13 @@ export async function onRequestPost(context) {
   const isDuplicateProof = 0;
 
   // ── Points estimate ────────────────────────────────────────────────────
+  // Mirrors the approval calculation in admin.js: 1% of the amount actually
+  // paid (Pro Bro 1.5%), capped at the account type's fixed points.
   const isPro  = !!(userRow && userRow.is_pro_bro);
-  const pointsPending = lookupFixedPoints(firmSlug, accountType, isPro) ?? 0;
+  const fixedPts = lookupFixedPoints(firmSlug, accountType, isPro);
+  let pointsPending = Math.round(amountEur * 10);
+  if (isPro) pointsPending = Math.round((pointsPending * 1.5) / 25) * 25;
+  if (fixedPts != null) pointsPending = Math.min(pointsPending, fixedPts);
 
   // ── Insert ─────────────────────────────────────────────────────────────
   const now = new Date().toISOString();

@@ -442,11 +442,14 @@
   }
 
   function calcPts(c) {
+    // Mirrors the backend: 1% of the amount actually paid (Pro Bro 1.5%),
+    // capped at the account type's fixed points.
     const isPro = !!c.is_pro_bro;
     const fixed = lookupFixedPoints(c.firm_slug, c.account_type, isPro);
-    if (fixed !== null) return fixed;
-    const rate = isPro ? 0.375 : 0.25;
-    return Math.round(c.amount_eur * rate * 1000);
+    let pts = Math.round((Number(c.amount_eur) || 0) * 10);
+    if (isPro) pts = Math.round((pts * 1.5) / 25) * 25;
+    if (fixed !== null) pts = Math.min(pts, fixed);
+    return pts;
   }
   function fmtDate(iso) {
     if (!iso) return "—";
@@ -586,6 +589,7 @@
                 <br>
                 <span>Submitted: ${fmtDate(c.created_at)}</span>
                 ${c.purchase_date ? `· <span>Purchase date: <strong>${c.purchase_date}</strong></span>` : ""}
+                · <span>Paid: <strong style="color:var(--rw-text);">$${Number(c.amount_eur || 0).toFixed(2)}</strong></span> <span style="font-size:10px;">(verify against proof)</span>
                 <br>
                 ${c.order_ref ? `Ref: <code>${c.order_ref}</code>` : `<em style="color:var(--rw-red);">No order ref</em>`}
                 ${c.submitter_ip ? ` · IP: <code style="font-size:10px;">${c.submitter_ip}</code>` : ""}

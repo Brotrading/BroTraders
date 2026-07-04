@@ -221,8 +221,9 @@
       </div>
 
       <div id="amountWrap" style="margin-top: 20px; display:none;">
-        <label class="rw-label" for="amountEur">Purchase amount ($) <em style="color:var(--rw-red);">*</em></label>
+        <label class="rw-label" for="amountEur">Amount paid ($) <em style="color:var(--rw-red);">*</em></label>
         <input class="rw-input" type="number" id="amountEur" min="1" max="900" step="0.01" placeholder="e.g. 149.00" />
+        <div class="rw-muted rw-small" style="margin-top:6px;">The amount you actually paid, as shown on your payment confirmation — we check it against your proof. Your points are 1% of this amount (1.5% for Pro Bro).</div>
       </div>
       <div id="ptsEstimate" style="font-size:12px; color:var(--rw-text-2); margin-top:6px; min-height:16px;"></div>
 
@@ -309,8 +310,9 @@
 <script src="../js/auth.js"></script>
 <script src="../header.js"></script>
 <script>
-  const FREE_RATE = 0.25;
-  const PRO_RATE  = 0.375;
+  // Cashback: 1% of the amount actually paid, in points (1,000 pts = $1 → 10 pts per $).
+  // Pro Bro earns 1.5×. Capped at the account type's fixed points (anti-fraud ceiling).
+  const PTS_PER_DOLLAR = 10;
   const MAX_PROOF_BYTES = 500 * 1024; // 500 KB
 
   let isPro = false;
@@ -322,13 +324,45 @@
 
   function roundToNearest25(n) { return Math.round(n / 25) * 25; }
 
-  function estimatePts(eur) {
-    return Math.round(eur * (isPro ? PRO_RATE : FREE_RATE) * 1000);
-  }
-  function estimatePtsBoth(eur) {
-    const free = Math.round(eur * FREE_RATE * 1000);
-    const pro  = Math.round(eur * PRO_RATE  * 1000);
+  function estimatePtsBoth(usd) {
+    let free = Math.round(usd * PTS_PER_DOLLAR);
+    let pro  = roundToNearest25(free * 1.5);
+    if (_fixedPointsBase != null) {
+      free = Math.min(free, _fixedPointsBase);
+      pro  = Math.min(pro,  roundToNearest25(_fixedPointsBase * 1.5));
+    }
     return { free, pro };
+  }
+  function estimatePts(usd) {
+    const { free, pro } = estimatePtsBoth(usd);
+    return isPro ? pro : free;
+  }
+
+  // Big points-preview box, recomputed whenever the amount or account type changes.
+  function renderPtsEstimate(amountUsd) {
+    const ptsEl = document.getElementById("ptsEstimate");
+    if (!(amountUsd > 0)) { ptsEl.textContent = ""; return; }
+    const { free, pro } = estimatePtsBoth(amountUsd);
+    if (isPro) {
+      ptsEl.innerHTML =
+        `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
+          `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${pro.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
+          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;"><span style="color:#fbbf24;">⭐ Pro Bro rate</span> · 1.5% of what you paid</div>` +
+        `</div>`;
+    } else {
+      ptsEl.innerHTML =
+        `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
+          `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${free.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
+          `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;">1% of what you paid</div>` +
+        `</div>` +
+        `<div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.35);border-radius:10px;padding:12px 18px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">` +
+          `<div>` +
+            `<div style="font-size:13px;font-weight:700;color:var(--rw-text);">⭐ Pro Bro earns <span style="color:#fbbf24;">${pro.toLocaleString("en-US")} pts</span> on this claim</div>` +
+            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:2px;">That's 1.5× more on every approved claim</div>` +
+          `</div>` +
+          `<a href="https://whop.com/joined/bro-trading/" target="_blank" style="background:#fbbf24;color:#000;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;">Upgrade to Pro Bro →</a>` +
+        `</div>`;
+    }
   }
 
   // ── Date picker ────────────────────────────────────────────────────────
@@ -365,8 +399,6 @@
 
   // ── Points estimate ────────────────────────────────────────────────────
   document.getElementById("amountEur").addEventListener("input", (e) => {
-    // Skip percentage estimate when account type has fixed points.
-    if (_fixedPointsBase !== null) return;
     const val = parseFloat(e.target.value);
     const el  = document.getElementById("ptsEstimate");
     if (val > 900) {
@@ -375,16 +407,7 @@
       return;
     }
     e.target.setCustomValidity("");
-    if (val > 0) {
-      const { free, pro } = estimatePtsBoth(val);
-      if (isPro) {
-        el.innerHTML = `<span style="color:var(--rw-accent);font-weight:600;">${pro.toLocaleString("en-US")} pts if approved</span> <span style="color:var(--rw-text-2);">(Pro Bro rate)</span>`;
-      } else {
-        el.innerHTML = `${free.toLocaleString("en-US")} pts if approved &nbsp;·&nbsp; <span style="color:var(--rw-accent);">${pro.toLocaleString("en-US")} pts as Pro Bro</span>`;
-      }
-    } else {
-      el.textContent = "";
-    }
+    renderPtsEstimate(val);
   });
 
   // ── Proof upload ───────────────────────────────────────────────────────
@@ -470,8 +493,8 @@
 
     const firmSlug    = document.getElementById("firmSelect").value;
     const accountType = document.getElementById("accountTypeSelect").value;
-    const amountEur   = _currentEntry?.price_usd
-      || parseFloat(document.getElementById("amountEur").value)
+    const amountEur   = parseFloat(document.getElementById("amountEur").value)
+      || _currentEntry?.price_usd
       || 1;
     const purchaseDate = document.getElementById("purchaseDate").value;
     const orderRef    = document.getElementById("orderRef").value.trim();
@@ -698,38 +721,13 @@
       return;
     }
 
-    if (entry.points_base != null) {
-      // Fixed-points firm: show exact Bro Points, hide the amount field.
-      _fixedPointsBase      = entry.points_base;
-      amtWrap.style.display = "none";
-      const proBase = roundToNearest25(entry.points_base * 1.5);
-      if (isPro) {
-        ptsEl.innerHTML =
-          `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
-            `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${proBase.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-            `<div style="font-size:12px;color:var(--rw-text-2);margin-top:4px;"><span style="color:#fbbf24;">⭐ Pro Bro rate</span></div>` +
-          `</div>`;
-      } else {
-        ptsEl.innerHTML =
-          `<div style="background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.28);border-radius:10px;padding:14px 18px;margin-top:10px;">` +
-            `<div style="font-size:30px;font-weight:800;color:var(--rw-accent);line-height:1;">${entry.points_base.toLocaleString("en-US")} <span style="font-size:15px;font-weight:500;color:var(--rw-text);">Bro Points</span></div>` +
-            `` +
-          `</div>` +
-          `<div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.35);border-radius:10px;padding:12px 18px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">` +
-            `<div>` +
-              `<div style="font-size:13px;font-weight:700;color:var(--rw-text);">⭐ Pro Bro earns <span style="color:#fbbf24;">${proBase.toLocaleString("en-US")} pts</span> on this claim</div>` +
-              `<div style="font-size:12px;color:var(--rw-text-2);margin-top:2px;">That's 1.5× more on every approved claim</div>` +
-            `</div>` +
-            `<a href="https://whop.com/joined/bro-trading/" target="_blank" style="background:#fbbf24;color:#000;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;flex-shrink:0;">Upgrade to Pro Bro →</a>` +
-          `</div>`;
-      }
-    } else {
-      // Non-fixed firm: hide amount field, silently use reference price.
-      _fixedPointsBase      = null;
-      amtWrap.style.display = "none";
-      amtEl.value = entry.price_usd || 1;
-      ptsEl.textContent = "";
-    }
+    // Show the amount field, prefilled with the account type's list price.
+    // The user corrects it to what they actually paid (promos/discounts);
+    // points = 1% of that amount, capped at the account type's fixed points.
+    _fixedPointsBase      = entry.points_base != null ? entry.points_base : null;
+    amtWrap.style.display = "block";
+    amtEl.value           = entry.price_usd || "";
+    renderPtsEstimate(parseFloat(amtEl.value));
   });
 
   document.getElementById("orderRef").addEventListener("input", () => {
