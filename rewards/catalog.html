@@ -129,6 +129,13 @@
 <script>
   function fmt(n) { return Number(n || 0).toLocaleString("en-US"); }
 
+  const FIRM_NAMES = {
+    apex: "Apex", alpha: "Alpha Futures", daytraders: "Daytraders.com",
+    fundedseat: "FundedSeat", lucid: "Lucid Trading", mffu: "My Funded Futures",
+    nexgen: "NexGen", phidias: "Phidias", topone: "Top One", tradeify: "Tradeify", yrm: "YRM Prop",
+  };
+  function firmName(slug) { return FIRM_NAMES[slug] || slug; }
+
   let userState = null;
 
   async function loadAll() {
@@ -256,7 +263,7 @@
         ? `You need ${fmt(data.points_required - data.points_balance)} more points.`
         : data.error === "redemption_gate_not_met"
         ? (data.firm_claims_required
-            ? `This reward unlocks after ${data.firm_claims_required} approved purchases at this firm (you have ${data.firm_claims}) — or ${fmt(data.purchase_pts_required)} purchase pts overall (you've earned ${fmt(data.purchase_pts_earned)}). Buy via a BRO link and submit a claim on your account page.`
+            ? `This reward unlocks after purchasing ${data.firm_claims_required} ${firmName(data.firm_slug)} accounts via BRO links — you have ${data.firm_claims} approved purchase${data.firm_claims === 1 ? "" : "s"} so far. Buy via a BRO link and submit your claims on your account page.`
             : `This reward unlocks after earning ${fmt(data.purchase_pts_required)} pts from purchases. You've earned ${fmt(data.purchase_pts_earned)} — ${fmt(data.purchase_pts_required - data.purchase_pts_earned)} to go. Submit a claim on your account page after buying a challenge via a BRO link.`)
         : data.error === "no_codes_available"
         ? `This Bro Pack is currently out of stock — check back soon.`
