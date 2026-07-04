@@ -635,6 +635,7 @@
         opt.value = a.label;
         opt.textContent = a.label;
         if (a.points_base) opt.dataset.pts = a.points_base;
+        if (a.price_usd)   opt.dataset.price = a.price_usd;
         typeSelect.appendChild(opt);
       });
       typeRow.style.display = "";
@@ -653,7 +654,12 @@
     const firmName = firmNames[firm] || firm;
     if (opt && opt.value) {
       document.getElementById("nTitle").value = `Bro Pack — ${firmName} ${opt.value}`;
-      if (opt.dataset.pts) document.getElementById("nCost").value = opt.dataset.pts;
+      // Store price = account price × 667 pts/$ rounded up to the nearest 1,000
+      // (financial model: ~$150 account = 100,000 pts). NOT points_base — that's
+      // the cashback a buyer earns, a ~70× cheaper number.
+      if (opt.dataset.price) {
+        document.getElementById("nCost").value = Math.ceil((parseFloat(opt.dataset.price) * 667) / 1000) * 1000;
+      }
       document.getElementById("nDesc").value = `A funded ${opt.value} account at ${firmName}, delivered via discount code at checkout.`;
     }
   });
