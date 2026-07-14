@@ -26,7 +26,7 @@
       type="image/x-icon"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+NZ+Basic:wght@100..400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300..800&family=Space+Grotesk:wght@400..700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -34,25 +34,25 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Roboto", sans-serif;
-        box-sizing: border-box;
+        font-family: "DM Sans", system-ui, sans-serif;
       }
       html,
       body {
         overflow-x: hidden;
       }
+      h1,
+      h2,
+      h3 {
+        font-family: "Space Grotesk", "DM Sans", sans-serif;
+        letter-spacing: -0.02em;
+      }
       h2 {
-        font-size: 60px !important;
+        font-size: clamp(34px, 5.5vw, 58px) !important;
         font-weight: 700 !important;
       }
       p {
-        color: #ccd6e8;
+        color: #aab8cf;
         margin-top: 10px;
-      }
-      @media (max-width: 680px) {
-        h2 {
-          font-size: 36px !important;
-        }
       }
     </style>
   </head>
@@ -1059,10 +1059,6 @@
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
-          rel="stylesheet"
         />
         <style>
           * {
@@ -2891,5 +2887,6 @@
       </body>
     </html>
     <!-- ================= Giveaway Popup END ================= -->
+    <link rel="stylesheet" href="design-refresh.css" />
   </body>
 </html>
