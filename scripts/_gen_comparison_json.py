@@ -42,7 +42,6 @@ restricted_map_names = {
     "Daytraders.com":      "RESTRICTED_DAYTRADERS",
     "Phidias":             "RESTRICTED_PHIDIAS",
     "NexGen Funding":      "RESTRICTED_NEXGEN",
-    "YRM Prop":            "RESTRICTED_YRM",
     "FundedSeat":          "RESTRICTED_FUNDEDSEAT",
 }
 restricted_countries = {firm: extract_js_array(varname) for firm, varname in restricted_map_names.items()}
@@ -275,26 +274,6 @@ for v in top_variants:
           "website":"https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
           "showcase":acc in showcase_top})
 
-# YRM Prop
-yrm_variants = [
-    {"size":"25K Starter",      "goal":1500,"dd":1000,"ddt":"EOD","eval":59, "activation":0,"truecost":59, "mindays":8},
-    {"size":"50K Starter",      "goal":3000,"dd":2000,"ddt":"EOD","eval":74, "activation":0,"truecost":74, "mindays":8},
-    {"size":"100K Starter",     "goal":6000,"dd":3000,"ddt":"EOD","eval":131,"activation":0,"truecost":131,"mindays":8},
-    {"size":"150K Starter",     "goal":9000,"dd":4500,"ddt":"EOD","eval":144,"activation":0,"truecost":144,"mindays":8},
-    {"size":"25K Instant Prime","goal":None,"dd":1250,"ddt":"EOD","eval":239,"activation":0,"truecost":239,"mindays":0},
-    {"size":"50K Instant Prime","goal":None,"dd":2000,"ddt":"EOD","eval":359,"activation":0,"truecost":359,"mindays":0},
-    {"size":"100K Instant Prime","goal":None,"dd":4000,"ddt":"EOD","eval":449,"activation":0,"truecost":449,"mindays":0},
-    {"size":"150K Instant Prime","goal":None,"dd":6000,"ddt":"EOD","eval":539,"activation":0,"truecost":539,"mindays":0},
-]
-showcase_yrm = {"50K Starter"}
-for v in yrm_variants:
-    push({"firm":"YRM Prop","logo":"../Photos/firms/yrmprop.png","account":v["size"],
-          "goal":v["goal"],"profitTarget":v["goal"],"ddt":v["ddt"],"dd":v["dd"],"mindays":v["mindays"],
-          "eval":v["eval"],"activation":v["activation"],"truecost":v["truecost"],
-          "discount":"40%","code":"BRO","platform":"Tradovate, NinjaTrader",
-          "country":"USA","maxaccounts":5,"firmpage":"../Firms/YRM.html",
-          "website":"https://yrmprop.com/ref/Bro/",
-          "showcase":v["size"] in showcase_yrm})
 
 # FundedSeat
 fundedseat_variants = [

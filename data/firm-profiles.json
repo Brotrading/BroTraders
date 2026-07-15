@@ -340,48 +340,6 @@
       "hero_description": "NexGen Funding is a familiar and trusted name in the prop trading space, and it's come back stronger than ever. The firm offers flexible funding options and a streamlined account structure built around what traders actually want. With both instant funding and customizable setups through the new Select Plan, NexGen Funding lets traders tailor their accounts instead of forcing them into a one-size-fits-all model.\n\nTraders can choose the features that matter most to them, including day-one or five-day payout options, giving more control over how and when profits are accessed. With refreshed programs and the same reliable, trader-focused support, NexGen Funding delivers a versatile, accessible, and efficient path for traders looking to get funded and stay funded.",
       "hero_btn_text": "Get Evaluation"
     },
-    "yrm_prop": {
-      "name": "YRM Prop",
-      "affiliate_url": "https://propfirmbro.com/go/yrm",
-      "code_default": "BRO",
-      "logo_img": "../Photos/firms/yrmprop.svg",
-      "logo_icon": null,
-      "ceo": "Youssef Rachid",
-      "flag_code": "us",
-      "flag_alt": "USA",
-      "country_display": "USA",
-      "trustpilot_score": 4.6,
-      "founded_display": "Mar 2023",
-      "years": "3+",
-      "rating_score": 4.6,
-      "rating_stars": "★★★★★",
-      "rating_reviews": "312 reviews",
-      "rating_bars": [
-        {
-          "pct": "85%",
-          "count": "265"
-        },
-        {
-          "pct": "10%",
-          "count": "31"
-        },
-        {
-          "pct": "3%",
-          "count": "9"
-        },
-        {
-          "pct": "1.5%",
-          "count": "5"
-        },
-        {
-          "pct": "0.5%",
-          "count": "2"
-        }
-      ],
-      "summary": "YRM Prop is a proprietary trading firm dedicated to futures traders. Account sizes range from $25,000 to $150,000 across two plans: Starter (1-step evaluation, EOD drawdown, 90/10 payout split) and Instant Prime (straight-to-funded, EOD drawdown, minimum 8 trading days before payout). Consistency rules apply: 50% on Starter evaluations, 20% on Instant Prime. Use code BRO for the exclusive Bro Trading affiliate discount.",
-      "hero_description": "YRM Prop is a rapidly growing name in the prop trading space, delivering unmatched flexibility and modern infrastructure. The firm offers instant funding options and a fully customizable evaluation structure. With both 1-step and advanced scaling plans, YRM Prop allows traders to choose what fits their style instead of rigid one-size-fits-all models.\n\nTraders can select payout cadences, daily loss buffers, and even choose from multiple data feeds (Rithmic, Tradovate, MetaTrader). With up to 90% profit splits, no consistency rules, and lightning-fast payouts, YRM Prop provides a genuine, trader-first path to long-term funding success.",
-      "hero_btn_text": "Get Evaluation"
-    },
     "fundedseat": {
       "name": "FundedSeat",
       "affiliate_url": "https://propfirmbro.com/go/fundedseat",
