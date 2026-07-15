@@ -619,203 +619,6 @@
         "_verified": "2026-05-09"
       }
     },
-    "alpha_futures": {
-      "name": "Alpha Futures",
-      "country": "UK",
-      "founded": "2024-07",
-      "rating": "4.6/5 (40 reviews)",
-      "code_default": "BROTRADING",
-      "affiliate_url": "https://propfirmbro.com/go/alpha",
-      "platforms": [
-        "NinjaTrader",
-        "Tradovate",
-        "DeepCharts",
-        "Quantower",
-        "CQG"
-      ],
-      "broker": [
-        "Tradovate"
-      ],
-      "payment_methods": [
-        "Credit/Debit Card",
-        "Crypto"
-      ],
-      "payout_methods": [
-        "ACH",
-        "Bank Wire",
-        "Riseworks",
-        "Swift",
-        "Wise"
-      ],
-      "discount_text": "20% off w/ BROTRADING",
-      "pricing_model": "MONTHLY (subscription, not one-time)",
-      "rules_global": {
-        "automation": "Strictly prohibited (EAs, AI, bots) — across all account types",
-        "copy_trading": "Prohibited",
-        "all_or_nothing": "Withdrawing all profits after trailing-balance adjustment = account closure",
-        "tick_micro_scalping": "Prohibited (trades <10 ticks AND <2 minutes)",
-        "gambling_account_rolling": "Prohibited",
-        "price_limit_rule": "No trading within 2% of CME price limit",
-        "max_withdrawal_request": 15000,
-        "inactivity_trading_days": 10,
-        "overnight_holding": "Not allowed",
-        "weekend_holding": "Not allowed",
-        "payout_processing_time": "≤48 business hours"
-      },
-      "plans": {
-        "Standard": {
-          "type": "1-Step Evaluation",
-          "drawdown_type": "Trailing",
-          "min_days_eval": 2,
-          "min_days_funded": 3,
-          "consistency_eval": "50%",
-          "consistency_funded": "40%",
-          "scaling_plan": "Yes (to 5 contracts)",
-          "max_position_eval": "5 contracts",
-          "max_position_funded": "Scaling Plan to 5 contracts",
-          "daily_loss_guard_eval": "None",
-          "daily_loss_guard_funded": 1000,
-          "max_allocation": "3 accounts",
-          "payout_frequency": "Bi-weekly (every 14 days)",
-          "min_payout": 200,
-          "max_payout": 15000,
-          "payout_split": "Tiered: 70% (payouts 1-2), 80% (3-4), 90% (5+)",
-          "hold_through_news": "Yes (with restrictions on funded)",
-          "sizes": {
-            "50K": {
-              "eval_price_brotrading": 63.2,
-              "eval_price_msrp": 79,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000,
-              "reset_fee": 59
-            },
-            "100K": {
-              "eval_price_brotrading": 127.2,
-              "eval_price_msrp": 159,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000
-            },
-            "150K": {
-              "eval_price_brotrading": 191.2,
-              "eval_price_msrp": 239,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000
-            }
-          }
-        },
-        "Zero": {
-          "type": "1-Step Evaluation",
-          "drawdown_type": "Trailing",
-          "min_days_eval": 1,
-          "min_days_funded": 5,
-          "consistency_eval": "None",
-          "consistency_funded": "40%",
-          "scaling_plan": "None",
-          "max_position": "3 contracts",
-          "daily_loss_guard": 1000,
-          "max_allocation": "5 accounts",
-          "payout_frequency": "Weekly (after 5 winning days $200+)",
-          "min_payout": 200,
-          "max_payout_50K": 1500,
-          "max_payout_100K": 3000,
-          "payout_split": "Flat 90%",
-          "activation_fee": 0,
-          "no_activation_fee_note": "NO ACTIVATION FEE ON ZERO ACCOUNTS",
-          "withdrawal_pct_until_30_days": 50,
-          "withdrawal_pct_after_30_days": 100,
-          "hold_through_news": "Yes (with restrictions on funded)",
-          "sizes": {
-            "25K": {
-              "eval_price_brotrading": 63.2,
-              "eval_price_msrp": 79,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000,
-              "reset_fee_eval": 109,
-              "reset_fee_funded": 499
-            },
-            "50K": {
-              "eval_price_brotrading": 95.2,
-              "eval_price_msrp": 119,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000
-            },
-            "100K": {
-              "eval_price_brotrading": 191.2,
-              "eval_price_msrp": 239,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 3000,
-              "max_drawdown": 2000
-            }
-          }
-        },
-        "Advanced": {
-          "type": "1-Step Evaluation",
-          "drawdown_type": "Trailing",
-          "min_days_eval": 2,
-          "min_days_funded": 5,
-          "consistency_eval": "50%",
-          "consistency_funded": "None",
-          "scaling_plan": "None (5 contracts max)",
-          "max_position": "5 contracts",
-          "daily_loss_guard_eval": "None",
-          "daily_loss_guard_funded": "None",
-          "max_allocation": "3 accounts",
-          "payout_frequency": "Weekly (after 5 winning days $200+)",
-          "min_payout": 1000,
-          "max_payout": 15000,
-          "min_profit_required": 2000,
-          "payout_split": "Flat 90%",
-          "withdrawal_pct_until_30_days": 50,
-          "withdrawal_pct_after_30_days": 100,
-          "hold_through_news": "Yes (no restrictions)",
-          "sizes": {
-            "50K": {
-              "eval_price_brotrading": 111.2,
-              "eval_price_msrp": 139,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 4000,
-              "max_drawdown": 1750,
-              "reset_fee": 139
-            },
-            "100K": {
-              "eval_price_brotrading": 223.2,
-              "eval_price_msrp": 279,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 4000,
-              "max_drawdown": 1750
-            },
-            "150K": {
-              "eval_price_brotrading": 335.2,
-              "eval_price_msrp": 419,
-              "discount_pct": 20,
-              "pricing_basis": "monthly",
-              "profit_target": 4000,
-              "max_drawdown": 1750
-            }
-          }
-        }
-      },
-      "best_deal": {
-        "badge_pct": 20,
-        "button_code": "BROTRADING",
-        "promo_code": null,
-        "description": "20% off all Alpha Futures plans with exclusive code BROTRADING via Bro Trading.",
-        "_verified": "2026-05-09"
-      }
-    },
     "top_one_futures": {
       "name": "Top One Futures",
       "rating": "4.8/5 (Trustpilot)",
@@ -1564,7 +1367,7 @@
       "code_default": "BRO",
       "affiliate_url": "https://thenextgenfunding.com/",
       "platforms": [],
-      "discount_text": "20% OFF with code PASS20 \u2014 affiliate code BRO",
+      "discount_text": "20% OFF with code PASS20 — affiliate code BRO",
       "rules_global": {
         "consistency": null,
         "min_trading_days": null,
@@ -1865,7 +1668,7 @@
         }
       },
       "_status": "Auto-extracted from https://yrmprop.com/ on 2026-05-03. Verify before publishing.",
-      "_extraction_notes": "Platforms section in HTML is empty (logos rendered via CSS/images). Starter plan shows a 'reset price' separate from initial purchase price; reset prices: $49/$69/$125/$139 for 25K/50K/100K/150K respectively. Starter activation fee shown as $0 (was $99 struck-through). Instant Prime daily loss limits labeled 'Soft Breach' for 50K+; 25K shows 'None'. Min payout amount not stated. Profit split shown as 90% (90/10). Drawdown labeled 'Trailing Max Drawdown' but mode is 'End of Day' \u2014 represented as EOD. Discount code YRM40 explicitly visible on Instant Prime cards; Starter cards show promotional pricing without explicit code.",
+      "_extraction_notes": "Platforms section in HTML is empty (logos rendered via CSS/images). Starter plan shows a 'reset price' separate from initial purchase price; reset prices: $49/$69/$125/$139 for 25K/50K/100K/150K respectively. Starter activation fee shown as $0 (was $99 struck-through). Instant Prime daily loss limits labeled 'Soft Breach' for 50K+; 25K shows 'None'. Min payout amount not stated. Profit split shown as 90% (90/10). Drawdown labeled 'Trailing Max Drawdown' but mode is 'End of Day' — represented as EOD. Discount code YRM40 explicitly visible on Instant Prime cards; Starter cards show promotional pricing without explicit code.",
       "best_deal": {
         "badge_pct": 40,
         "button_code": "BRO",
@@ -1879,7 +1682,11 @@
       "country": "USA",
       "rating": "4.1/5 (Trustpilot)",
       "legal_entities": [
-        {"name": "Cygnus Software Solutions LLC", "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA", "role": "primary"}
+        {
+          "name": "Cygnus Software Solutions LLC",
+          "address": "30 N Gould St Ste 23143, Sheridan, WY 82801, USA",
+          "role": "primary"
+        }
       ],
       "code_default": "BRO",
       "affiliate_url": "https://propfirmbro.com/go/fundedseat",
@@ -2152,7 +1959,7 @@
         }
       },
       "_status": "Verified from official FundedSeat configurator screenshots, May 2026 (Mike-supplied).",
-      "_extraction_notes": "Six plan variants \u00d7 3-4 sizes = 21 total variants. All drawdowns 'Drawdown Mode: EOD' per screenshots. Profit target uniformly 6% of account size on Eval plans. Daily plan has TWO consistency tiers (35% and 50%) with different prices but same drawdowns; treated as separate plans in this file. Daily Loss Limit: None on Daily/Daily Pro; on Sprint and Instant only at 50K+ ($1,200-$2,700). BRO discount = MSRP \u00d7 0.40 (60% off, per Mike); site default shows MSRP \u00d7 0.50 (50% off public). Activation fee free on Eval; activation field for Instant not shown in screenshots."
+      "_extraction_notes": "Six plan variants × 3-4 sizes = 21 total variants. All drawdowns 'Drawdown Mode: EOD' per screenshots. Profit target uniformly 6% of account size on Eval plans. Daily plan has TWO consistency tiers (35% and 50%) with different prices but same drawdowns; treated as separate plans in this file. Daily Loss Limit: None on Daily/Daily Pro; on Sprint and Instant only at 50K+ ($1,200-$2,700). BRO discount = MSRP × 0.40 (60% off, per Mike); site default shows MSRP × 0.50 (50% off public). Activation fee free on Eval; activation field for Instant not shown in screenshots."
     }
   }
 }

@@ -38,7 +38,6 @@ restricted_map_names = {
     "Tradeify":            "RESTRICTED_TRADEIFY",
     "Lucid Trading":       "RESTRICTED_LUCID",
     "MyFundedFutures":     "RESTRICTED_MFFU",
-    "Alpha Futures":       "RESTRICTED_ALPHA",
     "Top One Futures":     "RESTRICTED_TOPONE",
     "Daytraders.com":      "RESTRICTED_DAYTRADERS",
     "Phidias":             "RESTRICTED_PHIDIAS",
@@ -215,30 +214,6 @@ for v in phidias_variants:
           "country":"France","maxaccounts":3,"firmpage":"../Firms/PhidiasPropFirm.html",
           "website":"https://member.phidiaspropfirm.com/aff/go/brotrading",
           "showcase":v["size"] in showcase_phidias})
-
-# Alpha Futures
-alpha_variants = [
-    {"plan":"Standard","size":"50K", "eval":63.20, "goal":3000,"dd":2000,"mindays":3,"maxacc":3},
-    {"plan":"Standard","size":"100K","eval":127.20,"goal":3000,"dd":2000,"mindays":3,"maxacc":3},
-    {"plan":"Standard","size":"150K","eval":191.20,"goal":3000,"dd":2000,"mindays":3,"maxacc":3},
-    {"plan":"Zero",    "size":"25K", "eval":63.20, "goal":3000,"dd":2000,"mindays":5,"maxacc":5},
-    {"plan":"Zero",    "size":"50K", "eval":95.20, "goal":3000,"dd":2000,"mindays":5,"maxacc":5},
-    {"plan":"Zero",    "size":"100K","eval":191.20,"goal":3000,"dd":2000,"mindays":5,"maxacc":5},
-    {"plan":"Advanced","size":"50K", "eval":111.20,"goal":4000,"dd":1750,"mindays":5,"maxacc":3},
-    {"plan":"Advanced","size":"100K","eval":223.20,"goal":4000,"dd":1750,"mindays":5,"maxacc":3},
-    {"plan":"Advanced","size":"150K","eval":335.20,"goal":4000,"dd":1750,"mindays":5,"maxacc":3},
-]
-showcase_alpha = {"50K Standard"}
-for v in alpha_variants:
-    acc = f"{v['size']} {v['plan']}"
-    push({"firm":"Alpha Futures","logo":"../Photos/firms/alphafutures.png","account":acc,
-          "goal":v["goal"],"profitTarget":v["goal"],"ddt":"Trailing","dd":v["dd"],"mindays":v["mindays"],
-          "eval":v["eval"],"activation":0,"truecost":v["eval"],
-          "discount":"20%","code":"BROTRADING",
-          "platform":"NinjaTrader, Tradovate, DeepCharts, Quantower, CQG",
-          "country":"UK","maxaccounts":v["maxacc"],"firmpage":"../Firms/AlphaFutures.html",
-          "website":"https://app.alpha-futures.com/signup/BROTRADING/",
-          "showcase":acc in showcase_alpha})
 
 # NexGen Funding
 nexgen_variants = [
