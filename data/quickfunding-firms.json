@@ -1,11 +1,90 @@
 [
-  { "firm": "Apex Trader Funding", "logo": "../Photos/firms/apex.png",            "funding": "1 day",                   "reasons": ["No minimum trading days", "Fast challenge completion", "Flexible reset options"],                                            "website": "https://propfirmbro.com/go/apex" },
-  { "firm": "Tradeify",            "logo": "../Photos/firms/tradeify.png",        "funding": "3 days",                  "reasons": ["Static drawdown structure", "Simple evaluation rules", "Early payout eligibility"],                                         "website": "https://propfirmbro.com/go/tradeify" },
-  { "firm": "MyFundedFutures",     "logo": "../Photos/firms/myfundedfutures.png", "funding": "Max 2 days",              "reasons": ["Fast scaling evaluation", "Consistent payout structure", "Trader-friendly rules"],                                           "website": "https://propfirmbro.com/go/mffu" },
-  { "firm": "LUCID",               "logo": "../Photos/firms/lucid.webp",          "funding": "Max 3 days",              "reasons": ["Quick evaluation structure", "Simple risk limits", "Budget-friendly accounts"],                                              "website": "https://propfirmbro.com/go/lucid" },
-  { "firm": "DayTraders",          "logo": "../Photos/firms/daytraders.svg",      "funding": "2 days",                  "reasons": ["Futures-focused evaluation", "Straightforward trading rules", "Fast account activation"],                                    "website": "https://propfirmbro.com/go/daytraders" },
-  { "firm": "Phidias",             "logo": "../Photos/firms/phidias.jpeg",        "funding": "3 days",                  "reasons": ["1-Step evaluation (Fundamental + Swing plans)", "One-time payment option (no activation)", "Up to 80% off w/ BROTRADING"],  "website": "https://propfirmbro.com/go/phidias" },
-  { "firm": "YRM Prop",            "logo": "../Photos/firms/yrmprop.svg",         "funding": "Instant or 8 days",       "reasons": ["Starter eval ($59–$144) or Instant Prime (no eval)", "EOD drawdown, 4 account sizes (25K/50K/100K/150K)", "40% off Instant Prime w/ BRO"], "website": "https://propfirmbro.com/go/yrm" },
-  { "firm": "NexGen Funding",      "logo": "../Photos/firms/nexgen.png",          "funding": "3 days (Standard)",      "reasons": ["3 plans: Standard / Rapid (2-step), Ace (1-step)", "Static drawdown — no trailing surprises", "30% off 50K/100K/200K w/ BRO"], "website": "https://propfirmbro.com/go/nexgen" },
-  { "firm": "Top One Futures",     "logo": "../Photos/firms/topone.svg",          "funding": "1 day (Elite) or instant","reasons": ["5 plans incl. Elite Access at flat $39", "Instant Sim Funded + IGNITE no-eval options", "Up to 60% off w/ BRO"],           "website": "https://propfirmbro.com/go/topone" }
+  {
+    "firm": "Apex Trader Funding",
+    "logo": "../Photos/firms/apex.png",
+    "funding": "1 day",
+    "reasons": [
+      "No minimum trading days",
+      "Fast challenge completion",
+      "Flexible reset options"
+    ],
+    "website": "https://propfirmbro.com/go/apex"
+  },
+  {
+    "firm": "Tradeify",
+    "logo": "../Photos/firms/tradeify.png",
+    "funding": "3 days",
+    "reasons": [
+      "Static drawdown structure",
+      "Simple evaluation rules",
+      "Early payout eligibility"
+    ],
+    "website": "https://propfirmbro.com/go/tradeify"
+  },
+  {
+    "firm": "MyFundedFutures",
+    "logo": "../Photos/firms/myfundedfutures.png",
+    "funding": "Max 2 days",
+    "reasons": [
+      "Fast scaling evaluation",
+      "Consistent payout structure",
+      "Trader-friendly rules"
+    ],
+    "website": "https://propfirmbro.com/go/mffu"
+  },
+  {
+    "firm": "LUCID",
+    "logo": "../Photos/firms/lucid.webp",
+    "funding": "Max 3 days",
+    "reasons": [
+      "Quick evaluation structure",
+      "Simple risk limits",
+      "Budget-friendly accounts"
+    ],
+    "website": "https://propfirmbro.com/go/lucid"
+  },
+  {
+    "firm": "DayTraders",
+    "logo": "../Photos/firms/daytraders.svg",
+    "funding": "2 days",
+    "reasons": [
+      "Futures-focused evaluation",
+      "Straightforward trading rules",
+      "Fast account activation"
+    ],
+    "website": "https://propfirmbro.com/go/daytraders"
+  },
+  {
+    "firm": "Phidias",
+    "logo": "../Photos/firms/phidias.jpeg",
+    "funding": "3 days",
+    "reasons": [
+      "1-Step evaluation (Fundamental + Swing plans)",
+      "One-time payment option (no activation)",
+      "Up to 80% off w/ BROTRADING"
+    ],
+    "website": "https://propfirmbro.com/go/phidias"
+  },
+  {
+    "firm": "NexGen Funding",
+    "logo": "../Photos/firms/nexgen.png",
+    "funding": "3 days (Standard)",
+    "reasons": [
+      "3 plans: Standard / Rapid (2-step), Ace (1-step)",
+      "Static drawdown — no trailing surprises",
+      "30% off 50K/100K/200K w/ BRO"
+    ],
+    "website": "https://propfirmbro.com/go/nexgen"
+  },
+  {
+    "firm": "Top One Futures",
+    "logo": "../Photos/firms/topone.svg",
+    "funding": "1 day (Elite) or instant",
+    "reasons": [
+      "5 plans incl. Elite Access at flat $39",
+      "Instant Sim Funded + IGNITE no-eval options",
+      "Up to 60% off w/ BRO"
+    ],
+    "website": "https://propfirmbro.com/go/topone"
+  }
 ]

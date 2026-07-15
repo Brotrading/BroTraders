@@ -1,12 +1,38 @@
 [
-  { "name": "FundedSeat",            "path": "/Firms/FundedSeat.html" },
-  { "name": "Apex Trader Funding",   "path": "/Firms/ApexFunding.html" },
-  { "name": "Tradeify",              "path": "/Firms/TradeifyTrader.html" },
-  { "name": "Lucid Trading",         "path": "/Firms/Lucid Trading.html" },
-  { "name": "My Funded Futures",     "path": "/Firms/MyFundedFuture.html" },
-  { "name": "Daytraders.com",        "path": "/Firms/DayTraders.html" },
-  { "name": "Phidias PropFirm",      "path": "/Firms/PhidiasPropFirm.html" },
-  { "name": "NexGen Funding",        "path": "/Firms/NexGen.html" },
-  { "name": "Top One Futures",       "path": "/Firms/TopOne.html" },
-  { "name": "YRM Prop",              "path": "/Firms/YRM.html" }
+  {
+    "name": "FundedSeat",
+    "path": "/Firms/FundedSeat.html"
+  },
+  {
+    "name": "Apex Trader Funding",
+    "path": "/Firms/ApexFunding.html"
+  },
+  {
+    "name": "Tradeify",
+    "path": "/Firms/TradeifyTrader.html"
+  },
+  {
+    "name": "Lucid Trading",
+    "path": "/Firms/Lucid Trading.html"
+  },
+  {
+    "name": "My Funded Futures",
+    "path": "/Firms/MyFundedFuture.html"
+  },
+  {
+    "name": "Daytraders.com",
+    "path": "/Firms/DayTraders.html"
+  },
+  {
+    "name": "Phidias PropFirm",
+    "path": "/Firms/PhidiasPropFirm.html"
+  },
+  {
+    "name": "NexGen Funding",
+    "path": "/Firms/NexGen.html"
+  },
+  {
+    "name": "Top One Futures",
+    "path": "/Firms/TopOne.html"
+  }
 ]
