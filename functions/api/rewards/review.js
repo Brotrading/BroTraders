@@ -14,7 +14,6 @@ import {
 
 const VALID_FIRMS = new Set([
   "apex",
-  "alpha",
   "daytraders",
   "fundedseat",
   "lucid",
@@ -23,7 +22,6 @@ const VALID_FIRMS = new Set([
   "nexgen",
   "topone",
   "tradeify",
-  "yrm",
 ]);
 
 export async function onRequestPost(context) {

@@ -31,7 +31,6 @@ async function sha256hex(str) {
 
 const FIRM_NAMES = {
   apex:       "Apex Trader Funding",
-  alpha:      "Alpha Futures",
   daytraders: "Daytraders.com",
   fundedseat: "FundedSeat",
   lucid:      "Lucid Trading",
@@ -40,7 +39,6 @@ const FIRM_NAMES = {
   nexgen:     "NexGen Funding",
   topone:     "Top One Futures",
   tradeify:   "Tradeify",
-  yrm:        "YRM Prop",
 };
 
 const VALID_SLUGS     = new Set(Object.keys(FIRM_NAMES));
@@ -90,7 +88,7 @@ export async function onRequestPost(context) {
   // ── Account type — required + validated ───────────────────────────────
   const accountType = (body.account_type || "").slice(0, 100).trim();
   if (!accountType) return jsonError("account_type_required", 400);
-  // Validate against FIRM_POINTS whitelist; skip for firms not yet in the list (alpha, yrm).
+  // Validate against FIRM_POINTS whitelist.
   const firmPointsMap = FIRM_POINTS[firmSlug];
   if (firmPointsMap && !(accountType in firmPointsMap)) {
     return jsonError("invalid_account_type", 400);

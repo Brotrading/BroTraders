@@ -7,7 +7,7 @@
 
 import { jsonResponse, jsonError, verifySupabaseToken } from "./_lib.js";
 
-const VALID_SLUGS = new Set(["apex","alpha","daytraders","fundedseat","lucid","phidias","mffu","nexgen","topone","tradeify","yrm"]);
+const VALID_SLUGS = new Set(["apex","daytraders","fundedseat","lucid","phidias","mffu","nexgen","topone","tradeify"]);
 const FIRM_NAMES  = {
   apex: "Apex Trader Funding", alpha: "Alpha Futures", daytraders: "Daytraders.com",
   fundedseat: "FundedSeat", lucid: "Lucid Trading", phidias: "Phidias PropFirm",

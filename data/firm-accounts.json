@@ -1,181 +1,724 @@
 {
   "_note": "Prices in USD from propfirm website screenshots (2026-06-05). 'monthly: true' = subscription fee. null = price not confirmed. points_base = Math.round(price_usd / 2.5) * 25.",
   "apex": [
-    { "label": "Intraday Trail | Standard | 25K | One Pack",              "price_usd": 19.90,  "points_base": 200  },
-    { "label": "Intraday Trail | Standard | 25K | Five Pack",             "price_usd": 85.00,  "points_base": 850  },
-    { "label": "Intraday Trail | Standard | 50K | One Pack",              "price_usd": 24.90,  "points_base": 250  },
-    { "label": "Intraday Trail | Standard | 50K | Five Pack",             "price_usd": 95.00,  "points_base": 950  },
-    { "label": "Intraday Trail | Standard | 100K | One Pack",             "price_usd": 39.90,  "points_base": 400  },
-    { "label": "Intraday Trail | Standard | 100K | Five Pack",            "price_usd": 175.00, "points_base": 1750 },
-    { "label": "Intraday Trail | Standard | 150K | One Pack",             "price_usd": 59.90,  "points_base": 600  },
-    { "label": "Intraday Trail | Standard | 150K | Five Pack",            "price_usd": 245.00, "points_base": 2450 },
-    { "label": "Intraday Trail | No Activation Fee | 25K | One Pack",     "price_usd": 69.00,  "points_base": 700  },
-    { "label": "Intraday Trail | No Activation Fee | 25K | Five Pack",    "price_usd": 295.00, "points_base": 2950 },
-    { "label": "Intraday Trail | No Activation Fee | 50K | One Pack",     "price_usd": 79.00,  "points_base": 800  },
-    { "label": "Intraday Trail | No Activation Fee | 50K | Five Pack",    "price_usd": 345.00, "points_base": 3450 },
-    { "label": "Intraday Trail | No Activation Fee | 100K | One Pack",    "price_usd": 109.00, "points_base": 1100 },
-    { "label": "Intraday Trail | No Activation Fee | 100K | Five Pack",   "price_usd": 495.00, "points_base": 4950 },
-    { "label": "Intraday Trail | No Activation Fee | 150K | One Pack",    "price_usd": 169.00, "points_base": 1700 },
-    { "label": "Intraday Trail | No Activation Fee | 150K | Five Pack",   "price_usd": 795.00, "points_base": 7950 },
-    { "label": "EOD Trail | Standard | 25K | One Pack",                   "price_usd": 39.00,  "points_base": 400  },
-    { "label": "EOD Trail | Standard | 25K | Five Pack",                  "price_usd": 175.00, "points_base": 1750 },
-    { "label": "EOD Trail | Standard | 50K | One Pack",                   "price_usd": 45.00,  "points_base": 450  },
-    { "label": "EOD Trail | Standard | 50K | Five Pack",                  "price_usd": 195.00, "points_base": 1950 },
-    { "label": "EOD Trail | Standard | 100K | One Pack",                  "price_usd": 59.00,  "points_base": 600  },
-    { "label": "EOD Trail | Standard | 100K | Five Pack",                 "price_usd": 275.00, "points_base": 2750 },
-    { "label": "EOD Trail | Standard | 150K | One Pack",                  "price_usd": 109.00, "points_base": 1100 },
-    { "label": "EOD Trail | Standard | 150K | Five Pack",                 "price_usd": 495.00, "points_base": 4950 },
-    { "label": "EOD Trail | No Activation Fee | 25K | One Pack",          "price_usd": 89.00,  "points_base": 900  },
-    { "label": "EOD Trail | No Activation Fee | 25K | Five Pack",         "price_usd": 395.00, "points_base": 3950 },
-    { "label": "EOD Trail | No Activation Fee | 50K | One Pack",          "price_usd": 109.00, "points_base": 1100 },
-    { "label": "EOD Trail | No Activation Fee | 50K | Five Pack",         "price_usd": 445.00, "points_base": 4450 },
-    { "label": "EOD Trail | No Activation Fee | 100K | One Pack",         "price_usd": 139.00, "points_base": 1400 },
-    { "label": "EOD Trail | No Activation Fee | 150K | One Pack",         "price_usd": 229.00, "points_base": 2300 }
-  ],
-  "alpha": [
-    { "label": "$25K (Zero)",      "price_usd": 63,  "monthly": true },
-    { "label": "$50K (Standard)",  "price_usd": 63,  "monthly": true },
-    { "label": "$50K (Zero)",      "price_usd": 95,  "monthly": true },
-    { "label": "$50K (Advanced)",  "price_usd": 111, "monthly": true },
-    { "label": "$100K (Standard)", "price_usd": 127, "monthly": true },
-    { "label": "$100K (Zero)",     "price_usd": 191, "monthly": true },
-    { "label": "$100K (Advanced)", "price_usd": 223, "monthly": true },
-    { "label": "$150K (Standard)", "price_usd": 191, "monthly": true },
-    { "label": "$150K (Advanced)", "price_usd": 335, "monthly": true }
+    {
+      "label": "Intraday Trail | Standard | 25K | One Pack",
+      "price_usd": 19.9,
+      "points_base": 200
+    },
+    {
+      "label": "Intraday Trail | Standard | 25K | Five Pack",
+      "price_usd": 85.0,
+      "points_base": 850
+    },
+    {
+      "label": "Intraday Trail | Standard | 50K | One Pack",
+      "price_usd": 24.9,
+      "points_base": 250
+    },
+    {
+      "label": "Intraday Trail | Standard | 50K | Five Pack",
+      "price_usd": 95.0,
+      "points_base": 950
+    },
+    {
+      "label": "Intraday Trail | Standard | 100K | One Pack",
+      "price_usd": 39.9,
+      "points_base": 400
+    },
+    {
+      "label": "Intraday Trail | Standard | 100K | Five Pack",
+      "price_usd": 175.0,
+      "points_base": 1750
+    },
+    {
+      "label": "Intraday Trail | Standard | 150K | One Pack",
+      "price_usd": 59.9,
+      "points_base": 600
+    },
+    {
+      "label": "Intraday Trail | Standard | 150K | Five Pack",
+      "price_usd": 245.0,
+      "points_base": 2450
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 25K | One Pack",
+      "price_usd": 69.0,
+      "points_base": 700
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 25K | Five Pack",
+      "price_usd": 295.0,
+      "points_base": 2950
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 50K | One Pack",
+      "price_usd": 79.0,
+      "points_base": 800
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 50K | Five Pack",
+      "price_usd": 345.0,
+      "points_base": 3450
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 100K | One Pack",
+      "price_usd": 109.0,
+      "points_base": 1100
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 100K | Five Pack",
+      "price_usd": 495.0,
+      "points_base": 4950
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 150K | One Pack",
+      "price_usd": 169.0,
+      "points_base": 1700
+    },
+    {
+      "label": "Intraday Trail | No Activation Fee | 150K | Five Pack",
+      "price_usd": 795.0,
+      "points_base": 7950
+    },
+    {
+      "label": "EOD Trail | Standard | 25K | One Pack",
+      "price_usd": 39.0,
+      "points_base": 400
+    },
+    {
+      "label": "EOD Trail | Standard | 25K | Five Pack",
+      "price_usd": 175.0,
+      "points_base": 1750
+    },
+    {
+      "label": "EOD Trail | Standard | 50K | One Pack",
+      "price_usd": 45.0,
+      "points_base": 450
+    },
+    {
+      "label": "EOD Trail | Standard | 50K | Five Pack",
+      "price_usd": 195.0,
+      "points_base": 1950
+    },
+    {
+      "label": "EOD Trail | Standard | 100K | One Pack",
+      "price_usd": 59.0,
+      "points_base": 600
+    },
+    {
+      "label": "EOD Trail | Standard | 100K | Five Pack",
+      "price_usd": 275.0,
+      "points_base": 2750
+    },
+    {
+      "label": "EOD Trail | Standard | 150K | One Pack",
+      "price_usd": 109.0,
+      "points_base": 1100
+    },
+    {
+      "label": "EOD Trail | Standard | 150K | Five Pack",
+      "price_usd": 495.0,
+      "points_base": 4950
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 25K | One Pack",
+      "price_usd": 89.0,
+      "points_base": 900
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 25K | Five Pack",
+      "price_usd": 395.0,
+      "points_base": 3950
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 50K | One Pack",
+      "price_usd": 109.0,
+      "points_base": 1100
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 50K | Five Pack",
+      "price_usd": 445.0,
+      "points_base": 4450
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 100K | One Pack",
+      "price_usd": 139.0,
+      "points_base": 1400
+    },
+    {
+      "label": "EOD Trail | No Activation Fee | 150K | One Pack",
+      "price_usd": 229.0,
+      "points_base": 2300
+    }
   ],
   "daytraders": [
-    { "label": "$25K (Trail)",        "price_usd": 24.90,  "points_base": 250  },
-    { "label": "$50K (Trail)",        "price_usd": 37.90,  "points_base": 375  },
-    { "label": "$150K (Trail)",       "price_usd": 69.90,  "points_base": 700  },
-    { "label": "$300K (Trail)",       "price_usd": 87.90,  "points_base": 875  },
-    { "label": "$25K (EOD)",          "price_usd": 30.90,  "points_base": 300  },
-    { "label": "$50K (EOD)",          "price_usd": 46.90,  "points_base": 475  },
-    { "label": "$150K (EOD)",         "price_usd": 89.90,  "points_base": 900  },
-    { "label": "$300K (EOD)",         "price_usd": 159.90, "points_base": 1600 },
-    { "label": "$25K (Static)",       "price_usd": 22.50,  "points_base": 225  },
-    { "label": "$50K (Static)",       "price_usd": 30.00,  "points_base": 300  },
-    { "label": "$100K (Static)",      "price_usd": 48.75,  "points_base": 500  },
-    { "label": "$150K (Static)",      "price_usd": 60.00,  "points_base": 600  },
-    { "label": "$25K (S2F)",          "price_usd": 222,    "points_base": 2225 },
-    { "label": "$50K (S2F)",          "price_usd": 342,    "points_base": 3425 },
-    { "label": "$150K (S2F)",         "price_usd": 495,    "points_base": 4950 },
-    { "label": "Core Plan (S2L)",     "price_usd": 179,    "points_base": 1800 },
-    { "label": "Edge Plan (S2L)",     "price_usd": 319,    "points_base": 3200 },
-    { "label": "Ultra Plan (S2L)",    "price_usd": 449,    "points_base": 4500 }
+    {
+      "label": "$25K (Trail)",
+      "price_usd": 24.9,
+      "points_base": 250
+    },
+    {
+      "label": "$50K (Trail)",
+      "price_usd": 37.9,
+      "points_base": 375
+    },
+    {
+      "label": "$150K (Trail)",
+      "price_usd": 69.9,
+      "points_base": 700
+    },
+    {
+      "label": "$300K (Trail)",
+      "price_usd": 87.9,
+      "points_base": 875
+    },
+    {
+      "label": "$25K (EOD)",
+      "price_usd": 30.9,
+      "points_base": 300
+    },
+    {
+      "label": "$50K (EOD)",
+      "price_usd": 46.9,
+      "points_base": 475
+    },
+    {
+      "label": "$150K (EOD)",
+      "price_usd": 89.9,
+      "points_base": 900
+    },
+    {
+      "label": "$300K (EOD)",
+      "price_usd": 159.9,
+      "points_base": 1600
+    },
+    {
+      "label": "$25K (Static)",
+      "price_usd": 22.5,
+      "points_base": 225
+    },
+    {
+      "label": "$50K (Static)",
+      "price_usd": 30.0,
+      "points_base": 300
+    },
+    {
+      "label": "$100K (Static)",
+      "price_usd": 48.75,
+      "points_base": 500
+    },
+    {
+      "label": "$150K (Static)",
+      "price_usd": 60.0,
+      "points_base": 600
+    },
+    {
+      "label": "$25K (S2F)",
+      "price_usd": 222,
+      "points_base": 2225
+    },
+    {
+      "label": "$50K (S2F)",
+      "price_usd": 342,
+      "points_base": 3425
+    },
+    {
+      "label": "$150K (S2F)",
+      "price_usd": 495,
+      "points_base": 4950
+    },
+    {
+      "label": "Core Plan (S2L)",
+      "price_usd": 179,
+      "points_base": 1800
+    },
+    {
+      "label": "Edge Plan (S2L)",
+      "price_usd": 319,
+      "points_base": 3200
+    },
+    {
+      "label": "Ultra Plan (S2L)",
+      "price_usd": 449,
+      "points_base": 4500
+    }
   ],
   "fundedseat": [
-    { "label": "$25K (1-Step Daily)",      "price_usd": 69.95,  "points_base": 700  },
-    { "label": "$50K (1-Step Daily)",      "price_usd": 99.95,  "points_base": 1000 },
-    { "label": "$100K (1-Step Daily)",     "price_usd": 169.95, "points_base": 1700 },
-    { "label": "$150K (1-Step Daily)",     "price_usd": 239.95, "points_base": 2400 },
-    { "label": "$25K (1-Step Flex)",       "price_usd": 64.95,  "points_base": 650  },
-    { "label": "$50K (1-Step Flex)",       "price_usd": 84.95,  "points_base": 850  },
-    { "label": "$100K (1-Step Flex)",      "price_usd": 124.95, "points_base": 1250 },
-    { "label": "$150K (1-Step Flex)",      "price_usd": 249.95, "points_base": 2500 },
-    { "label": "$25K (1-Step Daily Pro)",  "price_usd": 79.95,  "points_base": 800  },
-    { "label": "$50K (1-Step Daily Pro)",  "price_usd": 119.95, "points_base": 1200 },
-    { "label": "$100K (1-Step Daily Pro)", "price_usd": 189.95, "points_base": 1900 },
-    { "label": "$25K (1-Step Sprint)",     "price_usd": 74.95,  "points_base": 750  },
-    { "label": "$50K (1-Step Sprint)",     "price_usd": 109.95, "points_base": 1100 },
-    { "label": "$100K (1-Step Sprint)",    "price_usd": 164.95, "points_base": 1650 },
-    { "label": "$150K (1-Step Sprint)",    "price_usd": 259.95, "points_base": 2600 },
-    { "label": "$25K (Instant Direct)",    "price_usd": 199.95, "points_base": 2000 },
-    { "label": "$50K (Instant Direct)",    "price_usd": 299.95, "points_base": 3000 },
-    { "label": "$100K (Instant Direct)",   "price_usd": 449.95, "points_base": 4500 },
-    { "label": "$25K (Instant Bolt)",      "price_usd": 189.95, "points_base": 1900 },
-    { "label": "$50K (Instant Bolt)",      "price_usd": 299.95, "points_base": 3000 },
-    { "label": "$100K (Instant Bolt)",     "price_usd": 399.95, "points_base": 4000 }
+    {
+      "label": "$25K (1-Step Daily)",
+      "price_usd": 69.95,
+      "points_base": 700
+    },
+    {
+      "label": "$50K (1-Step Daily)",
+      "price_usd": 99.95,
+      "points_base": 1000
+    },
+    {
+      "label": "$100K (1-Step Daily)",
+      "price_usd": 169.95,
+      "points_base": 1700
+    },
+    {
+      "label": "$150K (1-Step Daily)",
+      "price_usd": 239.95,
+      "points_base": 2400
+    },
+    {
+      "label": "$25K (1-Step Flex)",
+      "price_usd": 64.95,
+      "points_base": 650
+    },
+    {
+      "label": "$50K (1-Step Flex)",
+      "price_usd": 84.95,
+      "points_base": 850
+    },
+    {
+      "label": "$100K (1-Step Flex)",
+      "price_usd": 124.95,
+      "points_base": 1250
+    },
+    {
+      "label": "$150K (1-Step Flex)",
+      "price_usd": 249.95,
+      "points_base": 2500
+    },
+    {
+      "label": "$25K (1-Step Daily Pro)",
+      "price_usd": 79.95,
+      "points_base": 800
+    },
+    {
+      "label": "$50K (1-Step Daily Pro)",
+      "price_usd": 119.95,
+      "points_base": 1200
+    },
+    {
+      "label": "$100K (1-Step Daily Pro)",
+      "price_usd": 189.95,
+      "points_base": 1900
+    },
+    {
+      "label": "$25K (1-Step Sprint)",
+      "price_usd": 74.95,
+      "points_base": 750
+    },
+    {
+      "label": "$50K (1-Step Sprint)",
+      "price_usd": 109.95,
+      "points_base": 1100
+    },
+    {
+      "label": "$100K (1-Step Sprint)",
+      "price_usd": 164.95,
+      "points_base": 1650
+    },
+    {
+      "label": "$150K (1-Step Sprint)",
+      "price_usd": 259.95,
+      "points_base": 2600
+    },
+    {
+      "label": "$25K (Instant Direct)",
+      "price_usd": 199.95,
+      "points_base": 2000
+    },
+    {
+      "label": "$50K (Instant Direct)",
+      "price_usd": 299.95,
+      "points_base": 3000
+    },
+    {
+      "label": "$100K (Instant Direct)",
+      "price_usd": 449.95,
+      "points_base": 4500
+    },
+    {
+      "label": "$25K (Instant Bolt)",
+      "price_usd": 189.95,
+      "points_base": 1900
+    },
+    {
+      "label": "$50K (Instant Bolt)",
+      "price_usd": 299.95,
+      "points_base": 3000
+    },
+    {
+      "label": "$100K (Instant Bolt)",
+      "price_usd": 399.95,
+      "points_base": 4000
+    }
   ],
   "lucid": [
-    { "label": "$25K (LucidPro)",     "price_usd": 94.50,  "points_base": 950  },
-    { "label": "$50K (LucidPro)",     "price_usd": 129.50, "points_base": 1300 },
-    { "label": "$100K (LucidPro)",    "price_usd": 199.50, "points_base": 2000 },
-    { "label": "$150K (LucidPro)",    "price_usd": 259,    "points_base": 2600 },
-    { "label": "$25K (LucidFlex)",    "price_usd": 70,     "points_base": 700  },
-    { "label": "$50K (LucidFlex)",    "price_usd": 98,     "points_base": 975  },
-    { "label": "$100K (LucidFlex)",   "price_usd": 157.50, "points_base": 1575 },
-    { "label": "$150K (LucidFlex)",   "price_usd": 294,    "points_base": 2950 },
-    { "label": "$25K (LucidDirect)",  "price_usd": 238,    "points_base": 2375 },
-    { "label": "$50K (LucidDirect)",  "price_usd": 364,    "points_base": 3650 },
-    { "label": "$100K (LucidDirect)", "price_usd": 490,    "points_base": 4900 },
-    { "label": "$150K (LucidDirect)", "price_usd": 588,    "points_base": 5875 }
+    {
+      "label": "$25K (LucidPro)",
+      "price_usd": 94.5,
+      "points_base": 950
+    },
+    {
+      "label": "$50K (LucidPro)",
+      "price_usd": 129.5,
+      "points_base": 1300
+    },
+    {
+      "label": "$100K (LucidPro)",
+      "price_usd": 199.5,
+      "points_base": 2000
+    },
+    {
+      "label": "$150K (LucidPro)",
+      "price_usd": 259,
+      "points_base": 2600
+    },
+    {
+      "label": "$25K (LucidFlex)",
+      "price_usd": 70,
+      "points_base": 700
+    },
+    {
+      "label": "$50K (LucidFlex)",
+      "price_usd": 98,
+      "points_base": 975
+    },
+    {
+      "label": "$100K (LucidFlex)",
+      "price_usd": 157.5,
+      "points_base": 1575
+    },
+    {
+      "label": "$150K (LucidFlex)",
+      "price_usd": 294,
+      "points_base": 2950
+    },
+    {
+      "label": "$25K (LucidDirect)",
+      "price_usd": 238,
+      "points_base": 2375
+    },
+    {
+      "label": "$50K (LucidDirect)",
+      "price_usd": 364,
+      "points_base": 3650
+    },
+    {
+      "label": "$100K (LucidDirect)",
+      "price_usd": 490,
+      "points_base": 4900
+    },
+    {
+      "label": "$150K (LucidDirect)",
+      "price_usd": 588,
+      "points_base": 5875
+    }
   ],
   "mffu": [
-    { "label": "$25K (Rapid)",    "price_usd": 87,    "points_base": 875  },
-    { "label": "$50K (Rapid)",    "price_usd": 114,   "points_base": 1150 },
-    { "label": "$100K (Rapid)",   "price_usd": 213.60,"points_base": 2125 },
-    { "label": "$150K (Rapid)",   "price_usd": 277.60,"points_base": 2775 },
-    { "label": "$50K (Pro)",      "price_usd": 114,   "points_base": 1150 },
-    { "label": "$100K (Pro)",     "price_usd": 172,   "points_base": 1725 },
-    { "label": "$150K (Pro)",     "price_usd": 239,   "points_base": 2400 },
-    { "label": "$50K (Builder)",  "price_usd": 91.80, "points_base": 925  },
-    { "label": "$25K (Flex)",     "price_usd": 57,    "points_base": 575  },
-    { "label": "$50K (Flex)",     "price_usd": 91.80, "points_base": 925  }
+    {
+      "label": "$25K (Rapid)",
+      "price_usd": 87,
+      "points_base": 875
+    },
+    {
+      "label": "$50K (Rapid)",
+      "price_usd": 114,
+      "points_base": 1150
+    },
+    {
+      "label": "$100K (Rapid)",
+      "price_usd": 213.6,
+      "points_base": 2125
+    },
+    {
+      "label": "$150K (Rapid)",
+      "price_usd": 277.6,
+      "points_base": 2775
+    },
+    {
+      "label": "$50K (Pro)",
+      "price_usd": 114,
+      "points_base": 1150
+    },
+    {
+      "label": "$100K (Pro)",
+      "price_usd": 172,
+      "points_base": 1725
+    },
+    {
+      "label": "$150K (Pro)",
+      "price_usd": 239,
+      "points_base": 2400
+    },
+    {
+      "label": "$50K (Builder)",
+      "price_usd": 91.8,
+      "points_base": 925
+    },
+    {
+      "label": "$25K (Flex)",
+      "price_usd": 57,
+      "points_base": 575
+    },
+    {
+      "label": "$50K (Flex)",
+      "price_usd": 91.8,
+      "points_base": 925
+    }
   ],
   "nexgen": [
-    { "label": "$25K (Evaluation)",  "price_usd": 29.80, "monthly": true, "points_base": 300  },
-    { "label": "$50K (Evaluation)",  "price_usd": 49.80, "monthly": true, "points_base": 500  },
-    { "label": "$75K (Evaluation)",  "price_usd": 59.80, "monthly": true, "points_base": 600  },
-    { "label": "$100K (Evaluation)", "price_usd": 63.80, "monthly": true, "points_base": 650  },
-    { "label": "$150K (Evaluation)", "price_usd": 79.80, "monthly": true, "points_base": 800  },
-    { "label": "$25K (Instant)",     "price_usd": 299,   "points_base": 3000 },
-    { "label": "$50K (Instant)",     "price_usd": 399,   "points_base": 4000 },
-    { "label": "$75K (Instant)",     "price_usd": 499,   "points_base": 5000 },
-    { "label": "$100K (Instant)",    "price_usd": 599,   "points_base": 6000 },
-    { "label": "$150K (Instant)",    "price_usd": 799,   "points_base": 8000 }
+    {
+      "label": "$25K (Evaluation)",
+      "price_usd": 29.8,
+      "monthly": true,
+      "points_base": 300
+    },
+    {
+      "label": "$50K (Evaluation)",
+      "price_usd": 49.8,
+      "monthly": true,
+      "points_base": 500
+    },
+    {
+      "label": "$75K (Evaluation)",
+      "price_usd": 59.8,
+      "monthly": true,
+      "points_base": 600
+    },
+    {
+      "label": "$100K (Evaluation)",
+      "price_usd": 63.8,
+      "monthly": true,
+      "points_base": 650
+    },
+    {
+      "label": "$150K (Evaluation)",
+      "price_usd": 79.8,
+      "monthly": true,
+      "points_base": 800
+    },
+    {
+      "label": "$25K (Instant)",
+      "price_usd": 299,
+      "points_base": 3000
+    },
+    {
+      "label": "$50K (Instant)",
+      "price_usd": 399,
+      "points_base": 4000
+    },
+    {
+      "label": "$75K (Instant)",
+      "price_usd": 499,
+      "points_base": 5000
+    },
+    {
+      "label": "$100K (Instant)",
+      "price_usd": 599,
+      "points_base": 6000
+    },
+    {
+      "label": "$150K (Instant)",
+      "price_usd": 799,
+      "points_base": 8000
+    }
   ],
   "phidias": [
-    { "label": "$25K (Express To Live)",  "price_usd": 277,  "points_base": 2775  },
-    { "label": "$50K (Express To Live)",  "price_usd": 723,  "points_base": 7225  },
-    { "label": "$100K (Express To Live)", "price_usd": 900,  "points_base": 9000  },
-    { "label": "$150K (Express To Live)", "price_usd": 1123, "points_base": 11225 },
-    { "label": "$50K (Fundamental)",      "price_usd": 580,  "points_base": 5800  },
-    { "label": "$100K (Fundamental)",     "price_usd": 723,  "points_base": 7225  },
-    { "label": "$150K (Fundamental)",     "price_usd": 863,  "points_base": 8625  },
-    { "label": "$50K (Premium)",          "price_usd": 723,  "points_base": 7225  },
-    { "label": "$100K (Premium)",         "price_usd": 900,  "points_base": 9000  },
-    { "label": "$150K (Premium)",         "price_usd": 1123, "points_base": 11225 },
-    { "label": "$10K (Challenge)",        "price_usd": 66,   "points_base": 650   }
+    {
+      "label": "$25K (Express To Live)",
+      "price_usd": 277,
+      "points_base": 2775
+    },
+    {
+      "label": "$50K (Express To Live)",
+      "price_usd": 723,
+      "points_base": 7225
+    },
+    {
+      "label": "$100K (Express To Live)",
+      "price_usd": 900,
+      "points_base": 9000
+    },
+    {
+      "label": "$150K (Express To Live)",
+      "price_usd": 1123,
+      "points_base": 11225
+    },
+    {
+      "label": "$50K (Fundamental)",
+      "price_usd": 580,
+      "points_base": 5800
+    },
+    {
+      "label": "$100K (Fundamental)",
+      "price_usd": 723,
+      "points_base": 7225
+    },
+    {
+      "label": "$150K (Fundamental)",
+      "price_usd": 863,
+      "points_base": 8625
+    },
+    {
+      "label": "$50K (Premium)",
+      "price_usd": 723,
+      "points_base": 7225
+    },
+    {
+      "label": "$100K (Premium)",
+      "price_usd": 900,
+      "points_base": 9000
+    },
+    {
+      "label": "$150K (Premium)",
+      "price_usd": 1123,
+      "points_base": 11225
+    },
+    {
+      "label": "$10K (Challenge)",
+      "price_usd": 66,
+      "points_base": 650
+    }
   ],
   "topone": [
-    { "label": "$25K (Elite Daily)",         "price_usd": 89,  "monthly": true, "points_base": 900  },
-    { "label": "$50K (Elite Daily)",         "price_usd": 109, "monthly": true, "points_base": 1100 },
-    { "label": "$100K (Elite Daily)",        "price_usd": 199, "monthly": true, "points_base": 2000 },
-    { "label": "$25K (Elite Access)",        "price_usd": 39,  "points_base": 400  },
-    { "label": "$50K (Elite Access)",        "price_usd": 39,  "points_base": 400  },
-    { "label": "$100K (Elite Access)",       "price_usd": 39,  "points_base": 400  },
-    { "label": "$150K (Elite Access)",       "price_usd": 39,  "points_base": 400  },
-    { "label": "$25K (Instant Sim Funded)",  "price_usd": 210, "points_base": 2100 },
-    { "label": "$50K (Instant Sim Funded)",  "price_usd": 340, "points_base": 3400 },
-    { "label": "$100K (Instant Sim Funded)", "price_usd": 411, "points_base": 4100 },
-    { "label": "$150K (Instant Sim Funded)", "price_usd": 470, "points_base": 4700 },
-    { "label": "$25K (IGNITE)",              "price_usd": 131, "points_base": 1300 },
-    { "label": "$50K (IGNITE)",              "price_usd": 239, "points_base": 2400 },
-    { "label": "$100K (IGNITE)",             "price_usd": 338, "points_base": 3375 },
-    { "label": "$150K (IGNITE)",             "price_usd": 479, "points_base": 4800 }
+    {
+      "label": "$25K (Elite Daily)",
+      "price_usd": 89,
+      "monthly": true,
+      "points_base": 900
+    },
+    {
+      "label": "$50K (Elite Daily)",
+      "price_usd": 109,
+      "monthly": true,
+      "points_base": 1100
+    },
+    {
+      "label": "$100K (Elite Daily)",
+      "price_usd": 199,
+      "monthly": true,
+      "points_base": 2000
+    },
+    {
+      "label": "$25K (Elite Access)",
+      "price_usd": 39,
+      "points_base": 400
+    },
+    {
+      "label": "$50K (Elite Access)",
+      "price_usd": 39,
+      "points_base": 400
+    },
+    {
+      "label": "$100K (Elite Access)",
+      "price_usd": 39,
+      "points_base": 400
+    },
+    {
+      "label": "$150K (Elite Access)",
+      "price_usd": 39,
+      "points_base": 400
+    },
+    {
+      "label": "$25K (Instant Sim Funded)",
+      "price_usd": 210,
+      "points_base": 2100
+    },
+    {
+      "label": "$50K (Instant Sim Funded)",
+      "price_usd": 340,
+      "points_base": 3400
+    },
+    {
+      "label": "$100K (Instant Sim Funded)",
+      "price_usd": 411,
+      "points_base": 4100
+    },
+    {
+      "label": "$150K (Instant Sim Funded)",
+      "price_usd": 470,
+      "points_base": 4700
+    },
+    {
+      "label": "$25K (IGNITE)",
+      "price_usd": 131,
+      "points_base": 1300
+    },
+    {
+      "label": "$50K (IGNITE)",
+      "price_usd": 239,
+      "points_base": 2400
+    },
+    {
+      "label": "$100K (IGNITE)",
+      "price_usd": 338,
+      "points_base": 3375
+    },
+    {
+      "label": "$150K (IGNITE)",
+      "price_usd": 479,
+      "points_base": 4800
+    }
   ],
   "tradeify": [
-    { "label": "$25K (Growth)",    "price_usd": 64,  "points_base": 650  },
-    { "label": "$50K (Growth)",    "price_usd": 94,  "points_base": 950  },
-    { "label": "$100K (Growth)",   "price_usd": 166, "points_base": 1650 },
-    { "label": "$150K (Growth)",   "price_usd": 240, "points_base": 2400 },
-    { "label": "$25K (Select)",    "price_usd": 71,  "points_base": 700  },
-    { "label": "$50K (Select)",    "price_usd": 107, "points_base": 1075 },
-    { "label": "$100K (Select)",   "price_usd": 172, "points_base": 1725 },
-    { "label": "$150K (Select)",   "price_usd": 248, "points_base": 2475 },
-    { "label": "$25K (Lightning)", "price_usd": 224, "points_base": 2250 },
-    { "label": "$50K (Lightning)", "price_usd": 320, "points_base": 3200 },
-    { "label": "$100K (Lightning)","price_usd": 429, "points_base": 4300 },
-    { "label": "$150K (Lightning)","price_usd": 517, "points_base": 5175 }
-  ],
-  "yrm": [
-    { "label": "$25K (Starter)",        "price_usd": null, "monthly": true },
-    { "label": "$50K (Starter)",        "price_usd": 37,   "monthly": true },
-    { "label": "$100K (Starter)",       "price_usd": 95,   "monthly": true },
-    { "label": "$150K (Starter)",       "price_usd": 145,  "monthly": true },
-    { "label": "$25K (Instant Prime)",  "price_usd": 399  },
-    { "label": "$50K (Instant Prime)",  "price_usd": 499  },
-    { "label": "$100K (Instant Prime)", "price_usd": null  },
-    { "label": "$150K (Instant Prime)", "price_usd": null  }
+    {
+      "label": "$25K (Growth)",
+      "price_usd": 64,
+      "points_base": 650
+    },
+    {
+      "label": "$50K (Growth)",
+      "price_usd": 94,
+      "points_base": 950
+    },
+    {
+      "label": "$100K (Growth)",
+      "price_usd": 166,
+      "points_base": 1650
+    },
+    {
+      "label": "$150K (Growth)",
+      "price_usd": 240,
+      "points_base": 2400
+    },
+    {
+      "label": "$25K (Select)",
+      "price_usd": 71,
+      "points_base": 700
+    },
+    {
+      "label": "$50K (Select)",
+      "price_usd": 107,
+      "points_base": 1075
+    },
+    {
+      "label": "$100K (Select)",
+      "price_usd": 172,
+      "points_base": 1725
+    },
+    {
+      "label": "$150K (Select)",
+      "price_usd": 248,
+      "points_base": 2475
+    },
+    {
+      "label": "$25K (Lightning)",
+      "price_usd": 224,
+      "points_base": 2250
+    },
+    {
+      "label": "$50K (Lightning)",
+      "price_usd": 320,
+      "points_base": 3200
+    },
+    {
+      "label": "$100K (Lightning)",
+      "price_usd": 429,
+      "points_base": 4300
+    },
+    {
+      "label": "$150K (Lightning)",
+      "price_usd": 517,
+      "points_base": 5175
+    }
   ]
 }
