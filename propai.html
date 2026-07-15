@@ -16,50 +16,44 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,300..800&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
 <style>
   :root {
-    --bg-0: #020617;
-    --bg-1: #071426;
-    --bg-2: #0a1c3a;
-    --blue: #2c9eff;
-    --blue-2: #1a55dd;
-    --gold: #ffcf40;
+    --bg-0: #030712;
+    --bg-1: #081428;
+    --bg-2: #0b1d3a;
+    --blue: #00c2ff;
+    --blue-2: #1e90ff;
+    --gold: #8be4ff;
     --text: #e9ecff;
-    --muted: #7a83a8;
+    --muted: #aab8cf;
     --danger: #ff4d6d;
     --success: #34d399;
-    --card: rgba(10, 28, 58, 0.6);
-    --border: rgba(44, 158, 255, 0.25);
+    --card: rgba(11, 29, 58, 0.6);
+    --border: rgba(0, 194, 255, 0.25);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     min-height: 100%;
-    background: radial-gradient(ellipse at top, var(--bg-2) 0%, var(--bg-1) 35%, var(--bg-0) 100%);
+    background:
+      radial-gradient(circle at top center, #1e40af 0%, transparent 60%),
+      linear-gradient(180deg, #0b1d3a 0%, #030712 100%);
+    background-attachment: fixed;
+    background-color: #030712;
     color: var(--text);
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.55;
   }
   body::before {
     content: "";
     position: fixed; inset: 0;
     background:
-      radial-gradient(circle at 15% 20%, rgba(44, 158, 255, 0.18) 0%, transparent 35%),
-      radial-gradient(circle at 85% 80%, rgba(255, 207, 64, 0.14) 0%, transparent 40%);
+      radial-gradient(circle at 15% 20%, rgba(0, 194, 255, 0.18) 0%, transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(30, 144, 255, 0.14) 0%, transparent 40%);
     pointer-events: none; z-index: 0;
-  }
-  body::after {
-    content: "";
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(rgba(44, 158, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(44, 158, 255, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none; z-index: 0;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
   }
 
   .nav {
@@ -82,6 +76,11 @@
     gap: 8px;
   }
   .nav a.brand i { color: var(--blue); }
+  .nav .brand-logo {
+    height: 48px;
+    display: block;
+    filter: drop-shadow(0 0 14px rgba(0, 194, 255, 0.25));
+  }
   .nav .back {
     color: var(--muted);
     text-decoration: none;
@@ -110,7 +109,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(44, 158, 255, 0.12);
+    background: rgba(0, 194, 255, 0.12);
     border: 1px solid var(--border);
     color: var(--blue);
     font-size: 11px;
@@ -133,8 +132,10 @@
     50% { opacity: 0.4; }
   }
   h1 {
+    font-family: "Space Grotesk", "DM Sans", sans-serif;
+    letter-spacing: -0.02em;
     font-size: 34px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
     background: linear-gradient(135deg, #fff 0%, var(--blue) 100%);
     -webkit-background-clip: text;
@@ -207,7 +208,7 @@
     background: linear-gradient(135deg, var(--blue) 0%, var(--blue-2) 100%);
     color: white;
     border-bottom-right-radius: 6px;
-    box-shadow: 0 4px 14px rgba(44, 158, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(0, 194, 255, 0.25);
   }
   .msg.bot {
     align-self: flex-start;
@@ -297,7 +298,7 @@
     overflow-x: auto;
   }
   .msg.bot table thead {
-    background: rgba(44, 158, 255, 0.15);
+    background: rgba(0, 194, 255, 0.15);
   }
   .msg.bot table th {
     padding: 8px 10px;
@@ -312,13 +313,13 @@
   }
   .msg.bot table td {
     padding: 7px 10px;
-    border-bottom: 1px solid rgba(44, 158, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 194, 255, 0.08);
   }
   .msg.bot table tr:last-child td {
     border-bottom: none;
   }
   .msg.bot table tr:hover {
-    background: rgba(44, 158, 255, 0.05);
+    background: rgba(0, 194, 255, 0.05);
   }
   .msg.bot .cursor {
     display: inline-block;
@@ -380,16 +381,16 @@
     border: none;
     width: 42px;
     height: 42px;
-    border-radius: 12px;
+    border-radius: 999px;
     cursor: pointer;
     font-size: 16px;
     transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
-    box-shadow: 0 4px 14px rgba(44, 158, 255, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 194, 255, 0.35);
     flex-shrink: 0;
   }
   .send-btn:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(44, 158, 255, 0.5);
+    box-shadow: 0 6px 18px rgba(0, 194, 255, 0.5);
   }
   .send-btn:disabled {
     opacity: 0.5;
@@ -423,7 +424,7 @@
 
 <nav class="nav">
   <a href="/" class="brand">
-    <i class="fas fa-robot"></i> Bro Trading
+    <img src="Bro_Trading_logo-removebg-preview.png" alt="Bro Trading" class="brand-logo" />
   </a>
   <a href="/" class="back">
     <i class="fas fa-arrow-left"></i> Back to site

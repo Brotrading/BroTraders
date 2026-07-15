@@ -7,6 +7,5 @@
   { "firm": "Phidias",              "logo": "../Photos/firms/phidias.jpeg",        "eval": 116,    "activation": 0,   "reset": 95, "truecost": 116,    "code": "BROTRADING", "website": "https://propfirmbro.com/go/phidias" },
   { "firm": "YRM Prop",             "logo": "../Photos/firms/yrmprop.svg",         "eval": 74,     "activation": 0,   "reset": 50, "truecost": 74,     "code": "BRO",        "website": "https://propfirmbro.com/go/yrm" },
   { "firm": "NexGen Funding",       "logo": "../Photos/firms/nexgen.png",          "eval": 329,    "activation": 0,   "reset": 99, "truecost": 329,    "code": "BRO",        "website": "https://propfirmbro.com/go/nexgen" },
-  { "firm": "Top One Futures",      "logo": "../Photos/firms/topone.svg",          "eval": 63,     "activation": 149, "reset": 70, "truecost": 212,    "code": "BRO",        "website": "https://propfirmbro.com/go/topone" },
-  { "firm": "Alpha Futures",        "logo": "../Photos/firms/alphafutures.png",    "eval": 63.20,  "activation": 0,   "reset": 60, "truecost": 63.20,  "code": "BROTRADING", "website": "https://propfirmbro.com/go/alpha" }
+  { "firm": "Top One Futures",      "logo": "../Photos/firms/topone.svg",          "eval": 63,     "activation": 149, "reset": 70, "truecost": 212,    "code": "BRO",        "website": "https://propfirmbro.com/go/topone" }
 ]

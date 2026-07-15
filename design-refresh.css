@@ -1,0 +1,355 @@
+/* ==========================================================================
+   BroTraders · Design Refresh v2 — bold edition
+   Unifies colors, typography, buttons and surfaces across the homepage,
+   plus hero glow, animated gradient headline, shimmer CTAs and scroll
+   reveals. Loaded last in <body> so it overrides section inline styles.
+   ========================================================================== */
+
+:root {
+  --bt-accent: #00c2ff;
+  --bt-accent-2: #1e90ff;
+  --bt-gradient: linear-gradient(135deg, #00c2ff, #1e90ff);
+  --bt-base: #030712;
+  --bt-surface: #0b1d3a;
+  --bt-text-muted: #aab8cf;
+  --bt-line: rgba(255, 255, 255, 0.08);
+  --bt-line-accent: rgba(0, 194, 255, 0.35);
+  --bt-radius-card: 16px;
+  --bt-radius-pill: 999px;
+}
+
+::selection {
+  background: rgba(0, 194, 255, 0.3);
+  color: #fff;
+}
+
+/* Page scrollbar on brand */
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body::-webkit-scrollbar-track {
+  background: #060b16;
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00c2ff, #1e90ff);
+  border-radius: 8px;
+  border: 2px solid #060b16;
+}
+
+/* ==========================================================================
+   HERO — glow orbs, grid overlay, animated gradient headline
+   ========================================================================== */
+
+.pfirms-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* floating cyan glow orbs */
+.pfirms-section::before,
+.pfirms-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+.pfirms-section::before {
+  width: 480px;
+  height: 480px;
+  left: -140px;
+  top: -80px;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.22), transparent 70%);
+  animation: bt-drift 11s ease-in-out infinite alternate;
+}
+.pfirms-section::after {
+  width: 420px;
+  height: 420px;
+  right: -120px;
+  top: 120px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.18), transparent 70%);
+  animation: bt-drift 13s ease-in-out infinite alternate-reverse;
+}
+@keyframes bt-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(60px, 40px) scale(1.15);
+  }
+}
+
+.pfirms-head {
+  position: relative;
+  z-index: 1;
+}
+
+.pfirms-head h2 {
+  font-size: clamp(40px, 6.5vw, 74px) !important;
+  line-height: 1.05;
+  text-shadow: 0 0 60px rgba(0, 194, 255, 0.35);
+}
+
+/* animated gradient shine on the second headline line */
+.pfirms-head h2 span {
+  display: inline-block;
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 700;
+  background: linear-gradient(90deg, #00c2ff, #8be4ff, #1e90ff, #00c2ff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: bt-sheen 5s linear infinite;
+  text-shadow: none;
+}
+@keyframes bt-sheen {
+  to {
+    background-position: 300% 0;
+  }
+}
+
+.pfirms-head p,
+.yt-content p {
+  color: var(--bt-text-muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   ONE BUTTON SYSTEM — pills, glow, shimmer sweep
+   ========================================================================== */
+
+.pfirms-btn-primary,
+.pfirms-btn-outline,
+.zx-visit-btn,
+.yt-btn,
+.bro-btn,
+.bt-btn,
+.bt-cta {
+  border-radius: var(--bt-radius-pill);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.22s ease;
+}
+
+.pfirms-btn-primary,
+.yt-btn,
+.zx-visit-btn {
+  background: var(--bt-gradient);
+  border: none;
+  box-shadow: 0 6px 24px rgba(0, 194, 255, 0.35);
+}
+
+/* shimmer sweep across the big CTAs */
+.pfirms-btn-primary,
+.yt-btn,
+.bt-btn {
+  position: relative;
+  overflow: hidden;
+}
+.pfirms-btn-primary::after,
+.yt-btn::after,
+.bt-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  animation: bt-shine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes bt-shine {
+  0% {
+    transform: translateX(-130%);
+  }
+  55%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+.pfirms-btn-primary:hover,
+.yt-btn:hover,
+.zx-visit-btn:hover,
+.bro-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(0, 194, 255, 0.55);
+}
+
+.pfirms-btn-outline {
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px);
+}
+.pfirms-btn-outline:hover {
+  border-color: var(--bt-accent);
+  color: var(--bt-accent);
+  background: rgba(0, 194, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 26px rgba(0, 194, 255, 0.25);
+}
+
+/* ==========================================================================
+   HERO STAT PILLS — glass, glow, lift
+   ========================================================================== */
+
+.pfirms-stat {
+  background: rgba(11, 29, 58, 0.65);
+  border: 1px solid var(--bt-line-accent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.pfirms-stat:hover {
+  transform: translateY(-3px);
+  border-color: var(--bt-accent);
+  box-shadow: 0 8px 26px rgba(0, 194, 255, 0.3);
+}
+.pfirms-stat strong {
+  color: var(--bt-accent);
+}
+
+/* ==========================================================================
+   COMPARISON TABLE — glass container, cyan accents
+   ========================================================================== */
+
+#zx-table {
+  border-radius: var(--bt-radius-card);
+  overflow: hidden;
+  border: 1px solid var(--bt-line);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+#zx-table th {
+  border-bottom: 2px solid rgba(0, 194, 255, 0.4) !important;
+}
+#zx-table tbody tr {
+  transition: background 0.15s ease;
+}
+#zx-table tbody tr:hover {
+  background: rgba(0, 194, 255, 0.07);
+}
+.zx-code {
+  border: 1px solid rgba(0, 194, 255, 0.3);
+}
+
+/* ==========================================================================
+   FEATURE CARDS — gradient edge, icon glow, big lift
+   ========================================================================== */
+
+.ctf-compare-card {
+  position: relative;
+  border-radius: var(--bt-radius-card);
+  border: 1px solid var(--bt-line);
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.ctf-compare-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bt-gradient);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.ctf-compare-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--bt-line-accent);
+  box-shadow: 0 18px 44px rgba(0, 194, 255, 0.22);
+}
+.ctf-compare-card:hover::before {
+  opacity: 1;
+}
+.ctf-card-icon {
+  filter: drop-shadow(0 0 12px rgba(0, 194, 255, 0.5));
+}
+
+/* ==========================================================================
+   CAROUSEL CARDS — deeper glass
+   ========================================================================== */
+
+.bro-card {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+.bro-discount {
+  text-shadow: 0 0 24px rgba(0, 194, 255, 0.5);
+}
+
+/* ==========================================================================
+   YOUTUBE SECTION — video glow frame
+   ========================================================================== */
+
+.yt-video-wrapper {
+  border-radius: var(--bt-radius-card);
+  overflow: hidden;
+  border: 1px solid var(--bt-line-accent);
+  box-shadow: 0 0 0 1px rgba(0, 194, 255, 0.15),
+    0 24px 70px rgba(0, 194, 255, 0.18);
+}
+
+/* ==========================================================================
+   GIVEAWAY POPUP — back on brand (was purple)
+   ========================================================================== */
+
+.bt-btn {
+  background: var(--bt-gradient) !important;
+  box-shadow: 0 6px 24px rgba(0, 194, 255, 0.35) !important;
+}
+.bt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(0, 194, 255, 0.5) !important;
+}
+#giveawayPopup input:focus,
+.bt-popup-overlay input:focus {
+  border-color: var(--bt-accent) !important;
+  box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2) !important;
+  outline: none;
+}
+
+/* ==========================================================================
+   SCROLL REVEALS — cards float up as they enter the viewport
+   (modern browsers only; older ones just show everything, no harm)
+   ========================================================================== */
+
+@supports (animation-timeline: view()) {
+  .ctf-compare-card,
+  .yt-container,
+  .zx-comparison-section h2 {
+    animation: bt-rise both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+  @keyframes bt-rise {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ==========================================================================
+   FOCUS VISIBILITY (accessibility)
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--bt-accent);
+  outline-offset: 3px;
+}
