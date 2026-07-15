@@ -53,15 +53,24 @@ def push(row):
     rows.append(row)
 
 # Apex Trader Funding
+# Geverifieerd 2026-07-16 live vanaf de Apex product picker (alle combos).
 apex_variants = [
-    {"size":"25K Trail",  "goal":1500,"dd":1000,"ddt":"Trailing","eval":19.90,"activation":89, "truecost":109},
-    {"size":"50K Trail",  "goal":3000,"dd":2000,"ddt":"Trailing","eval":24.90,"activation":69, "truecost":94},
-    {"size":"100K Trail", "goal":6000,"dd":3000,"ddt":"Trailing","eval":39.90,"activation":119,"truecost":159},
-    {"size":"150K Trail", "goal":9000,"dd":4000,"ddt":"Trailing","eval":59.90,"activation":139,"truecost":199},
-    {"size":"25K EOD",    "goal":1500,"dd":1000,"ddt":"EOD",     "eval":29.90,"activation":109,"truecost":139},
-    {"size":"50K EOD",    "goal":3000,"dd":2000,"ddt":"EOD",     "eval":34.90,"activation":119,"truecost":154},
-    {"size":"100K EOD",   "goal":6000,"dd":3000,"ddt":"EOD",     "eval":59.90,"activation":139,"truecost":199},
-    {"size":"150K EOD",   "goal":9000,"dd":4000,"ddt":"EOD",     "eval":79.90,"activation":159,"truecost":239},
+    {"size":"25K Trail",         "goal":1500,"dd":1000,"ddt":"Trailing","eval":19.90, "activation":59, "truecost":78.90},
+    {"size":"50K Trail",         "goal":3000,"dd":2000,"ddt":"Trailing","eval":24.90, "activation":59, "truecost":83.90},
+    {"size":"100K Trail",        "goal":6000,"dd":3000,"ddt":"Trailing","eval":39.90, "activation":59, "truecost":98.90},
+    {"size":"150K Trail",        "goal":9000,"dd":4000,"ddt":"Trailing","eval":59.90, "activation":59, "truecost":118.90},
+    {"size":"25K EOD",           "goal":1500,"dd":1000,"ddt":"EOD",     "eval":39.00, "activation":99, "truecost":138},
+    {"size":"50K EOD",           "goal":3000,"dd":2000,"ddt":"EOD",     "eval":49.00, "activation":119,"truecost":168},
+    {"size":"100K EOD",          "goal":6000,"dd":3000,"ddt":"EOD",     "eval":79.00, "activation":139,"truecost":218},
+    {"size":"150K EOD",          "goal":9000,"dd":4000,"ddt":"EOD",     "eval":149.00,"activation":159,"truecost":308},
+    {"size":"25K Trail No-Fee",  "goal":1500,"dd":1000,"ddt":"Trailing","eval":69.00, "activation":0,  "truecost":69},
+    {"size":"50K Trail No-Fee",  "goal":3000,"dd":2000,"ddt":"Trailing","eval":49.00, "activation":0,  "truecost":49},
+    {"size":"100K Trail No-Fee", "goal":6000,"dd":3000,"ddt":"Trailing","eval":109.00,"activation":0,  "truecost":109},
+    {"size":"150K Trail No-Fee", "goal":9000,"dd":4000,"ddt":"Trailing","eval":169.00,"activation":0,  "truecost":169},
+    {"size":"25K EOD No-Fee",    "goal":1500,"dd":1000,"ddt":"EOD",     "eval":89.00, "activation":0,  "truecost":89},
+    {"size":"50K EOD No-Fee",    "goal":3000,"dd":2000,"ddt":"EOD",     "eval":109.00,"activation":0,  "truecost":109},
+    {"size":"100K EOD No-Fee",   "goal":6000,"dd":3000,"ddt":"EOD",     "eval":159.00,"activation":0,  "truecost":159},
+    {"size":"150K EOD No-Fee",   "goal":9000,"dd":4000,"ddt":"EOD",     "eval":249.00,"activation":0,  "truecost":249},
 ]
 showcase_apex = {"50K Trail"}
 for v in apex_variants:
