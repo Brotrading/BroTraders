@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "Structured database of all prop firm rules for propfirmbro.com. Built incrementally as Mike supplies official data. Future use: AI assistant to answer trader questions, comparison logic, content generation.",
-    "last_updated": "2026-05-03",
+    "last_updated": "2026-07-15",
     "verified_sources": "Mike-supplied screenshots from each firm's official website (pricing, rules, account details).",
     "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative — always verify on firm's own site.",
     "schema_version": 1,
@@ -1703,7 +1703,7 @@
         "Sierra Chart",
         "Tradesea"
       ],
-      "discount_text": "60% OFF with affiliate code BRO",
+      "discount_text": "50% OFF with affiliate code BRO",
       "rules_global": {
         "consistency": "Daily 35%/50% tiers; Daily Pro 40%; Sprint no consistency rule shown; Direct 15% biggest-trade rule; Bolt 20% on first payout",
         "min_trading_days": null,
@@ -1720,7 +1720,7 @@
               "max_drawdown": 1000,
               "daily_drawdown": null,
               "eval_price_msrp": 139.9,
-              "eval_price_discounted": 55.96,
+              "eval_price_discounted": 69.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 60
@@ -1730,7 +1730,7 @@
               "max_drawdown": 2000,
               "daily_drawdown": null,
               "eval_price_msrp": 199.9,
-              "eval_price_discounted": 79.96,
+              "eval_price_discounted": 99.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 90
@@ -1740,7 +1740,7 @@
               "max_drawdown": 3000,
               "daily_drawdown": null,
               "eval_price_msrp": 339.9,
-              "eval_price_discounted": 135.96,
+              "eval_price_discounted": 169.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 150
@@ -1750,7 +1750,7 @@
               "max_drawdown": 4500,
               "daily_drawdown": null,
               "eval_price_msrp": 479.9,
-              "eval_price_discounted": 191.96,
+              "eval_price_discounted": 239.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 205
@@ -1766,7 +1766,7 @@
               "max_drawdown": 1000,
               "daily_drawdown": null,
               "eval_price_msrp": 175.9,
-              "eval_price_discounted": 70.36,
+              "eval_price_discounted": 87.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 80
@@ -1776,7 +1776,7 @@
               "max_drawdown": 2000,
               "daily_drawdown": null,
               "eval_price_msrp": 269.9,
-              "eval_price_discounted": 107.96,
+              "eval_price_discounted": 134.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 115
@@ -1786,7 +1786,7 @@
               "max_drawdown": 3000,
               "daily_drawdown": null,
               "eval_price_msrp": 399.9,
-              "eval_price_discounted": 159.96,
+              "eval_price_discounted": 199.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 170
@@ -1796,7 +1796,7 @@
               "max_drawdown": 4500,
               "daily_drawdown": null,
               "eval_price_msrp": 579.9,
-              "eval_price_discounted": 231.96,
+              "eval_price_discounted": 289.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 245
@@ -1812,7 +1812,7 @@
               "max_drawdown": 750,
               "daily_drawdown": null,
               "eval_price_msrp": 159.9,
-              "eval_price_discounted": 63.96,
+              "eval_price_discounted": 79.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 75
@@ -1822,7 +1822,7 @@
               "max_drawdown": 1500,
               "daily_drawdown": null,
               "eval_price_msrp": 239.9,
-              "eval_price_discounted": 95.96,
+              "eval_price_discounted": 119.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 110
@@ -1832,7 +1832,7 @@
               "max_drawdown": 2500,
               "daily_drawdown": null,
               "eval_price_msrp": 379.9,
-              "eval_price_discounted": 151.96,
+              "eval_price_discounted": 189.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 160
@@ -1848,7 +1848,7 @@
               "max_drawdown": 1000,
               "daily_drawdown": null,
               "eval_price_msrp": 149.9,
-              "eval_price_discounted": 59.96,
+              "eval_price_discounted": 74.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 65
@@ -1858,7 +1858,7 @@
               "max_drawdown": 2000,
               "daily_drawdown": 1200,
               "eval_price_msrp": 219.9,
-              "eval_price_discounted": 87.96,
+              "eval_price_discounted": 109.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 100
@@ -1868,7 +1868,7 @@
               "max_drawdown": 3000,
               "daily_drawdown": 1800,
               "eval_price_msrp": 329.9,
-              "eval_price_discounted": 131.96,
+              "eval_price_discounted": 164.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 150
@@ -1878,7 +1878,7 @@
               "max_drawdown": 4500,
               "daily_drawdown": 2700,
               "eval_price_msrp": 519.9,
-              "eval_price_discounted": 207.96,
+              "eval_price_discounted": 259.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": 235
@@ -1894,7 +1894,7 @@
               "max_drawdown": 1000,
               "daily_drawdown": null,
               "eval_price_msrp": 399.9,
-              "eval_price_discounted": 159.96,
+              "eval_price_discounted": 199.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1904,7 +1904,7 @@
               "max_drawdown": 2000,
               "daily_drawdown": 1500,
               "eval_price_msrp": 599.9,
-              "eval_price_discounted": 239.96,
+              "eval_price_discounted": 299.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1914,7 +1914,7 @@
               "max_drawdown": 3000,
               "daily_drawdown": 2500,
               "eval_price_msrp": 899.9,
-              "eval_price_discounted": 359.96,
+              "eval_price_discounted": 449.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1930,7 +1930,7 @@
               "max_drawdown": 1000,
               "daily_drawdown": null,
               "eval_price_msrp": 349.9,
-              "eval_price_discounted": 139.96,
+              "eval_price_discounted": 174.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1940,7 +1940,7 @@
               "max_drawdown": 2000,
               "daily_drawdown": 1500,
               "eval_price_msrp": 519.9,
-              "eval_price_discounted": 207.96,
+              "eval_price_discounted": 259.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1950,7 +1950,7 @@
               "max_drawdown": 3000,
               "daily_drawdown": 2500,
               "eval_price_msrp": 749.9,
-              "eval_price_discounted": 299.96,
+              "eval_price_discounted": 374.95,
               "activation_fee": 0,
               "min_trading_days": null,
               "reset_price": null
@@ -1959,7 +1959,7 @@
         }
       },
       "_status": "Verified from official FundedSeat configurator screenshots, May 2026 (Mike-supplied).",
-      "_extraction_notes": "Six plan variants × 3-4 sizes = 21 total variants. All drawdowns 'Drawdown Mode: EOD' per screenshots. Profit target uniformly 6% of account size on Eval plans. Daily plan has TWO consistency tiers (35% and 50%) with different prices but same drawdowns; treated as separate plans in this file. Daily Loss Limit: None on Daily/Daily Pro; on Sprint and Instant only at 50K+ ($1,200-$2,700). BRO discount = MSRP × 0.40 (60% off, per Mike); site default shows MSRP × 0.50 (50% off public). Activation fee free on Eval; activation field for Instant not shown in screenshots."
+      "_extraction_notes": "Six plan variants × 3-4 sizes = 21 total variants. All drawdowns 'Drawdown Mode: EOD' per screenshots. Profit target uniformly 6% of account size on Eval plans. Daily plan has TWO consistency tiers (35% and 50%) with different prices but same drawdowns; treated as separate plans in this file. Daily Loss Limit: None on Daily/Daily Pro; on Sprint and Instant only at 50K+ ($1,200-$2,700). BRO discount = MSRP × 0.40 (60% off, per Mike); site default shows MSRP × 0.50 (50% off public). Activation fee free on Eval; activation field for Instant not shown in screenshots. UPDATE July 2026: BRO discount reduced to 50% (MSRP x 0.50), same as public rate; discounted prices recalculated accordingly."
     }
   }
 }
