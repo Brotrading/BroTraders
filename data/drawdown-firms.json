@@ -65,9 +65,9 @@
   {
     "firm": "Top One Futures",
     "logo": "../Photos/firms/topone.svg",
-    "costLabel": "50K Elite",
+    "costLabel": "50K Elite Challenge",
     "cost": "$212",
-    "ddType": "EOD",
+    "ddType": "Trailing",
     "ddAmount": "$2,000",
     "website": "https://propfirmbro.com/go/topone"
   }
