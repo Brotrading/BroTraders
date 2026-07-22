@@ -30,10 +30,10 @@ import {
 const STREAK_MILESTONE_7  = 1000;  // lowered from 5000 (Mike, 2026-07-03)
 const RESTORE_COST        = 250;
 
-// Every-30-days milestone: fixed 2,500 pts (was a random 2,000–5,000 chest;
-// simplified to a fixed amount by Mike, 2026-07-03).
+// Every-30-days milestone: fixed 1,000 pts (lowered from 2,500 by Mike,
+// 2026-07-23 — no fixed bonus above 1,000 pts on the free tier).
 function rollMilestone30() {
-  return 2500;
+  return 1000;
 }
 
 function todayUTC() {

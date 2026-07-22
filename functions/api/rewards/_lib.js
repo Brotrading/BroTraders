@@ -9,15 +9,17 @@
 // Earn rates live in EARN_RATES below — single source of truth.
 // IMPORTANT: confirm with Mike before public launch.
 
+// Rule (Mike, 2026-07-23): no free-tier fixed bonus above 1,000 pts ($1);
+// Pro variants may go 1.5× above that, so 1,500 pts max.
 export const EARN_RATES = {
-  signup_free: 2500,              // lowered from 5000 (Mike, 2026-07-03)
+  signup_free: 1000,              // lowered from 2500 (Mike, 2026-07-23)
   profile_complete_free: 1000,
   profile_complete_pro: 1500,
-  pro_bro_welcome: 5000,          // one-time bonus when user becomes Pro Bro (lowered from 25000, Mike 2026-07-03)
+  pro_bro_welcome: 1000,          // one-time bonus when user becomes Pro Bro (lowered from 5000, Mike 2026-07-23)
   daily_login_free: 100,
   daily_login_pro: 150,
-  review_submitted_free: 2500,
-  review_submitted_pro: 3750,
+  review_submitted_free: 1000,    // lowered from 2500 (Mike, 2026-07-23)
+  review_submitted_pro: 1500,     // lowered from 3750 (Mike, 2026-07-23)
   first_claim_bonus: 500,         // one-time bonus on user's first approved purchase claim
   // referral_purchase = REFERRAL_PURCHASE_RATE × the referred user's purchase cashback points
 };

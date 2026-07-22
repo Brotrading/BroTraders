@@ -42,16 +42,16 @@ Bro Rewards is a loyalty programme for propfirmbro.com. Users earn Bro Points fo
 
 | Action | Free | Pro Bro |
 |---|---|---|
-| Signup bonus | 2,500 pts | 2,500 pts |
+| Signup bonus | 1,000 pts | 1,000 pts |
 | Complete profile | 1,000 pts | 1,500 pts |
 | First claim approved (once ever) | +500 pts | +500 pts |
 | Daily login | 100 pts | 150 pts |
 | Day-7 streak milestone (once) | +1,000 pts | +1,000 pts |
-| Every 30-day streak milestone | +2,500 pts (fixed) | Same |
-| Prop firm review approved | 2,500 pts | 3,750 pts |
+| Every 30-day streak milestone | +1,000 pts (fixed) | Same |
+| Prop firm review approved | 1,000 pts | 1,500 pts |
 | Referral signup | 1,000 pts | 1,500 pts |
 | Referral first purchase | 10% of friend's purchase pts | Same |
-| Pro Bro welcome bonus (once) | — | 5,000 pts |
+| Pro Bro welcome bonus (once) | — | 1,000 pts |
 | Purchase cashback | ~price × 10 pts (~1%) | ~price × 15 pts (~1.5%) |
 
 ### Purchase cashback (the main mechanic)
@@ -79,7 +79,7 @@ Every user gets a unique referral link (visible on account page). When someone s
 
 ### Reviews
 
-Users can write prop firm reviews from the account page. Mike approves/rejects reviews in the admin dashboard. Approved reviews earn the user 2,500 pts (Pro: 3,750).
+Users can write prop firm reviews from the account page. Mike approves/rejects reviews in the admin dashboard. Approved reviews earn the user 1,000 pts (Pro: 1,500).
 
 ### Leaderboard
 
@@ -115,7 +115,7 @@ Resend sends all rewards-specific emails from `noreply@propfirmbro.com`. Domain 
 
 ### Whop (Pro Bro subscriptions)
 
-Pro Bro is sold as a Whop subscription. When someone subscribes or cancels, Whop sends a webhook to `/api/webhooks/whop`. The system updates `is_pro_bro` in D1 accordingly and awards/removes the Pro Bro multiplier. The welcome bonus (5,000 pts) is awarded once on first activation (protected by `pro_bro_bonus_paid` flag). Webhook URL: `https://propfirmbro.com/api/webhooks/whop`. Signing secret is set in Cloudflare.
+Pro Bro is sold as a Whop subscription. When someone subscribes or cancels, Whop sends a webhook to `/api/webhooks/whop`. The system updates `is_pro_bro` in D1 accordingly and awards/removes the Pro Bro multiplier. The welcome bonus (1,000 pts) is awarded once on first activation (protected by `pro_bro_bonus_paid` flag). Webhook URL: `https://propfirmbro.com/api/webhooks/whop`. Signing secret is set in Cloudflare.
 
 ### Cron job (cron-job.org)
 
@@ -218,7 +218,7 @@ This exchange rate was chosen to make the funded account prize financially safe 
 
 ### Why the gate is 90,000 purchase pts (not 0)
 
-Without the gate, a user could sign up, get 2,500 signup pts + 5,000 Pro Bro welcome bonus + a few streak pts, and try to redeem the funded account having spent almost nothing via BRO links. The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
+Without the gate, a user could sign up, get 1,000 signup pts + 1,000 Pro Bro welcome bonus + a few streak pts, and try to redeem the funded account having spent almost nothing via BRO links. The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
 
 ### Why ~1% cashback (not more)
 
