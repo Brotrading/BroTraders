@@ -1,3 +1,7 @@
 
 # wrangler local cache
 .wrangler/
+
+# Affiliate revenue snapshot — lives in D1 (site_meta), served via token-gated
+# /api/affiliate-summary. Must never be committed as a public static file again.
+data/affiliate-summary.json
