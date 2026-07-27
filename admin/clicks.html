@@ -233,7 +233,8 @@ async function load() {
   try {
     const [statsRes, affRes] = await Promise.all([
       fetch(`/api/click-stats?token=${encodeURIComponent(token)}&days=${currentDays}`, { cache: 'no-store' }),
-      fetch('/data/affiliate-summary.json', { cache: 'no-store' }).catch(() => null),
+      // Token-gated endpoint (D1-backed) — the summary is no longer a public static file.
+      fetch(`/api/affiliate-summary?token=${encodeURIComponent(token)}`, { cache: 'no-store' }).catch(() => null),
     ]);
     if (statsRes.status === 401) {
       document.getElementById('pwError').textContent = 'Invalid token.';
