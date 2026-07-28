@@ -2,6 +2,8 @@
 
 **Instructions for Claude:** Read this entire file before saying anything. Then greet Mike, give him a one-sentence summary of where things stand, and work through the open items in Section 5 **one at a time** — ask one question, wait for the answer, make any code changes needed, then move on. If Mike asks a question at any point, answer it using the background in Sections 3, 4, 6, and 7 before continuing. At the end, summarise what was decided and walk Mike through the go-live checklist in Section 8.
 
+> **Team note (2026-07-28):** Mike (with Claude) finishes and runs the rewards system himself. Kruchi (GitHub `LironKruchinin`, Write-collaborator since 2026-07-28) focuses on site layout, the prop-firm comparison pages, and keeping the daily deals up to date — he does **not** work on the rewards system. Nick is off the project and his repo access has been revoked. Nobody merges to `main` without Mike's explicit double confirmation.
+
 ---
 
 ## Section 1 — Quick Reference
@@ -13,8 +15,8 @@
 | Working branch | `nick/rewards-system` |
 | Admin dashboard | `/admin/rewards.html` |
 | Bro Store admin | `/admin/store.html` |
-| Admin token | Cloudflare Pages → Settings → Environment Variables → `ADMIN_TOKEN` |
-| Test account | `nick.van.duijne+test1@hotmail.com` (active in preview, has points) |
+| Admin token | Rotated by Mike 2026-07-04 — in his password manager (Plaintext var `ADMIN_TOKEN` in Cloudflare, set in BOTH Production and Preview) |
+| Test account | Mike's own account on preview (md.korevaar@gmail.com; Nick's old test account also still exists) |
 | GitHub account | NickvanDuijne (not Nick-Aiden — that one has no push rights) |
 | Supabase project | propfirmbro (dashboard: supabase.com) |
 | D1 production DB | `propfirmbro-clicks` |
@@ -42,23 +44,24 @@ Bro Rewards is a loyalty programme for propfirmbro.com. Users earn Bro Points fo
 
 | Action | Free | Pro Bro |
 |---|---|---|
-| Signup bonus | 1,000 pts | 1,000 pts |
+| Signup bonus | 2,500 pts | 2,500 pts |
 | Complete profile | 1,000 pts | 1,500 pts |
 | First claim approved (once ever) | +500 pts | +500 pts |
 | Daily login | 100 pts | 150 pts |
 | Day-7 streak milestone (once) | +1,000 pts | +1,000 pts |
-| Every 30-day streak milestone | +1,000 pts (fixed) | Same |
-| Prop firm review approved | 1,000 pts | 1,500 pts |
-| Referral signup | 1,000 pts | 1,500 pts |
+| Every 30-day streak milestone | +2,500 pts (fixed) | Same |
+| Prop firm review approved | 2,500 pts | 3,750 pts |
 | Referral first purchase | 10% of friend's purchase pts | Same |
-| Pro Bro welcome bonus (once) | — | 1,000 pts |
-| Purchase cashback | ~price × 10 pts (~1%) | ~price × 15 pts (~1.5%) |
+| Pro Bro welcome bonus (once) | — | 5,000 pts |
+| Purchase cashback | 1% of the amount actually paid (paid × 10 pts) | 1.5% |
+
+*(There is no referral-signup bonus — the referrer is only paid when the referred friend's first purchase is approved. Rates locked by Mike on 2026-07-03/04.)*
 
 ### Purchase cashback (the main mechanic)
 
 When a user buys a prop firm account via a BRO affiliate link, they submit a cashback claim. Mike reviews it manually in the admin dashboard and approves or rejects it. On approval, the points are instantly added to the user's balance.
 
-Points per purchase are based on fixed tables per firm (in `_lib.js` → `FIRM_POINTS`). The table was built from prop firm pricing screenshots in June 2026. Example: Apex Intraday Trail 100K One Pack ($39.90) = 400 pts base, 600 pts Pro Bro.
+On the claim form the user picks the firm + account type and enters the **amount they actually paid** (pre-filled with the list price; prop firm promos change monthly, so the real amount often differs). Points = 1% of that amount (Pro Bro 1.5%), no cap — Mike verifies the entered amount against the proof screenshot before approving ("Paid: $…" is shown on each claim card in the admin). Example: Apex EOD 50K bought for $34.90 in a promo → 349 pts. `FIRM_POINTS` / `data/firm-accounts.json` remain in use as the account-type whitelist and reference prices. (Decided by Mike 2026-07-04.)
 
 ### The Bro Store
 
@@ -67,7 +70,9 @@ Users spend points in the Bro Store (`/rewards/catalog.html`). Three types of it
 2. **Pro Bro membership** — fulfilled automatically via Whop. User redeems → system calls Whop → Pro Bro is activated immediately.
 3. **Manual** — Mike handles fulfillment himself (e.g. giveaway tickets, merch).
 
-The funded 25K prop firm account (100,000 pts) is behind a gate: only unlocks after the user has earned 90,000 pts specifically from purchases (not from streaks or referrals). This protects Mike's margin.
+**Unlock rule (decided 2026-07-03):** a firm-bound account reward unlocks when the user has EITHER **10+ approved purchase claims at that pack's firm**, OR **90,000 purchase points total** across all firms (at that point everything unlocks, no per-firm minimum). Engagement points (streaks, referrals, bonuses) never count toward unlocking. Pro Bro items are gate-exempt (always available). Each pack is linked to its firm via `firm_slug`, set automatically by the store-admin form.
+
+**Store plan:** the full Apex + Tradeify single-account catalog as prizes (no Five Packs, no giveaway-ticket item), priced at account price × 667 pts rounded up to the nearest 1,000 (≈ the 1,000-pts-per-dollar model; the store-admin form pre-fills this price). The 100% discount codes are to be sponsored monthly by the firms — requested from Apex (Tomas) and Tradeify (Despina) on 2026-07-27, awaiting their reply before loading the items.
 
 ### Daily streak
 
@@ -75,7 +80,7 @@ Users claim a daily login bonus by visiting the site each day. Missing a day bre
 
 ### Referral system
 
-Every user gets a unique referral link (visible on account page). When someone signs up via that link and makes their first purchase, the referrer gets bonus points equal to the points awarded for that purchase. Example: friend buys Apex $39.90 (600 pts Pro rate) → referrer gets 600 pts too. This replaced the old flat 25,000 pts which was too generous relative to small commissions.
+Every user gets a unique referral link (visible on account page). When someone signs up via that link and makes their first purchase, the referrer gets **10% of the points awarded for that purchase** (decided 2026-07-03). Example: friend buys a $100 account (1,000 pts) → referrer gets 100 pts. This replaced the old flat 25,000 pts, and later the 100%-of-purchase-points model, both too generous relative to Mike's commissions.
 
 ### Reviews
 
@@ -129,6 +134,8 @@ The job is set up on cron-job.org but is currently **disabled**. Enable it on la
 
 ## Section 5 — Open Items (work through these with Mike)
 
+> **STATUS 2026-07-28 — all five items are RESOLVED.** Decisions: (1) Store = full Apex + Tradeify catalog + Pro Bro 1 month; no giveaway ticket; waiting only on sponsored codes from Apex (Tomas) and Tradeify (Despina) before loading items. (2) Monthly subscriptions: **NO** — NexGen Eval, TopOne Elite Daily and Alpha Futures stay out of the claim form. (3) Earn rates confirmed and recalibrated by Mike (see Section 3). (4) Launching without Alpha Futures + YRM Prop. (5) Claim flow tested end-to-end by Mike on preview (2026-07-04) — works, including the amount-paid flow. Remaining before go-live: load the store once codes arrive, verify Mike's own access to Supabase/Resend/cron-job.org, then run Section 11. The item texts below are kept for historical context only.
+
 ### Item 1 — Fill the Bro Store ⚠️ REQUIRED
 
 The Bro Store is empty. Mike needs to add items via the admin UI at:
@@ -166,7 +173,7 @@ NexGen Evaluation ($30–$80/month) and TopOne Elite Daily ($89–$199/month) ha
 Show Mike the table from Section 3 and ask if he's happy with the numbers. Key points to explain if he asks:
 
 - **Why 1,000 pts = $1?** → Calibrated so the funded account prize ($100 value at 100,000 pts) only unlocks after ~$9,000 in purchases via BRO links (= ~$900 commission at 10% = safe margin for Mike). See Section 6 for full financial rationale.
-- **Why is the referral bonus proportional now?** → The old flat 25,000 pts ($25) was unsustainable for small accounts. If a friend bought an Apex $20 account, Mike earned ~$2 commission but owed $25 in referral points. The new system gives the referrer the same points as the friend's purchase — so if the friend buys a $20 account (200 pts), the referrer gets 200 pts ($0.20). Fair and always profitable for Mike.
+- **Why is the referral bonus proportional now?** → The old flat 25,000 pts ($25) was unsustainable for small accounts. The referrer now gets 10% of the friend's purchase points — a friend's $20 account (200 pts) pays the referrer 20 pts. Always profitable for Mike.
 - **Why is Pro Bro gate-exempt?** → Getting users into Pro Bro converts them to paying subscribers. The cost to Mike is zero (digital product). It's worth giving away as a Bro Store item.
 
 ### Item 4 — Alpha Futures + YRM Prop (quick)
@@ -216,9 +223,9 @@ This exchange rate was chosen to make the funded account prize financially safe 
 - After paying out $100 in prizes: Mike keeps $800 minimum = 8.9% net margin
 - In practice better, because not every user who reaches the gate will redeem
 
-### Why the gate is 90,000 purchase pts (not 0)
+### Why the unlock gate exists (10 purchases per firm, or 90,000 purchase pts)
 
-Without the gate, a user could sign up, get 1,000 signup pts + 1,000 Pro Bro welcome bonus + a few streak pts, and try to redeem the funded account having spent almost nothing via BRO links. The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
+Without a gate, a user could sign up, get 2,500 signup pts + 5,000 Pro Bro welcome bonus + streak pts, and try to redeem an account reward having spent almost nothing via BRO links. Since 2026-07-03 the gate is per-firm: 10+ approved purchases at the pack's firm unlock that firm's rewards, or 90,000 global purchase pts unlock everything — exactly the deal pitched to the sponsoring firms (every free account goes to a proven repeat customer). The gate ensures Mike has earned at least ~$900 in commissions from that user before ever paying out the $100 prize. Purchase pts come only from approved cashback claims — streaks, referrals, and bonuses don't count toward the gate.
 
 ### Why ~1% cashback (not more)
 
@@ -230,8 +237,8 @@ The multiplier needs to be generous enough to feel valuable but not so high that
 
 ### Why the streak bonuses are what they are
 
-- **Day-7 milestone (5,000 pts = $5):** A meaningful one-time reward for establishing a habit. Duolingo-inspired. Costs Mike $5 per user who reaches it, but these users are already engaged enough to come back 7 days in a row — they're valuable.
-- **Mystery chest every 30 days (2,000–5,000 pts, avg ~3,500 pts = ~$3.50):** Keeps long-term users engaged. The randomness (Duolingo-style) makes it more exciting than a fixed amount. Cost is low and only incurred by highly loyal users.
+- **Day-7 milestone (1,000 pts = $1):** A one-time reward for establishing the habit. Duolingo-inspired. (Lowered from 5,000 by Mike, 2026-07-03.)
+- **Every 30 days (fixed 2,500 pts = $2.50):** Keeps long-term users engaged at a predictable, low cost. (Was a random 2,000–5,000 "mystery chest"; simplified to a fixed amount by Mike, 2026-07-03.)
 
 ---
 
@@ -282,6 +289,7 @@ Go to `/admin/rewards.html`, enter the admin token. Pending claims appear at the
 - Check the risk badge (click/present/no click)
 - Check the verified firm email matches what you'd expect
 - Check the proof of purchase screenshot
+- **Check the entered paid amount ("Paid: $…") against the proof — the awarded points are 1% of this amount**
 - Check amount and account type look plausible
 - Click **Approve** (awards points + sends approval email to user) or **Reject** (requires a reason, sends rejection email)
 
@@ -339,13 +347,13 @@ A: Yes, that's exactly what the preview site is for. Any accounts created on `ni
 A: Their current prices weren't confirmed at build time, so we can't set accurate fixed points for their accounts. Rather than use an unreliable estimate, Nick removed them and put them on the backlog. Once Mike provides current prices, they can be added in minutes.
 
 **Q: Why are monthly subscriptions removed from the claim form?**
-A: It's unclear whether Mike wants to pay cashback every month when a user renews their subscription. One-time purchases are straightforward — the user buys once, claims once. Monthly subscriptions mean the user could claim every 30 days indefinitely. Nick removed them pending Mike's decision.
+A: Decided by Mike on 2026-07-03: **no recurring cashback.** One-time purchases are straightforward — buy once, claim once. Monthly subscriptions would mean claiming every 30 days indefinitely, so NexGen Evaluation, TopOne Elite Daily and Alpha Futures stay out of the claim form. Can be revisited later (one line of code).
 
-**Q: What does "mystery chest" mean?**
-A: Every time a user completes a 30-day login streak, instead of a fixed reward they open a mystery chest for a random amount between 2,000 and 5,000 pts. The randomness (inspired by Duolingo) makes it more exciting and encourages users to keep streaking. Average payout is ~3,500 pts ($3.50), which is a low cost for Mike relative to the engagement it drives.
+**Q: What is the 30-day streak bonus?**
+A: Every completed 30-day login streak pays a fixed 2,500 pts. (This was originally a random 2,000–5,000 pts "mystery chest"; Mike simplified it to a fixed amount on 2026-07-03.)
 
-**Q: Why does the referral bonus equal the friend's purchase points?**
-A: The original flat 25,000 pts ($25) was problematic: if a friend bought a cheap $20 account generating ~$2 commission for Mike, Mike couldn't afford a $25 referral payout. The proportional system is always safe: if the friend buys 400 pts worth of accounts, the referrer gets 400 pts. The referral bonus is always proportional to the commission Mike earned.
+**Q: Why is the referral bonus 10% of the friend's purchase points?**
+A: The original flat 25,000 pts ($25) could exceed Mike's entire commission on a cheap account. A 100%-of-purchase-points model was safer but still generous; Mike set it to 10% on 2026-07-03. A friend's $100 purchase (1,000 pts) pays the referrer 100 pts — always a small, safe fraction of the commission earned.
 
 **Q: How does click attribution work?**
 A: When a user visits propfirmbro.com via a BRO affiliate link, a click event is recorded in D1 (user ID + firm + timestamp). When they later submit a cashback claim, the system checks whether a matching click exists for that user + firm combination. If a click within 6 days is found → "click" (low risk). If a click exists but is older → "present" (medium risk). If no click at all → "no click" (high risk). This helps Mike identify claims where the user may not have actually used the BRO affiliate link.
