@@ -39,7 +39,7 @@
         "Plaid",
         "WorkMarket"
       ],
-      "discount_text": "~27% off (Pro/Flex/Daily, EOD + DLL off \u2014 varies by config), 30% off (Direct)",
+      "discount_text": "30% off (Pro/Flex/Direct), 40% off (LucidDaily) with code BROTRADING",
       "leverage": {
         "25K": "2 minis / 20 micros",
         "50K": "4 minis / 40 micros",
@@ -1361,7 +1361,7 @@
       "code_default": "BRO",
       "affiliate_url": "https://thenextgenfunding.com/",
       "platforms": [],
-      "discount_text": "80% off with code SUMMER80 (initial fee + recurring monthly)",
+      "discount_text": "80% off with exclusive Bro Trading code BRO",
       "rules_global": {
         "consistency": null,
         "min_trading_days": null,
@@ -1434,7 +1434,7 @@
         "Sierra Chart",
         "Tradesea"
       ],
-      "discount_text": "50% OFF with affiliate code BRO",
+      "discount_text": "45% off with affiliate code BRO (50% off Daily Ultra accounts)",
       "rules_global": {
         "consistency": "Daily 35%/50% tiers; Daily Pro 40%; Sprint no consistency rule shown; Direct 15% biggest-trade rule; Bolt 20% on first payout",
         "min_trading_days": null,
