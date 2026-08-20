@@ -352,7 +352,7 @@
           "sizes": {
             "25K": {
               "eval_price_dash": 65,
-              "eval_price_msrp": 189,
+              "eval_price_msrp": 109,
               "profit_target": 1500,
               "max_drawdown": 1000,
               "max_position": "1 mini / 10 micro",
@@ -361,17 +361,20 @@
             "50K": {
               "eval_price_dash": 99,
               "profit_target": 3000,
-              "max_drawdown": 2000
+              "max_drawdown": 2000,
+              "eval_price_msrp": 165
             },
             "100K": {
               "eval_price_dash": 159,
               "profit_target": 4500,
-              "max_drawdown": 3000
+              "max_drawdown": 3000,
+              "eval_price_msrp": 265
             },
             "150K": {
               "eval_price_dash": 221,
               "profit_target": 6500,
-              "max_drawdown": 5000
+              "max_drawdown": 5000,
+              "eval_price_msrp": 369
             }
           }
         },
