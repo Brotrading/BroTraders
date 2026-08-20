@@ -1,7 +1,7 @@
 {
   "_meta": {
     "purpose": "Structured database of all prop firm rules for propfirmbro.com. Built incrementally as Mike supplies official data. Future use: AI assistant to answer trader questions, comparison logic, content generation.",
-    "last_updated": "2026-08-19",
+    "last_updated": "2026-08-20",
     "verified_sources": "Mike-supplied screenshots from each firm's official website (pricing, rules, account details).",
     "pricing_note": "Prices in this file reflect propfirmmatch.com display prices (with their MATCH/DASH coupon). Mike's BRO/BROTRADING codes give different (typically better) prices. Prices in the live site comparison.html are NOT authoritative \u2014 always verify on firm's own site.",
     "schema_version": 1,
@@ -39,7 +39,7 @@
         "Plaid",
         "WorkMarket"
       ],
-      "discount_text": "Up to 40% off (Pro/Flex), 30% off (Direct)",
+      "discount_text": "~27% off (Pro/Flex/Daily, EOD + DLL off \u2014 varies by config), 30% off (Direct)",
       "leverage": {
         "25K": "2 minis / 20 micros",
         "50K": "4 minis / 40 micros",
@@ -64,31 +64,31 @@
           "buffer_protection": true,
           "sizes": {
             "25K": {
-              "eval_price_brotrading": 81,
+              "eval_price_brotrading": 90.6,
               "eval_price_msrp": 123,
-              "discount_pct": 40,
+              "discount_pct": 26.3,
               "profit_target": 1250,
               "max_drawdown": 1000
             },
             "50K": {
-              "eval_price_brotrading": 111,
+              "eval_price_brotrading": 140.4,
               "eval_price_msrp": 192,
-              "discount_pct": 40,
+              "discount_pct": 26.9,
               "profit_target": 3000,
               "max_drawdown": 2000,
               "verified_via_coupon_test": true
             },
             "100K": {
-              "eval_price_brotrading": 171,
+              "eval_price_brotrading": 225.4,
               "eval_price_msrp": 307,
-              "discount_pct": 40,
+              "discount_pct": 26.6,
               "profit_target": 6000,
               "max_drawdown": 3000
             },
             "150K": {
-              "eval_price_brotrading": 222,
+              "eval_price_brotrading": 300.5,
               "eval_price_msrp": 410,
-              "discount_pct": 40,
+              "discount_pct": 26.7,
               "profit_target": 9000,
               "max_drawdown": 4500
             }
@@ -105,28 +105,28 @@
           "structure": "5 winning days minimum, scaling plan",
           "sizes": {
             "25K": {
-              "eval_price_brotrading": 60,
+              "eval_price_brotrading": 65.3,
               "eval_price_msrp": 89,
-              "discount_pct": 40,
+              "discount_pct": 26.6,
               "min_winning_day_profit": 100
             },
             "50K": {
-              "eval_price_brotrading": 84,
+              "eval_price_brotrading": 105.2,
               "eval_price_msrp": 146,
-              "discount_pct": 40,
+              "discount_pct": 27.9,
               "min_winning_day_profit": 150,
               "verified_via_coupon_test": true
             },
             "100K": {
-              "eval_price_brotrading": 135,
+              "eval_price_brotrading": 215.6,
               "eval_price_msrp": 293,
-              "discount_pct": 40,
+              "discount_pct": 26.4,
               "min_winning_day_profit": 200
             },
             "150K": {
-              "eval_price_brotrading": 252,
+              "eval_price_brotrading": 295.4,
               "eval_price_msrp": 407,
-              "discount_pct": 40,
+              "discount_pct": 27.4,
               "min_winning_day_profit": 250
             }
           }
@@ -140,22 +140,22 @@
           "min_payout": 500,
           "sizes": {
             "25K": {
-              "eval_price_brotrading": 238,
+              "eval_price_brotrading": 230.3,
               "eval_price_msrp": 329,
               "discount_pct": 30
             },
             "50K": {
-              "eval_price_brotrading": 364,
+              "eval_price_brotrading": 360.5,
               "eval_price_msrp": 515,
               "discount_pct": 30
             },
             "100K": {
-              "eval_price_brotrading": 490,
+              "eval_price_brotrading": 490.0,
               "eval_price_msrp": 700,
               "discount_pct": 30
             },
             "150K": {
-              "eval_price_brotrading": 588,
+              "eval_price_brotrading": 585.2,
               "eval_price_msrp": 836,
               "discount_pct": 30
             }
@@ -174,22 +174,30 @@
             "25K": {
               "eval_price_msrp": 137,
               "profit_target": 1250,
-              "max_drawdown": 1000
+              "max_drawdown": 1000,
+              "discount_pct": 35.6,
+              "eval_price_brotrading": 88.2
             },
             "50K": {
               "eval_price_msrp": 185,
               "profit_target": 3000,
-              "max_drawdown": 2000
+              "max_drawdown": 2000,
+              "discount_pct": 35.7,
+              "eval_price_brotrading": 119.0
             },
             "100K": {
               "eval_price_msrp": 314,
               "profit_target": 6000,
-              "max_drawdown": 3000
+              "max_drawdown": 3000,
+              "discount_pct": 35.5,
+              "eval_price_brotrading": 202.4
             },
             "150K": {
               "eval_price_msrp": 436,
               "profit_target": 9000,
-              "max_drawdown": 4500
+              "max_drawdown": 4500,
+              "discount_pct": 35.4,
+              "eval_price_brotrading": 281.6
             }
           }
         }
