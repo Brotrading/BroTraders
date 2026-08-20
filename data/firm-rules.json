@@ -160,6 +160,38 @@
               "discount_pct": 30
             }
           }
+        },
+        "LucidDaily": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "consistency_eval": "50%",
+          "consistency_funded": "None",
+          "min_days_to_payout": 5,
+          "payout_split": "90/10",
+          "min_payout": 500,
+          "structure": "Daily payouts, no consistency rule once funded, free activation",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 137,
+              "profit_target": 1250,
+              "max_drawdown": 1000
+            },
+            "50K": {
+              "eval_price_msrp": 185,
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_msrp": 314,
+              "profit_target": 6000,
+              "max_drawdown": 3000
+            },
+            "150K": {
+              "eval_price_msrp": 436,
+              "profit_target": 9000,
+              "max_drawdown": 4500
+            }
+          }
         }
       },
       "best_deal": {
