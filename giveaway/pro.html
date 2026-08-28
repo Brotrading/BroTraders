@@ -249,7 +249,7 @@
   <div class="prizes">
     <h3><i class="fas fa-trophy"></i> What you can win</h3>
     <ul>
-      <li><i class="fas fa-circle"></i> 4× 50K Tradeify Select accounts</li>
+      <li><i class="fas fa-circle"></i> 2× 50K Tradeify Select accounts</li>
     </ul>
   </div>
 
@@ -265,6 +265,14 @@
 
   <form id="entryForm" autocomplete="off">
     <input type="hidden" name="tier" value="pro" />
+
+    <!-- Honeypot: real users never see or fill this. Bots that blindly fill every
+         input trip it, and we silently drop the submission. Off-screen (not
+         display:none) since some bots specifically skip display:none fields. -->
+    <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
 
     <div class="field">
       <label><i class="fas fa-user"></i> First Name</label>
@@ -322,6 +330,16 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     msg.className = 'msg';
+
+    // Honeypot check: a real visitor never fills this field. If it has a value,
+    // silently pretend success instead of erroring — don't tip the bot off.
+    const honeypot = document.getElementById('website');
+    if (honeypot && honeypot.value.trim() !== '') {
+      form.style.display = 'none';
+      document.getElementById('successCard').classList.add('show');
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
 
