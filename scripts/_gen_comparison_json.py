@@ -66,10 +66,9 @@ META = {
                                "firmpage": "https://fundedseat.link/bro",
                                "country": "USA", "maxaccounts": 3,
                                "platform": "Rithmic, DX Feed, Volumetrica, DeepCharts, DeepDom, Quantower, ATAS, MotiveWave, Bookmap, Sierra Chart, Tradesea"},
-    # Added 2026-08-20 — no logo image files yet (would need Mike's go-ahead to
-    # download from each firm's site); comparison.html already falls back to a
-    # placeholder image on a missing logo (see onerror handler), so this is safe.
-    "takeprofittrader":      {"logo": "../Photos/firms/takeprofittrader.png",
+    # Real logos for these 5, downloaded 2026-08-29 with Mike's explicit go-ahead
+    # (favicon/og:image from each firm's own site — see chat for source URLs).
+    "takeprofittrader":      {"logo": "../Photos/firms/takeprofittrader.svg",
                                "firmpage": "../Firms/TakeProfitTrader.html",
                                "country": "USA", "maxaccounts": 5,
                                "platform": "Tradovate, NinjaTrader, TradingView, RTrader, Quantower, MotiveWave"},
@@ -85,7 +84,7 @@ META = {
                                "firmpage": "../Firms/AlphaFutures.html",
                                "country": "UK", "maxaccounts": 5,
                                "platform": "AlphaTrader, WealthCharts, Quantower, DeepCharts"},
-    "iqcapital":             {"logo": "../Photos/firms/iqcapital.png",
+    "iqcapital":             {"logo": "../Photos/firms/iqcapital.svg",
                                "firmpage": "../Firms/IQCapital.html",
                                "country": "Germany", "maxaccounts": 10,
                                "platform": "Quantower, ATAS, DeepCharts"},

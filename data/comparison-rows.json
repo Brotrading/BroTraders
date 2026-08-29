@@ -3144,7 +3144,7 @@
     },
     {
       "firm": "TakeProfitTrader",
-      "logo": "../Photos/firms/takeprofittrader.png",
+      "logo": "../Photos/firms/takeprofittrader.svg",
       "account": "25K PRO Evaluation",
       "goal": 1500,
       "profitTarget": 1500,
@@ -3165,7 +3165,7 @@
     },
     {
       "firm": "TakeProfitTrader",
-      "logo": "../Photos/firms/takeprofittrader.png",
+      "logo": "../Photos/firms/takeprofittrader.svg",
       "account": "50K PRO Evaluation",
       "goal": 3000,
       "profitTarget": 3000,
@@ -3186,7 +3186,7 @@
     },
     {
       "firm": "TakeProfitTrader",
-      "logo": "../Photos/firms/takeprofittrader.png",
+      "logo": "../Photos/firms/takeprofittrader.svg",
       "account": "75K PRO Evaluation",
       "goal": 4500,
       "profitTarget": 4500,
@@ -3207,7 +3207,7 @@
     },
     {
       "firm": "TakeProfitTrader",
-      "logo": "../Photos/firms/takeprofittrader.png",
+      "logo": "../Photos/firms/takeprofittrader.svg",
       "account": "100K PRO Evaluation",
       "goal": 6000,
       "profitTarget": 6000,
@@ -3228,7 +3228,7 @@
     },
     {
       "firm": "TakeProfitTrader",
-      "logo": "../Photos/firms/takeprofittrader.png",
+      "logo": "../Photos/firms/takeprofittrader.svg",
       "account": "150K PRO Evaluation",
       "goal": 9000,
       "profitTarget": 9000,
@@ -3564,7 +3564,7 @@
     },
     {
       "firm": "IQ Capital",
-      "logo": "../Photos/firms/iqcapital.png",
+      "logo": "../Photos/firms/iqcapital.svg",
       "account": "50K Advanced/Expert",
       "goal": 4000,
       "profitTarget": 4000,
@@ -3585,7 +3585,7 @@
     },
     {
       "firm": "IQ Capital",
-      "logo": "../Photos/firms/iqcapital.png",
+      "logo": "../Photos/firms/iqcapital.svg",
       "account": "100K Advanced/Expert",
       "goal": 8000,
       "profitTarget": 8000,
