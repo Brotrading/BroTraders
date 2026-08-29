@@ -18,7 +18,7 @@
       "founded_display": "Nov 2024",
       "years": "1",
       "rating_score": 4.8,
-      "rating_stars": "★★★★☆",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
       "rating_reviews": "82 total reviews",
       "rating_bars": [
         {
@@ -60,7 +60,7 @@
       "founded_display": "Jun 2024",
       "years": "1",
       "rating_score": 4.6,
-      "rating_stars": "★★★★★",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
       "rating_reviews": "691 total reviews",
       "rating_bars": [
         {
@@ -102,7 +102,7 @@
       "founded_display": "Nov 2023",
       "years": "2",
       "rating_score": 4.9,
-      "rating_stars": "★★★★★",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
       "rating_reviews": "206 total reviews",
       "rating_bars": [
         {
@@ -127,7 +127,7 @@
         }
       ],
       "summary": "MyFundedFutures is a futures proprietary trading firm that provides traders with simulated funded accounts after passing a one-step evaluation challenge. Traders can access account sizes such as $50K, $100K, and $150K while trading popular CME futures markets. The firm is known for flexible rules, no strict daily loss limits on many plans, and fast payouts through its Rapid plan. With the ability to get funded in as little as two trading days and request payouts frequently, MyFundedFutures has become one of the most popular futures prop firms for active traders.",
-      "hero_description": "My Funded Futures is a solid addition to OnlyPropFirms, especially for traders who value flexibility and strong support. The firm offers several trader-first features designed to improve the overall trading experience. One standout is their trailing maximum end-of-trade drawdown, a structure that's still relatively rare in the prop firm space and gives traders more clarity around risk.\n\nMy Funded Futures also delivers a clean, easy-to-use trader dashboard and supports daily withdrawals, so accessing profits is simple and efficient. What really sets them apart, though, is their customer support—boasting an average 10-second human response time, which is almost unheard of in this industry.\n\nIf you're looking for a firm that genuinely puts traders first, My Funded Futures is absolutely worth checking out.",
+      "hero_description": "My Funded Futures is a solid addition to OnlyPropFirms, especially for traders who value flexibility and strong support. The firm offers several trader-first features designed to improve the overall trading experience. One standout is their trailing maximum end-of-trade drawdown, a structure that's still relatively rare in the prop firm space and gives traders more clarity around risk.\n\nMy Funded Futures also delivers a clean, easy-to-use trader dashboard and supports daily withdrawals, so accessing profits is simple and efficient. What really sets them apart, though, is their customer support\u2014boasting an average 10-second human response time, which is almost unheard of in this industry.\n\nIf you're looking for a firm that genuinely puts traders first, My Funded Futures is absolutely worth checking out.",
       "hero_btn_text": "Get Evaluation"
     },
     "top_one_futures": {
@@ -144,7 +144,7 @@
       "founded_display": "Jan 2023",
       "years": "3+",
       "rating_score": 4.8,
-      "rating_stars": "★★★★★",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
       "rating_reviews": "358 reviews",
       "rating_bars": [
         {
@@ -186,7 +186,7 @@
       "founded_display": "Jan 2021",
       "years": "5",
       "rating_score": 4.3,
-      "rating_stars": "★★★★☆",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
       "rating_reviews": "92 total reviews",
       "rating_bars": [
         {
@@ -228,7 +228,7 @@
       "founded_display": "2022",
       "years": null,
       "rating_score": 4.9,
-      "rating_stars": "★★★★★",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
       "rating_reviews": "186 reviews",
       "rating_bars": [
         {
@@ -252,7 +252,7 @@
           "count": "1"
         }
       ],
-      "summary": "Phidias PropFirm offers a streamlined 1-step evaluation with account sizes from $25K up to $150K. Evaluation costs range $44–$225, with zero activation fees on OTP plans or $149–169 activation. True cost between $55–$397. Profit target is 6% with EOD trailing / static drawdown between $500–$4,500. Minimum trading days: 3. Max accounts: 15, total allocation up to $1.6M. Profit split 80–90%. Highly rated ~4.9⭐ with exclusive discount code BROTRADING.",
+      "summary": "Phidias PropFirm offers a streamlined 1-step evaluation with account sizes from $25K up to $150K. Evaluation costs range $44\u2013$225, with zero activation fees on OTP plans or $149\u2013169 activation. True cost between $55\u2013$397. Profit target is 6% with EOD trailing / static drawdown between $500\u2013$4,500. Minimum trading days: 3. Max accounts: 15, total allocation up to $1.6M. Profit split 80\u201390%. Highly rated ~4.9\u2b50 with exclusive discount code BROTRADING.",
       "hero_description": "Phidias PropFirm offers one of the most competitive 1-step evaluation models with low starting costs, fast 3-day minimum to pass, and a generous profit split up to 90%. With EOD trailing drawdown and no hidden scaling tricks, traders can scale up to $1.6M across 15 accounts. Simple, transparent, and backed by excellent user ratings. Get started with code BROTRADING and save big.",
       "hero_btn_text": "Get Evaluation"
     },
@@ -270,7 +270,7 @@
       "founded_display": "Jun 2023",
       "years": "3",
       "rating_score": 4.6,
-      "rating_stars": "★★★★☆",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
       "rating_reviews": "192 total reviews",
       "rating_bars": [
         {
@@ -312,7 +312,7 @@
       "founded_display": "2024",
       "years": null,
       "rating_score": 4.6,
-      "rating_stars": "★★★★★",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
       "rating_reviews": "312 reviews",
       "rating_bars": [
         {
@@ -336,7 +336,7 @@
           "count": "3"
         }
       ],
-      "summary": "Nexgen ProTrader Funding offers futures funding with a focus on trader-friendly rules: Closed Trade Drawdown (never limited by unrealized losses), no daily loss limits, and lightning-fast payouts. Choose from Evaluation accounts (1-day pass, $149–$249) or Instant Funding accounts (start trading immediately, $299–$399). Account sizes from $25K to $150K with up to 10 accounts, profit split up to 100% after 16 payouts. No activation fee time limits, no inactivity rule, and payouts every 8 trading days. Highly rated ~4.6.",
+      "summary": "Nexgen ProTrader Funding offers futures funding with a focus on trader-friendly rules: Closed Trade Drawdown (never limited by unrealized losses), no daily loss limits, and lightning-fast payouts. Choose from Evaluation accounts (1-day pass, $149\u2013$249) or Instant Funding accounts (start trading immediately, $299\u2013$399). Account sizes from $25K to $150K with up to 10 accounts, profit split up to 100% after 16 payouts. No activation fee time limits, no inactivity rule, and payouts every 8 trading days. Highly rated ~4.6.",
       "hero_description": "NexGen Funding is a familiar and trusted name in the prop trading space, and it's come back stronger than ever. The firm offers flexible funding options and a streamlined account structure built around what traders actually want. With both instant funding and customizable setups through the new Select Plan, NexGen Funding lets traders tailor their accounts instead of forcing them into a one-size-fits-all model.\n\nTraders can choose the features that matter most to them, including day-one or five-day payout options, giving more control over how and when profits are accessed. With refreshed programs and the same reliable, trader-focused support, NexGen Funding delivers a versatile, accessible, and efficient path for traders looking to get funded and stay funded.",
       "hero_btn_text": "Get Evaluation"
     },
@@ -354,7 +354,7 @@
       "founded_display": null,
       "years": null,
       "rating_score": 4.1,
-      "rating_stars": "★★★★☆",
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
       "rating_reviews": "Trustpilot Rating",
       "rating_bars": [
         {
@@ -378,9 +378,219 @@
           "count": ""
         }
       ],
-      "summary": "FundedSeat, operated by Cygnus Software Solutions LLC in Sheridan, Wyoming, is a futures-focused prop firm offering a wide range of evaluation and instant funding plans. Traders can choose from four 1-Step Evaluation variants — Daily (35%), Daily (50%), Daily Pro, and Sprint — as well as two Instant Funded options: Direct and Bolt. All plans use End-of-Day (EOD) drawdown and offer a 90/10 payout split. Supported platforms include Rithmic with a broad selection of charting tools such as Quantower, Sierra Chart, Bookmap, ATAS, and MotiveWave. With discount code BRO, traders receive 50% off all plans.",
+      "summary": "FundedSeat, operated by Cygnus Software Solutions LLC in Sheridan, Wyoming, is a futures-focused prop firm offering a wide range of evaluation and instant funding plans. Traders can choose from four 1-Step Evaluation variants \u2014 Daily (35%), Daily (50%), Daily Pro, and Sprint \u2014 as well as two Instant Funded options: Direct and Bolt. All plans use End-of-Day (EOD) drawdown and offer a 90/10 payout split. Supported platforms include Rithmic with a broad selection of charting tools such as Quantower, Sierra Chart, Bookmap, ATAS, and MotiveWave. With discount code BRO, traders receive 50% off all plans.",
       "hero_description": "FundedSeat stands out in the futures prop trading space with one of the most flexible plan lineups available. Whether you prefer a structured evaluation or want to start trading with real capital immediately, FundedSeat has you covered with four evaluation variants and two instant funding options.\n\nWith a 90/10 payout split, EOD drawdown protection, and support for top-tier platforms like Rithmic, Quantower, Sierra Chart, Bookmap, and ATAS, FundedSeat gives traders the tools they need to succeed. Use code BRO for 50% off any plan and get started today.",
       "hero_btn_text": "Get Funded"
+    },
+    "takeprofittrader": {
+      "name": "TakeProfitTrader",
+      "affiliate_url": "https://propfirmbro.com/go/takeprofittrader",
+      "code_default": "BRO",
+      "logo_img": null,
+      "logo_icon": "fas fa-chart-line",
+      "ceo": null,
+      "flag_code": "us",
+      "flag_alt": "USA",
+      "country_display": "USA",
+      "trustpilot_score": 4.4,
+      "founded_display": "2021",
+      "years": "5",
+      "rating_score": 4.4,
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
+      "rating_reviews": "9,300+ reviews (Trustpilot)",
+      "rating_bars": [
+        {
+          "pct": "80%",
+          "count": "7440"
+        },
+        {
+          "pct": "5%",
+          "count": "465"
+        },
+        {
+          "pct": "3%",
+          "count": "280"
+        },
+        {
+          "pct": "1%",
+          "count": "93"
+        },
+        {
+          "pct": "12%",
+          "count": "1116"
+        }
+      ],
+      "summary": "TakeProfitTrader is a Windermere, Florida-based futures prop firm founded in 2021. It runs a one-step evaluation (EOD trailing drawdown during the test, switching to intraday trailing once funded) across $25K\u2013$150K simulated accounts, billed as a monthly subscription rather than a one-time fee. Funded traders start on the simulated PRO tier (80/20 split, day-one withdrawals) with a path to the live PRO+ account (90/10 split, no buffer requirement). The firm is known for fast payouts and has been featured in Business Insider, CNBC, and Forbes.",
+      "hero_description": "TakeProfitTrader keeps things simple with a single one-step evaluation and a subscription model instead of a one-time fee \u2014 pay monthly, cancel anytime you're not actively working toward funding.\n\nOnce funded, traders start on a simulated PRO account with day-one withdrawals, then can graduate to a live PRO+ account with a 90/10 split. Up to 5 funded accounts and 3 resets are allowed per trader.",
+      "hero_btn_text": "Get Evaluation"
+    },
+    "fundednext": {
+      "name": "FundedNext Futures",
+      "affiliate_url": "https://propfirmbro.com/go/fundednext",
+      "code_default": "BROTRADING",
+      "logo_img": null,
+      "logo_icon": "fas fa-globe",
+      "ceo": "Abdullah Jayed",
+      "flag_code": "ae",
+      "flag_alt": "UAE",
+      "country_display": "UAE",
+      "trustpilot_score": 4.5,
+      "founded_display": "2022",
+      "years": "4",
+      "rating_score": 4.5,
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
+      "rating_reviews": "62,000+ reviews (Trustpilot, site-wide)",
+      "rating_bars": [
+        {
+          "pct": "78%",
+          "count": "48000"
+        },
+        {
+          "pct": "8%",
+          "count": "5000"
+        },
+        {
+          "pct": "4%",
+          "count": "2500"
+        },
+        {
+          "pct": "2%",
+          "count": "1200"
+        },
+        {
+          "pct": "8%",
+          "count": "5000"
+        }
+      ],
+      "summary": "FundedNext is a Dubai-based multi-asset prop firm founded in 2022, best known for its forex/CFD program but also running a dedicated Futures division on CME, COMEX, CBOT and NYMEX products via Tradovate, NinjaTrader and TradingView. The Futures side offers a one-step, one-time-fee evaluation with no activation fee and no recurring subscription across $25K\u2013$100K accounts, with an end-of-day trailing drawdown and profit splits ranging up to 95%.",
+      "hero_description": "FundedNext Futures runs a straightforward one-step challenge \u2014 no activation fee, no monthly subscription, and a genuinely large parent company behind it (FundedNext's main forex/CFD program has 60,000+ Trustpilot reviews).\n\nTraders can mix and match $25K, $50K, and $100K accounts up to the overall allocation cap, and split up to 95% of profits once funded.",
+      "hero_btn_text": "Get Evaluation"
+    },
+    "legendstrading": {
+      "name": "Legends Trading",
+      "affiliate_url": "https://propfirmbro.com/go/legendstrading",
+      "code_default": "BRO",
+      "logo_img": null,
+      "logo_icon": "fas fa-crown",
+      "ceo": "Greg Khojikian",
+      "flag_code": "us",
+      "flag_alt": "USA",
+      "country_display": "USA",
+      "trustpilot_score": 3.5,
+      "founded_display": "2024",
+      "years": "2",
+      "rating_score": 3.5,
+      "rating_stars": "\u2605\u2605\u2605\u2606\u2606",
+      "rating_reviews": "Trustpilot rating mixed \u2014 verify current score before quoting",
+      "rating_bars": [
+        {
+          "pct": "45%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "15%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "10%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "8%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "22%",
+          "count": "\u2014"
+        }
+      ],
+      "summary": "Legends Trading is a Calabasas, California-based futures prop firm founded by Greg Khojikian, who also runs GFF Brokers, a registered futures brokerage with 20+ years in the industry. It offers three distinct paths to funding \u2014 Apprentice (monthly subscription evaluation), Elite (one-time fee, no daily loss limit), and Straight to Master (one-time fee, direct to funded) \u2014 across $25K\u2013$150K accounts, all with a 90/10 profit split once live.",
+      "hero_description": "Legends Trading stands out for offering three genuinely different paths to a funded account instead of just one evaluation type \u2014 Apprentice for a lower monthly entry point, Elite for a one-time fee with no daily loss limit, or Straight to Master to skip most of the evaluation entirely.\n\nBacked by GFF Brokers' two decades in futures brokerage, all three paths lead to a 90/10 profit split once funded.",
+      "hero_btn_text": "Get Evaluation"
+    },
+    "iqcapital": {
+      "name": "IQ Capital",
+      "affiliate_url": "https://propfirmbro.com/go/iqcapital",
+      "code_default": "BRO",
+      "logo_img": null,
+      "logo_icon": "fas fa-brain",
+      "ceo": "Christoph Radecker",
+      "flag_code": "de",
+      "flag_alt": "Germany",
+      "country_display": "Germany",
+      "trustpilot_score": 4.7,
+      "founded_display": "2023",
+      "years": "3",
+      "rating_score": 4.7,
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
+      "rating_reviews": "Trustpilot (site-wide, multi-asset)",
+      "rating_bars": [
+        {
+          "pct": "85%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "6%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "3%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "2%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "4%",
+          "count": "\u2014"
+        }
+      ],
+      "summary": "IQ Capital is a German, T\u00dcV-certified multi-asset prop firm founded by Christoph Radecker, backed by $10M+ in institutional capital via Phemex. Alongside its crypto/CFD programs it runs a dedicated futures track on Quantower, ATAS and DeepCharts, with an 8% profit target, EOD trailing drawdown, and a distinctive 'soft breach' system where the first two rule breaches only close the offending position rather than the whole account. Funded futures accounts carry an ongoing ~$39/month fee, which is unusual on this site \u2014 worth knowing before signing up.",
+      "hero_description": "IQ Capital's soft breach system is the standout feature \u2014 most firms terminate your account on the first rule violation, but IQ Capital only closes the individual position on your first two breaches, giving you real room to recover from a mistake.\n\nOne thing to flag clearly: funded futures accounts here carry an ongoing ~$39/month fee, unlike most other firms on this site. Factor that into the real cost before committing.",
+      "hero_btn_text": "Get Evaluation"
+    },
+    "blusky": {
+      "name": "BluSky Trading",
+      "affiliate_url": "https://propfirmbro.com/go/blusky",
+      "code_default": null,
+      "logo_img": null,
+      "logo_icon": "fas fa-cloud",
+      "ceo": "Mike Tolbert",
+      "flag_code": "us",
+      "flag_alt": "USA",
+      "country_display": "USA",
+      "trustpilot_score": 4.7,
+      "founded_display": "2022",
+      "years": "4",
+      "rating_score": 4.7,
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
+      "rating_reviews": "Trustpilot",
+      "rating_bars": [
+        {
+          "pct": "85%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "6%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "3%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "2%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "4%",
+          "count": "\u2014"
+        }
+      ],
+      "summary": "BluSky Trading is a Florida-registered futures prop firm founded in 2022 by Mike Tolbert. Its flagship Propel Premium evaluation bills monthly until passed (not a one-time fee) across $50K\u2013$200K accounts, with an EOD trailing drawdown, 30% consistency rule, and a 90% profit split once funded. BluSky also offers Instant Sim Funded and Direct-to-Funded options for traders who'd rather skip the evaluation entirely. Note: BluSky restricts traders from roughly 87 countries \u2014 one of the broadest restriction lists among futures prop firms \u2014 worth checking before signing up.",
+      "hero_description": "BluSky's evaluation bills monthly until you pass, rather than charging one fee upfront \u2014 useful if you're not sure how long you'll need, less useful if you pass quickly and would've preferred a flat one-time cost.\n\nBluSky also restricts a notably long list of countries (~87), broader than most firms featured here \u2014 worth a quick check on their site before committing if you're outside the US.",
+      "hero_btn_text": "Get Evaluation"
     }
   }
 }

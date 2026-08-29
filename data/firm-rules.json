@@ -1691,6 +1691,302 @@
       },
       "_status": "Verified from official FundedSeat configurator screenshots, May 2026 (Mike-supplied).",
       "_extraction_notes": "Six plan variants \u00d7 3-4 sizes = 21 total variants. All drawdowns 'Drawdown Mode: EOD' per screenshots. Profit target uniformly 6% of account size on Eval plans. Daily plan has TWO consistency tiers (35% and 50%) with different prices but same drawdowns; treated as separate plans in this file. Daily Loss Limit: None on Daily/Daily Pro; on Sprint and Instant only at 50K+ ($1,200-$2,700). BRO discount = MSRP \u00d7 0.40 (60% off, per Mike); site default shows MSRP \u00d7 0.50 (50% off public). Activation fee free on Eval; activation field for Instant not shown in screenshots. UPDATE July 2026: BRO discount reduced to 50% (MSRP x 0.50), same as public rate; discounted prices recalculated accordingly."
+    },
+    "takeprofittrader": {
+      "name": "TakeProfitTrader",
+      "country": "USA",
+      "founded": "2021",
+      "rating": "4.4/5 (Trustpilot, 9,300+ reviews)",
+      "code_default": "BRO",
+      "affiliate_url": "https://propfirmbro.com/go/takeprofittrader",
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView",
+        "RTrader",
+        "Quantower",
+        "MotiveWave"
+      ],
+      "discount_text": "Exclusive Bro Trading code BRO (% not yet confirmed with Mike)",
+      "rules_global": {
+        "max_accounts": 5,
+        "resets_allowed": 3
+      },
+      "plans": {
+        "PRO Evaluation": {
+          "type": "Monthly subscription evaluation",
+          "billing": "monthly",
+          "drawdown_type": "EOD",
+          "min_days_to_payout": 3,
+          "payout_split": "80/20 (PRO, sim) / 90/10 (PRO+, live)",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 150,
+              "profit_target": 1500,
+              "max_drawdown": 1500,
+              "activation_fee": 130,
+              "max_contracts": 3
+            },
+            "50K": {
+              "eval_price_msrp": 170,
+              "profit_target": 3000,
+              "max_drawdown": 2000,
+              "activation_fee": 130,
+              "max_contracts": 6
+            },
+            "75K": {
+              "eval_price_msrp": 245,
+              "profit_target": 4500,
+              "max_drawdown": 2500,
+              "activation_fee": 130,
+              "max_contracts": 9
+            },
+            "100K": {
+              "eval_price_msrp": 330,
+              "profit_target": 6000,
+              "max_drawdown": 3000,
+              "activation_fee": 130,
+              "max_contracts": 12
+            },
+            "150K": {
+              "eval_price_msrp": 360,
+              "profit_target": 9000,
+              "max_drawdown": 4500,
+              "activation_fee": 130,
+              "max_contracts": 15
+            }
+          }
+        }
+      }
+    },
+    "fundednext": {
+      "name": "FundedNext Futures",
+      "country": "UAE",
+      "founded": "2022",
+      "rating": "4.5/5 (Trustpilot, 62,000+ reviews \u2014 site-wide, not futures-specific)",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://propfirmbro.com/go/fundednext",
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "TradingView"
+      ],
+      "discount_text": "Exclusive Bro Trading code BROTRADING (% not yet confirmed with Mike)",
+      "rules_global": {},
+      "plans": {
+        "Rapid": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD",
+          "payout_split": "up to 95%",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 79,
+              "max_drawdown": 1250,
+              "activation_fee": 0
+            },
+            "50K": {
+              "eval_price_msrp": 129,
+              "max_drawdown": 2000,
+              "activation_fee": 0
+            },
+            "100K": {
+              "eval_price_msrp": 279,
+              "max_drawdown": 2500,
+              "activation_fee": 0
+            }
+          }
+        }
+      }
+    },
+    "legendstrading": {
+      "name": "Legends Trading",
+      "country": "USA",
+      "founded": "2024",
+      "rating": "3.5-4/5 (Trustpilot, mixed \u2014 verify before quoting)",
+      "code_default": "BRO",
+      "affiliate_url": "https://propfirmbro.com/go/legendstrading",
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Rithmic",
+        "Sierra",
+        "Quantower"
+      ],
+      "discount_text": "Exclusive Bro Trading code BRO (public LTG code is 80% off Apprentice / 45% off Elite \u2014 Bro rate not yet confirmed with Mike)",
+      "rules_global": {},
+      "plans": {
+        "Apprentice": {
+          "type": "Monthly subscription evaluation",
+          "billing": "monthly",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "30%",
+          "min_days_to_payout": 4,
+          "payout_split": "90/10",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 165,
+              "profit_target": 1500,
+              "activation_fee": 99
+            },
+            "50K": {
+              "eval_price_msrp": 185,
+              "profit_target": 3000,
+              "activation_fee": 99
+            },
+            "100K": {
+              "eval_price_msrp": 225,
+              "profit_target": 4000,
+              "activation_fee": 149
+            },
+            "150K": {
+              "eval_price_msrp": 320,
+              "profit_target": 6250,
+              "activation_fee": 199
+            }
+          }
+        },
+        "Elite": {
+          "type": "One-Time Fee Evaluation",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "40%",
+          "payout_split": "90/10",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 99,
+              "profit_target": 1500,
+              "activation_fee": 0
+            },
+            "50K": {
+              "eval_price_msrp": 149,
+              "profit_target": 3000,
+              "activation_fee": 0
+            },
+            "100K": {
+              "eval_price_msrp": 180,
+              "profit_target": 4000,
+              "activation_fee": 0
+            },
+            "150K": {
+              "eval_price_msrp": 230,
+              "profit_target": 6250,
+              "activation_fee": 0
+            }
+          }
+        },
+        "Straight to Master": {
+          "type": "One-Time Fee, Direct to Funded",
+          "drawdown_type": "Trailing",
+          "consistency_eval": "30%",
+          "min_days_to_payout": 10,
+          "payout_split": "90/10",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 399,
+              "profit_target": 1500
+            },
+            "50K": {
+              "eval_price_msrp": 499,
+              "profit_target": 3000
+            },
+            "100K": {
+              "eval_price_msrp": 599,
+              "profit_target": 6000
+            },
+            "150K": {
+              "eval_price_msrp": 699,
+              "profit_target": 9000
+            }
+          }
+        }
+      }
+    },
+    "iqcapital": {
+      "name": "IQ Capital",
+      "country": "Germany",
+      "founded": "2023",
+      "rating": "4.7/5 (Trustpilot)",
+      "code_default": "BRO",
+      "affiliate_url": "https://propfirmbro.com/go/iqcapital",
+      "platforms": [
+        "Quantower",
+        "ATAS",
+        "DeepCharts"
+      ],
+      "discount_text": "Exclusive Bro Trading code BRO (% not yet confirmed with Mike)",
+      "rules_global": {
+        "max_accounts": 10
+      },
+      "plans": {
+        "Advanced/Expert": {
+          "type": "1-Step Evaluation",
+          "drawdown_type": "EOD Trailing",
+          "consistency_funded": "30%",
+          "payout_split": "90/10",
+          "structure": "Funded futures accounts carry an ongoing ~$39/month fee \u2014 unusual for this site's other firms, worth calling out clearly on the page.",
+          "sizes": {
+            "50K": {
+              "eval_price_msrp": 199,
+              "profit_target": 4000,
+              "max_drawdown": 3000,
+              "activation_fee": 199
+            },
+            "100K": {
+              "eval_price_msrp": 499,
+              "profit_target": 8000,
+              "max_drawdown": 6000,
+              "activation_fee": 299
+            }
+          }
+        }
+      }
+    },
+    "blusky": {
+      "name": "BluSky Trading",
+      "country": "USA",
+      "founded": "2022",
+      "rating": "4.7/5 (Trustpilot)",
+      "code_default": null,
+      "affiliate_url": "https://propfirmbro.com/go/blusky",
+      "platforms": [
+        "Tradovate",
+        "NinjaTrader",
+        "Rithmic",
+        "DeepCharts",
+        "Tradesea",
+        "Tickblaze",
+        "TradingView",
+        "Volumetrica"
+      ],
+      "discount_text": "Affiliate code not assigned yet \u2014 confirm with Mike before publishing a specific %",
+      "rules_global": {
+        "restricted_countries_count": 87
+      },
+      "plans": {
+        "Propel Premium": {
+          "type": "1-Step Evaluation (bills monthly until passed)",
+          "billing": "monthly",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "30%",
+          "payout_split": "90/10",
+          "sizes": {
+            "50K": {
+              "eval_price_msrp": 69,
+              "profit_target": 3000,
+              "max_drawdown": 2500
+            },
+            "100K": {
+              "eval_price_msrp": 139,
+              "profit_target": 6000,
+              "max_drawdown": 3500
+            },
+            "200K": {
+              "eval_price_msrp": 244,
+              "profit_target": 12000,
+              "max_drawdown": 6000
+            }
+          }
+        }
+      }
     }
   }
 }

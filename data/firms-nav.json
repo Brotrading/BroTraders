@@ -34,5 +34,25 @@
   {
     "name": "Top One Futures",
     "path": "/Firms/TopOne.html"
+  },
+  {
+    "name": "TakeProfitTrader",
+    "path": "/Firms/TakeProfitTrader.html"
+  },
+  {
+    "name": "FundedNext Futures",
+    "path": "/Firms/FundedNext.html"
+  },
+  {
+    "name": "Legends Trading",
+    "path": "/Firms/LegendsTrading.html"
+  },
+  {
+    "name": "IQ Capital",
+    "path": "/Firms/IQCapital.html"
+  },
+  {
+    "name": "BluSky Trading",
+    "path": "/Firms/BluSky.html"
   }
 ]

@@ -66,6 +66,29 @@ META = {
                                "firmpage": "https://fundedseat.link/bro",
                                "country": "USA", "maxaccounts": 3,
                                "platform": "Rithmic, DX Feed, Volumetrica, DeepCharts, DeepDom, Quantower, ATAS, MotiveWave, Bookmap, Sierra Chart, Tradesea"},
+    # Added 2026-08-20 — no logo image files yet (would need Mike's go-ahead to
+    # download from each firm's site); comparison.html already falls back to a
+    # placeholder image on a missing logo (see onerror handler), so this is safe.
+    "takeprofittrader":      {"logo": "../Photos/firms/takeprofittrader.png",
+                               "firmpage": "../Firms/TakeProfitTrader.html",
+                               "country": "USA", "maxaccounts": 5,
+                               "platform": "Tradovate, NinjaTrader, TradingView, RTrader, Quantower, MotiveWave"},
+    "fundednext":            {"logo": "../Photos/firms/fundednext.png",
+                               "firmpage": "../Firms/FundedNext.html",
+                               "country": "UAE", "maxaccounts": 5,
+                               "platform": "Tradovate, NinjaTrader, TradingView"},
+    "legendstrading":        {"logo": "../Photos/firms/legendstrading.png",
+                               "firmpage": "../Firms/LegendsTrading.html",
+                               "country": "USA", "maxaccounts": 5,
+                               "platform": "Tradovate, NinjaTrader, Rithmic, Sierra, Quantower"},
+    "iqcapital":             {"logo": "../Photos/firms/iqcapital.png",
+                               "firmpage": "../Firms/IQCapital.html",
+                               "country": "Germany", "maxaccounts": 10,
+                               "platform": "Quantower, ATAS, DeepCharts"},
+    "blusky":                {"logo": "../Photos/firms/blusky.png",
+                               "firmpage": "../Firms/BluSky.html",
+                               "country": "USA", "maxaccounts": 5,
+                               "platform": "Tradovate, NinjaTrader, Rithmic, DeepCharts, Tradesea, Tickblaze, TradingView, Volumetrica"},
 }
 
 # One representative size per firm to flag as the homepage/comparison "showcase" row.
@@ -114,7 +137,11 @@ def main():
         platform = meta["platform"] or ", ".join(firm.get("platforms") or []) or "—"
         country = firm.get("country") or meta["country"]
         maxaccounts = (firm.get("rules_global") or {}).get("max_accounts") or meta["maxaccounts"]
-        code = firm.get("code_default") or "BRO"
+        # "BRO" default only applies when the field is missing entirely (older
+        # entries never set it) — an EXPLICIT null (BluSky: code not assigned
+        # yet) must not silently become a fake "BRO" code.
+        code = firm["code_default"] if "code_default" in firm else "BRO"
+        code = code or "TBD"
         website = firm.get("affiliate_url") or meta["firmpage"]
 
         for plan_name, plan in (firm.get("plans") or {}).items():
