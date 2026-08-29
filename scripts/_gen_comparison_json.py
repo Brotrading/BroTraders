@@ -81,6 +81,10 @@ META = {
                                "firmpage": "../Firms/LegendsTrading.html",
                                "country": "USA", "maxaccounts": 5,
                                "platform": "Tradovate, NinjaTrader, Rithmic, Sierra, Quantower"},
+    "alpha_futures":         {"logo": "../Photos/firms/alphafutures.png",
+                               "firmpage": "../Firms/AlphaFutures.html",
+                               "country": "UK", "maxaccounts": 5,
+                               "platform": "AlphaTrader, WealthCharts, Quantower, DeepCharts"},
     "iqcapital":             {"logo": "../Photos/firms/iqcapital.png",
                                "firmpage": "../Firms/IQCapital.html",
                                "country": "Germany", "maxaccounts": 10,
@@ -102,6 +106,7 @@ SHOWCASE = {
     "nexgen_pro_trader":     ("Evaluation", "100K"),  # no 50K available (see homepage-generator note)
     "top_one_futures":       ("Elite Daily", "50K"),
     "fundedseat":            ("1 Step - Sprint", "50K"),
+    "alpha_futures":         ("Zero", "50K"),
 }
 
 

@@ -591,6 +591,48 @@
       "summary": "BluSky Trading is a Florida-registered futures prop firm founded in 2022 by Mike Tolbert. Its flagship Propel Premium evaluation bills monthly until passed (not a one-time fee) across $50K\u2013$200K accounts, with an EOD trailing drawdown, 30% consistency rule, and a 90% profit split once funded. BluSky also offers Instant Sim Funded and Direct-to-Funded options for traders who'd rather skip the evaluation entirely. Note: BluSky restricts traders from roughly 87 countries \u2014 one of the broadest restriction lists among futures prop firms \u2014 worth checking before signing up.",
       "hero_description": "BluSky's evaluation bills monthly until you pass, rather than charging one fee upfront \u2014 useful if you're not sure how long you'll need, less useful if you pass quickly and would've preferred a flat one-time cost.\n\nBluSky also restricts a notably long list of countries (~87), broader than most firms featured here \u2014 worth a quick check on their site before committing if you're outside the US.",
       "hero_btn_text": "Get Evaluation"
+    },
+    "alpha_futures": {
+      "name": "Alpha Futures",
+      "affiliate_url": "https://propfirmbro.com/go/alpha",
+      "code_default": "BROTRADING",
+      "logo_img": null,
+      "logo_icon": "fas fa-bolt",
+      "ceo": null,
+      "flag_code": "gb",
+      "flag_alt": "UK",
+      "country_display": "UK",
+      "trustpilot_score": 4.9,
+      "founded_display": "2023",
+      "years": "3",
+      "rating_score": 4.9,
+      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
+      "rating_reviews": "17,000+ reviews (Trustpilot) \u2014 one of the highest in the futures prop space",
+      "rating_bars": [
+        {
+          "pct": "92%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "4%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "1%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "1%",
+          "count": "\u2014"
+        },
+        {
+          "pct": "2%",
+          "count": "\u2014"
+        }
+      ],
+      "summary": "Alpha Futures is a UK-registered futures prop firm (Alpha Futures Limited) founded in 2023, holding one of the highest Trustpilot scores in the futures prop space at 4.9/5 across 17,000+ reviews. It runs four distinct paths \u2014 Zero (no consistency rule, monthly subscription), Standard, Advanced, and Direct (one-time fee, direct to funded) \u2014 across $25K-$150K accounts on AlphaTrader, WealthCharts, Quantower and DeepCharts, all with an end-of-day trailing drawdown and up to 90% profit split.",
+      "hero_description": "Alpha Futures backs up a very strong Trustpilot record (4.9/5, 17,000+ reviews) with four genuinely different account types \u2014 Zero if you want no consistency rule at all, Standard or Advanced for more capital at a lower monthly cost, or Direct if you'd rather pay once and skip straight to funded.\n\nAll four paths share the same end-of-day trailing drawdown model and up to 90% profit split once you're funded.",
+      "hero_btn_text": "Get Evaluation"
     }
   }
 }
