@@ -15,6 +15,13 @@ export const LINKS = {
   topone:      'https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures',
   tradeify:    'https://tradeify.co/?ref=BFYQ2HKM',
   yrm:         'https://yrmprop.com/ref/Bro/',
+  takeprofittrader: 'https://takeprofittrader.com/?referralCode=BRO',
+  fundednext:       'https://fundednext.com?fpr=bro',
+  legendstrading:   'https://thelegendstrading.com/?ref=BRO',
+  iqcapital:        'https://checkout.iqcapital.io/products?aff=bro',
+  // BluSky (2026-08-20): affiliate code not assigned yet — confirm with Mike
+  // before this appears anywhere on the site as "code: ...".
+  blusky:           'https://trader.blusky.pro/sign-up?referral_id=f62c97d674d218879457',
 
   // Tools / partners
   bookmap:     'https://bookmap.com/members/aff/aff',
