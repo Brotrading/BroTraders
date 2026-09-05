@@ -1,51 +1,55 @@
 [
   {
-    "name": "FundedSeat",
-    "path": "/Firms/FundedSeat.html"
-  },
-  {
-    "name": "Apex Trader Funding",
-    "path": "/Firms/ApexFunding.html"
-  },
-  {
     "name": "Tradeify",
     "path": "/Firms/TradeifyTrader.html"
-  },
-  {
-    "name": "Lucid Trading",
-    "path": "/Firms/Lucid Trading.html"
-  },
-  {
-    "name": "My Funded Futures",
-    "path": "/Firms/MyFundedFuture.html"
-  },
-  {
-    "name": "Daytraders.com",
-    "path": "/Firms/DayTraders.html"
-  },
-  {
-    "name": "Phidias PropFirm",
-    "path": "/Firms/PhidiasPropFirm.html"
-  },
-  {
-    "name": "NexGen Funding",
-    "path": "/Firms/NexGen.html"
-  },
-  {
-    "name": "Top One Futures",
-    "path": "/Firms/TopOne.html"
   },
   {
     "name": "TakeProfitTrader",
     "path": "/Firms/TakeProfitTrader.html"
   },
   {
+    "name": "My Funded Futures",
+    "path": "/Firms/MyFundedFuture.html"
+  },
+  {
     "name": "FundedNext Futures",
     "path": "/Firms/FundedNext.html"
   },
   {
+    "name": "Lucid Trading",
+    "path": "/Firms/Lucid Trading.html"
+  },
+  {
+    "name": "Apex Trader Funding",
+    "path": "/Firms/ApexFunding.html"
+  },
+  {
+    "name": "NexGen Funding",
+    "path": "/Firms/NexGen.html"
+  },
+  {
+    "name": "FundedSeat",
+    "path": "/Firms/FundedSeat.html"
+  },
+  {
+    "name": "Top One Futures",
+    "path": "/Firms/TopOne.html"
+  },
+  {
+    "name": "Phidias PropFirm",
+    "path": "/Firms/PhidiasPropFirm.html"
+  },
+  {
     "name": "Legends Trading",
     "path": "/Firms/LegendsTrading.html"
+  },
+  {
+    "name": "Daytraders.com",
+    "path": "/Firms/DayTraders.html"
+  },
+  {
+    "name": "Alpha Futures",
+    "path": "/Firms/AlphaFutures.html"
   },
   {
     "name": "IQ Capital",

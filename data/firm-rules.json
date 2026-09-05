@@ -1987,6 +1987,116 @@
           }
         }
       }
+    },
+    "alpha_futures": {
+      "name": "Alpha Futures",
+      "country": "UK",
+      "founded": "2023",
+      "rating": "4.9/5 (Trustpilot, 17,000+ reviews)",
+      "code_default": "BROTRADING",
+      "affiliate_url": "https://propfirmbro.com/go/alpha",
+      "platforms": [
+        "AlphaTrader",
+        "WealthCharts",
+        "Quantower",
+        "DeepCharts"
+      ],
+      "discount_text": "Exclusive Bro Trading code BROTRADING (% not yet confirmed with Mike)",
+      "rules_global": {},
+      "plans": {
+        "Zero": {
+          "type": "1-Step Evaluation, monthly subscription",
+          "billing": "monthly",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "None",
+          "payout_split": "up to 90%",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 89,
+              "profit_target": 1500,
+              "max_drawdown": 1000
+            },
+            "50K": {
+              "eval_price_msrp": 139,
+              "profit_target": 3000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_msrp": 279,
+              "profit_target": 6000,
+              "max_drawdown": 3000
+            }
+          }
+        },
+        "Standard": {
+          "type": "1-Step Evaluation, monthly subscription (may be renamed 'Premium' \u2014 confirm current naming)",
+          "billing": "monthly",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "50%",
+          "payout_split": "up to 90%",
+          "sizes": {
+            "50K": {
+              "eval_price_msrp": 129,
+              "profit_target": 4000,
+              "max_drawdown": 2000
+            },
+            "100K": {
+              "eval_price_msrp": 239,
+              "profit_target": 8000,
+              "max_drawdown": 3500
+            },
+            "150K": {
+              "eval_price_msrp": 349,
+              "profit_target": 12000,
+              "max_drawdown": 5250
+            }
+          }
+        },
+        "Advanced": {
+          "type": "1-Step Evaluation, monthly subscription",
+          "billing": "monthly",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "40%",
+          "payout_split": "up to 90%",
+          "sizes": {
+            "50K": {
+              "eval_price_msrp": 209,
+              "profit_target": 4000,
+              "max_drawdown": 1750
+            },
+            "100K": {
+              "eval_price_msrp": 349,
+              "profit_target": 8000,
+              "max_drawdown": 3500
+            },
+            "150K": {
+              "eval_price_msrp": 489,
+              "profit_target": 12000,
+              "max_drawdown": 5250
+            }
+          }
+        },
+        "Direct": {
+          "type": "One-Time Fee, Direct to Funded",
+          "drawdown_type": "EOD Trailing",
+          "consistency_eval": "20%",
+          "payout_split": "up to 90%",
+          "sizes": {
+            "25K": {
+              "eval_price_msrp": 349
+            },
+            "50K": {
+              "eval_price_msrp": 519
+            },
+            "100K": {
+              "eval_price_msrp": 689
+            },
+            "150K": {
+              "eval_price_msrp": 859
+            }
+          }
+        }
+      }
     }
   }
 }
