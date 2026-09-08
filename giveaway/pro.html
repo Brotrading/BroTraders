@@ -122,6 +122,12 @@
   .field {
     margin-bottom: 16px;
   }
+  .field-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
   label {
     display: block;
     font-size: 13px;
@@ -249,7 +255,7 @@
   <div class="prizes">
     <h3><i class="fas fa-trophy"></i> What you can win</h3>
     <ul>
-      <li><i class="fas fa-circle"></i> 2× 50K Tradeify Select accounts</li>
+      <li><i class="fas fa-circle"></i> 3× $50K TakeProfitTrader accounts</li>
     </ul>
   </div>
 
@@ -259,7 +265,7 @@
       <li><i class="fab fa-discord"></i> Be in the Bro Trading Discord with the Bro tag</li>
       <li><i class="fas fa-thumbs-up"></i> Like the live stream</li>
       <li><i class="fas fa-comment"></i> Comment on the live stream</li>
-      <li><i class="fab fa-youtube"></i> Subscribe to Tradeify on YouTube</li>
+      <li><i class="fas fa-key"></i> Have today's Pro Bro password (posted in the Pro Bro channel)</li>
     </ul>
   </div>
 
@@ -275,6 +281,15 @@
     </div>
 
     <div class="field">
+      <label><i class="fas fa-key"></i> Pro Bro Password</label>
+      <input type="text" id="proPassword" name="proPassword" required placeholder="Posted in the Pro Bro channel" autocomplete="off" />
+      <div class="field-hint">
+        Changes every giveaway — only current Pro Bros in the channel get it.
+        This keeps out lapsed members who left but still have the entry link.
+      </div>
+    </div>
+
+    <div class="field">
       <label><i class="fas fa-user"></i> First Name</label>
       <input type="text" name="firstName" required placeholder="First name" />
     </div>
@@ -286,7 +301,13 @@
 
     <div class="field">
       <label><i class="fab fa-discord"></i> Discord Username</label>
-      <input type="text" name="discord" required placeholder="brotrading" />
+      <input type="text" name="discord" required placeholder="e.g. johntrades23" />
+      <div class="field-hint">
+        Your exact @username — NOT your display name (the one you can change).
+        In Discord: tap your profile picture → the name under it, with no spaces
+        or capitals, is your real username.
+      </div>
+      <img src="assets/discord-username-example-annotated.png" alt="Example: on a Discord profile, the display name is on top (e.g. Brotrading) but your real username is the smaller text below it (e.g. brotradingz) — type that one." style="max-width:280px; width:100%; height:auto; margin-top:10px; border-radius:8px; display:block;" />
     </div>
 
     <div class="field">
@@ -318,6 +339,10 @@
   // PASTE YOUR APPS SCRIPT URL HERE (same one as wheel.html and pro.html)
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr_YsQAWv7r1618c3YMkob3J7QZrSR1yjJ4G7n8_iAMCPBsDby9nAqEc5Qxqkv0sVD5A/exec';
 
+  // CHANGE THIS EVERY GIVEAWAY — post the new password in the Pro Bro channel
+  // when you update it. Case-insensitive, whitespace-trimmed on check.
+  const PRO_BRO_PASSWORD = 'CHICHI1';
+
   const form = document.getElementById('entryForm');
   const msg = document.getElementById('msg');
   const submitBtn = document.getElementById('submitBtn');
@@ -337,6 +362,15 @@
     if (honeypot && honeypot.value.trim() !== '') {
       form.style.display = 'none';
       document.getElementById('successCard').classList.add('show');
+      return;
+    }
+
+    // Pro Bro password check: keeps out lapsed members who still have the link
+    // but aren't in the Pro Bro channel to see the current password.
+    const proPasswordInput = document.getElementById('proPassword');
+    const enteredPassword = (proPasswordInput ? proPasswordInput.value : '').trim().toUpperCase();
+    if (enteredPassword !== PRO_BRO_PASSWORD.toUpperCase()) {
+      showMsg('⚠️ Wrong password. Check the Pro Bro channel for today\'s password.', 'error');
       return;
     }
 
