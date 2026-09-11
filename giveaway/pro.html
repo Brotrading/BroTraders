@@ -255,8 +255,9 @@
   <div class="prizes">
     <h3><i class="fas fa-trophy"></i> What you can win</h3>
     <ul>
-      <li><i class="fas fa-circle"></i> 3× $50K TakeProfitTrader accounts</li>
+      <li><i class="fas fa-circle"></i> 4× $10K EightCap Day Trader Challenges</li>
     </ul>
+    <p class="field-hint" style="margin-top:10px;">CFD challenge, comparable to a $25K futures account.</p>
   </div>
 
   <div class="prizes">
@@ -266,10 +267,36 @@
       <li><i class="fas fa-thumbs-up"></i> Like the live stream</li>
       <li><i class="fas fa-comment"></i> Comment on the live stream</li>
       <li><i class="fas fa-key"></i> Have today's Pro Bro password (posted in the Pro Bro channel)</li>
+      <li><i class="fas fa-cart-shopping"></i> Buy any Day Trader Challenge with code BRO15</li>
+      <li><i class="fas fa-receipt"></i> Submit your order number + a receipt screenshot below</li>
     </ul>
   </div>
 
-  <form id="entryForm" autocomplete="off">
+  <div class="prizes">
+    <h3><i class="fas fa-ticket"></i> How tickets work</h3>
+    <p class="field-hint">
+      Buy any Day Trader Challenge at
+      <a href="https://challenges.eightcap.com/day-trader-challenges/?campaign_id=1&ref_id=2359&creative_Id=27" target="_blank" style="color:var(--blue);">eightcap.com</a>
+      — code <strong>BRO15</strong> gets you 15% off. Every <strong>$5 of the challenge's full
+      price</strong> (before your discount) = <strong>1 giveaway ticket</strong>, and as a Pro
+      Bro your ticket count is <strong>doubled</strong> on top. Example: a $20 challenge = 4
+      tickets → 8 as a Pro Bro, even though BRO15 brings your total down to $17.
+    </p>
+  </div>
+
+  <div id="passwordGate" class="prizes">
+    <h3><i class="fas fa-lock"></i> Enter Today's Pro Bro Password</h3>
+    <p class="field-hint" style="margin-bottom:14px;">Posted in the Pro Bro channel — this keeps the form to current Pro Bros only.</p>
+    <div class="field">
+      <input type="text" id="gatePassword" placeholder="Password" autocomplete="off" />
+    </div>
+    <button type="button" class="btn" id="unlockBtn">
+      <i class="fas fa-unlock"></i> Unlock Entry Form
+    </button>
+    <div class="msg" id="gateMsg"></div>
+  </div>
+
+  <form id="entryForm" autocomplete="off" style="display:none;">
     <input type="hidden" name="tier" value="pro" />
 
     <!-- Honeypot: real users never see or fill this. Bots that blindly fill every
@@ -278,15 +305,6 @@
     <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
       <label for="website">Website</label>
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-    </div>
-
-    <div class="field">
-      <label><i class="fas fa-key"></i> Pro Bro Password</label>
-      <input type="text" id="proPassword" name="proPassword" required placeholder="Posted in the Pro Bro channel" autocomplete="off" />
-      <div class="field-hint">
-        Changes every giveaway — only current Pro Bros in the channel get it.
-        This keeps out lapsed members who left but still have the entry link.
-      </div>
     </div>
 
     <div class="field">
@@ -315,6 +333,28 @@
       <input type="email" name="email" required placeholder="you@example.com" />
     </div>
 
+    <div class="field">
+      <label><i class="fas fa-hashtag"></i> EightCap Order Number</label>
+      <input type="text" name="orderNumber" required placeholder="e.g. 78823" />
+      <div class="field-hint">
+        Found at the top of your order confirmation — "Order #78823" on your receipt.
+      </div>
+      <img src="assets/receipt-example-annotated.png" alt="Example EightCap order confirmation with the order number underlined — that number is what goes in this field." style="max-width:320px; width:100%; height:auto; margin-top:10px; border-radius:8px; display:block; border:1px solid rgba(44,158,255,0.2);" />
+    </div>
+
+    <div class="field">
+      <label><i class="fas fa-receipt"></i> Receipt Screenshot</label>
+      <input type="file" id="receiptFile" accept="image/*" required />
+      <div class="field-hint">
+        A screenshot of your EightCap order summary (like the example below).
+        Large photos are auto-shrunk before sending — this can take a few seconds.
+      </div>
+      <div id="receiptPreviewWrap" style="display:none; margin-top:8px;">
+        <img id="receiptPreview" style="max-width:200px; border-radius:8px; display:block;" />
+        <div id="receiptSizeMsg" class="field-hint"></div>
+      </div>
+    </div>
+
     <button type="submit" class="btn" id="submitBtn">
       <i class="fas fa-crown"></i> Submit Pro Entry
     </button>
@@ -341,7 +381,7 @@
 
   // CHANGE THIS EVERY GIVEAWAY — post the new password in the Pro Bro channel
   // when you update it. Case-insensitive, whitespace-trimmed on check.
-  const PRO_BRO_PASSWORD = 'CHICHI1';
+  const PRO_BRO_PASSWORD = 'CHICHI7';
 
   const form = document.getElementById('entryForm');
   const msg = document.getElementById('msg');
@@ -350,6 +390,101 @@
   function showMsg(text, type) {
     msg.textContent = text;
     msg.className = 'msg show ' + type;
+  }
+
+  // Password gate: the form stays hidden (display:none, set inline in the HTML)
+  // until the correct password unlocks it. Same client-side caveat as the old
+  // in-form check — visible in page source to anyone who looks — but the goal
+  // is filtering out casual lapsed Pro Bros, not defeating a determined bypass.
+  const passwordGate = document.getElementById('passwordGate');
+  const gatePasswordInput = document.getElementById('gatePassword');
+  const gateMsg = document.getElementById('gateMsg');
+  const unlockBtn = document.getElementById('unlockBtn');
+
+  function tryUnlock() {
+    const entered = gatePasswordInput.value.trim().toUpperCase();
+    if (entered === PRO_BRO_PASSWORD.toUpperCase()) {
+      passwordGate.style.display = 'none';
+      form.style.display = '';
+    } else {
+      gateMsg.textContent = '⚠️ Wrong password. Check the Pro Bro channel for today\'s password.';
+      gateMsg.className = 'msg show error';
+    }
+  }
+
+  unlockBtn.addEventListener('click', tryUnlock);
+  gatePasswordInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      tryUnlock();
+    }
+  });
+
+  // Receipt photo: shrunk client-side to a small JPEG data URL before sending,
+  // since it rides along as a plain text field to the same Apps Script POST
+  // (no real file-upload endpoint exists). Google Sheets cells cap out around
+  // 50,000 characters — MAX_RECEIPT_B64_CHARS keeps us safely under that.
+  // NOT YET CONFIRMED end-to-end: do one real test submission and check the
+  // Sheet before trusting this for the live giveaway.
+  const MAX_RECEIPT_B64_CHARS = 35000;
+  const receiptFileInput = document.getElementById('receiptFile');
+  const receiptPreviewWrap = document.getElementById('receiptPreviewWrap');
+  const receiptPreviewImg = document.getElementById('receiptPreview');
+  const receiptSizeMsg = document.getElementById('receiptSizeMsg');
+  let receiptBase64 = '';
+  let receiptCompressPromise = null;
+
+  function compressImage(file, maxWidth) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Could not read the file'));
+      reader.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Could not read the image'));
+        img.onload = () => {
+          const scale = Math.min(1, maxWidth / img.width);
+          const w = Math.round(img.width * scale);
+          const h = Math.round(img.height * scale);
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.6));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  if (receiptFileInput) {
+    receiptFileInput.addEventListener('change', () => {
+      const file = receiptFileInput.files[0];
+      receiptBase64 = '';
+      if (!file) {
+        receiptPreviewWrap.style.display = 'none';
+        return;
+      }
+      receiptSizeMsg.textContent = 'Compressing...';
+      receiptPreviewWrap.style.display = 'block';
+      receiptCompressPromise = compressImage(file, 480).then((dataUrl) => {
+        if (dataUrl.length > MAX_RECEIPT_B64_CHARS) {
+          return compressImage(file, 300);
+        }
+        return dataUrl;
+      }).then((dataUrl) => {
+        receiptBase64 = dataUrl;
+        receiptPreviewImg.src = dataUrl;
+        const kb = Math.round(dataUrl.length * 0.75 / 1024);
+        if (dataUrl.length > MAX_RECEIPT_B64_CHARS) {
+          receiptSizeMsg.textContent = `⚠️ ~${kb}KB — still large, might not save fully. Try a tighter crop of just the order summary.`;
+        } else {
+          receiptSizeMsg.textContent = `✅ ~${kb}KB — good to go.`;
+        }
+      }).catch((err) => {
+        receiptSizeMsg.textContent = '⚠️ Could not process that image — try a different screenshot.';
+      });
+    });
   }
 
   form.addEventListener('submit', async (e) => {
@@ -365,16 +500,20 @@
       return;
     }
 
-    // Pro Bro password check: keeps out lapsed members who still have the link
-    // but aren't in the Pro Bro channel to see the current password.
-    const proPasswordInput = document.getElementById('proPassword');
-    const enteredPassword = (proPasswordInput ? proPasswordInput.value : '').trim().toUpperCase();
-    if (enteredPassword !== PRO_BRO_PASSWORD.toUpperCase()) {
-      showMsg('⚠️ Wrong password. Check the Pro Bro channel for today\'s password.', 'error');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Compressing photo...';
+
+    // Wait for the receipt photo to finish compressing if it's still in progress.
+    if (receiptCompressPromise) {
+      try { await receiptCompressPromise; } catch (err) { /* handled via receiptSizeMsg */ }
+    }
+    if (receiptFileInput && receiptFileInput.files[0] && !receiptBase64) {
+      showMsg('⚠️ Still processing your receipt photo — wait a second and try again.', 'error');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-crown"></i> Submit Pro Entry';
       return;
     }
 
-    submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
 
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.startsWith('PASTE_')) {
@@ -387,6 +526,9 @@
     const formData = new FormData(form);
     const params = new URLSearchParams();
     formData.forEach((v, k) => params.append(k, v));
+    if (receiptBase64) {
+      params.set('receiptImage', receiptBase64);
+    }
 
     try {
       const res = await fetch(APPS_SCRIPT_URL, {
