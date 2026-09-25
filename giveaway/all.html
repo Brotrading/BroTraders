@@ -255,9 +255,9 @@
   <div class="prizes">
     <h3><i class="fas fa-trophy"></i> What you can win</h3>
     <ul>
-      <li><i class="fas fa-circle"></i> 4× $10K EightCap Day Trader Challenges</li>
+      <li><i class="fas fa-circle"></i> 3x Lucid 50K Flex Account</li>
     </ul>
-    <p class="field-hint" style="margin-top:10px;">CFD challenge, comparable to a $25K futures account.</p>
+    <p class="field-hint" style="margin-top:10px;">No daily drawdown. 90/10 split. Pure flex.</p>
   </div>
 
   <div class="prizes">
@@ -266,20 +266,40 @@
       <li><i class="fab fa-discord"></i> Be in the Bro Trading Discord with the Bro tag</li>
       <li><i class="fas fa-thumbs-up"></i> Like the live stream</li>
       <li><i class="fas fa-comment"></i> Comment on the live stream</li>
-      <li><i class="fas fa-cart-shopping"></i> Buy any Day Trader Challenge with code BRO15</li>
-      <li><i class="fas fa-receipt"></i> Submit your order number + a receipt screenshot below</li>
+      <li><i class="fas fa-puzzle-piece"></i> Install the free Bro Extension</li>
+      <li><i class="fas fa-camera"></i> Upload a screenshot proving it's active on Lucid</li>
     </ul>
   </div>
 
   <div class="prizes">
-    <h3><i class="fas fa-ticket"></i> How tickets work</h3>
-    <p class="field-hint">
-      Buy any Day Trader Challenge at
-      <a href="https://challenges.eightcap.com/day-trader-challenges/?campaign_id=1&ref_id=2359&creative_Id=27" target="_blank" style="color:var(--blue);">eightcap.com</a>
-      — code <strong>BRO15</strong> gets you 15% off. Every <strong>$5 of the challenge's full
-      price</strong> (before your discount) = <strong>1 giveaway ticket</strong>.
-      Example: a $20 challenge = 4 tickets, even though BRO15 brings your total down to $17.
+    <h3><i class="fas fa-puzzle-piece"></i> Step 1 · Install the Bro Extension</h3>
+    <p class="field-hint" style="margin-bottom:14px;">
+      Free Chrome extension — it auto-applies your Bro discount code at checkout on
+      every partner firm. Takes about 10 seconds to install.
     </p>
+    <a href="https://chromewebstore.google.com/detail/propfirmbro-discount/oecmjiepckpabedghfhplfkdmoiimkga" target="_blank" rel="noopener" class="btn" style="display:block; text-align:center; text-decoration:none; margin-top:0;">
+      <i class="fab fa-chrome"></i> Get the Bro Extension
+    </a>
+  </div>
+
+  <div class="prizes">
+    <h3><i class="fas fa-camera"></i> Step 2 · Take your proof screenshot</h3>
+    <p class="field-hint">
+      Go to <a href="https://lucidtrading.com/ref/brotrading/" target="_blank" rel="noopener" style="color:var(--blue);">Lucid Trading</a>
+      and open your <strong>My Profile</strong> page. Then click the Bro Extension icon so the
+      panel shows <strong>"Active on this site — Lucid Trading"</strong>. Take one screenshot
+      with <strong>both</strong> of these visible:
+    </p>
+    <ul style="margin-top:10px;">
+      <li><i class="fas fa-circle"></i> The extension panel, active on Lucid</li>
+      <li><i class="fas fa-circle"></i> Your Lucid account details — email, first name, last name</li>
+    </ul>
+    <p class="field-hint" style="margin-top:10px;">
+      ⚠️ The email and name in your screenshot must <strong>exactly match</strong> what you fill
+      in below. If they don't match your Lucid account, your entry doesn't count.
+    </p>
+    <img src="assets/lucid-extension-proof-example.png" alt="Example proof screenshot: the Lucid Trading My Profile page showing email, first name and last name, with the Bro Extension panel open alongside it reading 'Active on this site — Lucid Trading' with code BROTRADING." style="width:100%; height:auto; margin-top:12px; border-radius:8px; display:block; border:1px solid rgba(44,158,255,0.2);" />
+    <p class="field-hint" style="margin-top:8px;">Example — yours should look like this, with your own details.</p>
   </div>
 
   <form id="entryForm" autocomplete="off">
@@ -296,11 +316,13 @@
     <div class="field">
       <label><i class="fas fa-user"></i> First Name</label>
       <input type="text" name="firstName" required placeholder="First name" />
+      <div class="field-hint">Exactly as it appears on your Lucid account.</div>
     </div>
 
     <div class="field">
       <label><i class="fas fa-user"></i> Last Name</label>
       <input type="text" name="lastName" required placeholder="Last name" />
+      <div class="field-hint">Exactly as it appears on your Lucid account.</div>
     </div>
 
     <div class="field">
@@ -317,23 +339,19 @@
     <div class="field">
       <label><i class="fas fa-envelope"></i> Email</label>
       <input type="email" name="email" required placeholder="you@example.com" />
-    </div>
-
-    <div class="field">
-      <label><i class="fas fa-hashtag"></i> EightCap Order Number</label>
-      <input type="text" name="orderNumber" required placeholder="e.g. 78823" />
       <div class="field-hint">
-        Found at the top of your order confirmation — "Order #78823" on your receipt.
+        The same email as your Lucid account — it has to match the one in your
+        screenshot.
       </div>
-      <img src="assets/receipt-example-annotated.png" alt="Example EightCap order confirmation with the order number underlined — that number is what goes in this field." style="max-width:320px; width:100%; height:auto; margin-top:10px; border-radius:8px; display:block; border:1px solid rgba(44,158,255,0.2);" />
     </div>
 
     <div class="field">
-      <label><i class="fas fa-receipt"></i> Receipt Screenshot</label>
+      <label><i class="fas fa-camera"></i> Bro Extension Proof Screenshot</label>
       <input type="file" id="receiptFile" accept="image/*" required />
       <div class="field-hint">
-        A screenshot of your EightCap order summary (like the example below).
-        Large photos are auto-shrunk before sending — this can take a few seconds.
+        Your screenshot from Step 2 — the Bro Extension active on Lucid, with your
+        account email and name visible. Large photos are auto-shrunk before sending —
+        this can take a few seconds.
       </div>
       <div id="receiptPreviewWrap" style="display:none; margin-top:8px;">
         <img id="receiptPreview" style="max-width:200px; border-radius:8px; display:block;" />
@@ -363,7 +381,7 @@
 
 <script>
   // PASTE YOUR APPS SCRIPT URL HERE (same one as wheel.html and pro.html)
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr_YsQAWv7r1618c3YMkob3J7QZrSR1yjJ4G7n8_iAMCPBsDby9nAqEc5Qxqkv0sVD5A/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzg3fO1HV5cKeliHCfUxeJaDwq1bkwF6D-C9lymDXszNDRalFhlqUkSili3rXsNWxMQ/exec';
 
   const form = document.getElementById('entryForm');
   const msg = document.getElementById('msg');
@@ -374,12 +392,13 @@
     msg.className = 'msg show ' + type;
   }
 
-  // Receipt photo: shrunk client-side to a small JPEG data URL before sending,
+  // Proof photo: shrunk client-side to a small JPEG data URL before sending,
   // since it rides along as a plain text field to the same Apps Script POST
   // (no real file-upload endpoint exists). Google Sheets cells cap out around
   // 50,000 characters — MAX_RECEIPT_B64_CHARS keeps us safely under that.
-  // NOT YET CONFIRMED end-to-end: do one real test submission and check the
-  // Sheet before trusting this for the live giveaway.
+  // Field name stays `receiptImage` on purpose: the Apps Script already reads
+  // and files that key, so reusing it needs zero server-side change. Only the
+  // user-facing label changed (EightCap receipt -> Bro Extension proof).
   const MAX_RECEIPT_B64_CHARS = 35000;
   const receiptFileInput = document.getElementById('receiptFile');
   const receiptPreviewWrap = document.getElementById('receiptPreviewWrap');
@@ -421,12 +440,15 @@
       }
       receiptSizeMsg.textContent = 'Compressing...';
       receiptPreviewWrap.style.display = 'block';
-      // Try 480px wide first; if still too big, retry smaller before giving up.
-      receiptCompressPromise = compressImage(file, 480).then((dataUrl) => {
-        if (dataUrl.length > MAX_RECEIPT_B64_CHARS) {
+      // Mike has to READ the email and name out of this screenshot to check it
+      // against the Lucid account, so start wide enough for that text to survive
+      // and only step down if the payload won't fit under MAX_RECEIPT_B64_CHARS.
+      receiptCompressPromise = compressImage(file, 640).then((dataUrl) => {
+        if (dataUrl.length <= MAX_RECEIPT_B64_CHARS) return dataUrl;
+        return compressImage(file, 480).then((smaller) => {
+          if (smaller.length <= MAX_RECEIPT_B64_CHARS) return smaller;
           return compressImage(file, 300);
-        }
-        return dataUrl;
+        });
       }).then((dataUrl) => {
         receiptBase64 = dataUrl;
         receiptPreviewImg.src = dataUrl;
@@ -463,7 +485,7 @@
       try { await receiptCompressPromise; } catch (err) { /* handled via receiptSizeMsg */ }
     }
     if (receiptFileInput && receiptFileInput.files[0] && !receiptBase64) {
-      showMsg('⚠️ Still processing your receipt photo — wait a second and try again.', 'error');
+      showMsg('⚠️ Still processing your screenshot — wait a second and try again.', 'error');
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Enter Giveaway';
       return;

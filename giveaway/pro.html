@@ -255,9 +255,9 @@
   <div class="prizes">
     <h3><i class="fas fa-trophy"></i> What you can win</h3>
     <ul>
-      <li><i class="fas fa-circle"></i> 4× $10K EightCap Day Trader Challenges</li>
+      <li><i class="fas fa-circle"></i> 3x Lucid 50K Flex Account</li>
     </ul>
-    <p class="field-hint" style="margin-top:10px;">CFD challenge, comparable to a $25K futures account.</p>
+    <p class="field-hint" style="margin-top:10px;">No daily drawdown. 90/10 split. Pure flex.</p>
   </div>
 
   <div class="prizes">
@@ -267,21 +267,7 @@
       <li><i class="fas fa-thumbs-up"></i> Like the live stream</li>
       <li><i class="fas fa-comment"></i> Comment on the live stream</li>
       <li><i class="fas fa-key"></i> Have today's Pro Bro password (posted in the Pro Bro channel)</li>
-      <li><i class="fas fa-cart-shopping"></i> Buy any Day Trader Challenge with code BRO15</li>
-      <li><i class="fas fa-receipt"></i> Submit your order number + a receipt screenshot below</li>
     </ul>
-  </div>
-
-  <div class="prizes">
-    <h3><i class="fas fa-ticket"></i> How tickets work</h3>
-    <p class="field-hint">
-      Buy any Day Trader Challenge at
-      <a href="https://challenges.eightcap.com/day-trader-challenges/?campaign_id=1&ref_id=2359&creative_Id=27" target="_blank" style="color:var(--blue);">eightcap.com</a>
-      — code <strong>BRO15</strong> gets you 15% off. Every <strong>$5 of the challenge's full
-      price</strong> (before your discount) = <strong>1 giveaway ticket</strong>, and as a Pro
-      Bro your ticket count is <strong>doubled</strong> on top. Example: a $20 challenge = 4
-      tickets → 8 as a Pro Bro, even though BRO15 brings your total down to $17.
-    </p>
   </div>
 
   <div id="passwordGate" class="prizes">
@@ -333,28 +319,6 @@
       <input type="email" name="email" required placeholder="you@example.com" />
     </div>
 
-    <div class="field">
-      <label><i class="fas fa-hashtag"></i> EightCap Order Number</label>
-      <input type="text" name="orderNumber" required placeholder="e.g. 78823" />
-      <div class="field-hint">
-        Found at the top of your order confirmation — "Order #78823" on your receipt.
-      </div>
-      <img src="assets/receipt-example-annotated.png" alt="Example EightCap order confirmation with the order number underlined — that number is what goes in this field." style="max-width:320px; width:100%; height:auto; margin-top:10px; border-radius:8px; display:block; border:1px solid rgba(44,158,255,0.2);" />
-    </div>
-
-    <div class="field">
-      <label><i class="fas fa-receipt"></i> Receipt Screenshot</label>
-      <input type="file" id="receiptFile" accept="image/*" required />
-      <div class="field-hint">
-        A screenshot of your EightCap order summary (like the example below).
-        Large photos are auto-shrunk before sending — this can take a few seconds.
-      </div>
-      <div id="receiptPreviewWrap" style="display:none; margin-top:8px;">
-        <img id="receiptPreview" style="max-width:200px; border-radius:8px; display:block;" />
-        <div id="receiptSizeMsg" class="field-hint"></div>
-      </div>
-    </div>
-
     <button type="submit" class="btn" id="submitBtn">
       <i class="fas fa-crown"></i> Submit Pro Entry
     </button>
@@ -377,7 +341,7 @@
 
 <script>
   // PASTE YOUR APPS SCRIPT URL HERE (same one as wheel.html and pro.html)
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr_YsQAWv7r1618c3YMkob3J7QZrSR1yjJ4G7n8_iAMCPBsDby9nAqEc5Qxqkv0sVD5A/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzg3fO1HV5cKeliHCfUxeJaDwq1bkwF6D-C9lymDXszNDRalFhlqUkSili3rXsNWxMQ/exec';
 
   // CHANGE THIS EVERY GIVEAWAY — post the new password in the Pro Bro channel
   // when you update it. Case-insensitive, whitespace-trimmed on check.
@@ -501,7 +465,7 @@
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Compressing photo...';
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
 
     // Wait for the receipt photo to finish compressing if it's still in progress.
     if (receiptCompressPromise) {
