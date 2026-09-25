@@ -392,14 +392,22 @@
     msg.className = 'msg show ' + type;
   }
 
-  // Proof photo: shrunk client-side to a small JPEG data URL before sending,
-  // since it rides along as a plain text field to the same Apps Script POST
-  // (no real file-upload endpoint exists). Google Sheets cells cap out around
-  // 50,000 characters — MAX_RECEIPT_B64_CHARS keeps us safely under that.
+  // Proof photo: shrunk client-side to a JPEG data URL before sending, since it
+  // rides along as a plain text field to the same Apps Script POST (no real
+  // file-upload endpoint exists).
+  //
+  // The old 35,000-char cap dated from when the image was stored IN a Sheets
+  // cell (~50k char limit). It isn't any more — the Apps Script writes the file
+  // to Drive and stores only the link — so the cap was throttling us for no
+  // reason. At 640px wide the entrant's Lucid email and name came out literally
+  // unreadable (checked against a real 2026-09-25 entry), which defeats the
+  // whole point of asking for the screenshot. The only real limit now is POST
+  // size, and ~600k chars (~450KB) is comfortably inside Apps Script's.
+  //
   // Field name stays `receiptImage` on purpose: the Apps Script already reads
-  // and files that key, so reusing it needs zero server-side change. Only the
-  // user-facing label changed (EightCap receipt -> Bro Extension proof).
-  const MAX_RECEIPT_B64_CHARS = 35000;
+  // and files that key, so this needs zero server-side change.
+  const MAX_RECEIPT_B64_CHARS = 600000;
+  const JPEG_QUALITY = 0.8;
   const receiptFileInput = document.getElementById('receiptFile');
   const receiptPreviewWrap = document.getElementById('receiptPreviewWrap');
   const receiptPreviewImg = document.getElementById('receiptPreview');
@@ -407,7 +415,7 @@
   let receiptBase64 = '';
   let receiptCompressPromise = null;
 
-  function compressImage(file, maxWidth) {
+  function compressImage(file, maxWidth, quality) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onerror = () => reject(new Error('Could not read the file'));
@@ -422,7 +430,7 @@
           canvas.width = w;
           canvas.height = h;
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          resolve(canvas.toDataURL('image/jpeg', 0.6));
+          resolve(canvas.toDataURL('image/jpeg', quality || JPEG_QUALITY));
         };
         img.src = reader.result;
       };
@@ -443,11 +451,13 @@
       // Mike has to READ the email and name out of this screenshot to check it
       // against the Lucid account, so start wide enough for that text to survive
       // and only step down if the payload won't fit under MAX_RECEIPT_B64_CHARS.
-      receiptCompressPromise = compressImage(file, 640).then((dataUrl) => {
+      // A full-screen desktop capture needs ~1600px for its form fields to stay
+      // legible; the fallbacks exist for absurdly large uploads, not normal ones.
+      receiptCompressPromise = compressImage(file, 1600).then((dataUrl) => {
         if (dataUrl.length <= MAX_RECEIPT_B64_CHARS) return dataUrl;
-        return compressImage(file, 480).then((smaller) => {
+        return compressImage(file, 1280).then((smaller) => {
           if (smaller.length <= MAX_RECEIPT_B64_CHARS) return smaller;
-          return compressImage(file, 300);
+          return compressImage(file, 900);
         });
       }).then((dataUrl) => {
         receiptBase64 = dataUrl;
