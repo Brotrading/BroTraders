@@ -513,35 +513,62 @@
     const formData = new FormData(form);
     const params = new URLSearchParams();
     formData.forEach((v, k) => params.append(k, v));
-    if (receiptBase64) {
-      params.set('receiptImage', receiptBase64);
+
+    async function postWith(image) {
+      if (image) params.set('receiptImage', image);
+      const res = await fetch(APPS_SCRIPT_URL, { method: 'POST', body: params });
+      return res.json();
     }
 
-    try {
-      const res = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: params,
-      });
-      const data = await res.json();
+    // Screenshots are sent at 1600px now, which is a much bigger POST than
+    // before. If that request fails — flaky mobile connection, upstream size
+    // limit, anything — step the photo down and try again instead of handing
+    // the entrant an error. A smaller screenshot is a worse screenshot; a
+    // failed submit is a LOST ENTRY, which is worse. Full size first, so the
+    // degraded versions only ever appear when the good one genuinely can't
+    // get through.
+    const srcFile = receiptFileInput && receiptFileInput.files[0];
+    const attempts = [receiptBase64 || ''];
+    if (srcFile && receiptBase64) attempts.push(900, 640);
 
-      if (data.ok) {
-        // Replace form with success card so user can't double-submit
-        form.style.display = 'none';
-        document.getElementById('successCard').classList.add('show');
-        return;
-      } else if (data.error === 'duplicate') {
-        showMsg('⚠️ This Discord username is already entered. One entry per person.', 'error');
-      } else if (data.error === 'missing_field') {
-        showMsg('⚠️ Please fill in all fields.', 'error');
-      } else {
-        showMsg('Something went wrong: ' + (data.detail || data.error || 'unknown'), 'error');
+    let data = null;
+    let lastErr = null;
+    for (const attempt of attempts) {
+      try {
+        let image = attempt;
+        if (typeof attempt === 'number') {
+          submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Retrying...';
+          image = await compressImage(srcFile, attempt);
+        }
+        data = await postWith(image);
+        break;
+      } catch (err) {
+        lastErr = err;
       }
-    } catch (err) {
-      showMsg('Network error: ' + err.message, 'error');
-    } finally {
+    }
+
+    if (!data) {
+      showMsg('Network error: ' + (lastErr && lastErr.message ? lastErr.message : 'unknown')
+              + ' — check your connection and hit the button again.', 'error');
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Enter Giveaway';
+      return;
     }
+
+    if (data.ok) {
+      // Replace form with success card so user can't double-submit
+      form.style.display = 'none';
+      document.getElementById('successCard').classList.add('show');
+      return;
+    } else if (data.error === 'duplicate') {
+      showMsg('⚠️ This Discord username is already entered. One entry per person.', 'error');
+    } else if (data.error === 'missing_field') {
+      showMsg('⚠️ Please fill in all fields.', 'error');
+    } else {
+      showMsg('Something went wrong: ' + (data.detail || data.error || 'unknown'), 'error');
+    }
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Enter Giveaway';
   });
 </script>
 </body>
