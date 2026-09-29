@@ -62,10 +62,6 @@ META = {
     "top_one_futures":       {"logo": "../Photos/firms/topone.png", "firmpage": "../Firms/TopOne.html",
                                "country": "USA", "maxaccounts": 3,
                                "platform": "Tradovate, NinjaTrader, TradingView"},
-    "fundedseat":            {"logo": "../Photos/firms/fundedseat.png",
-                               "firmpage": "https://fundedseat.link/bro",
-                               "country": "USA", "maxaccounts": 3,
-                               "platform": "Rithmic, DX Feed, Volumetrica, DeepCharts, DeepDom, Quantower, ATAS, MotiveWave, Bookmap, Sierra Chart, Tradesea"},
     # Real logos for these 5, downloaded 2026-08-29 with Mike's explicit go-ahead
     # (favicon/og:image from each firm's own site — see chat for source URLs).
     "takeprofittrader":      {"logo": "../Photos/firms/takeprofittrader.svg",
@@ -104,7 +100,6 @@ SHOWCASE = {
     "phidias":               ("Fundamental", "50K"),
     "nexgen_pro_trader":     ("Evaluation", "100K"),  # no 50K available (see homepage-generator note)
     "top_one_futures":       ("Elite Daily", "50K"),
-    "fundedseat":            ("1 Step - Sprint", "50K"),
     "alpha_futures":         ("Zero", "50K"),
 }
 

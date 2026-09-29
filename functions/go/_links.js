@@ -7,7 +7,11 @@ export const LINKS = {
   apex:        'https://apextraderfunding.com/member/aff/go/buurtie',
   alpha:       'https://app.alpha-futures.com/signup/BROTRADING/',
   daytraders:  'https://daytraders.com/go/brotrading?c=TWCEMMNK',
-  fundedseat:  'https://fundedseat.link/bro',
+  // FundedSeat went bankrupt (2026-09-29) — removed from the site. Old
+  // links (YouTube descriptions, past giveaway posts) still point here, so
+  // redirect home instead of 404ing or sending traffic to their dead/
+  // possibly-squatted domain.
+  fundedseat:  'https://propfirmbro.com/',
   lucid:       'https://lucidtrading.com/ref/brotrading/',
   phidias:     'https://member.phidiaspropfirm.com/aff/go/brotrading',
   mffu:        'https://myfundedfutures.com/challenge?ref=5117',
