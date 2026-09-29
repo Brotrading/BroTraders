@@ -55,7 +55,7 @@ After deploy, the bindings are live.
 
 ## Verify it works
 
-1. Open `https://propfirmbro.com/go/fundedseat` in a new tab — should redirect to FundedSeat with `/bro` slug.
+1. Open `https://propfirmbro.com/go/nexgen` in a new tab — should redirect to NexGen with the affiliate slug.
 2. Visit `https://propfirmbro.com/api/click-stats?token=<YOUR_TOKEN>&days=1`
 3. Should see JSON with at least 1 click (the one you just did).
 
@@ -63,7 +63,7 @@ After deploy, the bindings are live.
 {
   "range_days": 1,
   "total_clicks": 1,
-  "by_firm": [{ "firm": "fundedseat", "clicks": 1 }],
+  "by_firm": [{ "firm": "nexgen", "clicks": 1 }],
   ...
 }
 ```

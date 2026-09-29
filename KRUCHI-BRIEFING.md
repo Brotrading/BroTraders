@@ -43,7 +43,7 @@ Please don't change anything under `rewards/`, `functions/`, `admin/`, or `migra
 | `index.html` → `const deals = [...]` (~line 593) | **THE DAILY DEALS.** Array of deal cards: `name`, `logo`, `discount`, `rating`, `details` (HTML allowed), `code`, `link` (always `/go/<firm>`) |
 | `CompareTopFirms/` | Comparison pages: `comparison.html`, `TrueCost.html`, `Drawdown.html`, `StartCost.html`, `QuickFunding.html`, `bestDeals.html` |
 | `data/*.json` | The comparison **data** (edit these, not the HTML tables): `comparison-rows.json`, `truecost-firms.json`, `drawdown-firms.json`, `startcost-firms.json`, `quickfunding-firms.json`, `firm-profiles.json`, `firm-rules.json`, `firms-nav.json` |
-| `Firms/` | Per-firm landing pages (Apex, Tradeify, FundedSeat, …), rendered data-driven via `firm-loader.js` / `firm.js` + `data/firm-profiles.json` |
+| `Firms/` | Per-firm landing pages (Apex, Tradeify, NexGen, …), rendered data-driven via `firm-loader.js` / `firm.js` + `data/firm-profiles.json` |
 | `Photos/firms/` | Locally hosted firm logos — never hotlink external logo URLs |
 | `Resourses/`, `More/` | Trading tools catalog, about/contact/privacy |
 | `GiveAway.html`, `giveaway/`, `wheel/` | Friday giveaway pages (Mike runs these — coordinate before changing) |

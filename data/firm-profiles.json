@@ -340,48 +340,6 @@
       "hero_description": "NexGen Funding is a familiar and trusted name in the prop trading space, and it's come back stronger than ever. The firm offers flexible funding options and a streamlined account structure built around what traders actually want. With both instant funding and customizable setups through the new Select Plan, NexGen Funding lets traders tailor their accounts instead of forcing them into a one-size-fits-all model.\n\nTraders can choose the features that matter most to them, including day-one or five-day payout options, giving more control over how and when profits are accessed. With refreshed programs and the same reliable, trader-focused support, NexGen Funding delivers a versatile, accessible, and efficient path for traders looking to get funded and stay funded.",
       "hero_btn_text": "Get Evaluation"
     },
-    "fundedseat": {
-      "name": "FundedSeat",
-      "affiliate_url": "https://propfirmbro.com/go/fundedseat",
-      "code_default": "BRO",
-      "logo_img": "../Photos/firms/fundedseat.png",
-      "logo_icon": null,
-      "ceo": null,
-      "flag_code": "us",
-      "flag_alt": "US",
-      "country_display": "USA",
-      "trustpilot_score": 4.1,
-      "founded_display": null,
-      "years": null,
-      "rating_score": 4.1,
-      "rating_stars": "\u2605\u2605\u2605\u2605\u2606",
-      "rating_reviews": "Trustpilot Rating",
-      "rating_bars": [
-        {
-          "pct": "72%",
-          "count": ""
-        },
-        {
-          "pct": "55%",
-          "count": ""
-        },
-        {
-          "pct": "20%",
-          "count": ""
-        },
-        {
-          "pct": "10%",
-          "count": ""
-        },
-        {
-          "pct": "15%",
-          "count": ""
-        }
-      ],
-      "summary": "FundedSeat, operated by Cygnus Software Solutions LLC in Sheridan, Wyoming, is a futures-focused prop firm offering a wide range of evaluation and instant funding plans. Traders can choose from four 1-Step Evaluation variants \u2014 Daily (35%), Daily (50%), Daily Pro, and Sprint \u2014 as well as two Instant Funded options: Direct and Bolt. All plans use End-of-Day (EOD) drawdown and offer a 90/10 payout split. Supported platforms include Rithmic with a broad selection of charting tools such as Quantower, Sierra Chart, Bookmap, ATAS, and MotiveWave. With discount code BRO, traders receive 50% off all plans.",
-      "hero_description": "FundedSeat stands out in the futures prop trading space with one of the most flexible plan lineups available. Whether you prefer a structured evaluation or want to start trading with real capital immediately, FundedSeat has you covered with four evaluation variants and two instant funding options.\n\nWith a 90/10 payout split, EOD drawdown protection, and support for top-tier platforms like Rithmic, Quantower, Sierra Chart, Bookmap, and ATAS, FundedSeat gives traders the tools they need to succeed. Use code BRO for 50% off any plan and get started today.",
-      "hero_btn_text": "Get Funded"
-    },
     "takeprofittrader": {
       "name": "TakeProfitTrader",
       "affiliate_url": "https://propfirmbro.com/go/takeprofittrader",
