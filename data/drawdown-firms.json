@@ -54,15 +54,6 @@
     "website": "https://propfirmbro.com/go/phidias"
   },
   {
-    "firm": "NexGen Funding",
-    "logo": "../Photos/firms/nexgen.png",
-    "costLabel": "50K Standard",
-    "cost": "$329",
-    "ddType": "Static",
-    "ddAmount": "$5,000",
-    "website": "https://propfirmbro.com/go/nexgen"
-  },
-  {
     "firm": "Top One Futures",
     "logo": "../Photos/firms/topone.svg",
     "costLabel": "50K Elite Challenge",

@@ -298,48 +298,6 @@
       "hero_description": "Day Traders is a familiar and trusted name in the prop trading space, and it's come back stronger than ever. The firm offers flexible funding options and a streamlined account structure built around what traders actually want. With both instant funding and customizable setups through the new Select Plan, Day Traders lets traders tailor their accounts instead of forcing them into a one-size-fits-all model.\n\nTraders can choose the features that matter most to them, including day-one or five-day payout options, giving more control over how and when profits are accessed. With refreshed programs and the same reliable, trader-focused support, Day Traders delivers a versatile, accessible, and efficient path for traders looking to get funded and stay funded.",
       "hero_btn_text": "Get Evaluation"
     },
-    "nexgen_pro_trader": {
-      "name": "NexGen Funding",
-      "affiliate_url": "https://thenextgenfunding.com/",
-      "code_default": "BRO",
-      "logo_img": "../Photos/firms/nexgen.png",
-      "logo_icon": null,
-      "ceo": null,
-      "flag_code": "cy",
-      "flag_alt": "Cyprus",
-      "country_display": "Global",
-      "trustpilot_score": 4.6,
-      "founded_display": "2024",
-      "years": null,
-      "rating_score": 4.6,
-      "rating_stars": "\u2605\u2605\u2605\u2605\u2605",
-      "rating_reviews": "312 reviews",
-      "rating_bars": [
-        {
-          "pct": "85%",
-          "count": "265"
-        },
-        {
-          "pct": "10%",
-          "count": "32"
-        },
-        {
-          "pct": "3%",
-          "count": "9"
-        },
-        {
-          "pct": "1%",
-          "count": "3"
-        },
-        {
-          "pct": "1%",
-          "count": "3"
-        }
-      ],
-      "summary": "Nexgen ProTrader Funding offers futures funding with a focus on trader-friendly rules: Closed Trade Drawdown (never limited by unrealized losses), no daily loss limits, and lightning-fast payouts. Choose from Evaluation accounts (1-day pass, $149\u2013$249) or Instant Funding accounts (start trading immediately, $299\u2013$399). Account sizes from $25K to $150K with up to 10 accounts, profit split up to 100% after 16 payouts. No activation fee time limits, no inactivity rule, and payouts every 8 trading days. Highly rated ~4.6.",
-      "hero_description": "NexGen Funding is a familiar and trusted name in the prop trading space, and it's come back stronger than ever. The firm offers flexible funding options and a streamlined account structure built around what traders actually want. With both instant funding and customizable setups through the new Select Plan, NexGen Funding lets traders tailor their accounts instead of forcing them into a one-size-fits-all model.\n\nTraders can choose the features that matter most to them, including day-one or five-day payout options, giving more control over how and when profits are accessed. With refreshed programs and the same reliable, trader-focused support, NexGen Funding delivers a versatile, accessible, and efficient path for traders looking to get funded and stay funded.",
-      "hero_btn_text": "Get Evaluation"
-    },
     "takeprofittrader": {
       "name": "TakeProfitTrader",
       "affiliate_url": "https://propfirmbro.com/go/takeprofittrader",

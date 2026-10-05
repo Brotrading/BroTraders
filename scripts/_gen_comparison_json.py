@@ -57,8 +57,6 @@ META = {
     "phidias":               {"logo": "../Photos/firms/phidias.jpeg", "firmpage": "../Firms/PhidiasPropFirm.html",
                                "country": "France", "maxaccounts": 3,
                                "platform": "Tradovate, NinjaTrader, Quantower, TradingView, Rithmic"},
-    "nexgen_pro_trader":     {"logo": "../Photos/firms/nexgen.png", "firmpage": "../Firms/NexGen.html",
-                               "country": "Cyprus", "maxaccounts": 3, "platform": "ProjectX, Tradovate"},
     "top_one_futures":       {"logo": "../Photos/firms/topone.png", "firmpage": "../Firms/TopOne.html",
                                "country": "USA", "maxaccounts": 3,
                                "platform": "Tradovate, NinjaTrader, TradingView"},
@@ -98,7 +96,6 @@ SHOWCASE = {
     "lucid_trading":        ("LucidFlex", "50K"),
     "daytraders":           ("Trail", "50K"),
     "phidias":               ("Fundamental", "50K"),
-    "nexgen_pro_trader":     ("Evaluation", "100K"),  # no 50K available (see homepage-generator note)
     "top_one_futures":       ("Elite Daily", "50K"),
     "alpha_futures":         ("Zero", "50K"),
 }

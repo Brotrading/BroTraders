@@ -66,17 +66,6 @@
     "website": "https://propfirmbro.com/go/phidias"
   },
   {
-    "firm": "NexGen Funding",
-    "logo": "../Photos/firms/nexgen.png",
-    "funding": "3 days (Standard)",
-    "reasons": [
-      "3 plans: Standard / Rapid (2-step), Ace (1-step)",
-      "Static drawdown — no trailing surprises",
-      "30% off 50K/100K/200K w/ BRO"
-    ],
-    "website": "https://propfirmbro.com/go/nexgen"
-  },
-  {
     "firm": "Top One Futures",
     "logo": "../Photos/firms/topone.svg",
     "funding": "1 day (Elite) or instant",
