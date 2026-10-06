@@ -1356,58 +1356,6 @@
       "_extraction_notes": "Discounts appear to be site-wide promotional pricing (~85% off headline) with S2F at 40% off. No promo code shown; a countdown widget references 'Special Offer 85% OFF'. Activation fee of $99 applies for 'Pro' (funded) accounts on Trail/EOD/Static plans; S2L Live accounts have FREE activation. Profit split is effectively 100% on Pro/S2F sim funded accounts (payouts to trader), and 80/20 on S2L Live real accounts. Min payout amount not stated in HTML; payout frequency is 8 qualifying days (Pro), 10 qualifying days (S2F), daily (Live). Consistency rules vary by plan/stage (50% eval, 30% pro, 20% S2F, 25% S2L eval, none on S2L live). Platforms mentioned: Rithmic connectivity and ArcTrader browser platform with TradingView charts.",
       "rating": "4.6/5 (Trustpilot)"
     },
-    "nexgen_pro_trader": {
-      "name": "NexGen Funding",
-      "code_default": "BRO",
-      "affiliate_url": "https://thenextgenfunding.com/",
-      "platforms": [],
-      "discount_text": "80% off with exclusive Bro Trading code BRO",
-      "rules_global": {
-        "consistency": null,
-        "min_trading_days": null,
-        "payout_split": null,
-        "min_payout": null
-      },
-      "plans": {
-        "Evaluation": {
-          "type": "Evaluation",
-          "drawdown_type": null,
-          "sizes": {
-            "75K": {
-              "profit_target": null,
-              "max_drawdown": null,
-              "daily_drawdown": null,
-              "eval_price_msrp": 299.0,
-              "eval_price_discounted": 59.8,
-              "activation_fee": 159.0,
-              "min_trading_days": null
-            },
-            "100K": {
-              "profit_target": null,
-              "max_drawdown": null,
-              "daily_drawdown": null,
-              "eval_price_msrp": 319.0,
-              "eval_price_discounted": 63.8,
-              "activation_fee": 179.0,
-              "min_trading_days": null
-            },
-            "150K": {
-              "profit_target": null,
-              "max_drawdown": null,
-              "daily_drawdown": null,
-              "eval_price_msrp": 399.0,
-              "eval_price_discounted": 79.8,
-              "activation_fee": 199.0,
-              "min_trading_days": null
-            }
-          }
-        }
-      },
-      "_status": "Auto-extracted from https://nexgen-software-services.gitbook.io/nexgen-pro-trader-funding/get-started/costs-and-promotional-discount-codes on 2026-08-19. Verify before publishing.",
-      "_extraction_notes": "HTML only contains a pricing table with 4 rows and FAQ about SUMMER80 promo (80% off initial eval fee and recurring monthly fee). Column interpretation is inferred: col1=MSRP monthly, col2=discounted monthly (verified: 80% off matches all rows), col3=assumed activation fee (labels not visible in extracted HTML). First row's account size is missing from HTML (likely 50K based on 75/100/150K progression, but not confirmed\u2014left null). No profit targets, drawdown rules, platforms, payout splits, or trading day requirements were present in the provided HTML. Plan/step type not specified; labeled generically as 'Evaluation'.",
-      "country": "Cyprus",
-      "rating": "4.6/5 (Trustpilot)"
-    },
     "takeprofittrader": {
       "name": "TakeProfitTrader",
       "country": "USA",

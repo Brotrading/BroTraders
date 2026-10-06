@@ -15,7 +15,10 @@ export const LINKS = {
   lucid:       'https://lucidtrading.com/ref/brotrading/',
   phidias:     'https://member.phidiaspropfirm.com/aff/go/brotrading',
   mffu:        'https://myfundedfutures.com/challenge?ref=5117',
-  nexgen:      'https://nexgenprotraderfunding.com/?linkId=lp_263534&sourceId=bro&tenantId=protraderfunding',
+  // NexGen went bankrupt (2026-10-05) — removed from the site. Old links
+  // (YouTube descriptions, giveaway posts) still use /go/nexgen: send them
+  // home instead of 404ing or to a dead/possibly-squatted domain.
+  nexgen:      'https://propfirmbro.com/',
   topone:      'https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures',
   tradeify:    'https://tradeify.co/?ref=BFYQ2HKM',
   yrm:         'https://yrmprop.com/ref/Bro/',

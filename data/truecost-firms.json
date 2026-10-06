@@ -60,16 +60,6 @@
     "website": "https://propfirmbro.com/go/phidias"
   },
   {
-    "firm": "NexGen Funding",
-    "logo": "../Photos/firms/nexgen.png",
-    "eval": 329,
-    "activation": 0,
-    "reset": 99,
-    "truecost": 329,
-    "code": "BRO",
-    "website": "https://propfirmbro.com/go/nexgen"
-  },
-  {
     "firm": "Top One Futures",
     "logo": "../Photos/firms/topone.svg",
     "eval": 63,
