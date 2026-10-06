@@ -5,3 +5,8 @@
 # Affiliate revenue snapshot — lives in D1 (site_meta), served via token-gated
 # /api/affiliate-summary. Must never be committed as a public static file again.
 data/affiliate-summary.json
+
+# Secrets / local env — repo is public, never commit these
+.env
+.env.*
+!.env.example
