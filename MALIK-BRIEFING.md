@@ -23,14 +23,14 @@ There is no rewards/points system in this repo anymore (parked and archived by M
 
 ## 3. House rules (non-negotiable)
 
-1. **Nothing goes to `main` without Mike.** `main` deploys straight to propfirmbro.com within a minute. GitHub enforces this: a Pull Request and Mike's approval are required. Work on a branch `malik/<topic>`, push, check the preview, open a PR, send Mike the preview link. Mike approves and merges — and gives a final "yes" before it goes live. Pushing more commits after approval resets the approval.
+1. **You review and merge your own work — via a PR, never a direct push.** `main` deploys straight to propfirmbro.com within a minute and GitHub blocks direct pushes. Work on a branch `malik/<topic>`, push, open the preview link (`https://<branch>.propfirmbro.pages.dev`), check desktop **and** mobile, check the browser console for errors, then open a PR and merge it yourself. Mike trusts you with this — he won't review each PR, so be your own double-check. **Ask Mike first** for anything that touches affiliate links (`functions/go/_links.js`), BRO/BROTRADING codes, or discount percentages, and tell him after big changes (new pages, redesigns, removed firms).
 2. **Affiliate codes are sacred:** the site only ever shows Mike's codes **BRO** or **BROTRADING** — never a firm's own public promo code, even if their site advertises one. Link to firms via `/go/<firm>` only (never paste raw affiliate URLs into pages); all URLs live in `functions/go/_links.js`.
 3. **Official firm sites are the source of truth** for prices, rules and payouts — never review/comparison sites. When in doubt, screenshot the firm's own pricing page.
 4. **Never invent numbers.** Discount %, prices, ratings: if you don't have a verified value, show a neutral label (e.g. "BRO Code") or ask Mike. Mike's own affiliate deal percentages are private — he must confirm them.
 5. **Payout-speed claims:** never state "payout after X days" based on minimum trading days alone — consistency rules also delay payouts. Check `data/firm-rules.json`.
 6. **Logos:** local files in `Photos/firms/` only, never hotlinked. Ask Mike before adding a new logo file.
 7. **Secrets:** never commit `.env`, API keys, tokens or passwords — this repo is public. If you ever see a secret in the repo, tell Mike immediately. Don't paste screenshots of internal dashboards publicly.
-8. The repo uses linear history (squash or rebase merges only) — Mike handles merging.
+8. The repo uses linear history (squash or rebase merges only) — use squash or rebase when merging.
 
 ## 4. Tech setup (simple)
 
