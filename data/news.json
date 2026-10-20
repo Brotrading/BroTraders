@@ -1,7 +1,46 @@
 {
-  "generated_at": "2026-10-20T08:25:33.547044+00:00",
-  "count": 126,
+  "generated_at": "2026-10-20T13:32:18.577662+00:00",
+  "count": 128,
   "items": [
+    {
+      "id": "1562093067887050813",
+      "type": "promo",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-20",
+      "title": "Apex Trader Funding Slashes Legacy 100K, 250K and 300K Evaluations to $21",
+      "summary": "Apex Trader Funding has launched a limited sale on its Legacy evaluations, with 100K, 250K and 300K accounts priced at $21 each. Several Intraday and EOD evaluations also get 90% off, and the firm says Legacy, Intraday and EOD evaluations are all One Day to Pass. Use code BRO at checkout for evaluation accounts.",
+      "highlights": [
+        "Legacy 100K, 250K and 300K evaluations priced at $21 each",
+        "90% off the first month and 80% off recurring for Legacy evaluations",
+        "50K Intraday No Activation Fee account for $49 all-in",
+        "100K Intraday No Activation Fee account for $59 all-in",
+        "Intraday and EOD evaluations at 90% off; evaluation discounts only valid for accounts purchased during the sale period"
+      ],
+      "ends": "Thursday, October 22 at 11:59 PM ET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png"
+    },
+    {
+      "id": "1562088058952745001",
+      "type": "news",
+      "firm": "Tradeify",
+      "date": "2026-10-20",
+      "title": "Tradeify launches 50% off any Tradeify FX account with code BRO",
+      "summary": "Tradeify is now offering 50% off any of its FX accounts, bringing the futures-style discount to forex traders. The offer is open to everyone except residents of the United States. BroTrading readers can use code BRO to claim it.",
+      "highlights": [
+        "50% off any Tradeify FX account",
+        "Use code BRO at checkout",
+        "Not available to residents of the United States",
+        "Tradeify hints at a possible future reward for FX traders"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/tradeify",
+      "firm_page": "/Firms/TradeifyTrader.html",
+      "logo": "/Photos/firms/tradeify.png"
+    },
     {
       "id": "1561796070256672929",
       "type": "news",
