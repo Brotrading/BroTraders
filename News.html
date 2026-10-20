@@ -437,6 +437,40 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
 .bro-code { color: var(--gold); font-weight: 700; }
 
 .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 6px; }
+
+/* promo as a compact offer */
+.offer {
+  margin-top: 14px; padding: 16px 18px; display: grid; gap: 10px; justify-items: start;
+  border: 1px solid rgba(255, 207, 64, 0.32); border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255, 207, 64, 0.09), rgba(14, 36, 74, 0.35) 60%);
+}
+.item h3.offer-title {
+  margin: 0; display: flex; align-items: center; gap: 10px;
+  font-size: 28px; line-height: 1.1; color: var(--gold);
+}
+.offer-title i { font-size: 20px; }
+.offer-on { margin: -4px 0 0; color: #c9d7ef; font-size: 14px; }
+.offer-buy { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+.offer-buy .code { padding: 10px 16px; font-size: 14px; }
+.offer-buy .btn { padding: 10px 18px; font-size: 14px; }
+.offer-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.offer-meta .ends { margin: 0; }
+.pill {
+  padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line-hi);
+  color: #c9d7ef; font-size: 12.5px; font-weight: 600; white-space: nowrap;
+}
+.pill b { color: var(--text); }
+.offer-meta .review { margin-left: auto; color: var(--muted); font-size: 13px; text-decoration: none; }
+.offer-meta .review:hover { color: var(--blue-hi); }
+details.more { margin-top: 10px; }
+details.more summary { cursor: pointer; color: var(--muted); font-size: 13px; width: max-content; }
+details.more summary:hover { color: var(--text); }
+details.more[open] summary { margin-bottom: 8px; }
+.more-title { margin: 0 0 6px; font-weight: 700; }
+.tag.ended { color: var(--muted); background: rgba(142, 166, 201, 0.1); border: 1px solid var(--line-hi); }
+.item.ended .offer { border-color: var(--line); background: rgba(14, 36, 74, 0.35); }
+.item.ended h3.offer-title { color: var(--muted); }
+.item.ended .ends { background: rgba(142, 166, 201, 0.1); color: var(--muted); }
 .actions .btn { padding: 9px 16px; font-size: 13px; }
 
 .empty { text-align: center; color: var(--muted); padding: 60px 0; }
@@ -454,17 +488,17 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   .item-head time::before { display: none; }
 }
 
-.logo-lucid{background-image:url('/Photos/firms/lucid.png')}
-.logo-iqcapital{background-image:url('/Photos/firms/iqcapital.svg')}
-.logo-tradeify{background-image:url('/Photos/firms/tradeify.png');background-color:#0b1120}
-.logo-alphafutures{background-image:url('/Photos/firms/alphafutures.png')}
-.logo-legendstrading{background-image:url('/Photos/firms/legendstrading.png')}
-.logo-phidias{background-image:url('/Photos/firms/phidias.jpeg')}
-.logo-topone{background-image:url('/Photos/firms/topone.png')}
-.logo-apex{background-image:url('/Photos/firms/apex.png');background-color:#0b1120}
-.logo-fundednext{background-image:url('/Photos/firms/fundednext.png')}
-.logo-myfundedfutures{background-image:url('/Photos/firms/myfundedfutures.png')}
-.logo-blusky{background-image:url('/Photos/firms/blusky.png')}
+.logo-lucid{background-image:url('/Photos/firms/icons/lucid_trading.png');background-size:cover;background-color:#0b1120}
+.logo-iqcapital{background-image:url('/Photos/firms/icons/iqcapital.png');background-size:cover;background-color:#0b1120}
+.logo-tradeify{background-image:url('/Photos/firms/icons/tradeify.png');background-size:cover;background-color:#0b1120}
+.logo-alphafutures{background-image:url('/Photos/firms/icons/alpha_futures.png');background-size:cover;background-color:#0b1120}
+.logo-legendstrading{background-image:url('/Photos/firms/icons/legendstrading.png');background-size:cover;background-color:#0b1120}
+.logo-phidias{background-image:url('/Photos/firms/icons/phidias.png');background-size:cover;background-color:#0b1120}
+.logo-topone{background-image:url('/Photos/firms/icons/top_one_futures.png');background-size:cover;background-color:#0b1120}
+.logo-apex{background-image:url('/Photos/firms/icons/apex_trader_funding.png');background-size:cover;background-color:#0b1120}
+.logo-fundednext{background-image:url('/Photos/firms/icons/fundednext.png');background-size:cover;background-color:#0b1120}
+.logo-myfundedfutures{background-image:url('/Photos/firms/icons/myfundedfutures.png');background-size:cover;background-color:#0b1120}
+.logo-blusky{background-image:url('/Photos/firms/icons/blusky.png');background-size:cover;background-color:#0b1120}
 </style>
 </head>
 <body>
@@ -480,7 +514,7 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   <div class="facts">
     <span class="gold"><i class="fa-solid fa-tags"></i> 26 promos</span>
     <span><i class="fa-solid fa-building-columns"></i> 11 firms</span>
-    <span class="live"><span class="pulse"></span>Live data <span class="ago" data-updated="2026-10-20T07:49:47.818515+00:00">updated October 20, 2026</span></span>
+    <span class="live"><span class="pulse"></span>Live data <span class="ago" data-updated="2026-10-20T08:25:33.547044+00:00">updated October 20, 2026</span></span>
   </div>
 
   <div class="tabs" id="tabs" role="group" aria-label="Type">
@@ -586,11 +620,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Alpha Futures launches MyAlpha with discounts on its plans</h3>
-  <p class="summary">Alpha Futures has announced that its MyAlpha platform is now live. The firm is offering 50% off its Standard, Direct and Advanced plans, and 40% off its Zero plan. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>MyAlpha is now live</li><li>50% off the Standard, Direct and Advanced plans</li><li>40% off the Zero plan</li></ul>
-  
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> Up to 50% off</h3>
+    <p class="offer-on">On Standard, Direct and Advanced plans</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="pill">Zero <b>40%</b></span><a class="review" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Alpha Futures launches MyAlpha with discounts on its plans</p>
+    <p class="summary">Alpha Futures has announced that its MyAlpha platform is now live. The firm is offering 50% off its Standard, Direct and Advanced plans, and 40% off its Zero plan. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>MyAlpha is now live</li><li>50% off the Standard, Direct and Advanced plans</li><li>40% off the Zero plan</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1561712958566826105" data-type="news" data-firm="Alpha Futures">
   <div class="item-head">
@@ -631,11 +672,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Lucid Trading adds on-demand payouts called Right Now Money for DLL On accounts</h3>
-  <p class="summary">Lucid Trading has launched Right Now Money, which lets traders request payouts instantly once they hit their objectives, and multiple times a day on Daily plans. DLL On accounts now get on-demand payouts and are 40% off until 10/23 at 5PM EST, and the feature also applies retroactively to older DLL On accounts. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>Traders can request payouts on-demand after hitting their objectives</li><li>Request multiple times a day in Daily plans</li><li>DLL On accounts are 40% off through 10/23 at 5PM EST</li><li>On-demand feature is retroactive to old DLL On accounts</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends 10/23 at 5PM EST</div>
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/lucid" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/Lucid Trading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 40% off</h3>
+    <p class="offer-on">On DLL On accounts</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/lucid" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends 10/23 at 5PM EST</span><a class="review" href="/Firms/Lucid Trading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Lucid Trading adds on-demand payouts called Right Now Money for DLL On accounts</p>
+    <p class="summary">Lucid Trading has launched Right Now Money, which lets traders request payouts instantly once they hit their objectives, and multiple times a day on Daily plans. DLL On accounts now get on-demand payouts and are 40% off until 10/23 at 5PM EST, and the feature also applies retroactively to older DLL On accounts. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>Traders can request payouts on-demand after hitting their objectives</li><li>Request multiple times a day in Daily plans</li><li>DLL On accounts are 40% off through 10/23 at 5PM EST</li><li>On-demand feature is retroactive to old DLL On accounts</li></ul>
+  </details>
 </article>
 <article class="item promo" id="news-1561283005895680010" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
@@ -646,11 +694,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Legends Trading launches 45% off promo plus Elite buy 4 get 1 free</h3>
-  <p class="summary">Legends Trading has launched a short-term promotion with 45% off Apprentice accounts, Elite accounts and resets. Elite buyers who add 5 same-size accounts and apply the code get 45% off the first four, with the fifth free. Use code BRO at checkout to get the savings.</p>
-  <ul class="points"><li>45% off Apprentice accounts, Elite accounts and resets</li><li>Buy 4 Elite accounts of the same size, get the 5th free</li><li>Activate a Master (funded) account in October and get your first payout by Nov 30 to earn a FREE $50K Elite Evaluation</li><li>Bonus is one per trader, non-transferable, with no cash value</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends 10/20 at midnight</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 45% off</h3>
+    <p class="offer-on">On Apprentice accounts, Elite accounts, resets</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends 10/20 at midnight</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading launches 45% off promo plus Elite buy 4 get 1 free</p>
+    <p class="summary">Legends Trading has launched a short-term promotion with 45% off Apprentice accounts, Elite accounts and resets. Elite buyers who add 5 same-size accounts and apply the code get 45% off the first four, with the fifth free. Use code BRO at checkout to get the savings.</p>
+    <ul class="points"><li>45% off Apprentice accounts, Elite accounts and resets</li><li>Buy 4 Elite accounts of the same size, get the 5th free</li><li>Activate a Master (funded) account in October and get your first payout by Nov 30 to earn a FREE $50K Elite Evaluation</li><li>Bonus is one per trader, non-transferable, with no cash value</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1560785612410462229" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
@@ -706,11 +761,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Phidias PropFirm takes 85% off 50K Premium funding with BROTRADING code</h3>
-  <p class="summary">Phidias is running an 85% discount on its 50K Premium OTP, which drops from $723 to $108 with the BROTRADING code. The firm highlights a trader who passed on Day 1 and took a $12,500 first payout. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>50K Premium OTP priced at $108 with BROTRADING, down from $723</li><li>Funded in 1 day with payouts every 5 trading days</li><li>Cash account reset costs $399 on a 50K</li><li>Profit split starts at 75% and reaches 100% from the 5th payout</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Sun Oct 25, 6:00 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/PhidiasPropFirm.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 85% off</h3>
+    <p class="offer-on">On Premium funding accounts</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Sun Oct 25, 6:00 PM ET</span><a class="review" href="/Firms/PhidiasPropFirm.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Phidias PropFirm takes 85% off 50K Premium funding with BROTRADING code</p>
+    <p class="summary">Phidias is running an 85% discount on its 50K Premium OTP, which drops from $723 to $108 with the BROTRADING code. The firm highlights a trader who passed on Day 1 and took a $12,500 first payout. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>50K Premium OTP priced at $108 with BROTRADING, down from $723</li><li>Funded in 1 day with payouts every 5 trading days</li><li>Cash account reset costs $399 on a 50K</li><li>Profit split starts at 75% and reaches 100% from the 5th payout</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1560646606942900318" data-type="news" data-firm="Top One Futures">
   <div class="item-head">
@@ -742,20 +804,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends tonight at 11:59 PM CEST</div>
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/IQCapital.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1560544104939651093" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1560544104939651093" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-10-16"><i class="fa-regular fa-calendar"></i> Oct 16, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding extends 5-pack deals and 90% off evaluations through the weekend</h3>
-  <p class="summary">Apex Trader Funding has extended its 5-pack evaluation deals through the weekend, with Intraday and EOD bundles across 25K, 50K and 100K sizes. The post also lists 90% off all evaluations, with Legacy offering 90% off the first month and 80% off recurring months. Use code BRO at checkout for evaluation accounts.</p>
-  <ul class="points"><li>Intraday 5-Pack 25K: 5 for $37.48, just $7.50 each</li><li>EOD 5-Pack 100K: 5 for $247.50, just $49.50 each</li><li>Legacy: 90% off your first month and 80% off recurring months</li><li>Intraday &amp; EOD: 90% off all account sizes</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Sunday, October 18 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On all evaluations</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Sunday, October 18 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding extends 5-pack deals and 90% off evaluations through the weekend</p>
+    <p class="summary">Apex Trader Funding has extended its 5-pack evaluation deals through the weekend, with Intraday and EOD bundles across 25K, 50K and 100K sizes. The post also lists 90% off all evaluations, with Legacy offering 90% off the first month and 80% off recurring months. Use code BRO at checkout for evaluation accounts.</p>
+    <ul class="points"><li>Intraday 5-Pack 25K: 5 for $37.48, just $7.50 each</li><li>EOD 5-Pack 100K: 5 for $247.50, just $49.50 each</li><li>Legacy: 90% off your first month and 80% off recurring months</li><li>Intraday &amp; EOD: 90% off all account sizes</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1560322902073806950" data-type="news" data-firm="Tradeify">
   <div class="item-head">
@@ -817,20 +886,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/mffu" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/MyFundedFuture.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1559957397785546792" data-type="promo" data-firm="Legends Trading">
+<article class="item promo ended" id="news-1559957397785546792" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
     <span class="logo logo-legendstrading" role="img" aria-label="Legends Trading logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/LegendsTrading.html">Legends Trading</a>
       <time datetime="2026-10-14"><i class="fa-regular fa-calendar"></i> Oct 14, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Legends Trading launches 50% off all resets in CPI reset sale</h3>
-  <p class="summary">Legends Trading is cutting 50% off all account resets after a rough CPI day for many traders. The sale is aimed at anyone who lost an account and wants to get back in without paying full price. Use code BRO at checkout.</p>
-  <ul class="points"><li>50% off all resets</li><li>Sale ends tonight at midnight</li><li>Code BRO is required for the discount</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Tonight at midnight</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 50% off</h3>
+    <p class="offer-on">On resets only</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Tonight at midnight</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading launches 50% off all resets in CPI reset sale</p>
+    <p class="summary">Legends Trading is cutting 50% off all account resets after a rough CPI day for many traders. The sale is aimed at anyone who lost an account and wants to get back in without paying full price. Use code BRO at checkout.</p>
+    <ul class="points"><li>50% off all resets</li><li>Sale ends tonight at midnight</li><li>Code BRO is required for the discount</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1559950550504833094" data-type="news" data-firm="Alpha Futures">
   <div class="item-head">
@@ -922,20 +998,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/tradeify" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/TradeifyTrader.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1559464107118428182" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1559464107118428182" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-10-13"><i class="fa-regular fa-calendar"></i> Oct 13, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding runs 5-Pack deals and 90% off evaluations this week</h3>
-  <p class="summary">Apex Trader Funding is running a promotion with bundles of five evaluation accounts at special pricing, plus 90% off evaluations across its plans. The sale runs until the stated deadline, and evaluation discounts apply only to accounts bought during the sale period. Use code BRO at checkout for evaluation accounts.</p>
-  <ul class="points"><li>Intraday 5-Packs start at $37.48 for all five, with the 25K bundle at $7.50 each</li><li>EOD 5-Pack 100K costs $247.50 for five, or $49.50 each</li><li>Legacy Evaluations: 90% off your first month and 80% off recurring months</li><li>Intraday and EOD Evaluations: 90% off all account sizes</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Thursday, October 15 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On all evaluations</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Thursday, October 15 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding runs 5-Pack deals and 90% off evaluations this week</p>
+    <p class="summary">Apex Trader Funding is running a promotion with bundles of five evaluation accounts at special pricing, plus 90% off evaluations across its plans. The sale runs until the stated deadline, and evaluation discounts apply only to accounts bought during the sale period. Use code BRO at checkout for evaluation accounts.</p>
+    <ul class="points"><li>Intraday 5-Packs start at $37.48 for all five, with the 25K bundle at $7.50 each</li><li>EOD 5-Pack 100K costs $247.50 for five, or $49.50 each</li><li>Legacy Evaluations: 90% off your first month and 80% off recurring months</li><li>Intraday and EOD Evaluations: 90% off all account sizes</li></ul>
+  </details>
 </article>
 <article class="item promo" id="news-1559281639224377434" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
@@ -946,11 +1029,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Legends Trading October Reload ends October 20 with 40% off evaluations</h3>
-  <p class="summary">Legends Trading is running its October Reload promotion with discounts on evaluations, resets, activation fees and recurring subscriptions. A buy-4-get-1-free bundle on Apprentice accounts is also part of the offer, along with an Elite bonus for qualifying master account holders. Use code BRO at checkout.</p>
-  <ul class="points"><li>40% off all evaluations and resets</li><li>Buy 4 Apprentice, get the 5th free when five same-size accounts are added to one cart</li><li>25% off all recurring subscription charges</li><li>Activation fees at 40% off: 50K $59.40, 100K $77.40, 150K $89.40</li><li>Activate a master funded account in October and complete your first payout by November 30 for a free 50K Elite Evaluation</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 20</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 40% off</h3>
+    <p class="offer-on">On all evaluations and resets</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 20</span><span class="pill"><b>25%</b> off renewals</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading October Reload ends October 20 with 40% off evaluations</p>
+    <p class="summary">Legends Trading is running its October Reload promotion with discounts on evaluations, resets, activation fees and recurring subscriptions. A buy-4-get-1-free bundle on Apprentice accounts is also part of the offer, along with an Elite bonus for qualifying master account holders. Use code BRO at checkout.</p>
+    <ul class="points"><li>40% off all evaluations and resets</li><li>Buy 4 Apprentice, get the 5th free when five same-size accounts are added to one cart</li><li>25% off all recurring subscription charges</li><li>Activation fees at 40% off: 50K $59.40, 100K $77.40, 150K $89.40</li><li>Activate a master funded account in October and complete your first payout by November 30 for a free 50K Elite Evaluation</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1559265841751658546" data-type="news" data-firm="Alpha Futures">
   <div class="item-head">
@@ -1021,11 +1111,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Phidias PropFirm slashes 50K account prices by 85% for a limited time</h3>
-  <p class="summary">Phidias PropFirm is running an 85% discount on every 50K one-time payment account across its Fundamental, Express to Live and Premium families. The deal also includes up to 80% off other OTP sizes, 60% off Fundamental and Premium Evals, and 50% off Express To Live Evals. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>50K Fundamental drops from ~~$580~~ to $87</li><li>50K Express to Live and 50K Premium each drop from ~~$723~~ to $108</li><li>One payment covers both the eval and the funded account</li><li>No activation fee and no subscription</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Sun Oct 25, 6:00 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/PhidiasPropFirm.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> Up to 85% off</h3>
+    <p class="offer-on">On all 50K one-time payment accounts</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Sun Oct 25, 6:00 PM ET</span><span class="pill">Fundamental <b>60%</b></span><span class="pill">Express to Live <b>50%</b></span><span class="pill">Premium <b>60%</b></span><a class="review" href="/Firms/PhidiasPropFirm.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Phidias PropFirm slashes 50K account prices by 85% for a limited time</p>
+    <p class="summary">Phidias PropFirm is running an 85% discount on every 50K one-time payment account across its Fundamental, Express to Live and Premium families. The deal also includes up to 80% off other OTP sizes, 60% off Fundamental and Premium Evals, and 50% off Express To Live Evals. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>50K Fundamental drops from ~~$580~~ to $87</li><li>50K Express to Live and 50K Premium each drop from ~~$723~~ to $108</li><li>One payment covers both the eval and the funded account</li><li>No activation fee and no subscription</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1559113554781671515" data-type="news" data-firm="Phidias PropFirm">
   <div class="item-head">
@@ -1162,20 +1259,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/mffu" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/MyFundedFuture.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1557643893745647687" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1557643893745647687" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-10-08"><i class="fa-regular fa-calendar"></i> Oct 8, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding extends its 92% off promotion for 5 more days</h3>
-  <p class="summary">Apex Trader Funding has extended its 92% off promotion for five more days after the flash sale. The discount covers Legacy evaluations at 92% off the first month and 80% off recurring months, plus 92% off Intraday and EOD evaluations. Use code BRO at checkout for evaluation accounts.</p>
-  <ul class="points"><li>Legacy evaluations: 92% off your first month and 80% off recurring months</li><li>Intraday and EOD evaluations: 92% off</li><li>All three evaluation types (Legacy, Intraday, EOD) are One Day to Pass</li><li>Evaluation discounts are only valid for accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Monday, October 12 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 92% off</h3>
+    <p class="offer-on">On all evaluations (Legacy, Intraday, EOD), One Day to Pass</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Monday, October 12 at 11:59 PM ET</span><span class="pill">Legacy <b>92%</b></span><span class="pill">Intraday <b>92%</b></span><span class="pill">EOD <b>92%</b></span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding extends its 92% off promotion for 5 more days</p>
+    <p class="summary">Apex Trader Funding has extended its 92% off promotion for five more days after the flash sale. The discount covers Legacy evaluations at 92% off the first month and 80% off recurring months, plus 92% off Intraday and EOD evaluations. Use code BRO at checkout for evaluation accounts.</p>
+    <ul class="points"><li>Legacy evaluations: 92% off your first month and 80% off recurring months</li><li>Intraday and EOD evaluations: 92% off</li><li>All three evaluation types (Legacy, Intraday, EOD) are One Day to Pass</li><li>Evaluation discounts are only valid for accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1557391831598239784" data-type="news" data-firm="My Funded Futures">
   <div class="item-head">
@@ -1216,11 +1320,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Alpha Futures launches October promo with 40% off Zero and 50% off Standard, Direct and Advanced</h3>
-  <p class="summary">Alpha Futures is running an October sale with 40% off Zero accounts and 50% off Standard, Direct and Advanced accounts. The offer runs until the end of October. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>40% off Zero accounts</li><li>50% off Standard, Direct and Advanced accounts</li><li>Offer is live until the end of October</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends the end of October</div>
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> Up to 50% off</h3>
+    <p class="offer-on">On Standard, Direct and Advanced accounts</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends the end of October</span><span class="pill">Zero <b>40%</b></span><span class="pill">Standard <b>50%</b></span><span class="pill">Direct <b>50%</b></span><span class="pill">Advanced <b>50%</b></span><a class="review" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Alpha Futures launches October promo with 40% off Zero and 50% off Standard, Direct and Advanced</p>
+    <p class="summary">Alpha Futures is running an October sale with 40% off Zero accounts and 50% off Standard, Direct and Advanced accounts. The offer runs until the end of October. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>40% off Zero accounts</li><li>50% off Standard, Direct and Advanced accounts</li><li>Offer is live until the end of October</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1557301860816388157" data-type="news" data-firm="IQ Capital">
   <div class="item-head">
@@ -1291,11 +1402,18 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
     </div>
     <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
   </div>
-  <h3>Legends Trading launches October Reload with 40% off evaluations and a bonus</h3>
-  <p class="summary">Legends Trading has launched its October Reload promo, running October 6 through October 20, with discounts on evaluations, subscriptions and resets. Traders who activate a funded master account in October and complete a first payout by November 30 can also earn a free 50K Elite Evaluation. Use code BRO at checkout to get the deal.</p>
-  <ul class="points"><li>40% off all evaluations, with a 50K Elite Evaluation at $90.60</li><li>Buy 4 Apprentice accounts of the same size and the 5th is free when code BRO is applied</li><li>25% off recurring subscription charges and 40% off evaluation resets</li><li>Activation fees reduced 40%: 50K $59.4, 100K $77.4, 150K $89.4, but the account must pass during the promo</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 20</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 40% off</h3>
+    <p class="offer-on">On all evaluations</p>
+    <div class="offer-buy"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 20</span><span class="pill"><b>25%</b> off renewals</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading launches October Reload with 40% off evaluations and a bonus</p>
+    <p class="summary">Legends Trading has launched its October Reload promo, running October 6 through October 20, with discounts on evaluations, subscriptions and resets. Traders who activate a funded master account in October and complete a first payout by November 30 can also earn a free 50K Elite Evaluation. Use code BRO at checkout to get the deal.</p>
+    <ul class="points"><li>40% off all evaluations, with a 50K Elite Evaluation at $90.60</li><li>Buy 4 Apprentice accounts of the same size and the 5th is free when code BRO is applied</li><li>25% off recurring subscription charges and 40% off evaluation resets</li><li>Activation fees reduced 40%: 50K $59.4, 100K $77.4, 150K $89.4, but the account must pass during the promo</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1557003085144916049" data-type="news" data-firm="FundedNext Futures">
   <div class="item-head">
@@ -1327,20 +1445,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 30th</div>
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1556916582226067489" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1556916582226067489" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-10-06"><i class="fa-regular fa-calendar"></i> Oct 6, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding marks 5 years with 92% off evaluation flash sale</h3>
-  <p class="summary">Apex Trader Funding is celebrating its fifth anniversary with a flash sale offering 92% off evaluations, which it calls its deepest evaluation discount ever. Legacy evaluations get 92% off the first month and 80% off recurring, while Intraday and EOD evaluations get 92% off, and all three types are One Day to Pass. The sale ends Wednesday, October 7 at 11:59 PM ET, so use code BRO at checkout.</p>
-  <ul class="points"><li>92% off Legacy evaluations for the first month</li><li>80% off Legacy evaluations on recurring billing</li><li>92% off Intraday and EOD evaluations</li><li>Legacy, Intraday and EOD evaluations are all One Day to Pass</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Wednesday, October 7 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 92% off</h3>
+    <p class="offer-on">On all evaluations (Legacy, Intraday, EOD), first month for Legacy</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Wednesday, October 7 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding marks 5 years with 92% off evaluation flash sale</p>
+    <p class="summary">Apex Trader Funding is celebrating its fifth anniversary with a flash sale offering 92% off evaluations, which it calls its deepest evaluation discount ever. Legacy evaluations get 92% off the first month and 80% off recurring, while Intraday and EOD evaluations get 92% off, and all three types are One Day to Pass. The sale ends Wednesday, October 7 at 11:59 PM ET, so use code BRO at checkout.</p>
+    <ul class="points"><li>92% off Legacy evaluations for the first month</li><li>80% off Legacy evaluations on recurring billing</li><li>92% off Intraday and EOD evaluations</li><li>Legacy, Intraday and EOD evaluations are all One Day to Pass</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1556754372786917467" data-type="news" data-firm="My Funded Futures">
   <div class="item-head">
@@ -1477,20 +1602,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/tradeify" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/TradeifyTrader.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1555701184789221487" data-type="promo" data-firm="Legends Trading">
+<article class="item promo ended" id="news-1555701184789221487" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
     <span class="logo logo-legendstrading" role="img" aria-label="Legends Trading logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/LegendsTrading.html">Legends Trading</a>
       <time datetime="2026-10-02"><i class="fa-regular fa-calendar"></i> Oct 2, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Legends Trading ends its $5M Payout Celebration sale tonight at 11:59 PM EST</h3>
-  <p class="summary">Legends Trading is running its $5M Payout Celebration sale, with 55% off Apprentice and Elite Evaluation accounts on your first 5 purchases. Activation fees start from just $5, and the post calls this the last chance before prices go back to normal. Use code BRO at checkout.</p>
-  <ul class="points"><li>55% off Apprentice and Elite Evaluation accounts on your first 5 purchases</li><li>Activation fees from just $5</li><li>The post says this is the last chance before prices return to normal</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends TODAY at 11:59 PM EST</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 55% off</h3>
+    <p class="offer-on">On Apprentice &amp; Elite evaluation accounts, first 5 purchases</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended TODAY at 11:59 PM EST</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading ends its $5M Payout Celebration sale tonight at 11:59 PM EST</p>
+    <p class="summary">Legends Trading is running its $5M Payout Celebration sale, with 55% off Apprentice and Elite Evaluation accounts on your first 5 purchases. Activation fees start from just $5, and the post calls this the last chance before prices go back to normal. Use code BRO at checkout.</p>
+    <ul class="points"><li>55% off Apprentice and Elite Evaluation accounts on your first 5 purchases</li><li>Activation fees from just $5</li><li>The post says this is the last chance before prices return to normal</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1555661091785416838" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
@@ -1597,20 +1729,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/IQCapital.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1555525131252539392" data-type="promo" data-firm="Alpha Futures">
+<article class="item promo ended" id="news-1555525131252539392" data-type="promo" data-firm="Alpha Futures">
   <div class="item-head">
     <span class="logo logo-alphafutures" role="img" aria-label="Alpha Futures logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/AlphaFutures.html">Alpha Futures</a>
       <time datetime="2026-10-02"><i class="fa-regular fa-calendar"></i> Oct 2, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Alpha Futures Launches 40% Off Promotion for October</h3>
-  <p class="summary">Alpha Futures has announced a 40% discount running this October. The post does not give a deadline or other terms for the offer. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>Alpha Futures is offering 40% off this October</li><li>The discount applies with a promo code</li></ul>
-  
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 40% off</h3>
+    <p class="offer-on">On all evaluations</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended </span><a class="review" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Alpha Futures Launches 40% Off Promotion for October</p>
+    <p class="summary">Alpha Futures has announced a 40% discount running this October. The post does not give a deadline or other terms for the offer. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>Alpha Futures is offering 40% off this October</li><li>The discount applies with a promo code</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1555520095344664719" data-type="news" data-firm="IQ Capital">
   <div class="item-head">
@@ -1627,20 +1766,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/IQCapital.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1555264680719810560" data-type="promo" data-firm="Legends Trading">
+<article class="item promo ended" id="news-1555264680719810560" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
     <span class="logo logo-legendstrading" role="img" aria-label="Legends Trading logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/LegendsTrading.html">Legends Trading</a>
       <time datetime="2026-10-01"><i class="fa-regular fa-calendar"></i> Oct 1, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Legends Trading ends its $5M Payout Celebration sale tomorrow, October 2</h3>
-  <p class="summary">Legends Trading is running a last-call sale on Apprentice and Elite evaluation accounts, with 55% off your first 5 purchases per user and 40% off after that. Activation fees are also cut during the sale and go back to regular prices once it ends. Use code BRO at checkout.</p>
-  <ul class="points"><li>55% off Apprentice and Elite evaluation accounts on your first 5 purchases per user</li><li>After the first 5 purchases, 40% off applies</li><li>Activation fees during the sale: $50K for $5, $100K for $25, $150K for $50</li><li>Activation fees return to regular prices once the sale ends</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 2 at 11:59 PM EST</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 55% off</h3>
+    <p class="offer-on">On Apprentice &amp; Elite evaluation accounts, first 5 purchases per user</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended October 2 at 11:59 PM EST</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading ends its $5M Payout Celebration sale tomorrow, October 2</p>
+    <p class="summary">Legends Trading is running a last-call sale on Apprentice and Elite evaluation accounts, with 55% off your first 5 purchases per user and 40% off after that. Activation fees are also cut during the sale and go back to regular prices once it ends. Use code BRO at checkout.</p>
+    <ul class="points"><li>55% off Apprentice and Elite evaluation accounts on your first 5 purchases per user</li><li>After the first 5 purchases, 40% off applies</li><li>Activation fees during the sale: $50K for $5, $100K for $25, $150K for $50</li><li>Activation fees return to regular prices once the sale ends</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1555233482899193896" data-type="news" data-firm="Top One Futures">
   <div class="item-head">
@@ -1657,20 +1803,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/topone" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/TopOne.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1555212348229292037" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1555212348229292037" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-10-01"><i class="fa-regular fa-calendar"></i> Oct 1, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding extends 5-pack pricing with no activation fee</h3>
-  <p class="summary">Apex Trader Funding is continuing its 5-Year Anniversary with 5-pack pricing on 50k and 100k Intraday NAF accounts, and both keep the no activation fee. Evaluation discounts are also running, including 90% off for Intraday and EOD evaluations, while Legacy PA fees and resets are on sale until tonight. Use code BRO at checkout for evaluation accounts.</p>
-  <ul class="points"><li>50k Intraday NAF: $49 single or $199 total for a 5-pack</li><li>100k Intraday NAF: $59 single or $249 total for a 5-pack</li><li>Legacy evaluations: 90% off first month and 80% off recurring</li><li>Intraday and EOD evaluations: 90% off</li><li>$55 Legacy PA fee for any account size and $21 Legacy resets end tonight, October 1 at 11:59 PM ET</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Monday, October 5 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On Legacy, Intraday and EOD evaluations (Legacy 90% first month)</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Monday, October 5 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding extends 5-pack pricing with no activation fee</p>
+    <p class="summary">Apex Trader Funding is continuing its 5-Year Anniversary with 5-pack pricing on 50k and 100k Intraday NAF accounts, and both keep the no activation fee. Evaluation discounts are also running, including 90% off for Intraday and EOD evaluations, while Legacy PA fees and resets are on sale until tonight. Use code BRO at checkout for evaluation accounts.</p>
+    <ul class="points"><li>50k Intraday NAF: $49 single or $199 total for a 5-pack</li><li>100k Intraday NAF: $59 single or $249 total for a 5-pack</li><li>Legacy evaluations: 90% off first month and 80% off recurring</li><li>Intraday and EOD evaluations: 90% off</li><li>$55 Legacy PA fee for any account size and $21 Legacy resets end tonight, October 1 at 11:59 PM ET</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1555197649437855866" data-type="news" data-firm="Phidias PropFirm">
   <div class="item-head">
@@ -1687,20 +1840,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends November 30</div>
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/PhidiasPropFirm.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1555186163369648138" data-type="promo" data-firm="Tradeify">
+<article class="item promo ended" id="news-1555186163369648138" data-type="promo" data-firm="Tradeify">
   <div class="item-head">
     <span class="logo logo-tradeify" role="img" aria-label="Tradeify logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/TradeifyTrader.html">Tradeify</a>
       <time datetime="2026-10-01"><i class="fa-regular fa-calendar"></i> Oct 1, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Tradeify Launches 30% Off All Accounts Plus 2X Gems</h3>
-  <p class="summary">Tradeify is running a limited-time promotion with 30% off all accounts. Traders also earn 2X Gems on all missions, including purchases. Use code BRO at checkout to get the discount.</p>
-  <ul class="points"><li>30% off all accounts</li><li>2X Gems on all missions, including purchases</li><li>Offer ends October 15</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 15</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/tradeify" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/TradeifyTrader.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 30% off</h3>
+    <p class="offer-on">On all accounts</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended October 15</span><a class="review" href="/Firms/TradeifyTrader.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Tradeify Launches 30% Off All Accounts Plus 2X Gems</p>
+    <p class="summary">Tradeify is running a limited-time promotion with 30% off all accounts. Traders also earn 2X Gems on all missions, including purchases. Use code BRO at checkout to get the discount.</p>
+    <ul class="points"><li>30% off all accounts</li><li>2X Gems on all missions, including purchases</li><li>Offer ends October 15</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1555149822728863768" data-type="news" data-firm="Phidias PropFirm">
   <div class="item-head">
@@ -1750,20 +1910,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/lucid" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/Lucid Trading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1554905227851730987" data-type="promo" data-firm="Alpha Futures">
+<article class="item promo ended" id="news-1554905227851730987" data-type="promo" data-firm="Alpha Futures">
   <div class="item-head">
     <span class="logo logo-alphafutures" role="img" aria-label="Alpha Futures logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/AlphaFutures.html">Alpha Futures</a>
       <time datetime="2026-09-30"><i class="fa-regular fa-calendar"></i> Sep 30, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Alpha Futures offers 50% off any plan, ending tonight</h3>
-  <p class="summary">Alpha Futures is running a 50% discount on any plan, but the offer expires at midnight tonight. The firm is urging traders who have been waiting to get an account to act now. Use code BROTRADING at checkout.</p>
-  <ul class="points"><li>50% off any plan</li><li>Offer expires at midnight tonight</li><li>Last chance to grab an account</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends midnight tonight</div>
-  <div class="actions"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 50% off</h3>
+    <p class="offer-on">On any plan</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended midnight tonight</span><a class="review" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Alpha Futures offers 50% off any plan, ending tonight</p>
+    <p class="summary">Alpha Futures is running a 50% discount on any plan, but the offer expires at midnight tonight. The firm is urging traders who have been waiting to get an account to act now. Use code BROTRADING at checkout.</p>
+    <ul class="points"><li>50% off any plan</li><li>Offer expires at midnight tonight</li><li>Last chance to grab an account</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1554842196753125507" data-type="news" data-firm="IQ Capital">
   <div class="item-head">
@@ -1780,20 +1947,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/IQCapital.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1554751352427647080" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1554751352427647080" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-09-30"><i class="fa-regular fa-calendar"></i> Sep 30, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding runs $10 flash sale and 5-year anniversary offers</h3>
-  <p class="summary">Apex Trader Funding is running a short flash sale where a 25K Intraday Evaluation costs $10 and a 5-Pack costs $50 total, but only until 4 PM ET. Its 5-year anniversary offers, including 90% off Legacy, Intraday and EOD evaluations, stay live through Thursday, October 1 at 11:59 PM ET. Use code BRO at checkout for Evaluation accounts.</p>
-  <ul class="points"><li>25K Intraday Evaluation for $10 with a coupon code required</li><li>5-Pack for $50 total during the flash sale</li><li>$55 Legacy PA Fee for any account size</li><li>Legacy Evaluations at 90% off first month and 80% off recurring</li><li>Intraday and EOD Evaluations at 90% off</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends 4 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On Legacy, Intraday and EOD evaluations</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended 4 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding runs $10 flash sale and 5-year anniversary offers</p>
+    <p class="summary">Apex Trader Funding is running a short flash sale where a 25K Intraday Evaluation costs $10 and a 5-Pack costs $50 total, but only until 4 PM ET. Its 5-year anniversary offers, including 90% off Legacy, Intraday and EOD evaluations, stay live through Thursday, October 1 at 11:59 PM ET. Use code BRO at checkout for Evaluation accounts.</p>
+    <ul class="points"><li>25K Intraday Evaluation for $10 with a coupon code required</li><li>5-Pack for $50 total during the flash sale</li><li>$55 Legacy PA Fee for any account size</li><li>Legacy Evaluations at 90% off first month and 80% off recurring</li><li>Intraday and EOD Evaluations at 90% off</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1554601159426183260" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
@@ -1810,20 +1984,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/lucid" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/Lucid Trading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1554592592115802235" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1554592592115802235" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-09-29"><i class="fa-regular fa-calendar"></i> Sep 29, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding launches $55 Legacy activation and $21 resets</h3>
-  <p class="summary">Apex Trader Funding is rolling its anniversary sale into a new round of Legacy offers that start tonight at 11:59 PM ET. Legacy activation fees drop to $55 for any account size, Legacy evaluation resets are $21, and evaluation discounts continue through the sale period. Use code BRO at checkout.</p>
-  <ul class="points"><li>$55 Legacy activation fees for any account size</li><li>$21 Legacy evaluation resets</li><li>Legacy Evaluations: 90% off the first month and 80% off recurring</li><li>Intraday and EOD Evaluations: 90% off</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Thursday, October 1 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On all evaluations (Legacy, Intraday and EOD)</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Thursday, October 1 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding launches $55 Legacy activation and $21 resets</p>
+    <p class="summary">Apex Trader Funding is rolling its anniversary sale into a new round of Legacy offers that start tonight at 11:59 PM ET. Legacy activation fees drop to $55 for any account size, Legacy evaluation resets are $21, and evaluation discounts continue through the sale period. Use code BRO at checkout.</p>
+    <ul class="points"><li>$55 Legacy activation fees for any account size</li><li>$21 Legacy evaluation resets</li><li>Legacy Evaluations: 90% off the first month and 80% off recurring</li><li>Intraday and EOD Evaluations: 90% off</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1554559829593563207" data-type="news" data-firm="My Funded Futures">
   <div class="item-head">
@@ -1945,20 +2126,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/IQCapital.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1554116565652340767" data-type="promo" data-firm="Legends Trading">
+<article class="item promo ended" id="news-1554116565652340767" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
     <span class="logo logo-legendstrading" role="img" aria-label="Legends Trading logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/LegendsTrading.html">Legends Trading</a>
       <time datetime="2026-09-28"><i class="fa-regular fa-calendar"></i> Sep 28, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Legends Trading celebrates $5M in payouts with 55% off evaluations</h3>
-  <p class="summary">Legends Trading is marking $5 million in trader payouts with a sale on Apprentice and Elite Evaluation accounts. The first 5 purchases per customer get 55% off, and after that the discount drops to 40%. Use code BRO at checkout to claim the offer before the promo ends.</p>
-  <ul class="points"><li>55% off Apprentice and Elite Evaluation accounts for the first 5 purchases per customer</li><li>40% off after the first 5 purchases</li><li>Activation fees for a limited time: $50K for $5, $100K for $25, $150K for $50</li><li>$5 to activate a $50K Master account</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends October 2</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 55% off</h3>
+    <p class="offer-on">On Apprentice &amp; Elite Evaluation accounts, first 5 purchases per customer (40% OFF after that)</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended October 2</span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading celebrates $5M in payouts with 55% off evaluations</p>
+    <p class="summary">Legends Trading is marking $5 million in trader payouts with a sale on Apprentice and Elite Evaluation accounts. The first 5 purchases per customer get 55% off, and after that the discount drops to 40%. Use code BRO at checkout to claim the offer before the promo ends.</p>
+    <ul class="points"><li>55% off Apprentice and Elite Evaluation accounts for the first 5 purchases per customer</li><li>40% off after the first 5 purchases</li><li>Activation fees for a limited time: $50K for $5, $100K for $25, $150K for $50</li><li>$5 to activate a $50K Master account</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1554101155280330782" data-type="news" data-firm="Alpha Futures">
   <div class="item-head">
@@ -1975,20 +2163,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/alpha" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/AlphaFutures.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1554034345751216240" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1554034345751216240" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-09-28"><i class="fa-regular fa-calendar"></i> Sep 28, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding launches 48-hour flash sale with $21 Legacy Evaluations</h3>
-  <p class="summary">Apex Trader Funding is running a 48-hour flash sale to mark five years since its 2021 launch. The post lists $21 Legacy Evaluations at 100K, 250K and 300K, plus 90% off Intraday and EOD evaluations. Use code BRO at checkout for Evaluation accounts.</p>
-  <ul class="points"><li>100K, 250K and 300K Legacy Evaluations are $21 each</li><li>Legacy Evaluations get 90% off the first month and 80% off recurring</li><li>Intraday and EOD Evaluations get 90% off</li><li>Legacy PA is $90, EOD PA is $90 and Intraday PA is $59 for all account sizes</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends Tuesday, September 29 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On all evaluations (Legacy first month; Intraday &amp; EOD)</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended Tuesday, September 29 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding launches 48-hour flash sale with $21 Legacy Evaluations</p>
+    <p class="summary">Apex Trader Funding is running a 48-hour flash sale to mark five years since its 2021 launch. The post lists $21 Legacy Evaluations at 100K, 250K and 300K, plus 90% off Intraday and EOD evaluations. Use code BRO at checkout for Evaluation accounts.</p>
+    <ul class="points"><li>100K, 250K and 300K Legacy Evaluations are $21 each</li><li>Legacy Evaluations get 90% off the first month and 80% off recurring</li><li>Intraday and EOD Evaluations get 90% off</li><li>Legacy PA is $90, EOD PA is $90 and Intraday PA is $59 for all account sizes</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1553860078732574761" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
@@ -2020,20 +2215,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/lucid" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/Lucid Trading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1553742966793965670" data-type="promo" data-firm="Legends Trading">
+<article class="item promo ended" id="news-1553742966793965670" data-type="promo" data-firm="Legends Trading">
   <div class="item-head">
     <span class="logo logo-legendstrading" role="img" aria-label="Legends Trading logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/LegendsTrading.html">Legends Trading</a>
       <time datetime="2026-09-27"><i class="fa-regular fa-calendar"></i> Sep 27, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Legends Trading ends September sale today with 40% off Apprentice</h3>
-  <p class="summary">Legends Trading is reminding traders that its September Sale closes today at 11:59 PM EST. The discounts include 40% off Apprentice accounts and activation fees, a B4G1 Apprentice deal, and 30% off Elite. Prices return to regular levels once the sale ends, so use code BRO at checkout.</p>
-  <ul class="points"><li>40% off Apprentice accounts and activation fees</li><li>B4G1 Apprentice deal requires adding 5 Apprentice accounts to your cart</li><li>30% off Elite accounts</li><li>Account purchase prices and activation fees return to regular prices after the sale</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends today at 11:59 PM EST</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/legendstrading" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> Up to 40% off</h3>
+    <p class="offer-on">On Apprentice accounts and activation fees; Elite accounts at 30% off</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended today at 11:59 PM EST</span><span class="pill">Apprentice <b>40%</b></span><span class="pill">Elite <b>30%</b></span><a class="review" href="/Firms/LegendsTrading.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Legends Trading ends September sale today with 40% off Apprentice</p>
+    <p class="summary">Legends Trading is reminding traders that its September Sale closes today at 11:59 PM EST. The discounts include 40% off Apprentice accounts and activation fees, a B4G1 Apprentice deal, and 30% off Elite. Prices return to regular levels once the sale ends, so use code BRO at checkout.</p>
+    <ul class="points"><li>40% off Apprentice accounts and activation fees</li><li>B4G1 Apprentice deal requires adding 5 Apprentice accounts to your cart</li><li>30% off Elite accounts</li><li>Account purchase prices and activation fees return to regular prices after the sale</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1553147239059423275" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
@@ -2155,20 +2357,27 @@ h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing
   
   <div class="actions"><a class="btn" href="https://propfirmbro.com/go/mffu" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/MyFundedFuture.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
 </article>
-<article class="item promo" id="news-1552309394715447317" data-type="promo" data-firm="Apex Trader Funding">
+<article class="item promo ended" id="news-1552309394715447317" data-type="promo" data-firm="Apex Trader Funding">
   <div class="item-head">
     <span class="logo logo-apex" role="img" aria-label="Apex Trader Funding logo"></span>
     <div class="who">
       <a class="firm" href="/Firms/ApexFunding.html">Apex Trader Funding</a>
       <time datetime="2026-09-23"><i class="fa-regular fa-calendar"></i> Sep 23, 2026</time>
     </div>
-    <span class="tag promo"><i class="fa-solid fa-tags"></i> Promo</span>
+    <span class="tag ended"><i class="fa-regular fa-clock"></i> Ended</span>
   </div>
-  <h3>Apex Trader Funding launches 90/90/90 Flash Sale on evaluations and activation fees</h3>
-  <p class="summary">Apex Trader Funding is running a limited-time Flash Sale with 90% off Legacy, Intraday, and EOD evaluations. Legacy evaluations get 90% off the first month and 80% off recurring months, and activation fees are discounted as well. Use code BRO at checkout.</p>
-  <ul class="points"><li>90% off all Legacy, Intraday, and EOD evaluations</li><li>Legacy evaluations: 90% off first month and 80% off recurring months</li><li>$90 Legacy PA Activation and $90 EOD PA Activation, any account size</li><li>$59 Intraday PA Activation, any account size</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
-  <div class="ends"><i class="fa-solid fa-hourglass-half"></i> Ends September 27 at 11:59 PM ET for the Flash Sale; the $90 Legacy PA Activation offer ends September 29 at 11:59 PM ET</div>
-  <div class="actions"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="btn" href="https://propfirmbro.com/go/apex" target="_blank" rel="sponsored nofollow noopener">Get the deal <i class="fa-solid fa-arrow-right"></i></a><a class="btn ghost" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <div class="offer">
+    <h3 class="offer-title"><i class="fa-solid fa-tag"></i> 90% off</h3>
+    <p class="offer-on">On all Legacy, Intraday, and EOD evaluations</p>
+    
+  </div>
+  <div class="offer-meta"><span class="ends"><i class="fa-solid fa-hourglass-half"></i> Ended September 27 at 11:59 PM ET for the Flash Sale; the $90 Legacy PA Activation offer ends September 29 at 11:59 PM ET</span><span class="pill"><b>80%</b> off renewals</span><a class="review" href="/Firms/ApexFunding.html"><i class="fa-solid fa-circle-info"></i> Firm review</a></div>
+  <details class="more">
+    <summary>Details</summary>
+    <p class="more-title">Apex Trader Funding launches 90/90/90 Flash Sale on evaluations and activation fees</p>
+    <p class="summary">Apex Trader Funding is running a limited-time Flash Sale with 90% off Legacy, Intraday, and EOD evaluations. Legacy evaluations get 90% off the first month and 80% off recurring months, and activation fees are discounted as well. Use code BRO at checkout.</p>
+    <ul class="points"><li>90% off all Legacy, Intraday, and EOD evaluations</li><li>Legacy evaluations: 90% off first month and 80% off recurring months</li><li>$90 Legacy PA Activation and $90 EOD PA Activation, any account size</li><li>$59 Intraday PA Activation, any account size</li><li>Evaluation discounts only apply to accounts purchased during the sale period</li></ul>
+  </details>
 </article>
 <article class="item news" id="news-1552065414937321522" data-type="news" data-firm="Lucid Trading">
   <div class="item-head">
