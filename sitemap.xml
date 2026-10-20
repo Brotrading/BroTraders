@@ -110,4 +110,16 @@
     <lastmod>2026-05-01</lastmod>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://propfirmbro.com/News</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://propfirmbro.com/CompareTopFirms/FastCompare</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
