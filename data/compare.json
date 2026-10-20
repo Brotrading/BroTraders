@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T08:25:35.744956+00:00",
+ "generated_at": "2026-10-20T13:32:20.969967+00:00",
  "sizes": [
   "25K",
   "50K",
@@ -26,7 +26,7 @@
    "logo": "apex.png",
    "logo_bg": "#0b1120",
    "rating": 4.3,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "tradeify": {
    "key": "tradeify",
@@ -37,7 +37,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "myfundedfutures": {
    "key": "myfundedfutures",
@@ -48,7 +48,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "lucid_trading": {
    "key": "lucid_trading",
@@ -59,7 +59,7 @@
    "logo": "lucid.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "takeprofittrader": {
    "key": "takeprofittrader",
@@ -70,7 +70,7 @@
    "logo": "takeprofittrader.svg",
    "logo_bg": null,
    "rating": 4.4,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "legendstrading": {
    "key": "legendstrading",
@@ -81,7 +81,7 @@
    "logo": "legendstrading.png",
    "logo_bg": null,
    "rating": 3.5,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "daytraders": {
    "key": "daytraders",
@@ -92,7 +92,7 @@
    "logo": "daytraders.svg",
    "logo_bg": null,
    "rating": 4.6,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "phidias": {
    "key": "phidias",
@@ -103,7 +103,7 @@
    "logo": "phidias.jpeg",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "blusky": {
    "key": "blusky",
@@ -114,7 +114,7 @@
    "logo": "blusky.png",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "top_one_futures": {
    "key": "top_one_futures",
@@ -125,7 +125,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "alpha_futures": {
    "key": "alpha_futures",
@@ -136,7 +136,7 @@
    "logo": "alphafutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   },
   "iqcapital": {
    "key": "iqcapital",
@@ -147,7 +147,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-20T08:25:35.744956+00:00"
+   "checked_at": "2026-10-20T13:32:20.969967+00:00"
   }
  },
  "rows": [
@@ -362,7 +362,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -443,7 +443,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -600,7 +600,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -619,7 +620,7 @@
    "rules_score": 43,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -758,7 +759,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -777,7 +779,7 @@
    "rules_score": 51,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -909,7 +911,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 89.0,
    "activation_source": "website",
@@ -928,7 +931,7 @@
    "rules_score": 43,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -989,7 +992,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 109.0,
    "activation_source": "website",
@@ -1008,7 +1012,7 @@
    "rules_score": 51,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -1069,7 +1073,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -1312,7 +1316,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -1332,7 +1337,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $49",
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -1473,7 +1478,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -1792,7 +1797,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -1998,7 +2003,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -2017,7 +2023,7 @@
    "rules_score": 46,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -2505,7 +2511,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 99.0,
    "activation_source": "website",
@@ -2524,7 +2531,7 @@
    "rules_score": 39,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -2545,7 +2552,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 129.0,
    "activation_source": "website",
@@ -2564,7 +2572,7 @@
    "rules_score": 46,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -2586,7 +2594,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -2979,7 +2987,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -2999,7 +3008,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $59",
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -3103,7 +3112,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -3272,7 +3281,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -3292,7 +3302,7 @@
    "data_complete": 100,
    "pros": [
     "Low cost to get funded: $159",
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -3394,7 +3404,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -3824,7 +3834,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 139.0,
    "activation_source": "website",
@@ -3843,7 +3854,7 @@
    "rules_score": 44,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -4104,7 +4115,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -4223,7 +4234,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 129.0,
    "activation_source": "website",
@@ -4242,7 +4254,7 @@
    "rules_score": 37,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -4716,7 +4728,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -4912,7 +4924,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -4932,7 +4945,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $189",
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -4952,7 +4965,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -4993,7 +5006,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -5012,7 +5026,7 @@
    "rules_score": 49,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -5304,7 +5318,7 @@
    "promo": {
     "pct": 30,
     "ends": null,
-    "source": "website",
+    "source": "website+discord",
     "any_code": false,
     "estimated": true
    },
@@ -5502,7 +5516,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 149.0,
    "activation_source": "website",
@@ -5521,7 +5536,7 @@
    "rules_score": 42,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -5616,7 +5631,8 @@
    "promo": {
     "pct": 90,
     "ends": "2026-10-22 23:59",
-    "source": "website"
+    "source": "website+discord",
+    "any_code": true
    },
    "activation_fee": 159.0,
    "activation_source": "website",
@@ -5635,7 +5651,7 @@
    "rules_score": 49,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 22",
+    "Promo now: 90% off until Oct 22, works with our code",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
