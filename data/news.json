@@ -1,7 +1,101 @@
 {
-  "generated_at": "2026-10-20T13:32:18.577662+00:00",
-  "count": 128,
+  "generated_at": "2026-10-21T07:07:50.971692+00:00",
+  "count": 131,
   "items": [
+    {
+      "id": "1562173399055204525",
+      "type": "news",
+      "firm": "Top One Futures",
+      "date": "2026-10-20",
+      "title": "Top One Futures launches Last Trader Standing free trading competition with $25,000 cash prize",
+      "summary": "Top One Futures has opened a free elimination-style trading competition called Last Trader Standing. Each trading day the bottom 20% of traders are knocked out, and the competition starts Monday, November 2. The firm is offering $25,000 in cash plus $1,000,000 in funded accounts across the prize pool.",
+      "highlights": [
+        "Free to enter with 1,000 traders starting on Day 1",
+        "Every trading day the bottom 20% get eliminated over 10 trading days",
+        "Survivors to Week 2 get a free $50K Elite Access account",
+        "Knocked-out traders can respawn for $20",
+        "Finishers in 1st place win $7,500 cash plus a $150K funded account"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/topone",
+      "firm_page": "/Firms/TopOne.html",
+      "logo": "/Photos/firms/topone.png"
+    },
+    {
+      "id": "1562155564358963255",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-20",
+      "title": "IQ Capital to reveal changes and numbers in first Monthly Update livestream",
+      "summary": "IQ Capital will hold its first Monthly Update livestream this Thursday at 8:00 PM CEST. The firm plans to cover upcoming changes at the company, what comes next, and performance figures it says other prop firms don't publish. Traders can sign up for free to receive the stream link by email.",
+      "highlights": [
+        "First IQ Capital Monthly Update livestream is this Thursday at 8:00 PM CEST",
+        "Topics include changes at IQ Capital, upcoming plans, and its numbers",
+        "Updates are shared in the stream first",
+        "Free sign-up sends the livestream link by email"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562134392371941478",
+      "type": "promo",
+      "firm": "Legends Trading",
+      "date": "2026-10-20",
+      "title": "Legends Trading ends 45% off sale tonight with Elite buy 4 get 1 free",
+      "summary": "Legends Trading is running its final day of 45% off on all evaluations, resets, and activation fees, with prices returning to normal at midnight. The Elite buy 4 get 1 free deal applies when you add 5 Elite accounts of the same size and apply the code at checkout. Use code BRO at checkout to get the discount.",
+      "highlights": [
+        "45% off all evaluations, resets, and activation fees",
+        "Activation fees at 50K $54, 100K $70, and 150K $81 during the final day",
+        "Elite: add 5 Elite accounts of the same size, get 45% off the first 4 and the 5th free",
+        "Activate a Master (funded) account in October and get your first payout by Nov 30 to earn a FREE $50K Elite Evaluation"
+      ],
+      "ends": "Ends TODAY at 11:59 PM ET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png"
+    },
+    {
+      "id": "1562120934520000542",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-20",
+      "title": "IQ Capital says its dxFeed connection issues are resolved",
+      "summary": "IQ Capital reports that the connection problems with dxFeed have been fixed. The firm says everything is working normally again. Traders are thanked for their patience during the outage.",
+      "highlights": [
+        "Connection issues with dxFeed have been resolved",
+        "Everything is working normally again"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562116111334641784",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-20",
+      "title": "IQ Capital reports connection issues with dxFeed data feed",
+      "summary": "IQ Capital says it is currently having problems with its connection to dxFeed. The team is already working on a fix and will post an update once the issue is resolved. Traders are asked not to flood the support chat while the problem is being handled.",
+      "highlights": [
+        "The problem is with the connection to dxFeed",
+        "IQ Capital's team is already working on a solution",
+        "Updates will be posted once the issue is resolved",
+        "Traders are asked not to flood the support chat"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
     {
       "id": "1562093067887050813",
       "type": "promo",
@@ -2354,43 +2448,6 @@
         "Flash Sale runs Monday to Friday this week",
         "3+1 on Instant Fundings: buy 3, get 1 additional account of the same size free",
         "The bonus will no longer be available in this form after the promotion ends"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
-    },
-    {
-      "id": "1551395890860916856",
-      "type": "news",
-      "firm": "Alpha Futures",
-      "date": "2026-09-21",
-      "title": "Alpha Futures posts its news calendar for the week of September 21",
-      "summary": "Alpha Futures says there are no news events scheduled for the week of September 21 to 25, 2026. The firm asks traders to keep checking the link it shares for any updates during the week. It also points to its News Trading Policy in the help center for rules on trading news.",
-      "highlights": [
-        "No news events listed for September 21 to 25, 2026",
-        "Traders should check the shared link for weekly updates",
-        "The post points to the News Trading Policy in the Alpha Futures help center"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
-    },
-    {
-      "id": "1551340202893770782",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-20",
-      "title": "IQ Capital previews a full week of TV guests and daily giveaways",
-      "summary": "IQ Capital has lined up a packed week of IQ Capital TV sessions with returning and new guests. Highlights include an orderflow session with Bilal, a London session with Jason Sen, and an Orderflow Masterclass with Darius FX on Friday. The show runs live Monday through Friday with daily giveaways.",
-      "highlights": [
-        "Tuesday New York Session features Bilal, an orderflow expert",
-        "Wednesday London Session with Jason Sen, who has 40 years of market experience",
-        "Friday Orderflow Masterclass with Darius FX, who has $1.5M in verified prop firm payouts",
-        "Live Monday through Friday with daily giveaways and special guests"
       ],
       "ends": null,
       "code": "BRO",

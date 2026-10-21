@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="same-origin">
+<title>Data Admin | BroTrading</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg: #030712;
+  --panel: rgba(10, 28, 58, 0.62);
+  --panel-solid: #0a1c3a;
+  --panel-hi: rgba(18, 44, 88, 0.75);
+  --line: rgba(61, 180, 255, 0.14);
+  --line-hi: rgba(61, 180, 255, 0.38);
+  --text: #eaf2ff;
+  --muted: #8ea6c9;
+  --blue: #2c9eff;
+  --blue-hi: #3db4ff;
+  --cyan: #00c2ff;
+  --gold: #ffcf40;
+  --good: #34d399;
+  --bad: #f87171;
+  --grad: linear-gradient(135deg, #00c2ff, #1e90ff);
+  --radius: 16px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(30, 64, 175, 0.55), transparent 55%),
+    radial-gradient(circle at 100% 0%, rgba(0, 194, 255, 0.12), transparent 40%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font: 15px/1.55 "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(61, 180, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(61, 180, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 75%);
+}
+h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing: -0.02em; margin: 0; }
+a { color: var(--blue-hi); }
+[hidden] { display: none !important; }
+.mono { font-family: "DM Mono", monospace; }
+.muted { color: var(--muted); }
+
+/* ---------- buttons, inputs ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 16px; border-radius: 11px; border: 1px solid var(--line-hi);
+  background: rgba(61, 180, 255, 0.08); color: var(--text); font: 600 14px "DM Sans", sans-serif;
+  cursor: pointer; text-decoration: none; transition: background .15s, border-color .15s, transform .1s;
+  white-space: nowrap;
+}
+.btn:hover { background: rgba(61, 180, 255, 0.16); border-color: var(--blue-hi); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn.primary { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 8px 24px rgba(30, 144, 255, 0.35); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.gold { background: rgba(255, 207, 64, 0.12); border-color: rgba(255, 207, 64, 0.45); color: var(--gold); }
+.btn.danger { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.4); color: #fca5a5; }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+.btn.ghost:hover { color: var(--text); background: rgba(61, 180, 255, 0.08); }
+.btn.sm { padding: 6px 11px; font-size: 13px; border-radius: 9px; }
+.btn.icon { padding: 8px; width: 36px; height: 36px; }
+
+.input, select.input, textarea.input {
+  width: 100%; padding: 11px 13px; border-radius: 11px; border: 1px solid var(--line-hi);
+  background: rgba(3, 7, 18, 0.55); color: var(--text); font: 14px "DM Sans", sans-serif; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.input:focus { border-color: var(--blue-hi); box-shadow: 0 0 0 3px rgba(61, 180, 255, 0.18); }
+.input::placeholder { color: rgba(142, 166, 201, 0.6); }
+textarea.input { resize: vertical; min-height: 110px; line-height: 1.5; }
+label.field { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: #c9d7ef; }
+label.field .hint { font-weight: 400; color: var(--muted); font-size: 12px; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; padding: 2px 9px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .02em; border: 1px solid var(--line-hi); color: #c9d7ef;
+  white-space: nowrap;
+}
+.badge.promo { color: var(--gold); border-color: rgba(255, 207, 64, 0.45); background: rgba(255, 207, 64, 0.08); }
+.badge.news { color: var(--blue-hi); background: rgba(61, 180, 255, 0.08); }
+.badge.hidden { color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
+.badge.edited { color: #c4b5fd; border-color: rgba(167, 139, 250, 0.45); background: rgba(167, 139, 250, 0.08); }
+.badge.good { color: var(--good); border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.08); }
+.badge.wait { color: var(--gold); border-color: rgba(255, 207, 64, 0.4); background: rgba(255, 207, 64, 0.06); }
+
+.switch { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; color: var(--muted); user-select: none; }
+.switch input { position: absolute; opacity: 0; }
+.switch .track { width: 36px; height: 20px; border-radius: 999px; background: rgba(142, 166, 201, 0.25); position: relative; transition: background .15s; flex: none; }
+.switch .track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .15s; }
+.switch input:checked + .track { background: var(--blue); }
+.switch input:checked + .track::after { transform: translateX(16px); }
+.switch input:focus-visible + .track { box-shadow: 0 0 0 3px rgba(61, 180, 255, 0.3); }
+
+/* ---------- login ---------- */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
+.login-card {
+  width: 100%; max-width: 420px; padding: 34px 30px 28px; border-radius: 24px;
+  background: linear-gradient(160deg, rgba(18, 44, 88, 0.8), rgba(10, 28, 58, 0.7));
+  border: 1px solid var(--line-hi); backdrop-filter: blur(14px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(61, 180, 255, 0.05) inset;
+  position: relative; overflow: hidden;
+}
+.login-card::before {
+  content: ""; position: absolute; inset: -40% -40% auto auto; width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.25), transparent 70%); pointer-events: none;
+}
+.login-card .logo { width: 64px; height: 64px; border-radius: 16px; display: block; margin-bottom: 18px; object-fit: contain; background: rgba(3, 7, 18, 0.5); padding: 8px; border: 1px solid var(--line-hi); }
+.login-card h1 { font-size: 26px; }
+.login-card p.lead { margin: 6px 0 24px; color: var(--muted); }
+.token-wrap { position: relative; }
+.token-wrap .input { padding-right: 46px; font-family: "DM Mono", monospace; font-size: 13px; }
+.token-wrap .btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }
+.login-error { margin: 12px 0 0; color: #fca5a5; font-size: 13px; display: flex; gap: 8px; align-items: center; }
+.login-card .btn.primary { width: 100%; margin-top: 18px; padding: 12px; font-size: 15px; }
+.login-foot { margin-top: 18px; font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: center; }
+
+/* ---------- app shell ---------- */
+.app { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.side {
+  position: sticky; top: 0; height: 100vh; padding: 22px 16px; display: flex; flex-direction: column; gap: 6px;
+  background: rgba(3, 7, 18, 0.55); border-right: 1px solid var(--line); backdrop-filter: blur(12px);
+}
+.brand { display: flex; align-items: center; gap: 11px; padding: 4px 8px 20px; text-decoration: none; color: var(--text); }
+.brand img { width: 38px; height: 38px; object-fit: contain; border-radius: 10px; background: rgba(61, 180, 255, 0.06); padding: 4px; }
+.brand b { font-family: "Space Grotesk", sans-serif; font-size: 17px; display: block; line-height: 1.1; }
+.brand small { color: var(--muted); font-size: 12px; }
+.nav-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(142, 166, 201, 0.7); padding: 14px 12px 6px; }
+.nav a {
+  display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 11px;
+  color: #c9d7ef; text-decoration: none; font-weight: 500; transition: background .15s, color .15s;
+}
+.nav a i { width: 18px; text-align: center; color: var(--muted); transition: color .15s; }
+.nav a:hover { background: rgba(61, 180, 255, 0.08); color: var(--text); }
+.nav a.on { background: linear-gradient(90deg, rgba(44, 158, 255, 0.22), rgba(44, 158, 255, 0.04)); color: #fff; box-shadow: inset 3px 0 0 var(--blue-hi); }
+.nav a.on i { color: var(--blue-hi); }
+.nav a .count { margin-left: auto; font-size: 12px; color: var(--muted); font-family: "DM Mono", monospace; }
+.side-foot { margin-top: auto; padding: 14px 8px 0; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.side-foot .who { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+.side-foot .who i { color: var(--good); }
+
+.main { padding: 28px 34px 60px; min-width: 0; }
+.topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.topbar h2 { font-size: 26px; }
+.topbar .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.topbar .actions { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.menu-btn { display: none; }
+
+.banner {
+  display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; margin-bottom: 20px;
+  background: rgba(255, 207, 64, 0.08); border: 1px solid rgba(255, 207, 64, 0.35); color: #ffe08a; font-size: 14px;
+}
+.banner i { color: var(--gold); }
+.banner .btn { margin-left: auto; }
+
+.panel {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; backdrop-filter: blur(10px);
+}
+.panel h3 { font-size: 17px; display: flex; align-items: center; gap: 10px; }
+.panel h3 i { color: var(--blue-hi); }
+.panel-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.panel-head .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+/* overview */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.stat {
+  padding: 18px; border-radius: var(--radius); border: 1px solid var(--line); position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--panel-hi), var(--panel));
+}
+.stat::after { content: ""; position: absolute; right: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle, var(--glow, rgba(61,180,255,.22)), transparent 70%); }
+.stat .ico { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: rgba(61, 180, 255, 0.12); color: var(--blue-hi); margin-bottom: 14px; }
+.stat.gold { --glow: rgba(255, 207, 64, .22); }
+.stat.gold .ico { background: rgba(255, 207, 64, 0.12); color: var(--gold); }
+.stat.violet { --glow: rgba(167, 139, 250, .22); }
+.stat.violet .ico { background: rgba(167, 139, 250, 0.12); color: #c4b5fd; }
+.stat.green { --glow: rgba(52, 211, 153, .2); }
+.stat.green .ico { background: rgba(52, 211, 153, 0.12); color: var(--good); }
+.stat .num { font: 700 30px/1 "Space Grotesk", sans-serif; }
+.stat .lbl { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.page-card { display: grid; gap: 12px; }
+.page-card .row { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.page-card .row:last-of-type { border-bottom: 0; }
+.page-card .row span:first-child { color: var(--muted); }
+.page-card .links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* scraper */
+.scraper .panel-head .right .btn { padding: 8px 14px; }
+.progress { height: 12px; border-radius: 999px; background: rgba(3, 7, 18, 0.6); border: 1px solid var(--line); overflow: hidden; position: relative; }
+.progress .bar { height: 100%; border-radius: 999px; background: var(--grad); box-shadow: 0 0 18px rgba(0, 194, 255, 0.45); transition: width .6s ease; position: relative; overflow: hidden; }
+.progress .bar::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); transform: translateX(-100%); animation: shine 1.6s infinite; }
+.progress.wait .bar { width: 35% !important; animation: slide 1.4s ease-in-out infinite; }
+@keyframes shine { to { transform: translateX(100%); } }
+@keyframes slide { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
+.progress-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); margin: 8px 0 16px; }
+.progress-meta b { color: var(--text); font-weight: 600; }
+.progress-meta .pct { font: 700 20px "Space Grotesk", sans-serif; color: var(--text); }
+.scrape-runs { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 14px; }
+.scrape-runs th { text-align: left; color: var(--muted); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; }
+.scrape-runs td { padding: 8px; border-top: 1px solid var(--line); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--muted); }
+.dot.on { background: var(--good); box-shadow: 0 0 8px var(--good); }
+.dot.off { background: var(--bad); }
+
+/* toolbar + lists */
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.toolbar .search { position: relative; flex: 1 1 260px; }
+.toolbar .search i { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; }
+.toolbar .search .input { padding-left: 38px; }
+.toolbar select.input { width: auto; min-width: 180px; }
+.list { display: grid; gap: 10px; }
+.item {
+  display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center;
+  padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel);
+  transition: border-color .15s, background .15s;
+}
+.item:hover { border-color: var(--line-hi); background: var(--panel-hi); }
+.item.is-hidden { opacity: .6; }
+.item .logo { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; background: #0b1120; border: 1px solid var(--line); }
+.item .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-bottom: 4px; }
+.item .meta b { color: #c9d7ef; font-weight: 600; }
+.item .title { font-weight: 600; line-height: 1.35; }
+.item .extra { font-size: 12.5px; color: var(--muted); margin-top: 4px; display: flex; gap: 14px; flex-wrap: wrap; }
+.item .extra i { margin-right: 4px; }
+.item .acts { display: flex; gap: 6px; }
+.empty { text-align: center; padding: 50px 20px; color: var(--muted); }
+.empty i { font-size: 30px; margin-bottom: 10px; display: block; color: rgba(142, 166, 201, 0.5); }
+.more-row { text-align: center; margin-top: 14px; }
+
+/* firms */
+.firms { display: grid; gap: 16px; }
+.firm { padding: 0; overflow: hidden; }
+.firm-head { display: flex; align-items: center; gap: 14px; padding: 16px 18px; cursor: pointer; }
+.firm-head .logo { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; background: #0b1120; border: 1px solid var(--line); }
+.firm-head h3 { font-size: 16px; }
+.firm-head .sub { font-size: 12.5px; color: var(--muted); }
+.firm-head .right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.firm-head .chev { color: var(--muted); transition: transform .2s; }
+.firm.open .chev { transform: rotate(180deg); }
+.firm-body { display: none; padding: 4px 18px 18px; border-top: 1px solid var(--line); }
+.firm.open .firm-body { display: block; }
+.firm-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 16px; align-items: end; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table.accounts { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+table.accounts th { text-align: left; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; background: rgba(3, 7, 18, 0.4); }
+table.accounts td { padding: 8px 12px; border-top: 1px solid var(--line); }
+table.accounts tr.off td { opacity: .5; }
+table.accounts .input { padding: 7px 9px; font-size: 13px; max-width: 120px; font-family: "DM Mono", monospace; }
+table.accounts .input.changed { border-color: #a78bfa; box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.2); }
+.firm-save { display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap; }
+
+/* pages + versions */
+table.versions { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+table.versions th { text-align: left; color: var(--muted); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 10px; }
+table.versions td { padding: 9px 10px; border-top: 1px solid var(--line); }
+table.versions tr.current td { background: rgba(52, 211, 153, 0.05); }
+
+/* settings */
+.settings { display: grid; gap: 16px; max-width: 720px; }
+.form-grid { display: grid; gap: 14px; margin-top: 14px; }
+.form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* drawer */
+.scrim { position: fixed; inset: 0; background: rgba(3, 7, 18, 0.6); backdrop-filter: blur(3px); z-index: 40; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.scrim.on { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100%); z-index: 50; display: flex; flex-direction: column;
+  background: linear-gradient(180deg, #0b1d3a, #061226); border-left: 1px solid var(--line-hi);
+  transform: translateX(100%); transition: transform .25s ease; box-shadow: -30px 0 80px rgba(0, 0, 0, 0.45);
+}
+.drawer.on { transform: none; }
+.drawer-head { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--line); }
+.drawer-head h3 { font-size: 18px; }
+.drawer-head .btn { margin-left: auto; }
+.drawer-body { padding: 20px; overflow-y: auto; display: grid; gap: 16px; align-content: start; }
+.drawer-foot { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--line); display: flex; gap: 10px; flex-wrap: wrap; }
+.drawer-foot .spacer { flex: 1; }
+.orig { font-size: 12px; color: var(--muted); background: rgba(3, 7, 18, 0.4); border: 1px dashed var(--line); border-radius: 9px; padding: 8px 10px; }
+
+/* toasts */
+.toasts { position: fixed; bottom: 20px; right: 20px; z-index: 60; display: grid; gap: 10px; }
+.toast {
+  display: flex; gap: 10px; align-items: center; padding: 12px 16px; border-radius: 12px; min-width: 240px; max-width: 380px;
+  background: #0d2246; border: 1px solid var(--line-hi); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45); font-size: 14px;
+  animation: pop .2s ease;
+}
+.toast.ok i { color: var(--good); }
+.toast.err i { color: var(--bad); }
+@keyframes pop { from { transform: translateY(8px); opacity: 0; } }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading { padding: 60px; text-align: center; color: var(--muted); }
+
+@media (max-width: 1100px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  .side { position: fixed; inset: 0 auto 0 0; width: 270px; z-index: 45; transform: translateX(-100%); transition: transform .25s; background: #061226; }
+  .side.on { transform: none; }
+  .menu-btn { display: inline-flex; }
+  .main { padding: 18px 16px 50px; }
+  .topbar { flex-wrap: wrap; }
+  .topbar h2 { font-size: 22px; }
+  .topbar .actions { margin-left: 0; width: 100%; }
+  .firm-fields { grid-template-columns: 1fr; }
+  .item { grid-template-columns: 38px 1fr; }
+  .item .logo { width: 38px; height: 38px; }
+  .item .acts { grid-column: 1 / -1; justify-content: flex-end; }
+}
+@media (max-width: 520px) {
+  .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat { padding: 14px; }
+  .stat .num { font-size: 24px; }
+  .toolbar select.input { width: 100%; }
+}
+/* sign-in: the animated chart backdrop of the News and Compare pages */
+body.signin::before { display: none; }
+.backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.backdrop::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(61, 180, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(61, 180, 255, .05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 28%, transparent 72%, #000 100%);
+}
+.backdrop canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .22; animation: drift 40s ease-in-out infinite alternate; }
+.orb.a { width: 420px; height: 420px; left: -140px; top: 18%; background: #1e90ff; }
+.orb.b { width: 360px; height: 360px; right: -120px; top: 55%; background: #00c2ff; animation-duration: 32s; }
+.orb.c { width: 260px; height: 260px; right: 12%; top: -80px; background: #2c4dff; animation-duration: 40s; }
+@keyframes drift { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, -30px) scale(1.08); } 100% { transform: translate(-20px, 40px) scale(.95); } }
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+.login { position: relative; }
+</style>
+</head>
+<body>
+
+<!-- sign in -->
+<section class="login" id="login" hidden>
+  <form class="login-card page" id="login-form" autocomplete="off">
+    <img class="logo" src="/Bro_Trading_logo-removebg-preview.png" alt="BroTrading">
+    <h1>Data Admin</h1>
+    <p class="lead">Promos, news and prop firm data behind propfirmbro.com.</p>
+    <label class="field" for="token">Admin token
+      <div class="token-wrap">
+        <input class="input" id="token" type="password" placeholder="Paste your admin token" required spellcheck="false" autocomplete="current-password">
+        <button class="btn ghost icon" type="button" id="peek" aria-label="Show token"><i class="fa-regular fa-eye"></i></button>
+      </div>
+    </label>
+    <p class="login-error" id="login-error" hidden><i class="fa-solid fa-circle-exclamation"></i><span></span></p>
+    <button class="btn primary" type="submit" id="login-btn"><i class="fa-solid fa-right-to-bracket"></i> Sign in</button>
+    <div class="login-foot"><i class="fa-solid fa-shield-halved"></i> You stay signed in for 12 hours on this browser.</div>
+  </form>
+</section>
+
+<!-- app -->
+<div class="app" id="app" hidden>
+  <aside class="side" id="side">
+    <a class="brand" href="/" target="_blank" rel="noopener">
+      <img src="/Bro_Trading_logo-removebg-preview.png" alt="">
+      <span><b>BroTrading</b><small>Data Admin</small></span>
+    </a>
+    <nav class="nav">
+      <div class="nav-label">Dashboard</div>
+      <a href="#overview" data-view="overview"><i class="fa-solid fa-gauge-high"></i> Overview</a>
+      <div class="nav-label">Content</div>
+      <a href="#promos" data-view="promos"><i class="fa-solid fa-tags"></i> Promos <span class="count" id="n-promos"></span></a>
+      <a href="#news" data-view="news"><i class="fa-regular fa-newspaper"></i> News <span class="count" id="n-news"></span></a>
+      <a href="#firms" data-view="firms"><i class="fa-solid fa-building-columns"></i> Prop firms <span class="count" id="n-firms"></span></a>
+      <div class="nav-label">Site</div>
+      <a href="#pages" data-view="pages"><i class="fa-solid fa-layer-group"></i> Pages &amp; history</a>
+      <a href="#settings" data-view="settings"><i class="fa-solid fa-sliders"></i> Settings</a>
+    </nav>
+    <div class="side-foot">
+      <div class="who"><i class="fa-solid fa-circle-check"></i><span id="session-left">Signed in</span></div>
+      <button class="btn danger" type="button" id="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+    </div>
+  </aside>
+  <div class="scrim" id="side-scrim"></div>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="btn icon menu-btn" type="button" id="menu" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <div>
+        <h2 id="view-title">Overview</h2>
+        <div class="sub" id="view-sub"></div>
+      </div>
+      <div class="actions" id="view-actions"></div>
+    </div>
+    <div class="banner" id="pending" hidden>
+      <i class="fa-solid fa-rotate"></i>
+      <span>Changes saved. The live pages update within a minute.</span>
+      <button class="btn sm gold" type="button" data-act="refresh-pending">Check now</button>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<!-- edit drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h3 id="drawer-title">Edit</h3>
+    <button class="btn ghost icon" type="button" data-act="close-drawer" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+  <div class="drawer-foot" id="drawer-foot"></div>
+</aside>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+(function () {
+  "use strict";
+  var API = "/api/pfb/admin/";
+  var LOGIN_PATH = "/admin/login", APP_PATH = "/admin/data";
+  var onLoginPage = /\/admin\/login\/?$/.test(location.pathname);
+  var TITLE = document.title;
+  var state = { view: "overview", overview: null, news: null, newsEdits: {}, prices: null, firmEdits: {}, accountEdits: {},
+                filter: { q: "", firm: "", hidden: true }, shown: 40, expires: null };
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var VIEWS = {
+    overview: ["Overview", "What the site shows right now"],
+    promos: ["Promos", "Promo cards on the Promo & News page"],
+    news: ["News", "News items on the Promo & News page"],
+    firms: ["Prop firms", "Firms and account prices on the Compare page"],
+    pages: ["Pages & history", "The copies the live pages serve, and older ones to go back to"],
+    settings: ["Settings", "Admin token and sign-ins"]
+  };
+
+  function esc(v) {
+    return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function ago(iso) {
+    if (!iso) return "never";
+    var m = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+    if (m < 1) return "just now";
+    if (m < 60) return m + " min ago";
+    var h = Math.round(m / 60);
+    if (h < 24) return h + (h === 1 ? " hour ago" : " hours ago");
+    var d = Math.round(h / 24);
+    return d + (d === 1 ? " day ago" : " days ago");
+  }
+  function when(iso) {
+    if (!iso) return "—";
+    var d = new Date(iso);
+    return d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  }
+  function money(v) {
+    if (v == null || v === "") return "—";
+    var n = Number(v);
+    return "$" + (Number.isInteger(n) ? n.toLocaleString() : n.toFixed(2));
+  }
+  function kb(n) { return n ? (n / 1024).toFixed(0) + " KB" : "—"; }
+  function toast(msg, ok) {
+    var t = document.createElement("div");
+    t.className = "toast " + (ok === false ? "err" : "ok");
+    t.innerHTML = '<i class="fa-solid ' + (ok === false ? "fa-circle-exclamation" : "fa-circle-check") + '"></i><span></span>';
+    t.querySelector("span").textContent = msg;
+    $("#toasts").appendChild(t);
+    setTimeout(function () { t.remove(); }, 3800);
+  }
+
+  function api(method, path, body) {
+    var opts = { method: method, credentials: "same-origin", cache: "no-store", headers: {} };
+    if (body !== undefined) { opts.headers["content-type"] = "application/json"; opts.body = JSON.stringify(body); }
+    return fetch(API + path, opts).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (res.status === 401 && path !== "login") { showLogin(); throw new Error("Signed out"); }
+        if (!res.ok) throw new Error(data.error || ("HTTP " + res.status));
+        return data;
+      });
+    });
+  }
+
+  /* ---------- sign in / out ---------- */
+  var backdropOn = false;
+  function startBackdrop() {
+    // The animated chart backdrop of the News and Compare pages (publish copies it in as /admin/backdrop.js).
+    if (backdropOn) return;
+    backdropOn = true;
+    document.body.classList.add("signin");
+    var bd = document.createElement("div");
+    bd.className = "backdrop";
+    bd.setAttribute("aria-hidden", "true");
+    bd.innerHTML = '<span class="orb a"></span><span class="orb b"></span><span class="orb c"></span>';
+    document.body.insertBefore(bd, document.body.firstChild);
+    var sc = document.createElement("script");
+    sc.src = "/admin/backdrop.js";
+    document.body.appendChild(sc);
+  }
+  function showLogin(msg) {
+    if (!onLoginPage) { location.replace(LOGIN_PATH); return; }
+    $("#app").hidden = true;
+    $("#login").hidden = false;
+    closeDrawer();
+    startBackdrop();
+    var err = $("#login-error");
+    err.hidden = !msg;
+    if (msg) err.querySelector("span").textContent = msg;
+    setTimeout(function () { $("#token").focus(); }, 30);
+  }
+  function showApp() {
+    $("#login").hidden = true;
+    $("#app").hidden = false;
+    sessionLabel();
+    route();
+  }
+  function sessionLabel() {
+    if (!state.expires) return;
+    var left = Math.round((new Date(state.expires) - Date.now()) / 60000);
+    $("#session-left").textContent = left > 60 ? "Signed in · " + Math.floor(left / 60) + "h left" : "Signed in · " + Math.max(0, left) + " min left";
+  }
+  $("#peek").addEventListener("click", function () {
+    var i = $("#token");
+    i.type = i.type === "password" ? "text" : "password";
+    this.innerHTML = '<i class="fa-regular ' + (i.type === "password" ? "fa-eye" : "fa-eye-slash") + '"></i>';
+  });
+  $("#login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = $("#login-btn");
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-circle-notch spin"></i> Signing in';
+    api("POST", "login", { token: $("#token").value.trim() }).then(function (r) {
+      $("#token").value = "";
+      state.expires = r.expires_at;
+      if (onLoginPage) { location.replace(APP_PATH + location.hash); return; }
+      showApp();
+    }).catch(function (err) {
+      showLogin(err.message);
+    }).finally(function () {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Sign in';
+    });
+  });
+  $("#logout").addEventListener("click", function () {
+    api("POST", "logout", {}).catch(function () {}).finally(function () {
+      location.replace(LOGIN_PATH);
+    });
+  });
+
+  /* ---------- navigation ---------- */
+  function route() {
+    var v = (location.hash || "#overview").slice(1);
+    if (!VIEWS[v]) v = "overview";
+    state.view = v;
+    state.shown = 40;
+    document.querySelectorAll(".nav a").forEach(function (a) { a.classList.toggle("on", a.dataset.view === v); });
+    $("#view-title").textContent = VIEWS[v][0];
+    $("#view-sub").textContent = VIEWS[v][1];
+    $("#view-actions").innerHTML = "";
+    $("#side").classList.remove("on");
+    $("#side-scrim").classList.remove("on");
+    closeDrawer();
+    clearTimeout(scrapeTimer);
+    render();
+  }
+  window.addEventListener("hashchange", function () { if (!$("#app").hidden) route(); });
+  $("#menu").addEventListener("click", function () { $("#side").classList.add("on"); $("#side-scrim").classList.add("on"); });
+  $("#side-scrim").addEventListener("click", function () { $("#side").classList.remove("on"); this.classList.remove("on"); });
+
+  function loading() { $("#view").innerHTML = '<div class="loading"><i class="fa-solid fa-circle-notch spin"></i> Loading</div>'; }
+  function failed(err) {
+    $("#view").innerHTML = '<div class="panel empty"><i class="fa-solid fa-triangle-exclamation"></i>' + esc(err.message) + "</div>";
+  }
+
+  function render() {
+    var v = state.view;
+    if (v === "overview") return loadOverview(true).then(viewOverview).catch(failed);
+    if (v === "promos" || v === "news") return loadNews().then(viewItems).catch(failed);
+    if (v === "firms") return loadFirms().then(viewFirms).catch(failed);
+    if (v === "pages") return loadOverview(true).then(viewPages).catch(failed);
+    if (v === "settings") return viewSettings();
+  }
+
+  /* ---------- data ---------- */
+  function loadOverview(force) {
+    if (state.overview && !force) return Promise.resolve();
+    if (!state.overview) loading();
+    return api("GET", "overview").then(function (o) {
+      state.overview = o;
+      $("#n-promos").textContent = o.news && o.news.promos != null ? o.news.promos : "";
+      $("#n-news").textContent = o.news && o.news.promos != null ? o.news.items - o.news.promos : "";
+      $("#n-firms").textContent = o.prices ? o.prices.items : "";
+      updatePending();
+    });
+  }
+  function loadNews(force) {
+    if (state.news && !force) return Promise.resolve();
+    loading();
+    return api("GET", "news").then(function (r) { state.news = r.news; state.newsEdits = r.edits || {}; });
+  }
+  function loadFirms(force) {
+    if (state.prices && !force) return Promise.resolve();
+    loading();
+    return api("GET", "firms").then(function (r) {
+      state.prices = r.prices;
+      state.firmEdits = r.edits.firm || {};
+      state.accountEdits = r.edits.account || {};
+    });
+  }
+  function isPending(o) {
+    if (!o) return false;
+    var want = (o.meta && o.meta.edits_updated_at) || "";
+    var req = (o.meta && o.meta.render_requested_at) || "";
+    return (o.pages || []).some(function (p) {
+      var c = p.current;
+      if (!c) return !!want;
+      return (want && c.edits_version !== want) || (req && req > c.updated_at);
+    });
+  }
+  var pendingTimer = null;
+  function updatePending() {
+    var on = isPending(state.overview);
+    $("#pending").hidden = !on;
+    clearInterval(pendingTimer);
+    if (on) pendingTimer = setInterval(function () { loadOverview(true).then(function () { if (!isPending(state.overview)) { toast("Live pages updated"); if (state.view === "overview" || state.view === "pages") render(); } }); }, 20000);
+  }
+  function markEdited() {
+    if (!state.overview) return;
+    state.overview.meta = state.overview.meta || {};
+    state.overview.meta.edits_updated_at = new Date().toISOString();
+    updatePending();
+  }
+
+  /* ---------- overview ---------- */
+  function viewOverview() {
+    var o = state.overview;
+    var edits = { news: 0, firm: 0, account: 0, hidden: 0 };
+    (o.edits || []).forEach(function (e) { edits[e.kind] = e.n; edits.hidden += e.hidden || 0; });
+    var total = edits.news + edits.firm + edits.account;
+    var promos = o.news && o.news.promos != null ? o.news.promos : "—";
+    var newsN = o.news && o.news.promos != null ? o.news.items - o.news.promos : "—";
+    $("#view-actions").innerHTML =
+      '<button class="btn" data-act="render"><i class="fa-solid fa-rotate"></i> Re-render pages</button>' +
+      '<a class="btn primary" href="/News" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open site</a>';
+    var pages = (o.pages || []).map(function (p) {
+      var c = p.current;
+      var pending = c && ((o.meta.edits_updated_at && c.edits_version !== o.meta.edits_updated_at) ||
+                          (o.meta.render_requested_at && o.meta.render_requested_at > c.updated_at));
+      var status = !c ? '<span class="badge wait"><i class="fa-regular fa-clock"></i> Not in the database yet</span>'
+        : pending ? '<span class="badge wait"><i class="fa-solid fa-rotate"></i> Re-render pending</span>'
+        : '<span class="badge good"><i class="fa-solid fa-circle-check"></i> Up to date</span>';
+      var name = p.path === "/News" ? "Promo & News" : "Compare";
+      return '<div class="panel page-card"><div class="panel-head"><h3><i class="fa-solid ' +
+        (p.path === "/News" ? "fa-tags" : "fa-scale-balanced") + '"></i> ' + name + '</h3><div class="right">' + status + "</div></div>" +
+        '<div class="row"><span>Served from</span><span>' + (c ? "Database, copy #" + c.version_id : "Static file") + "</span></div>" +
+        '<div class="row"><span>Last rendered</span><span>' + (c ? esc(ago(c.updated_at)) : "—") + "</span></div>" +
+        '<div class="row"><span>Size</span><span>' + kb(c && c.bytes) + "</span></div>" +
+        '<div class="row"><span>Copies kept</span><span>' + p.versions.length + "</span></div>" +
+        '<div class="links"><a class="btn sm" href="' + p.path + '" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open</a>' +
+        '<a class="btn sm ghost" href="#pages"><i class="fa-solid fa-clock-rotate-left"></i> History</a></div></div>';
+    }).join("");
+    $("#view").innerHTML =
+      '<div class="stats">' +
+        stat("gold", "fa-tags", promos, "Promos on the page") +
+        stat("", "fa-regular fa-newspaper", newsN, "News items") +
+        stat("green", "fa-building-columns", o.prices ? o.prices.items : "—", "Prop firms tracked") +
+        stat("violet", "fa-pen-to-square", total, "Admin edits (" + edits.hidden + " hidden)") +
+      "</div>" +
+      '<div id="scraper-panel">' + scraperPanel(o.scrape) + "</div>" +
+      '<div class="grid2" style="margin-top:16px">' + pages + "</div>" +
+      "";
+    scheduleScrapePoll(o.scrape);
+  }
+  function stat(cls, icon, num, label) {
+    var ic = icon.indexOf(" ") > 0 ? icon : "fa-solid " + icon;
+    return '<div class="stat ' + cls + '"><div class="ico"><i class="' + ic + '"></i></div><div class="num">' + esc(num) +
+      '</div><div class="lbl">' + esc(label) + "</div></div>";
+  }
+
+  /* ---------- scraper ---------- */
+  var scrapeTimer = null;
+  function dur(ms) {
+    if (!isFinite(ms)) return "—";
+    var s = Math.max(0, Math.round(ms / 1000)), m = Math.floor(s / 60);
+    return m ? m + "m " + (s % 60) + "s" : s + "s";
+  }
+  function scrapeFlags(sc) {
+    var st = (sc && sc.status) || { state: "idle" };
+    var hb = sc && sc.heartbeat;
+    var running = st.state === "running" && !st.stale;
+    var queued = st.state === "queued" && !st.stale;
+    var online = running || !!(hb && (Date.now() - new Date(hb.at).getTime()) / 60000 < 5);
+    return { st: st, hb: hb, running: running, queued: queued, online: online };
+  }
+  function scraperPanel(sc) {
+    var f = scrapeFlags(sc), st = f.st, o = state.overview || {};
+    var runs = (sc && sc.runs) || [];
+    var last = runs[0];
+    document.title = f.running ? "(" + Math.round(st.pct || 0) + "%) " + TITLE : f.queued ? "(starting) " + TITLE : TITLE;
+    var badge = f.running ? '<span class="badge wait"><i class="fa-solid fa-circle-notch spin"></i> Running</span>'
+      : f.queued ? '<span class="badge wait"><i class="fa-regular fa-clock"></i> Waiting to start</span>'
+      : st.stale ? '<span class="badge hidden"><i class="fa-solid fa-triangle-exclamation"></i> No answer from the server</span>'
+      : st.state === "failed" ? '<span class="badge hidden"><i class="fa-solid fa-triangle-exclamation"></i> Last run had problems</span>'
+      : '<span class="badge good"><i class="fa-solid fa-circle-check"></i> Idle</span>';
+    var busy = f.running || f.queued;
+    var progress = "";
+    if (f.running) {
+      progress = '<div class="progress"><div class="bar" style="width:' + (st.pct || 1) + '%"></div></div>' +
+        '<div class="progress-meta"><span><b>' + esc(st.label || "Working") + "</b> · " + esc(dur(Date.now() - new Date(st.started_at).getTime())) +
+        " elapsed · started by " + (st.trigger === "manual" ? "you" : "the schedule") + '</span><span class="pct">' + Math.round(st.pct || 0) + "%</span></div>";
+    } else if (f.queued) {
+      progress = '<div class="progress wait"><div class="bar"></div></div>' +
+        '<div class="progress-meta"><span><b>Waiting for the server</b> · it checks every minute, then the run takes about 10 minutes</span><span class="pct">0%</span></div>';
+    }
+    var lastRow = last
+      ? esc(when(last.started_at)) + " · took " + esc(dur(new Date(last.finished_at) - new Date(last.started_at))) + " · " +
+        (last.failed && last.failed.length ? '<span style="color:#fca5a5">problems in ' + esc(last.failed.join(", ")) + "</span>" : '<span style="color:var(--good)">OK</span>')
+      : "No run recorded yet";
+    var next = f.hb && f.hb.next_run ? esc(when(f.hb.next_run)) : "—";
+    var server = f.online ? '<span class="dot on"></span>Online' + (f.hb && !f.running ? " · checked " + esc(ago(f.hb.at)) : "")
+      : '<span class="dot off"></span>' + (f.hb ? "Offline · last seen " + esc(ago(f.hb.at)) : "Not reporting yet");
+    var table = runs.length ? '<table class="scrape-runs"><thead><tr><th>Started</th><th>Took</th><th>By</th><th>Result</th></tr></thead><tbody>' +
+      runs.slice(0, 5).map(function (r) {
+        return "<tr><td>" + esc(when(r.started_at)) + "</td><td>" + esc(dur(new Date(r.finished_at) - new Date(r.started_at))) + "</td><td>" +
+          (r.trigger === "manual" ? "Manual" : "Schedule") + "</td><td>" +
+          (r.failed && r.failed.length ? '<span class="badge hidden">' + esc(r.failed.join(", ")) + "</span>" : '<span class="badge good">OK</span>') + "</td></tr>";
+      }).join("") + "</tbody></table>" : "";
+    return '<div class="panel scraper"><div class="panel-head"><h3><i class="fa-solid fa-robot"></i> Scraper</h3><div class="right">' + badge +
+        '<button class="btn primary" data-act="start-scrape"' + (busy ? " disabled" : "") + '><i class="fa-solid fa-play"></i> ' + (f.running ? "Running" : f.queued ? "Starting…" : "Start scrape now") + "</button></div></div>" +
+      progress +
+      '<div class="grid2"><div class="page-card">' +
+        '<div class="row"><span>Last run</span><span>' + lastRow + "</span></div>" +
+        '<div class="row"><span>Next scheduled run</span><span>' + next + "</span></div>" +
+        '<div class="row"><span>Server</span><span>' + server + "</span></div></div>" +
+      '<div class="page-card">' +
+        '<div class="row"><span>News &amp; promos received</span><span>' + (o.news ? esc(ago(o.news.updated_at)) : "never") + "</span></div>" +
+        '<div class="row"><span>Firm prices received</span><span>' + (o.prices ? esc(ago(o.prices.updated_at)) : "never") + "</span></div>" +
+        '<div class="row"><span>Schedule</span><span>Mon–Fri, before each session</span></div></div></div>' +
+      table + "</div>";
+  }
+  function scheduleScrapePoll(sc) {
+    clearTimeout(scrapeTimer);
+    if (state.view !== "overview") return;
+    var f = scrapeFlags(sc);
+    scrapeTimer = setTimeout(function () {
+      api("GET", "scrape").then(function (next) {
+        var was = scrapeFlags(state.overview.scrape);
+        state.overview.scrape = next;
+        var now = scrapeFlags(next);
+        if ((was.running || was.queued) && !now.running && !now.queued) {
+          toast(next.status.state === "failed" ? "Scrape finished with problems" : "Scrape finished", next.status.state !== "failed");
+          return loadOverview(true).then(viewOverview);
+        }
+        var el = $("#scraper-panel");
+        if (el && state.view === "overview") el.innerHTML = scraperPanel(next);
+        scheduleScrapePoll(next);
+      }).catch(function () { scheduleScrapePoll(sc); });
+    }, f.running || f.queued ? 4000 : 30000);
+  }
+  function startScrape(btn) {
+    btn.disabled = true;
+    api("POST", "scrape", {}).then(function (r) {
+      state.overview.scrape.status = r.status;
+      $("#scraper-panel").innerHTML = scraperPanel(state.overview.scrape);
+      toast("Scrape requested. The server starts it within a minute.");
+      scheduleScrapePoll(state.overview.scrape);
+    }).catch(function (err) { btn.disabled = false; toast(err.message, false); });
+  }
+
+  /* ---------- promos / news ---------- */
+  function itemView(it) {
+    var e = state.newsEdits[it.id];
+    return Object.assign({}, it, (e && e.patch) || {}, { _edit: e || null, _hidden: !!(e && e.hidden) });
+  }
+  function viewItems() {
+    var type = state.view === "promos" ? "promo" : "news";
+    if (!state.news) { $("#view").innerHTML = '<div class="panel empty"><i class="fa-regular fa-folder-open"></i>No data yet. It arrives with the next scraper run.</div>'; return; }
+    var all = state.news.data.items.map(itemView).filter(function (it) { return it.type === type; });
+    var firms = Array.from(new Set(all.map(function (i) { return i.firm; }))).sort();
+    var f = state.filter;
+    var q = f.q.toLowerCase();
+    var rows = all.filter(function (it) {
+      if (f.firm && it.firm !== f.firm) return false;
+      if (!f.hidden && it._hidden) return false;
+      if (q && (it.title + " " + it.summary + " " + it.firm + " " + (it.code || "")).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    $("#view-actions").innerHTML = '<span class="badge">' + all.length + " total</span>" +
+      '<span class="badge hidden">' + all.filter(function (i) { return i._hidden; }).length + " hidden</span>" +
+      '<span class="badge edited">' + all.filter(function (i) { return i._edit && Object.keys(i._edit.patch).length; }).length + " edited</span>";
+    var list = rows.slice(0, state.shown).map(function (it) {
+      var edited = it._edit && Object.keys(it._edit.patch).length;
+      return '<div class="item' + (it._hidden ? " is-hidden" : "") + '" data-id="' + esc(it.id) + '">' +
+        '<img class="logo" src="' + esc(it.icon || it.logo || "") + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+        '<div><div class="meta"><b>' + esc(it.firm) + "</b><span>" + esc(it.date) + "</span>" +
+          '<span class="badge ' + it.type + '">' + (it.type === "promo" ? "Promo" : "News") + "</span>" +
+          (it._hidden ? '<span class="badge hidden"><i class="fa-regular fa-eye-slash"></i> Hidden</span>' : "") +
+          (edited ? '<span class="badge edited"><i class="fa-solid fa-pen"></i> Edited</span>' : "") + "</div>" +
+          '<div class="title">' + esc(it.title) + "</div>" +
+          '<div class="extra">' + (it.code ? '<span><i class="fa-solid fa-ticket"></i>' + esc(it.code) + "</span>" : "") +
+          (it.ends ? '<span><i class="fa-solid fa-hourglass-half"></i>Ends ' + esc(it.ends) + "</span>" : "") + "</div></div>" +
+        '<div class="acts">' +
+          '<button class="btn sm" data-act="edit-item" title="Edit"><i class="fa-solid fa-pen"></i> Edit</button>' +
+          '<button class="btn sm ' + (it._hidden ? "gold" : "ghost") + '" data-act="toggle-item" title="' + (it._hidden ? "Show on the site" : "Hide from the site") + '">' +
+            '<i class="fa-regular ' + (it._hidden ? "fa-eye" : "fa-eye-slash") + '"></i> ' + (it._hidden ? "Show" : "Hide") + "</button>" +
+        "</div></div>";
+    }).join("");
+    $("#view").innerHTML =
+      '<div class="toolbar"><div class="search"><i class="fa-solid fa-magnifying-glass"></i>' +
+        '<input class="input" id="q" placeholder="Search title, firm or code  ( / )" value="' + esc(f.q) + '"></div>' +
+        '<select class="input" id="firm-filter"><option value="">All firms</option>' +
+          firms.map(function (n) { return '<option' + (n === f.firm ? " selected" : "") + ">" + esc(n) + "</option>"; }).join("") + "</select>" +
+        '<label class="switch"><input type="checkbox" id="show-hidden"' + (f.hidden ? " checked" : "") + '><span class="track"></span> Show hidden</label>' +
+      "</div>" +
+      (rows.length ? '<div class="list">' + list + "</div>" : '<div class="panel empty"><i class="fa-regular fa-face-meh"></i>Nothing matches.</div>') +
+      (rows.length > state.shown ? '<div class="more-row"><button class="btn" data-act="more">Show more (' + (rows.length - state.shown) + ")</button></div>" : "");
+    var qi = $("#q");
+    qi.addEventListener("input", function () { f.q = this.value; state.shown = 40; viewItems(); var n = $("#q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); });
+    $("#firm-filter").addEventListener("change", function () { f.firm = this.value; state.shown = 40; viewItems(); });
+    $("#show-hidden").addEventListener("change", function () { f.hidden = this.checked; viewItems(); });
+  }
+  function findItem(id) { return state.news.data.items.find(function (i) { return String(i.id) === String(id); }); }
+  function saveItem(id, hidden, patch) {
+    return api("PUT", "edit", { kind: "news", id: id, hidden: hidden, patch: patch }).then(function (r) {
+      if (!r.hidden && !Object.keys(r.patch).length) delete state.newsEdits[id];
+      else state.newsEdits[id] = { hidden: r.hidden, patch: r.patch, updated_at: new Date().toISOString() };
+      markEdited();
+      viewItems();
+    });
+  }
+  function openItemEditor(id) {
+    var it = findItem(id);
+    var e = state.newsEdits[id] || { hidden: false, patch: {} };
+    var v = Object.assign({}, it, e.patch);
+    $("#drawer-title").textContent = it.firm + " · " + (v.type === "promo" ? "Promo" : "News");
+    var field = function (key, label, input) {
+      var changed = e.patch[key] != null;
+      return '<label class="field">' + label + (changed ? ' <span class="badge edited">Edited</span>' : "") + input +
+        (changed ? '<span class="orig">Scraped: ' + esc(it[key] || "—") + "</span>" : "") + "</label>";
+    };
+    $("#drawer-body").innerHTML =
+      field("type", "Shown as", '<select class="input" name="type"><option value="promo"' + (v.type === "promo" ? " selected" : "") + '>Promo</option><option value="news"' + (v.type === "news" ? " selected" : "") + ">News</option></select>") +
+      field("title", "Title", '<input class="input" name="title" value="' + esc(v.title) + '">') +
+      field("summary", "Summary", '<textarea class="input" name="summary">' + esc(v.summary) + "</textarea>") +
+      field("code", 'Promo code <span class="hint">BRO or BROTRADING only</span>', '<input class="input mono" name="code" value="' + esc(v.code || "") + '">') +
+      field("ends", 'Ends <span class="hint">as shown on the card, e.g. "Oct 31"</span>', '<input class="input" name="ends" value="' + esc(v.ends || "") + '">') +
+      '<label class="switch"><input type="checkbox" name="hidden"' + (e.hidden ? " checked" : "") + '><span class="track"></span> Hide from the site</label>' +
+      '<div class="orig"><i class="fa-solid fa-circle-info"></i> Your changes stay on top of every new scrape until you reset them. ' +
+        '<a href="' + esc(it.link || "#") + '" target="_blank" rel="noopener">Deal link</a></div>';
+    $("#drawer-foot").innerHTML =
+      (state.newsEdits[id] ? '<button class="btn danger" data-act="reset-item"><i class="fa-solid fa-rotate-left"></i> Reset to scraped</button>' : "") +
+      '<span class="spacer"></span><button class="btn ghost" data-act="close-drawer">Cancel</button>' +
+      '<button class="btn primary" data-act="save-item"><i class="fa-solid fa-check"></i> Save</button>';
+    $("#drawer").dataset.id = id;
+    openDrawer();
+  }
+  function itemPatchFromForm() {
+    var it = findItem($("#drawer").dataset.id);
+    var body = $("#drawer-body");
+    var patch = {};
+    ["type", "title", "summary", "code", "ends"].forEach(function (k) {
+      var val = body.querySelector('[name="' + k + '"]').value.trim();
+      if (val !== String(it[k] == null ? "" : it[k]).trim() && val !== "") patch[k] = val;
+    });
+    return { patch: patch, hidden: body.querySelector('[name="hidden"]').checked };
+  }
+
+  /* ---------- prop firms ---------- */
+  function accountId(key, a) { return key + "|" + a.plan + "|" + a.size; }
+  function viewFirms() {
+    if (!state.prices) { $("#view").innerHTML = '<div class="panel empty"><i class="fa-regular fa-folder-open"></i>No data yet. It arrives with the next scraper run.</div>'; return; }
+    var firms = state.prices.data.firms;
+    var keys = Object.keys(firms).sort(function (a, b) { return (firms[a].firm || a).localeCompare(firms[b].firm || b); });
+    $("#view-actions").innerHTML = '<span class="badge">' + keys.length + ' firms</span><span class="badge">Prices from ' + esc(when(state.prices.data.generated_at)) + "</span>";
+    $("#view").innerHTML = '<div class="firms">' + keys.map(function (key) {
+      var f = firms[key];
+      var fe = state.firmEdits[key] || { hidden: false, patch: {} };
+      var accEdited = (f.accounts || []).filter(function (a) { return state.accountEdits[accountId(key, a)]; }).length;
+      var name = fe.patch.name || f.firm || key;
+      return '<div class="panel firm" data-key="' + esc(key) + '">' +
+        '<div class="firm-head" data-act="toggle-firm">' +
+          '<img class="logo" src="/Photos/firms/icons/' + esc(key) + '.png" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+          '<div><h3>' + esc(name) + '</h3><div class="sub">' + (f.accounts || []).length + " accounts · " +
+            (f.ok ? "checked " + esc(ago(f.checked_at)) : '<span style="color:#fca5a5">not scraped today</span>') + "</div></div>" +
+          '<div class="right">' +
+            (fe.hidden ? '<span class="badge hidden"><i class="fa-regular fa-eye-slash"></i> Hidden</span>' : "") +
+            (Object.keys(fe.patch).length || accEdited ? '<span class="badge edited"><i class="fa-solid fa-pen"></i> ' + (Object.keys(fe.patch).length + accEdited) + " edited</span>" : "") +
+            '<i class="fa-solid fa-chevron-down chev"></i></div></div>' +
+        '<div class="firm-body">' +
+          '<div class="firm-fields">' +
+            '<label class="field">Name on the page<input class="input" name="name" placeholder="' + esc(f.firm || key) + '" value="' + esc(fe.patch.name || "") + '"></label>' +
+            '<label class="field">Promo code <span class="hint">empty = from the firm profile</span><input class="input mono" name="code" placeholder="BRO" value="' + esc(fe.patch.code || "") + '"></label>' +
+            '<label class="switch" style="padding-bottom:10px"><input type="checkbox" name="show"' + (fe.hidden ? "" : " checked") + '><span class="track"></span> Show on Compare</label>' +
+          "</div>" +
+          '<div class="table-wrap"><table class="accounts"><thead><tr><th>Plan</th><th>Size</th><th>Price</th><th>Sale price</th><th>Show</th></tr></thead><tbody>' +
+          (f.accounts || []).map(function (a) {
+            var id = accountId(key, a);
+            var ae = state.accountEdits[id] || { hidden: false, patch: {} };
+            return '<tr data-id="' + esc(id) + '"' + (ae.hidden ? ' class="off"' : "") + "><td>" + esc(a.plan) + "</td><td>" + esc(a.size) + "</td>" +
+              '<td><input class="input' + (ae.patch.price != null ? " changed" : "") + '" name="price" inputmode="decimal" placeholder="' + esc(a.price == null ? "" : a.price) + '" value="' + esc(ae.patch.price == null ? "" : ae.patch.price) + '"></td>' +
+              '<td><input class="input' + (ae.patch.sale_price != null ? " changed" : "") + '" name="sale_price" inputmode="decimal" placeholder="' + esc(a.sale_price == null ? "none" : a.sale_price) + '" value="' + esc(ae.patch.sale_price == null ? "" : ae.patch.sale_price) + '"></td>' +
+              '<td><label class="switch"><input type="checkbox" name="show"' + (ae.hidden ? "" : " checked") + '><span class="track"></span></label></td></tr>';
+          }).join("") +
+          "</tbody></table></div>" +
+          '<p class="muted" style="font-size:12.5px;margin:10px 0 0"><i class="fa-solid fa-circle-info"></i> Grey numbers are what the scraper found. Type a number to override it; leave it empty to use the scraped one.</p>' +
+          '<div class="firm-save"><button class="btn danger sm" data-act="reset-firm"><i class="fa-solid fa-rotate-left"></i> Reset firm to scraped</button>' +
+            '<button class="btn primary" data-act="save-firm" disabled><i class="fa-solid fa-check"></i> Save changes</button></div>' +
+        "</div></div>";
+    }).join("") + "</div>";
+  }
+  // What the card's inputs would change, as API calls to make.
+  function firmChanges(card) {
+    var key = card.dataset.key;
+    var out = [];
+    var fe = state.firmEdits[key] || { hidden: false, patch: {} };
+    var patch = {};
+    ["name", "code"].forEach(function (k) { var v = card.querySelector('.firm-fields [name="' + k + '"]').value.trim(); if (v) patch[k] = v; });
+    var hidden = !card.querySelector('.firm-fields [name="show"]').checked;
+    if (JSON.stringify(patch) !== JSON.stringify(fe.patch || {}) || hidden !== !!fe.hidden) out.push({ kind: "firm", id: key, hidden: hidden, patch: patch });
+    card.querySelectorAll("tbody tr").forEach(function (tr) {
+      var id = tr.dataset.id;
+      var ae = state.accountEdits[id] || { hidden: false, patch: {} };
+      var p = {};
+      ["price", "sale_price"].forEach(function (k) { var v = tr.querySelector('[name="' + k + '"]').value.trim(); if (v !== "") p[k] = Number(v); });
+      var h = !tr.querySelector('[name="show"]').checked;
+      if (JSON.stringify(p) !== JSON.stringify(ae.patch || {}) || h !== !!ae.hidden) out.push({ kind: "account", id: id, hidden: h, patch: p });
+    });
+    return out;
+  }
+  function refreshFirmSave(card) {
+    var n = firmChanges(card).length;
+    var btn = card.querySelector('[data-act="save-firm"]');
+    btn.disabled = !n;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> ' + (n ? "Save " + n + (n === 1 ? " change" : " changes") : "Save changes");
+  }
+  document.addEventListener("input", function (e) { var card = e.target.closest(".firm"); if (card) refreshFirmSave(card); });
+  document.addEventListener("change", function (e) { var card = e.target.closest(".firm"); if (card) refreshFirmSave(card); });
+  function saveFirm(card) {
+    var key = card.dataset.key;
+    var changes = firmChanges(card);
+    if (!changes.length) return;
+    Promise.all(changes.map(function (c) {
+      return api("PUT", "edit", c).then(function (r) {
+        var store = c.kind === "firm" ? state.firmEdits : state.accountEdits;
+        if (!r.hidden && !Object.keys(r.patch).length) delete store[c.id]; else store[c.id] = r;
+      });
+    })).then(function () {
+      toast("Saved " + changes.length + (changes.length === 1 ? " change" : " changes"));
+      markEdited();
+      viewFirms();
+      var again = document.querySelector('.firm[data-key="' + key + '"]');
+      if (again) again.classList.add("open");
+    }).catch(function (e) { toast(e.message, false); });
+  }
+  function resetFirm(card) {
+    var key = card.dataset.key;
+    var ids = Object.keys(state.accountEdits).filter(function (id) { return id.indexOf(key + "|") === 0; });
+    if (!ids.length && !state.firmEdits[key]) { toast("No changes on this firm"); return; }
+    if (!confirm("Undo all your changes to this firm and use the scraped data again?")) return;
+    var calls = ids.map(function (id) { return api("DELETE", "edit?kind=account&id=" + encodeURIComponent(id)).then(function () { delete state.accountEdits[id]; }); });
+    if (state.firmEdits[key]) calls.push(api("DELETE", "edit?kind=firm&id=" + encodeURIComponent(key)).then(function () { delete state.firmEdits[key]; }));
+    Promise.all(calls).then(function () { toast("Firm reset to the scraped data"); markEdited(); viewFirms(); }).catch(function (e) { toast(e.message, false); });
+  }
+
+  /* ---------- pages ---------- */
+  function viewPages() {
+    var o = state.overview;
+    $("#view-actions").innerHTML = '<button class="btn primary" data-act="render"><i class="fa-solid fa-rotate"></i> Re-render now</button>';
+    $("#view").innerHTML = '<div class="grid2">' + o.pages.map(function (p) {
+      var name = p.path === "/News" ? "Promo & News" : "Compare";
+      var cur = p.current ? p.current.version_id : null;
+      return '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-file-code"></i> ' + name +
+        '</h3><div class="right"><a class="btn sm" href="' + p.path + '" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open</a></div></div>' +
+        (p.versions.length ? '<table class="versions"><thead><tr><th>Copy</th><th>Made</th><th>By</th><th>Size</th><th></th></tr></thead><tbody>' +
+          p.versions.map(function (v) {
+            return '<tr class="' + (v.id === cur ? "current" : "") + '"><td class="mono">#' + v.id + "</td><td>" + esc(when(v.created_at)) +
+              "</td><td>" + esc(v.source === "render" ? "admin edit" : "scraper") + "</td><td>" + kb(v.bytes) + "</td><td style=\"text-align:right\">" +
+              (v.id === cur ? '<span class="badge good">Live</span>'
+                : '<button class="btn sm" data-act="restore" data-path="' + esc(p.path) + '" data-id="' + v.id + '"><i class="fa-solid fa-clock-rotate-left"></i> Use this</button>') +
+              "</td></tr>";
+          }).join("") + "</tbody></table>"
+          : '<div class="empty"><i class="fa-regular fa-clock"></i>No copies yet. The page serves its static file until the scraper sends one.</div>') +
+        "</div>";
+    }).join("") + "</div>" +
+      '<p class="muted" style="font-size:13px;margin-top:14px"><i class="fa-solid fa-shield-halved"></i> If the database can\'t be read, or its copy is more than 3 days old, the pages fall back to their static files automatically.</p>';
+  }
+
+  /* ---------- settings ---------- */
+  function viewSettings() {
+    $("#view").innerHTML = '<div class="settings">' +
+      '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-key"></i> Change admin token</h3></div>' +
+        '<p class="muted" style="margin:0;font-size:14px">After the change, the old token stops working and every other browser is signed out.</p>' +
+        '<form class="form-grid" id="token-form" autocomplete="off">' +
+          '<label class="field">New token <span class="hint">at least 32 characters</span><input class="input mono" name="t1" type="password" minlength="32" required></label>' +
+          '<label class="field">Repeat it<input class="input mono" name="t2" type="password" minlength="32" required></label>' +
+          '<div class="form-row"><button class="btn" type="button" data-act="gen-token"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate one</button>' +
+          '<button class="btn primary" type="submit"><i class="fa-solid fa-check"></i> Save new token</button></div>' +
+          '<div class="orig" id="gen-out" hidden></div>' +
+        "</form></div>" +
+      '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-desktop"></i> Sign-ins</h3></div>' +
+        '<p class="muted" style="margin:0 0 14px;font-size:14px">This browser stays signed in until ' + esc(when(state.expires)) + ".</p>" +
+        '<div class="form-row"><button class="btn" data-act="clear-sessions"><i class="fa-solid fa-users-slash"></i> Sign out other browsers</button>' +
+        '<button class="btn danger" data-act="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></div></div>' +
+      "</div>";
+    $("#token-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var t1 = this.t1.value.trim(), t2 = this.t2.value.trim();
+      if (t1 !== t2) { toast("The two tokens don't match", false); return; }
+      api("POST", "token", { token: t1 }).then(function () {
+        toast("Admin token changed");
+        e.target.reset();
+        $("#gen-out").hidden = true;
+      }).catch(function (err) { toast(err.message, false); });
+    });
+  }
+
+  /* ---------- drawer ---------- */
+  function openDrawer() { $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false"); }
+  function closeDrawer() { $("#drawer").classList.remove("on"); $("#scrim").classList.remove("on"); $("#drawer").setAttribute("aria-hidden", "true"); }
+  $("#scrim").addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeDrawer();
+    // "/" jumps to the search box
+    if (e.key === "/" && $("#q") && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $("#q").focus(); }
+    // Ctrl/Cmd+Enter saves the open editor
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && $("#drawer").classList.contains("on")) { var b = $('[data-act="save-item"]'); if (b) b.click(); }
+  });
+
+  /* ---------- actions ---------- */
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("[data-act]");
+    if (!el) return;
+    var act = el.dataset.act;
+    var item = el.closest(".item");
+    var id = item && item.dataset.id;
+    if (act === "close-drawer") closeDrawer();
+    else if (act === "more") { state.shown += 40; viewItems(); }
+    else if (act === "edit-item") openItemEditor(id);
+    else if (act === "toggle-item") {
+      var cur = state.newsEdits[id] || { hidden: false, patch: {} };
+      saveItem(id, !cur.hidden, cur.patch).then(function () { toast(cur.hidden ? "Shown on the site" : "Hidden from the site"); }).catch(function (err) { toast(err.message, false); });
+    }
+    else if (act === "save-item") {
+      var f = itemPatchFromForm();
+      saveItem($("#drawer").dataset.id, f.hidden, f.patch).then(function () { closeDrawer(); toast("Saved"); }).catch(function (err) { toast(err.message, false); });
+    }
+    else if (act === "reset-item") {
+      if (!confirm("Undo your changes to this item and use the scraped version again?")) return;
+      var rid = $("#drawer").dataset.id;
+      api("DELETE", "edit?kind=news&id=" + encodeURIComponent(rid)).then(function () {
+        delete state.newsEdits[rid]; markEdited(); closeDrawer(); viewItems(); toast("Reset to the scraped version");
+      }).catch(function (err) { toast(err.message, false); });
+    }
+    else if (act === "toggle-firm") { if (!e.target.closest("input, label")) el.closest(".firm").classList.toggle("open"); }
+    else if (act === "save-firm") saveFirm(el.closest(".firm"));
+    else if (act === "reset-firm") resetFirm(el.closest(".firm"));
+    else if (act === "start-scrape") startScrape(el);
+    else if (act === "render") {
+      api("POST", "render", {}).then(function () {
+        state.overview.meta.render_requested_at = new Date().toISOString(); updatePending(); toast("Re-render requested");
+      }).catch(function (err) { toast(err.message, false); });
+    }
+    else if (act === "refresh-pending") loadOverview(true).then(function () { if (!isPending(state.overview)) toast("Live pages are up to date"); });
+    else if (act === "restore") {
+      if (!confirm("Serve copy #" + el.dataset.id + " on the live page?")) return;
+      api("POST", "pages/restore", { path: el.dataset.path, id: Number(el.dataset.id) }).then(function () {
+        toast("Now serving copy #" + el.dataset.id); return loadOverview(true).then(viewPages);
+      }).catch(function (err) { toast(err.message, false); });
+    }
+    else if (act === "gen-token") {
+      var bytes = crypto.getRandomValues(new Uint8Array(32));
+      var tok = Array.from(bytes, function (b) { return b.toString(16).padStart(2, "0"); }).join("");
+      var form = $("#token-form");
+      form.t1.value = form.t2.value = tok;
+      var out = $("#gen-out");
+      out.hidden = false;
+      out.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:var(--gold)"></i> Copy it somewhere safe before saving: <span class="mono" style="word-break:break-all;color:var(--text)">' + tok + "</span>";
+    }
+    else if (act === "clear-sessions") api("POST", "sessions/clear", {}).then(function () { toast("Other browsers signed out"); }).catch(function (err) { toast(err.message, false); });
+    else if (act === "logout") $("#logout").click();
+  });
+
+  /* ---------- start ---------- */
+  api("GET", "me").then(function (r) {
+    if (onLoginPage) { location.replace(APP_PATH + location.hash); return; }
+    state.expires = r.expires_at;
+    showApp();
+  }).catch(function (e) {
+    if (e.message !== "Signed out") showLogin(e.message.indexOf("D1") >= 0 ? "The database isn't connected on this deployment." : "");
+  });
+  setInterval(sessionLabel, 30000);
+})();
+</script>
+</body>
+</html>
