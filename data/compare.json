@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T07:07:54.222235+00:00",
+ "generated_at": "2026-10-21T23:04:26.393969+00:00",
  "sizes": [
   "25K",
   "50K",
@@ -26,7 +26,7 @@
    "logo": "apex.png",
    "logo_bg": "#0b1120",
    "rating": 4.3,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "tradeify": {
    "key": "tradeify",
@@ -37,7 +37,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "myfundedfutures": {
    "key": "myfundedfutures",
@@ -48,7 +48,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "lucid_trading": {
    "key": "lucid_trading",
@@ -59,7 +59,7 @@
    "logo": "lucid.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "takeprofittrader": {
    "key": "takeprofittrader",
@@ -70,7 +70,7 @@
    "logo": "takeprofittrader.svg",
    "logo_bg": null,
    "rating": 4.4,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "legendstrading": {
    "key": "legendstrading",
@@ -81,7 +81,7 @@
    "logo": "legendstrading.png",
    "logo_bg": null,
    "rating": 3.5,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "daytraders": {
    "key": "daytraders",
@@ -92,7 +92,7 @@
    "logo": "daytraders.svg",
    "logo_bg": null,
    "rating": 4.6,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "phidias": {
    "key": "phidias",
@@ -103,7 +103,7 @@
    "logo": "phidias.jpeg",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "blusky": {
    "key": "blusky",
@@ -114,7 +114,7 @@
    "logo": "blusky.png",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "top_one_futures": {
    "key": "top_one_futures",
@@ -125,7 +125,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "alpha_futures": {
    "key": "alpha_futures",
@@ -136,7 +136,7 @@
    "logo": "alphafutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   },
   "iqcapital": {
    "key": "iqcapital",
@@ -147,7 +147,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-21T07:07:54.222235+00:00"
+   "checked_at": "2026-10-21T23:04:26.393969+00:00"
   }
  },
  "rows": [

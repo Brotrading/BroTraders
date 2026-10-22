@@ -1,7 +1,157 @@
 {
-  "generated_at": "2026-10-21T07:07:50.971692+00:00",
-  "count": 131,
+  "generated_at": "2026-10-21T23:04:23.433991+00:00",
+  "count": 132,
   "items": [
+    {
+      "id": "1562535864830009466",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-21",
+      "title": "IQ Capital restores IQC Trader after technical issues with its provider",
+      "summary": "IQ Capital says its IQC Trader platform is back online and running normally after technical problems with its CFD and crypto trading provider were fixed. The firm also says all loss trades will be deleted in approximately 1 hour. Traders are thanked for their patience.",
+      "highlights": [
+        "IQC Trader is available again and operating normally",
+        "The technical issues with the CFD and crypto trading provider have been resolved",
+        "All loss trades will be deleted in approximately 1 hour"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562519100842971200",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-21",
+      "title": "IQ Capital reports IQC Trader outage affecting CFD and crypto trading",
+      "summary": "IQ Capital says its IQC Trader platform is currently unavailable because of a technical disruption affecting its CFD and crypto trading provider. The team is working with the relevant providers to restore normal service as soon as possible. Further updates will follow once more information is available.",
+      "highlights": [
+        "IQC Trader platform is currently unavailable",
+        "The disruption affects the CFD and crypto trading provider",
+        "IQ Capital's team is working with the relevant providers to restore service",
+        "More updates will be shared when available"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562518296040054895",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-21",
+      "title": "BluSky Trading Hits 10,000 Discord Members and Over $15 Million Paid Out",
+      "summary": "BluSky Trading says its Discord has reached 10,000 members, and it credits the community's trader stories and feedback for that growth. The firm also states it has paid out over $15 million to traders around the world. BluSky says it is listening to members and has more work in progress that it plans to share.",
+      "highlights": [
+        "BluSky Discord has reached 10,000 members",
+        "BluSky has paid out over $15 million to traders around the world",
+        "The firm says it is working on improvements behind the scenes and plans to share them with members"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1562507075014361189",
+      "type": "news",
+      "firm": "Daytraders.com",
+      "date": "2026-10-21",
+      "title": "Daytraders.com launches free browser-based Day Traders Arcade trading games",
+      "summary": "Daytraders.com has released Day Traders Arcade, a set of browser-based trading games for practicing without risking an account. The games focus on reading price action, managing risk, and staying disciplined during fast market moves. No purchase, card, or free trial is required to play.",
+      "highlights": [
+        "Day Traders Arcade is a set of browser-based trading games",
+        "Games train price action reading, risk management, and staying calm during fast moves",
+        "No purchase or card is required to play",
+        "Players are asked to share the Arcade with friends if it helps them"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/daytraders",
+      "firm_page": "/Firms/DayTraders.html",
+      "logo": "/Photos/firms/daytraders.svg"
+    },
+    {
+      "id": "1562505207886123091",
+      "type": "news",
+      "firm": "Top One Futures",
+      "date": "2026-10-21",
+      "title": "Top One Futures launches X-Daily Spark with daily payouts",
+      "summary": "Top One Futures has added X-Daily Spark to its Launchpad, blending the pay-after-you-pass model of Elite Access with the daily payouts of Elite Daily. You pay $39 to start and only pay the $189 activation after you pass the evaluation, so you pay nothing if you don't pass. The firm says it is experimental and only 1,500 spots will be released, so BroTrading suggests acting quickly with code BRO.",
+      "highlights": [
+        "You pay $39 to start",
+        "The $189 activation is paid only after you pass the evaluation",
+        "Once funded, you can request payouts daily",
+        "There is no consistency rule on the evaluation or the funded account",
+        "Only 1,500 spots are being released"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/topone",
+      "firm_page": "/Firms/TopOne.html",
+      "logo": "/Photos/firms/topone.png"
+    },
+    {
+      "id": "1562467747978285076",
+      "type": "news",
+      "firm": "Tradeify",
+      "date": "2026-10-21",
+      "title": "Tradeify teases Tradeify Perps as Tradeify 247 issuance pauses",
+      "summary": "Tradeify says Tradeify 247 was only the beginning and a new challenger is coming. New 247 account issuance is now paused while the firm prepares the next product. Existing 247 traders can keep trading as usual and payouts continue as normal.",
+      "highlights": [
+        "Tradeify Perps is in early access and beta keys are available via a waitlist",
+        "Existing Tradeify 247 traders are directed to tradeifyperps.co",
+        "Active accounts remain available to trade as usual",
+        "Payouts continue as normal",
+        "New 247 account issuance is now paused"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/tradeify",
+      "firm_page": "/Firms/TradeifyTrader.html",
+      "logo": "/Photos/firms/tradeify.png"
+    },
+    {
+      "id": "1562456546598985829",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-21",
+      "title": "IQ Capital adds Volume Profile and VWAP indicators to its trader platform",
+      "summary": "IQ Capital has updated its IQC Trader and Volumetrica Web Trader platform. Traders can now use volume indicators, including Volume Profile and VWAP, directly within the trader.",
+      "highlights": [
+        "Volume Profile and VWAP are now available in the IQC Trader / Volumetrica Web Trader",
+        "The indicators can be used right away with no extra steps mentioned"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562452788544409731",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-21",
+      "title": "IQ Capital halfway through its $200K competition with free entry until Friday",
+      "summary": "IQ Capital says its competition has been running since Monday and traders are already earning points. Entry is free until Friday for both Challenge and Instant Funding accounts, with the account fee refunded on top of or back with the first payout. The post says the prize pool is $200K and the competition runs five weeks.",
+      "highlights": [
+        "Every Challenge: pass, get paid, and the fee is added on top of your first payout",
+        "Every Instant Funding account: funded from day one, scores x1.5, fee back with your first payout",
+        "$200K prize pool over five weeks of competition",
+        "Free means the account fee only, not activation fees or similar"
+      ],
+      "ends": "Friday, 11:59 PM CEST",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
     {
       "id": "1562173399055204525",
       "type": "news",
@@ -2325,135 +2475,6 @@
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
       "logo": "/Photos/firms/myfundedfutures.png"
-    },
-    {
-      "id": "1551703447236120697",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-21",
-      "title": "Lucid Trading hits halfway point with $1 million still up for grabs",
-      "summary": "Lucid Trading says its Trading Competition has reached the halfway mark, with 1 million dollars still left to give out. The firm plans to go live in about 15 minutes to announce the day's winners. Traders are encouraged to join the waiting room early.",
-      "highlights": [
-        "The Trading Competition is at its halfway point",
-        "1 million dollars remains to be given out in the event",
-        "Lucid Trading will go live in about 15 minutes to announce today's winners",
-        "Traders can join the waiting room early"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1551689060752298064",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-21",
-      "title": "My Funded Futures rolls out Hyperprop on Rapid 25K accounts in phases",
-      "summary": "My Funded Futures has started making Hyperprop available on its Rapid 25K accounts as part of a phased rollout. Traders can try it using the BRO discount code. The post does not list an end date for this rollout.",
-      "highlights": [
-        "Hyperprop is now available on Rapid 25K accounts",
-        "The rollout is phased",
-        "Use code BRO to try Hyperprop with My Funded Futures"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
-    },
-    {
-      "id": "1551672613112385690",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-21",
-      "title": "Tradeify Rewards Center hit by heavy traffic as users pile in",
-      "summary": "Tradeify says a large number of traders are trying to get into the Rewards Center at the same time. The firm asks users to be patient while the system sorts itself out. No offer or deadline was announced.",
-      "highlights": [
-        "Many traders are trying to access the Rewards Center at once",
-        "Tradeify asks users to be patient while access settles",
-        "No sale, offer or giveaway was mentioned in the post"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551669760205525115",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-21",
-      "title": "Tradeify adds a new reward for users in its Rewards Center dashboard",
-      "summary": "Tradeify has added a new surprise to the Rewards Center dashboard, aimed at traders who enjoy opening reward packs. The rollout is reaching all users over the next couple of hours. Keep an eye on your inbox for the update.",
-      "highlights": [
-        "A new reward is available in the Rewards Center dashboard",
-        "The rollout is going to all users over the next couple hours",
-        "Tradeify asks users to watch their inbox"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551667206431965255",
-      "type": "news",
-      "firm": "Legends Trading",
-      "date": "2026-09-21",
-      "title": "Legends Trading launches daily market poll giveaway for a free $50K account",
-      "summary": "Legends Trading now posts a Daily Status of the Market after the end-of-day close, recapping the session. Each day's post includes a quick poll where traders vote UP BULL or DOWN BEAR for a chance to win a free $50K Apprentice account. The winner is picked in the next day's Market Status, and wearing the LGND server tag doubles your chances in the draw.",
-      "highlights": [
-        "Daily Status of the Market is posted after EOD market close with a session recap",
-        "Vote UP BULL or DOWN BEAR to enter the daily poll",
-        "Prize is a free $50K Apprentice account",
-        "Wearing the LGND server tag doubles your chances in the draw",
-        "Winner is announced in the next day's Market Status"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/legendstrading",
-      "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
-    },
-    {
-      "id": "1551654417588293672",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-21",
-      "title": "Lucid Trading goes live on YouTube again for a September 21 stream",
-      "summary": "Lucid Trading announced it is going live on YouTube again. Traders can join the stream if they are free. The post gives no details beyond the live session itself.",
-      "highlights": [
-        "Lucid Trading is going live on YouTube again",
-        "The stream is titled Lucid Trading Presents: September 21st",
-        "Viewers are invited to join if they can"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1551614283849400380",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-21",
-      "title": "IQ Capital launches Flash Sale with 3+1 free Instant Funding accounts",
-      "summary": "IQ Capital has started a Flash Sale for this week only. Traders who secure 3 Instant Funding accounts get 1 more of the same size free. The promotion runs Monday to Friday and the bonus will not be offered in this form afterward.",
-      "highlights": [
-        "Flash Sale runs Monday to Friday this week",
-        "3+1 on Instant Fundings: buy 3, get 1 additional account of the same size free",
-        "The bonus will no longer be available in this form after the promotion ends"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
     }
   ]
 }
