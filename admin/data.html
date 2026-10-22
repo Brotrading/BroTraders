@@ -807,7 +807,7 @@ body.signin::before { display: none; }
           (edited ? '<span class="badge edited"><i class="fa-solid fa-pen"></i> Edited</span>' : "") + "</div>" +
           '<div class="title">' + esc(it.title) + "</div>" +
           '<div class="extra">' + (it.code ? '<span><i class="fa-solid fa-ticket"></i>' + esc(it.code) + "</span>" : "") +
-          (it.ends ? '<span><i class="fa-solid fa-hourglass-half"></i>Ends ' + esc(it.ends) + "</span>" : "") + "</div></div>" +
+          (it.ends ? '<span><i class="fa-solid fa-hourglass-half"></i>Ends ' + esc(String(it.ends).replace(/^\s*ends?\b[:\s]*/i, "")) + "</span>" : "") + "</div></div>" +
         '<div class="acts">' +
           '<button class="btn sm" data-act="edit-item" title="Edit"><i class="fa-solid fa-pen"></i> Edit</button>' +
           '<button class="btn sm ' + (it._hidden ? "gold" : "ghost") + '" data-act="toggle-item" title="' + (it._hidden ? "Show on the site" : "Hide from the site") + '">' +
