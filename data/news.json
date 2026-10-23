@@ -1,7 +1,192 @@
 {
-  "generated_at": "2026-10-21T23:04:23.433991+00:00",
-  "count": 132,
+  "generated_at": "2026-10-23T11:06:16.156697+00:00",
+  "count": 135,
   "items": [
+    {
+      "id": "1563145147489714199",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-23",
+      "title": "IQ Capital ends today's refund and 3+1 offer tonight at 11:59 PM CEST",
+      "summary": "IQ Capital is running a one-day promotion that refunds the purchase fee after your first payout on every product. Buy three accounts in one checkout and the fourth comes free automatically. With the BRO code, every account has no monthly fee for as long as it stays active.",
+      "highlights": [
+        "Full refund after your first payout on every product, today only",
+        "3 + 1: buy three accounts in one checkout and the fourth is free, applied automatically",
+        "With BRO, no monthly fee for as long as the account is active",
+        "The refund covers the purchase fee, not the activation fee"
+      ],
+      "ends": "11:59 PM CEST",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562902729289105439",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital Launches Full Refund After First Payout and Buy-Three-Get-One-Free Deal",
+      "summary": "IQ Capital has put its replay up and announced a live deal on all products. Buyers get a full refund after their first payout, and buying three accounts in one checkout makes the fourth free automatically. BroTrading readers can use the BRO code, which removes the monthly fee.",
+      "highlights": [
+        "Full refund after your first payout on every product",
+        "3 + 1: buy three accounts in one checkout and the fourth is free, applied automatically",
+        "With BRO there is no monthly fee",
+        "The refund covers the purchase fee, not the activation fee"
+      ],
+      "ends": "Oct 23, 2026, 11:59 PM CEST",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562889378546712738",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital goes live with a five-card event for traders",
+      "summary": "IQ Capital has launched a live event where five cards are now on the table. Traders are invited to join before Christoph turns over card 1. Questions can be dropped into the chat during the event.",
+      "highlights": [
+        "The event is live now with five cards on the table",
+        "Traders should join before Christoph flips card 1",
+        "Questions can be posted in the chat"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562881707630395502",
+      "type": "news",
+      "firm": "Tradeify",
+      "date": "2026-10-22",
+      "title": "Tradeify Lets Traders Fully Customize Their Trader Cards in Rewards Center",
+      "summary": "Tradeify has made Trader Cards fully customizable through the Rewards Center. Traders can now personalize their card with banners, frames, animated effects, titles, and achievement badges.",
+      "highlights": [
+        "Customize banners, frames, and animated effects on your Trader Card",
+        "Earn titles to display on your card",
+        "Showcase up to 3 achievement badges",
+        "More milestones earned unlock more card flair"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/tradeify",
+      "firm_page": "/Firms/TradeifyTrader.html",
+      "logo": "/Photos/firms/tradeify.png"
+    },
+    {
+      "id": "1562877481172734044",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital removes monthly renewal fees for all new accounts",
+      "summary": "IQ Capital has dropped the monthly renewal fee for every newly purchased account. Traders who buy an account from now on will not have to renew it or make monthly payments to keep it active.",
+      "highlights": [
+        "The monthly renewal fee is removed for all NEW accounts",
+        "New accounts do not need to be renewed",
+        "No monthly payments are needed to keep an account active"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562876865851433031",
+      "type": "news",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-22",
+      "title": "Apex Trader Funding Website Offline for Maintenance Upgrades",
+      "summary": "Apex Trader Funding says its website is down for maintenance while the team works on improving the trader experience. BroTrading will pass along the update once the site is back online. No dates or offers were included in the announcement.",
+      "highlights": [
+        "The Apex Trader Funding website is currently undergoing maintenance.",
+        "The firm plans to post an update once the website is back online.",
+        "The announcement does not include a deadline or offer."
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png"
+    },
+    {
+      "id": "1562876245333770265",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital to stream five-card live reveal at 8:00 PM CEST",
+      "summary": "IQ Capital is hosting a live stream where Christoph will flip five cards. He reveals four of them one by one during the broadcast, and the fifth only at the very end. Viewers can ask questions in the chat during the stream.",
+      "highlights": [
+        "Five cards are revealed during the live stream",
+        "Christoph flips four cards live, one by one",
+        "The fifth card is revealed only at the very end",
+        "Viewers can drop questions in the chat"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562868002917974087",
+      "type": "news",
+      "firm": "Legends Trading",
+      "date": "2026-10-22",
+      "title": "Legends Trading hosts AMA with Garrett on Monday, October 26",
+      "summary": "Legends Trading is holding an AMA hosted by Garrett in its Discord on Monday, October 26th at 3 PM EST. Traders can bring questions and join the conversation. The event also includes giveaway accounts.",
+      "highlights": [
+        "AMA hosted by Garrett in the Legends Trading Discord",
+        "Date: Monday, October 26th",
+        "Time: 3 PM EST",
+        "Giveaway accounts will be up for grabs during the AMA"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png"
+    },
+    {
+      "id": "1562809316623519874",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-22",
+      "title": "BluSky Trading shares its morning email here during an email outage",
+      "summary": "BluSky Trading could not send its morning email on time because of an ActiveCampaign outage. The team posted the update on Discord instead. The post itself contains no other details.",
+      "highlights": [
+        "The morning email was delayed by an ActiveCampaign outage",
+        "BluSky Trading shared the update in its Discord channel instead"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1562767980012507137",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital Hosts Live Card-Flip Stream Tonight at 8:00 PM CEST",
+      "summary": "IQ Capital is running a live stream tonight in which Christoph flips five cards one at a time. Four cards will be revealed in sequence, while the fifth stays hidden until the end. Viewers can save a free spot to receive a reminder or use the Notify me option.",
+      "highlights": [
+        "Christoph flips five cards during the stream tonight at 8:00 PM CEST",
+        "Four cards go live one by one",
+        "The fifth card stays sealed until the very end",
+        "Viewers must watch the stream to see the card contents"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
     {
       "id": "1562535864830009466",
       "type": "news",
@@ -2345,136 +2530,6 @@
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
       "logo": "/Photos/firms/apex.png"
-    },
-    {
-      "id": "1552065414937321522",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-22",
-      "title": "Lucid Trading hosts a townhall giveaway with 50 winners today",
-      "summary": "Lucid Trading says it is handing out more money today. Traders are invited to join its townhall Discord to hear today's stat and find out about the 50 winners.",
-      "highlights": [
-        "Lucid Trading is giving out money in a townhall Discord event today",
-        "The townhall will reveal today's stat",
-        "There are 50 winners"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1551994897567977546",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify says its login issues have been resolved",
-      "summary": "Tradeify has fixed the login problems that were affected traders. The firm thanked users for their patience while the team worked on the fix.",
-      "highlights": [
-        "Tradeify's login issues are now resolved",
-        "The firm thanked traders for their patience",
-        "Tradeify says the PTL is just getting started"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551986673993257080",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-22",
-      "title": "IQ Capital Runs 3+1 Instant Funding Promotion This Week",
-      "summary": "IQ Capital is offering a 3+1 promotion on its Instant Funding accounts for a short time. Buy three Instant Funding accounts and get one more account of the same size on top for free. The promotion runs only this week.",
-      "highlights": [
-        "Buy 3 Instant Funding accounts and receive 1 additional account of the same size free",
-        "No challenge phase required",
-        "No additional purchase price for the extra account",
-        "Promotion is only available as part of this offer"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
-    },
-    {
-      "id": "1551977787303272619",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify Acknowledges Login Issues, Says a Fix Is Being Deployed",
-      "summary": "Tradeify says it is aware of problems with logging in to its platform. Its developers are working on deploying a fix. The firm asks traders to be patient while the work is done.",
-      "highlights": [
-        "Tradeify is aware of login issues affecting users.",
-        "The development team is working on deploying a fix.",
-        "Tradeify apologizes for the inconvenience."
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551971428394467380",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify launches 247 account with first drop, $50K One-Step now live",
-      "summary": "Tradeify has opened its new 247 account line with a first drop of $50K One-Step accounts. The account is built for round-the-clock trading in crypto, tokenized stocks, and commodities on MT5 or DXtrade. Allocation is limited and each trader can hold up to 5 accounts.",
-      "highlights": [
-        "$50K One-Step Account with an $85 one-time fee",
-        "Daily payouts and no daily loss limit",
-        "No minimum trading days required",
-        "Trade crypto, tokenized stocks, and commodities 24/7 on MT5 or DXtrade",
-        "Limited allocation, maximum 5 accounts per trader"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551970884959608943",
-      "type": "news",
-      "firm": "Top One Futures",
-      "date": "2026-09-22",
-      "title": "Top One Futures launches Intraday toggle for Elite Access accounts",
-      "summary": "Top One Futures has added an Intraday setting to its Elite Access accounts. Turning on intraday drawdowns cuts the activation fee by 50%, and the firm says the stricter rules are meant as a real test of risk management. Standard Elite Access stays unchanged for traders who don't trade intraday.",
-      "highlights": [
-        "Intraday activation fees: $25,000 at $69 (save $70), $50,000 at $94 (save $95), $100,000 at $129 (save $130), $150,000 at $179 (save $180)",
-        "Turning on intraday drawdowns cuts the activation fee by 50%",
-        "The starting price stays at $39 and the Buy One Get One Free deal is unchanged",
-        "Standard Elite Access is not affected"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/topone",
-      "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
-    },
-    {
-      "id": "1551959857806966815",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-22",
-      "title": "My Funded Futures adds crypto, stocks and 24-hour indices via MyFundedPerpetuals",
-      "summary": "My Funded Futures has launched MyFundedPerpetuals, which lets traders access crypto, stocks and 24-hour indices alongside the CME futures they already trade. The firm is running a limited-time offer with code BRO for 30% off plus a Diamond Crate. The offer ends Wednesday at midnight ET.",
-      "highlights": [
-        "MyFundedPerpetuals adds crypto, stocks and 24-hour indices next to CME futures",
-        "Code BRO gives 30% off plus a Diamond Crate, limited time",
-        "Offer ends Wednesday at midnight ET"
-      ],
-      "ends": "Wednesday at midnight ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
     }
   ]
 }
