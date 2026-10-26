@@ -1,7 +1,341 @@
 {
-  "generated_at": "2026-10-21T23:04:23.433991+00:00",
-  "count": 132,
+  "generated_at": "2026-10-26T02:19:52.144189+00:00",
+  "count": 134,
   "items": [
+    {
+      "id": "1564036094264348723",
+      "type": "promo",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-25",
+      "title": "Phidias PropFirm launches Halloween sale with 90% off first month",
+      "summary": "Phidias PropFirm is running a Halloween sale with 90% off the first month on Premium and Fundamental evaluations. The post also lists 80% off OTP accounts, with 25K Express to Live excluded, and 50% off Express to Live evaluations. Use code BROTRADING at checkout.",
+      "highlights": [
+        "90% off your first month on Premium and Fundamental evaluations",
+        "Fundamental first month: 50K $16.40, 100K $27.30, 150K $42",
+        "Premium first month: 50K $32.90, 100K $41.10, 150K $57",
+        "OTP accounts 80% off, with 25K Express to Live excluded",
+        "Express to Live evaluations 50% off"
+      ],
+      "ends": "Sunday Nov 1, 5:00 PM ET",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg"
+    },
+    {
+      "id": "1564007167915335713",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-25",
+      "title": "BluSky Trading moving accounts to new Rithmic server this weekend",
+      "summary": "BluSky Trading is switching its accounts to a different Rithmic server during Rithmic's weekend maintenance. The move covers all Trader User IDs and accounts, which will shift from the Paper Trading system to BluSky's private system. Traders may need to update RTrader Pro once the change is made.",
+      "highlights": [
+        "Change happens during Rithmic's weekend maintenance on Saturday, October 24",
+        "All Trader User IDs and accounts move from the Paper Trading system to the BluSky private system",
+        "You may need to update RTrader Pro"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1563652636295565314",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-24",
+      "title": "BluSky Trading launches Halloween costume contest with three free $50K accounts",
+      "summary": "BluSky Trading has opened a Halloween costume contest for its traders. Three winners will each get a free $50K launch account, for $150K in total account sizes. Entries are made by following the firm on X and Instagram and posting a costume photo or video with the contest hashtag.",
+      "highlights": [
+        "Three free $50K Launch Accounts are being given away",
+        "Total trading account sizes add up to $150K",
+        "Entrants must follow BluSky on X and Instagram, post a costume photo or video with the contest hashtag, and tag the firm and three trader friends",
+        "The BluSky community will vote on the winners"
+      ],
+      "ends": "7 days to enter",
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1563301467601899580",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-23",
+      "title": "BluSky Trading shares a Ryan Gosling as Ken image from the Barbie Movie",
+      "summary": "BluSky Trading posted a Discord announcement that consists only of an image caption about Ryan Gosling playing Ken in the Barbie Movie. The post contains no trading news, offers, or account details. There is no sale or giveaway deadline to report.",
+      "highlights": [
+        "The post is a caption: Ryan Gosling as Ken in Barbie Movie",
+        "No trading terms, account sizes, prices, or offers are included"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1563245350335021258",
+      "type": "news",
+      "firm": "My Funded Futures",
+      "date": "2026-10-23",
+      "title": "My Funded Futures announces Tradovate maintenance window this evening, some services delayed",
+      "summary": "My Funded Futures says Tradovate will undergo scheduled maintenance this evening. During the window, some services will be temporarily delayed or unavailable, including account purchases.",
+      "highlights": [
+        "Scheduled Tradovate maintenance runs this evening from 6 pm est to 8 pm est",
+        "Account purchases are among the services that may be temporarily unavailable",
+        "The firm thanks traders for their patience during the maintenance"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/mffu",
+      "firm_page": "/Firms/MyFundedFuture.html",
+      "logo": "/Photos/firms/myfundedfutures.png"
+    },
+    {
+      "id": "1563196667124252785",
+      "type": "news",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-23",
+      "title": "Apex Trader Funding says its website is back online and stable",
+      "summary": "Apex Trader Funding reports that its website has returned and is running stably. The team says it will keep monitoring the site to make sure everything works smoothly. BroTrading passes along the update for traders who were waiting on the site.",
+      "highlights": [
+        "The Apex Trader Funding website is back online",
+        "The site is described as stable",
+        "The team is continuing to monitor the site"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png"
+    },
+    {
+      "id": "1563178645885943849",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-23",
+      "title": "IQ Capital offers full refund after first payout and free fourth account until tonight",
+      "summary": "IQ Capital is running a limited deal until 11:59 PM CEST tonight, with a full refund after your first payout on every product. Buying three accounts in one checkout gives you a fourth one free automatically. Using the BRO code means no monthly fee, and the deal returns to full price tomorrow.",
+      "highlights": [
+        "Full refund after your first payout on every product",
+        "3 + 1: the fourth account is free when you buy three in one checkout",
+        "With code BRO you never pay a monthly fee",
+        "The refund covers the purchase fee, not the activation fee"
+      ],
+      "ends": "11:59 PM CEST tonight",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1563176417439514777",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-23",
+      "title": "BluSky Trading makes new Propel reset pricing official, from $79 to $199",
+      "summary": "BluSky Trading says its updated Propel reset pricing is now in effect, after being announced last year. The new reset prices range from $79 for the 25K account up to $199 for the 300K account.",
+      "highlights": [
+        "25K reset: $79",
+        "50K reset: $89",
+        "100K reset: $99",
+        "150K reset: $109",
+        "200K reset: $149"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1563145147489714199",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-23",
+      "title": "IQ Capital ends today's refund and 3+1 offer tonight at 11:59 PM CEST",
+      "summary": "IQ Capital is running a one-day promotion that refunds the purchase fee after your first payout on every product. Buy three accounts in one checkout and the fourth comes free automatically. With the BRO code, every account has no monthly fee for as long as it stays active.",
+      "highlights": [
+        "Full refund after your first payout on every product, today only",
+        "3 + 1: buy three accounts in one checkout and the fourth is free, applied automatically",
+        "With BRO, no monthly fee for as long as the account is active",
+        "The refund covers the purchase fee, not the activation fee"
+      ],
+      "ends": "11:59 PM CEST",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562902729289105439",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital Launches Full Refund After First Payout and Buy-Three-Get-One-Free Deal",
+      "summary": "IQ Capital has put its replay up and announced a live deal on all products. Buyers get a full refund after their first payout, and buying three accounts in one checkout makes the fourth free automatically. BroTrading readers can use the BRO code, which removes the monthly fee.",
+      "highlights": [
+        "Full refund after your first payout on every product",
+        "3 + 1: buy three accounts in one checkout and the fourth is free, applied automatically",
+        "With BRO there is no monthly fee",
+        "The refund covers the purchase fee, not the activation fee"
+      ],
+      "ends": "Oct 23, 2026, 11:59 PM CEST",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562889378546712738",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital goes live with a five-card event for traders",
+      "summary": "IQ Capital has launched a live event where five cards are now on the table. Traders are invited to join before Christoph turns over card 1. Questions can be dropped into the chat during the event.",
+      "highlights": [
+        "The event is live now with five cards on the table",
+        "Traders should join before Christoph flips card 1",
+        "Questions can be posted in the chat"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562881707630395502",
+      "type": "news",
+      "firm": "Tradeify",
+      "date": "2026-10-22",
+      "title": "Tradeify Lets Traders Fully Customize Their Trader Cards in Rewards Center",
+      "summary": "Tradeify has made Trader Cards fully customizable through the Rewards Center. Traders can now personalize their card with banners, frames, animated effects, titles, and achievement badges.",
+      "highlights": [
+        "Customize banners, frames, and animated effects on your Trader Card",
+        "Earn titles to display on your card",
+        "Showcase up to 3 achievement badges",
+        "More milestones earned unlock more card flair"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/tradeify",
+      "firm_page": "/Firms/TradeifyTrader.html",
+      "logo": "/Photos/firms/tradeify.png"
+    },
+    {
+      "id": "1562877481172734044",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital removes monthly renewal fees for all new accounts",
+      "summary": "IQ Capital has dropped the monthly renewal fee for every newly purchased account. Traders who buy an account from now on will not have to renew it or make monthly payments to keep it active.",
+      "highlights": [
+        "The monthly renewal fee is removed for all NEW accounts",
+        "New accounts do not need to be renewed",
+        "No monthly payments are needed to keep an account active"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562876865851433031",
+      "type": "news",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-22",
+      "title": "Apex Trader Funding Website Offline for Maintenance Upgrades",
+      "summary": "Apex Trader Funding says its website is down for maintenance while the team works on improving the trader experience. BroTrading will pass along the update once the site is back online. No dates or offers were included in the announcement.",
+      "highlights": [
+        "The Apex Trader Funding website is currently undergoing maintenance.",
+        "The firm plans to post an update once the website is back online.",
+        "The announcement does not include a deadline or offer."
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png"
+    },
+    {
+      "id": "1562876245333770265",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital to stream five-card live reveal at 8:00 PM CEST",
+      "summary": "IQ Capital is hosting a live stream where Christoph will flip five cards. He reveals four of them one by one during the broadcast, and the fifth only at the very end. Viewers can ask questions in the chat during the stream.",
+      "highlights": [
+        "Five cards are revealed during the live stream",
+        "Christoph flips four cards live, one by one",
+        "The fifth card is revealed only at the very end",
+        "Viewers can drop questions in the chat"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
+    {
+      "id": "1562868002917974087",
+      "type": "news",
+      "firm": "Legends Trading",
+      "date": "2026-10-22",
+      "title": "Legends Trading hosts AMA with Garrett on Monday, October 26",
+      "summary": "Legends Trading is holding an AMA hosted by Garrett in its Discord on Monday, October 26th at 3 PM EST. Traders can bring questions and join the conversation. The event also includes giveaway accounts.",
+      "highlights": [
+        "AMA hosted by Garrett in the Legends Trading Discord",
+        "Date: Monday, October 26th",
+        "Time: 3 PM EST",
+        "Giveaway accounts will be up for grabs during the AMA"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png"
+    },
+    {
+      "id": "1562809316623519874",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-22",
+      "title": "BluSky Trading shares its morning email here during an email outage",
+      "summary": "BluSky Trading could not send its morning email on time because of an ActiveCampaign outage. The team posted the update on Discord instead. The post itself contains no other details.",
+      "highlights": [
+        "The morning email was delayed by an ActiveCampaign outage",
+        "BluSky Trading shared the update in its Discord channel instead"
+      ],
+      "ends": null,
+      "code": null,
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png"
+    },
+    {
+      "id": "1562767980012507137",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-22",
+      "title": "IQ Capital Hosts Live Card-Flip Stream Tonight at 8:00 PM CEST",
+      "summary": "IQ Capital is running a live stream tonight in which Christoph flips five cards one at a time. Four cards will be revealed in sequence, while the fifth stays hidden until the end. Viewers can save a free spot to receive a reminder or use the Notify me option.",
+      "highlights": [
+        "Christoph flips five cards during the stream tonight at 8:00 PM CEST",
+        "Four cards go live one by one",
+        "The fifth card stays sealed until the very end",
+        "Viewers must watch the stream to see the card contents"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg"
+    },
     {
       "id": "1562535864830009466",
       "type": "news",
@@ -2177,304 +2511,6 @@
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
       "logo": "/Photos/firms/legendstrading.png"
-    },
-    {
-      "id": "1553147239059423275",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-25",
-      "title": "Lucid Trading hosts a live stream and final leaderboard before the weekend",
-      "summary": "Lucid Trading says the person on yesterday's stream was a Lucid employee who looks just like its usual presenter, not the presenter himself. The firm also says it has figured out how to share screen and sound together. A live stream at 530PM EST is planned, with one more leaderboard before the weekend.",
-      "highlights": [
-        "The person on yesterday's stream was a Lucid employee, not the usual presenter",
-        "Lucid figured out how to share screen and sound together",
-        "Live stream starts at 530PM EST",
-        "One more leaderboard before the weekend"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1553089453164199946",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-25",
-      "title": "IQ Capital ends its 3+1 account promotion today",
-      "summary": "IQ Capital's 3+1 deal, where you buy three accounts and get a fourth of the same size free, runs out today. After today the extra account will no longer be offered in this form. Traders who want more capital or several accounts at once have only today to take the bonus.",
-      "highlights": [
-        "Buy 3 accounts and get 1 account of the same size on top for free",
-        "Today is the last day of the 3+1 promotion",
-        "The additional account will no longer be available in this form after the promotion ends"
-      ],
-      "ends": "Today",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
-    },
-    {
-      "id": "1552792633594880120",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-24",
-      "title": "Lucid Trading Announces a Townhall Starting in 8 Minutes",
-      "summary": "Lucid Trading posted that its Townhall is starting in 8 minutes. The post is casual and includes a music video link and playlist links rather than trading product news. No sale, offer, or discount details are included.",
-      "highlights": [
-        "Lucid Trading's Townhall starts in 8 minutes from the post time",
-        "The post includes a music video, a Spotify playlist, and social links",
-        "No discount code or offer is mentioned"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1552687039273635900",
-      "type": "news",
-      "firm": "Top One Futures",
-      "date": "2026-09-24",
-      "title": "Top One Futures adds Black Arrow trading platform to its accounts",
-      "summary": "Top One Futures announced that Black Arrow is now live on its accounts. BroTrading sees it as another platform option focused on fast execution and giving traders control over their setup. Existing platforms remain available as they were.",
-      "highlights": [
-        "One-click chart entry lets traders click to enter without going through buttons",
-        "Hotkeys cover entry, exit, flatten and cancel-all from the keyboard",
-        "Market replay allows practicing a session tick by tick before risking an evaluation",
-        "Native Bookmap integration is listed as coming soon"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/topone",
-      "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
-    },
-    {
-      "id": "1552428152809324615",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-23",
-      "title": "Lucid Trading hosts a townhall stream with stats and a leaderboard",
-      "summary": "Lucid Trading is inviting traders to a townhall livestream hosted by two people. The post says the stream starts at 530 or in 15 minutes. It is a casual invite, not a sale or offer.",
-      "highlights": [
-        "Townhall livestream starts at 530, or in 15 minutes from the post",
-        "Agenda includes a stat review and a leaderboard",
-        "Two hosts appear on the stream"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1552406039826141275",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-23",
-      "title": "My Funded Futures opens Rapid and Rapid EOD Hyperprop accounts for purchase",
-      "summary": "My Funded Futures is rolling out its Hyperprop platform in phases, and traders can now buy any Rapid or Rapid EOD plan on it. Six account options are listed, from 25K to 150K for Rapid and 25K and 50K for Rapid EOD. Mike's readers can use the BRO code for 40% off a Hyperprop account.",
-      "highlights": [
-        "Any Rapid or Rapid EOD plan can now be purchased on the Hyperprop platform",
-        "Rapid accounts available in 25K, 50K, 100K and 150K sizes",
-        "Rapid EOD accounts available in 25K and 50K sizes",
-        "Code BRO gives 40% off a Hyperprop account"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
-    },
-    {
-      "id": "1552344404789043221",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-23",
-      "title": "IQ Capital ends its 3+1 Instant Funding bonus promotion this Friday",
-      "summary": "IQ Capital is running a limited promotion on Instant Funding accounts this week. Buy three accounts and get one more account of the same size free. The offer only runs until Friday, so traders wanting extra capital without a challenge need to act soon.",
-      "highlights": [
-        "Buy 3 Instant Funding accounts, get 1 account of the same size free",
-        "Instant Funding gives access to trading capital without passing a challenge first",
-        "The promotion runs only until Friday"
-      ],
-      "ends": "Friday",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
-    },
-    {
-      "id": "1552311322241273958",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-23",
-      "title": "My Funded Futures adds 100K and 150K Builder accounts and a soft daily loss limit",
-      "summary": "My Funded Futures has expanded its Builder lineup with two larger account sizes, 100K and 150K. The firm also added a soft daily loss limit to the Builder 25K plan, but only for plans bought on or after September 23rd. Accounts bought earlier keep their original rules with no daily loss limit.",
-      "highlights": [
-        "New 100K and 150K Builder plans with a one-day evaluation option",
-        "Payouts up to $3,000 per request on 100K and $3,500 on 150K",
-        "Payouts every 2 qualifying days once payout eligibility requirements are met",
-        "Up to 6 minis on 100K and 9 minis on 150K"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
-    },
-    {
-      "id": "1552309394715447317",
-      "type": "promo",
-      "firm": "Apex Trader Funding",
-      "date": "2026-09-23",
-      "title": "Apex Trader Funding launches 90/90/90 Flash Sale on evaluations and activation fees",
-      "summary": "Apex Trader Funding is running a limited-time Flash Sale with 90% off Legacy, Intraday, and EOD evaluations. Legacy evaluations get 90% off the first month and 80% off recurring months, and activation fees are discounted as well. Use code BRO at checkout.",
-      "highlights": [
-        "90% off all Legacy, Intraday, and EOD evaluations",
-        "Legacy evaluations: 90% off first month and 80% off recurring months",
-        "$90 Legacy PA Activation and $90 EOD PA Activation, any account size",
-        "$59 Intraday PA Activation, any account size",
-        "Evaluation discounts only apply to accounts purchased during the sale period"
-      ],
-      "ends": "September 27 at 11:59 PM ET for the Flash Sale; the $90 Legacy PA Activation offer ends September 29 at 11:59 PM ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/apex",
-      "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
-    },
-    {
-      "id": "1552065414937321522",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-22",
-      "title": "Lucid Trading hosts a townhall giveaway with 50 winners today",
-      "summary": "Lucid Trading says it is handing out more money today. Traders are invited to join its townhall Discord to hear today's stat and find out about the 50 winners.",
-      "highlights": [
-        "Lucid Trading is giving out money in a townhall Discord event today",
-        "The townhall will reveal today's stat",
-        "There are 50 winners"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
-    },
-    {
-      "id": "1551994897567977546",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify says its login issues have been resolved",
-      "summary": "Tradeify has fixed the login problems that were affected traders. The firm thanked users for their patience while the team worked on the fix.",
-      "highlights": [
-        "Tradeify's login issues are now resolved",
-        "The firm thanked traders for their patience",
-        "Tradeify says the PTL is just getting started"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551986673993257080",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-22",
-      "title": "IQ Capital Runs 3+1 Instant Funding Promotion This Week",
-      "summary": "IQ Capital is offering a 3+1 promotion on its Instant Funding accounts for a short time. Buy three Instant Funding accounts and get one more account of the same size on top for free. The promotion runs only this week.",
-      "highlights": [
-        "Buy 3 Instant Funding accounts and receive 1 additional account of the same size free",
-        "No challenge phase required",
-        "No additional purchase price for the extra account",
-        "Promotion is only available as part of this offer"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
-    },
-    {
-      "id": "1551977787303272619",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify Acknowledges Login Issues, Says a Fix Is Being Deployed",
-      "summary": "Tradeify says it is aware of problems with logging in to its platform. Its developers are working on deploying a fix. The firm asks traders to be patient while the work is done.",
-      "highlights": [
-        "Tradeify is aware of login issues affecting users.",
-        "The development team is working on deploying a fix.",
-        "Tradeify apologizes for the inconvenience."
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551971428394467380",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-22",
-      "title": "Tradeify launches 247 account with first drop, $50K One-Step now live",
-      "summary": "Tradeify has opened its new 247 account line with a first drop of $50K One-Step accounts. The account is built for round-the-clock trading in crypto, tokenized stocks, and commodities on MT5 or DXtrade. Allocation is limited and each trader can hold up to 5 accounts.",
-      "highlights": [
-        "$50K One-Step Account with an $85 one-time fee",
-        "Daily payouts and no daily loss limit",
-        "No minimum trading days required",
-        "Trade crypto, tokenized stocks, and commodities 24/7 on MT5 or DXtrade",
-        "Limited allocation, maximum 5 accounts per trader"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
-    },
-    {
-      "id": "1551970884959608943",
-      "type": "news",
-      "firm": "Top One Futures",
-      "date": "2026-09-22",
-      "title": "Top One Futures launches Intraday toggle for Elite Access accounts",
-      "summary": "Top One Futures has added an Intraday setting to its Elite Access accounts. Turning on intraday drawdowns cuts the activation fee by 50%, and the firm says the stricter rules are meant as a real test of risk management. Standard Elite Access stays unchanged for traders who don't trade intraday.",
-      "highlights": [
-        "Intraday activation fees: $25,000 at $69 (save $70), $50,000 at $94 (save $95), $100,000 at $129 (save $130), $150,000 at $179 (save $180)",
-        "Turning on intraday drawdowns cuts the activation fee by 50%",
-        "The starting price stays at $39 and the Buy One Get One Free deal is unchanged",
-        "Standard Elite Access is not affected"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/topone",
-      "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
-    },
-    {
-      "id": "1551959857806966815",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-22",
-      "title": "My Funded Futures adds crypto, stocks and 24-hour indices via MyFundedPerpetuals",
-      "summary": "My Funded Futures has launched MyFundedPerpetuals, which lets traders access crypto, stocks and 24-hour indices alongside the CME futures they already trade. The firm is running a limited-time offer with code BRO for 30% off plus a Diamond Crate. The offer ends Wednesday at midnight ET.",
-      "highlights": [
-        "MyFundedPerpetuals adds crypto, stocks and 24-hour indices next to CME futures",
-        "Code BRO gives 30% off plus a Diamond Crate, limited time",
-        "Offer ends Wednesday at midnight ET"
-      ],
-      "ends": "Wednesday at midnight ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
     }
   ]
 }
