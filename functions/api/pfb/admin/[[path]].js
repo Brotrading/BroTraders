@@ -17,7 +17,8 @@ const MAX_FAILURES = 10; // per IP per 15 minutes
 
 // What the admin may change, per kind of item.
 const FIELDS = {
-  news: { title: "text", summary: "text", code: "text", ends: "text", type: ["promo", "news"] },
+  news: { title: "text", summary: "text", code: "text", ends: "text", type: ["promo", "news"],
+          market: ["futures", "cfd", "perps"] },
   firm: { name: "text", code: "text" },
   account: { price: "money", sale_price: "money" },
 };

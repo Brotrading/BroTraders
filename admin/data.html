@@ -849,6 +849,9 @@ body.signin::before { display: none; }
     };
     $("#drawer-body").innerHTML =
       field("type", "Shown as", '<select class="input" name="type"><option value="promo"' + (v.type === "promo" ? " selected" : "") + '>Promo</option><option value="news"' + (v.type === "news" ? " selected" : "") + ">News</option></select>") +
+      field("market", "Market", '<select class="input" name="market">' + [["futures", "Futures"], ["cfd", "CFD"], ["perps", "Perps"]].map(function (m) {
+        return '<option value="' + m[0] + '"' + ((v.market || "futures") === m[0] ? " selected" : "") + ">" + m[1] + "</option>";
+      }).join("") + "</select>") +
       field("title", "Title", '<input class="input" name="title" value="' + esc(v.title) + '">') +
       field("summary", "Summary", '<textarea class="input" name="summary">' + esc(v.summary) + "</textarea>") +
       field("code", 'Promo code <span class="hint">BRO or BROTRADING only</span>', '<input class="input mono" name="code" value="' + esc(v.code || "") + '">') +
@@ -867,9 +870,10 @@ body.signin::before { display: none; }
     var it = findItem($("#drawer").dataset.id);
     var body = $("#drawer-body");
     var patch = {};
-    ["type", "title", "summary", "code", "ends"].forEach(function (k) {
+    ["type", "market", "title", "summary", "code", "ends"].forEach(function (k) {
       var val = body.querySelector('[name="' + k + '"]').value.trim();
-      if (val !== String(it[k] == null ? "" : it[k]).trim() && val !== "") patch[k] = val;
+      var was = k === "market" ? it.market || "futures" : it[k];  // items from before markets count as futures
+      if (val !== String(was == null ? "" : was).trim() && val !== "") patch[k] = val;
     });
     return { patch: patch, hidden: body.querySelector('[name="hidden"]').checked };
   }
