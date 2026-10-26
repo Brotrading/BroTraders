@@ -33,6 +33,7 @@ async function sync(DB) {
     edits_version: (await getMeta(DB, "edits_updated_at")) || "",
     render_requested_at: (await getMeta(DB, "render_requested_at")) || "",
     pages: Object.fromEntries(pages.results.map((p) => [p.path, p])),
+    page_paths: PAGES, // what this deploy accepts: the scraper sends only these
     scrape: (await scrapeInfo(DB)).status,
   });
 }
