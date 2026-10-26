@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T04:25:02.906348+00:00",
+ "generated_at": "2026-10-26T04:56:59.323508+00:00",
  "sizes": [
   "25K",
   "50K",
@@ -35,7 +35,7 @@
      },
      {
       "label": "Easiest rules",
-      "id": "fundednext:rapid:25K",
+      "id": "takeprofittrader:proevaluation:25K",
       "why": "Most forgiving drawdown, limits and targets for this size."
      },
      {
@@ -384,7 +384,7 @@
    "logo": "apex.png",
    "logo_bg": "#0b1120",
    "rating": 4.3,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "tradeify": {
    "key": "tradeify",
@@ -397,7 +397,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "myfundedfutures": {
    "key": "myfundedfutures",
@@ -410,7 +410,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "lucid_trading": {
    "key": "lucid_trading",
@@ -423,7 +423,7 @@
    "logo": "lucid.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "takeprofittrader": {
    "key": "takeprofittrader",
@@ -436,7 +436,7 @@
    "logo": "takeprofittrader.svg",
    "logo_bg": null,
    "rating": 4.4,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "legendstrading": {
    "key": "legendstrading",
@@ -449,7 +449,7 @@
    "logo": "legendstrading.png",
    "logo_bg": null,
    "rating": 3.5,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "daytraders": {
    "key": "daytraders",
@@ -462,7 +462,7 @@
    "logo": "daytraders.svg",
    "logo_bg": null,
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "phidias": {
    "key": "phidias",
@@ -475,7 +475,7 @@
    "logo": "phidias.jpeg",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "blusky": {
    "key": "blusky",
@@ -488,7 +488,7 @@
    "logo": "blusky.png",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "top_one_futures": {
    "key": "top_one_futures",
@@ -501,7 +501,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "alpha_futures": {
    "key": "alpha_futures",
@@ -514,7 +514,7 @@
    "logo": "alphafutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "iqcapital": {
    "key": "iqcapital",
@@ -527,7 +527,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "fundednext": {
    "key": "fundednext",
@@ -540,7 +540,7 @@
    "logo": "fundednext.png",
    "logo_bg": null,
    "rating": 4.5,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "iqcapital_cfd": {
    "key": "iqcapital_cfd",
@@ -553,7 +553,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "tradeify_fx": {
    "key": "tradeify_fx",
@@ -566,7 +566,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "top_one_trader": {
    "key": "top_one_trader",
@@ -579,7 +579,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   },
   "myfundedperps": {
    "key": "myfundedperps",
@@ -592,7 +592,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:25:02.906348+00:00"
+   "checked_at": "2026-10-26T04:56:59.323508+00:00"
   }
  },
  "rows": [
@@ -1562,6 +1562,51 @@
    ]
   },
   {
+   "id": "takeprofittrader:proevaluation:25K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 150.0,
+   "price": 90.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 220.0,
+   "monthly_after": 150.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 1500.0,
+   "profit_target_2": null,
+   "max_drawdown": 1500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 0.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 47,
+   "rules_score": 75,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count",
+    "No daily loss limit"
+   ],
+   "cons": [
+    "Then $150/mo until you pass",
+    "Activation fee $130 after you pass"
+   ]
+  },
+  {
    "id": "apex_trader_funding:eodtrailstandard:25K",
    "firm_key": "apex_trader_funding",
    "market": "futures",
@@ -1728,51 +1773,6 @@
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": []
-  },
-  {
-   "id": "takeprofittrader:proevaluation:25K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 150.0,
-   "price": 90.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 220.0,
-   "monthly_after": 150.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 1500.0,
-   "profit_target_2": null,
-   "max_drawdown": 1500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 500.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 42,
-   "rules_score": 67,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Then $150/mo until you pass",
-    "Activation fee $130 after you pass",
-    "Daily loss limit $500"
-   ]
   },
   {
    "id": "alpha_futures:direct:25K",
@@ -3650,6 +3650,51 @@
    ]
   },
   {
+   "id": "takeprofittrader:proevaluation:50K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "50K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 170.0,
+   "price": 102.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 232.0,
+   "monthly_after": 170.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 3000.0,
+   "profit_target_2": null,
+   "max_drawdown": 2000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 0.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 48,
+   "rules_score": 58,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count",
+    "No daily loss limit"
+   ],
+   "cons": [
+    "Then $170/mo until you pass",
+    "Activation fee $130 after you pass"
+   ]
+  },
+  {
    "id": "daytraders:coreliveplans2l:50K",
    "firm_key": "daytraders",
    "market": "futures",
@@ -3685,51 +3730,6 @@
     "Intraday trailing drawdown: follows open profits",
     "Daily loss limit $1,000",
     "Consistency rule: 25%"
-   ]
-  },
-  {
-   "id": "takeprofittrader:proevaluation:50K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "50K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 170.0,
-   "price": 102.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 232.0,
-   "monthly_after": 170.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 3000.0,
-   "profit_target_2": null,
-   "max_drawdown": 2000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1100.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 44,
-   "rules_score": 49,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Then $170/mo until you pass",
-    "Activation fee $130 after you pass",
-    "Daily loss limit $1,100"
    ]
   },
   {
@@ -5393,6 +5393,51 @@
    ]
   },
   {
+   "id": "takeprofittrader:proevaluation:100K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "100K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 330.0,
+   "price": 198.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 328.0,
+   "monthly_after": 330.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 6000.0,
+   "profit_target_2": null,
+   "max_drawdown": 3000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 0.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 45,
+   "rules_score": 56,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count",
+    "No daily loss limit"
+   ],
+   "cons": [
+    "Then $330/mo until you pass",
+    "Activation fee $130 after you pass"
+   ]
+  },
+  {
    "id": "iqcapital:instantdailyloss:100K",
    "firm_key": "iqcapital",
    "market": "futures",
@@ -5435,51 +5480,6 @@
    ],
    "cons": [
     "Daily loss limit $1,500"
-   ]
-  },
-  {
-   "id": "takeprofittrader:proevaluation:100K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "100K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 330.0,
-   "price": 198.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 328.0,
-   "monthly_after": 330.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 6000.0,
-   "profit_target_2": null,
-   "max_drawdown": 3000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 2200.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 40,
-   "rules_score": 47,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Then $330/mo until you pass",
-    "Activation fee $130 after you pass",
-    "Daily loss limit $2,200"
    ]
   },
   {
@@ -6795,6 +6795,51 @@
    ]
   },
   {
+   "id": "takeprofittrader:proevaluation:150K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "150K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 360.0,
+   "price": 216.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 346.0,
+   "monthly_after": 360.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 9000.0,
+   "profit_target_2": null,
+   "max_drawdown": 4500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 0.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 48,
+   "rules_score": 63,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count",
+    "No daily loss limit"
+   ],
+   "cons": [
+    "Then $360/mo until you pass",
+    "Activation fee $130 after you pass"
+   ]
+  },
+  {
    "id": "lucid_trading:direct:150K",
    "firm_key": "lucid_trading",
    "market": "futures",
@@ -6916,51 +6961,6 @@
     "Activation fee $159 after you pass",
     "Daily loss limit $2,000",
     "Consistency rule: 30%"
-   ]
-  },
-  {
-   "id": "takeprofittrader:proevaluation:150K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "150K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 360.0,
-   "price": 216.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 346.0,
-   "monthly_after": 360.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 9000.0,
-   "profit_target_2": null,
-   "max_drawdown": 4500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 3300.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 43,
-   "rules_score": 54,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Then $360/mo until you pass",
-    "Activation fee $130 after you pass",
-    "Daily loss limit $3,300"
    ]
   },
   {
@@ -9707,7 +9707,7 @@
    },
    {
     "label": "Easiest rules",
-    "id": "fundednext:rapid:25K",
+    "id": "takeprofittrader:proevaluation:25K",
     "why": "Most forgiving drawdown, limits and targets for this size."
    },
    {
