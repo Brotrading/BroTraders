@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T02:19:52.144189+00:00",
+  "generated_at": "2026-10-26T03:14:35.706557+00:00",
   "count": 134,
   "items": [
     {
@@ -20,7 +20,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1564007167915335713",
@@ -38,7 +39,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1563652636295565314",
@@ -57,7 +59,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1563301467601899580",
@@ -74,7 +77,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1563245350335021258",
@@ -92,7 +96,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1563196667124252785",
@@ -110,7 +115,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1563178645885943849",
@@ -129,7 +135,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1563176417439514777",
@@ -149,7 +156,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1563145147489714199",
@@ -168,7 +176,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562902729289105439",
@@ -187,7 +196,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562889378546712738",
@@ -205,7 +215,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562881707630395502",
@@ -224,7 +235,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1562877481172734044",
@@ -242,7 +254,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562876865851433031",
@@ -260,7 +273,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1562876245333770265",
@@ -279,7 +293,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562868002917974087",
@@ -298,7 +313,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1562809316623519874",
@@ -315,7 +331,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1562767980012507137",
@@ -334,7 +351,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562535864830009466",
@@ -352,7 +370,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "cfd"
     },
     {
       "id": "1562519100842971200",
@@ -371,7 +390,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "cfd"
     },
     {
       "id": "1562518296040054895",
@@ -389,7 +409,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1562507075014361189",
@@ -408,7 +429,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/daytraders",
       "firm_page": "/Firms/DayTraders.html",
-      "logo": "/Photos/firms/daytraders.svg"
+      "logo": "/Photos/firms/daytraders.svg",
+      "market": "futures"
     },
     {
       "id": "1562505207886123091",
@@ -428,7 +450,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1562467747978285076",
@@ -448,7 +471,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "perps"
     },
     {
       "id": "1562456546598985829",
@@ -465,7 +489,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562452788544409731",
@@ -484,7 +509,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562173399055204525",
@@ -504,7 +530,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1562155564358963255",
@@ -523,7 +550,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562134392371941478",
@@ -542,7 +570,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1562120934520000542",
@@ -559,7 +588,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562116111334641784",
@@ -578,7 +608,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1562093067887050813",
@@ -598,7 +629,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1562088058952745001",
@@ -617,7 +649,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "cfd"
     },
     {
       "id": "1561796070256672929",
@@ -635,7 +668,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1561771403374633124",
@@ -655,7 +689,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1561768930140356619",
@@ -672,7 +707,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1561728602574299146",
@@ -692,7 +728,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1561720284225081346",
@@ -710,7 +747,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1561712958566826105",
@@ -730,7 +768,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1561500136293666859",
@@ -750,7 +789,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1561486821630943375",
@@ -769,7 +809,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1561283005895680010",
@@ -788,7 +829,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1560785612410462229",
@@ -808,7 +850,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1560712135862919179",
@@ -826,7 +869,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1560683625849032754",
@@ -844,7 +888,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1560656224897212418",
@@ -863,7 +908,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1560646606942900318",
@@ -882,7 +928,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1560640848469823569",
@@ -901,7 +948,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1560544104939651093",
@@ -921,7 +969,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1560322902073806950",
@@ -939,7 +988,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1560299191064858726",
@@ -958,7 +1008,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1560276061315670087",
@@ -977,7 +1028,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/fundednext",
       "firm_page": "/Firms/FundedNext.html",
-      "logo": "/Photos/firms/fundednext.png"
+      "logo": "/Photos/firms/fundednext.png",
+      "market": "futures"
     },
     {
       "id": "1560014523484606464",
@@ -995,7 +1047,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1559957397785546792",
@@ -1013,7 +1066,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1559950550504833094",
@@ -1031,7 +1085,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1559928795044257812",
@@ -1050,7 +1105,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1559927528519372921",
@@ -1069,7 +1125,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1559915764155285535",
@@ -1088,7 +1145,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1559663032911528017",
@@ -1107,7 +1165,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1559619438884552734",
@@ -1125,7 +1184,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1559464107118428182",
@@ -1144,7 +1204,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1559281639224377434",
@@ -1164,7 +1225,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1559265841751658546",
@@ -1183,7 +1245,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1559264734560395447",
@@ -1200,7 +1263,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1559258854536257559",
@@ -1218,7 +1282,8 @@
       "code": null,
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
-      "logo": "/Photos/firms/blusky.png"
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
     },
     {
       "id": "1559190848674070529",
@@ -1237,7 +1302,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1559132040648196187",
@@ -1256,7 +1322,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1559113554781671515",
@@ -1275,7 +1342,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "cfd"
     },
     {
       "id": "1559060680143937556",
@@ -1293,7 +1361,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1558220460544499713",
@@ -1311,7 +1380,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1558168059682889891",
@@ -1331,7 +1401,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1558103656920915991",
@@ -1349,7 +1420,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1557830722172096585",
@@ -1368,7 +1440,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1557807475711811656",
@@ -1386,7 +1459,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1557752223189172315",
@@ -1405,7 +1479,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1557747834198040757",
@@ -1424,7 +1499,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1557643893745647687",
@@ -1443,7 +1519,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1557391831598239784",
@@ -1462,7 +1539,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1557378946792693811",
@@ -1480,7 +1558,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1557327377598644296",
@@ -1498,7 +1577,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1557301860816388157",
@@ -1517,7 +1597,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1557071895688511508",
@@ -1536,7 +1617,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1557052970368106669",
@@ -1553,7 +1635,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1557049551750307941",
@@ -1571,7 +1654,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1557033007750058066",
@@ -1590,7 +1674,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1557003085144916049",
@@ -1609,7 +1694,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/fundednext",
       "firm_page": "/Firms/FundedNext.html",
-      "logo": "/Photos/firms/fundednext.png"
+      "logo": "/Photos/firms/fundednext.png",
+      "market": "futures"
     },
     {
       "id": "1556976119704461422",
@@ -1628,7 +1714,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1556916582226067489",
@@ -1648,7 +1735,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1556754372786917467",
@@ -1667,7 +1755,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1556684673957105695",
@@ -1687,7 +1776,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1556654068141924503",
@@ -1705,7 +1795,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1556642800060211250",
@@ -1722,7 +1813,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1556613358457847873",
@@ -1741,7 +1833,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1556455815865442355",
@@ -1760,7 +1853,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1556404210885591080",
@@ -1779,7 +1873,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1556327075663843379",
@@ -1799,7 +1894,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "perps"
     },
     {
       "id": "1555980293318377523",
@@ -1817,7 +1913,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1555701184789221487",
@@ -1835,7 +1932,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1555661091785416838",
@@ -1853,7 +1951,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1555618899175669781",
@@ -1873,7 +1972,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1555618744653316129",
@@ -1892,7 +1992,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1555604847200440371",
@@ -1911,7 +2012,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1555603430851092490",
@@ -1930,7 +2032,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1555581233730420938",
@@ -1950,7 +2053,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1555567167204888698",
@@ -1968,7 +2072,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1555525131252539392",
@@ -1985,7 +2090,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1555520095344664719",
@@ -2004,7 +2110,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1555264680719810560",
@@ -2023,7 +2130,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1555233482899193896",
@@ -2043,7 +2151,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/topone",
       "firm_page": "/Firms/TopOne.html",
-      "logo": "/Photos/firms/topone.png"
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
     },
     {
       "id": "1555212348229292037",
@@ -2063,7 +2172,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1555197649437855866",
@@ -2083,7 +2193,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1555186163369648138",
@@ -2101,7 +2212,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
     },
     {
       "id": "1555149822728863768",
@@ -2119,7 +2231,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1555147111555792937",
@@ -2138,7 +2251,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/phidias",
       "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg"
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
     },
     {
       "id": "1554962902841167973",
@@ -2156,7 +2270,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1554905227851730987",
@@ -2174,7 +2289,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1554842196753125507",
@@ -2192,7 +2308,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1554751352427647080",
@@ -2212,7 +2329,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1554601159426183260",
@@ -2230,7 +2348,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1554592592115802235",
@@ -2250,7 +2369,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1554559829593563207",
@@ -2269,7 +2389,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/mffu",
       "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png"
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
     },
     {
       "id": "1554513416306302986",
@@ -2288,7 +2409,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1554481098069774377",
@@ -2306,7 +2428,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/tradeify",
       "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png"
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "cfd"
     },
     {
       "id": "1554206843537072129",
@@ -2324,7 +2447,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1554156818396217495",
@@ -2343,7 +2467,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1554148974892552235",
@@ -2361,7 +2486,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/fundednext",
       "firm_page": "/Firms/FundedNext.html",
-      "logo": "/Photos/firms/fundednext.png"
+      "logo": "/Photos/firms/fundednext.png",
+      "market": "futures"
     },
     {
       "id": "1554134035066785934",
@@ -2379,7 +2505,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1554118506864451631",
@@ -2397,7 +2524,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/iqcapital",
       "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg"
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
     },
     {
       "id": "1554116565652340767",
@@ -2416,7 +2544,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     },
     {
       "id": "1554101155280330782",
@@ -2434,7 +2563,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/alpha",
       "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png"
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
     },
     {
       "id": "1554034345751216240",
@@ -2454,7 +2584,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png"
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
     },
     {
       "id": "1553860078732574761",
@@ -2472,7 +2603,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1553828760455876691",
@@ -2491,7 +2623,8 @@
       "code": "BROTRADING",
       "link": "https://propfirmbro.com/go/lucid",
       "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png"
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
     },
     {
       "id": "1553742966793965670",
@@ -2510,7 +2643,8 @@
       "code": "BRO",
       "link": "https://propfirmbro.com/go/legendstrading",
       "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png"
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
     }
   ]
 }
