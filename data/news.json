@@ -1,7 +1,25 @@
 {
-  "generated_at": "2026-10-26T03:14:35.706557+00:00",
-  "count": 134,
+  "generated_at": "2026-10-26T04:24:25.639131+00:00",
+  "count": 135,
   "items": [
+    {
+      "id": "1564129527322378280",
+      "type": "news",
+      "firm": "Alpha Futures",
+      "date": "2026-10-26",
+      "title": "Alpha Futures Shares News Events for October 26-30, 2026",
+      "summary": "Alpha Futures has posted its list of news events for the week of October 26 to October 30, 2026. The post itself only announces the schedule and does not list specific events in the text. Traders who follow the firm can check its Discord for the full calendar.",
+      "highlights": [
+        "Alpha Futures posted a news events list for the current week",
+        "The covered week runs from October 26 to October 30, 2026"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/alpha",
+      "firm_page": "/Firms/AlphaFutures.html",
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
+    },
     {
       "id": "1564036094264348723",
       "type": "promo",
