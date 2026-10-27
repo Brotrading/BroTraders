@@ -658,9 +658,9 @@ body.signin::before { display: none; }
       var status = !c ? '<span class="badge wait"><i class="fa-regular fa-clock"></i> Not in the database yet</span>'
         : pending ? '<span class="badge wait"><i class="fa-solid fa-rotate"></i> Re-render pending</span>'
         : '<span class="badge good"><i class="fa-solid fa-circle-check"></i> Up to date</span>';
-      var name = p.path === "/News" ? "Promo & News" : "Compare";
+      var name = PAGE_NAMES[p.path] || p.path;
       return '<div class="panel page-card"><div class="panel-head"><h3><i class="fa-solid ' +
-        (p.path === "/News" ? "fa-tags" : "fa-scale-balanced") + '"></i> ' + name + '</h3><div class="right">' + status + "</div></div>" +
+        (PAGE_ICONS[p.path] || "fa-file") + '"></i> ' + name + '</h3><div class="right">' + status + "</div></div>" +
         '<div class="row"><span>Served from</span><span>' + (c ? "Database, copy #" + c.version_id : "Static file") + "</span></div>" +
         '<div class="row"><span>Last rendered</span><span>' + (c ? esc(ago(c.updated_at)) : "—") + "</span></div>" +
         '<div class="row"><span>Size</span><span>' + kb(c && c.bytes) + "</span></div>" +
@@ -976,11 +976,13 @@ body.signin::before { display: none; }
   }
 
   /* ---------- pages ---------- */
+  var PAGE_NAMES = { "/News": "Promo & News", "/CompareTopFirms/FastCompare": "Compare", "/": "Home page" };
+  var PAGE_ICONS = { "/News": "fa-tags", "/CompareTopFirms/FastCompare": "fa-scale-balanced", "/": "fa-house" };
   function viewPages() {
     var o = state.overview;
     $("#view-actions").innerHTML = '<button class="btn primary" data-act="render"><i class="fa-solid fa-rotate"></i> Re-render now</button>';
     $("#view").innerHTML = '<div class="grid2">' + o.pages.map(function (p) {
-      var name = p.path === "/News" ? "Promo & News" : "Compare";
+      var name = PAGE_NAMES[p.path] || p.path;
       var cur = p.current ? p.current.version_id : null;
       return '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-file-code"></i> ' + name +
         '</h3><div class="right"><a class="btn sm" href="' + p.path + '" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open</a></div></div>' +

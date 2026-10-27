@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T04:56:59.323508+00:00",
+ "generated_at": "2026-10-27T05:09:32.933151+00:00",
  "sizes": [
   "25K",
   "50K",
@@ -35,7 +35,7 @@
      },
      {
       "label": "Easiest rules",
-      "id": "takeprofittrader:proevaluation:25K",
+      "id": "fundednext:rapid:25K",
       "why": "Most forgiving drawdown, limits and targets for this size."
      },
      {
@@ -384,7 +384,7 @@
    "logo": "apex.png",
    "logo_bg": "#0b1120",
    "rating": 4.3,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "tradeify": {
    "key": "tradeify",
@@ -397,7 +397,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "myfundedfutures": {
    "key": "myfundedfutures",
@@ -410,7 +410,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "lucid_trading": {
    "key": "lucid_trading",
@@ -423,7 +423,7 @@
    "logo": "lucid.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "takeprofittrader": {
    "key": "takeprofittrader",
@@ -436,7 +436,7 @@
    "logo": "takeprofittrader.svg",
    "logo_bg": null,
    "rating": 4.4,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "legendstrading": {
    "key": "legendstrading",
@@ -449,7 +449,7 @@
    "logo": "legendstrading.png",
    "logo_bg": null,
    "rating": 3.5,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "daytraders": {
    "key": "daytraders",
@@ -462,7 +462,7 @@
    "logo": "daytraders.svg",
    "logo_bg": null,
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "phidias": {
    "key": "phidias",
@@ -475,7 +475,7 @@
    "logo": "phidias.jpeg",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "blusky": {
    "key": "blusky",
@@ -488,7 +488,7 @@
    "logo": "blusky.png",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "top_one_futures": {
    "key": "top_one_futures",
@@ -501,7 +501,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "alpha_futures": {
    "key": "alpha_futures",
@@ -514,7 +514,7 @@
    "logo": "alphafutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "iqcapital": {
    "key": "iqcapital",
@@ -527,7 +527,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "fundednext": {
    "key": "fundednext",
@@ -540,7 +540,7 @@
    "logo": "fundednext.png",
    "logo_bg": null,
    "rating": 4.5,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "iqcapital_cfd": {
    "key": "iqcapital_cfd",
@@ -553,7 +553,7 @@
    "logo": "iqcapital.svg",
    "logo_bg": null,
    "rating": 4.7,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "tradeify_fx": {
    "key": "tradeify_fx",
@@ -566,7 +566,7 @@
    "logo": "tradeify.png",
    "logo_bg": "#0b1120",
    "rating": 4.6,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "top_one_trader": {
    "key": "top_one_trader",
@@ -579,7 +579,7 @@
    "logo": "topone.png",
    "logo_bg": null,
    "rating": 4.8,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   },
   "myfundedperps": {
    "key": "myfundedperps",
@@ -592,7 +592,7 @@
    "logo": "myfundedfutures.png",
    "logo_bg": null,
    "rating": 4.9,
-   "checked_at": "2026-10-26T04:56:59.323508+00:00"
+   "checked_at": "2026-10-27T05:09:32.933151+00:00"
   }
  },
  "rows": [
@@ -622,7 +622,7 @@
    "consistency": 50.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 73,
+   "score": 76,
    "rules_score": 66,
    "data_complete": 100,
    "pros": [
@@ -632,88 +632,6 @@
    ],
    "cons": [
     "Intraday trailing drawdown: follows open profits",
-    "Activation fee $5 after you pass",
-    "Consistency rule: 50%"
-   ]
-  },
-  {
-   "id": "lucid_trading:flex:25K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Flex",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 65.0,
-   "price": 39.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 39.0,
-   "monthly_after": null,
-   "reset_fee": 45.0,
-   "funded_monthly_fee": null,
-   "profit_target": 1250.0,
-   "profit_target_2": null,
-   "max_drawdown": 1000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 600.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 71,
-   "rules_score": 56,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $600",
-    "Consistency rule: 50%"
-   ]
-  },
-  {
-   "id": "daytraders:static:25K",
-   "firm_key": "daytraders",
-   "market": "futures",
-   "plan": "Static",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 40.0,
-   "price": 40.0,
-   "promo": null,
-   "activation_fee": 5.0,
-   "activation_source": "website",
-   "cost_to_funded": 45.0,
-   "monthly_after": null,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 2500.0,
-   "profit_target_2": null,
-   "max_drawdown": 750.0,
-   "drawdown_type": "static",
-   "daily_loss_limit": 0.0,
-   "consistency": 50.0,
-   "payout_split": 100.0,
-   "min_days_to_payout": null,
-   "score": 68,
-   "rules_score": 46,
-   "data_complete": 100,
-   "pros": [
-    "Low cost to get funded: $45",
-    "Static drawdown: it never moves up",
-    "No daily loss limit",
-    "You keep 100% of profits"
-   ],
-   "cons": [
     "Activation fee $5 after you pass",
     "Consistency rule: 50%"
    ]
@@ -750,7 +668,7 @@
    "consistency": 0.0,
    "payout_split": 90.0,
    "min_days_to_payout": null,
-   "score": 68,
+   "score": 71,
    "rules_score": 59,
    "data_complete": 100,
    "pros": [
@@ -765,26 +683,26 @@
    ]
   },
   {
-   "id": "lucid_trading:daily:25K",
+   "id": "lucid_trading:flex:25K",
    "firm_key": "lucid_trading",
    "market": "futures",
-   "plan": "Daily",
+   "plan": "Flex",
    "size": "25K",
    "type": "eval",
    "steps": null,
    "billing": null,
-   "list_price": 86.0,
-   "price": 51.6,
+   "list_price": 65.0,
+   "price": 45.5,
    "promo": {
-    "pct": 40,
+    "pct": 30,
     "ends": null,
     "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
-   "cost_to_funded": 51.6,
+   "cost_to_funded": 45.5,
    "monthly_after": null,
-   "reset_fee": 60.0,
+   "reset_fee": 45.0,
    "funded_monthly_fee": null,
    "profit_target": 1250.0,
    "profit_target_2": null,
@@ -794,15 +712,55 @@
    "consistency": 50.0,
    "payout_split": null,
    "min_days_to_payout": null,
-   "score": 65,
+   "score": 70,
    "rules_score": 56,
    "data_complete": 90,
    "pros": [
-    "Promo now: 40% off",
+    "Promo now: 30% off",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
     "Daily loss limit $600",
+    "Consistency rule: 50%"
+   ]
+  },
+  {
+   "id": "daytraders:static:25K",
+   "firm_key": "daytraders",
+   "market": "futures",
+   "plan": "Static",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 40.0,
+   "price": 40.0,
+   "promo": null,
+   "activation_fee": 5.0,
+   "activation_source": "website",
+   "cost_to_funded": 45.0,
+   "monthly_after": null,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 2500.0,
+   "profit_target_2": null,
+   "max_drawdown": 750.0,
+   "drawdown_type": "static",
+   "daily_loss_limit": 0.0,
+   "consistency": 50.0,
+   "payout_split": 100.0,
+   "min_days_to_payout": null,
+   "score": 70,
+   "rules_score": 46,
+   "data_complete": 100,
+   "pros": [
+    "Low cost to get funded: $45",
+    "Static drawdown: it never moves up",
+    "No daily loss limit",
+    "You keep 100% of profits"
+   ],
+   "cons": [
+    "Activation fee $5 after you pass",
     "Consistency rule: 50%"
    ]
   },
@@ -836,7 +794,7 @@
    "consistency": 0.0,
    "payout_split": 90.0,
    "min_days_to_payout": null,
-   "score": 65,
+   "score": 67,
    "rules_score": 68,
    "data_complete": 100,
    "pros": [
@@ -879,10 +837,11 @@
    "consistency": 0.0,
    "payout_split": 90.0,
    "min_days_to_payout": 5.0,
-   "score": 64,
+   "score": 66,
    "rules_score": 59,
    "data_complete": 100,
    "pros": [
+    "Low cost to get funded: $69",
     "Promo now: 30% off until Oct 31",
     "End-of-day drawdown: intraday swings don't count",
     "No consistency rule while evaluating",
@@ -890,6 +849,48 @@
    ],
    "cons": [
     "Daily loss limit $600"
+   ]
+  },
+  {
+   "id": "lucid_trading:daily:25K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Daily",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 86.0,
+   "price": 60.2,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 60.2,
+   "monthly_after": null,
+   "reset_fee": 60.0,
+   "funded_monthly_fee": null,
+   "profit_target": 1250.0,
+   "profit_target_2": null,
+   "max_drawdown": 1000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 600.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 65,
+   "rules_score": 56,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $600",
+    "Consistency rule: 50%"
    ]
   },
   {
@@ -922,7 +923,7 @@
    "consistency": 0.0,
    "payout_split": 80.0,
    "min_days_to_payout": 2.0,
-   "score": 62,
+   "score": 64,
    "rules_score": 59,
    "data_complete": 100,
    "pros": [
@@ -964,7 +965,7 @@
    "consistency": 40.0,
    "payout_split": 90.0,
    "min_days_to_payout": null,
-   "score": 62,
+   "score": 64,
    "rules_score": 60,
    "data_complete": 92,
    "pros": [
@@ -1007,7 +1008,7 @@
    "consistency": 40.0,
    "payout_split": null,
    "min_days_to_payout": null,
-   "score": 61,
+   "score": 62,
    "rules_score": 61,
    "data_complete": 90,
    "pros": [
@@ -1017,47 +1018,6 @@
    ],
    "cons": [
     "Consistency rule: 40%"
-   ]
-  },
-  {
-   "id": "lucid_trading:pro:25K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Pro",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 108.0,
-   "price": 64.8,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 64.8,
-   "monthly_after": null,
-   "reset_fee": 75.0,
-   "funded_monthly_fee": null,
-   "profit_target": 1250.0,
-   "profit_target_2": null,
-   "max_drawdown": 1000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 600.0,
-   "consistency": null,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 61,
-   "rules_score": 56,
-   "data_complete": 83,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $600"
    ]
   },
   {
@@ -1090,7 +1050,7 @@
    "consistency": 50.0,
    "payout_split": 90.0,
    "min_days_to_payout": 1.0,
-   "score": 60,
+   "score": 62,
    "rules_score": 62,
    "data_complete": 100,
    "pros": [
@@ -1129,7 +1089,7 @@
    "consistency": 50.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 59,
+   "score": 61,
    "rules_score": 53,
    "data_complete": 100,
    "pros": [
@@ -1155,7 +1115,7 @@
    "price": 69.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -1172,16 +1132,58 @@
    "consistency": 30.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 58,
+   "score": 60,
    "rules_score": 43,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Low cost to get funded: $69",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
     "Intraday trailing drawdown: follows open profits",
     "Consistency rule: 30%"
+   ]
+  },
+  {
+   "id": "lucid_trading:pro:25K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Pro",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 108.0,
+   "price": 75.6,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 75.6,
+   "monthly_after": null,
+   "reset_fee": 75.0,
+   "funded_monthly_fee": null,
+   "profit_target": 1250.0,
+   "profit_target_2": null,
+   "max_drawdown": 1000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 600.0,
+   "consistency": null,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 60,
+   "rules_score": 56,
+   "data_complete": 83,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $600"
    ]
   },
   {
@@ -1214,7 +1216,7 @@
    "consistency": 30.0,
    "payout_split": 90.0,
    "min_days_to_payout": null,
-   "score": 58,
+   "score": 60,
    "rules_score": 65,
    "data_complete": 100,
    "pros": [
@@ -1258,7 +1260,7 @@
    "consistency": 30.0,
    "payout_split": null,
    "min_days_to_payout": null,
-   "score": 57,
+   "score": 59,
    "rules_score": 59,
    "data_complete": 90,
    "pros": [
@@ -1283,9 +1285,8 @@
    "price": 109.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
@@ -1301,11 +1302,11 @@
    "consistency": null,
    "payout_split": null,
    "min_days_to_payout": null,
-   "score": 55,
+   "score": 56,
    "rules_score": 62,
    "data_complete": 73,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "Instant funding: no evaluation to pass"
    ],
    "cons": [
@@ -1325,7 +1326,7 @@
    "price": 109.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -1342,17 +1343,59 @@
    "consistency": 30.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 53,
+   "score": 54,
    "rules_score": 51,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
    "cons": [
     "Daily loss limit $500",
     "Consistency rule: 30%"
+   ]
+  },
+  {
+   "id": "top_one_futures:elitedaily:25K",
+   "firm_key": "top_one_futures",
+   "market": "futures",
+   "plan": "Elite Daily",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 178.0,
+   "price": 89.0,
+   "promo": {
+    "pct": 50,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": 0.0,
+   "activation_source": "website",
+   "cost_to_funded": 89.0,
+   "monthly_after": null,
+   "reset_fee": 84.0,
+   "funded_monthly_fee": null,
+   "profit_target": 1500.0,
+   "profit_target_2": null,
+   "max_drawdown": 1000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 500.0,
+   "consistency": 40.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 54,
+   "rules_score": 52,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 50% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $500",
+    "Consistency rule: 40%"
    ]
   },
   {
@@ -1393,49 +1436,6 @@
    "cons": []
   },
   {
-   "id": "top_one_futures:elitedaily:25K",
-   "firm_key": "top_one_futures",
-   "market": "futures",
-   "plan": "Elite Daily",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 178.0,
-   "price": 89.0,
-   "promo": {
-    "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
-   },
-   "activation_fee": 0.0,
-   "activation_source": "website",
-   "cost_to_funded": 89.0,
-   "monthly_after": null,
-   "reset_fee": 84.0,
-   "funded_monthly_fee": null,
-   "profit_target": 1500.0,
-   "profit_target_2": null,
-   "max_drawdown": 1000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 500.0,
-   "consistency": 40.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 53,
-   "rules_score": 52,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 50% off until Oct 26",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $500",
-    "Consistency rule: 40%"
-   ]
-  },
-  {
    "id": "phidias:expresstolive:25K",
    "firm_key": "phidias",
    "market": "futures",
@@ -1466,7 +1466,7 @@
    "consistency": null,
    "payout_split": 80.0,
    "min_days_to_payout": null,
-   "score": 51,
+   "score": 53,
    "rules_score": 43,
    "data_complete": 85,
    "pros": [
@@ -1488,7 +1488,7 @@
    "price": 16.7,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 89.0,
@@ -1505,11 +1505,11 @@
    "consistency": 30.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 50,
+   "score": 51,
    "rules_score": 43,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -1548,7 +1548,7 @@
    "consistency": 0.0,
    "payout_split": null,
    "min_days_to_payout": null,
-   "score": 48,
+   "score": 49,
    "rules_score": 68,
    "data_complete": 90,
    "pros": [
@@ -1559,51 +1559,6 @@
    ],
    "cons": [
     "Activation fee $139 after you pass"
-   ]
-  },
-  {
-   "id": "takeprofittrader:proevaluation:25K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "25K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 150.0,
-   "price": 90.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 220.0,
-   "monthly_after": 150.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 1500.0,
-   "profit_target_2": null,
-   "max_drawdown": 1500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 0.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 47,
-   "rules_score": 75,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count",
-    "No daily loss limit"
-   ],
-   "cons": [
-    "Then $150/mo until you pass",
-    "Activation fee $130 after you pass"
    ]
   },
   {
@@ -1619,7 +1574,7 @@
    "price": 49.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 109.0,
@@ -1636,11 +1591,11 @@
    "consistency": 30.0,
    "payout_split": 100.0,
    "min_days_to_payout": null,
-   "score": 46,
+   "score": 47,
    "rules_score": 51,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -1775,6 +1730,51 @@
    "cons": []
   },
   {
+   "id": "takeprofittrader:proevaluation:25K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "25K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 150.0,
+   "price": 90.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 220.0,
+   "monthly_after": 150.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 1500.0,
+   "profit_target_2": null,
+   "max_drawdown": 1500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 500.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 42,
+   "rules_score": 67,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Then $150/mo until you pass",
+    "Activation fee $130 after you pass",
+    "Daily loss limit $500"
+   ]
+  },
+  {
    "id": "alpha_futures:direct:25K",
    "firm_key": "alpha_futures",
    "market": "futures",
@@ -1806,7 +1806,7 @@
    "consistency": 20.0,
    "payout_split": 90.0,
    "min_days_to_payout": null,
-   "score": 40,
+   "score": 41,
    "rules_score": 49,
    "data_complete": 100,
    "pros": [
@@ -1961,7 +1961,7 @@
    "price": 49.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -1983,7 +1983,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $49",
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -2120,90 +2120,6 @@
    ],
    "cons": [
     "Daily loss limit $1,250"
-   ]
-  },
-  {
-   "id": "lucid_trading:flex:50K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Flex",
-   "size": "50K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 115.0,
-   "price": 69.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 69.0,
-   "monthly_after": null,
-   "reset_fee": 80.0,
-   "funded_monthly_fee": null,
-   "profit_target": 3000.0,
-   "profit_target_2": null,
-   "max_drawdown": 2000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1200.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 62,
-   "rules_score": 49,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,200",
-    "Consistency rule: 50%"
-   ]
-  },
-  {
-   "id": "lucid_trading:daily:50K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Daily",
-   "size": "50K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 122.0,
-   "price": 73.2,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 73.2,
-   "monthly_after": null,
-   "reset_fee": 85.0,
-   "funded_monthly_fee": null,
-   "profit_target": 3000.0,
-   "profit_target_2": null,
-   "max_drawdown": 2000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1200.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 61,
-   "rules_score": 49,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,200",
-    "Consistency rule: 50%"
    ]
   },
   {
@@ -2418,6 +2334,48 @@
    ]
   },
   {
+   "id": "lucid_trading:flex:50K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Flex",
+   "size": "50K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 115.0,
+   "price": 80.5,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 80.5,
+   "monthly_after": null,
+   "reset_fee": 80.0,
+   "funded_monthly_fee": null,
+   "profit_target": 3000.0,
+   "profit_target_2": null,
+   "max_drawdown": 2000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1200.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 60,
+   "rules_score": 49,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,200",
+    "Consistency rule: 50%"
+   ]
+  },
+  {
    "id": "iqcapital:corepositionloss:50K",
    "firm_key": "iqcapital",
    "market": "futures",
@@ -2590,6 +2548,48 @@
    ]
   },
   {
+   "id": "lucid_trading:daily:50K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Daily",
+   "size": "50K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 122.0,
+   "price": 85.4,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 85.4,
+   "monthly_after": null,
+   "reset_fee": 85.0,
+   "funded_monthly_fee": null,
+   "profit_target": 3000.0,
+   "profit_target_2": null,
+   "max_drawdown": 2000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1200.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 59,
+   "rules_score": 49,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,200",
+    "Consistency rule: 50%"
+   ]
+  },
+  {
    "id": "iqcapital:instantpositionloss:50K",
    "firm_key": "iqcapital",
    "market": "futures",
@@ -2645,7 +2645,7 @@
    "price": 119.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -2666,7 +2666,7 @@
    "rules_score": 46,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -2753,47 +2753,6 @@
    ],
    "cons": [
     "Some rules not published yet: check the firm's page"
-   ]
-  },
-  {
-   "id": "lucid_trading:pro:50K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Pro",
-   "size": "50K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 172.0,
-   "price": 103.2,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 103.2,
-   "monthly_after": null,
-   "reset_fee": 120.0,
-   "funded_monthly_fee": null,
-   "profit_target": 3000.0,
-   "profit_target_2": null,
-   "max_drawdown": 2000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1200.0,
-   "consistency": null,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 57,
-   "rules_score": 49,
-   "data_complete": 83,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,200"
    ]
   },
   {
@@ -3057,9 +3016,8 @@
    "price": 109.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -3079,7 +3037,7 @@
    "rules_score": 48,
    "data_complete": 90,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
@@ -3100,9 +3058,8 @@
    "price": 199.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
@@ -3122,7 +3079,7 @@
    "rules_score": 62,
    "data_complete": 73,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "Instant funding: no evaluation to pass"
    ],
    "cons": [
@@ -3260,6 +3217,47 @@
    ]
   },
   {
+   "id": "lucid_trading:pro:50K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Pro",
+   "size": "50K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 172.0,
+   "price": 120.4,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 120.4,
+   "monthly_after": null,
+   "reset_fee": 120.0,
+   "funded_monthly_fee": null,
+   "profit_target": 3000.0,
+   "profit_target_2": null,
+   "max_drawdown": 2000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1200.0,
+   "consistency": null,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 54,
+   "rules_score": 49,
+   "data_complete": 83,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,200"
+   ]
+  },
+  {
    "id": "legendstrading:apprentice:50K",
    "firm_key": "legendstrading",
    "market": "futures",
@@ -3359,7 +3357,7 @@
    "price": 24.9,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 99.0,
@@ -3380,7 +3378,7 @@
    "rules_score": 39,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -3402,7 +3400,7 @@
    "price": 59.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 129.0,
@@ -3423,7 +3421,7 @@
    "rules_score": 46,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -3650,51 +3648,6 @@
    ]
   },
   {
-   "id": "takeprofittrader:proevaluation:50K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "50K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 170.0,
-   "price": 102.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 232.0,
-   "monthly_after": 170.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 3000.0,
-   "profit_target_2": null,
-   "max_drawdown": 2000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 0.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 48,
-   "rules_score": 58,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count",
-    "No daily loss limit"
-   ],
-   "cons": [
-    "Then $170/mo until you pass",
-    "Activation fee $130 after you pass"
-   ]
-  },
-  {
    "id": "daytraders:coreliveplans2l:50K",
    "firm_key": "daytraders",
    "market": "futures",
@@ -3730,6 +3683,51 @@
     "Intraday trailing drawdown: follows open profits",
     "Daily loss limit $1,000",
     "Consistency rule: 25%"
+   ]
+  },
+  {
+   "id": "takeprofittrader:proevaluation:50K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "50K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 170.0,
+   "price": 102.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 232.0,
+   "monthly_after": 170.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 3000.0,
+   "profit_target_2": null,
+   "max_drawdown": 2000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1100.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 44,
+   "rules_score": 49,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Then $170/mo until you pass",
+    "Activation fee $130 after you pass",
+    "Daily loss limit $1,100"
    ]
   },
   {
@@ -3866,7 +3864,7 @@
    "price": 59.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -3888,7 +3886,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $59",
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -4117,48 +4115,6 @@
    ]
   },
   {
-   "id": "lucid_trading:daily:100K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Daily",
-   "size": "100K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 200.0,
-   "price": 120.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 120.0,
-   "monthly_after": null,
-   "reset_fee": 140.0,
-   "funded_monthly_fee": null,
-   "profit_target": 6000.0,
-   "profit_target_2": null,
-   "max_drawdown": 3000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1800.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 56,
-   "rules_score": 47,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,800",
-    "Consistency rule: 50%"
-   ]
-  },
-  {
    "id": "blusky:propelpremium:100K",
    "firm_key": "blusky",
    "market": "futures",
@@ -4262,7 +4218,7 @@
    "price": 159.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -4284,55 +4240,13 @@
    "data_complete": 100,
    "pros": [
     "Low cost to get funded: $159",
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
    "cons": [
     "Daily loss limit $1,500",
     "Consistency rule: 30%"
-   ]
-  },
-  {
-   "id": "lucid_trading:flex:100K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Flex",
-   "size": "100K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 215.0,
-   "price": 129.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 129.0,
-   "monthly_after": null,
-   "reset_fee": 150.0,
-   "funded_monthly_fee": null,
-   "profit_target": 6000.0,
-   "profit_target_2": null,
-   "max_drawdown": 3000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1800.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 55,
-   "rules_score": 47,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,800",
-    "Consistency rule: 50%"
    ]
   },
   {
@@ -4459,6 +4373,48 @@
     "You keep 90% of profits"
    ],
    "cons": [
+    "Consistency rule: 50%"
+   ]
+  },
+  {
+   "id": "lucid_trading:daily:100K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Daily",
+   "size": "100K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 200.0,
+   "price": 140.0,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 140.0,
+   "monthly_after": null,
+   "reset_fee": 140.0,
+   "funded_monthly_fee": null,
+   "profit_target": 6000.0,
+   "profit_target_2": null,
+   "max_drawdown": 3000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1800.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 54,
+   "rules_score": 47,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,800",
     "Consistency rule: 50%"
    ]
   },
@@ -4593,6 +4549,48 @@
    ]
   },
   {
+   "id": "lucid_trading:flex:100K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Flex",
+   "size": "100K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 215.0,
+   "price": 150.5,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 150.5,
+   "monthly_after": null,
+   "reset_fee": 150.0,
+   "funded_monthly_fee": null,
+   "profit_target": 6000.0,
+   "profit_target_2": null,
+   "max_drawdown": 3000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1800.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 53,
+   "rules_score": 47,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,800",
+    "Consistency rule: 50%"
+   ]
+  },
+  {
    "id": "blusky:launch:100K",
    "firm_key": "blusky",
    "market": "futures",
@@ -4709,47 +4707,6 @@
    "cons": []
   },
   {
-   "id": "lucid_trading:pro:100K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Pro",
-   "size": "100K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 272.0,
-   "price": 163.2,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 163.2,
-   "monthly_after": null,
-   "reset_fee": 190.0,
-   "funded_monthly_fee": null,
-   "profit_target": 6000.0,
-   "profit_target_2": null,
-   "max_drawdown": 3000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 1800.0,
-   "consistency": null,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 51,
-   "rules_score": 47,
-   "data_complete": 83,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $1,800"
-   ]
-  },
-  {
    "id": "top_one_futures:eliteaccess:100K",
    "firm_key": "top_one_futures",
    "market": "futures",
@@ -4805,9 +4762,8 @@
    "price": 282.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
@@ -4827,7 +4783,7 @@
    "rules_score": 60,
    "data_complete": 73,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "Instant funding: no evaluation to pass"
    ],
    "cons": [
@@ -4847,7 +4803,7 @@
    "price": 119.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 139.0,
@@ -4868,7 +4824,7 @@
    "rules_score": 44,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -4918,6 +4874,47 @@
    ],
    "cons": [
     "Consistency rule: 50%"
+   ]
+  },
+  {
+   "id": "lucid_trading:pro:100K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Pro",
+   "size": "100K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 272.0,
+   "price": 190.4,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 190.4,
+   "monthly_after": null,
+   "reset_fee": 190.0,
+   "funded_monthly_fee": null,
+   "profit_target": 6000.0,
+   "profit_target_2": null,
+   "max_drawdown": 3000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 1800.0,
+   "consistency": null,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 49,
+   "rules_score": 47,
+   "data_complete": 83,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $1,800"
    ]
   },
   {
@@ -5190,9 +5187,8 @@
    "price": 199.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -5212,7 +5208,7 @@
    "rules_score": 46,
    "data_complete": 90,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
@@ -5275,7 +5271,7 @@
    "price": 79.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 129.0,
@@ -5296,7 +5292,7 @@
    "rules_score": 37,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -5393,51 +5389,6 @@
    ]
   },
   {
-   "id": "takeprofittrader:proevaluation:100K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "100K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 330.0,
-   "price": 198.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 328.0,
-   "monthly_after": 330.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 6000.0,
-   "profit_target_2": null,
-   "max_drawdown": 3000.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 0.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 45,
-   "rules_score": 56,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count",
-    "No daily loss limit"
-   ],
-   "cons": [
-    "Then $330/mo until you pass",
-    "Activation fee $130 after you pass"
-   ]
-  },
-  {
    "id": "iqcapital:instantdailyloss:100K",
    "firm_key": "iqcapital",
    "market": "futures",
@@ -5480,6 +5431,51 @@
    ],
    "cons": [
     "Daily loss limit $1,500"
+   ]
+  },
+  {
+   "id": "takeprofittrader:proevaluation:100K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "100K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 330.0,
+   "price": 198.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 328.0,
+   "monthly_after": 330.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 6000.0,
+   "profit_target_2": null,
+   "max_drawdown": 3000.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 2200.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 40,
+   "rules_score": 47,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Then $330/mo until you pass",
+    "Activation fee $130 after you pass",
+    "Daily loss limit $2,200"
    ]
   },
   {
@@ -5695,48 +5691,6 @@
    ],
    "cons": [
     "Then $349/mo until you pass",
-    "Consistency rule: 50%"
-   ]
-  },
-  {
-   "id": "lucid_trading:daily:150K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Daily",
-   "size": "150K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 286.0,
-   "price": 171.6,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 171.6,
-   "monthly_after": null,
-   "reset_fee": 200.0,
-   "funded_monthly_fee": null,
-   "profit_target": 9000.0,
-   "profit_target_2": null,
-   "max_drawdown": 4500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 2700.0,
-   "consistency": 50.0,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 59,
-   "rules_score": 54,
-   "data_complete": 90,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $2,700",
     "Consistency rule: 50%"
    ]
   },
@@ -6033,26 +5987,26 @@
    ]
   },
   {
-   "id": "lucid_trading:flex:150K",
+   "id": "lucid_trading:daily:150K",
    "firm_key": "lucid_trading",
    "market": "futures",
-   "plan": "Flex",
+   "plan": "Daily",
    "size": "150K",
    "type": "eval",
    "steps": null,
    "billing": null,
-   "list_price": 323.0,
-   "price": 193.8,
+   "list_price": 286.0,
+   "price": 200.2,
    "promo": {
-    "pct": 40,
+    "pct": 30,
     "ends": null,
     "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
-   "cost_to_funded": 193.8,
+   "cost_to_funded": 200.2,
    "monthly_after": null,
-   "reset_fee": 225.0,
+   "reset_fee": 200.0,
    "funded_monthly_fee": null,
    "profit_target": 9000.0,
    "profit_target_2": null,
@@ -6066,7 +6020,7 @@
    "rules_score": 54,
    "data_complete": 90,
    "pros": [
-    "Promo now: 40% off",
+    "Promo now: 30% off",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
@@ -6133,7 +6087,7 @@
    "price": 189.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -6155,7 +6109,7 @@
    "data_complete": 92,
    "pros": [
     "Low cost to get funded: $189",
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
@@ -6219,7 +6173,7 @@
    "price": 249.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 0.0,
@@ -6240,7 +6194,7 @@
    "rules_score": 49,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -6292,47 +6246,6 @@
    ]
   },
   {
-   "id": "lucid_trading:pro:150K",
-   "firm_key": "lucid_trading",
-   "market": "futures",
-   "plan": "Pro",
-   "size": "150K",
-   "type": "eval",
-   "steps": null,
-   "billing": null,
-   "list_price": 365.0,
-   "price": 219.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website"
-   },
-   "activation_fee": null,
-   "activation_source": null,
-   "cost_to_funded": 219.0,
-   "monthly_after": null,
-   "reset_fee": 255.0,
-   "funded_monthly_fee": null,
-   "profit_target": 9000.0,
-   "profit_target_2": null,
-   "max_drawdown": 4500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 2700.0,
-   "consistency": null,
-   "payout_split": null,
-   "min_days_to_payout": null,
-   "score": 54,
-   "rules_score": 54,
-   "data_complete": 83,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count"
-   ],
-   "cons": [
-    "Daily loss limit $2,700"
-   ]
-  },
-  {
    "id": "phidias:expresstolive:150K",
    "firm_key": "phidias",
    "market": "futures",
@@ -6375,6 +6288,48 @@
    ]
   },
   {
+   "id": "lucid_trading:flex:150K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Flex",
+   "size": "150K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 323.0,
+   "price": 226.1,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 226.1,
+   "monthly_after": null,
+   "reset_fee": 225.0,
+   "funded_monthly_fee": null,
+   "profit_target": 9000.0,
+   "profit_target_2": null,
+   "max_drawdown": 4500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 2700.0,
+   "consistency": 50.0,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 53,
+   "rules_score": 54,
+   "data_complete": 90,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $2,700",
+    "Consistency rule: 50%"
+   ]
+  },
+  {
    "id": "phidias:premium:150K",
    "firm_key": "phidias",
    "market": "futures",
@@ -6409,11 +6364,53 @@
    "rules_score": 57,
    "data_complete": 55,
    "pros": [
+    "Low cost to get funded: $224.60",
     "Promo now: 80% off until Nov 1",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
     "Some rules not published yet: check the firm's page"
+   ]
+  },
+  {
+   "id": "lucid_trading:pro:150K",
+   "firm_key": "lucid_trading",
+   "market": "futures",
+   "plan": "Pro",
+   "size": "150K",
+   "type": "eval",
+   "steps": null,
+   "billing": null,
+   "list_price": 365.0,
+   "price": 255.5,
+   "promo": {
+    "pct": 30,
+    "ends": null,
+    "source": "website"
+   },
+   "activation_fee": null,
+   "activation_source": null,
+   "cost_to_funded": 255.5,
+   "monthly_after": null,
+   "reset_fee": 255.0,
+   "funded_monthly_fee": null,
+   "profit_target": 9000.0,
+   "profit_target_2": null,
+   "max_drawdown": 4500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 2700.0,
+   "consistency": null,
+   "payout_split": null,
+   "min_days_to_payout": null,
+   "score": 51,
+   "rules_score": 54,
+   "data_complete": 83,
+   "pros": [
+    "Promo now: 30% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Daily loss limit $2,700"
    ]
   },
   {
@@ -6510,9 +6507,8 @@
    "price": 400.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": null,
    "activation_source": null,
@@ -6532,7 +6528,7 @@
    "rules_score": 68,
    "data_complete": 73,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "Instant funding: no evaluation to pass"
    ],
    "cons": [
@@ -6636,9 +6632,8 @@
    "price": 275.0,
    "promo": {
     "pct": 50,
-    "ends": "2026-10-26",
-    "source": "website+discord",
-    "any_code": false
+    "ends": null,
+    "source": "website"
    },
    "activation_fee": 0.0,
    "activation_source": "website",
@@ -6658,7 +6653,7 @@
    "rules_score": 53,
    "data_complete": 90,
    "pros": [
-    "Promo now: 50% off until Oct 26",
+    "Promo now: 50% off",
     "End-of-day drawdown: intraday swings don't count"
    ],
    "cons": [
@@ -6764,7 +6759,7 @@
    "price": 119.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 149.0,
@@ -6785,58 +6780,13 @@
    "rules_score": 42,
    "data_complete": 92,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "You keep 100% of profits"
    ],
    "cons": [
     "Intraday trailing drawdown: follows open profits",
     "Activation fee $149 after you pass",
     "Consistency rule: 30%"
-   ]
-  },
-  {
-   "id": "takeprofittrader:proevaluation:150K",
-   "firm_key": "takeprofittrader",
-   "market": "futures",
-   "plan": "PRO Evaluation",
-   "size": "150K",
-   "type": "eval",
-   "steps": null,
-   "billing": "monthly",
-   "list_price": 360.0,
-   "price": 216.0,
-   "promo": {
-    "pct": 40,
-    "ends": null,
-    "source": "website+email",
-    "any_code": false,
-    "estimated": true
-   },
-   "activation_fee": 130.0,
-   "activation_source": "website",
-   "cost_to_funded": 346.0,
-   "monthly_after": 360.0,
-   "reset_fee": null,
-   "funded_monthly_fee": null,
-   "profit_target": 9000.0,
-   "profit_target_2": null,
-   "max_drawdown": 4500.0,
-   "drawdown_type": "eod",
-   "daily_loss_limit": 0.0,
-   "consistency": null,
-   "payout_split": 80.0,
-   "min_days_to_payout": 3.0,
-   "score": 48,
-   "rules_score": 63,
-   "data_complete": 93,
-   "pros": [
-    "Promo now: 40% off",
-    "End-of-day drawdown: intraday swings don't count",
-    "No daily loss limit"
-   ],
-   "cons": [
-    "Then $360/mo until you pass",
-    "Activation fee $130 after you pass"
    ]
   },
   {
@@ -6932,7 +6882,7 @@
    "price": 219.0,
    "promo": {
     "pct": 90,
-    "ends": "2026-10-26 23:59",
+    "ends": "2026-10-28 23:59",
     "source": "website"
    },
    "activation_fee": 159.0,
@@ -6953,7 +6903,7 @@
    "rules_score": 49,
    "data_complete": 100,
    "pros": [
-    "Promo now: 90% off until Oct 26",
+    "Promo now: 90% off until Oct 28",
     "End-of-day drawdown: intraday swings don't count",
     "You keep 100% of profits"
    ],
@@ -6961,6 +6911,51 @@
     "Activation fee $159 after you pass",
     "Daily loss limit $2,000",
     "Consistency rule: 30%"
+   ]
+  },
+  {
+   "id": "takeprofittrader:proevaluation:150K",
+   "firm_key": "takeprofittrader",
+   "market": "futures",
+   "plan": "PRO Evaluation",
+   "size": "150K",
+   "type": "eval",
+   "steps": null,
+   "billing": "monthly",
+   "list_price": 360.0,
+   "price": 216.0,
+   "promo": {
+    "pct": 40,
+    "ends": null,
+    "source": "website+email",
+    "any_code": false,
+    "estimated": true
+   },
+   "activation_fee": 130.0,
+   "activation_source": "website",
+   "cost_to_funded": 346.0,
+   "monthly_after": 360.0,
+   "reset_fee": null,
+   "funded_monthly_fee": null,
+   "profit_target": 9000.0,
+   "profit_target_2": null,
+   "max_drawdown": 4500.0,
+   "drawdown_type": "eod",
+   "daily_loss_limit": 3300.0,
+   "consistency": null,
+   "payout_split": 80.0,
+   "min_days_to_payout": 3.0,
+   "score": 43,
+   "rules_score": 54,
+   "data_complete": 93,
+   "pros": [
+    "Promo now: 40% off",
+    "End-of-day drawdown: intraday swings don't count"
+   ],
+   "cons": [
+    "Then $360/mo until you pass",
+    "Activation fee $130 after you pass",
+    "Daily loss limit $3,300"
    ]
   },
   {
@@ -9707,7 +9702,7 @@
    },
    {
     "label": "Easiest rules",
-    "id": "takeprofittrader:proevaluation:25K",
+    "id": "fundednext:rapid:25K",
     "why": "Most forgiving drawdown, limits and targets for this size."
    },
    {
