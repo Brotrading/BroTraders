@@ -1,7 +1,634 @@
 {
-  "generated_at": "2026-10-27T05:09:30.024899+00:00",
-  "count": 135,
+  "generated_at": "2026-10-31T13:04:31.272316+00:00",
+  "count": 143,
   "items": [
+    {
+      "id": "1565860299691532380",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-30",
+      "title": "BluSky Trading wishes its traders a happy Halloween weekend",
+      "summary": "BluSky Trading posted a friendly weekend message to its community ahead of Halloween. The firm encouraged traders to rest, recharge, and return to the charts on Monday. No sale, offer, or giveaway was mentioned.",
+      "highlights": [
+        "Halloween is the day after the post was published",
+        "Traders are encouraged to enjoy the weekend and recharge",
+        "The firm plans to see traders back on the charts Monday"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565791268385062913",
+      "type": "news",
+      "firm": "My Funded Futures",
+      "date": "2026-10-30",
+      "title": "My Funded Futures announces Tradovate maintenance window on October 30, 2026",
+      "summary": "My Funded Futures says Tradovate will undergo scheduled maintenance on the evening of October 30, 2026. During the window, some services will be temporarily delayed or unavailable, including account purchases. The firm thanks traders for their patience.",
+      "highlights": [
+        "Maintenance runs October 30, 2026 from 6 pm est to 8 pm est",
+        "Some services will be temporarily delayed or unavailable",
+        "Account purchases are included in the affected services"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/mffu",
+      "firm_page": "/Firms/MyFundedFuture.html",
+      "logo": "/Photos/firms/myfundedfutures.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565765184671195307",
+      "type": "news",
+      "firm": "Tradeify",
+      "date": "2026-10-30",
+      "title": "Tradeify PTL tickets are live for the December 11 event in Fort Lauderdale",
+      "summary": "Tradeify has opened ticket sales for the Premier Trading League, which will be held live at War Memorial Auditorium in Fort Lauderdale, FL. The top 8 traders from Open 1 and Open 2 compete for a share of $400k, while the top 8 Creator League creators compete for a $250k prize pool. An early bird special gives 50% off tickets, applied at checkout, but the post warns that the deal will not last forever.",
+      "highlights": [
+        "Event date: December 11th, 2026 at War Memorial Auditorium, Fort Lauderdale, FL",
+        "Top 8 traders from Open 1 and Open 2 compete for a share of $400k",
+        "Top 8 Creator League creators compete for a $250k prize pool",
+        "Early bird special: 50% off tickets, applied at checkout",
+        "Every purchase includes Paper Packs, and 2 Mini Grand Cups are up for grabs for everyone in attendance"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/tradeify",
+      "firm_page": "/Firms/TradeifyTrader.html",
+      "logo": "/Photos/firms/tradeify.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565761495818838096",
+      "type": "promo",
+      "firm": "Legends Trading",
+      "date": "2026-10-30",
+      "title": "Legends Trading extends Banked Reset discounts until Sunday midnight ET",
+      "summary": "Legends Trading has extended its Banked Reset offer, so traders can still pick up a reset at a discount for a few more days. Apprentice and Elite Banked Resets are both reduced in price during this window. Use code BRO at checkout to get the savings.",
+      "highlights": [
+        "50% off Apprentice Banked Resets",
+        "40% off Elite Banked Resets",
+        "Banked Resets can only be used on accounts that are eligible for a reset"
+      ],
+      "ends": "Sunday at midnight ET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565748565223936261",
+      "type": "news",
+      "firm": "Daytraders.com",
+      "date": "2026-10-30",
+      "title": "Daytraders.com says Rithmic outage accounts have been fixed, profits kept",
+      "summary": "Daytraders.com reports that Rithmic has repaired all accounts hit by the recent outage within the confirmed time window. Traders keep their profits, and anyone with questions should contact the help desk through the website rather than Discord, since Discord mods cannot access accounts.",
+      "highlights": [
+        "All negatively impacted accounts were fixed by Rithmic within the confirmed time window",
+        "Profits remain on affected accounts",
+        "Account questions should go to the help desk on the website",
+        "Discord mods have no account access and only share public information"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/daytraders",
+      "firm_page": "/Firms/DayTraders.html",
+      "logo": "/Photos/firms/daytraders.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1565729523004088351",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-30",
+      "title": "IQ Capital runs 3+1 deal on all Challenges and Instant Funding accounts",
+      "summary": "IQ Capital is running a limited promotion where buying three Challenges or Instant Funding accounts in one checkout adds a fourth for free. The firm also offers a full refund after your first payout, which covers the purchase fee of paid accounts but not the activation fee. The $200K Trading Competition runs until November 25.",
+      "highlights": [
+        "3 + 1 applies to all Challenges and Instant Funding accounts",
+        "Buy three accounts in one checkout and the fourth is added free",
+        "Full refund after your first payout covers the purchase fee of paid accounts, not the activation fee",
+        "The $200K Trading Competition runs until Nov 25"
+      ],
+      "ends": "Saturday, 11:59 PM CET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1565711311914926240",
+      "type": "news",
+      "firm": "Lucid Trading",
+      "date": "2026-10-30",
+      "title": "Lucid Trading hosts a spooky live market open with Halloween-themed visuals",
+      "summary": "Lucid Trading's team is dressed up in gruesome costumes for a live stream covering the market open. The post promises Rick or Treat candy and more cursed visuals during the broadcast. It is a fun event notice rather than a sale or offer.",
+      "highlights": [
+        "The Lucid Trading team is dressed up and looking more gruesome than usual",
+        "The live stream covers market open with Rick or Treat candy and more cursed visuals",
+        "The post mentions a microphone issue still being fixed for AJ"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/lucid",
+      "firm_page": "/Firms/Lucid Trading.html",
+      "logo": "/Photos/firms/lucid.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565409583554371627",
+      "type": "news",
+      "firm": "Legends Trading",
+      "date": "2026-10-29",
+      "title": "Legends Trading runs a community poll on its first game pick",
+      "summary": "Legends Trading asked its Discord community which game to play first. Poker came out on top as the winning answer. The post does not mention any sale, offer, or discount code.",
+      "highlights": [
+        "The poll question was: What game should we play first?",
+        "Poker was the winning answer with 99 votes.",
+        "The poll received 153 votes in total."
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565399413000765522",
+      "type": "promo",
+      "firm": "Legends Trading",
+      "date": "2026-10-29",
+      "title": "Legends Trading takes 40% off Apprentice and 35% off Elite this Halloween",
+      "summary": "Legends Trading is running a Halloween promotion with 40% off Apprentice and 35% off Elite challenges, and each purchase comes with a free reset. Buy before 11:59 PM EST on Friday to get a free Banked Reset, and buying several accounts in one cart gives one free reset on your highest-priced account. Use code BRO at checkout.",
+      "highlights": [
+        "40% off Apprentice and 35% off Elite",
+        "Apprentice renewals billed at 25% off the regular price",
+        "Free Banked Reset when you buy before 11:59 PM EST on Friday",
+        "One free reset added to highest-priced account for multiple accounts in the same cart",
+        "50% off Banked Resets until the end of the week"
+      ],
+      "ends": "11:59 PM EST on Friday",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565383688911585494",
+      "type": "news",
+      "firm": "Alpha Futures",
+      "date": "2026-10-29",
+      "title": "Alpha Futures launches new LATAM community channels in Discord",
+      "summary": "Alpha Futures has opened new LATAM channels in its Discord server. Traders can unlock them by picking the matching LATAM role in the server's roles section. The firm says the channels are meant to help LATAM members connect in their own language.",
+      "highlights": [
+        "New LATAM channels are now live in the Alpha Futures Discord",
+        "Access requires selecting the relevant LATAM role in the roles section",
+        "The channels are designed for community members to connect in their language"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/alpha",
+      "firm_page": "/Firms/AlphaFutures.html",
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565366193131487412",
+      "type": "promo",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-29",
+      "title": "Phidias PropFirm cuts first 50K Fundamental month to $16.40 this week",
+      "summary": "Phidias PropFirm is running a promotion on its Fundamental evaluations, with 50K dropping from $164 to $16.40, 100K from $273 to $27.30, and 150K from $420 to $42. The post also highlights a trader who ran five 50K Fundamental accounts and reached a first LIVE payout of $10,606. Express to Live evaluations are 50% off and one-time payment accounts are 80% off, with the 25K Express to Live at 75% off. Use code BROTRADING at checkout.",
+      "highlights": [
+        "50K Fundamental first month: $16.40 (was $164)",
+        "100K Fundamental first month: $27.30 (was $273)",
+        "150K Fundamental first month: $42 (was $420)",
+        "Express to Live evaluations 50% off; one-time payment accounts 80% off (75% on the 25K Express to Live)"
+      ],
+      "ends": "Sunday 5:00 PM ET",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
+    },
+    {
+      "id": "1565339026238480414",
+      "type": "news",
+      "firm": "Alpha Futures",
+      "date": "2026-10-29",
+      "title": "Alpha Futures Seeks Feedback on Options Course, Two $50k Account Giveaway",
+      "summary": "Alpha Futures is considering an options trading course for its community and wants input on what traders would like to learn. A short survey asks about topics, useful tools and support, and preferred delivery format, and it should take around 5 minutes. Two participants will win a $50k account as a thank you.",
+      "highlights": [
+        "Alpha Futures is developing an options trading course for futures traders",
+        "The survey asks about wanted topics, helpful tools and support, and preferred course delivery",
+        "The survey should take around 5 minutes",
+        "2 lucky participants will win a $50k account"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/alpha",
+      "firm_page": "/Firms/AlphaFutures.html",
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565106222703583303",
+      "type": "news",
+      "firm": "Daytraders.com",
+      "date": "2026-10-28",
+      "title": "Daytraders.com says Rithmic confirmed its trading issue is resolved",
+      "summary": "Daytraders.com reports that Rithmic has confirmed a reported issue is fixed. The firm is still asking traders to hold off on trading any affected accounts until its team sends an update.",
+      "highlights": [
+        "Rithmic has confirmed the issue has been resolved",
+        "Affected accounts should not be traded until Daytraders.com contacts traders with updates"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/daytraders",
+      "firm_page": "/Firms/DayTraders.html",
+      "logo": "/Photos/firms/daytraders.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1565085751522230278",
+      "type": "news",
+      "firm": "Legends Trading",
+      "date": "2026-10-28",
+      "title": "Legends Trading asks community to vote on Discord game nights",
+      "summary": "Legends Trading is planning community game nights in its Discord and wants members to vote on which games to play first. A poll will be used to narrow down the options before the first event is announced. Suggested games include COD, Poker, Apex Legends, Among Us, Fortnite, ARC Raiders, Halo, Need for Speed and Forza Horizon.",
+      "highlights": [
+        "Game nights will be hosted in the Legends Discord soon",
+        "A poll will decide which games are played",
+        "Among the ideas is COD night where the player with the most staff eliminations wins a prize",
+        "The firm will announce the first event once the games are narrowed down"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565081922961543240",
+      "type": "promo",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-28",
+      "title": "Phidias PropFirm offers 90% off first month on Premium and Fundamental evaluations",
+      "summary": "Phidias PropFirm is running a promotion with 90% off the first month of its Premium and Fundamental evaluations. The Fundamental 50K drops to $16.40 from $164, and the Premium 50K drops to $32.90 from $329. Use code BROTRADING at checkout.",
+      "highlights": [
+        "90% off your first month on Premium and Fundamental evaluations",
+        "Fundamental 50K priced at $16.40, down from $164",
+        "Premium 50K priced at $32.90, down from $329"
+      ],
+      "ends": "Sunday 5:00 PM ET",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
+    },
+    {
+      "id": "1565079964741804057",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-28",
+      "title": "BluSky Trading urges traders to halt trading over Rithmic data issue",
+      "summary": "BluSky Trading says several traders have reported a problem with Rithmic data. The firm is asking traders to stop trading until it confirms the issue is fixed.",
+      "highlights": [
+        "Multiple reports of an issue with Rithmic Data",
+        "BluSky strongly urges traders to halt trading until the issue is confirmed resolved"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565079713653719053",
+      "type": "news",
+      "firm": "Daytraders.com",
+      "date": "2026-10-28",
+      "title": "Daytraders.com Warns Traders to Pause Trading Amid Rithmic Issues",
+      "summary": "Daytraders.com says Rithmic is having problems that affect several prop firms, including its own. The firm asks traders to stop trading until further notice and to hold off on opening help desk tickets because the team is already working with Rithmic on a fix. Daytraders.com promises updates as soon as more information is available.",
+      "highlights": [
+        "Rithmic is experiencing issues affecting multiple firms",
+        "Traders are asked to refrain from trading until further notice",
+        "No help desk ticket is needed because the team is already aware",
+        "Affected accounts should not be traded until another update is posted"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/daytraders",
+      "firm_page": "/Firms/DayTraders.html",
+      "logo": "/Photos/firms/daytraders.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1565050204216889425",
+      "type": "news",
+      "firm": "Alpha Futures",
+      "date": "2026-10-28",
+      "title": "Alpha Futures launches Standard Plan add-on that removes the consistency rule",
+      "summary": "Alpha Futures has released a new add-on for its Standard Plan that drops the consistency rule once a trader is Qualified. The Evaluation still keeps the 50% rule, and the add-on can be added to any 50K, 100K or 150K Standard account. Traders can also use the BROTRADING code for 50% off the Standard Plan.",
+      "highlights": [
+        "The add-on removes the consistency rule once the trader is Qualified",
+        "The Evaluation keeps the 50% rule",
+        "Available for any 50K, 100K or 150K Standard account from +$70/month",
+        "Use code BROTRADING for 50% OFF the Standard Plan"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/alpha",
+      "firm_page": "/Firms/AlphaFutures.html",
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565026182661939420",
+      "type": "news",
+      "firm": "Legends Trading",
+      "date": "2026-10-28",
+      "title": "Legends Trading launches Banked Resets and a 50% off FOMC offer",
+      "summary": "Legends Trading now lets traders buy resets in advance and store them in a bank for later use. A reset returns your challenge to its original balance and rules without buying a new challenge. A 50% discount on Banked Resets runs for the FOMC offer, valid on Apprentice and Elite with code BRO.",
+      "highlights": [
+        "Resets return your challenge to its original balance and rules",
+        "Choose Apprentice or Elite plus your account size",
+        "Buy as many credits as you want and redeem one anytime on a matching account",
+        "FOMC offer: 50% off Banked Resets, today only, valid on Apprentice and Elite, code BRO"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565022240779665518",
+      "type": "promo",
+      "firm": "Legends Trading",
+      "date": "2026-10-28",
+      "title": "Legends Trading launches Banked Resets, with 50% off for FOMC day",
+      "summary": "Legends Trading has launched Banked Resets, which let traders buy resets ahead of time so they are ready after a failed challenge. The feature is available for Apprentice and Elite accounts. For today only, the firm is offering 50% off Banked Resets, so use code BRO at checkout.",
+      "highlights": [
+        "Banked Resets let traders purchase resets in advance for later use",
+        "Available for Apprentice and Elite accounts",
+        "50% off Banked Resets for today only as an FOMC day special"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/legendstrading",
+      "firm_page": "/Firms/LegendsTrading.html",
+      "logo": "/Photos/firms/legendstrading.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565017781412307155",
+      "type": "news",
+      "firm": "Top One Futures",
+      "date": "2026-10-28",
+      "title": "Top One Futures runs Halloween sale with 50% off Ignite and Elite Daily",
+      "summary": "Top One Futures is running a Halloween week promotion with 50% off its Ignite and Elite Daily accounts until Halloween night. Every purchase includes a mystery reward, which could be store credit, free resets, or up to 80% off a funded account. The sale ends Halloween night, Saturday Oct 31.",
+      "highlights": [
+        "Ignite and Elite Daily are 50% OFF until Halloween night",
+        "Every purchase comes with a mystery reward",
+        "Possible rewards include store credit, free resets, or up to 80% off a funded account",
+        "Each account bought gets its own reward"
+      ],
+      "ends": "Halloween night, Saturday Oct 31",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/topone",
+      "firm_page": "/Firms/TopOne.html",
+      "logo": "/Photos/firms/topone.png",
+      "market": "futures"
+    },
+    {
+      "id": "1565008613704073389",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-28",
+      "title": "IQ Capital launches Halloween deals: 3+1 accounts and fee refunds",
+      "summary": "IQ Capital is running a Halloween promotion on all its products until Saturday. Buy three Challenges or three Instant Funding accounts in one checkout and the fourth is free, applied automatically. Customers can also get their purchase fee refunded after their first payout, and the refund does not cover the activation fee.",
+      "highlights": [
+        "3+1 on all Challenges and Instant Funding accounts, with the fourth account free in one checkout",
+        "Full refund of the purchase fee after your first payout",
+        "Both deals apply automatically at checkout",
+        "In the $200K Trading Competition, every $1 of profit earns points, ×1.5 on Instant Funding"
+      ],
+      "ends": "Saturday, Oct 31, 11:59 PM CET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1564698847911878668",
+      "type": "promo",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-27",
+      "title": "Apex Trader Funding launches 90% off plus buy one, get one free on Legacy accounts",
+      "summary": "Apex Trader Funding is combining 90% off Legacy Evaluations with a buy one, get one free offer for the first time. Buyers get a second Legacy Evaluation of the same size free for the first month, and the free one is added automatically at checkout. BroTrading readers can use code BRO at checkout for Evaluation accounts.",
+      "highlights": [
+        "90% off the first month and 80% off recurring months on Legacy Evaluations",
+        "25K Legacy as low as $8.85 per evaluation with BOGO, from $17.70 at 90% off",
+        "50K Legacy as low as $9.85 per evaluation with BOGO, from $19.70 at 90% off",
+        "Intraday and EOD accounts are 90% off across all account sizes"
+      ],
+      "ends": "October 29 at 12 NOON ET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
+    },
+    {
+      "id": "1564671580934504521",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-27",
+      "title": "IQ Capital says dxFeed US market data servers are back to normal",
+      "summary": "IQ Capital reports that the problems with its dxFeed servers in the USA have been fully fixed. Market data for US-based futures traders is running normally again, so trading can resume as usual. The firm thanked traders for their patience.",
+      "highlights": [
+        "The issues with the dxFeed servers in the USA have been fully resolved",
+        "Market data for US-based futures traders is running normally again",
+        "Traders can resume trading as usual"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1564645952273256460",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-27",
+      "title": "IQ Capital warns US futures traders of dxFeed server issues",
+      "summary": "IQ Capital says the dxFeed servers in the USA are currently having problems. The issue affects futures traders based in the US, and the firm advises trading carefully or pausing until it is resolved. IQ Capital notes the problem and fix sit with dxFeed, and promises an update once more information is available.",
+      "highlights": [
+        "The dxFeed servers in the USA are currently experiencing problems.",
+        "US-based futures traders are affected.",
+        "IQ Capital recommends trading carefully today or taking a break until the issue is resolved.",
+        "The problem and the fix are on dxFeed's side, not IQ Capital's."
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1564640088669823016",
+      "type": "promo",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-27",
+      "title": "Phidias PropFirm takes 90% off first Premium month for Halloween",
+      "summary": "Phidias PropFirm is running a Halloween promotion with 90% off your first Premium month. Premium prices shown are $32.90 for 50K, $41.10 for 100K, and $57 for 150K, with overnight and weekend holding allowed and payouts every 5 trading days. The offer runs until Sunday at 5:00 PM ET, so use code BROTRADING at checkout.",
+      "highlights": [
+        "90% off your first Premium month",
+        "50K Premium month priced at $32.90, 100K at $41.10, 150K at $57",
+        "Overnight and weekend holding allowed",
+        "Payouts every 5 trading days"
+      ],
+      "ends": "Sunday 5:00 PM ET",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
+    },
+    {
+      "id": "1564600398570979339",
+      "type": "news",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-27",
+      "title": "Phidias PropFirm is hiring English-speaking stream hosts for live sessions",
+      "summary": "Phidias is expanding its streaming team and is recruiting several hosts to run live sessions on its channel. Two slots are open, an Asian session and a European morning session in CET, and applicants can apply for one or both. This is a freelance collaboration, and applications must be sent by email.",
+      "highlights": [
+        "Open slots: Asian session and European session (morning, CET)",
+        "Applicants should be native or fully fluent English speakers with solid futures and prop trading knowledge",
+        "Applications go by email to contact@phidiaspropfirm.com with a subject line naming the slot",
+        "Role is freelance, not salaried, and the firm says it will never ask for money or personal account details"
+      ],
+      "ends": null,
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
+    },
+    {
+      "id": "1564579936746868818",
+      "type": "promo",
+      "firm": "Apex Trader Funding",
+      "date": "2026-10-27",
+      "title": "Apex Trader Funding teases big news while 90% off evaluations continues",
+      "summary": "Apex Trader Funding says something big is coming soon and is keeping its savings running in the meantime. Legacy evaluations get 90% off the first month plus 80% off recurring months, while Intraday and EOD evaluations get 90% off all account sizes. Use code BRO at checkout for evaluation accounts.",
+      "highlights": [
+        "Legacy: 90% off your first month plus 80% off recurring months",
+        "Intraday and EOD: 90% off all account sizes",
+        "Legacy, Intraday, and EOD evaluations are all one day to pass",
+        "Evaluation discounts only apply to accounts purchased during the sale period"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/apex",
+      "firm_page": "/Firms/ApexFunding.html",
+      "logo": "/Photos/firms/apex.png",
+      "market": "futures"
+    },
+    {
+      "id": "1564311747530064053",
+      "type": "news",
+      "firm": "BluSky Trading",
+      "date": "2026-10-26",
+      "title": "BluSky Trading moves back to Rithmic Paper Trading after today's Rithmic mixup",
+      "summary": "BluSky Trading is moving its platform back to Rithmic Paper Trading after a problem with Rithmic today. Traders should only open a support ticket if they still have a genuine issue. BluSky says it will post an update once its server is running correctly again.",
+      "highlights": [
+        "Today's issue came from a mixup on Rithmic",
+        "BluSky is migrating back to Rithmic Paper Trading",
+        "Support tickets should only be opened for genuine remaining issues",
+        "BluSky will announce when its server is running correctly"
+      ],
+      "ends": null,
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/blusky",
+      "firm_page": "/Firms/BluSky.html",
+      "logo": "/Photos/firms/blusky.png",
+      "market": "futures"
+    },
+    {
+      "id": "1564282889103876228",
+      "type": "promo",
+      "firm": "Phidias PropFirm",
+      "date": "2026-10-26",
+      "title": "Phidias PropFirm launches Halloween Mega Sale with 90% off first month",
+      "summary": "Phidias PropFirm is running a Halloween Mega Sale that takes 90% off your first month on Premium and Fundamental evaluations. The Fundamental 50K drops to $16.40 and the Premium 50K to $32.90 during the sale. Use code BROTRADING at checkout to get the discount.",
+      "highlights": [
+        "90% off the first month on Premium and Fundamental evaluations",
+        "Fundamental 50K priced at $16.40",
+        "Premium 50K priced at $32.90"
+      ],
+      "ends": "Sunday 5:00 PM ET",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/phidias",
+      "firm_page": "/Firms/PhidiasPropFirm.html",
+      "logo": "/Photos/firms/phidias.jpeg",
+      "market": "futures"
+    },
+    {
+      "id": "1564281687381114935",
+      "type": "news",
+      "firm": "IQ Capital",
+      "date": "2026-10-26",
+      "title": "IQ Capital launches 3 plus 1 Challenge flash sale and Instant Funding refund",
+      "summary": "IQ Capital is running a flash sale where buying three Challenges in one checkout gets a fourth one free. Its Instant Funding deal refunds the purchase fee after your first payout. Both offers apply automatically at checkout and run until Friday.",
+      "highlights": [
+        "Buy three Challenges in one checkout and the fourth is free, applied automatically",
+        "Instant Funding: full refund after your first payout, funded from day one",
+        "The refund covers the purchase fee, not the activation fee, which is added on top of your first payout",
+        "Also in the $200K Trading Competition, every $1 of profit earns points, x1.5 on Instant Funding"
+      ],
+      "ends": "Friday, 11:59 PM CET",
+      "code": "BRO",
+      "link": "https://propfirmbro.com/go/iqcapital",
+      "firm_page": "/Firms/IQCapital.html",
+      "logo": "/Photos/firms/iqcapital.svg",
+      "market": "futures"
+    },
+    {
+      "id": "1564277863757123696",
+      "type": "promo",
+      "firm": "Alpha Futures",
+      "date": "2026-10-26",
+      "title": "Alpha Futures runs 50% off Standard, Direct and Advanced plans plus 40% off ZERO",
+      "summary": "Alpha Futures is running a promotion with 50% off its Standard, Direct and Advanced plans and 40% off its popular ZERO plan. The offer wraps up soon, so traders who want a discount should act before it ends. Use code BROTRADING at checkout.",
+      "highlights": [
+        "50% off the Standard, Direct and Advanced plans",
+        "40% off the popular ZERO plan",
+        "Offer expires on 31st October"
+      ],
+      "ends": "31st October",
+      "code": "BROTRADING",
+      "link": "https://propfirmbro.com/go/alpha",
+      "firm_page": "/Firms/AlphaFutures.html",
+      "logo": "/Photos/firms/alphafutures.png",
+      "market": "futures"
+    },
     {
       "id": "1564129527322378280",
       "type": "news",
@@ -54,7 +681,7 @@
         "You may need to update RTrader Pro"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -74,7 +701,7 @@
         "The BluSky community will vote on the winners"
       ],
       "ends": "7 days to enter",
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -92,7 +719,7 @@
         "No trading terms, account sizes, prices, or offers are included"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -171,7 +798,7 @@
         "200K reset: $149"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -346,7 +973,7 @@
         "BluSky Trading shared the update in its Discord channel instead"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -424,7 +1051,7 @@
         "The firm says it is working on improvements behind the scenes and plans to share them with members"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -1297,7 +1924,7 @@
         "Payouts may not reflect in accounts until 10/13/2026"
       ],
       "ends": null,
-      "code": null,
+      "code": "BRO",
       "link": "https://propfirmbro.com/go/blusky",
       "firm_page": "/Firms/BluSky.html",
       "logo": "/Photos/firms/blusky.png",
@@ -2191,477 +2818,6 @@
       "link": "https://propfirmbro.com/go/apex",
       "firm_page": "/Firms/ApexFunding.html",
       "logo": "/Photos/firms/apex.png",
-      "market": "futures"
-    },
-    {
-      "id": "1555197649437855866",
-      "type": "news",
-      "firm": "Phidias PropFirm",
-      "date": "2026-10-01",
-      "title": "Phidias PropFirm launches Fall 10K contest with $24,000 in cash prizes",
-      "summary": "Phidias PropFirm is running a Fall Edition of its 10K contest from October 1 to November 30. The top 10 finishers share $24,000 in cash, with $12,000 going to first place, paid to the trader's Wallet. Entry is $30 when signing up today, and BROTRADING can be used as the discount code.",
-      "highlights": [
-        "Contest runs October 1 to November 30, eight weeks total",
-        "$10K account with $10K trailing EOD drawdown and 25 minis",
-        "$24,000 in cash for the top 10, $12,000 for 1st place, paid to your Wallet",
-        "Top 10%: free 50K OTP account; Top 50%: 90% off an eval; everyone else: 80% off",
-        "Entry costs $30 when you enter today, using code BROTRADING"
-      ],
-      "ends": "November 30",
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/phidias",
-      "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg",
-      "market": "futures"
-    },
-    {
-      "id": "1555186163369648138",
-      "type": "promo",
-      "firm": "Tradeify",
-      "date": "2026-10-01",
-      "title": "Tradeify Launches 30% Off All Accounts Plus 2X Gems",
-      "summary": "Tradeify is running a limited-time promotion with 30% off all accounts. Traders also earn 2X Gems on all missions, including purchases. Use code BRO at checkout to get the discount.",
-      "highlights": [
-        "30% off all accounts",
-        "2X Gems on all missions, including purchases",
-        "Offer ends October 15"
-      ],
-      "ends": "October 15",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png",
-      "market": "futures"
-    },
-    {
-      "id": "1555149822728863768",
-      "type": "news",
-      "firm": "Phidias PropFirm",
-      "date": "2026-10-01",
-      "title": "Phidias PropFirm reports over $100 million combined PnL across 10K challenge accounts",
-      "summary": "Phidias PropFirm says the combined PnL across all its 10K challenge accounts has passed $100 million. Total losses have gone beyond $500 million over the same accounts. The firm also highlighted one trader who blew a challenge in 3.27 seconds on Silver.",
-      "highlights": [
-        "Combined PnL across all 10K challenge accounts has exceeded $100 million",
-        "Total losses have gone beyond $500 million",
-        "One trader failed a challenge on Silver in 3.27 seconds"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/phidias",
-      "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg",
-      "market": "futures"
-    },
-    {
-      "id": "1555147111555792937",
-      "type": "news",
-      "firm": "Phidias PropFirm",
-      "date": "2026-10-01",
-      "title": "Phidias PropFirm announces 10K Summer Edition top 10 winners and cash prizes",
-      "summary": "Phidias PropFirm has wrapped up its 10K Summer Edition, which it calls its biggest edition yet. The top 10 traders have been named, with the top three ranked by final balance and cash prizes listed for each place. Cash prizes land in winners' Wallets within 48 hours, and other participants will get their prize by email based on ranking.",
-      "highlights": [
-        "Thomas L. ranked first with a final score of $435,810 and a $12,000 cash prize",
-        "Simone B. ranked second with a final score of $333,858 and a $3,000 cash prize",
-        "Alejandro Z. ranked third with a final score of $298,675 and a $2,160 cash prize",
-        "Cash prizes are paid into the Wallet within 48h; other participants receive prizes by email"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/phidias",
-      "firm_page": "/Firms/PhidiasPropFirm.html",
-      "logo": "/Photos/firms/phidias.jpeg",
-      "market": "futures"
-    },
-    {
-      "id": "1554962902841167973",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-30",
-      "title": "Lucid Trading teases final day of giveaway and a Rick bot launch",
-      "summary": "Lucid Trading says today is the last day of its giveaway, which it jokingly calls a 2 million giveaway. The firm also says its Rick bot goes live with stats in 25 minutes. The post gives no further details.",
-      "highlights": [
-        "Today is the final day of the giveaway",
-        "The giveaway is described as a 2 million giveaway",
-        "Rick bot goes live with stats in 25 minutes"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554905227851730987",
-      "type": "promo",
-      "firm": "Alpha Futures",
-      "date": "2026-09-30",
-      "title": "Alpha Futures offers 50% off any plan, ending tonight",
-      "summary": "Alpha Futures is running a 50% discount on any plan, but the offer expires at midnight tonight. The firm is urging traders who have been waiting to get an account to act now. Use code BROTRADING at checkout.",
-      "highlights": [
-        "50% off any plan",
-        "Offer expires at midnight tonight",
-        "Last chance to grab an account"
-      ],
-      "ends": "midnight tonight",
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554842196753125507",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-30",
-      "title": "IQ Capital launches 3+1 promotion: fourth account free on Challenges and Instant Fundings",
-      "summary": "IQ Capital is running a 3+1 promotion where buying three accounts gets you one more account of the same size for free. The offer covers both Challenges and Instant Fundings. The post says it runs only until Friday, so traders who want it need to act this week.",
-      "highlights": [
-        "Buy 3 accounts and get 1 account of the same size on top for free",
-        "Valid on Challenges and Instant Fundings",
-        "The promotion runs until Friday"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg",
-      "market": "futures"
-    },
-    {
-      "id": "1554751352427647080",
-      "type": "promo",
-      "firm": "Apex Trader Funding",
-      "date": "2026-09-30",
-      "title": "Apex Trader Funding runs $10 flash sale and 5-year anniversary offers",
-      "summary": "Apex Trader Funding is running a short flash sale where a 25K Intraday Evaluation costs $10 and a 5-Pack costs $50 total, but only until 4 PM ET. Its 5-year anniversary offers, including 90% off Legacy, Intraday and EOD evaluations, stay live through Thursday, October 1 at 11:59 PM ET. Use code BRO at checkout for Evaluation accounts.",
-      "highlights": [
-        "25K Intraday Evaluation for $10 with a coupon code required",
-        "5-Pack for $50 total during the flash sale",
-        "$55 Legacy PA Fee for any account size",
-        "Legacy Evaluations at 90% off first month and 80% off recurring",
-        "Intraday and EOD Evaluations at 90% off"
-      ],
-      "ends": "4 PM ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/apex",
-      "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554601159426183260",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-29",
-      "title": "Lucid Trading shares two days left in its $2,000,000 trading competition",
-      "summary": "Lucid Trading is reminding traders that its $2,000,000 Trading Competition has only two days left. The firm says it has already been handing out money during the event. A Townhall session is set to take place in 20 minutes from the time of the post.",
-      "highlights": [
-        "Only 2 days remain for the $2,000,000 Trading Competition",
-        "Lucid Trading says it has given out money during the event",
-        "A Townhall session starts in 20 minutes"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554592592115802235",
-      "type": "promo",
-      "firm": "Apex Trader Funding",
-      "date": "2026-09-29",
-      "title": "Apex Trader Funding launches $55 Legacy activation and $21 resets",
-      "summary": "Apex Trader Funding is rolling its anniversary sale into a new round of Legacy offers that start tonight at 11:59 PM ET. Legacy activation fees drop to $55 for any account size, Legacy evaluation resets are $21, and evaluation discounts continue through the sale period. Use code BRO at checkout.",
-      "highlights": [
-        "$55 Legacy activation fees for any account size",
-        "$21 Legacy evaluation resets",
-        "Legacy Evaluations: 90% off the first month and 80% off recurring",
-        "Intraday and EOD Evaluations: 90% off",
-        "Evaluation discounts only apply to accounts purchased during the sale period"
-      ],
-      "ends": "Thursday, October 1 at 11:59 PM ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/apex",
-      "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554559829593563207",
-      "type": "news",
-      "firm": "My Funded Futures",
-      "date": "2026-09-29",
-      "title": "My Funded Futures enrolls all MFFU users in MyFundedClub with login reward",
-      "summary": "My Funded Futures says every registered MFFU user is now enrolled in MyFundedClub. To celebrate, the firm is running a login reward that gives an All Access Pack to accounts that log in. No purchase is needed, and every MFFU account holder qualifies.",
-      "highlights": [
-        "All registered MFFU users are now enrolled in MyFundedClub",
-        "Logging in gives an All Access Pack added to the Club account",
-        "No purchase required and every MFFU account holder is eligible",
-        "The login drop is available for the next 24 hours"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/mffu",
-      "firm_page": "/Firms/MyFundedFuture.html",
-      "logo": "/Photos/firms/myfundedfutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554513416306302986",
-      "type": "news",
-      "firm": "Alpha Futures",
-      "date": "2026-09-29",
-      "title": "Alpha Futures brings back Market Watch with Planty live calls and giveaways",
-      "summary": "Alpha Futures has restarted its Market Watch with Planty live calls. The sessions are led by a professional trader with more than 20 years of experience and include live giveaways. Traders only need to join to take part.",
-      "highlights": [
-        "Market Watch with Planty live calls are back",
-        "Live giveaways are part of the sessions",
-        "Host is a professional trader with 20+ years of experience",
-        "Joining is the only step required to take part"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554481098069774377",
-      "type": "news",
-      "firm": "Tradeify",
-      "date": "2026-09-29",
-      "title": "Tradeify launches Tradeify FX, a new way to trade forex",
-      "summary": "Tradeify has officially launched Tradeify FX, giving traders a new route into forex trading with the firm. The launch is not open to US residents at this time. Traders are encouraged to join the Tradeify FX Discord for the latest updates.",
-      "highlights": [
-        "Tradeify FX is now officially live",
-        "Tradeify FX is currently not available to US residents",
-        "Updates are shared in the Tradeify FX Discord"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/tradeify",
-      "firm_page": "/Firms/TradeifyTrader.html",
-      "logo": "/Photos/firms/tradeify.png",
-      "market": "cfd"
-    },
-    {
-      "id": "1554206843537072129",
-      "type": "news",
-      "firm": "Legends Trading",
-      "date": "2026-09-28",
-      "title": "Legends Trading Lists on National Prop Trading Day",
-      "summary": "Legends Trading marked National Prop Trading Day on September 28 by announcing it is officially listed. The firm thanked traders, creators, and partners who help move the prop trading industry forward. The post frames the listing as a milestone for the whole community.",
-      "highlights": [
-        "Legends Trading is officially listed as of National Prop Trading Day, September 28",
-        "The firm celebrates traders, firms, creators, and partners in the prop trading community",
-        "The post credits the Discord community as part of what made the listing possible"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/legendstrading",
-      "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554156818396217495",
-      "type": "news",
-      "firm": "Alpha Futures",
-      "date": "2026-09-28",
-      "title": "Alpha Futures invites ES and GC trade submissions for mentor Dan's review",
-      "summary": "Alpha Futures is asking traders to send in their ES or GC trades for mentor Dan to break down. Dan will pick a handful of submissions at random this week and review what worked, what didn't, and what he would have done differently. Submissions stay anonymous, and some may be featured in future content without identifying details.",
-      "highlights": [
-        "Mentor Dan picks a handful of submissions at random this week",
-        "Breakdown covers what worked, what didn't, and what he'd have done differently",
-        "Submissions are fully anonymous and names are not attached to trades",
-        "This round accepts ES and GC trades only"
-      ],
-      "ends": "midnight tonight",
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554148974892552235",
-      "type": "news",
-      "firm": "FundedNext Futures",
-      "date": "2026-09-28",
-      "title": "FundedNext Futures wins Best Fintech Innovation at 2026 Tech Innovation Awards",
-      "summary": "FundedNext Futures has been named Best Fintech Innovation at the 2026 Tech Innovation Awards, presented by Entrepreneur Middle East. Its founder and CEO Syed Abdullah Jayed, CPGO Dana Massey, and CLO Anaklaudia Filadoro accepted the award at Al Habtoor Palace in Dubai. The firm credits the award to its team and traders and says it plans to keep building.",
-      "highlights": [
-        "FundedNext Futures was named Best Fintech Innovation at the 2026 Tech Innovation Awards",
-        "The award was presented by Entrepreneur Middle East",
-        "Syed Abdullah Jayed, Dana Massey, and Anaklaudia Filadoro accepted the award at Al Habtoor Palace in Dubai"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/fundednext",
-      "firm_page": "/Firms/FundedNext.html",
-      "logo": "/Photos/firms/fundednext.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554134035066785934",
-      "type": "news",
-      "firm": "Alpha Futures",
-      "date": "2026-09-28",
-      "title": "Alpha Futures seeks UK traders for podcast recording in London",
-      "summary": "Alpha Futures is recruiting traders for its next batch of podcast episodes. The episodes focus on the journeys and methods of traders who have succeeded on the platform. Interested traders can apply through the form linked in the Discord post.",
-      "highlights": [
-        "Recording is set for October 16th in London",
-        "Wanted: UK-based, consistently profitable traders comfortable on a podcast",
-        "Selected traders must be able to travel to London for the recording"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554118506864451631",
-      "type": "news",
-      "firm": "IQ Capital",
-      "date": "2026-09-28",
-      "title": "IQ Capital launches Flash Sale with 3+1 deal on Challenges and Instant Fundings",
-      "summary": "IQ Capital has launched a Flash Sale running this week, Monday to Friday. Traders who buy 3 accounts get 1 extra account of the same size free on top. After the sale ends, this bonus will not be offered in this form.",
-      "highlights": [
-        "3 accounts secured earns 1 additional account of the same size free",
-        "Deal applies to Challenges and Instant Fundings",
-        "Promotion runs Monday to Friday only"
-      ],
-      "ends": null,
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/iqcapital",
-      "firm_page": "/Firms/IQCapital.html",
-      "logo": "/Photos/firms/iqcapital.svg",
-      "market": "futures"
-    },
-    {
-      "id": "1554116565652340767",
-      "type": "promo",
-      "firm": "Legends Trading",
-      "date": "2026-09-28",
-      "title": "Legends Trading celebrates $5M in payouts with 55% off evaluations",
-      "summary": "Legends Trading is marking $5 million in trader payouts with a sale on Apprentice and Elite Evaluation accounts. The first 5 purchases per customer get 55% off, and after that the discount drops to 40%. Use code BRO at checkout to claim the offer before the promo ends.",
-      "highlights": [
-        "55% off Apprentice and Elite Evaluation accounts for the first 5 purchases per customer",
-        "40% off after the first 5 purchases",
-        "Activation fees for a limited time: $50K for $5, $100K for $25, $150K for $50",
-        "$5 to activate a $50K Master account"
-      ],
-      "ends": "October 2",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/legendstrading",
-      "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554101155280330782",
-      "type": "news",
-      "firm": "Alpha Futures",
-      "date": "2026-09-28",
-      "title": "Alpha Futures shares its news events for September 28 to October 2, 2026",
-      "summary": "Alpha Futures has posted its list of news events covering the week of September 28 through October 2, 2026. The post itself only gives the date range and does not list the individual events. Traders who want the details will need to check the firm's Discord announcement directly.",
-      "highlights": [
-        "Alpha Futures posted a news events list for the week of September 28 to October 2, 2026",
-        "The post gives the date range only and does not include the event details",
-        "No sale, offer, or discount is mentioned in this post"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/alpha",
-      "firm_page": "/Firms/AlphaFutures.html",
-      "logo": "/Photos/firms/alphafutures.png",
-      "market": "futures"
-    },
-    {
-      "id": "1554034345751216240",
-      "type": "promo",
-      "firm": "Apex Trader Funding",
-      "date": "2026-09-28",
-      "title": "Apex Trader Funding launches 48-hour flash sale with $21 Legacy Evaluations",
-      "summary": "Apex Trader Funding is running a 48-hour flash sale to mark five years since its 2021 launch. The post lists $21 Legacy Evaluations at 100K, 250K and 300K, plus 90% off Intraday and EOD evaluations. Use code BRO at checkout for Evaluation accounts.",
-      "highlights": [
-        "100K, 250K and 300K Legacy Evaluations are $21 each",
-        "Legacy Evaluations get 90% off the first month and 80% off recurring",
-        "Intraday and EOD Evaluations get 90% off",
-        "Legacy PA is $90, EOD PA is $90 and Intraday PA is $59 for all account sizes",
-        "Evaluation discounts only apply to accounts purchased during the sale period"
-      ],
-      "ends": "Tuesday, September 29 at 11:59 PM ET",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/apex",
-      "firm_page": "/Firms/ApexFunding.html",
-      "logo": "/Photos/firms/apex.png",
-      "market": "futures"
-    },
-    {
-      "id": "1553860078732574761",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-27",
-      "title": "Lucid Trading Launches Card Packs With Accounts, Discounts and Skins",
-      "summary": "Lucid Trading has released its card packs, and the post says they were quickly opened by traders collecting accounts, discounts and skins. Items from the packs can be bought and sold in the Lucid marketplace. The post also points traders to their dashboard to check for the Prop Pass.",
-      "highlights": [
-        "Card packs contain accounts, discounts and skins",
-        "Pack items can be bought and sold in the Lucid marketplace",
-        "Check your dashboard for the Prop Pass"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png",
-      "market": "futures"
-    },
-    {
-      "id": "1553828760455876691",
-      "type": "news",
-      "firm": "Lucid Trading",
-      "date": "2026-09-27",
-      "title": "Lucid Trading cuts Daily base prices, so 30% off now lands near old 40% level",
-      "summary": "Lucid Trading has lowered its Daily base pricing. The firm says Daily accounts at 30% off should now land around where they previously sat at 40% off. The aim is to keep all accounts balanced at its 30% base promo while new Prop Pass features roll out.",
-      "highlights": [
-        "Daily base pricing was reduced ahead of a larger upcoming launch",
-        "Daily accounts at 30% off should be around where they were at 40% off",
-        "Base promo for all accounts is meant to stay at 30% off",
-        "Lucid says it will keep monitoring price balance as it gathers more data"
-      ],
-      "ends": null,
-      "code": "BROTRADING",
-      "link": "https://propfirmbro.com/go/lucid",
-      "firm_page": "/Firms/Lucid Trading.html",
-      "logo": "/Photos/firms/lucid.png",
-      "market": "futures"
-    },
-    {
-      "id": "1553742966793965670",
-      "type": "promo",
-      "firm": "Legends Trading",
-      "date": "2026-09-27",
-      "title": "Legends Trading ends September sale today with 40% off Apprentice",
-      "summary": "Legends Trading is reminding traders that its September Sale closes today at 11:59 PM EST. The discounts include 40% off Apprentice accounts and activation fees, a B4G1 Apprentice deal, and 30% off Elite. Prices return to regular levels once the sale ends, so use code BRO at checkout.",
-      "highlights": [
-        "40% off Apprentice accounts and activation fees",
-        "B4G1 Apprentice deal requires adding 5 Apprentice accounts to your cart",
-        "30% off Elite accounts",
-        "Account purchase prices and activation fees return to regular prices after the sale"
-      ],
-      "ends": "today at 11:59 PM EST",
-      "code": "BRO",
-      "link": "https://propfirmbro.com/go/legendstrading",
-      "firm_page": "/Firms/LegendsTrading.html",
-      "logo": "/Photos/firms/legendstrading.png",
       "market": "futures"
     }
   ]
