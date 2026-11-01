@@ -256,6 +256,14 @@ label.field .hint { font-weight: 400; color: var(--muted); font-size: 12px; }
 .firm-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0 16px; align-items: end; }
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
 table.accounts { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+.deals-now { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.deal-now { display: flex; flex-direction: column; gap: 10px; padding: 14px; margin: 0; }
+.deal-firm { display: flex; align-items: center; gap: 10px; }
+.deal-firm .logo { width: 40px; height: 40px; border-radius: 10px; flex: none; }
+.deal-firm .logo.sm { width: 30px; height: 30px; border-radius: 8px; }
+.deal-firm .sub, .deal-now .sub { color: var(--muted); font-size: 12.5px; }
+.deals-table select.input { min-width: 130px; padding-top: 6px; padding-bottom: 6px; }
+.deals-table .hot { color: var(--gold); }
 table.accounts th { text-align: left; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; background: rgba(3, 7, 18, 0.4); }
 table.accounts td { padding: 8px 12px; border-top: 1px solid var(--line); }
 table.accounts tr.off td { opacity: .5; }
@@ -382,6 +390,7 @@ body.signin::before { display: none; }
       <a href="#promos" data-view="promos"><i class="fa-solid fa-tags"></i> Promos <span class="count" id="n-promos"></span></a>
       <a href="#news" data-view="news"><i class="fa-regular fa-newspaper"></i> News <span class="count" id="n-news"></span></a>
       <a href="#firms" data-view="firms"><i class="fa-solid fa-building-columns"></i> Prop firms <span class="count" id="n-firms"></span></a>
+      <a href="#deals" data-view="deals"><i class="fa-solid fa-fire"></i> Top 3 deals</a>
       <div class="nav-label">Site</div>
       <a href="#pages" data-view="pages"><i class="fa-solid fa-layer-group"></i> Pages &amp; history</a>
       <a href="#settings" data-view="settings"><i class="fa-solid fa-sliders"></i> Settings</a>
@@ -432,6 +441,7 @@ body.signin::before { display: none; }
   var onLoginPage = /\/admin\/login\/?$/.test(location.pathname);
   var TITLE = document.title;
   var state = { view: "overview", overview: null, news: null, newsEdits: {}, prices: null, firmEdits: {}, accountEdits: {},
+                deals: null, dealEdits: {}, dealSize: "",
                 filter: { q: "", firm: "", hidden: true }, shown: 40, expires: null };
   var $ = function (s, el) { return (el || document).querySelector(s); };
   var VIEWS = {
@@ -439,6 +449,7 @@ body.signin::before { display: none; }
     promos: ["Promos", "Promo cards on the Promo & News page"],
     news: ["News", "News items on the Promo & News page"],
     firms: ["Prop firms", "Firms and account prices on the Compare page"],
+    deals: ["Top 3 deals", "Which deals the Top 3 Deals Today page shows, and in what order"],
     pages: ["Pages & history", "The copies the live pages serve, and older ones to go back to"],
     settings: ["Settings", "Admin token and sign-ins"]
   };
@@ -586,6 +597,7 @@ body.signin::before { display: none; }
     if (v === "overview") return loadOverview(true).then(viewOverview).catch(failed);
     if (v === "promos" || v === "news") return loadNews().then(viewItems).catch(failed);
     if (v === "firms") return loadFirms().then(viewFirms).catch(failed);
+    if (v === "deals") return loadDeals(true).then(viewDeals).catch(failed);
     if (v === "pages") return loadOverview(true).then(viewPages).catch(failed);
     if (v === "settings") return viewSettings();
   }
@@ -615,6 +627,11 @@ body.signin::before { display: none; }
       state.firmEdits = r.edits.firm || {};
       state.accountEdits = r.edits.account || {};
     });
+  }
+  function loadDeals(force) {
+    if (state.deals && !force) return Promise.resolve();
+    loading();
+    return api("GET", "deals").then(function (r) { state.deals = r.deals; state.dealEdits = r.edits || {}; });
   }
   function isPending(o) {
     if (!o) return false;
@@ -975,6 +992,116 @@ body.signin::before { display: none; }
     Promise.all(calls).then(function () { toast("Firm reset to the scraped data"); markEdited(); viewFirms(); }).catch(function (e) { toast(e.message, false); });
   }
 
+  /* ---------- top 3 deals ---------- */
+  // Same order as the page (deals.py top_deals): the admin's picks at #1-#3, the rule
+  // (each firm's biggest saving at 50K) filling the rest, deals left out skipped.
+  function dealRunning(d) { return !d.ends_at || Date.parse(d.ends_at) > Date.now(); }
+  function dealOrder() {
+    var D = state.deals.data, E = state.dealEdits;
+    var live = D.rows.filter(function (d) {
+      return dealRunning(d) && !(E[d.id] && E[d.id].hidden) && !(E["firm:" + d.firm_key] && E["firm:" + d.firm_key].hidden);
+    });
+    var pinned = {};
+    live.forEach(function (d) { var p = E[d.id] && E[d.id].patch.pos; if (p && !pinned[p]) pinned[p] = d; });
+    var firms = {};
+    Object.keys(pinned).forEach(function (p) { firms[pinned[p].firm_key] = 1; });
+    var best = {};
+    live.forEach(function (d) {
+      if (d.size !== D.size) return;
+      var cur = best[d.firm_key];
+      if (!cur || d.share > cur.share || (d.share === cur.share && d.cost_to_funded < cur.cost_to_funded)) best[d.firm_key] = d;
+    });
+    var rule = Object.keys(best).map(function (k) { return best[k]; }).filter(function (d) { return !firms[d.firm_key]; })
+      .sort(function (a, b) { return b.share - a.share || a.cost_to_funded - b.cost_to_funded; });
+    var out = [];
+    for (var i = 1; i <= D.shown; i++) { var d = pinned[i] || rule.shift(); if (d) out.push({ d: d, pinned: !!pinned[i] }); }
+    return out;
+  }
+  function dealEnds(d) {
+    if (!d.ends_at) return '<span class="muted">no end date</span>';
+    return dealRunning(d) ? esc(when(d.ends_at)) : '<span style="color:#fca5a5">ended</span>';
+  }
+  function viewDeals() {
+    if (!state.deals) { $("#view").innerHTML = '<div class="panel empty"><i class="fa-regular fa-folder-open"></i>No deals yet. They arrive with the next scraper run.</div>'; return; }
+    var D = state.deals.data, E = state.dealEdits;
+    var size = state.dealSize || D.size;
+    var sizes = Array.from(new Set(D.rows.map(function (d) { return d.size; }))).sort(function (a, b) { return parseFloat(a) - parseFloat(b); });
+    var nEdits = Object.keys(E).length;
+    $("#view-actions").innerHTML = '<span class="badge">' + D.rows.length + ' running deals</span><span class="badge">Prices from ' + esc(when(D.generated_at)) + "</span>" +
+      (nEdits ? '<button class="btn danger sm" data-act="reset-deals"><i class="fa-solid fa-rotate-left"></i> Back to automatic</button>' : "") +
+      '<a class="btn primary" href="/CompareTopFirms/TopDeals" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open page</a>';
+    var top = dealOrder();
+    var cards = top.map(function (t, i) {
+      var d = t.d;
+      return '<div class="panel deal-now"><div class="sub">#' + (i + 1) + (t.pinned ? ' <span class="badge edited"><i class="fa-solid fa-thumbtack"></i> Your pick</span>' : ' <span class="badge">Automatic</span>') + "</div>" +
+        '<div class="deal-firm"><img class="logo" src="/Photos/firms/icons/' + esc(d.icon) + '.png" alt="" onerror="this.style.visibility=\'hidden\'"><div><b>' + esc(d.firm) + "</b><div class=\"sub\">" + esc(d.plan) + " · " + esc(d.size) + "</div></div></div>" +
+        "<div><b>" + d.pct + "% off</b> · " + money(d.cost_to_funded) + ' to get funded <span class="muted">(was ' + money(d.cost_to_funded + d.saved) + ")</span></div>" +
+        '<div><button class="btn sm" data-act="deal-firm-out" data-firm="' + esc(d.firm_key) + '"><i class="fa-regular fa-eye-slash"></i> Leave out ' + esc(d.firm) + "</button></div></div>";
+    }).join("");
+    var out = Object.keys(E).filter(function (id) { return id.indexOf("firm:") === 0 && E[id].hidden; }).map(function (id) {
+      var key = id.slice(5), any = D.rows.find(function (d) { return d.firm_key === key; });
+      return '<button class="btn sm" data-act="deal-firm-in" data-firm="' + esc(key) + '"><i class="fa-solid fa-rotate-left"></i> ' + esc(any ? any.firm : key) + "</button>";
+    }).join(" ");
+    var rows = D.rows.filter(function (d) { return size === "all" || d.size === size; });
+    var list = rows.map(function (d) {
+      var e = E[d.id] || { hidden: false, patch: {} };
+      var pos = e.patch.pos || "";
+      var firmOut = (E["firm:" + d.firm_key] || {}).hidden;
+      return '<tr data-id="' + esc(d.id) + '"' + (e.hidden || firmOut ? ' class="off"' : "") + ">" +
+        '<td><div class="deal-firm"><img class="logo sm" src="/Photos/firms/icons/' + esc(d.icon) + '.png" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'"><div><b>' + esc(d.firm) + '</b><div class="sub">' + esc(d.plan) + "</div></div></div></td>" +
+        "<td>" + esc(d.size) + "</td>" +
+        "<td><b>" + money(d.price) + (d.billing === "monthly" ? "/mo" : "") + '</b> <s class="muted">' + money(d.list_price) + "</s></td>" +
+        "<td>" + money(d.cost_to_funded) + "</td>" +
+        '<td><b class="hot">' + d.pct + "%</b></td>" +
+        "<td>" + dealEnds(d) + "</td>" +
+        "<td>" + (d.rule_rank ? "#" + d.rule_rank : '<span class="muted">—</span>') + "</td>" +
+        '<td><select class="input" name="pos"><option value="">Automatic</option>' +
+          [1, 2, 3].map(function (p) { return '<option value="' + p + '"' + (pos === p ? " selected" : "") + ">Show at #" + p + "</option>"; }).join("") + "</select></td>" +
+        '<td><label class="switch"><input type="checkbox" name="show"' + (e.hidden ? "" : " checked") + '><span class="track"></span></label></td></tr>';
+    }).join("");
+    $("#view").innerHTML =
+      '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-fire"></i> On the page now</h3></div>' +
+        (cards ? '<div class="deals-now">' + cards + "</div>" : '<div class="empty"><i class="fa-regular fa-face-meh"></i>No deal is running right now.</div>') +
+        (out ? '<p class="muted" style="font-size:13px;margin:12px 0 0">Firms left out of the page (click to bring back): ' + out + "</p>" : "") + "</div>" +
+      '<div class="panel" style="margin-top:16px"><div class="panel-head"><h3><i class="fa-solid fa-list-ol"></i> All running deals</h3>' +
+        '<div class="right"><select class="input" id="deal-size">' +
+          sizes.map(function (s) { return '<option value="' + esc(s) + '"' + (s === size ? " selected" : "") + ">" + esc(s) + (s === D.size ? " (the rule's size)" : "") + "</option>"; }).join("") +
+          '<option value="all"' + (size === "all" ? " selected" : "") + ">All sizes</option></select></div></div>" +
+        (rows.length ? '<div class="table-wrap"><table class="accounts deals-table"><thead><tr><th>Firm / plan</th><th>Size</th><th>Price today</th><th>To get funded</th><th>Off</th><th>Ends</th><th>Rule</th><th>Place</th><th>Show</th></tr></thead><tbody>' + list + "</tbody></table></div>"
+          : '<div class="empty"><i class="fa-regular fa-folder-open"></i>No running deal at this size.</div>') +
+        '<p class="muted" style="font-size:12.5px;margin:10px 0 0"><i class="fa-solid fa-circle-info"></i> Automatic: each firm\'s biggest saving at ' + esc(D.size) +
+        ', ranked by how much comes off the total to get funded ("Rule" is that place). Pick "Show at #1-#3" to put a deal there yourself (any size); the other places stay automatic. Switch "Show" off to leave a deal out. A pick that ends leaves the page by itself.</p>' +
+      "</div>";
+    $("#deal-size").addEventListener("change", function () { state.dealSize = this.value; viewDeals(); });
+  }
+  function saveDeal(id, hidden, pos) {
+    var patch = pos ? { pos: pos } : {};
+    var calls = [];
+    // One deal per place: the one there before goes back to automatic.
+    if (pos) Object.keys(state.dealEdits).forEach(function (other) {
+      var e = state.dealEdits[other];
+      if (other !== id && e.patch.pos === pos) calls.push(api("PUT", "edit", { kind: "deal", id: other, hidden: e.hidden, patch: {} }).then(function (r) { storeDeal(other, r); }));
+    });
+    calls.push(api("PUT", "edit", { kind: "deal", id: id, hidden: hidden, patch: patch }).then(function (r) { storeDeal(id, r); }));
+    return Promise.all(calls).then(function () { markEdited(); viewDeals(); });
+  }
+  function storeDeal(id, r) { if (!r.hidden && !Object.keys(r.patch).length) delete state.dealEdits[id]; else state.dealEdits[id] = r; }
+  document.addEventListener("change", function (e) {
+    var tr = e.target.closest(".deals-table tr[data-id]");
+    if (!tr) return;
+    var pos = Number(tr.querySelector('[name="pos"]').value) || null;
+    var hidden = !tr.querySelector('[name="show"]').checked;
+    saveDeal(tr.dataset.id, hidden, hidden ? null : pos).then(function () {
+      toast(hidden ? "Left out of the page" : pos ? "Shown at #" + pos : "Saved");
+    }).catch(function (err) { toast(err.message, false); viewDeals(); });
+  });
+  function resetDeals() {
+    if (!confirm("Remove all your picks and let the rule choose the Top 3 again?")) return;
+    Promise.all(Object.keys(state.dealEdits).map(function (id) {
+      return api("DELETE", "edit?kind=deal&id=" + encodeURIComponent(id)).then(function () { delete state.dealEdits[id]; });
+    })).then(function () { toast("Back to automatic"); markEdited(); viewDeals(); }).catch(function (err) { toast(err.message, false); });
+  }
+
   /* ---------- pages ---------- */
   var PAGE_NAMES = { "/News": "Promo & News", "/CompareTopFirms/FastCompare": "Compare", "/CompareTopFirms/TopDeals": "Top 3 Deals", "/": "Home page" };
   var PAGE_ICONS = { "/News": "fa-tags", "/CompareTopFirms/FastCompare": "fa-scale-balanced", "/CompareTopFirms/TopDeals": "fa-fire", "/": "fa-house" };
@@ -1070,6 +1197,13 @@ body.signin::before { display: none; }
     else if (act === "save-firm") saveFirm(el.closest(".firm"));
     else if (act === "reset-firm") resetFirm(el.closest(".firm"));
     else if (act === "start-scrape") startScrape(el);
+    else if (act === "reset-deals") resetDeals();
+    else if (act === "deal-firm-out" || act === "deal-firm-in") {
+      var fid = "firm:" + el.dataset.firm, outNow = act === "deal-firm-out";
+      api("PUT", "edit", { kind: "deal", id: fid, hidden: outNow, patch: {} }).then(function (r) {
+        storeDeal(fid, r); markEdited(); viewDeals(); toast(outNow ? "Firm left out of the page" : "Firm back on the page");
+      }).catch(function (err) { toast(err.message, false); });
+    }
     else if (act === "render") {
       api("POST", "render", {}).then(function () {
         state.overview.meta.render_requested_at = new Date().toISOString(); updatePending(); toast("Re-render requested");

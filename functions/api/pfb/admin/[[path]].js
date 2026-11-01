@@ -2,7 +2,7 @@
 // is an HttpOnly cookie scoped to this path, kept in pfb_sessions as a hash.
 //
 //   POST /login {token}      POST /logout          GET /me
-//   GET  /overview           GET  /news            GET /firms
+//   GET  /overview           GET  /news            GET /firms            GET /deals
 //   PUT  /edit {kind, id, hidden, patch}           DELETE /edit?kind=&id=
 //   GET  /pages              POST /pages/restore {path, id}
 //   POST /render             POST /token {token}   POST /sessions/clear
@@ -21,7 +21,9 @@ const FIELDS = {
           market: ["futures", "cfd", "perps"] },
   firm: { name: "text", code: "text" },
   account: { price: "money", sale_price: "money" },
+  deal: { pos: "rank" }, // its place on the Top 3 deals page (1-3)
 };
+const DEAL_PLACES = 3;
 
 function cookie(value, maxAge) {
   return `${COOKIE}=${value}; Path=${COOKIE_PATH}; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`;
@@ -52,6 +54,10 @@ function cleanPatch(kind, patch) {
       const n = Number(v);
       if (!Number.isFinite(n) || n < 0 || n > 100000) throw new Error(`${k} must be a price`);
       out[k] = Math.round(n * 100) / 100;
+    } else if (rule === "rank") {
+      const n = Number(v);
+      if (!Number.isInteger(n) || n < 1 || n > DEAL_PLACES) throw new Error(`${k} must be 1 to ${DEAL_PLACES}`);
+      out[k] = n;
     } else if (Array.isArray(rule)) {
       if (!rule.includes(v)) throw new Error(`${k} must be one of ${rule.join(", ")}`);
       out[k] = v;
@@ -144,6 +150,11 @@ const routes = {
     const d = await data(DB, "prices");
     const e = await editsOf(DB, ["firm", "account"]);
     return json({ prices: d, edits: { firm: e.firm || {}, account: e.account || {} } });
+  },
+
+  "GET deals": async ({ DB }) => {
+    const d = await data(DB, "deals");
+    return json({ deals: d, edits: (await editsOf(DB, ["deal"])).deal || {} });
   },
 
   "PUT edit": async ({ DB, body }) => {
