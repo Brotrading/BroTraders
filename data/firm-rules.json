@@ -1388,35 +1388,35 @@
               "eval_price_msrp": 150,
               "profit_target": 1500,
               "max_drawdown": 1500,
-              "activation_fee": 130,
+              "activation_fee": 0,
               "max_contracts": 3
             },
             "50K": {
               "eval_price_msrp": 170,
               "profit_target": 3000,
               "max_drawdown": 2000,
-              "activation_fee": 130,
+              "activation_fee": 0,
               "max_contracts": 6
             },
             "75K": {
               "eval_price_msrp": 245,
               "profit_target": 4500,
               "max_drawdown": 2500,
-              "activation_fee": 130,
+              "activation_fee": 0,
               "max_contracts": 9
             },
             "100K": {
               "eval_price_msrp": 330,
               "profit_target": 6000,
               "max_drawdown": 3000,
-              "activation_fee": 130,
+              "activation_fee": 0,
               "max_contracts": 12
             },
             "150K": {
               "eval_price_msrp": 360,
               "profit_target": 9000,
               "max_drawdown": 4500,
-              "activation_fee": 130,
+              "activation_fee": 0,
               "max_contracts": 15
             }
           }

@@ -1,0 +1,128 @@
+const deals = [
+              {
+                name: "Tradeify",
+                logo: "Photos/firms/tradeify.png",
+                discount: "40% Off",
+                rating: "4.6",
+                details:
+                  "40% Off with code BRO.<br>Choose Day-1 or 3-Day Payouts!",
+                code: "BRO",
+                link: "/go/tradeify",
+              },
+              {
+                name: "TakeProfitTrader",
+                logo: "Photos/firms/takeprofittrader.svg",
+                discount: "BRO Code",
+                rating: "4.4",
+                details:
+                  "Monthly subscription eval — no fixed one-time fee.<br>Simulated PRO (80/20) to live PRO+ (90/10).",
+                code: "BRO",
+                link: "/go/takeprofittrader",
+              },
+              {
+                name: "My Funded Futures",
+                logo: "Photos/firms/myfundedfutures.png",
+                discount: "Upto 50% Off",
+                rating: "4.9",
+                details: "No Activation Fees + BOGO.",
+                code: "BRO",
+                link: "/go/mffu",
+              },
+              {
+                name: "FundedNext Futures",
+                logo: "Photos/firms/fundednext.png",
+                discount: "BROTRADING Code",
+                rating: "4.5",
+                details:
+                  "No activation fee, no monthly subscription.<br>Up to 95% profit split.",
+                code: "BROTRADING",
+                link: "/go/fundednext",
+              },
+              {
+                name: "Lucid Trading",
+                logo: "Photos/firms/lucid.png",
+                discount: "40% Off",
+                rating: "4.8",
+                details: "No Activation Fees<br>30% Off Pro/Flex/Direct, 40% Off LucidDaily.",
+                code: "BROTRADING",
+                link: "/go/lucid",
+              },
+              {
+                name: "Apex Trader Funding",
+                logo: "Photos/firms/apex.png",
+                discount: "90% Off",
+                rating: "4.3",
+                details:
+                  "Limited time: 90% Off ALL Evals (25K, 50K, 100K, 150K)!<br>Trail or End-of-Day drawdown.<br>1 day to pass.",
+                code: "BRO",
+                link: "/go/apex",
+              },
+              {
+                name: "TopOne Futures",
+                logo: "Photos/firms/topone.png",
+                discount: "Up to 55% Off",
+                rating: "4.8",
+                details: "Elite Access flat $39 with code BRO.<br>Up to 55% off Elite Daily & IGNITE for new traders.",
+                code: "BRO",
+                link: "/go/topone",
+              },
+              {
+                name: "Phidias Propfirm",
+                logo: "Photos/firms/phidias.jpeg",
+                discount: "80% Off",
+                rating: "3.8",
+                details: "TRY Now<br>Same Day Approval!",
+                code: "BROTRADING",
+                link: "/go/phidias",
+              },
+              {
+                name: "Legends Trading",
+                logo: "Photos/firms/legendstrading.png",
+                discount: "BRO Code",
+                rating: "3.5",
+                details:
+                  "3 paths to funded: Apprentice, Elite, Straight to Master.<br>90/10 split once live.",
+                code: "BRO",
+                link: "/go/legendstrading",
+              },
+              {
+                name: "Daytraders.com",
+                logo: "Photos/firms/daytraders.svg",
+                discount: "85% Off",
+                rating: "4.6",
+                details:
+                  "(Limited Time Offer)<br>All Accounts & No Activation Fee!",
+                code: "BROTRADING",
+                link: "/go/daytraders",
+              },
+              {
+                name: "Alpha Futures",
+                logo: "Photos/firms/alphafutures.png",
+                discount: "20% Off",
+                rating: "4.9",
+                details:
+                  "4.9/5 Trustpilot, 17,000+ reviews.<br>Zero, Standard, Advanced &amp; Direct paths — up to 90% split.",
+                code: "BROTRADING",
+                link: "/go/alpha",
+              },
+              {
+                name: "IQ Capital",
+                logo: "Photos/firms/iqcapital.svg",
+                discount: "BRO Code",
+                rating: "4.7",
+                details:
+                  "Soft-breach system — first 2 rule breaks don't close your account.<br>Note: ~$39/mo fee on funded futures accounts.",
+                code: "BRO",
+                link: "/go/iqcapital",
+              },
+              {
+                name: "BluSky Trading",
+                logo: "Photos/firms/blusky.png",
+                discount: "New",
+                rating: "4.7",
+                details:
+                  "Evaluation bills monthly until you pass.<br>Code coming soon — check the firm page for updates.",
+                code: "",
+                link: "/go/blusky",
+              },
+                        ];

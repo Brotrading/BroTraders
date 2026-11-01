@@ -2,7 +2,7 @@
 // Authorization: Bearer <SITE_INGEST_TOKEN from the scraper's .env>.
 //
 //   GET  /api/pfb/bot/sync   edits, the edits version and what each page was rendered with
-//   POST /api/pfb/bot/data   {kind: "news" | "prices", data}
+//   POST /api/pfb/bot/data   {kind: "news" | "prices" | "deals", data}
 //   POST /api/pfb/bot/page   {path, html, edits_version}
 //   POST /api/pfb/bot/status {event: "start" | "progress" | "finish" | "heartbeat", ...}
 import {
@@ -22,6 +22,8 @@ function checkData(kind, data) {
     const n = data && typeof data.firms === "object" ? Object.keys(data.firms).length : 0;
     return n > 0 ? n : "prices needs at least one firm";
   }
+  // The Top 3 deals page's candidates; none is fine (no promo running).
+  if (kind === "deals") return Array.isArray(data?.rows) ? data.rows.length : "deals needs rows";
   return `unknown kind ${kind}`;
 }
 

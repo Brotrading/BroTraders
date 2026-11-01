@@ -469,7 +469,7 @@
     "blusky": {
       "name": "BluSky Trading",
       "affiliate_url": "https://propfirmbro.com/go/blusky",
-      "code_default": null,
+      "code_default": "BRO",
       "logo_img": "../Photos/firms/blusky.png",
       "logo_icon": "fas fa-cloud",
       "ceo": "Mike Tolbert",
