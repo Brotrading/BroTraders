@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top 3 Prop Firm Deals Today (October 31, 2026) | BroTrading</title>
+<meta name="description" content="Today's three best futures prop firm deals at 50K, ranked by what you really save on the total to get funded: Phidias PropFirm, IQ Capital, BluSky Trading. Updated October 31, 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://propfirmbro.com/CompareTopFirms/TopDeals">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Top 3 prop firm deals today">
+<meta property="og:description" content="Today's three best futures prop firm deals at 50K, ranked by what you really save on the total to get funded: Phidias PropFirm, IQ Capital, BluSky Trading. Updated October 31, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&amp;family=DM+Sans:opsz,wght@9..40,300..800&amp;family=Space+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Top 3 prop firm deals today", "dateModified": "2026-10-31", "mainEntity": {"@type": "ItemList", "name": "Top futures prop firm deals today", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Phidias PropFirm Fundamental 50K: 80% off"}, {"@type": "ListItem", "position": 2, "name": "IQ Capital Rapid - Daily Payout 50K: 80% off"}, {"@type": "ListItem", "position": 3, "name": "BluSky Trading Instant Funding 50K: 50% off"}]}, "url": "https://propfirmbro.com/CompareTopFirms/TopDeals"}</script>
+<style>
+/* BroTrading look, shared by the news and compare pages.
+   Colours follow propfirmbro.com (design-refresh.css / header.html). */
+
+:root {
+  --bg: #030712;
+  --bg-deep: #030712;
+  --surface: rgba(10, 28, 58, 0.55);
+  --surface-solid: #0a1c3a;
+  --surface-hi: rgba(18, 44, 88, 0.7);
+  --line: rgba(61, 180, 255, 0.14);
+  --line-hi: rgba(61, 180, 255, 0.38);
+  --text: #eaf2ff;
+  --muted: #8ea6c9;
+  --blue: #2c9eff;
+  --blue-hi: #3db4ff;
+  --cyan: #00c2ff;
+  --gold: #ffcf40;
+  --good: #34d399;
+  --grad: linear-gradient(135deg, #00c2ff, #1e90ff);
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* the hero glow of the BroTrading homepage: blue from the top centre into navy */
+  background:
+    radial-gradient(circle at 50% 0, #1e40af 0%, transparent 60%) top / 100% 900px no-repeat,
+    linear-gradient(180deg, #0b1d3a 0%, var(--bg) 900px) top / 100% 900px no-repeat,
+    var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* same type as the main BroTrading site */
+h1, h2, h3 { font-family: "Space Grotesk", "DM Sans", sans-serif; letter-spacing: -0.02em; }
+.live .ago { font-family: "DM Mono", "DM Sans", monospace; font-size: 12px; }
+
+[hidden] { display: none !important; }
+.muted { color: var(--muted); }
+
+/* ---------- animated backdrop ---------- */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;  /* behind everything, including the site header and footer */
+  overflow: hidden;
+  pointer-events: none;
+  /* see-through: the page colour comes from body, this layer only adds the motion */
+}
+
+/* faint chart grid, only on the sides so the content stays clean */
+.backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(61, 180, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 180, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 28%, transparent 72%, #000 100%);
+}
+
+.backdrop canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.22;
+  animation: drift 40s ease-in-out infinite alternate;
+}
+.orb.a { width: 420px; height: 420px; left: -140px; top: 18%; background: #1e90ff; }
+.orb.b { width: 360px; height: 360px; right: -120px; top: 55%; background: #00c2ff; animation-duration: 32s; }
+.orb.c { width: 260px; height: 260px; right: 12%; top: -80px; background: #2c4dff; opacity: 0.22; animation-duration: 40s; }
+
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.08); }
+  100% { transform: translate(-20px, 40px) scale(0.95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb { animation: none; }
+}
+
+/* everything real sits above the backdrop */
+.page, .page-top { position: relative; }
+/* the site header is fixed with its own z-index; it must stay above the page */
+.tray { z-index: 20; }
+
+/* ---------- page frame ---------- */
+
+.page-top { border-bottom: 1px solid var(--line); background: rgba(2, 6, 23, 0.7); backdrop-filter: blur(10px); }
+.page-top .bar { max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.page-top .brand { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+.page-top .brand span { color: var(--blue-hi); }
+.stamp { color: var(--muted); font-size: 13px; }
+
+.page { max-width: 1320px; margin: 0 auto; padding: 48px 24px 110px; }
+.page a:not(.btn):not(.go) { color: var(--blue-hi); text-decoration: none; }
+.page a:not(.btn):not(.go):hover { text-decoration: underline; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--blue-hi); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 6px 12px; border: 1px solid var(--line-hi); border-radius: 999px; background: rgba(44, 158, 255, 0.08);
+}
+
+.page h1 {
+  margin: 16px 0 10px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  background: linear-gradient(180deg, #ffffff 30%, #94b5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.page h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.lead { color: #b8c9e6; font-size: 18px; margin: 0 0 28px; max-width: 760px; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+}
+
+/* ---------- buttons & chips ---------- */
+
+.btn, .go {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px;
+  border: 0; border-radius: 999px;
+  font: inherit; font-weight: 700; font-size: 14px;
+  color: #fff; text-decoration: none; cursor: pointer;
+  background: var(--grad);
+  box-shadow: 0 6px 22px rgba(30, 144, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+.btn:hover, .go:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(30, 144, 255, 0.5); filter: brightness(1.08); }
+.btn:active, .go:active { transform: translateY(0); }
+
+.btn.ghost {
+  background: rgba(10, 28, 58, 0.6);
+  border: 1px solid var(--line-hi);
+  color: var(--text);
+  box-shadow: none;
+}
+.btn.ghost:hover { border-color: var(--blue-hi); box-shadow: 0 0 0 3px rgba(61, 180, 255, 0.12); }
+
+.btn.gold {
+  background: linear-gradient(135deg, #ffe08a, #ffcf40 45%, #f5a623);
+  color: #1a1203;
+  box-shadow: 0 8px 26px rgba(255, 207, 64, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(10, 28, 58, 0.5);
+  color: var(--text); font: inherit; font-weight: 600; font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.chip:hover { border-color: var(--line-hi); transform: translateY(-1px); }
+.chip[aria-pressed="true"] {
+  background: var(--grad); border-color: transparent; color: #fff;
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.35);
+}
+.chip .n { font-weight: 500; font-size: 12px; opacity: 0.75; }
+.chip i { font-size: 13px; opacity: 0.9; }
+
+.code {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px;
+  border: 1px dashed rgba(255, 207, 64, 0.55); border-radius: 999px;
+  background: rgba(255, 207, 64, 0.06);
+  color: var(--text); font: inherit; font-family: "DM Mono", "DM Sans", monospace; font-size: 13px; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.code b { color: var(--gold); letter-spacing: 0.04em; }
+.code:hover { background: rgba(255, 207, 64, 0.14); }
+.code.copied { border-color: var(--good); }
+
+.logo {
+  width: 40px; height: 40px; flex: none;
+  border-radius: 12px; border: 1px solid var(--line);
+  background: #fff center / 80% no-repeat;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.search-box { position: relative; }
+.search-box i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; }
+.search {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(2, 6, 23, 0.6);
+  color: var(--text); font: inherit;
+}
+.search:focus { outline: none; border-color: var(--blue-hi); box-shadow: 0 0 0 3px rgba(61, 180, 255, 0.15); }
+
+.page-foot { color: var(--muted); font-size: 13px; margin-top: 32px; max-width: 900px; }
+
+@media (max-width: 520px) {
+  .page { padding: 28px 16px 110px; }
+  .page-top .bar { padding: 12px 16px; }
+  .stamp { display: none; }
+}
+
+/* ---------- live data badge ---------- */
+
+.live {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 12px;
+  border: 1px solid rgba(52, 211, 153, 0.35); border-radius: 999px;
+  background: rgba(52, 211, 153, 0.08);
+  color: #b4f5d8; font-size: 13px; font-weight: 600; white-space: nowrap;
+}
+.live .ago { color: var(--muted); font-weight: 500; }
+.pulse {
+  position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--good);
+}
+.pulse::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--good);
+  animation: pulse 1.8s ease-out infinite;
+}
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(2.8); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .pulse::after { animation: none; } }
+
+.how {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border: 1px solid var(--line-hi); border-radius: 999px;
+  color: var(--text) !important; font-size: 13px; font-weight: 600; text-decoration: none !important;
+  background: rgba(10, 28, 58, 0.5);
+}
+.how i { color: var(--blue-hi); }
+.how:hover { border-color: var(--blue-hi); }
+
+
+.status-row { display: flex; flex-wrap: wrap; gap: 10px; margin: -10px 0 28px; }
+
+/* ---------- the three deals ---------- */
+
+.deals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.deal {
+  position: relative; display: flex; flex-direction: column; gap: 12px; padding: 22px;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(14, 36, 74, 0.8), rgba(6, 18, 40, 0.85));
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.deal:hover { transform: translateY(-3px); border-color: var(--line-hi); }
+.deal.first { border-color: rgba(255, 207, 64, 0.6); box-shadow: 0 0 36px rgba(255, 207, 64, 0.14); }
+.deal-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.rank { color: var(--muted); font-family: "Space Grotesk", sans-serif; font-size: 15px; }
+.rank b { color: var(--text); font-size: 26px; }
+.deal.first .rank b { color: var(--gold); }
+.off {
+  padding: 6px 14px; border-radius: 999px; font-weight: 800; font-size: 18px; color: #1a1300;
+  background: linear-gradient(135deg, #ffe08a, #ffcf40 45%, #f5a623);
+}
+.firm { display: flex; gap: 12px; align-items: center; }
+.firm .logo { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+.fname { font-weight: 700; font-size: 18px; }
+.price b { font-size: 30px; }
+.price s { color: var(--muted); margin-left: 4px; }
+.total small { display: block; color: var(--muted); font-size: 12px; }
+.save { color: var(--good); }
+.ends { color: var(--muted); font-size: 13px; }
+.ends.soon { color: var(--gold); font-weight: 700; }
+.go-row { margin-top: auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.go-row .go { flex: 1; justify-content: center; }
+.rules { font-size: 13px; }
+.none { padding: 28px; text-align: center; }
+.how-rank { margin-top: 26px; }
+.how-rank h2 { margin: 0 0 6px; font-size: 18px; display: flex; gap: 10px; align-items: center; }
+.how-rank h2 i { color: var(--blue-hi); }
+.how-rank p { margin: 0; color: #b8c9e6; }
+.more { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+
+@media (max-width: 980px) { .deals { grid-template-columns: 1fr; max-width: 520px; } }
+
+.logo-myfundedfutures{background-image:url('/Photos/firms/icons/myfundedfutures.png');background-size:cover;background-color:#0b1120}
+.logo-phidias{background-image:url('/Photos/firms/icons/phidias.png');background-size:cover;background-color:#0b1120}
+.logo-blusky{background-image:url('/Photos/firms/icons/blusky.png');background-size:cover;background-color:#0b1120}
+.logo-top_one_futures{background-image:url('/Photos/firms/icons/top_one_futures.png');background-size:cover;background-color:#0b1120}
+.logo-iqcapital{background-image:url('/Photos/firms/icons/iqcapital.png');background-size:cover;background-color:#0b1120}
+.logo-fundednext{background-image:url('/Photos/firms/icons/fundednext.png');background-size:cover;background-color:#0b1120}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
+<style>.page{padding-top:120px!important}.side{top:96px!important;max-height:calc(100vh - 120px)!important}</style>
+<div id="header"></div>
+<script src="../header.js" defer></script>
+
+<main class="page">
+  <span class="eyebrow"><i class="fa-solid fa-fire"></i> Deals of the day</span>
+  <h1>Top 3 <em>prop firm deals</em> today</h1>
+  <p class="lead">The three biggest savings on a 50K futures account right now, one per firm, with the price you pay today and the total to get funded.</p>
+  <div class="status-row">
+    <span class="live"><span class="pulse"></span>Live data <span class="ago" data-updated="2026-10-31T23:04:21.230830+00:00">updated October 31, 2026</span></span>
+  </div>
+
+  <section class="deals" id="deals" aria-label="Top deals">
+<article class="deal" data-rank="1">
+<div class="deal-top"><span class="rank">#<b>1</b></span><span class="off">80% off</span></div>
+<div class="firm"><span class="logo logo-phidias" role="img" aria-label="Phidias PropFirm logo"></span><div><div class="fname">Phidias PropFirm</div>
+<div class="muted">Fundamental · 50K</div></div></div>
+<div class="price"><b>$116</b> <s>$580</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$116</b> <small>no activation fee</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$464</b></div>
+<span class="ends" data-ends="2026-11-01T22:00:00+00:00"><i class="fa-regular fa-clock"></i> Ends <time datetime="2026-11-01T22:00:00+00:00">Nov 1, 17:00 ET</time></span>
+<div class="go-row"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="go" href="https://propfirmbro.com/go/phidias" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/PhidiasPropFirm.html">Rules &amp; review</a>
+</article>
+<article class="deal" data-rank="2">
+<div class="deal-top"><span class="rank">#<b>2</b></span><span class="off">80% off</span></div>
+<div class="firm"><span class="logo logo-iqcapital" role="img" aria-label="IQ Capital logo"></span><div><div class="fname">IQ Capital</div>
+<div class="muted">Rapid - Daily Payout · 50K</div></div></div>
+<div class="price"><b>$135</b> <s>$675</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$135</b> <small>no activation fee</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$540</b></div>
+<span class="ends open"><i class="fa-regular fa-clock"></i> No end date announced</span>
+<div class="go-row"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="go" href="https://propfirmbro.com/go/iqcapital" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/IQCapital.html">Rules &amp; review</a>
+</article>
+<article class="deal" data-rank="3">
+<div class="deal-top"><span class="rank">#<b>3</b></span><span class="off">50% off</span></div>
+<div class="firm"><span class="logo logo-blusky" role="img" aria-label="BluSky Trading logo"></span><div><div class="fname">BluSky Trading</div>
+<div class="muted">Instant Funding · 50K</div></div></div>
+<div class="price"><b>$299</b> <s>$599</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$299</b> <small>no activation fee</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$300</b></div>
+<span class="ends open"><i class="fa-regular fa-clock"></i> No end date announced</span>
+<div class="go-row"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="go" href="https://propfirmbro.com/go/blusky" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/BluSky.html">Rules &amp; review</a>
+</article>
+<article class="deal" data-rank="4" hidden>
+<div class="deal-top"><span class="rank">#<b>4</b></span><span class="off">50% off</span></div>
+<div class="firm"><span class="logo logo-top_one_futures" role="img" aria-label="Top One Futures logo"></span><div><div class="fname">Top One Futures</div>
+<div class="muted">IGNITE Instant Funding · 50K</div></div></div>
+<div class="price"><b>$199</b> <s>$398</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$199</b> <small>activation fee not listed</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$199</b></div>
+<span class="ends open"><i class="fa-regular fa-clock"></i> No end date announced</span>
+<div class="go-row"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="go" href="https://propfirmbro.com/go/topone" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/TopOne.html">Rules &amp; review</a>
+</article>
+<article class="deal" data-rank="5" hidden>
+<div class="deal-top"><span class="rank">#<b>5</b></span><span class="off">47% off</span></div>
+<div class="firm"><span class="logo logo-fundednext" role="img" aria-label="FundedNext Futures logo"></span><div><div class="fname">FundedNext Futures</div>
+<div class="muted">Flex · 50K</div></div></div>
+<div class="price"><b>$74.99</b> <s>$141.99</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$74.99</b> <small>activation fee not listed</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$67</b></div>
+<span class="ends open"><i class="fa-regular fa-clock"></i> No end date announced</span>
+<div class="go-row"><button type="button" class="code" data-code="BROTRADING" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BROTRADING</b></button><a class="go" href="https://propfirmbro.com/go/fundednext" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/FundedNext.html">Rules &amp; review</a>
+</article>
+<article class="deal" data-rank="6" hidden>
+<div class="deal-top"><span class="rank">#<b>6</b></span><span class="off">40% off</span></div>
+<div class="firm"><span class="logo logo-myfundedfutures" role="img" aria-label="My Funded Futures logo"></span><div><div class="fname">My Funded Futures</div>
+<div class="muted">Rapid · 50K</div></div></div>
+<div class="price"><b>$125</b> <s>$209</s>
+<span class="muted">today</span></div>
+<div class="total">Total to get funded: <b>$125</b> <small>no activation fee</small></div>
+<div class="save"><i class="fa-solid fa-piggy-bank"></i> You save <b>$84</b></div>
+<span class="ends open"><i class="fa-regular fa-clock"></i> No end date announced</span>
+<div class="go-row"><button type="button" class="code" data-code="BRO" title="Copy code"><i class="fa-regular fa-copy"></i> Code <b>BRO</b></button><a class="go" href="https://propfirmbro.com/go/mffu" target="_blank" rel="sponsored nofollow noopener">Get deal <i class="fa-solid fa-arrow-right"></i></a></div>
+<a class="rules" href="/Firms/MyFundedFuture.html">Rules &amp; review</a>
+</article>
+  </section>
+  <div class="panel none" id="no-deals" hidden>
+    <p>No promo is running on a 50K account right now. See every firm's price today on the <a href="../CompareTopFirms/FastCompare">compare page</a>.</p>
+  </div>
+
+  <section class="panel how-rank">
+    <h2><i class="fa-solid fa-ranking-star"></i> How we pick them</h2>
+    <p>Every firm's website and announcements are checked several times a day. For each firm we take its 50K futures account with the biggest promo running today, then rank firms by how much the promo takes off the total to get funded (evaluation plus activation fee). A deal leaves the list as soon as it ends.</p>
+  </section>
+
+  <div class="more">
+    <a class="btn" href="../CompareTopFirms/FastCompare"><i class="fa-solid fa-scale-balanced"></i> Compare every firm</a>
+    <a class="btn ghost" href="../News"><i class="fa-solid fa-bullhorn"></i> All promos &amp; news</a>
+  </div>
+
+  <p class="page-foot">
+    <i class="fa-solid fa-circle-info"></i>
+    Prices are checked on each firm's official website; the final price is shown at checkout.
+    Use the BroTrading code shown on each deal. Links on this page are affiliate links:
+    we may earn a commission at no extra cost to you. Not financial advice.
+  </p>
+</main>
+
+<div id="footer"></div>
+<script src="../footer.js"></script>
+
+<script>
+(() => {
+  // The page holds a few spare deals: show the first three still running, with a countdown.
+  const SHOWN = 3;
+  const cards = [...document.querySelectorAll(".deal")];
+  function left(ms) {
+    const m = Math.floor(ms / 60000), h = Math.floor(m / 60), d = Math.floor(h / 24);
+    return d >= 2 ? `${d} days` : h >= 1 ? `${h}h ${m % 60}m` : `${m} min`;
+  }
+  function update() {
+    let n = 0;
+    cards.forEach(c => {
+      const e = c.querySelector("[data-ends]");
+      const ms = e ? Date.parse(e.dataset.ends) - Date.now() : Infinity;
+      const show = ms > 0 && n < SHOWN;
+      c.hidden = !show;
+      if (!show) return;
+      n += 1;
+      c.querySelector(".rank b").textContent = n;
+      c.classList.toggle("first", n === 1);
+      if (e) {
+        e.classList.toggle("soon", ms < 864e5);
+        e.lastElementChild.textContent = `in ${left(ms)}`;
+      }
+    });
+    document.getElementById("no-deals").hidden = n > 0;
+  }
+  update();
+  setInterval(update, 30000);
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".code"); if (!b) return;
+    navigator.clipboard?.writeText(b.dataset.code).then(() => {
+      const html = b.innerHTML; b.classList.add("copied"); b.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+      setTimeout(() => { b.innerHTML = html; b.classList.remove("copied"); }, 1400);
+    });
+  });
+})();
+</script>
+<script>
+// Animated chart backdrop: a live chart in the top-right corner (candles follow
+// a random walk, the last one ticks like a live market, then a new one opens and
+// the chart slides left), single candles floating in the side margins, and a
+// few glowing waves with a spark running along them. Pauses when the tab is hidden; reduced motion
+// gets one still frame.
+(function () {
+  var host = document.querySelector(".backdrop");
+  if (!host || !window.requestAnimationFrame) return;
+
+  var canvas = document.createElement("canvas");
+  host.appendChild(canvas);
+  var ctx = canvas.getContext("2d");
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var width = 0, height = 0;
+  var charts = [];
+  var running = false;
+
+  var STEP = 21;         // px between candles
+  var BODY = 11;         // candle body width
+  var floaters = [];     // single big candles that fade in and out at random places
+  var nextFloater = 0;
+  var CANDLE_MS = 2400;  // how long a candle stays "live"
+  var SLIDE_MS = 700;
+
+  var waves = [
+    { y: 0.30, amp: 30, k: 0.0040, speed: 0.00022, alpha: 0.11, spark: 0.06 },
+    { y: 0.66, amp: 44, k: 0.0030, speed: -0.00016, alpha: 0.08, spark: 0.045 }
+  ];
+
+  function gauss() {
+    return (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
+  }
+
+  // One closed candle, picking a shape so the chart has the usual mix:
+  // regular bars, dojis, hammers, shooting stars and full-body marubozus.
+  function makeCandle(open, vol) {
+    var r = Math.random();
+    var move = gauss() * vol;
+    var close, upper, lower;
+    if (r < 0.12) {                       // doji
+      close = open + gauss() * vol * 0.06;
+      upper = vol * (0.3 + Math.random() * 0.6);
+      lower = vol * (0.3 + Math.random() * 0.6);
+    } else if (r < 0.22) {                // hammer
+      close = open + Math.abs(move) * 0.4;
+      upper = vol * 0.08 * Math.random();
+      lower = Math.abs(move) * 1.4 + vol * 0.5;
+    } else if (r < 0.32) {                // shooting star
+      close = open - Math.abs(move) * 0.4;
+      upper = Math.abs(move) * 1.4 + vol * 0.5;
+      lower = vol * 0.08 * Math.random();
+    } else if (r < 0.42) {                // marubozu
+      close = open + move * 1.6;
+      upper = 0;
+      lower = 0;
+    } else {                              // regular
+      close = open + move;
+      upper = vol * Math.random() * 0.6;
+      lower = vol * Math.random() * 0.6;
+    }
+    return {
+      o: open, c: close,
+      h: Math.max(open, close) + upper,
+      l: Math.min(open, close) - lower
+    };
+  }
+
+  // A live chart that floats: it fades in at area, drifts slowly while it
+  // keeps ticking, then fades out and a new one appears somewhere else.
+  function makeChart(area, now) {
+    var band = area.band;
+    var step = area.step || STEP;
+    var count = Math.max(6, Math.floor(band / step));
+    var chart = {
+      step: step,
+      body: area.body || BODY,
+      strength: area.strength || 1,
+      x0: area.x0,
+      band: band,
+      count: count,
+      top: area.top,
+      bottom: area.bottom,
+      born: now,
+      life: 14000 + Math.random() * 8000,
+      vx: (Math.random() < 0.5 ? -1 : 1) * (0.002 + Math.random() * 0.003),   // px per ms
+      vy: (Math.random() - 0.5) * 0.002,
+      vol: 1,
+      candles: [],
+      opened: now,
+      slide: 0,
+      lo: 0,
+      hi: 1
+    };
+    var price = 100;
+    for (var i = 0; i <= count; i++) {
+      var c = makeCandle(price, chart.vol);
+      chart.candles.push(c);
+      price = c.c;
+    }
+    fitRange(chart, 1);
+    return chart;
+  }
+
+  function maxCharts() {
+    return 1;
+  }
+
+  // The headline block stays clear: charts are placed around it, and anything
+  // that drifts in is faded out behind it (see clearQuiet).
+  var QUIET = ".page > .eyebrow, .page > h1, .page > .lead, .page > .facts, .page > .status-row, .page > .tabs";
+
+  // Headline blocks are full width, but the text in them is not: measure the text.
+  var range = document.createRange();
+  function textBox(el) {
+    range.selectNodeContents(el);
+    return range.getBoundingClientRect();
+  }
+
+  function quietRects() {
+    var out = [];
+    document.querySelectorAll(QUIET).forEach(function (el) {
+      var r = textBox(el);
+      if (r.bottom < 0 || r.top > height || !r.width) return;
+      out.push({ left: r.left, top: r.top, right: r.right, bottom: r.bottom });
+    });
+    return out;
+  }
+
+  // Soft-edged hole in the canvas over the headline, for whatever drifts behind it.
+  function clearQuiet() {
+    var rects = quietRects();
+    if (!rects.length) return;
+    var soft = width < 760 ? 10 : 30;
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "#000";
+    ctx.shadowColor = "#000";
+    ctx.shadowBlur = soft;
+    rects.forEach(function (r) {
+      ctx.fillRect(r.left - 6, r.top - 4, r.right - r.left + 12, r.bottom - r.top + 8);
+    });
+    ctx.restore();
+  }
+
+  // The chart always sits in the top-right corner, under the site header and to
+  // the right of the headline text, as wide as that space allows. Size varies per
+  // chart (regular or big on desktop, small on phones).
+  function spawnChart(now) {
+    var mobile = width < 760;
+    var big = !mobile && Math.random() < 0.4;
+    var want, tall, minBand, step, body, gap;
+    if (mobile) {
+      want = 110 + Math.random() * 40; tall = 70 + Math.random() * 25;
+      minBand = 80; step = 13; body = 7; gap = 18;
+    } else if (big) {
+      want = 420 + Math.random() * 220; tall = 200 + Math.random() * 120;
+      minBand = 220; step = 30; body = 16; gap = 64;
+    } else {
+      want = 240 + Math.random() * 140; tall = 130 + Math.random() * 90;
+      minBand = 180; step = STEP; body = BODY; gap = 64;
+    }
+    var margin = mobile ? 14 : Math.max(24, width * 0.03);
+    // the site header is loaded by header.js and may not be there yet on the first frame
+    var head = document.querySelector(".bt-header, .page-top");
+    var headBottom = head ? Math.max(0, head.getBoundingClientRect().bottom)
+      : document.getElementById("header") ? (mobile ? 76 : 96) : 0;
+    var top = headBottom + (mobile ? 12 : 28);
+    var rects = quietRects();
+    var band = 0;
+    // shorter charts fit beside more of the headline, so shrink until it fits
+    for (var tries = 0; tries < 4; tries++) {
+      var limit = 0;
+      rects.forEach(function (r) {
+        if (r.top < top + tall + gap / 2 && r.bottom > top - gap / 2) limit = Math.max(limit, r.right + gap);
+      });
+      band = Math.min(want, width - margin - limit);
+      if (band >= minBand) break;
+      tall *= 0.75;
+    }
+    if (band < minBand) return false;   // no room right now (e.g. scrolled); try again later
+    var chart = makeChart({
+      x0: width - margin - band, band: band, top: top, bottom: top + tall,
+      step: step, body: body, strength: big ? 0.75 : 1
+    }, now);
+    chart.vx = chart.vy = 0;   // stays put in its corner
+    chart.boost = mobile ? 1.7 : 1;   // the small phone chart needs more contrast to be seen
+    charts.push(chart);
+    return true;
+  }
+
+  // Fades out once the headline scrolls away, so the chart never sits behind cards.
+  function heroFade() {
+    var y = window.scrollY || document.documentElement.scrollTop || 0;
+    return Math.max(0, Math.min(1, 1 - (y - 40) / 220));
+  }
+
+  function fitRange(chart, ease) {
+    var lo = Infinity, hi = -Infinity;
+    chart.candles.forEach(function (c) { lo = Math.min(lo, c.l); hi = Math.max(hi, c.h); });
+    var pad = (hi - lo) * 0.12 || 1;
+    chart.lo += (lo - pad - chart.lo) * ease;
+    chart.hi += (hi + pad - chart.hi) * ease;
+  }
+
+  var nextChart = 0;
+  function build() {
+    charts = [];
+    var now = window.performance ? performance.now() : 0;
+    if (spawnChart(now)) charts[0].born = now - charts[0].life * 0.3;   // the first one is already visible on load
+    nextChart = now + 2500;
+  }
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  // The live candle wanders towards the shape it will close with (with some
+  // tick noise on the way); every CANDLE_MS it closes, a new one opens at its
+  // close and the chart slides one step left.
+  function tick(chart, now) {
+    var live = chart.candles[chart.candles.length - 1];
+    var p = Math.min(1, (now - chart.opened) / CANDLE_MS);
+    if (live.target) {
+      var goal = live.target;
+      live.c = live.o + (goal.c - live.o) * p + gauss() * chart.vol * 0.15 * (1 - p);
+      live.h = Math.max(live.h, live.c, Math.max(live.o, live.c) + (goal.h - Math.max(goal.o, goal.c)) * p);
+      live.l = Math.min(live.l, live.c, Math.min(live.o, live.c) - (Math.min(goal.o, goal.c) - goal.l) * p);
+    }
+
+    if (p >= 1) {
+      if (live.target) {
+        live.c = live.target.c;
+        live.h = Math.max(live.h, live.target.h);
+        live.l = Math.min(live.l, live.target.l);
+        delete live.target;
+      }
+      chart.opened = now;
+      var next = { o: live.c, c: live.c, h: live.c, l: live.c, target: makeCandle(live.c, chart.vol) };
+      chart.candles.push(next);
+      if (chart.candles.length > chart.count + 1) chart.candles.shift();
+      chart.slide = now;
+      chart.vol = Math.max(0.5, Math.min(1.8, chart.vol * (0.9 + Math.random() * 0.2)));
+    }
+    fitRange(chart, 0.06);
+  }
+
+  function priceY(chart, p) {
+    return chart.bottom - (p - chart.lo) / (chart.hi - chart.lo) * (chart.bottom - chart.top);
+  }
+
+  function drawChart(chart, now) {
+    var age = now - chart.born;
+    var fade = Math.max(0, Math.min(1, age / 2500, (chart.life - age) / 3000)) * heroFade();
+    if (fade <= 0) return;
+    ctx.save();
+    ctx.globalAlpha = fade * chart.strength;
+    ctx.translate(chart.vx * age, chart.vy * age);
+    drawCandles(chart, now);
+    ctx.restore();
+  }
+
+  function drawCandles(chart, now) {
+    var t = Math.min(1, (now - chart.slide) / SLIDE_MS);
+    var offset = (1 - (1 - Math.pow(1 - t, 3))) * chart.step;   // eases the slide to the left
+    var n = chart.candles.length;
+    var closes = [];
+
+    for (var i = 0; i < n; i++) {
+      var c = chart.candles[i];
+      var x = chart.x0 + (i - (n - 1 - chart.count)) * chart.step + offset;
+      if (x < chart.x0 - chart.step || x > chart.x0 + chart.band + chart.step) continue;
+
+      // brightest in the middle of the chart, fading out at both ends
+      var edge = 1 - Math.abs((x - chart.x0) / chart.band - 0.5) * 2;
+      var a = Math.min(1, (0.08 + Math.max(0, Math.min(1, edge)) * 0.34) * chart.boost);
+      var up = c.c >= c.o;
+      var yo = priceY(chart, c.o), yc = priceY(chart, c.c);
+      var top = Math.min(yo, yc), h = Math.max(1.5, Math.abs(yc - yo));
+
+      ctx.strokeStyle = up ? "rgba(61, 180, 255," + a + ")" : "rgba(130, 160, 220," + a * 0.8 + ")";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x + 0.5, priceY(chart, c.h));
+      ctx.lineTo(x + 0.5, priceY(chart, c.l));
+      ctx.stroke();
+
+      if (up) {
+        ctx.shadowColor = "rgba(0, 194, 255, 0.55)";
+        ctx.shadowBlur = i === n - 1 ? 10 : 4;
+        ctx.fillStyle = "rgba(61, 180, 255," + a + ")";
+        ctx.fillRect(x - chart.body / 2, top, chart.body, h);
+        ctx.shadowBlur = 0;
+      } else {
+        ctx.fillStyle = "rgba(2, 6, 23, 0.6)";
+        ctx.fillRect(x - chart.body / 2, top, chart.body, h);
+        ctx.strokeRect(x - chart.body / 2 + 0.5, top + 0.5, chart.body - 1, Math.max(0.5, h - 1));
+      }
+      closes.push([x, yc, a]);
+    }
+
+    // price marker at the live candle
+    var last = closes[closes.length - 1];
+    if (last) {
+      ctx.setLineDash([3, 4]);
+      ctx.strokeStyle = "rgba(61, 180, 255, 0.25)";
+      ctx.beginPath();
+      ctx.moveTo(chart.x0, last[1]);
+      ctx.lineTo(chart.x0 + chart.band, last[1]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  // ---------- floating candles ----------
+
+  function maxFloaters() {
+    return width < 760 ? 3 : 7;
+  }
+
+  // Only in the empty margins beside the page content. Returns null when the
+  // screen is too narrow to have any.
+  function floaterX() {
+    var page = document.querySelector(".page");
+    var r = page ? page.getBoundingClientRect() : { left: width * 0.3, right: width * 0.7 };
+    var left = r.left + 8, right = width - r.right + 8;
+    if (left < 60 && right < 60) return null;
+    var useLeft = right < 60 || (left >= 60 && Math.random() < 0.5);
+    return useLeft ? 14 + Math.random() * (left - 28) : width - 14 - Math.random() * (right - 28);
+  }
+
+  function spawnFloater(now) {
+    var x = floaterX();
+    if (x === null) return;
+    var big = Math.random() < 0.25;
+    var body = big ? 70 + Math.random() * 110 : 24 + Math.random() * 60;
+    floaters.push({
+      x: Math.round(x),
+      y: height * 0.1 + Math.random() * height * 0.8,
+      vy: (Math.random() - 0.5) * 0.008,           // slow drift up or down, px per ms
+      body: body,
+      wickUp: 8 + Math.random() * body * 0.6,
+      wickDown: 8 + Math.random() * body * 0.6,
+      size: big ? 12 + Math.random() * 8 : 6 + Math.random() * 6,
+      up: Math.random() < 0.6,
+      born: now,
+      life: 6000 + Math.random() * 5000,
+      peak: big ? 0.2 : 0.28                      // big ones stay fainter so the page stays readable
+    });
+  }
+
+  function drawFloater(f, now) {
+    var p = (now - f.born) / f.life;
+    var fade = p < 0.3 ? p / 0.3 : p > 0.65 ? (1 - p) / 0.35 : 1;
+    var grow = 1 - Math.pow(1 - Math.min(1, p / 0.4), 3);
+    var a = Math.max(0, fade) * f.peak;
+    var y = f.y + f.vy * (now - f.born);
+    var body = f.body * grow;
+    var color = f.up ? "rgba(61, 180, 255," + a + ")" : "rgba(120, 150, 210," + a * 0.75 + ")";
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(f.x + 0.5, y - body / 2 - f.wickUp * grow);
+    ctx.lineTo(f.x + 0.5, y + body / 2 + f.wickDown * grow);
+    ctx.stroke();
+
+    if (f.up) {
+      ctx.shadowColor = "rgba(0, 194, 255, 0.6)";
+      ctx.shadowBlur = 8;
+      ctx.fillStyle = color;
+      ctx.fillRect(f.x - f.size / 2, y - body / 2, f.size, body);
+      ctx.shadowBlur = 0;
+    } else {
+      ctx.fillStyle = "rgba(2, 6, 23, 0.5)";
+      ctx.fillRect(f.x - f.size / 2, y - body / 2, f.size, body);
+      ctx.strokeRect(f.x - f.size / 2 + 0.5, y - body / 2, f.size - 1, body);
+    }
+  }
+
+  function waveY(wave, x, t) {
+    return wave.y * height
+      + Math.sin(x * wave.k + t * wave.speed) * wave.amp
+      + Math.sin(x * wave.k * 0.37 + t * wave.speed * 1.7) * wave.amp * 0.45;
+  }
+
+  function drawWave(wave, t) {
+    ctx.beginPath();
+    for (var x = -20; x <= width + 20; x += 14) {
+      var y = waveY(wave, x, t);
+      if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = "rgba(0, 194, 255," + wave.alpha * 0.35 + ")";
+    ctx.lineWidth = 6;
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(61, 180, 255," + wave.alpha + ")";
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+
+    var span = width + 300;
+    var sx = ((t * wave.spark) % span + span) % span - 150;
+    var sy = waveY(wave, sx, t);
+    var glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, 30);
+    glow.addColorStop(0, "rgba(180, 230, 255, 0.45)");
+    glow.addColorStop(0.3, "rgba(61, 180, 255, 0.18)");
+    glow.addColorStop(1, "rgba(61, 180, 255, 0)");
+    ctx.fillStyle = glow;
+    ctx.fillRect(sx - 30, sy - 30, 60, 60);
+  }
+
+  var lastTick = 0;
+  function frame(now) {
+    if (!running) return;
+    ctx.clearRect(0, 0, width, height);
+    for (var i = 0; i < waves.length; i++) drawWave(waves[i], now);
+    var doTick = now - lastTick > 90;   // ticks ~11x a second, smooth enough and cheap
+    if (doTick) lastTick = now;
+    if (now >= nextFloater && floaters.length < maxFloaters()) {
+      spawnFloater(now);
+      nextFloater = now + 1200 + Math.random() * 1600;
+    }
+    floaters = floaters.filter(function (f) { return now - f.born < f.life; });
+    for (var f = 0; f < floaters.length; f++) drawFloater(floaters[f], now);
+    charts = charts.filter(function (c) { return now - c.born < c.life; });
+    if (now >= nextChart && charts.length < maxCharts()) {
+      nextChart = spawnChart(now) ? now + 4000 + Math.random() * 5000 : now + 1500;
+    }
+    for (var j = 0; j < charts.length; j++) {
+      if (doTick) tick(charts[j], now);
+      drawChart(charts[j], now);
+    }
+    clearQuiet();
+    window.requestAnimationFrame(frame);
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    window.requestAnimationFrame(frame);
+  }
+
+  function drawStill() {
+    ctx.clearRect(0, 0, width, height);
+    for (var i = 0; i < waves.length; i++) drawWave(waves[i], 40000);
+    if (charts.length < maxCharts()) spawnChart(0);
+    for (var j = 0; j < charts.length; j++) {
+      charts[j].born = -charts[j].life / 2;
+      charts[j].vx = charts[j].vy = 0;
+      drawChart(charts[j], 0);
+    }
+    floaters = [];
+    for (var k = 0; k < maxFloaters() / 2; k++) spawnFloater(0);
+    floaters.forEach(function (f) {
+      f.born = -f.life * 0.5;
+      drawFloater(f, 0);
+    });
+    clearQuiet();
+  }
+
+  resize();
+  window.addEventListener("resize", function () {
+    resize();
+    if (still) drawStill();
+  });
+
+  if (still) {
+    drawStill();
+    return;
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) running = false; else start();
+  });
+  start();
+})();
+
+// "updated 12 min ago" next to the Live data badge, from the time the data was collected.
+(function () {
+  var nodes = document.querySelectorAll("[data-updated]");
+  if (!nodes.length) return;
+
+  function ago(iso) {
+    var minutes = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+    if (minutes < 1) return "updated just now";
+    if (minutes < 60) return "updated " + minutes + " min ago";
+    var hours = Math.round(minutes / 60);
+    if (hours < 24) return "updated " + hours + (hours === 1 ? " hour ago" : " hours ago");
+    var days = Math.round(hours / 24);
+    return "updated " + days + (days === 1 ? " day ago" : " days ago");
+  }
+
+  function refresh() {
+    nodes.forEach(function (node) { node.textContent = ago(node.dataset.updated); });
+  }
+  refresh();
+  setInterval(refresh, 60000);
+})();
+
+</script>
+</body>
+</html>

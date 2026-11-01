@@ -1,5 +1,5 @@
 // Shared by the scraper-data functions: /api/pfb/bot/*, /api/pfb/admin/*, /News,
-// /CompareTopFirms/FastCompare and the home page (/). Written by the scraper repo
+// /CompareTopFirms/FastCompare, /CompareTopFirms/TopDeals and the home page (/). Written by the scraper repo
 // (site_assets/site), copied in by its publish step.
 //
 // Everything lives in our own tables (pfb_ prefix) in the existing D1 database (env.DB).
@@ -7,7 +7,7 @@
 
 // The pages the scraper renders, by their public path (Cloudflare serves X.html at X).
 // "/" is Mike's home page (index.html from main) with the scraper's firm table.
-export const PAGES = ["/News", "/CompareTopFirms/FastCompare", "/"];
+export const PAGES = ["/News", "/CompareTopFirms/FastCompare", "/CompareTopFirms/TopDeals", "/"];
 
 // SHA-256 of the tokens. The tokens themselves are only with the admin and in the
 // scraper server's .env. The admin token can be changed from the admin page (stored
