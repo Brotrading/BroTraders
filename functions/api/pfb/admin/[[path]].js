@@ -7,8 +7,9 @@
 //   GET  /pages              POST /pages/restore {path, id}
 //   POST /render             POST /token {token}   POST /sessions/clear
 //   GET  /scrape             POST /scrape          (start a run outside the schedule)
+//   GET  /discord            PUT  /discord {url, username}                 POST /discord/test
 import {
-  PAGES, SESSION_HOURS, database, isAdminToken, json, now, randomId, scrapeInfo, setJSON, setMeta, sha256,
+  PAGES, SESSION_HOURS, database, getJSON, isAdminToken, json, now, randomId, scrapeInfo, setJSON, setMeta, sha256,
 } from "../_lib.js";
 
 const COOKIE = "pfb_admin";
@@ -24,6 +25,10 @@ const FIELDS = {
   deal: { pos: "rank" }, // its place on the Top 3 deals page (1-3)
 };
 const DEAL_PLACES = 3;
+// The Discord webhook new promos and news go to (pfb_meta "discord_webhook"; the scraper
+// gets it with its sync). A webhook can only post to its own channel.
+const WEBHOOK_RE = /^https:\/\/(?:(?:canary|ptb)\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[\w-]+$/;
+const WEBHOOK_NAME = "Bro | Promo & News";
 
 function cookie(value, maxAge) {
   return `${COOKIE}=${value}; Path=${COOKIE_PATH}; HttpOnly; Secure; SameSite=Strict; Max-Age=${maxAge}`;
@@ -203,6 +208,39 @@ const routes = {
 
   "POST render": async ({ DB }) => {
     await setMeta(DB, "render_requested_at", now()).run();
+    return json({ ok: true });
+  },
+
+  "GET discord": async ({ DB }) => json(await getJSON(DB, "discord_webhook", {})),
+
+  // Checked with Discord before it is saved; an empty url removes it.
+  "PUT discord": async ({ DB, body }) => {
+    const url = String(body.url || "").trim();
+    const username = String(body.username || "").trim().slice(0, 80) || WEBHOOK_NAME;
+    if (!url) {
+      await setJSON(DB, "discord_webhook", {}).run();
+      return json({});
+    }
+    if (!WEBHOOK_RE.test(url)) return json({ error: "That isn't a Discord webhook URL" }, 400);
+    const res = await fetch(url);
+    if (!res.ok) return json({ error: `Discord doesn't know this webhook (HTTP ${res.status})` }, 400);
+    const hook = await res.json();
+    const saved = { url, username, name: hook.name || "", channel_id: hook.channel_id || "",
+                    guild_id: hook.guild_id || "", updated_at: now() };
+    await setJSON(DB, "discord_webhook", saved).run();
+    return json(saved);
+  },
+
+  "POST discord/test": async ({ DB }) => {
+    const hook = await getJSON(DB, "discord_webhook", {});
+    if (!hook.url) return json({ error: "No webhook saved yet" }, 400);
+    const res = await fetch(hook.url + "?wait=true", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ username: hook.username || WEBHOOK_NAME,
+                             content: "✅ Test from the data admin: new promos will be posted here." }),
+    });
+    if (!res.ok) return json({ error: `Discord said HTTP ${res.status}` }, 502);
     return json({ ok: true });
   },
 

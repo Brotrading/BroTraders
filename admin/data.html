@@ -93,6 +93,7 @@ label.field .hint { font-weight: 400; color: var(--muted); font-size: 12px; }
 .badge.promo { color: var(--gold); border-color: rgba(255, 207, 64, 0.45); background: rgba(255, 207, 64, 0.08); }
 .badge.news { color: var(--blue-hi); background: rgba(61, 180, 255, 0.08); }
 .badge.hidden { color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.08); }
+.badge.ok { color: #4ade80; border-color: rgba(74, 222, 128, 0.4); background: rgba(74, 222, 128, 0.08); }
 .badge.edited { color: #c4b5fd; border-color: rgba(167, 139, 250, 0.45); background: rgba(167, 139, 250, 0.08); }
 .badge.good { color: var(--good); border-color: rgba(52, 211, 153, 0.4); background: rgba(52, 211, 153, 0.08); }
 .badge.wait { color: var(--gold); border-color: rgba(255, 207, 64, 0.4); background: rgba(255, 207, 64, 0.06); }
@@ -451,7 +452,7 @@ body.signin::before { display: none; }
     firms: ["Prop firms", "Firms and account prices on the Compare page"],
     deals: ["Top 3 deals", "Which deals the Top 3 Deals Today page shows, and in what order"],
     pages: ["Pages & history", "The copies the live pages serve, and older ones to go back to"],
-    settings: ["Settings", "Admin token and sign-ins"]
+    settings: ["Settings", "Discord webhook, admin token and sign-ins"]
   };
 
   function esc(v) {
@@ -599,7 +600,7 @@ body.signin::before { display: none; }
     if (v === "firms") return loadFirms().then(viewFirms).catch(failed);
     if (v === "deals") return loadDeals(true).then(viewDeals).catch(failed);
     if (v === "pages") return loadOverview(true).then(viewPages).catch(failed);
-    if (v === "settings") return viewSettings();
+    if (v === "settings") return api("GET", "discord").then(function (d) { state.discord = d; viewSettings(); }).catch(failed);
   }
 
   /* ---------- data ---------- */
@@ -1128,8 +1129,25 @@ body.signin::before { display: none; }
   }
 
   /* ---------- settings ---------- */
+  function discordPanel() {
+    var d = state.discord || {};
+    var status = d.url ? '<span class="badge ok">Connected</span>' : '<span class="badge">Not set</span>';
+    return '<div class="panel"><div class="panel-head"><h3><i class="fa-brands fa-discord"></i> Discord webhook</h3><div class="right">' + status + "</div></div>" +
+      '<p class="muted" style="margin:0;font-size:14px">Where new promos get posted (a picture of their card). In Discord: Edit Channel → Integrations → Webhooks → New Webhook → Copy Webhook URL. ' +
+        "Anyone with the URL can post in that channel, so keep it here only.</p>" +
+      '<form class="form-grid" id="discord-form" autocomplete="off">' +
+        '<label class="field">Webhook URL<span class="hint">empty and save to remove it</span>' +
+          '<div class="form-row" style="flex-wrap:nowrap"><input class="input mono" name="url" type="password" spellcheck="false" placeholder="https://discord.com/api/webhooks/..." value="' + esc(d.url || "") + '" style="flex:1">' +
+          '<button class="btn" type="button" data-act="discord-show" title="Show or hide"><i class="fa-regular fa-eye"></i></button></div></label>' +
+        '<label class="field">Posts as<span class="hint">the name shown on each post</span><input class="input" name="username" maxlength="80" value="' + esc(d.username || "Bro | Promo & News") + '"></label>' +
+        '<div class="form-row"><button class="btn primary" type="submit"><i class="fa-solid fa-check"></i> Save</button>' +
+          '<button class="btn" type="button" data-act="discord-test"' + (d.url ? "" : " disabled") + '><i class="fa-solid fa-paper-plane"></i> Send a test post</button></div>' +
+        (d.url ? '<p class="muted" style="margin:0;font-size:13px">Webhook "' + esc(d.name) + '" in channel <span class="mono">' + esc(d.channel_id) + "</span>, saved " + esc(ago(d.updated_at)) + ".</p>" : "") +
+      "</form></div>";
+  }
+
   function viewSettings() {
-    $("#view").innerHTML = '<div class="settings">' +
+    $("#view").innerHTML = '<div class="settings">' + discordPanel() +
       '<div class="panel"><div class="panel-head"><h3><i class="fa-solid fa-key"></i> Change admin token</h3></div>' +
         '<p class="muted" style="margin:0;font-size:14px">After the change, the old token stops working and every other browser is signed out.</p>' +
         '<form class="form-grid" id="token-form" autocomplete="off">' +
@@ -1144,6 +1162,12 @@ body.signin::before { display: none; }
         '<div class="form-row"><button class="btn" data-act="clear-sessions"><i class="fa-solid fa-users-slash"></i> Sign out other browsers</button>' +
         '<button class="btn danger" data-act="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></div></div>' +
       "</div>";
+    $("#discord-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      api("PUT", "discord", { url: this.url.value.trim(), username: this.username.value.trim() }).then(function (d) {
+        state.discord = d; viewSettings(); toast(d.url ? "Webhook saved" : "Webhook removed");
+      }).catch(function (err) { toast(err.message, false); });
+    });
     $("#token-form").addEventListener("submit", function (e) {
       e.preventDefault();
       var t1 = this.t1.value.trim(), t2 = this.t2.value.trim();
@@ -1224,6 +1248,12 @@ body.signin::before { display: none; }
       var out = $("#gen-out");
       out.hidden = false;
       out.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color:var(--gold)"></i> Copy it somewhere safe before saving: <span class="mono" style="word-break:break-all;color:var(--text)">' + tok + "</span>";
+    }
+    else if (act === "discord-show") { var u = $("#discord-form").url; u.type = u.type === "password" ? "text" : "password"; }
+    else if (act === "discord-test") {
+      el.disabled = true;
+      api("POST", "discord/test", {}).then(function () { toast("Test post sent to Discord"); })
+        .catch(function (err) { toast(err.message, false); }).finally(function () { el.disabled = false; });
     }
     else if (act === "clear-sessions") api("POST", "sessions/clear", {}).then(function () { toast("Other browsers signed out"); }).catch(function (err) { toast(err.message, false); });
     else if (act === "logout") $("#logout").click();
