@@ -328,6 +328,7 @@ html.bt-has-market .markets { display: none; }
   cursor: pointer; user-select: none;
   transition: background 0.15s ease;
 }
+.firm-row[hidden] { display: none; }
 .firm-row:hover { background: rgba(44, 158, 255, 0.08); }
 .firm-row input { width: 16px; height: 16px; margin: 0; accent-color: var(--blue); }
 .firm-row .logo { width: 28px; height: 28px; border-radius: 8px; box-shadow: none; }
@@ -3296,6 +3297,19 @@ details.more[open] summary { margin-bottom: 8px; }
       if (filter.market === "all" || c.dataset.market === filter.market) { n.all++; n[c.dataset.type]++; }
     });
     document.querySelectorAll("#tabs .chip").forEach(function (c) { c.querySelector(".n").textContent = n[c.dataset.type]; });
+    // the firm list: only firms with posts in the market, counted within it; a ticked
+    // firm that leaves the list is unticked
+    var per = {};
+    cards.forEach(function (c) {
+      if (filter.market === "all" || c.dataset.market === filter.market) per[c.dataset.firm] = (per[c.dataset.firm] || 0) + 1;
+    });
+    document.querySelectorAll("#firms .firm-row").forEach(function (row) {
+      var box = row.querySelector("input"), k = per[box.value] || 0;
+      row.hidden = !k;
+      row.querySelector(".count").textContent = k;
+      if (!k) box.checked = false;
+    });
+    filter.firms = Array.prototype.map.call(document.querySelectorAll("#firms input:checked"), function (box) { return box.value; });
   }
   function setMarket(m) {
     if (m === filter.market) return;
