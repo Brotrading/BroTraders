@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="bt-markets" content="futures,cfd,perps" />
     <title>Prop Firm Bro's | Compare The Best Futures Prop Firms</title>
     <meta name="description" content="Compare the best futures prop firms — Apex, Tradeify, Lucid, MyFundedFutures, Phidias, DayTraders & more. Exclusive Bro Trading discount codes, side-by-side drawdown, payout & cost analysis." />
     <meta name="keywords" content="prop firm, futures prop firm, apex trader funding, tradeify, lucid trading, myfundedfutures, prop firm comparison, prop firm discount" />
@@ -168,9 +169,15 @@
         .pfirms-stat { padding: 6px 14px; font-size: 12px; }
       }
     </style>
+    <!-- BT-MARKETS START (discord_scraper/homepage.py, rewritten on every publish): room for the header's market switch -->
+    <style>
+      html.bt-has-market .pfirms-section { padding-top: 205px; }
+      @media (max-width: 680px) { html.bt-has-market .pfirms-section { padding-top: 170px; } }
+    </style>
+    <!-- BT-MARKETS END -->
     <section class="pfirms-section">
       <div class="pfirms-head">
-        <h2>Compare The Top Futures Firms <br /><span>With The Best Bro Deals</span></h2>
+        <h2>Compare The Top <b class="bt-mword" style="font:inherit;color:inherit">Futures</b> Firms <br /><span>With The Best Bro Deals</span></h2>
         <p style="text-align: center;">
           Compare challenge rules, profit splits, and drawdown limits to
           find the best prop firm for your trading strategy.
@@ -597,18 +604,18 @@
               {
                 name: "Tradeify",
                 logo: "Photos/firms/tradeify.png",
-                discount: "30% Off",
+                discount: "40% Off",
                 rating: "4.6",
-                details: "50K Growth: $102 (was $145)<br>No activation fee · EOD drawdown · Ends Oct 31",
+                details: "50K Growth: $87 (was $145)<br>No activation fee · EOD drawdown · Ends Nov 13",
                 code: "BRO",
                 link: "/go/tradeify",
               },
               {
                 name: "TakeProfitTrader",
                 logo: "Photos/firms/takeprofittrader.svg",
-                discount: "40% Off",
+                discount: "50% Off",
                 rating: "4.4",
-                details: "50K PRO Evaluation: $102/month (was $170)<br>No activation fee · EOD drawdown",
+                details: "50K PRO Evaluation: $85/month (was $170)<br>No activation fee · EOD drawdown",
                 code: "BRO",
                 link: "/go/takeprofittrader",
               },
@@ -635,7 +642,7 @@
                 logo: "Photos/firms/lucid.png",
                 discount: "30% Off",
                 rating: "4.8",
-                details: "50K Flex: $80.50 (was $115)<br>EOD drawdown",
+                details: "50K Flex: $80.50 (was $115)<br>No activation fee · EOD drawdown",
                 code: "BROTRADING",
                 link: "/go/lucid",
               },
@@ -644,16 +651,16 @@
                 logo: "Photos/firms/apex.png",
                 discount: "90% Off",
                 rating: "4.3",
-                details: "50K EOD Trail (No Activation Fee): $119 (was $1,190)<br>No activation fee · EOD drawdown · Ends Oct 31",
+                details: "50K EOD Trail (No Activation Fee): $119 (was $1,190)<br>No activation fee · EOD drawdown · Ends Nov 17",
                 code: "BRO",
                 link: "/go/apex",
               },
               {
                 name: "Top One Futures",
                 logo: "Photos/firms/topone.png",
-                discount: "50% Off",
+                discount: "55% Off",
                 rating: "4.8",
-                details: "50K Elite Daily: $109 (was $218)<br>No activation fee · EOD drawdown · Ends Oct 31",
+                details: "50K Elite Daily: $98 (was $218)<br>No activation fee · EOD drawdown",
                 code: "BRO",
                 link: "/go/topone",
               },
@@ -987,6 +994,28 @@
             }
 
             init();
+            // BT-MARKETS START (discord_scraper/homepage.py, rewritten on every publish): the carousel for the market picked in the header
+            const DEALS_BY_MARKET = {"cfd": [{"name": "IQ Capital CFD", "logo": "Photos/firms/iqcapital.svg", "discount": "85% Off", "rating": "4.7", "details": "50K Rapid: $101.25 (was $675)<br>No activation fee · EOD drawdown", "code": "BRO", "link": "/go/iqcapital"}], "perps": [{"name": "MyFundedPerps", "logo": "Photos/firms/myfundedfutures.png", "discount": "25% Off", "rating": "4.9", "details": "50K Select: $142 (was $190)<br>Static drawdown", "code": "BRO", "link": "https://myfundedperpetuals.com/@BRO"}, {"name": "Vest Markets", "logo": "data:image/png;base64,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", "discount": "5% Off", "rating": "", "details": "50K Emerald: $707.75 (was $745)<br>Static drawdown", "code": "BROTRADING", "link": "https://next.vestmarkets.com/r/brotrading"}]};
+            let dealsMarket = "futures";
+            function showDeals(m) {
+              const list = m === "futures" ? deals : DEALS_BY_MARKET[m];
+              if (!list || !list.length || m === dealsMarket) return;
+              dealsMarket = m;
+              stopAutoplay();
+              track.innerHTML = "";
+              [list[list.length - 1], ...list, list[0]].forEach((d) => track.appendChild(createCard(d)));
+              cards = document.querySelectorAll(".bro-card");
+              index = 1;
+              document.querySelectorAll(".bro-nav").forEach((b) => (b.style.visibility = list.length > 1 ? "" : "hidden"));
+              // one firm: no copies of its card on either side
+              if (list.length === 1) [cards[0], cards[2]].forEach((c) => c && (c.style.visibility = "hidden"));
+              if (!isMobile()) updateDesktop(false);
+              else { track.scrollLeft = 0; setActive(1); initMobileObserver(); }
+              if (list.length > 1) startAutoplay();
+            }
+            try { showDeals(localStorage.getItem("bt-market")); } catch (e) {}
+            window.addEventListener("bt-market", (e) => showDeals(e.detail));
+            // BT-MARKETS END
           })();
         </script>
       </body>
@@ -1434,14 +1463,14 @@
               logo: "Photos/firms/tradeify.png",
               account: 50000,
               plan: "Growth",
-              eval: 102,
+              eval: 87,
               activation: 0,
-              truecost: 102,
+              truecost: 87,
               ddt: "EOD",
               goal: 3000,
               dd: 2000,
               mindays: 1,
-              discount: "30%",
+              discount: "40%",
               code: "BRO",
               website: "https://tradeify.co/?ref=BFYQ2HKM",
             },
@@ -1450,15 +1479,15 @@
               logo: "Photos/firms/takeprofittrader.svg",
               account: 50000,
               plan: "PRO Evaluation",
-              eval: 102,
+              eval: 85,
               billing: "monthly",
               activation: 0,
-              truecost: 102,
+              truecost: 85,
               ddt: "EOD",
               goal: 3000,
               dd: 2000,
               mindays: 1,
-              discount: "40%",
+              discount: "50%",
               code: "BRO",
               website: "https://takeprofittrader.com/?referralCode=BRO",
             },
@@ -1531,14 +1560,14 @@
               logo: "Photos/firms/topone.svg",
               account: 50000,
               plan: "Elite Daily",
-              eval: 109,
+              eval: 98,
               activation: 0,
-              truecost: 109,
+              truecost: 98,
               ddt: "EOD",
               goal: 3000,
               dd: 2000,
               mindays: 1,
-              discount: "50%",
+              discount: "55%",
               code: "BRO",
               website: "https://toponefutures.com/?linkId=lp_707970&sourceId=bro&tenantId=toponefutures",
             },
@@ -1563,14 +1592,14 @@
               logo: "Photos/firms/legendstrading.png",
               account: 50000,
               plan: "Elite",
-              eval: 98.15,
+              eval: 105.7,
               activation: 0,
-              truecost: 98.15,
+              truecost: 105.7,
               ddt: "EOD",
               goal: 2700,
               dd: 2200,
               mindays: 1,
-              discount: "35%",
+              discount: "30%",
               code: "BRO",
               website: "https://thelegendstrading.com/?ref=BRO",
             },
@@ -1607,19 +1636,19 @@
               code: "BROTRADING",
               website: "https://app.alpha-futures.com/signup/BROTRADING/",
             },
-            { // Rapid - Daily Payout
+            { // Rapid
               firm: "IQ Capital",
               logo: "Photos/firms/iqcapital.svg",
               account: 50000,
-              plan: "Rapid - Daily Payout",
-              eval: 135,
+              plan: "Rapid",
+              eval: 101.25,
               activation: 0,
-              truecost: 135,
+              truecost: 101.25,
               ddt: "EOD",
               goal: 3000,
               dd: 2000,
               mindays: 1,
-              discount: "80%",
+              discount: "85%",
               code: "BRO",
               website: "https://checkout.iqcapital.io/products?aff=bro",
             },
@@ -1669,7 +1698,7 @@
                         <td>${f.firm}</td>
                         <td>${displayAccount}${f.plan ? `<div style="font-size:12px;opacity:.7">${f.plan}</div>` : ""}</td>
                         <td>$${displayEval}${f.billing === "monthly" ? `<div style="font-size:12px;opacity:.7">/ Month</div>` : ""}</td>
-                        <td>$${displayActivation}</td>
+                        <td>${typeof displayActivation === "number" ? "$" + displayActivation : displayActivation}</td>
                         <td class="zx-true">$${displayTrueCost}</td>
                         <td>${f.ddt}</td>
                         <td>${displayGoal}</td>
@@ -1764,6 +1793,21 @@
               row.insertBefore(row.cells[from], row.cells[to]);
           }
 
+          // BT-MARKETS START (discord_scraper/homepage.py, rewritten on every publish): the table for the market picked in the header
+          const FIRMS_BY_MARKET = {"cfd": [{"firm": "IQ Capital CFD", "logo": "Photos/firms/iqcapital.svg", "account": 50000, "plan": "Rapid", "eval": 101.25, "activation": 0.0, "truecost": 101.25, "ddt": "EOD", "goal": 3000.0, "dd": 2000.0, "discount": "85%", "code": "BRO", "website": "https://propfirmbro.com/go/iqcapital"}], "perps": [{"firm": "MyFundedPerps", "logo": "Photos/firms/myfundedfutures.png", "account": 50000, "plan": "Select", "eval": 142.0, "activation": "—", "truecost": 142.0, "ddt": "Static", "goal": 4500.0, "dd": 1500.0, "discount": "25%", "code": "BRO", "website": "https://myfundedperpetuals.com/@BRO"}, {"firm": "Vest Markets", "logo": "data:image/png;base64,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", "account": 50000, "plan": "Emerald", "eval": 707.75, "activation": "—", "truecost": 707.75, "ddt": "Static", "goal": 5000.0, "dd": 3000.0, "discount": "5%", "code": "BROTRADING", "website": "https://next.vestmarkets.com/r/brotrading"}]};
+          const HERO_WORDS = {"futures": "Futures", "cfd": "CFD", "perps": "Crypto Perps"};
+          function showFirms(m) {
+            const list = m === "futures" ? firms : FIRMS_BY_MARKET[m];
+            if (!list) return;
+            filteredData = [...list];
+            sortState = { key: null, direction: -1 };
+            document.querySelectorAll("#zx-table .sort-icon").forEach((i) => (i.textContent = "▼"));
+            document.querySelectorAll(".bt-mword").forEach((w) => (w.textContent = HERO_WORDS[m] || HERO_WORDS.futures));
+            render(filteredData);
+          }
+          window.addEventListener("bt-market", (e) => showFirms(e.detail));
+          try { const m = localStorage.getItem("bt-market"); if (FIRMS_BY_MARKET[m]) { showFirms(m); return; } } catch (e) {}
+          // BT-MARKETS END
           render(filteredData);
         })();
         </script>
