@@ -68,6 +68,38 @@
     hamburger?.classList.remove("open");
   });
 
+  // --- Market switch (Futures / CFD / Perps) ---
+  // Shown on pages that list their markets: <meta name="bt-markets" content="futures,cfd,perps">.
+  // The choice is kept for every page in localStorage ("bt-market"), and every change
+  // (here or from a page's own tabs) goes round as a window "bt-market" event.
+  const marketMeta = document.querySelector('meta[name="bt-markets"]');
+  const marketSwitch = document.getElementById("bt-market");
+  if (marketMeta && marketSwitch) {
+    const KEY = "bt-market";
+    const have = marketMeta.content.split(",").map((s) => s.trim()).filter(Boolean);
+    marketSwitch.querySelectorAll("[data-market]").forEach((b) => {
+      if (!have.includes(b.dataset.market)) b.remove();
+    });
+    const stored = () => {
+      try { return localStorage.getItem(KEY); } catch { return null; }
+    };
+    const press = (m) =>
+      marketSwitch.querySelectorAll("[data-market]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.market === m));
+    const choose = (m) => {
+      try { localStorage.setItem(KEY, m); } catch {}
+      window.dispatchEvent(new CustomEvent("bt-market", { detail: m }));
+    };
+    window.addEventListener("bt-market", (e) => press(e.detail));
+    marketSwitch.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-market]");
+      if (b && b.getAttribute("aria-pressed") !== "true") choose(b.dataset.market);
+    });
+    document.documentElement.classList.add("bt-has-market");
+    marketSwitch.hidden = false;
+    const now = stored();
+    choose(have.includes(now) ? now : have[0]);
+  }
+
   // --- Scroll shrink ---
   const header = document.querySelector(".bt-header");
   const onScroll = () => header?.classList.toggle("bt-scrolled", window.scrollY > 10);

@@ -204,6 +204,54 @@
     .bt-hamburger { gap: 5px; }
     .bt-mobile-close { top: 18px; right: 18px; font-size: 22px; }
   }
+  /* ================================================================
+     MARKET SWITCH (Futures / CFD / Perps) — hangs under the header and
+     moves with it. Shown only on pages that list their markets in
+     <meta name="bt-markets" content="futures,cfd,perps"> (header.js).
+     ================================================================ */
+  .bt-market {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 999px;
+    background: rgba(10, 15, 30, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 194, 255, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    z-index: 999;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+  .bt-market[hidden] { display: none; }
+  .bt-market button {
+    --mk: #3db4ff; --mk2: #1e78ff; --mk-rgb: 61, 180, 255;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 20px;
+    border: 1px solid transparent; border-radius: 999px;
+    background: none; color: #b8c9e6;
+    font: 600 15px "DM Sans", system-ui, sans-serif;
+    cursor: pointer; white-space: nowrap;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .bt-market button[data-market="cfd"] { --mk: #34d399; --mk2: #059669; --mk-rgb: 52, 211, 153; }
+  .bt-market button[data-market="perps"] { --mk: #a78bfa; --mk2: #7c3aed; --mk-rgb: 167, 139, 250; }
+  .bt-market button:hover { color: #fff; }
+  .bt-market .bt-mk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mk); opacity: 0.7; }
+  .bt-market button[aria-pressed="true"] {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(var(--mk-rgb), 0.35), rgba(var(--mk-rgb), 0.12));
+    border-color: rgba(var(--mk-rgb), 0.7);
+    box-shadow: 0 0 18px rgba(var(--mk-rgb), 0.3);
+  }
+  .bt-market button[aria-pressed="true"] .bt-mk-dot { opacity: 1; box-shadow: 0 0 8px var(--mk); }
+  @media (max-width: 767px) {
+    .bt-market { top: calc(100% + 8px); }
+    .bt-market button { padding: 7px 14px; font-size: 14px; gap: 6px; }
+  }
 </style>
 <header class="bt-header">
   <div class="bt-container">
@@ -261,5 +309,11 @@
     <button class="bt-hamburger" id="hamburgerBtn" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
+  </div>
+
+  <div class="bt-market" id="bt-market" role="group" aria-label="Market" hidden>
+    <button type="button" data-market="futures" aria-pressed="false"><span class="bt-mk-dot" aria-hidden="true"></span>Futures</button>
+    <button type="button" data-market="cfd" aria-pressed="false"><span class="bt-mk-dot" aria-hidden="true"></span>CFD</button>
+    <button type="button" data-market="perps" aria-pressed="false"><span class="bt-mk-dot" aria-hidden="true"></span>Perps</button>
   </div>
 </header>
