@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bro Trading Giveaway · Pro Bro Free Month</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+<style>
+  :root {
+    --bg-0: #020617;
+    --bg-1: #071426;
+    --bg-2: #0a1c3a;
+    --blue: #2c9eff;
+    --blue-2: #1a55dd;
+    --gold: #ffcf40;
+    --text: #e9ecff;
+    --muted: #7a83a8;
+    --danger: #ff4d6d;
+    --success: #34d399;
+    --card: rgba(10, 28, 58, 0.6);
+    --border: rgba(44, 158, 255, 0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    min-height: 100%;
+    background: radial-gradient(ellipse at top, var(--bg-2) 0%, var(--bg-1) 35%, var(--bg-0) 100%);
+    color: var(--text);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(44, 158, 255, 0.18) 0%, transparent 35%),
+      radial-gradient(circle at 85% 80%, rgba(255, 207, 64, 0.14) 0%, transparent 40%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(44, 158, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(44, 158, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(44, 158, 255, 0.12);
+    border: 1px solid var(--border);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #fff 0%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .prizes {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .prizes h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .prizes ul { list-style: none; }
+  .prizes li {
+    font-size: 14px;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .prizes li i { margin-top: 5px; flex: 0 0 auto; }
+  .prizes li i { color: var(--gold); font-size: 11px; }
+  form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    backdrop-filter: blur(10px);
+  }
+  .field {
+    margin-bottom: 16px;
+  }
+  .field-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  label i { color: var(--blue); margin-right: 6px; }
+  input {
+    width: 100%;
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(44, 158, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  input:focus {
+    outline: none;
+    border-color: var(--blue);
+    background: rgba(2, 6, 23, 0.8);
+  }
+  input::placeholder { color: var(--muted); }
+  .btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-2) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 8px 24px rgba(44, 158, 255, 0.3);
+  }
+  .btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(44, 158, 255, 0.45);
+  }
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .msg {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: none;
+  }
+  .msg.show { display: block; }
+  .msg.success {
+    background: rgba(52, 211, 153, 0.12);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    color: var(--success);
+  }
+  .msg.error {
+    background: rgba(255, 77, 109, 0.12);
+    border: 1px solid rgba(255, 77, 109, 0.4);
+    color: var(--danger);
+  }
+  .footer-note {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .success-card {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(52, 211, 153, 0.05));
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    display: none;
+  }
+  .success-card.show { display: block; }
+  .success-card .checkmark {
+    width: 72px; height: 72px;
+    background: var(--success);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #052e23;
+    font-size: 36px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(52, 211, 153, 0.4);
+  }
+  .success-card h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--success);
+  }
+  .success-card p {
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .success-card .small {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 26px; }
+    .wrap { padding: 24px 18px 40px; }
+    form { padding: 22px 18px; }
+    .success-card { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="badge"><i class="fas fa-crown"></i> New Bros Only</div>
+  <h1>Win a Free Month of Pro Bro</h1>
+  <p class="subtitle">Drop your details to enter. One entry per Discord username.</p>
+
+  <div class="prizes">
+    <h3><i class="fas fa-trophy"></i> What you can win</h3>
+    <ul>
+      <li><i class="fas fa-circle"></i> 3x Pro Bro — 1 month free</li>
+    </ul>
+    <p class="field-hint" style="margin-top:10px;">Three winners each get a full month of Pro Bro, on the house.</p>
+    <p class="field-hint" style="margin-top:10px; color:var(--gold);">
+      ⚠️ New Bros only — this one is for people who aren't Pro Bro yet.
+      Current Pro Bros aren't eligible.
+    </p>
+  </div>
+
+  <div class="prizes">
+    <h3><i class="fas fa-circle-check"></i> To be eligible</h3>
+    <ul>
+      <li><i class="fab fa-discord"></i><span>Be in the Bro Trading Discord with the Bro tag</span></li>
+      <li><i class="fas fa-pen"></i><span>Fill in the form below</span></li>
+    </ul>
+    <p class="field-hint" style="margin-top:10px;">
+      ⚠️ One entry per Discord username, across both giveaways. If you've already
+      entered the other one, this form will tell you.
+    </p>
+  </div>
+
+  <form id="entryForm" autocomplete="off">
+    <input type="hidden" name="tier" value="all" />
+    <input type="hidden" name="orderNumber" value="PROBRO-1MONTH" />
+
+    <!-- Honeypot: real users never see or fill this. Bots that blindly fill every
+         input trip it, and we silently drop the submission. -->
+    <div style="position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="field">
+      <label><i class="fas fa-user"></i> First Name</label>
+      <input type="text" name="firstName" required placeholder="First name" />
+    </div>
+
+    <div class="field">
+      <label><i class="fas fa-user"></i> Last Name</label>
+      <input type="text" name="lastName" required placeholder="Last name" />
+    </div>
+
+    <div class="field">
+      <label><i class="fab fa-discord"></i> Discord Username</label>
+      <input type="text" name="discord" required placeholder="e.g. johntrades23" />
+      <div class="field-hint">
+        Your exact @username — NOT your display name (the one you can change).
+        In Discord: tap your profile picture → the name under it, with no spaces
+        or capitals, is your real username.
+      </div>
+      <img src="assets/discord-username-example-annotated.png" alt="Example: on a Discord profile, the display name is on top but your real username is the smaller text below it — type that one." style="max-width:280px; width:100%; height:auto; margin-top:10px; border-radius:8px; display:block;" />
+    </div>
+
+    <div class="field">
+      <label><i class="fas fa-envelope"></i> Email</label>
+      <input type="email" name="email" required placeholder="you@example.com" />
+    </div>
+
+    <button type="submit" class="btn" id="submitBtn">
+      <i class="fas fa-rocket"></i> Enter Giveaway
+    </button>
+
+    <div class="msg" id="msg"></div>
+  </form>
+
+  <div class="success-card" id="successCard">
+    <div class="checkmark"><i class="fas fa-check"></i></div>
+    <h2>You're in!</h2>
+    <p>Your entry is locked in for a free month of Pro Bro.</p>
+    <p class="small">You can close this page now.</p>
+  </div>
+
+  <div class="footer-note">
+    Powered by Bro Trading · Winner drawn live on stream
+  </div>
+</div>
+
+<script>
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzg3fO1HV5cKeliHCfUxeJaDwq1bkwF6D-C9lymDXszNDRalFhlqUkSili3rXsNWxMQ/exec';
+  const form = document.getElementById('entryForm');
+  const msg = document.getElementById('msg');
+  const submitBtn = document.getElementById('submitBtn');
+
+  function showMsg(text, type) {
+    msg.textContent = text;
+    msg.className = 'msg show ' + type;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'msg';
+
+    // Honeypot: a real visitor never fills this. Pretend success so the bot
+    // doesn't learn it was caught.
+    const honeypot = document.getElementById('website');
+    if (honeypot && honeypot.value.trim() !== '') {
+      form.style.display = 'none';
+      document.getElementById('successCard').classList.add('show');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
+
+    const params = new URLSearchParams();
+    new FormData(form).forEach((v, k) => params.append(k, v));
+
+    let data = null, lastErr = null;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const res = await fetch(APPS_SCRIPT_URL, { method: 'POST', body: params });
+        data = await res.json();
+        break;
+      } catch (err) { lastErr = err; }
+    }
+
+    if (!data) {
+      showMsg('Network error: ' + (lastErr && lastErr.message ? lastErr.message : 'unknown')
+              + ' — check your connection and hit the button again.', 'error');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Enter Giveaway';
+      return;
+    }
+
+    if (data.ok) {
+      form.style.display = 'none';
+      document.getElementById('successCard').classList.add('show');
+      return;
+    } else if (data.error === 'duplicate') {
+      showMsg('⚠️ This Discord username is already entered. One entry per person, across both giveaways.', 'error');
+    } else if (data.error === 'missing_field') {
+      showMsg('⚠️ Please fill in all fields.', 'error');
+    } else {
+      showMsg('Something went wrong: ' + (data.detail || data.error || 'unknown'), 'error');
+    }
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Enter Giveaway';
+  });
+</script>
+</body>
+</html>
