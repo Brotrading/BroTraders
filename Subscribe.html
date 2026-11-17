@@ -137,6 +137,52 @@
             margin-bottom: 8px;
           }
 
+          /* PROMO CODE CHIP (same look as the News page) */
+          .sub-code {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: 1px dashed rgba(255, 207, 64, 0.55);
+            border-radius: 999px;
+            background: rgba(255, 207, 64, 0.06);
+            color: #fff;
+            font-family: "DM Mono", "DM Sans", monospace;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+          }
+          .sub-code b {
+            color: #ffcf40;
+            letter-spacing: 0.04em;
+            font-size: 17px;
+          }
+          .sub-code:hover {
+            background: rgba(255, 207, 64, 0.14);
+          }
+          .sub-code.copied {
+            border-color: #34d399;
+          }
+          .sub-code-copy {
+            font-size: 11px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+          }
+          .sub-code-note {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 8px;
+          }
+          .sub-code-row {
+            margin-bottom: 20px;
+          }
+          @media (max-width: 900px) {
+            .sub-code-row {
+              text-align: center;
+            }
+          }
+
           /* VALUE CARDS */
           .value-cards {
             display: flex;
@@ -601,7 +647,7 @@
           <div class="hero-container">
             <!-- LEFT SIDE -->
             <div class="hero-left">
-              <div class="hero-badge">🔥 50% OFF LAUNCH OFFER</div>
+              <div class="hero-badge">🔥 1ST MONTH 50% OFF</div>
 
               <h1>
                 Watch Real Trades <span>Live</span><br />
@@ -619,8 +665,8 @@
                 <div class="price-box" id="priceBox">
                   <span class="old" id="oldPrice">€20</span>
                   <span class="new" id="currentPrice">€10</span>
-                  <span id="perMonth">/ month</span>
-                  <p id="priceNote">Deal active — locked in as long as you stay subscribed</p>
+                  <span id="perMonth">first month</span>
+                  <p id="priceNote">Then €20 / month (excl. VAT)</p>
                 </div>
                 <div class="countdown-wrap">
                   <p class="timer-label">⏳ Deal expires in:</p>
@@ -633,10 +679,19 @@
                 </div>
               </div>
 
+              <!-- PROMO CODE -->
+              <div class="sub-code-row">
+                <p class="timer-label">🎟️ Use this code at checkout:</p>
+                <button type="button" class="sub-code" data-code="PROBRO50" title="Copy code">
+                  Code <b>PROBRO50</b> <span class="sub-code-copy">Copy</span>
+                </button>
+                <p class="sub-code-note">50% off your first month</p>
+              </div>
+
               <!-- BUTTONS -->
               <div class="hero-buttons">
                 <a href="https://whop.com/joined/bro-trading/" target="_blank" class="btn-primary">
-                  Unlock Premium — €10/month
+                  Unlock Premium — 50% off your first month
                 </a>
               </div>
               <a href="https://discord.gg/brotrading" target="_blank" class="btn-free-link">
@@ -718,6 +773,8 @@
             if (priceBox) priceBox.classList.add("price-expired");
             const currentPrice = document.getElementById("currentPrice");
             if (currentPrice) currentPrice.innerText = "€20";
+            const perMonth = document.getElementById("perMonth");
+            if (perMonth) perMonth.innerText = "/ month";
             const priceNote = document.getElementById("priceNote");
             if (priceNote) priceNote.innerText = "Deal expired — regular price applies";
           }
@@ -734,6 +791,37 @@
 
           updateCountdown();
           setInterval(updateCountdown, 1000);
+
+          // Copy the promo code (PROBRO50) on click.
+          document.querySelectorAll(".sub-code").forEach(function (btn) {
+            function done() {
+              const hint = btn.querySelector(".sub-code-copy");
+              btn.classList.add("copied");
+              if (hint) hint.innerText = "Copied ✓";
+              setTimeout(function () {
+                btn.classList.remove("copied");
+                if (hint) hint.innerText = "Copy";
+              }, 1400);
+            }
+            function fallback() {
+              // Older browsers / clipboard permission refused.
+              const ta = document.createElement("textarea");
+              ta.value = btn.dataset.code;
+              ta.style.position = "fixed";
+              ta.style.opacity = "0";
+              document.body.appendChild(ta);
+              ta.select();
+              try { if (document.execCommand("copy")) done(); } catch (e) {}
+              ta.remove();
+            }
+            btn.addEventListener("click", function () {
+              if (navigator.clipboard) {
+                navigator.clipboard.writeText(btn.dataset.code).then(done, fallback);
+              } else {
+                fallback();
+              }
+            });
+          });
 
           // Fetch live member count from Discord invite API
           (async function () {
