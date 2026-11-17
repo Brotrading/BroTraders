@@ -174,6 +174,14 @@
             opacity: 0.6;
             margin-top: 8px;
           }
+          .sub-code-row {
+            margin-bottom: 20px;
+          }
+          @media (max-width: 900px) {
+            .sub-code-row {
+              text-align: center;
+            }
+          }
 
           /* VALUE CARDS */
           .value-cards {
@@ -652,7 +660,7 @@
                 trade setups and exclusive strategy channels.
               </p>
 
-              <!-- PRICE + PROMO CODE side by side -->
+              <!-- PRICE + TIMER side by side -->
               <div class="price-timer-row">
                 <div class="price-box" id="priceBox">
                   <span class="old" id="oldPrice">€20</span>
@@ -661,12 +669,23 @@
                   <p id="priceNote">Then €20 / month (excl. VAT)</p>
                 </div>
                 <div class="countdown-wrap">
-                  <p class="timer-label">🎟️ Use this code at checkout:</p>
-                  <button type="button" class="sub-code" data-code="PROBRO50" title="Copy code">
-                    Code <b>PROBRO50</b> <span class="sub-code-copy">Copy</span>
-                  </button>
-                  <p class="sub-code-note">50% off your first month</p>
+                  <p class="timer-label">⏳ Deal expires in:</p>
+                  <div class="countdown">
+                    <div><span id="days">00</span><small>Days</small></div>
+                    <div><span id="hours">00</span><small>Hours</small></div>
+                    <div><span id="minutes">00</span><small>Min</small></div>
+                    <div><span id="seconds">00</span><small>Sec</small></div>
+                  </div>
                 </div>
+              </div>
+
+              <!-- PROMO CODE -->
+              <div class="sub-code-row">
+                <p class="timer-label">🎟️ Use this code at checkout:</p>
+                <button type="button" class="sub-code" data-code="PROBRO50" title="Copy code">
+                  Code <b>PROBRO50</b> <span class="sub-code-copy">Copy</span>
+                </button>
+                <p class="sub-code-note">50% off your first month</p>
               </div>
 
               <!-- BUTTONS -->
@@ -728,6 +747,51 @@
         </section>
 
         <script>
+          // Persist the countdown end date in localStorage so it survives page reloads.
+          // On the very first visit the deadline is set to now + 7 days and saved.
+          // Every subsequent visit reads the same deadline — the timer keeps counting down.
+          const STORAGE_KEY = "broSubscribeCountdownEnd";
+          const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+
+          let savedEnd = localStorage.getItem(STORAGE_KEY);
+          if (!savedEnd) {
+            savedEnd = Date.now() + SEVEN_DAYS_MS;
+            localStorage.setItem(STORAGE_KEY, savedEnd);
+          }
+          const endTime = parseInt(savedEnd, 10);
+
+          function pad(n) {
+            return n < 10 ? "0" + n : String(n);
+          }
+
+          function showExpired() {
+            document.getElementById("days").innerText    = "00";
+            document.getElementById("hours").innerText   = "00";
+            document.getElementById("minutes").innerText = "00";
+            document.getElementById("seconds").innerText = "00";
+            const priceBox = document.getElementById("priceBox");
+            if (priceBox) priceBox.classList.add("price-expired");
+            const currentPrice = document.getElementById("currentPrice");
+            if (currentPrice) currentPrice.innerText = "€20";
+            const perMonth = document.getElementById("perMonth");
+            if (perMonth) perMonth.innerText = "/ month";
+            const priceNote = document.getElementById("priceNote");
+            if (priceNote) priceNote.innerText = "Deal expired — regular price applies";
+          }
+
+          function updateCountdown() {
+            const distance = endTime - Date.now();
+            if (distance <= 0) { showExpired(); return; }
+
+            document.getElementById("days").innerText    = pad(Math.floor(distance / (1000 * 60 * 60 * 24)));
+            document.getElementById("hours").innerText   = pad(Math.floor((distance / (1000 * 60 * 60)) % 24));
+            document.getElementById("minutes").innerText = pad(Math.floor((distance / (1000 * 60)) % 60));
+            document.getElementById("seconds").innerText = pad(Math.floor((distance / 1000) % 60));
+          }
+
+          updateCountdown();
+          setInterval(updateCountdown, 1000);
+
           // Copy the promo code (PROBRO50) on click.
           document.querySelectorAll(".sub-code").forEach(function (btn) {
             function done() {
